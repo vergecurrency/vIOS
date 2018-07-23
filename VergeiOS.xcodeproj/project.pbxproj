@@ -1,0 +1,670 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A305DD95210641C300911B64 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* Wallet.storyboard */; };
+		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
+		A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */; };
+		A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDA021068BCF00911B64 /* UIFont+Default.swift */; };
+		A305DDA32106917400911B64 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDA22106917400911B64 /* RoundedButton.swift */; };
+		A305DDA52106940E00911B64 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A305DDA42106940E00911B64 /* .gitignore */; };
+		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
+		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
+		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
+		A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */; };
+		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
+		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
+		A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */; };
+		A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A33F6A8420EEE487001492C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A33F6A6B20EEE485001492C2;
+			remoteInfo = VergeCurrencyWallet;
+		};
+		A33F6A8F20EEE487001492C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A33F6A6B20EEE485001492C2;
+			remoteInfo = VergeCurrencyWallet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A305DD94210641C300911B64 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
+		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
+		A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparantNavigationBar.swift; sourceTree = "<group>"; };
+		A305DDA021068BCF00911B64 /* UIFont+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Default.swift"; sourceTree = "<group>"; };
+		A305DDA22106917400911B64 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A305DDA42106940E00911B64 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A33F6A7420EEE485001492C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/WelcomeGuide.storyboard; sourceTree = "<group>"; };
+		A33F6A7720EEE485001492C2 /* VergeiOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VergeiOS.xcdatamodel; sourceTree = "<group>"; };
+		A33F6A7920EEE487001492C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A33F6A7C20EEE487001492C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A33F6A7E20EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33F6A8320EEE487001492C2 /* VergeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletTests.swift; sourceTree = "<group>"; };
+		A33F6A8920EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletUITests.swift; sourceTree = "<group>"; };
+		A33F6A9420EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A33F6A6920EEE485001492C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33F6A8020EEE487001492C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33F6A8B20EEE487001492C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A305DD9121052A6A00911B64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A305DD9221052A7100911B64 /* WelcomeGuide */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A305DD9221052A7100911B64 /* WelcomeGuide */ = {
+			isa = PBXGroup;
+			children = (
+				A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */,
+				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
+			);
+			path = WelcomeGuide;
+			sourceTree = "<group>";
+		};
+		A305DD9321052AA400911B64 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */,
+				A305DD94210641C300911B64 /* Wallet.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A305DD9A21066AE600911B64 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A305DD9B21066AF100911B64 /* UI */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A305DD9B21066AF100911B64 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */,
+				A305DDA021068BCF00911B64 /* UIFont+Default.swift */,
+				A305DDA22106917400911B64 /* RoundedButton.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A33F6A6320EEE485001492C2 = {
+			isa = PBXGroup;
+			children = (
+				A305DDA42106940E00911B64 /* .gitignore */,
+				A33F6A6E20EEE485001492C2 /* VergeiOS */,
+				A33F6A8620EEE487001492C2 /* VergeiOSTests */,
+				A33F6A9120EEE487001492C2 /* VergeiOSUITests */,
+				A33F6A6D20EEE485001492C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A33F6A6D20EEE485001492C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A33F6A6C20EEE485001492C2 /* VergeiOS.app */,
+				A33F6A8320EEE487001492C2 /* VergeiOSTests.xctest */,
+				A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A33F6A6E20EEE485001492C2 /* VergeiOS */ = {
+			isa = PBXGroup;
+			children = (
+				A305DD9A21066AE600911B64 /* Components */,
+				A305DD9321052AA400911B64 /* Storyboards */,
+				A305DD9121052A6A00911B64 /* Views */,
+				A33F6A6F20EEE485001492C2 /* AppDelegate.swift */,
+				A33F6A7920EEE487001492C2 /* Assets.xcassets */,
+				A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */,
+				A33F6A7E20EEE487001492C2 /* Info.plist */,
+				A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */,
+			);
+			path = VergeiOS;
+			sourceTree = "<group>";
+		};
+		A33F6A8620EEE487001492C2 /* VergeiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */,
+				A33F6A8920EEE487001492C2 /* Info.plist */,
+			);
+			path = VergeiOSTests;
+			sourceTree = "<group>";
+		};
+		A33F6A9120EEE487001492C2 /* VergeiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */,
+				A33F6A9420EEE487001492C2 /* Info.plist */,
+			);
+			path = VergeiOSUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A33F6A6B20EEE485001492C2 /* VergeiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A33F6A9720EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOS" */;
+			buildPhases = (
+				A33F6A6820EEE485001492C2 /* Sources */,
+				A33F6A6920EEE485001492C2 /* Frameworks */,
+				A33F6A6A20EEE485001492C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VergeiOS;
+			productName = VergeCurrencyWallet;
+			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A33F6A8220EEE487001492C2 /* VergeiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A33F6A9A20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSTests" */;
+			buildPhases = (
+				A33F6A7F20EEE487001492C2 /* Sources */,
+				A33F6A8020EEE487001492C2 /* Frameworks */,
+				A33F6A8120EEE487001492C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A33F6A8520EEE487001492C2 /* PBXTargetDependency */,
+			);
+			name = VergeiOSTests;
+			productName = VergeCurrencyWalletTests;
+			productReference = A33F6A8320EEE487001492C2 /* VergeiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A33F6A8D20EEE487001492C2 /* VergeiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A33F6A9D20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */;
+			buildPhases = (
+				A33F6A8A20EEE487001492C2 /* Sources */,
+				A33F6A8B20EEE487001492C2 /* Frameworks */,
+				A33F6A8C20EEE487001492C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A33F6A9020EEE487001492C2 /* PBXTargetDependency */,
+			);
+			name = VergeiOSUITests;
+			productName = VergeCurrencyWalletUITests;
+			productReference = A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A33F6A6420EEE485001492C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Verge Currency";
+				TargetAttributes = {
+					A33F6A6B20EEE485001492C2 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					A33F6A8220EEE487001492C2 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A33F6A6B20EEE485001492C2;
+					};
+					A33F6A8D20EEE487001492C2 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A33F6A6B20EEE485001492C2;
+					};
+				};
+			};
+			buildConfigurationList = A33F6A6720EEE485001492C2 /* Build configuration list for PBXProject "VergeiOS" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A33F6A6320EEE485001492C2;
+			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A33F6A6B20EEE485001492C2 /* VergeiOS */,
+				A33F6A8220EEE487001492C2 /* VergeiOSTests */,
+				A33F6A8D20EEE487001492C2 /* VergeiOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A33F6A6A20EEE485001492C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A305DDA52106940E00911B64 /* .gitignore in Resources */,
+				A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */,
+				A305DD95210641C300911B64 /* Wallet.storyboard in Resources */,
+				A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */,
+				A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33F6A8120EEE487001492C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33F6A8C20EEE487001492C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A33F6A6820EEE485001492C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
+				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
+				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
+				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
+				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
+				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33F6A7F20EEE487001492C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A33F6A8A20EEE487001492C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A33F6A8520EEE487001492C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A33F6A6B20EEE485001492C2 /* VergeiOS */;
+			targetProxy = A33F6A8420EEE487001492C2 /* PBXContainerItemProxy */;
+		};
+		A33F6A9020EEE487001492C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A33F6A6B20EEE485001492C2 /* VergeiOS */;
+			targetProxy = A33F6A8F20EEE487001492C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A33F6A7420EEE485001492C2 /* Base */,
+			);
+			name = WelcomeGuide.storyboard;
+			sourceTree = "<group>";
+		};
+		A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A33F6A7C20EEE487001492C2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A33F6A9520EEE487001492C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A33F6A9620EEE487001492C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A33F6A9820EEE487001492C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A33F6A9920EEE487001492C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A33F6A9B20EEE487001492C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeCurrencyWalletTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
+			};
+			name = Debug;
+		};
+		A33F6A9C20EEE487001492C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeCurrencyWalletTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
+			};
+			name = Release;
+		};
+		A33F6A9E20EEE487001492C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeCurrencyWalletUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VergeCurrencyWallet;
+			};
+			name = Debug;
+		};
+		A33F6A9F20EEE487001492C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeCurrencyWalletUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VergeCurrencyWallet;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A33F6A6720EEE485001492C2 /* Build configuration list for PBXProject "VergeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33F6A9520EEE487001492C2 /* Debug */,
+				A33F6A9620EEE487001492C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A33F6A9720EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33F6A9820EEE487001492C2 /* Debug */,
+				A33F6A9920EEE487001492C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A33F6A9A20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33F6A9B20EEE487001492C2 /* Debug */,
+				A33F6A9C20EEE487001492C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A33F6A9D20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A33F6A9E20EEE487001492C2 /* Debug */,
+				A33F6A9F20EEE487001492C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A33F6A7720EEE485001492C2 /* VergeiOS.xcdatamodel */,
+			);
+			currentVersion = A33F6A7720EEE485001492C2 /* VergeiOS.xcdatamodel */;
+			path = VergeiOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A33F6A6420EEE485001492C2 /* Project object */;
+}
