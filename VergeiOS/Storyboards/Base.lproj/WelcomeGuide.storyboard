@@ -190,19 +190,16 @@
         <image name="Help" width="30" height="30"/>
         <image name="LogoWhite" width="284" height="284"/>
         <namedColor name="BackgroundGrey">
-            <color red="0.97254901960784312" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
-            <color red="0.21568627450980393" green="0.74117647058823533" blue="0.88627450980392153" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
             <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
-            <color red="0.39215686274509803" green="0.47058823529411764" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
