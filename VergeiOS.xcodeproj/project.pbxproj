@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F44C2107C6C500871990 /* InsightAPIClient.swift */; };
+		07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F4532107C9EB00871990 /* BlockchainInfo.swift */; };
 		A305DD95210641C300911B64 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* Wallet.storyboard */; };
 		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
 		A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07B9F44C2107C6C500871990 /* InsightAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightAPIClient.swift; sourceTree = "<group>"; };
+		07B9F4532107C9EB00871990 /* BlockchainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainInfo.swift; sourceTree = "<group>"; };
 		A305DD94210641C300911B64 /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
 		A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparantNavigationBar.swift; sourceTree = "<group>"; };
@@ -89,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B9F44B2107C69D00871990 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07B9F44C2107C6C500871990 /* InsightAPIClient.swift */,
+				07B9F4532107C9EB00871990 /* BlockchainInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A305DD9121052A6A00911B64 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +171,7 @@
 		A33F6A6E20EEE485001492C2 /* VergeiOS */ = {
 			isa = PBXGroup;
 			children = (
+				07B9F44B2107C69D00871990 /* Model */,
 				A305DD9A21066AE600911B64 /* Components */,
 				A305DD9321052AA400911B64 /* Storyboards */,
 				A305DD9121052A6A00911B64 /* Views */,
@@ -325,7 +339,9 @@
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
+				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
+				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 			);
