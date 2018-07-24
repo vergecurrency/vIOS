@@ -38,7 +38,7 @@ public class InsightAPIClient {
                     print("Error info: \(error)")
                     retreiveFunc(nil)
                 }
-            } else if let error = error {
+            } else if let _ = error {
                 retreiveFunc(nil)
             }
         }

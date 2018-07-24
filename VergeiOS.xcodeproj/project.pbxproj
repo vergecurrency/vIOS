@@ -15,6 +15,17 @@
 		A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDA021068BCF00911B64 /* UIFont+Default.swift */; };
 		A305DDA32106917400911B64 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDA22106917400911B64 /* RoundedButton.swift */; };
 		A305DDA52106940E00911B64 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A305DDA42106940E00911B64 /* .gitignore */; };
+		A305DDAE210782EB00911B64 /* PinTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAD210782EB00911B64 /* PinTextField.swift */; };
+		A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAF2107889200911B64 /* UIColor+Default.swift */; };
+		A305DDB22107A1F100911B64 /* PinKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDB12107A1F100911B64 /* PinKeyboard.swift */; };
+		A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDB32107A1FB00911B64 /* Keyboard.swift */; };
+		A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDB62107A6CB00911B64 /* PanelView.swift */; };
+		A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDB92107BB8B00911B64 /* KeyboardDelegate.swift */; };
+		A305DDBD2107C7F600911B64 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDBC2107C7F600911B64 /* KeyboardKey.swift */; };
+		A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDBE2107C82200911B64 /* EmptyKey.swift */; };
+		A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC02107C82A00911B64 /* ImageKey.swift */; };
+		A305DDC32107C83200911B64 /* NumberKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC22107C83200911B64 /* NumberKey.swift */; };
+		A305DDC52107C9E300911B64 /* BackKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC42107C9E300911B64 /* BackKey.swift */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
@@ -23,6 +34,7 @@
 		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
 		A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */; };
 		A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */; };
+		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +64,17 @@
 		A305DDA22106917400911B64 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A305DDA42106940E00911B64 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A305DDA6210694ED00911B64 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A305DDAD210782EB00911B64 /* PinTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinTextField.swift; sourceTree = "<group>"; };
+		A305DDAF2107889200911B64 /* UIColor+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Default.swift"; sourceTree = "<group>"; };
+		A305DDB12107A1F100911B64 /* PinKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinKeyboard.swift; sourceTree = "<group>"; };
+		A305DDB32107A1FB00911B64 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		A305DDB62107A6CB00911B64 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		A305DDB92107BB8B00911B64 /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
+		A305DDBC2107C7F600911B64 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
+		A305DDBE2107C82200911B64 /* EmptyKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyKey.swift; sourceTree = "<group>"; };
+		A305DDC02107C82A00911B64 /* ImageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
+		A305DDC22107C83200911B64 /* NumberKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKey.swift; sourceTree = "<group>"; };
+		A305DDC42107C9E300911B64 /* BackKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackKey.swift; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +89,7 @@
 		A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletUITests.swift; sourceTree = "<group>"; };
 		A33F6A9420EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,11 +163,78 @@
 		A305DD9B21066AF100911B64 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */,
-				A305DDA021068BCF00911B64 /* UIFont+Default.swift */,
-				A305DDA22106917400911B64 /* RoundedButton.swift */,
+				A305DDBB2107C7D200911B64 /* Keyboards */,
+				A305DDB52107A25F00911B64 /* Layout */,
+				A305DDAC2107802E00911B64 /* Inputs */,
+				A305DDAB2107801400911B64 /* Extensions */,
+				A305DDAA21077FF800911B64 /* Buttons */,
+				A305DDA921077FE200911B64 /* NavigationBars */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		A305DDA921077FE200911B64 /* NavigationBars */ = {
+			isa = PBXGroup;
+			children = (
+				A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */,
+			);
+			path = NavigationBars;
+			sourceTree = "<group>";
+		};
+		A305DDAA21077FF800911B64 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A305DDA22106917400911B64 /* RoundedButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		A305DDAB2107801400911B64 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A305DDA021068BCF00911B64 /* UIFont+Default.swift */,
+				A305DDAF2107889200911B64 /* UIColor+Default.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A305DDAC2107802E00911B64 /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				A305DDAD210782EB00911B64 /* PinTextField.swift */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
+		A305DDB52107A25F00911B64 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				A305DDB62107A6CB00911B64 /* PanelView.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		A305DDB82107BB7F00911B64 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				A305DDB92107BB8B00911B64 /* KeyboardDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		A305DDBB2107C7D200911B64 /* Keyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A305DDB12107A1F100911B64 /* PinKeyboard.swift */,
+				A305DDB32107A1FB00911B64 /* Keyboard.swift */,
+				A305DDBC2107C7F600911B64 /* KeyboardKey.swift */,
+				A305DDBE2107C82200911B64 /* EmptyKey.swift */,
+				A305DDC02107C82A00911B64 /* ImageKey.swift */,
+				A305DDC22107C83200911B64 /* NumberKey.swift */,
+				A305DDC42107C9E300911B64 /* BackKey.swift */,
+				A37641092107DC4E00E04521 /* KeyboardButton.swift */,
+			);
+			path = Keyboards;
 			sourceTree = "<group>";
 		};
 		A33F6A6320EEE485001492C2 = {
@@ -172,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				07B9F44B2107C69D00871990 /* Model */,
+				A305DDB82107BB7F00911B64 /* Delegates */,
 				A305DD9A21066AE600911B64 /* Components */,
 				A305DD9321052AA400911B64 /* Storyboards */,
 				A305DD9121052A6A00911B64 /* Views */,
@@ -335,13 +427,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A305DDB22107A1F100911B64 /* PinKeyboard.swift in Sources */,
+				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
+				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
+				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
+				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
+				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
+				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
 				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
+				A305DDBD2107C7F600911B64 /* KeyboardKey.swift in Sources */,
+				A305DDAE210782EB00911B64 /* PinTextField.swift in Sources */,
+				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
+				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 			);
