@@ -39,9 +39,6 @@
                                     <constraint firstAttribute="width" constant="200" id="jLw-5B-o45"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Aee-6k-r6X">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy As A Choice." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzs-yh-fq6">
                                 <rect key="frame" x="78" y="522" width="219.5" height="50"/>
                                 <constraints>
@@ -58,8 +55,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tzs-yh-fq6" secondAttribute="bottom" constant="95" id="d1Y-Mb-OWg"/>
                             <constraint firstItem="r1V-XC-Z9b" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hLO-hU-uzS"/>
                             <constraint firstItem="f4d-ym-bsP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="hN7-lN-lqY"/>
-                            <constraint firstItem="Aee-6k-r6X" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="iTi-rd-E0J"/>
-                            <constraint firstItem="Aee-6k-r6X" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nk3-lh-aOA"/>
                             <constraint firstItem="r1V-XC-Z9b" firstAttribute="top" secondItem="f4d-ym-bsP" secondAttribute="bottom" constant="8" id="qau-oZ-YQ5"/>
                             <constraint firstItem="f4d-ym-bsP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wn3-Pp-vWy"/>
                         </constraints>

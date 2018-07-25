@@ -52,11 +52,17 @@ class Keyboard: PanelView {
     }
     
     func createButton(_ key: KeyboardKey, rect: CGRect) -> UIButton {
-        let button = KeyboardButton(type: .system)
+        let button = KeyboardButton(type: .custom)
         button.frame = rect
-        button.tintColor = UIColor.secondaryDark()
         button.keyboardKey = key
+        button.tintColor = UIColor.secondaryDark()
+        button.setTitleColor(UIColor.secondaryDark(), for: .normal)
+        button.setTitleColor(UIColor.primaryDark(), for: .highlighted)
         button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)
+        
+        if (!key.isKind(of: EmptyKey.self)) {
+            button.setBackgroundColor(color: UIColor.backgroundBlue(), forState: UIControlState.highlighted)
+        }
         
         if (key.isKind(of: NumberKey.self)) {
             button.setTitle(key.label, for: .normal)
