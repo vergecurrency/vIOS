@@ -35,6 +35,7 @@
 		A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */; };
 		A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
+		A376412621092DAF00E04521 /* ConfirmPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412521092DAE00E04521 /* ConfirmPinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletUITests.swift; sourceTree = "<group>"; };
 		A33F6A9420EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
+		A376412521092DAE00E04521 /* ConfirmPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		A305DD9221052A7100911B64 /* WelcomeGuide */ = {
 			isa = PBXGroup;
 			children = (
+				A376412521092DAE00E04521 /* ConfirmPinViewController.swift */,
 				A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */,
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
 			);
@@ -432,6 +435,7 @@
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
+				A376412621092DAF00E04521 /* ConfirmPinViewController.swift in Sources */,
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
