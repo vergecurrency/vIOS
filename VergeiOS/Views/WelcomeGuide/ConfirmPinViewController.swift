@@ -37,10 +37,5 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
         
         print(pin)
     }
-    
-    // Dismiss the view
-    @IBAction func back(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
 
 }

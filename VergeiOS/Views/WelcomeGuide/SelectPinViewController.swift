@@ -62,6 +62,10 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "confirmPin") {
             if let vc = segue.destination as? ConfirmPinViewController {
+                let backItem = UIBarButtonItem()
+                backItem.title = "Back"
+                navigationItem.backBarButtonItem = backItem
+                
                 vc.previousPin = self.pin
             }
         }

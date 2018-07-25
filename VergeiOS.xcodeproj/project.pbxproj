@@ -139,9 +139,9 @@
 		A305DD9221052A7100911B64 /* WelcomeGuide */ = {
 			isa = PBXGroup;
 			children = (
-				A376412521092DAE00E04521 /* ConfirmPinViewController.swift */,
 				A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */,
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
+				A376412521092DAE00E04521 /* ConfirmPinViewController.swift */,
 			);
 			path = WelcomeGuide;
 			sourceTree = "<group>";
