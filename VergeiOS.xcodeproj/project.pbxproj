@@ -35,6 +35,11 @@
 		A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */; };
 		A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
+		A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37641122108E79800E04521 /* NetworkExtension.framework */; };
+		A376411B2108F0C700E04521 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A376411A2108F0C700E04521 /* Cartfile */; };
+		A376411D2108F7B500E04521 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A376411C2108F7B500E04521 /* Tor.framework */; };
+		A37641212108FC1F00E04521 /* TorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641202108FC1F00E04521 /* TorClient.swift */; };
+		A37641232108FCFA00E04521 /* ConfirmPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,11 @@
 		A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletUITests.swift; sourceTree = "<group>"; };
 		A33F6A9420EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
+		A37641122108E79800E04521 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		A376411A2108F0C700E04521 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		A376411C2108F7B500E04521 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = "<group>"; };
+		A37641202108FC1F00E04521 /* TorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
+		A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */,
+				A376411D2108F7B500E04521 /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +151,7 @@
 			children = (
 				A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */,
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
+				A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */,
 			);
 			path = WelcomeGuide;
 			sourceTree = "<group>";
@@ -240,12 +253,14 @@
 		A33F6A6320EEE485001492C2 = {
 			isa = PBXGroup;
 			children = (
+				A376411A2108F0C700E04521 /* Cartfile */,
 				A305DDA6210694ED00911B64 /* README.md */,
 				A305DDA42106940E00911B64 /* .gitignore */,
 				A33F6A6E20EEE485001492C2 /* VergeiOS */,
 				A33F6A8620EEE487001492C2 /* VergeiOSTests */,
 				A33F6A9120EEE487001492C2 /* VergeiOSUITests */,
 				A33F6A6D20EEE485001492C2 /* Products */,
+				A37641112108E79800E04521 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,6 +277,7 @@
 		A33F6A6E20EEE485001492C2 /* VergeiOS */ = {
 			isa = PBXGroup;
 			children = (
+				A376411F2108FC0200E04521 /* Http */,
 				07B9F44B2107C69D00871990 /* Model */,
 				A305DDB82107BB7F00911B64 /* Delegates */,
 				A305DD9A21066AE600911B64 /* Components */,
@@ -294,6 +310,23 @@
 			path = VergeiOSUITests;
 			sourceTree = "<group>";
 		};
+		A37641112108E79800E04521 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A376411C2108F7B500E04521 /* Tor.framework */,
+				A37641122108E79800E04521 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A376411F2108FC0200E04521 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				A37641202108FC1F00E04521 /* TorClient.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,6 +337,7 @@
 				A33F6A6820EEE485001492C2 /* Sources */,
 				A33F6A6920EEE485001492C2 /* Frameworks */,
 				A33F6A6A20EEE485001492C2 /* Resources */,
+				A376411E2108F7D200E04521 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -362,6 +396,11 @@
 				TargetAttributes = {
 					A33F6A6B20EEE485001492C2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					A33F6A8220EEE487001492C2 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -398,6 +437,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A376411B2108F0C700E04521 /* Cartfile in Resources */,
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
 				A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */,
 				A305DD95210641C300911B64 /* Wallet.storyboard in Resources */,
@@ -422,6 +462,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A376411E2108F7D200E04521 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Tor.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A33F6A6820EEE485001492C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -431,6 +489,7 @@
 				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
@@ -440,6 +499,7 @@
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
+				A37641232108FCFA00E04521 /* ConfirmPinViewController.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
 				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
 				A305DDBD2107C7F600911B64 /* KeyboardKey.swift in Sources */,
@@ -622,6 +682,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -640,6 +705,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
