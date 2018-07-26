@@ -38,7 +38,7 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
         } else {
             self.pinTextField.addCharacter()
             
-            if (pin.count <= 5) {
+            if (pin.count < 6) {
                 pin = "\(pin)\(input)"
             }
             
