@@ -11,9 +11,9 @@ import UIKit
 class PinTextField: UIView {
 
     let pinCharacterCount: Int = 6
-    let pinHeight: CGFloat = 20.0
-    let pinMargin: CGFloat = 30.0
-    let pinRadius: CGFloat = 10.0
+    let pinHeight: CGFloat = 24.0
+    let pinMargin: CGFloat = 36.0
+    let pinRadius: CGFloat = 12.0
     
     var pinsFilled: Int = 0
     

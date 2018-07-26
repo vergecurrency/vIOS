@@ -8,13 +8,9 @@
 
 import UIKit
 
-class KeyboardKey: NSObject {
-    var label: String = ""
-    var value: Any? = nil
-    var image: UIImage?
+protocol KeyboardKey {
+    func styleKey(_ button: KeyboardButton)
+    func getValue() -> Any?
     
-    init(label: String, value: Any? = nil) {
-        self.label = label
-        self.value = value
-    }
+    func isKind(of: AnyClass) -> Bool
 }

@@ -12,12 +12,14 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var pinKeyboard: PinKeyboard!
+    @IBOutlet weak var pinConfirmedView: PanelView!
     
     var previousPin: String = ""
     var pin: String = ""
     
     override func viewDidLoad() {
         self.pinKeyboard.delegate = self
+        self.pinConfirmedView.isHidden = true
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
@@ -30,12 +32,29 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
         } else {
             self.pinTextField.addCharacter()
             
-            if (pin.count < 6) {
+            if (pin.count < self.pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
+            
+            // When all pins are set.
+            if (pin.count == self.pinTextField.pinCharacterCount) {
+                self.handlePinCreation()
+            }
         }
-        
-        print(pin)
+    }
+    
+    func handlePinCreation() {
+        if (self.pin == self.previousPin) {
+            self.pinConfirmedView.alpha = 0.0
+            self.pinConfirmedView.center.y -= 60.0
+            UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseInOut, animations: {
+                self.pinKeyboard.alpha = 0.0
+                
+                self.pinConfirmedView.isHidden = false
+                self.pinConfirmedView.alpha = 1.0
+                self.pinConfirmedView.center.y += 60.0
+            }, completion: nil)
+        }
     }
 
 }

@@ -8,9 +8,13 @@
 
 import UIKit
 
-class ImageKey: KeyboardKey {
+class ImageKey: AbstractKey {
     init(image: UIImage) {
         super.init(label: "")
         self.image = image
+    }
+    
+    override func styleKey(_ button: KeyboardButton) {
+        button.setImage(self.image, for: .normal)
     }
 }
