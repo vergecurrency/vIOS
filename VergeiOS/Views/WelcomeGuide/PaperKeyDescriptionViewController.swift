@@ -10,6 +10,20 @@ import UIKit
 
 class PaperKeyDescriptionViewController: UIViewController {
     
+    @IBOutlet weak var paperKeyIcon: UIImageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        self.paperKeyIcon.alpha = 0.0
+        self.paperKeyIcon.center.y -= 60.0
+        
+        UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
+            self.paperKeyIcon.alpha = 1.0
+            self.paperKeyIcon.center.y += 60.0
+        }, completion: nil)
+    }
+    
     override func viewDidLoad() {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
     }
