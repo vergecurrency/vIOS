@@ -211,7 +211,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddW-hg-uAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="AYn-Qt-5e0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3182" y="38"/>
+            <point key="canvasLocation" x="3172" y="131"/>
         </scene>
         <!--Re-enter the PIN-->
         <scene sceneID="FoU-40-VYx">
@@ -363,6 +363,7 @@
                                     <constraint firstItem="Etq-Zh-1FZ" firstAttribute="leading" secondItem="0eK-gk-AJX" secondAttribute="leading" constant="8" id="Uc7-WG-VOP"/>
                                     <constraint firstItem="8Uo-hw-JfJ" firstAttribute="leading" secondItem="0eK-gk-AJX" secondAttribute="leading" constant="8" id="W5q-Ls-a0e"/>
                                     <constraint firstItem="o9g-Dr-82c" firstAttribute="leading" secondItem="0eK-gk-AJX" secondAttribute="leading" id="XN3-Ej-97f"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="dnA-lR-LBC"/>
                                     <constraint firstItem="YYs-2Y-jrc" firstAttribute="top" secondItem="Etq-Zh-1FZ" secondAttribute="bottom" constant="8" id="hjs-xT-6b6"/>
                                     <constraint firstAttribute="trailing" secondItem="Etq-Zh-1FZ" secondAttribute="trailing" constant="8" id="lUk-8X-qNd"/>
                                     <constraint firstItem="eDm-nv-anI" firstAttribute="top" secondItem="0eK-gk-AJX" secondAttribute="top" id="n69-d9-mwQ"/>
@@ -378,10 +379,11 @@
                             <constraint firstItem="4rI-cZ-H8V" firstAttribute="bottom" secondItem="6Ei-N7-c8q" secondAttribute="bottom" constant="40" id="5CU-eX-J7A"/>
                             <constraint firstItem="4rI-cZ-H8V" firstAttribute="trailing" secondItem="6Ei-N7-c8q" secondAttribute="trailing" priority="750" constant="40" id="6BE-Pn-Ecz"/>
                             <constraint firstItem="FlL-jt-V3e" firstAttribute="centerX" secondItem="hKq-Ra-0G9" secondAttribute="centerX" id="EXV-Bb-yOa"/>
-                            <constraint firstItem="4rI-cZ-H8V" firstAttribute="trailing" secondItem="0eK-gk-AJX" secondAttribute="trailing" constant="40" id="FOg-je-5SL"/>
+                            <constraint firstItem="4rI-cZ-H8V" firstAttribute="trailing" secondItem="0eK-gk-AJX" secondAttribute="trailing" priority="750" constant="40" id="FOg-je-5SL"/>
                             <constraint firstItem="q6S-p3-UAs" firstAttribute="centerX" secondItem="hKq-Ra-0G9" secondAttribute="centerX" id="G1f-qd-kb3"/>
                             <constraint firstItem="q6S-p3-UAs" firstAttribute="top" secondItem="4rI-cZ-H8V" secondAttribute="top" constant="16" id="S49-7P-1Nh"/>
-                            <constraint firstItem="0eK-gk-AJX" firstAttribute="leading" secondItem="4rI-cZ-H8V" secondAttribute="leading" constant="40" id="ZcX-9O-aD6"/>
+                            <constraint firstItem="0eK-gk-AJX" firstAttribute="centerX" secondItem="hKq-Ra-0G9" secondAttribute="centerX" id="TQR-te-k47"/>
+                            <constraint firstItem="0eK-gk-AJX" firstAttribute="leading" secondItem="4rI-cZ-H8V" secondAttribute="leading" priority="750" constant="40" id="ZcX-9O-aD6"/>
                             <constraint firstItem="4rI-cZ-H8V" firstAttribute="bottom" secondItem="0eK-gk-AJX" secondAttribute="bottom" constant="40" id="ahL-HG-VGO"/>
                             <constraint firstItem="6Ei-N7-c8q" firstAttribute="centerX" secondItem="hKq-Ra-0G9" secondAttribute="centerX" id="bdj-Ds-sIw"/>
                             <constraint firstItem="6Ei-N7-c8q" firstAttribute="leading" secondItem="4rI-cZ-H8V" secondAttribute="leading" priority="750" constant="40" id="cz9-Gl-dkn"/>
