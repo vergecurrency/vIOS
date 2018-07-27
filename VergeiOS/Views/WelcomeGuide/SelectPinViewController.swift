@@ -53,6 +53,8 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     @IBAction func backToWelcome(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func unwindToSelection(segue: UIStoryboardSegue) {}
 
      // MARK: - Navigation
      

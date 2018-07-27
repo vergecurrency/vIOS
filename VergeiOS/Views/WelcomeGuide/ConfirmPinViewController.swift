@@ -13,6 +13,8 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinConfirmedView: PanelView!
+    @IBOutlet weak var pinFailedView: PanelView!
+    @IBOutlet weak var buttonTryAgain: RoundedButton!
     
     var previousPin: String = ""
     var pin: String = ""
@@ -20,6 +22,7 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     override func viewDidLoad() {
         self.pinKeyboard.delegate = self
         self.pinConfirmedView.isHidden = true
+        self.pinFailedView.isHidden = true
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
@@ -54,6 +57,18 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
                 self.pinConfirmedView.alpha = 1.0
                 self.pinConfirmedView.center.y += 60.0
             }, completion: nil)
+        } else {
+            self.pinFailedView.alpha = 0.0
+            self.pinFailedView.center.y -= 60
+            UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseInOut, animations: {
+                self.pinKeyboard.alpha = 0.0
+                
+                self.pinFailedView.isHidden = false
+                self.pinFailedView.alpha = 1.0
+                self.pinFailedView.center.y += 60.0
+                
+            }, completion: nil)
+            // self.performSegue(withIdentifier: "backToEnterKey", sender: self)
         }
     }
 
