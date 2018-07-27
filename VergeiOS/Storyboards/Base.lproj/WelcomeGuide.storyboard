@@ -396,7 +396,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonTryAgain" destination="o9g-Dr-82c" id="6zC-Ud-a0L"/>
                         <outlet property="pinConfirmedView" destination="6Ei-N7-c8q" id="Ep7-Af-RGh"/>
                         <outlet property="pinFailedView" destination="0eK-gk-AJX" id="gcQ-hY-ZdB"/>
                         <outlet property="pinKeyboard" destination="FlL-jt-V3e" id="7lp-cZ-hfQ"/>

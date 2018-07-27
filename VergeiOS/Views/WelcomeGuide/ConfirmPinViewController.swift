@@ -14,7 +14,6 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinConfirmedView: PanelView!
     @IBOutlet weak var pinFailedView: PanelView!
-    @IBOutlet weak var buttonTryAgain: RoundedButton!
     
     var previousPin: String = ""
     var pin: String = ""
