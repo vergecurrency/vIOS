@@ -312,26 +312,29 @@
                                 <rect key="frame" x="40" y="332" width="295" height="295"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin incorrect!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etq-Zh-1FZ">
-                                        <rect key="frame" x="8" y="158.5" width="279" height="31"/>
+                                        <rect key="frame" x="8" y="143" width="279" height="31"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Pin couldn't be validated!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYs-2Y-jrc">
-                                        <rect key="frame" x="8" y="197.5" width="279" height="18"/>
+                                        <rect key="frame" x="8" y="182" width="279" height="18"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uo-hw-JfJ">
-                                        <rect key="frame" x="8" y="215" width="279" height="18"/>
+                                        <rect key="frame" x="8" y="199.5" width="279" height="18"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9g-Dr-82c" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="261" width="295" height="34"/>
+                                        <rect key="frame" x="0.0" y="245.5" width="295" height="49.5"/>
                                         <color key="backgroundColor" name="VergeRed"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49.5" id="Gzr-Ic-87w"/>
+                                        </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Try again">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -341,7 +344,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinUnconfirmed" translatesAutoresizingMaskIntoConstraints="NO" id="eDm-nv-anI">
-                                        <rect key="frame" x="8" y="8" width="279" height="135"/>
+                                        <rect key="frame" x="8" y="0.0" width="279" height="135"/>
                                         <color key="tintColor" name="VergeRed"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="135" id="A7y-IG-Q4E"/>
@@ -362,7 +365,7 @@
                                     <constraint firstItem="o9g-Dr-82c" firstAttribute="leading" secondItem="0eK-gk-AJX" secondAttribute="leading" id="XN3-Ej-97f"/>
                                     <constraint firstItem="YYs-2Y-jrc" firstAttribute="top" secondItem="Etq-Zh-1FZ" secondAttribute="bottom" constant="8" id="hjs-xT-6b6"/>
                                     <constraint firstAttribute="trailing" secondItem="Etq-Zh-1FZ" secondAttribute="trailing" constant="8" id="lUk-8X-qNd"/>
-                                    <constraint firstItem="eDm-nv-anI" firstAttribute="top" secondItem="0eK-gk-AJX" secondAttribute="top" constant="8" id="mE4-HP-DZm"/>
+                                    <constraint firstItem="eDm-nv-anI" firstAttribute="top" secondItem="0eK-gk-AJX" secondAttribute="top" id="n69-d9-mwQ"/>
                                     <constraint firstAttribute="trailing" secondItem="8Uo-hw-JfJ" secondAttribute="trailing" constant="8" id="ohU-py-jol"/>
                                     <constraint firstAttribute="trailing" secondItem="eDm-nv-anI" secondAttribute="trailing" constant="8" id="rtw-gE-PVx"/>
                                     <constraint firstAttribute="height" constant="295" id="ziY-4R-deT"/>
