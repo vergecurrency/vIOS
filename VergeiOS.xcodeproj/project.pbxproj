@@ -36,6 +36,8 @@
 		A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
 		A376412621092DAF00E04521 /* ConfirmPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412521092DAE00E04521 /* ConfirmPinViewController.swift */; };
+		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
+		A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		A33F6A9420EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		A376412521092DAE00E04521 /* ConfirmPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPinViewController.swift; sourceTree = "<group>"; };
+		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
+		A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyDescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,7 @@
 				A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */,
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
 				A376412521092DAE00E04521 /* ConfirmPinViewController.swift */,
+				A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */,
 			);
 			path = WelcomeGuide;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				A305DDC22107C83200911B64 /* NumberKey.swift */,
 				A305DDC42107C9E300911B64 /* BackKey.swift */,
 				A37641092107DC4E00E04521 /* KeyboardButton.swift */,
+				A3764127210A298700E04521 /* AbstractKey.swift */,
 			);
 			path = Keyboards;
 			sourceTree = "<group>";
@@ -437,8 +443,10 @@
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A376412621092DAF00E04521 /* ConfirmPinViewController.swift in Sources */,
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
+				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
+				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmptyKey: KeyboardKey {
+class EmptyKey: AbstractKey {
     init() {
         super.init(label: "")
     }

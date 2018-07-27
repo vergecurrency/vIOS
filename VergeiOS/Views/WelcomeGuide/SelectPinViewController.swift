@@ -38,23 +38,23 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
         } else {
             self.pinTextField.addCharacter()
             
-            if (pin.count < 6) {
+            if (pin.count < self.pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
             
             // When all pins are set.
-            if (pin.count == 6) {
+            if (pin.count == self.pinTextField.pinCharacterCount) {
                 self.performSegue(withIdentifier: "confirmPin", sender: self)
             }
         }
-        
-        print(pin)
     }
     
     // Dismiss the view
     @IBAction func backToWelcome(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func unwindToSelection(segue: UIStoryboardSegue) {}
 
      // MARK: - Navigation
      
