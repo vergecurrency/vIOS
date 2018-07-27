@@ -343,7 +343,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinUnconfirmed" translatesAutoresizingMaskIntoConstraints="NO" id="eDm-nv-anI">
                                         <rect key="frame" x="8" y="8" width="279" height="135"/>
                                         <color key="tintColor" name="VergeRed"/>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="135" id="A7y-IG-Q4E"/>
                                         </constraints>
@@ -528,9 +527,6 @@
         </namedColor>
         <namedColor name="VergeGreen">
             <color red="0.0" green="0.52156862745098043" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="VergeRed">
-            <color red="1" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeRed">
             <color red="1" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
