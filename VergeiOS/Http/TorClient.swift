@@ -31,7 +31,6 @@ class TorClient {
                     return
                 }
 
-                print(torController.isConnected)
                 self.addControllerObserver(torController)
             }
         } catch {
@@ -50,9 +49,7 @@ class TorClient {
     }
     
     private func createTorDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
-        let torPath = "\(documentsDirectory)/Tor"
+        let torPath = self.getTorPath()
         
         do {
             try FileManager.default.createDirectory(atPath: torPath, withIntermediateDirectories: false, attributes: [
@@ -65,21 +62,32 @@ class TorClient {
         return torPath
     }
     
+    private func getTorPath() -> String {
+        var documentsDirectory = ""
+        if Platform.isSimulator {
+            let paths = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .userDomainMask, true)
+            documentsDirectory = paths[0].split(separator: Character("/"))[0..<3].joined(separator: "/")
+        } else {
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            documentsDirectory = paths[0]
+        }
+        
+        return "\(documentsDirectory)/tmp_tor"
+    }
+    
     private func addControllerObserver(_ torController: TorController) {
         torController.addObserver(forCircuitEstablished: { established in
             if (!established) {
                 return
             }
-            print("established")
+
             self.startUrlSession(torController)
         })
     }
     
     private func startUrlSession(_ torController: TorController) {
         torController.getSessionConfiguration() { sessionConfig in
-            print("sessionConfig")
-            let session = URLSession(configuration: sessionConfig!)
-            print(session.dataTask(with: URL(fileURLWithPath: "http://google.com")))
+            let _ = URLSession(configuration: sessionConfig!)
         }
     }
 }
