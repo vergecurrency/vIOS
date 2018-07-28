@@ -11,39 +11,51 @@ import NetworkExtension
 import Tor
 
 class TorClient {
+    
+    static let shared = TorClient()
+    
+    var session: URLSession?
+    
+    var isConnected = false
+    
     func start() {
         // Get the tor configuration.
         let config = self.createTorConfiguration()
-
+        
+        // Create the tor controller.
+        let torController = TorController(socketURL: config.controlSocket!)
+        
         // Start a tor thread.
         let thread = TorThread(configuration: config)
         thread.start()
-
-        let cookieUrl = config.dataDirectory?.appendingPathComponent("control_auth_cookie")
-
-        do {
-            let cookie = try Data(contentsOf: cookieUrl!)
-            let torController = TorController(socketURL: config.controlSocket!)
-            self.addControllerObserver(torController)
-
-            torController.authenticate(with: cookie) { (success, error) in
-                if (!success) {
-                    return
-                }
-
-                self.addControllerObserver(torController)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+            do {
+                try torController.connect()
+                let cookie = try Data(contentsOf:
+                    config.dataDirectory!.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0)
+                )
+                
+                torController.authenticate(with: cookie, completion: { (success, error) -> Void in
+                    if let error = error {
+                        return print(error.localizedDescription)
+                    }
+                    
+                    self.addControllerObserver(torController)
+                })
+            } catch {
+                print("Tor can't be started. 🤷‍♀️")
             }
-        } catch {
-            print("Tor Failed at starting 🤷‍♀️")
         }
     }
     
     private func createTorConfiguration() -> TorConfiguration {
         let config = TorConfiguration()
+        config.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050", "AvoidDiskWrites": "1"]
         config.cookieAuthentication = true
         config.dataDirectory = URL(fileURLWithPath: self.createTorDirectory())
         config.controlSocket = config.dataDirectory?.appendingPathComponent("control_port")
-        config.arguments = ["--allow-missing-torrc", "--ignore-missing-torrc"]
+        config.arguments = ["--ignore-missing-torrc"]
         
         return config
     }
@@ -65,29 +77,39 @@ class TorClient {
     private func getTorPath() -> String {
         var documentsDirectory = ""
         if Platform.isSimulator {
-            let paths = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .userDomainMask, true)
-            documentsDirectory = paths[0].split(separator: Character("/"))[0..<3].joined(separator: "/")
+            let path = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .userDomainMask, true).first ?? ""
+            documentsDirectory = "\(path.split(separator: Character("/"))[0..<2].joined(separator: "/"))/.tor_tmp"
         } else {
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            documentsDirectory = paths[0]
+            documentsDirectory = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "")/Tor"
         }
-        
-        return "\(documentsDirectory)/tmp_tor"
+
+        return documentsDirectory
     }
     
     private func addControllerObserver(_ torController: TorController) {
-        torController.addObserver(forCircuitEstablished: { established in
-            if (!established) {
+        var observer: Any? = nil
+        observer = torController.addObserver(forCircuitEstablished: { (established) -> Void in
+            guard established else {
                 return
             }
-
+            
+            torController.removeObserver(observer)
+            
             self.startUrlSession(torController)
+            
+            print("Tor tunnel started! 🤩")
         })
     }
     
     private func startUrlSession(_ torController: TorController) {
         torController.getSessionConfiguration() { sessionConfig in
-            let _ = URLSession(configuration: sessionConfig!)
+            self.session = URLSession(configuration: sessionConfig!)
+            self.isConnected = true
         }
     }
 }
+
+func tor() -> URLSession {
+    return TorClient.shared.session ?? URLSession(configuration: .default)
+}
+

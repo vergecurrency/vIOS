@@ -9,11 +9,7 @@
 import Foundation
 
 struct Platform {
-    static let isSimulator: Bool = {
-        var isSim = false
-        #if arch(i386) || arch(x86_64)
-            isSim = true
-        #endif
-        return isSim
-    }()
+    static var isSimulator: Bool {
+        return TARGET_OS_SIMULATOR != 0
+    }
 }
