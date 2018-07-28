@@ -16,7 +16,7 @@ class TorClient {
     
     var session: URLSession?
     
-    var isConnected = false
+    var connectionCompletion: ((_ connected: Bool) -> Void?)? = nil
     
     func start() {
         // Get the tor configuration.
@@ -47,6 +47,10 @@ class TorClient {
                 print("Tor can't be started. 🤷‍♀️")
             }
         }
+    }
+    
+    func observeConnection(completion: @escaping (_ connected: Bool) -> Void) {
+        self.connectionCompletion = completion
     }
     
     private func createTorConfiguration() -> TorConfiguration {
@@ -104,7 +108,7 @@ class TorClient {
     private func startUrlSession(_ torController: TorController) {
         torController.getSessionConfiguration() { sessionConfig in
             self.session = URLSession(configuration: sessionConfig!)
-            self.isConnected = true
+            self.connectionCompletion!(true)
         }
     }
 }
