@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:..">
+      location = "group:/Users/swenvanzanten/Desktop/Code/VergeiOS/Frameworks">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

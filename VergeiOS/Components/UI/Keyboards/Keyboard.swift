@@ -52,27 +52,26 @@ class Keyboard: PanelView {
     }
     
     func createButton(_ key: KeyboardKey, rect: CGRect) -> UIButton {
-        let button = KeyboardButton(type: .system)
+        let button = KeyboardButton(type: .custom)
         button.frame = rect
-        button.tintColor = UIColor.secondaryDark()
         button.keyboardKey = key
-        button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)
+        button.tintColor = UIColor.secondaryDark()
+        button.setTitleColor(UIColor.secondaryDark(), for: .normal)
+        button.setTitleColor(UIColor.primaryDark(), for: .highlighted)
         
-        if (key.isKind(of: NumberKey.self)) {
-            button.setTitle(key.label, for: .normal)
-            button.titleLabel?.font = UIFont.avenir(size: 26).demiBold()
+        if (!key.isKind(of: EmptyKey.self)) {
+            button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)
+            button.setBackgroundColor(color: UIColor.backgroundBlue(), forState: UIControlState.highlighted)
         }
         
-        if (key.isKind(of: ImageKey.self)) {
-            button.setImage(key.image, for: .normal)
-        }
+        key.styleKey(button)
         
         return button
     }
     
     @objc func buttonPushed(button: KeyboardButton) {
         if let delegate = self.delegate {
-            delegate.didReceiveInput(self, input: "\(button.keyboardKey?.value ?? "")", keyboardKey: button.keyboardKey!)
+            delegate.didReceiveInput(self, input: "\(button.keyboardKey?.getValue() ?? "")", keyboardKey: button.keyboardKey!)
         }
     }
 
