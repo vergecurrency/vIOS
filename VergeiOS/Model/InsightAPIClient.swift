@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 // Look https://github.com/bitpay/insight-api for local installation
 // just for development
 public class InsightAPIClient {
@@ -26,14 +28,14 @@ public class InsightAPIClient {
     public func getInfo(retreiveFunc: @escaping (_ data: BlockchainInfo?) -> Void){
         let endpoint = URL(string: self.baseEndpoint)
         
-        let task = session.dataTask(with: URLRequest(url: endpoint!)) { data, response, error in
+        session.requestTor(url: endpoint!) { (data, response, error) in
             if let data = data {
                 do {
                     // Decode the top level response, and look up the decoded response to see
                     // if it's a success or a failure
                     let marvelResponse = try JSONDecoder().decode(BlockchainInfo.self, from: data)
                     retreiveFunc(marvelResponse)
-
+                    
                 } catch {
                     print("Error info: \(error)")
                     retreiveFunc(nil)
@@ -42,7 +44,7 @@ public class InsightAPIClient {
                 retreiveFunc(nil)
             }
         }
-        task.resume()
+        
     }
     
 }
