@@ -11,7 +11,7 @@ import Foundation
 class Fastfile: LaneFile {
 
 	func beforeAll(){
-		// carthage()
+		carthage()
 	}
 
 	func testLane() {
