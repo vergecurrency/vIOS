@@ -12,14 +12,14 @@ class PinKeyboard: Keyboard {
     override func charactersInOrder() -> [KeyboardKey] {
         return [
             NumberKey(number: 1),
-            NumberKey(number: 2),
-            NumberKey(number: 3),
-            NumberKey(number: 4),
-            NumberKey(number: 5),
-            NumberKey(number: 6),
-            NumberKey(number: 7),
-            NumberKey(number: 8),
-            NumberKey(number: 9),
+            NumberKey(number: 2, subtitle: "ABC"),
+            NumberKey(number: 3, subtitle: "DEF"),
+            NumberKey(number: 4, subtitle: "GHI"),
+            NumberKey(number: 5, subtitle: "JKL"),
+            NumberKey(number: 6, subtitle: "MNO"),
+            NumberKey(number: 7, subtitle: "PORS"),
+            NumberKey(number: 8, subtitle: "TUV"),
+            NumberKey(number: 9, subtitle: "WYXZ"),
             EmptyKey(),
             NumberKey(number: 0),
             BackKey()

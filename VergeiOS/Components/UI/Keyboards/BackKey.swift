@@ -10,6 +10,6 @@ import UIKit
 
 class BackKey: ImageKey {
     init() {
-        super.init(image: UIImage(named: "ArrowLeft")!)
+        super.init(image: UIImage(named: "Backspace")!)
     }
 }

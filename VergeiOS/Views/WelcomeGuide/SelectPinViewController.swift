@@ -23,6 +23,9 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
         if (UIDevice.current.userInterfaceIdiom != .pad) {
             UIApplication.shared.statusBarStyle = .default
         }
+        
+        self.pin = ""
+        self.pinTextField.reset()
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
@@ -35,16 +38,37 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
         } else {
             self.pinTextField.addCharacter()
             
-            if (pin.count <= 6) {
+            if (pin.count < self.pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
+            
+            // When all pins are set.
+            if (pin.count == self.pinTextField.pinCharacterCount) {
+                self.performSegue(withIdentifier: "confirmPin", sender: self)
+            }
         }
-        
-        print(pin)
     }
     
     // Dismiss the view
     @IBAction func backToWelcome(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func unwindToSelection(segue: UIStoryboardSegue) {}
+
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "confirmPin") {
+            if let vc = segue.destination as? ConfirmPinViewController {
+                let backItem = UIBarButtonItem()
+                backItem.title = "Back"
+                navigationItem.backBarButtonItem = backItem
+                
+                vc.previousPin = self.pin
+            }
+        }
+     }
+    
 }
