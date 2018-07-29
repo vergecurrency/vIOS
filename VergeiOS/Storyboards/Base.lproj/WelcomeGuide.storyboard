@@ -884,20 +884,6 @@
             </objects>
             <point key="canvasLocation" x="4791" y="1659"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="pRK-mo-owr">
-            <objects>
-                <viewController id="k34-5U-4k1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gQM-64-84b">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="4uU-ui-8xk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OC5-IO-hEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="ArrowLeft" width="90" height="90"/>

@@ -32,13 +32,13 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     
     private func updateButton(index: Int) {
         if index > 0 {
-            PreviousButton.isHidden = false
+            self.showButton(PreviousButton)
         } else {
-            PreviousButton.isHidden = true
+            self.hideButton(PreviousButton)
         }
         
         if index < keys.count - 1 {
-            NextButton.isHidden = false
+            self.showButton(NextButton)
         } else {
             NextButton.setTitle("Restore", for: .normal)
         }
@@ -76,6 +76,20 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     @IBAction func previousClick(_ sender: Any) {
         self.index -= 1
         self.updateView(index: self.index)
+    }
+    
+    func hideButton(_ button: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            button.alpha = 0.5
+            button.isEnabled = false
+        }
+    }
+    
+    func showButton(_ button: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            button.alpha = 1
+            button.isEnabled = true
+        }
     }
     
     @IBAction func nextClick(_ sender: Any) {

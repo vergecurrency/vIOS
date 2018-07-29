@@ -36,6 +36,14 @@
                                     <constraint firstAttribute="trailing" secondItem="8BQ-M6-3Ka" secondAttribute="trailing" id="hh9-aU-WDD"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="PaperKey" translatesAutoresizingMaskIntoConstraints="NO" id="hlW-DL-avy">
+                                <rect key="frame" x="87" y="106" width="200" height="200"/>
+                                <color key="tintColor" name="PrimaryLight"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="cUQ-Vb-oWT"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="200" id="y11-hJ-5pZ"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the next screen, you'll need to fill in the words writen down on your Paperkey in the exact same order as requested." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdn-gg-SbP">
                                 <rect key="frame" x="40" y="336" width="295" height="93"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
@@ -48,14 +56,6 @@
                                 <color key="textColor" name="PrimaryDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PaperKey" translatesAutoresizingMaskIntoConstraints="NO" id="hlW-DL-avy">
-                                <rect key="frame" x="87" y="106" width="200" height="200"/>
-                                <color key="tintColor" name="PrimaryLight"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="cUQ-Vb-oWT"/>
-                                    <constraint firstAttribute="height" constant="200" id="y11-hJ-5pZ"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2M-QD-Ahc" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="597" width="295" height="50"/>
                                 <color key="backgroundColor" name="PrimaryLight"/>
@@ -74,7 +74,6 @@
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="c6p-6b-6p6" firstAttribute="bottom" secondItem="hlW-DL-avy" secondAttribute="top" constant="119" id="2vJ-kT-maD"/>
                             <constraint firstItem="hlW-DL-avy" firstAttribute="centerX" secondItem="YQS-cc-y1K" secondAttribute="centerX" id="3AX-Ei-aYv"/>
                             <constraint firstItem="c6p-6b-6p6" firstAttribute="top" secondItem="YQS-cc-y1K" secondAttribute="top" id="6Ge-Kp-gZh"/>
                             <constraint firstItem="k2M-QD-Ahc" firstAttribute="leading" secondItem="g7P-we-Tnv" secondAttribute="leading" constant="40" id="ANM-JW-Rt1"/>
@@ -83,6 +82,8 @@
                             <constraint firstItem="B3R-KP-gze" firstAttribute="leading" secondItem="g7P-we-Tnv" secondAttribute="leading" constant="40" id="DTs-wK-pRY"/>
                             <constraint firstItem="g7P-we-Tnv" firstAttribute="trailing" secondItem="B3R-KP-gze" secondAttribute="trailing" constant="40" id="Fmh-GH-M2O"/>
                             <constraint firstItem="c6p-6b-6p6" firstAttribute="trailing" secondItem="g7P-we-Tnv" secondAttribute="trailing" id="JVl-7O-KU0"/>
+                            <constraint firstItem="hlW-DL-avy" firstAttribute="top" secondItem="c6p-6b-6p6" secondAttribute="bottom" constant="-119" id="X0O-qq-L4E"/>
+                            <constraint firstItem="k2M-QD-Ahc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="B3R-KP-gze" secondAttribute="bottom" constant="16" id="XJs-GT-T1R"/>
                             <constraint firstItem="kdn-gg-SbP" firstAttribute="top" secondItem="hlW-DL-avy" secondAttribute="bottom" constant="30" id="f9d-NM-OnR"/>
                             <constraint firstItem="kdn-gg-SbP" firstAttribute="leading" secondItem="g7P-we-Tnv" secondAttribute="leading" constant="40" id="hUE-yM-8dR"/>
                             <constraint firstItem="g7P-we-Tnv" firstAttribute="trailing" secondItem="k2M-QD-Ahc" secondAttribute="trailing" constant="40" id="jSI-iC-sW4"/>
@@ -176,11 +177,11 @@
                                 <color key="textColor" name="PrimaryDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ConfirmPaperkey" translatesAutoresizingMaskIntoConstraints="NO" id="Sxp-cd-hKR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ConfirmPaperkey" translatesAutoresizingMaskIntoConstraints="NO" id="Sxp-cd-hKR">
                                 <rect key="frame" x="87" y="106" width="200" height="200"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="5RT-l6-K8b"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="200" id="5RT-l6-K8b"/>
                                     <constraint firstAttribute="width" constant="200" id="pg8-jl-yQk"/>
                                 </constraints>
                             </imageView>
@@ -213,6 +214,7 @@
                             <constraint firstItem="LA2-Cs-ogv" firstAttribute="trailing" secondItem="m77-yG-vwX" secondAttribute="trailing" constant="40" id="VJ0-d6-j3M"/>
                             <constraint firstItem="LA2-Cs-ogv" firstAttribute="trailing" secondItem="jey-Bj-mFe" secondAttribute="trailing" constant="40" id="bKV-PA-8LP"/>
                             <constraint firstItem="jey-Bj-mFe" firstAttribute="leading" secondItem="LA2-Cs-ogv" secondAttribute="leading" constant="40" id="d0Z-NS-IFp"/>
+                            <constraint firstItem="Cy3-wF-mMy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m77-yG-vwX" secondAttribute="bottom" constant="16" id="fgM-kv-KZ6"/>
                             <constraint firstItem="tmQ-9i-zxc" firstAttribute="leading" secondItem="LA2-Cs-ogv" secondAttribute="leading" constant="40" id="gqX-cd-VA8"/>
                             <constraint firstItem="m77-yG-vwX" firstAttribute="leading" secondItem="LA2-Cs-ogv" secondAttribute="leading" constant="40" id="r3i-93-Mfq"/>
                             <constraint firstItem="tmQ-9i-zxc" firstAttribute="top" secondItem="jKk-2b-DoG" secondAttribute="bottom" id="wqX-AQ-d4p"/>
@@ -257,16 +259,16 @@
                                     <constraint firstAttribute="height" constant="225" id="ssR-5g-h4M"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FinalizeRestore" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-p9-5GM">
-                                <rect key="frame" x="88" y="106" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="FinalizeRestore" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-p9-5GM">
+                                <rect key="frame" x="88" y="106" width="200" height="200.5"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Maj-dc-XQX"/>
-                                    <constraint firstAttribute="height" constant="200" id="z9n-rI-UF1"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="200" id="z9n-rI-UF1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your entered key:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yb-KI-9LW">
-                                <rect key="frame" x="40" y="336" width="295" height="36"/>
+                                <rect key="frame" x="40" y="336.5" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="iIT-KG-d0U"/>
                                 </constraints>
@@ -275,7 +277,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rjf-FU-VoU">
-                                <rect key="frame" x="40" y="380" width="295" height="75.5"/>
+                                <rect key="frame" x="40" y="380.5" width="295" height="75.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE DOG WALKS ALONG THE BEACH WITH HIS OWNER AND IS HAPPY ABOUT HIS LIVE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ede-Xa-IRI">
                                         <rect key="frame" x="8" y="8" width="279" height="59.5"/>
@@ -293,10 +295,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please make sure that your key is correct!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6g5-72-8m1">
-                                <rect key="frame" x="40" y="536" width="295" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="y9M-G8-5zI"/>
-                                </constraints>
+                                <rect key="frame" x="40" y="539.5" width="295" height="19.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" name="PrimaryDark"/>
                                 <nil key="highlightedColor"/>
