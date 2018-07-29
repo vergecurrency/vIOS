@@ -18,7 +18,7 @@ class PaperKeyDescriptionViewController: UIViewController {
         self.paperKeyIcon.alpha = 0.0
         self.paperKeyIcon.center.y -= 60.0
         
-        UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 08.2, options: .curveEaseInOut, animations: {
             self.paperKeyIcon.alpha = 1.0
             self.paperKeyIcon.center.y += 60.0
         }, completion: nil)

@@ -91,7 +91,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="Wallet" storyboardName="Wallet" id="Zfc-Ua-SVh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vg6-Kr-p52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="291"/>
+            <point key="canvasLocation" x="853" y="290"/>
         </scene>
     </scenes>
     <resources>

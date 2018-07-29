@@ -61,6 +61,9 @@
                                 <state key="normal" title="Restore your wallet">
                                     <color key="titleColor" red="0.066666666666666666" green="0.12941176470588234" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ICf-TP-oNX" kind="presentation" id="dai-zF-Pl1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmS-fA-bVm" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="531" width="335" height="50"/>
@@ -141,6 +144,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcF-op-GZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391" y="131"/>
+        </scene>
+        <!--RestoreGuide-->
+        <scene sceneID="cg0-cM-s7r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RestoreGuide" id="ICf-TP-oNX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yM3-2n-J9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600" y="573"/>
         </scene>
         <!--Set wallet PIN-->
         <scene sceneID="PzU-N9-BcX">
