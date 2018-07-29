@@ -1,5 +1,9 @@
 language: swift
 osx_image: xcode9.4
+cache:
+  directories:
+    - Carthage
+
 install:
   - bundle install
   - chmod u+x install.sh && ./install.sh
