@@ -2,5 +2,6 @@ language: swift
 osx_image: xcode9.4
 install:
   - bundle install
+  - chmod u+x install.sh && ./install.sh
 script:
   - fastlane test
