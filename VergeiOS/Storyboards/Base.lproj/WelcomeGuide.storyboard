@@ -64,6 +64,9 @@
                                 <state key="normal" title="Restore your wallet">
                                     <color key="titleColor" red="0.066666666666666666" green="0.12941176470588234" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ICf-TP-oNX" kind="presentation" modalPresentationStyle="formSheet" id="dai-zF-Pl1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmS-fA-bVm" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="531" width="335" height="50"/>
@@ -144,6 +147,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcF-op-GZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2391" y="131"/>
+        </scene>
+        <!--RestoreGuide-->
+        <scene sceneID="cg0-cM-s7r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RestoreGuide" id="ICf-TP-oNX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yM3-2n-J9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600" y="573"/>
         </scene>
         <!--Set wallet PIN-->
         <scene sceneID="PzU-N9-BcX">
@@ -872,20 +883,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MU6-bG-4tw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4791" y="1659"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="pRK-mo-owr">
-            <objects>
-                <viewController id="k34-5U-4k1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gQM-64-84b">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="4uU-ui-8xk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OC5-IO-hEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
