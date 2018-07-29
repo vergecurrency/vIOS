@@ -10,7 +10,7 @@
 		07938404210DAD3800C3C799 /* RestoreGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07938403210DAD3800C3C799 /* RestoreGuide.storyboard */; };
 		07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07938406210DB46C00C3C799 /* RestoreWalletController.swift */; };
 		0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */; };
-		0793840E210DD2ED00C3C799 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView.swift */; };
+		0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView+Shake.swift */; };
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
 		07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F44C2107C6C500871990 /* InsightAPIClient.swift */; };
 		07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F4532107C9EB00871990 /* BlockchainInfo.swift */; };
@@ -34,6 +34,7 @@
 		A305DDC52107C9E300911B64 /* BackKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC42107C9E300911B64 /* BackKey.swift */; };
 		A338E695210CF60B000D44EE /* LoadingTor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A338E694210CF60B000D44EE /* LoadingTor.storyboard */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
+		A338E6A8210E2B92000D44EE /* AbstractRestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A7210E2B92000D44EE /* AbstractRestoreViewController.swift */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
@@ -74,7 +75,7 @@
 		07938403210DAD3800C3C799 /* RestoreGuide.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestoreGuide.storyboard; sourceTree = "<group>"; };
 		07938406210DB46C00C3C799 /* RestoreWalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreWalletController.swift; sourceTree = "<group>"; };
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
-		0793840D210DD2ED00C3C799 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
 		07B9F44C2107C6C500871990 /* InsightAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightAPIClient.swift; sourceTree = "<group>"; };
 		07B9F4532107C9EB00871990 /* BlockchainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainInfo.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		A305DDC42107C9E300911B64 /* BackKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackKey.swift; sourceTree = "<group>"; };
 		A338E694210CF60B000D44EE /* LoadingTor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingTor.storyboard; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
+		A338E6A7210E2B92000D44EE /* AbstractRestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRestoreViewController.swift; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				07938406210DB46C00C3C799 /* RestoreWalletController.swift */,
 				0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */,
 				0793840F210DD73900C3C799 /* FinalRecoveryController.swift */,
+				A338E6A7210E2B92000D44EE /* AbstractRestoreViewController.swift */,
 			);
 			path = WelcomeGuide;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 		A305DDAB2107801400911B64 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0793840D210DD2ED00C3C799 /* UIView+Shake.swift */,
 				A305DDA021068BCF00911B64 /* UIFont+Default.swift */,
 				A305DDAF2107889200911B64 /* UIColor+Default.swift */,
 			);
@@ -371,7 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				A3764130210AE1D500E04521 /* Platform.swift */,
-				0793840D210DD2ED00C3C799 /* UIView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -553,13 +556,14 @@
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
-				0793840E210DD2ED00C3C799 /* UIView.swift in Sources */,
+				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
 				07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */,
 				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
 				A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */,
+				A338E6A8210E2B92000D44EE /* AbstractRestoreViewController.swift in Sources */,
 				0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */,
 				A305DDBD2107C7F600911B64 /* KeyboardKey.swift in Sources */,
 				07C88D6A210D047E00094EA1 /* URLSession.swift in Sources */,

@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FinalRecoveryController : UIViewController {
+class FinalRecoveryController: AbstractRestoreViewController {
 
-    @IBOutlet weak var RecoveryKeyView: UITextView!
+    @IBOutlet weak var recoveryKeyView: UILabel!
+
     var keys: [String]?
-    
+
     override func viewDidLoad() {
-        RecoveryKeyView.text = self.keys!.joined(separator: " ")
+        super.viewDidLoad()
+        
+        recoveryKeyView.text = self.keys!.joined(separator: " ")
     }
 }

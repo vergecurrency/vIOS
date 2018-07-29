@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EnterRecoveryKeyController : UIViewController {
+class EnterRecoveryKeyController: AbstractRestoreViewController {
     
     @IBOutlet weak var KeyLabel: UILabel!
     @IBOutlet weak var PreviousButton: RoundedButton!
@@ -16,54 +16,48 @@ class EnterRecoveryKeyController : UIViewController {
     @IBOutlet weak var KeyTextField: UITextField!
     @IBOutlet weak var KeyProgressLabel: UILabel!
     
-    private var keys : [String] = [
+    private var index: Int = 0
+    private var keys: [String] = [
         String("Dog"), String("Life"), String("Head"),
         String("House"), String("Mice"), String("Lol"),
         String("Elefant"), String("Doctor"), String("Walking"),
         String("Outdoor"), String("New"), String("Buying"),
     ]
-    private var index : Int = 0
-    override func viewWillAppear(_ animated: Bool) {
-        let navigationBar = self.navigationController?.navigationBar
-        
-        navigationBar?.setBackgroundImage(UIImage(), for: .default)
-        navigationBar?.shadowImage = UIImage()
-        navigationBar?.isTranslucent = true
-    }
     
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        super.viewDidLoad()
+        
         self.updateView(index: self.index)
     }
     
-    private func updateButton(index: Int){
+    private func updateButton(index: Int) {
         if index > 0 {
             PreviousButton.isHidden = false
         } else {
             PreviousButton.isHidden = true
         }
         
-        if index < keys.count-1 {
+        if index < keys.count - 1 {
             NextButton.isHidden = false
         } else {
             NextButton.setTitle("Restore", for: .normal)
         }
     }
     
-    private func createLabelText() -> String {
-        return "Enter Keys:"
+    private func createLabelText(index: Int) -> String {
+        return "Enter word #\(index + 1)"
     }
     
     private func createProgressText(index: Int) -> String {
-        return "\(index+1) / \(self.keys.count)"
+        return "\(index + 1) out of \(self.keys.count)"
     }
     
     private func createPlaceholderText(index: Int) -> String {
-        return "Key #\(index+1) (e.g. Cat)"
+        return "Key #\(index + 1) (e.g. Cat)"
     }
     
     private func updateView(index: Int) {
-        self.KeyLabel.text = self.createLabelText()
+        self.KeyLabel.text = self.createLabelText(index: self.index)
         self.KeyTextField.text = self.keys[self.index]
         self.KeyTextField.placeholder = self.createPlaceholderText(index: self.index)
         self.KeyProgressLabel.text = self.createProgressText(index: self.index)
@@ -71,7 +65,7 @@ class EnterRecoveryKeyController : UIViewController {
     }
     
     private func addKeyToList(text: String?) -> Bool {
-        if text == nil || text!.count == 0{
+        if text == nil || text!.count == 0 {
             return false
         }
         
@@ -79,12 +73,12 @@ class EnterRecoveryKeyController : UIViewController {
         return true
     }
     
-    @IBAction func previousClick(_ sender: RoundedButton) {
+    @IBAction func previousClick(_ sender: Any) {
         self.index -= 1
         self.updateView(index: self.index)
     }
     
-    @IBAction func nextClick(_ sender: RoundedButton) {
+    @IBAction func nextClick(_ sender: Any) {
         let isAdded: Bool = self.addKeyToList(text: self.KeyTextField.text)
         
         if self.index < self.keys.count-1 {
@@ -95,14 +89,18 @@ class EnterRecoveryKeyController : UIViewController {
                 self.KeyTextField.shake()
                 return
             }
-        }else {
+        } else {
             self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
         }
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let finalRecoverController = segue.destination as? FinalRecoveryController
-        finalRecoverController?.keys = self.keys as Array
+        super.prepare(for: segue, sender: sender)
+        
+        if (segue.identifier == "showFinalRecovery") {
+            let finalRecoverController = segue.destination as? FinalRecoveryController
+            finalRecoverController?.keys = self.keys
+        }
     }
 }

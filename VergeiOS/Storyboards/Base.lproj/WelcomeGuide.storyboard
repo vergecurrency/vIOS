@@ -62,7 +62,7 @@
                                     <color key="titleColor" red="0.066666666666666666" green="0.12941176470588234" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ICf-TP-oNX" kind="presentation" id="dai-zF-Pl1"/>
+                                    <segue destination="ICf-TP-oNX" kind="presentation" modalPresentationStyle="formSheet" id="dai-zF-Pl1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmS-fA-bVm" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
