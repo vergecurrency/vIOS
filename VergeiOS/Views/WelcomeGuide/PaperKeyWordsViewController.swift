@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaperKeyWordsViewController: UIViewController {
+class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var progressionLabel: UILabel!
@@ -37,12 +37,6 @@ class PaperKeyWordsViewController: UIViewController {
         self.wordLabel.text = self.words.first
         
         self.updateView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
     }
     
     @IBAction func previousWord(_ sender: Any) {
@@ -111,10 +105,12 @@ class PaperKeyWordsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        backItem.tintColor = .white
-        navigationItem.backBarButtonItem = backItem
+        super.prepare(for: segue, sender: sender)
+        
+        if (segue.identifier == "confirmPaperkey") {
+            let vc = segue.destination as! ConfirmPaperkeyViewController
+            vc.words = self.words
+        }
     }
 
 }

@@ -8,13 +8,12 @@
 
 import UIKit
 
-class PaperKeyDescriptionViewController: UIViewController {
+class PaperKeyDescriptionViewController: AbstractPaperkeyViewController {
     
     @IBOutlet weak var paperKeyIcon: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         
         UIApplication.shared.statusBarStyle = .lightContent
         
@@ -38,10 +37,7 @@ class PaperKeyDescriptionViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let backItem = UIBarButtonItem()
-        backItem.title = "Back"
-        backItem.tintColor = .white
-        navigationItem.backBarButtonItem = backItem
+        super.prepare(for: segue, sender: sender)
     }
 
 }
