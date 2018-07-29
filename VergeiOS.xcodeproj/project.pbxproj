@@ -29,6 +29,12 @@
 		A305DDC52107C9E300911B64 /* BackKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC42107C9E300911B64 /* BackKey.swift */; };
 		A338E695210CF60B000D44EE /* LoadingTor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A338E694210CF60B000D44EE /* LoadingTor.storyboard */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
+		A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */; };
+		A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E69B210D456D000D44EE /* ConfirmPaperkeyViewController.swift */; };
+		A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */; };
+		A338E6A2210DD893000D44EE /* SubmitPaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A1210DD893000D44EE /* SubmitPaperkeyViewController.swift */; };
+		A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A3210DDAED000D44EE /* AbstractPaperkeyViewController.swift */; };
+		A338E6A6210DE489000D44EE /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A5210DE489000D44EE /* Timeout.swift */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
@@ -89,6 +95,12 @@
 		A305DDC42107C9E300911B64 /* BackKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackKey.swift; sourceTree = "<group>"; };
 		A338E694210CF60B000D44EE /* LoadingTor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadingTor.storyboard; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
+		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
+		A338E69B210D456D000D44EE /* ConfirmPaperkeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaperkeyViewController.swift; sourceTree = "<group>"; };
+		A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = Carthage/Build/iOS/IQKeyboardManagerSwift.framework; sourceTree = "<group>"; };
+		A338E6A1210DD893000D44EE /* SubmitPaperkeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitPaperkeyViewController.swift; sourceTree = "<group>"; };
+		A338E6A3210DDAED000D44EE /* AbstractPaperkeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPaperkeyViewController.swift; sourceTree = "<group>"; };
+		A338E6A5210DE489000D44EE /* Timeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout.swift; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */,
+				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A376411D2108F7B500E04521 /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +179,10 @@
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
 				A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */,
 				A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */,
+				A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */,
+				A338E69B210D456D000D44EE /* ConfirmPaperkeyViewController.swift */,
+				A338E6A1210DD893000D44EE /* SubmitPaperkeyViewController.swift */,
+				A338E6A3210DDAED000D44EE /* AbstractPaperkeyViewController.swift */,
 			);
 			path = WelcomeGuide;
 			sourceTree = "<group>";
@@ -338,6 +355,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */,
 				A376411C2108F7B500E04521 /* Tor.framework */,
 				A37641122108E79800E04521 /* NetworkExtension.framework */,
 			);
@@ -357,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				A3764130210AE1D500E04521 /* Platform.swift */,
+				A338E6A5210DE489000D44EE /* Timeout.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -505,9 +524,11 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Tor.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -522,6 +543,8 @@
 			files = (
 				A305DDB22107A1F100911B64 /* PinKeyboard.swift in Sources */,
 				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
+				A338E6A2210DD893000D44EE /* SubmitPaperkeyViewController.swift in Sources */,
+				A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
@@ -534,7 +557,9 @@
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
+				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
+				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
@@ -545,6 +570,7 @@
 				07C88D6A210D047E00094EA1 /* URLSession.swift in Sources */,
 				A305DDAE210782EB00911B64 /* PinTextField.swift in Sources */,
 				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
+				A338E6A6210DE489000D44EE /* Timeout.swift in Sources */,
 				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,

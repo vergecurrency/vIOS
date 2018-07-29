@@ -36,4 +36,12 @@ extension UIColor {
     static func vergeGrey() -> UIColor {
         return UIColor(named: "VergeGrey") ?? .blue
     }
+    
+    static func vergeGreen() -> UIColor {
+        return UIColor(named: "VergeGreen") ?? .blue
+    }
+    
+    static func vergeRed() -> UIColor {
+        return UIColor(named: "VergeRed") ?? .blue
+    }
 }
