@@ -41,6 +41,8 @@
 		A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A3210DDAED000D44EE /* AbstractPaperkeyViewController.swift */; };
 		A338E6A6210DE489000D44EE /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A5210DE489000D44EE /* Timeout.swift */; };
 		A338E6A8210E2B92000D44EE /* AbstractRestoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6A7210E2B92000D44EE /* AbstractRestoreViewController.swift */; };
+		A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6AB210FD53E000D44EE /* WalletViewController.swift */; };
+		A338E6B0210FD558000D44EE /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6AF210FD558000D44EE /* TransactionsViewController.swift */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
@@ -113,6 +115,8 @@
 		A338E6A3210DDAED000D44EE /* AbstractPaperkeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractPaperkeyViewController.swift; sourceTree = "<group>"; };
 		A338E6A5210DE489000D44EE /* Timeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeout.swift; sourceTree = "<group>"; };
 		A338E6A7210E2B92000D44EE /* AbstractRestoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRestoreViewController.swift; sourceTree = "<group>"; };
+		A338E6AB210FD53E000D44EE /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		A338E6AF210FD558000D44EE /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +325,8 @@
 		A338E6AA210FBAE8000D44EE /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				A338E6AB210FD53E000D44EE /* WalletViewController.swift */,
+				A338E6AF210FD558000D44EE /* TransactionsViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -590,9 +596,11 @@
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
+				A338E6B0210FD558000D44EE /* TransactionsViewController.swift in Sources */,
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
+				A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
