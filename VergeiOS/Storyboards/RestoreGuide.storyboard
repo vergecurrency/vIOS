@@ -311,6 +311,9 @@
                                 <state key="normal" title="Finalize Restoring" image="RestoreKey">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vF5-5m-2f3" kind="show" identifier="finishRestoreGuide" id="mGK-py-jQ0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
@@ -344,6 +347,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EW4-Ak-zUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="616.79999999999995" y="88.605697151424295"/>
+        </scene>
+        <!--FinishSetupViewController-->
+        <scene sceneID="5lE-aw-yWt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="FinishSetupViewController" id="vF5-5m-2f3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GEY-Z0-1jl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1433" y="88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VpH-l3-y5m">

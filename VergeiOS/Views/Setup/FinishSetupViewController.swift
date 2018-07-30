@@ -1,5 +1,5 @@
 //
-//  SubmitPaperkeyViewController.swift
+//  FinishSetupViewController.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 29-07-18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SubmitPaperkeyViewController: AbstractPaperkeyViewController {
+class FinishSetupViewController: AbstractPaperkeyViewController {
 
     @IBOutlet weak var checklistImage: UIImageView!
     @IBOutlet weak var checklistDescription: UILabel!

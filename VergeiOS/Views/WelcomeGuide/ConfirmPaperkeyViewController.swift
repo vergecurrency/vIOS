@@ -64,7 +64,7 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
             return
         }
         
-        self.performSegue(withIdentifier: "submitPaperkeyViewController", sender: self)
+        self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
     }
     
     // MARK: - Navigation
