@@ -42,18 +42,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-Eu-nKK">
-                                <rect key="frame" x="53.5" y="206" width="267" height="255.5"/>
+                                <rect key="frame" x="53.5" y="196" width="267" height="275.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-qO-T9E">
-                                        <rect key="frame" x="23.5" y="0.0" width="220" height="220"/>
-                                        <color key="tintColor" name="SecondaryLight"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-qO-T9E">
+                                        <rect key="frame" x="13.5" y="0.0" width="240" height="240"/>
+                                        <color key="tintColor" red="0.39215686274509803" green="0.47058823529411764" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="220" id="wEb-Tg-iLA"/>
-                                            <constraint firstAttribute="height" constant="220" id="yw6-Ck-hzy"/>
+                                            <constraint firstAttribute="width" constant="240" id="wEb-Tg-iLA"/>
+                                            <constraint firstAttribute="height" constant="240" id="yw6-Ck-hzy"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions received yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifW-ec-aif">
-                                        <rect key="frame" x="0.0" y="228" width="267" height="27.5"/>
+                                        <rect key="frame" x="0.0" y="248" width="267" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
@@ -256,18 +256,34 @@
                                                 <color key="textColor" name="SecondaryDark"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Uut-eu-CQ1">
-                                                <rect key="frame" x="152" y="163" width="20" height="20"/>
-                                            </activityIndicatorView>
+                                            <stackView opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w4b-25-aFl">
+                                                <rect key="frame" x="49.5" y="87.5" width="227" height="171.5"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="3RA-10-Jsp">
+                                                        <rect key="frame" x="43.5" y="0.0" width="140" height="140"/>
+                                                        <color key="tintColor" name="SecondaryLight"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="140" id="K8U-Zz-3QU"/>
+                                                            <constraint firstAttribute="width" constant="140" id="SfI-7e-KH5"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions received yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs2-jZ-Uij">
+                                                        <rect key="frame" x="0.0" y="148" width="227" height="23.5"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                        <color key="textColor" name="SecondaryLight"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="kvP-dR-bN4" firstAttribute="top" secondItem="tzd-Fd-Y9I" secondAttribute="top" constant="12" id="Dsu-ay-3nL"/>
                                             <constraint firstItem="J9U-B7-Fom" firstAttribute="leading" secondItem="tzd-Fd-Y9I" secondAttribute="leading" constant="12" id="IF8-H8-ecQ"/>
                                             <constraint firstItem="J9U-B7-Fom" firstAttribute="top" secondItem="tzd-Fd-Y9I" secondAttribute="top" constant="12" id="POL-xU-nQh"/>
-                                            <constraint firstItem="Uut-eu-CQ1" firstAttribute="centerY" secondItem="tzd-Fd-Y9I" secondAttribute="centerY" id="PgH-33-9kF"/>
-                                            <constraint firstItem="Uut-eu-CQ1" firstAttribute="centerX" secondItem="tzd-Fd-Y9I" secondAttribute="centerX" id="S3B-TP-RjN"/>
                                             <constraint firstItem="kvP-dR-bN4" firstAttribute="leading" secondItem="J9U-B7-Fom" secondAttribute="trailing" constant="8" id="THD-ba-tFL"/>
+                                            <constraint firstItem="w4b-25-aFl" firstAttribute="centerX" secondItem="tzd-Fd-Y9I" secondAttribute="centerX" id="cq3-4O-vHz"/>
+                                            <constraint firstItem="w4b-25-aFl" firstAttribute="centerY" secondItem="tzd-Fd-Y9I" secondAttribute="centerY" id="gQF-PN-pkv"/>
                                             <constraint firstAttribute="trailing" secondItem="kvP-dR-bN4" secondAttribute="trailing" constant="12.5" id="qz7-TW-ELh"/>
                                         </constraints>
                                     </view>
@@ -362,6 +378,7 @@
         <image name="Receive" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>
         <image name="Transactions" width="30" height="30"/>
+        <image name="TransactionsPlaceholder" width="30" height="30"/>
         <image name="Wallet" width="30" height="30"/>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -374,6 +391,9 @@
         </namedColor>
         <namedColor name="SecondaryLight">
             <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryLight">
+            <color red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeGrey">
             <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
