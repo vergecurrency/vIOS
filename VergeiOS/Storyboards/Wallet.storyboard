@@ -82,36 +82,275 @@
             <point key="canvasLocation" x="1622" y="-478"/>
         </scene>
         <!--Send-->
+        <scene sceneID="9Uc-9y-kPl">
+            <objects>
+                <navigationController id="PTF-pt-Hb5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="uZh-Om-rYg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Fj-Ie-PFO" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="SecondaryDark"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yKk-TG-tnT" kind="relationship" relationship="rootViewController" id="mCM-O9-YHJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jur-yb-Jmf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="233"/>
+        </scene>
+        <!--Send XVG-->
         <scene sceneID="LxK-qz-i3O">
             <objects>
-                <viewController id="yKk-TG-tnT" sceneMemberID="viewController">
+                <viewController id="yKk-TG-tnT" customClass="SendViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eyd-5s-OH6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-ng-9rU">
+                                <rect key="frame" x="0.0" y="72" width="375" height="210"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="h6Z-sf-eAS">
+                                        <rect key="frame" x="40" y="65.5" width="295" height="79.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XVG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVx-t9-2ig">
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="18"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
+                                                <color key="textColor" name="PrimaryLight"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25000.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fFQ-m1-pdC">
+                                                <rect key="frame" x="0.0" y="18" width="295" height="61.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="45"/>
+                                                <color key="textColor" name="PrimaryLight"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="h6Z-sf-eAS" firstAttribute="leading" secondItem="SJN-ng-9rU" secondAttribute="leading" constant="40" id="69i-ZH-NIB"/>
+                                    <constraint firstAttribute="trailing" secondItem="h6Z-sf-eAS" secondAttribute="trailing" constant="40" id="EGE-SZ-Fis"/>
+                                    <constraint firstItem="h6Z-sf-eAS" firstAttribute="centerY" secondItem="SJN-ng-9rU" secondAttribute="centerY" id="cZm-Cb-Y0W"/>
+                                    <constraint firstItem="h6Z-sf-eAS" firstAttribute="centerX" secondItem="SJN-ng-9rU" secondAttribute="centerX" id="iAg-pb-h2l"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6h-mZ-4r2" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                                <rect key="frame" x="41" y="548" width="294" height="50"/>
+                                <color key="backgroundColor" name="PrimaryLight"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="XEL-J6-2em"/>
+                                    <constraint firstAttribute="height" constant="50" id="jIJ-rz-5om"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Add recipient" image="Recipient">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Twh-82-tOu" customClass="XvgAmountKeyboard" customModule="VergeiOS" customModuleProvider="target">
+                                <rect key="frame" x="40" y="290" width="295" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="SY8-SC-4ri"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="uaR-tA-8Tf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="Twh-82-tOu" firstAttribute="leading" secondItem="rn9-qd-NBP" secondAttribute="leading" priority="750" constant="40" id="064-3E-gFx"/>
+                            <constraint firstItem="rn9-qd-NBP" firstAttribute="bottom" secondItem="a6h-mZ-4r2" secondAttribute="bottom" constant="20" id="59W-PI-As6"/>
+                            <constraint firstItem="a6h-mZ-4r2" firstAttribute="leading" secondItem="rn9-qd-NBP" secondAttribute="leading" priority="750" constant="40" id="JMV-dG-3Ss"/>
+                            <constraint firstItem="a6h-mZ-4r2" firstAttribute="top" secondItem="Twh-82-tOu" secondAttribute="bottom" constant="8" id="Oqs-qa-PG2"/>
+                            <constraint firstItem="rn9-qd-NBP" firstAttribute="trailing" secondItem="a6h-mZ-4r2" secondAttribute="trailing" priority="750" constant="40" id="WV6-mn-sTA"/>
+                            <constraint firstItem="Twh-82-tOu" firstAttribute="centerX" secondItem="eyd-5s-OH6" secondAttribute="centerX" id="i58-fd-WaG"/>
+                            <constraint firstItem="rn9-qd-NBP" firstAttribute="trailing" secondItem="Twh-82-tOu" secondAttribute="trailing" priority="750" constant="40" id="nON-7Q-as7"/>
+                            <constraint firstItem="a6h-mZ-4r2" firstAttribute="centerX" secondItem="eyd-5s-OH6" secondAttribute="centerX" id="oC9-ib-Fuo"/>
+                            <constraint firstItem="SJN-ng-9rU" firstAttribute="leading" secondItem="rn9-qd-NBP" secondAttribute="leading" id="rFN-4o-TZR"/>
+                            <constraint firstItem="Twh-82-tOu" firstAttribute="top" secondItem="SJN-ng-9rU" secondAttribute="bottom" constant="8" id="uUX-ba-egc"/>
+                            <constraint firstItem="SJN-ng-9rU" firstAttribute="top" secondItem="rn9-qd-NBP" secondAttribute="top" constant="8" id="vMx-Vp-JTH"/>
+                            <constraint firstItem="rn9-qd-NBP" firstAttribute="trailing" secondItem="SJN-ng-9rU" secondAttribute="trailing" id="xPx-le-Rcw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rn9-qd-NBP"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="04U-Ur-jUv"/>
+                    <navigationItem key="navigationItem" title="Send XVG" id="ZZG-Bx-gSD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfo-Ua-YIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="233"/>
+            <point key="canvasLocation" x="1621.5999999999999" y="232.53373313343329"/>
         </scene>
         <!--Receive-->
+        <scene sceneID="UZJ-bq-eU7">
+            <objects>
+                <navigationController id="gFZ-fC-7zT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Receive" image="Receive" selectedImage="Receive" id="tFX-JX-8D2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LlX-N7-1Q9" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="SecondaryDark"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6GB-i5-XPF" kind="relationship" relationship="rootViewController" id="kkO-Ex-zC0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QSQ-V1-745" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="983"/>
+        </scene>
+        <!--Receive XVG-->
         <scene sceneID="gte-W4-v0j">
             <objects>
-                <viewController id="6GB-i5-XPF" sceneMemberID="viewController">
+                <viewController id="6GB-i5-XPF" customClass="ReceiveViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5c7-q8-EKd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkG-I5-Ovp">
+                                <rect key="frame" x="40" y="160.5" width="295" height="347"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjg-ZE-azI" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="27.5" y="0.0" width="240" height="240"/>
+                                        <subviews>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1O-hb-Yi7" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S9a-Gf-SgC">
+                                                        <rect key="frame" x="-8" y="-8" width="256" height="256"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="S9a-Gf-SgC" secondAttribute="trailing" constant="-8" id="1PE-oM-kAK"/>
+                                                    <constraint firstItem="S9a-Gf-SgC" firstAttribute="top" secondItem="M1O-hb-Yi7" secondAttribute="top" constant="-8" id="TLU-I5-sy3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="S9a-Gf-SgC" secondAttribute="bottom" constant="-8" id="mL0-kN-OPu"/>
+                                                    <constraint firstItem="S9a-Gf-SgC" firstAttribute="leading" secondItem="M1O-hb-Yi7" secondAttribute="leading" constant="-8" id="zID-fO-Vw7"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="M1O-hb-Yi7" secondAttribute="bottom" id="599-Ta-kZf"/>
+                                            <constraint firstItem="M1O-hb-Yi7" firstAttribute="top" secondItem="bjg-ZE-azI" secondAttribute="top" id="CUL-Sp-l0J"/>
+                                            <constraint firstItem="M1O-hb-Yi7" firstAttribute="leading" secondItem="bjg-ZE-azI" secondAttribute="leading" id="Jfn-Sh-pZH"/>
+                                            <constraint firstAttribute="width" priority="750" constant="240" id="gWR-8p-9ie"/>
+                                            <constraint firstAttribute="trailing" secondItem="M1O-hb-Yi7" secondAttribute="trailing" id="rhm-tw-UVX"/>
+                                            <constraint firstAttribute="width" secondItem="bjg-ZE-azI" secondAttribute="height" multiplier="1:1" id="sgf-ap-PWn"/>
+                                        </constraints>
+                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="cBQFLyaV5o17Rpx424JGHbQjdffyQs7Atm" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-rR-JFo">
+                                        <rect key="frame" x="0.0" y="260" width="295" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8Lo-8v-7ci"/>
+                                        </constraints>
+                                        <color key="textColor" name="SecondaryDark"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send only XVG to this deposit address. Sending any other coin or token to this address may result in the loss of your deposit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OR-7r-CAh">
+                                        <rect key="frame" x="27" y="310" width="240" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="CPh-5J-Sal"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="9"/>
+                                        <color key="textColor" name="VergeGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="24T-eI-bM2"/>
+                                    <constraint firstItem="8OR-7r-CAh" firstAttribute="centerX" secondItem="hkG-I5-Ovp" secondAttribute="centerX" id="2iL-39-2zd"/>
+                                    <constraint firstItem="bjg-ZE-azI" firstAttribute="top" secondItem="hkG-I5-Ovp" secondAttribute="top" id="9UJ-Wp-hJv"/>
+                                    <constraint firstItem="UG5-rR-JFo" firstAttribute="leading" secondItem="hkG-I5-Ovp" secondAttribute="leading" id="BEa-pl-oUY"/>
+                                    <constraint firstAttribute="bottom" secondItem="8OR-7r-CAh" secondAttribute="bottom" id="Eck-2x-1wo"/>
+                                    <constraint firstItem="8OR-7r-CAh" firstAttribute="top" secondItem="UG5-rR-JFo" secondAttribute="bottom" constant="20" id="Hcm-At-WNi"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8OR-7r-CAh" secondAttribute="trailing" id="RkN-xZ-8WG"/>
+                                    <constraint firstItem="UG5-rR-JFo" firstAttribute="top" secondItem="bjg-ZE-azI" secondAttribute="bottom" constant="20" id="cAb-sU-k7L"/>
+                                    <constraint firstItem="bjg-ZE-azI" firstAttribute="centerX" secondItem="hkG-I5-Ovp" secondAttribute="centerX" id="cx4-d7-hCO"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bjg-ZE-azI" secondAttribute="trailing" id="g8O-MJ-JTu"/>
+                                    <constraint firstAttribute="trailing" secondItem="UG5-rR-JFo" secondAttribute="trailing" id="hhB-38-iM9"/>
+                                    <constraint firstItem="8OR-7r-CAh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hkG-I5-Ovp" secondAttribute="leading" id="pRS-kA-G8T"/>
+                                    <constraint firstItem="bjg-ZE-azI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hkG-I5-Ovp" secondAttribute="leading" id="sEd-S3-2VX"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="j32-bi-uaG">
+                                <rect key="frame" x="40" y="548" width="295" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ii-w7-45v" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="143.5" height="50"/>
+                                        <color key="backgroundColor" name="PrimaryLight"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dbU-3F-sIU"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="Refresh"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5S-UC-bxF" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="151.5" y="0.0" width="143.5" height="50"/>
+                                        <color key="backgroundColor" name="PrimaryLight"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="yVU-xO-oVn"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="Share"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="VGK-40-MfT"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="WGb-hP-jls" firstAttribute="bottom" secondItem="j32-bi-uaG" secondAttribute="bottom" constant="20" id="7OG-Z8-NbL"/>
+                            <constraint firstItem="j32-bi-uaG" firstAttribute="leading" secondItem="WGb-hP-jls" secondAttribute="leading" priority="750" constant="40" id="BZS-17-QZB"/>
+                            <constraint firstItem="WGb-hP-jls" firstAttribute="trailing" secondItem="j32-bi-uaG" secondAttribute="trailing" priority="750" constant="40" id="IGM-6L-NMx"/>
+                            <constraint firstItem="j32-bi-uaG" firstAttribute="centerX" secondItem="5c7-q8-EKd" secondAttribute="centerX" id="Q44-1R-cs4"/>
+                            <constraint firstItem="hkG-I5-Ovp" firstAttribute="centerX" secondItem="5c7-q8-EKd" secondAttribute="centerX" id="Wjm-LW-YF6"/>
+                            <constraint firstItem="WGb-hP-jls" firstAttribute="trailing" secondItem="hkG-I5-Ovp" secondAttribute="trailing" priority="750" constant="40" id="eUb-0k-oIY"/>
+                            <constraint firstItem="hkG-I5-Ovp" firstAttribute="leading" secondItem="WGb-hP-jls" secondAttribute="leading" priority="750" constant="40" id="iSi-4m-UIw"/>
+                            <constraint firstItem="hkG-I5-Ovp" firstAttribute="centerY" secondItem="5c7-q8-EKd" secondAttribute="centerY" priority="750" id="ogg-EY-Lw2"/>
+                            <constraint firstItem="hkG-I5-Ovp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WGb-hP-jls" secondAttribute="top" constant="40" id="xTa-hf-HTE"/>
+                            <constraint firstItem="j32-bi-uaG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hkG-I5-Ovp" secondAttribute="bottom" constant="20" id="zVt-hg-qjd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WGb-hP-jls"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Receive" image="Receive" selectedImage="Receive" id="f3l-vP-Fc3"/>
+                    <navigationItem key="navigationItem" title="Receive XVG" id="Gnv-IO-Cu5"/>
+                    <connections>
+                        <outlet property="qrCodeImageView" destination="S9a-Gf-SgC" id="iU8-tg-xmj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8GE-Bi-b3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="983"/>
+            <point key="canvasLocation" x="1621.5999999999999" y="982.75862068965523"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="303-k3-TQb">
+            <objects>
+                <navigationController id="sv8-iY-acX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="Xsi-O3-bRQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aPi-uw-RI1" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="SecondaryDark"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Q0B-Nz-Hn4" kind="relationship" relationship="rootViewController" id="9a9-qS-dnw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JSE-GG-lEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="1739"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ZHT-O4-w4v">
@@ -124,6 +363,7 @@
                         <viewLayoutGuide key="safeArea" id="Sa7-iw-w62"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="3HY-BL-TnL"/>
+                    <navigationItem key="navigationItem" title="Settings" id="ANS-cM-LVu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VtJ-2c-aUb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -325,9 +565,9 @@
                     <connections>
                         <segue destination="vcp-up-FDi" kind="relationship" relationship="viewControllers" id="XgU-e2-tin"/>
                         <segue destination="ird-yp-7xw" kind="relationship" relationship="viewControllers" id="BY5-pk-aGO"/>
-                        <segue destination="yKk-TG-tnT" kind="relationship" relationship="viewControllers" id="eq9-zo-50L"/>
-                        <segue destination="6GB-i5-XPF" kind="relationship" relationship="viewControllers" id="V6a-7k-uN0"/>
-                        <segue destination="Q0B-Nz-Hn4" kind="relationship" relationship="viewControllers" id="Aye-BL-6kL"/>
+                        <segue destination="PTF-pt-Hb5" kind="relationship" relationship="viewControllers" id="dyR-H2-kQb"/>
+                        <segue destination="gFZ-fC-7zT" kind="relationship" relationship="viewControllers" id="5Xv-BS-4nF"/>
+                        <segue destination="sv8-iY-acX" kind="relationship" relationship="viewControllers" id="FRp-Kz-Tjc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zo4-CR-krc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -338,7 +578,10 @@
     <resources>
         <image name="Payment" width="30" height="30"/>
         <image name="Receive" width="30" height="30"/>
+        <image name="Recipient" width="30" height="30"/>
+        <image name="Refresh" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>
+        <image name="Share" width="30" height="30"/>
         <image name="Transactions" width="30" height="30"/>
         <image name="TransactionsPlaceholder" width="30" height="30"/>
         <image name="Wallet" width="30" height="30"/>
@@ -351,8 +594,14 @@
         <namedColor name="SecondaryDark">
             <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="SecondaryDark">
+            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondaryLight">
             <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VergeGrey">
+            <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeGrey">
             <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
