@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TorClient.shared.start()
         IQKeyboardManager.shared.enable = true
         
+        UITabBar.appearance().layer.borderWidth = 0
+        UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
+        UITabBar.appearance().clipsToBounds = true
+        
         return true
     }
 

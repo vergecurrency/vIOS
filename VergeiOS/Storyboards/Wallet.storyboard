@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -41,21 +42,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-Eu-nKK">
-                                <rect key="frame" x="53.5" y="196" width="267" height="275.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-Eu-nKK">
+                                <rect key="frame" x="30" y="158.5" width="315" height="350.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-qO-T9E">
-                                        <rect key="frame" x="13.5" y="0.0" width="240" height="240"/>
-                                        <color key="tintColor" red="0.39215686274509803" green="0.47058823529411764" blue="0.52549019607843139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-qO-T9E">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
+                                        <color key="tintColor" name="SecondaryLight"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="wEb-Tg-iLA"/>
-                                            <constraint firstAttribute="height" constant="240" id="yw6-Ck-hzy"/>
+                                            <constraint firstAttribute="width" secondItem="0gm-qO-T9E" secondAttribute="height" multiplier="1:1" priority="750" id="c4U-tb-2wG"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="335" id="jxI-fe-Jqr"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions received yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifW-ec-aif">
-                                        <rect key="frame" x="0.0" y="248" width="267" height="27.5"/>
+                                        <rect key="frame" x="24" y="323" width="267" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <color key="textColor" name="SecondaryLight"/>
+                                        <color key="textColor" red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="0.30013912671232879" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -65,6 +66,7 @@
                         <constraints>
                             <constraint firstItem="lf5-Eu-nKK" firstAttribute="centerY" secondItem="evq-H0-U3V" secondAttribute="centerY" id="92Z-lW-pn6"/>
                             <constraint firstItem="lf5-Eu-nKK" firstAttribute="centerX" secondItem="evq-H0-U3V" secondAttribute="centerX" id="O4i-pD-prf"/>
+                            <constraint firstItem="0gm-qO-T9E" firstAttribute="width" secondItem="evq-H0-U3V" secondAttribute="width" priority="750" constant="-60" id="zU5-Dh-5bI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OOT-pl-maQ"/>
                     </view>
@@ -236,66 +238,18 @@
                                             <constraint firstAttribute="height" constant="50" id="q3H-wL-Iek"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tzd-Fd-Y9I" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="0.0" width="325" height="346"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="J9U-B7-Fom">
-                                                <rect key="frame" x="12" y="12" width="25" height="25"/>
-                                                <color key="tintColor" name="SecondaryDark"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="UHP-9L-FXW"/>
-                                                    <constraint firstAttribute="width" constant="25" id="nRx-YG-kMT"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvP-dR-bN4">
-                                                <rect key="frame" x="45" y="12.5" width="267.5" height="25"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="25" id="r2X-m5-QGV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                                <color key="textColor" name="SecondaryDark"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w4b-25-aFl">
-                                                <rect key="frame" x="49.5" y="87.5" width="227" height="171.5"/>
-                                                <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="3RA-10-Jsp">
-                                                        <rect key="frame" x="43.5" y="0.0" width="140" height="140"/>
-                                                        <color key="tintColor" name="SecondaryLight"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="140" id="K8U-Zz-3QU"/>
-                                                            <constraint firstAttribute="width" constant="140" id="SfI-7e-KH5"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions received yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs2-jZ-Uij">
-                                                        <rect key="frame" x="0.0" y="148" width="227" height="23.5"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                                        <color key="textColor" name="SecondaryLight"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="kvP-dR-bN4" firstAttribute="top" secondItem="tzd-Fd-Y9I" secondAttribute="top" constant="12" id="Dsu-ay-3nL"/>
-                                            <constraint firstItem="J9U-B7-Fom" firstAttribute="leading" secondItem="tzd-Fd-Y9I" secondAttribute="leading" constant="12" id="IF8-H8-ecQ"/>
-                                            <constraint firstItem="J9U-B7-Fom" firstAttribute="top" secondItem="tzd-Fd-Y9I" secondAttribute="top" constant="12" id="POL-xU-nQh"/>
-                                            <constraint firstItem="kvP-dR-bN4" firstAttribute="leading" secondItem="J9U-B7-Fom" secondAttribute="trailing" constant="8" id="THD-ba-tFL"/>
-                                            <constraint firstItem="w4b-25-aFl" firstAttribute="centerX" secondItem="tzd-Fd-Y9I" secondAttribute="centerX" id="cq3-4O-vHz"/>
-                                            <constraint firstItem="w4b-25-aFl" firstAttribute="centerY" secondItem="tzd-Fd-Y9I" secondAttribute="centerY" id="gQF-PN-pkv"/>
-                                            <constraint firstAttribute="trailing" secondItem="kvP-dR-bN4" secondAttribute="trailing" constant="12.5" id="qz7-TW-ELh"/>
-                                        </constraints>
-                                    </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNW-rp-fkb">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="346.5"/>
+                                    </scrollView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="tzd-Fd-Y9I" firstAttribute="leading" secondItem="PkX-TC-h0u" secondAttribute="leading" constant="25" id="Hs1-2v-q5S"/>
-                                    <constraint firstAttribute="bottom" secondItem="tzd-Fd-Y9I" secondAttribute="bottom" id="IXO-wZ-cN3"/>
-                                    <constraint firstAttribute="trailing" secondItem="tzd-Fd-Y9I" secondAttribute="trailing" constant="25" id="LRB-0D-1Ao"/>
-                                    <constraint firstItem="tzd-Fd-Y9I" firstAttribute="top" secondItem="PkX-TC-h0u" secondAttribute="top" id="NZL-RX-kNC"/>
+                                    <constraint firstItem="zNW-rp-fkb" firstAttribute="leading" secondItem="PkX-TC-h0u" secondAttribute="leading" id="G6a-de-aQu"/>
+                                    <constraint firstAttribute="bottom" secondItem="zNW-rp-fkb" secondAttribute="bottom" id="L9a-eT-L5U"/>
+                                    <constraint firstAttribute="trailing" secondItem="zNW-rp-fkb" secondAttribute="trailing" id="Mco-Fr-a8T"/>
                                     <constraint firstAttribute="trailing" secondItem="tdj-xY-KEd" secondAttribute="trailing" id="Rnr-pk-o5R"/>
                                     <constraint firstItem="tdj-xY-KEd" firstAttribute="leading" secondItem="PkX-TC-h0u" secondAttribute="leading" id="Wqd-tV-YGK"/>
                                     <constraint firstItem="tdj-xY-KEd" firstAttribute="top" secondItem="PkX-TC-h0u" secondAttribute="top" id="kAX-tT-wWb"/>
+                                    <constraint firstItem="zNW-rp-fkb" firstAttribute="top" secondItem="PkX-TC-h0u" secondAttribute="top" id="u0A-l7-6Fa"/>
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="geY-i0-6xV">
@@ -324,6 +278,14 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="blockchainStatusLabelView" destination="2Vn-uJ-hAR" id="lNd-kj-hk5"/>
+                        <outlet property="transactionsQuantityLabelView" destination="Fpi-fA-UdD" id="wIi-hb-T49"/>
+                        <outlet property="walletSlidePageControl" destination="geY-i0-6xV" id="jM5-cr-oDe"/>
+                        <outlet property="walletSlideScrollView" destination="zNW-rp-fkb" id="rNk-au-xVT"/>
+                        <outlet property="xvgAmountLabelView" destination="OC8-t8-jKs" id="DrZ-9l-uwL"/>
+                        <outlet property="xvgFiatPriceLabelView" destination="gns-b0-0mk" id="neO-ee-oUE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TuU-tI-Kb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -391,9 +353,6 @@
         </namedColor>
         <namedColor name="SecondaryLight">
             <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryLight">
-            <color red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeGrey">
             <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
