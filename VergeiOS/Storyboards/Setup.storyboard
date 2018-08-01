@@ -344,8 +344,5 @@
         <namedColor name="PrimaryLight">
             <color red="0.21600000559999999" green="0.74099999670000005" blue="0.88599997760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="PrimaryLight">
-            <color red="0.21600000559999999" green="0.74099999670000005" blue="0.88599997760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

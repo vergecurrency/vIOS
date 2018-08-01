@@ -32,6 +32,7 @@
 		A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC02107C82A00911B64 /* ImageKey.swift */; };
 		A305DDC32107C83200911B64 /* NumberKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC22107C83200911B64 /* NumberKey.swift */; };
 		A305DDC52107C9E300911B64 /* BackKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC42107C9E300911B64 /* BackKey.swift */; };
+		A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566402112588D006FB08A /* SettingsTableViewController.swift */; };
 		A338E695210CF60B000D44EE /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A338E694210CF60B000D44EE /* Setup.storyboard */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
 		A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */; };
@@ -54,7 +55,6 @@
 		A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C22110F9CB000D44EE /* StringKey.swift */; };
 		A338E6C62110FB31000D44EE /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C52110FB31000D44EE /* SendViewController.swift */; };
 		A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */; };
-		A338E6CC2110FC35000D44EE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6CB2110FC35000D44EE /* SettingsViewController.swift */; };
 		A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A338E6CD21110A09000D44EE /* QRCode.framework */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
@@ -119,6 +119,7 @@
 		A305DDC02107C82A00911B64 /* ImageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
 		A305DDC22107C83200911B64 /* NumberKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKey.swift; sourceTree = "<group>"; };
 		A305DDC42107C9E300911B64 /* BackKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackKey.swift; sourceTree = "<group>"; };
+		A32566402112588D006FB08A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A338E694210CF60B000D44EE /* Setup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
 		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 		A338E6C22110F9CB000D44EE /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
 		A338E6C52110FB31000D44EE /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
-		A338E6CB2110FC35000D44EE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A338E6CD21110A09000D44EE /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 		A338E6C82110FC12000D44EE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A338E6CB2110FC35000D44EE /* SettingsViewController.swift */,
+				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -665,6 +665,7 @@
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
 				A338E6C12110F8E6000D44EE /* XvgAmountKeyboard.swift in Sources */,
 				A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */,
+				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
@@ -689,7 +690,6 @@
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
-				A338E6CC2110FC35000D44EE /* SettingsViewController.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
@@ -881,7 +881,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = S7743EWR3C;
+				DYLIB_CURRENT_VERSION = 0.1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -896,6 +898,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -904,7 +907,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = S7743EWR3C;
+				DYLIB_CURRENT_VERSION = 0.1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -919,6 +924,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

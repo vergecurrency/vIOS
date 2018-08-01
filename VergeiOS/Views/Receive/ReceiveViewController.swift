@@ -15,12 +15,15 @@ class ReceiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        UIApplication.shared.statusBarStyle = .default
         
         var qrCode = QRCode("cBQFLyaV5o17Rpx424JGHbQjdffyQs7Atm")
         qrCode?.color = CIColor(cgColor: UIColor.primaryDark().cgColor)
         self.qrCodeImageView.image = (qrCode?.image)!
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
 
     override func didReceiveMemoryWarning() {
