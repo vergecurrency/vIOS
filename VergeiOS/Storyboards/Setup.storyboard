@@ -336,13 +336,10 @@
         <image name="Background" width="771" height="360"/>
         <image name="ChecklistOneItem" width="600" height="600"/>
         <image name="LogoWhite" width="284" height="284"/>
-        <image name="Rocket" width="90" height="90"/>
+        <image name="Rocket" width="30" height="30"/>
         <image name="Tor" width="90" height="90"/>
         <namedColor name="BackgroundGrey">
             <color red="0.97299999000000004" green="0.96899998190000003" blue="0.96899998190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="PrimaryLight">
-            <color red="0.21600000559999999" green="0.74099999670000005" blue="0.88599997760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21600000559999999" green="0.74099999670000005" blue="0.88599997760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

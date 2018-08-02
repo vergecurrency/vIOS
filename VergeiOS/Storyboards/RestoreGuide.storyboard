@@ -381,16 +381,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ArrowLeft" width="90" height="90"/>
-        <image name="ArrowRight" width="90" height="90"/>
+        <image name="ArrowLeft" width="30" height="30"/>
+        <image name="ArrowRight" width="30" height="30"/>
         <image name="Background" width="771" height="360"/>
-        <image name="Close" width="90" height="90"/>
+        <image name="Close" width="30" height="30"/>
         <image name="ConfirmPaperkey" width="600" height="600"/>
         <image name="FinalizeRestore" width="600" height="600"/>
-        <image name="Help" width="90" height="90"/>
+        <image name="Help" width="30" height="30"/>
         <image name="PaperKey" width="600" height="600"/>
-        <image name="RestoreKey" width="90" height="90"/>
-        <image name="Restoring" width="90" height="90"/>
+        <image name="RestoreKey" width="30" height="30"/>
+        <image name="Restoring" width="30" height="30"/>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
