@@ -16,7 +16,7 @@ Verge iOS wallet for iPhone and iPad build with Apple Swift, Xcode and alot of â
 
 1. Fork the project, and clone it to your local machine.
 
-2. Now install the following tools via (brew)[https://brew.sh] 
+2. Now install the following tools via [brew](https://brew.sh) 
 ```sh
 brew install carthage automake autoconf libtool gettext
 ```
