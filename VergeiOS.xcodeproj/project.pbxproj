@@ -40,6 +40,12 @@
 		A325664B211373FF006FB08A /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A325664A211373FF006FB08A /* Wallet.storyboard */; };
 		A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325664C211375E5006FB08A /* PinUnlockViewController.swift */; };
 		A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325664E2113B504006FB08A /* CurrencyTableViewController.swift */; };
+		A32566522115AEAC006FB08A /* XVGBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32566512115AEAC006FB08A /* XVGBalanceView.xib */; };
+		A32566542115AEBF006FB08A /* XVGBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566532115AEBF006FB08A /* XVGBalanceView.swift */; };
+		A32566562115AEDB006FB08A /* FiatBalanceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32566552115AEDB006FB08A /* FiatBalanceView.xib */; };
+		A32566582115AEE8006FB08A /* FiatBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566572115AEE8006FB08A /* FiatBalanceView.swift */; };
+		A325665A2115B0DF006FB08A /* BalanceSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566592115B0DF006FB08A /* BalanceSlide.swift */; };
+		A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */; };
 		A338E695210CF60B000D44EE /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A338E694210CF60B000D44EE /* Setup.storyboard */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
 		A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */; };
@@ -134,6 +140,12 @@
 		A325664A211373FF006FB08A /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		A325664C211375E5006FB08A /* PinUnlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinUnlockViewController.swift; sourceTree = "<group>"; };
 		A325664E2113B504006FB08A /* CurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewController.swift; sourceTree = "<group>"; };
+		A32566512115AEAC006FB08A /* XVGBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XVGBalanceView.xib; sourceTree = "<group>"; };
+		A32566532115AEBF006FB08A /* XVGBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XVGBalanceView.swift; sourceTree = "<group>"; };
+		A32566552115AEDB006FB08A /* FiatBalanceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiatBalanceView.xib; sourceTree = "<group>"; };
+		A32566572115AEE8006FB08A /* FiatBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatBalanceView.swift; sourceTree = "<group>"; };
+		A32566592115B0DF006FB08A /* BalanceSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSlide.swift; sourceTree = "<group>"; };
+		A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendedNavigationBar.swift; sourceTree = "<group>"; };
 		A338E694210CF60B000D44EE /* Setup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
 		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */,
+				A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */,
 			);
 			path = NavigationBars;
 			sourceTree = "<group>";
@@ -353,6 +366,32 @@
 			path = Keyboards;
 			sourceTree = "<group>";
 		};
+		A32566502115AE91006FB08A /* BalanceSlides */ = {
+			isa = PBXGroup;
+			children = (
+				A32566592115B0DF006FB08A /* BalanceSlide.swift */,
+				A32566512115AEAC006FB08A /* XVGBalanceView.xib */,
+				A32566532115AEBF006FB08A /* XVGBalanceView.swift */,
+				A32566552115AEDB006FB08A /* FiatBalanceView.xib */,
+				A32566572115AEE8006FB08A /* FiatBalanceView.swift */,
+			);
+			path = BalanceSlides;
+			sourceTree = "<group>";
+		};
+		A325665B2116EAF4006FB08A /* WalletSlides */ = {
+			isa = PBXGroup;
+			children = (
+				A338E6B42110D075000D44EE /* WalletSlideView.swift */,
+				A338E6B22110D064000D44EE /* TransactionsWalletSlideView.xib */,
+				A338E6B62110D5D4000D44EE /* TransactionsWalletSlideView.swift */,
+				A338E6BC2110D642000D44EE /* SummaryWalletSlideView.xib */,
+				A338E6BE2110D64C000D44EE /* SummaryWalletSlideView.swift */,
+				A338E6B82110D60F000D44EE /* ChartWalletSlideView.xib */,
+				A338E6BA2110D620000D44EE /* ChartWalletSlideView.swift */,
+			);
+			path = WalletSlides;
+			sourceTree = "<group>";
+		};
 		A338E696210CF717000D44EE /* Setup */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,14 +417,9 @@
 		A338E6AA210FBAE8000D44EE /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				A325665B2116EAF4006FB08A /* WalletSlides */,
+				A32566502115AE91006FB08A /* BalanceSlides */,
 				A338E6AB210FD53E000D44EE /* WalletViewController.swift */,
-				A338E6B42110D075000D44EE /* WalletSlideView.swift */,
-				A338E6B22110D064000D44EE /* TransactionsWalletSlideView.xib */,
-				A338E6B62110D5D4000D44EE /* TransactionsWalletSlideView.swift */,
-				A338E6BC2110D642000D44EE /* SummaryWalletSlideView.xib */,
-				A338E6BE2110D64C000D44EE /* SummaryWalletSlideView.swift */,
-				A338E6B82110D60F000D44EE /* ChartWalletSlideView.xib */,
-				A338E6BA2110D620000D44EE /* ChartWalletSlideView.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -627,9 +661,11 @@
 				A325664B211373FF006FB08A /* Wallet.storyboard in Resources */,
 				A376411B2108F0C700E04521 /* Cartfile in Resources */,
 				A338E6B92110D60F000D44EE /* ChartWalletSlideView.xib in Resources */,
+				A32566562115AEDB006FB08A /* FiatBalanceView.xib in Resources */,
 				A325664321135A00006FB08A /* Settings.storyboard in Resources */,
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
 				A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */,
+				A32566522115AEAC006FB08A /* XVGBalanceView.xib in Resources */,
 				A3256647211372A7006FB08A /* Send.storyboard in Resources */,
 				A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */,
 				A338E6B32110D064000D44EE /* TransactionsWalletSlideView.xib in Resources */,
@@ -694,7 +730,9 @@
 				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
+				A32566582115AEE8006FB08A /* FiatBalanceView.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A3764131210AE1D500E04521 /* Platform.swift in Sources */,
@@ -714,9 +752,11 @@
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
+				A32566542115AEBF006FB08A /* XVGBalanceView.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
+				A325665A2115B0DF006FB08A /* BalanceSlide.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */,
 				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,

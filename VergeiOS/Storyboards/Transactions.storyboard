@@ -49,8 +49,10 @@
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
+                            <constraint firstItem="GIw-xF-gtM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hnN-wM-ZY4" secondAttribute="trailing" constant="24" id="KQ4-Ga-ycW"/>
                             <constraint firstItem="hnN-wM-ZY4" firstAttribute="centerY" secondItem="fDb-Km-i6R" secondAttribute="centerY" id="mEG-RE-Qqc"/>
                             <constraint firstItem="8Lh-rI-pNE" firstAttribute="width" secondItem="fDb-Km-i6R" secondAttribute="width" priority="750" constant="-60" id="pc9-Mq-isy"/>
+                            <constraint firstItem="hnN-wM-ZY4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GIw-xF-gtM" secondAttribute="leading" constant="24" id="sET-Zi-jdQ"/>
                             <constraint firstItem="hnN-wM-ZY4" firstAttribute="centerX" secondItem="fDb-Km-i6R" secondAttribute="centerX" id="y6r-oc-8bP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GIw-xF-gtM"/>

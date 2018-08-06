@@ -58,7 +58,7 @@ class TorClient {
         config.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050", "AvoidDiskWrites": "1"]
         config.cookieAuthentication = true
         config.dataDirectory = URL(fileURLWithPath: self.createTorDirectory())
-        config.controlSocket = config.dataDirectory?.appendingPathComponent("control_port")
+        config.controlSocket = config.dataDirectory?.appendingPathComponent("cp")
         config.arguments = ["--ignore-missing-torrc"]
         
         return config
@@ -84,7 +84,7 @@ class TorClient {
             let path = NSSearchPathForDirectoriesInDomains(.applicationDirectory, .userDomainMask, true).first ?? ""
             documentsDirectory = "\(path.split(separator: Character("/"))[0..<2].joined(separator: "/"))/.tor_tmp"
         } else {
-            documentsDirectory = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "")/Tor"
+            documentsDirectory = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "")/t"
         }
 
         return documentsDirectory
@@ -107,6 +107,7 @@ class TorClient {
     
     private func startUrlSession(_ torController: TorController) {
         torController.getSessionConfiguration() { sessionConfig in
+            print("Got session config 🙀")
             self.session = URLSession(configuration: sessionConfig!)
             self.connectionCompletion!(true)
         }

@@ -10,29 +10,39 @@ import UIKit
 
 class WalletViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBOutlet weak var xvgAmountLabelView: UILabel!
+    @IBOutlet weak var balanceScrollView: UIScrollView!
+    @IBOutlet weak var balancePageControl: UIPageControl!
     @IBOutlet weak var transactionsQuantityLabelView: UILabel!
     @IBOutlet weak var blockchainStatusLabelView: UILabel!
     @IBOutlet weak var xvgFiatPriceLabelView: UILabel!
     @IBOutlet weak var walletSlideScrollView: UIScrollView!
     @IBOutlet weak var walletSlidePageControl: UIPageControl!
     
-    var slides: [WalletSlideView] = []
+    var balanceSlides: [BalanceSlide] = []
+    var walletSlides: [WalletSlideView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.balanceScrollView.delegate = self
+        self.balanceSlides = self.createBalanceSlides()
+        
         self.walletSlideScrollView.delegate = self
-        self.slides = self.createSlides()
+        self.walletSlides = self.createWalletSlides()
         
         if (UIDevice.current.userInterfaceIdiom == .pad) {
             walletSlidePageControl.numberOfPages = 2
         }
         
         DispatchQueue.main.async {
+            self.setupBalanceSlideScrollView()
             self.setupWalletSlideScrollView()
             
-            for slide in self.slides {
+            for slide in self.balanceSlides {
+                self.balanceScrollView.addSubview(slide)
+            }
+            
+            for slide in self.walletSlides {
                 self.walletSlideScrollView.addSubview(slide)
             }
         }
@@ -55,9 +65,36 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK: - Balance Scroll View
+    
+    func createBalanceSlides() -> [BalanceSlide] {
+        let xvgBalance = Bundle.main.loadNibNamed("XVGBalanceView", owner: self, options: nil)?.first as! XVGBalanceView
+        let fiatBalance = Bundle.main.loadNibNamed("FiatBalanceView", owner: self, options: nil)?.first as! FiatBalanceView
+        
+        return [
+            xvgBalance,
+            fiatBalance
+        ]
+    }
+    
+    func setupBalanceSlideScrollView() {
+        let contentSizeWidth = balanceScrollView.frame.width * CGFloat(balanceSlides.count)
+        
+        balanceScrollView.contentSize = CGSize(width: contentSizeWidth, height: balanceScrollView.frame.height)
+        
+        for i in 0 ..< balanceSlides.count {
+            let slideX = balanceScrollView.frame.width * CGFloat(i)
+            let slideWidth = balanceScrollView.frame.width
+            
+            balanceSlides[i].frame = CGRect(x: slideX, y: 0, width: slideWidth, height: balanceScrollView.frame.height)
+        }
+    }
+    
+    
     // MARK: - Wallet Scroll View
     
-    func createSlides() -> [WalletSlideView] {
+    func createWalletSlides() -> [WalletSlideView] {
         let transactionsSlide = Bundle.main.loadNibNamed("TransactionsWalletSlideView", owner: self, options: nil)?.first as! WalletSlideView
         let chartSlide = Bundle.main.loadNibNamed("SummaryWalletSlideView", owner: self, options: nil)?.first as! WalletSlideView
         let summarySlide = Bundle.main.loadNibNamed("ChartWalletSlideView", owner: self, options: nil)?.first as! WalletSlideView
@@ -70,14 +107,14 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupWalletSlideScrollView() {
-        var contentSizeWidth = walletSlideScrollView.frame.width * CGFloat(slides.count)
+        var contentSizeWidth = walletSlideScrollView.frame.width * CGFloat(walletSlides.count)
         if (UIDevice.current.userInterfaceIdiom == .pad) {
             contentSizeWidth = walletSlideScrollView.frame.width * 2
         }
         
         walletSlideScrollView.contentSize = CGSize(width: contentSizeWidth, height: walletSlideScrollView.frame.height)
         
-        for i in 0 ..< slides.count {
+        for i in 0 ..< walletSlides.count {
             var slideX = walletSlideScrollView.frame.width * CGFloat(i)
             var slideWidth = walletSlideScrollView.frame.width
             if (UIDevice.current.userInterfaceIdiom == .pad) {
@@ -92,16 +129,23 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
             
-            slides[i].frame = CGRect(x: slideX, y: 0, width: slideWidth, height: walletSlideScrollView.frame.height)
+            walletSlides[i].frame = CGRect(x: slideX, y: 0, width: slideWidth, height: walletSlideScrollView.frame.height)
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.walletSlidePageControl.currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
+        if (scrollView == balanceScrollView) {
+            self.balancePageControl.currentPage = Int(round(balanceScrollView.contentOffset.x/balanceScrollView.frame.width))
+        }
+        
+        if (scrollView == walletSlideScrollView) {
+            self.walletSlidePageControl.currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
+        }
     }
     
     @objc func deviceRotated() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.setupBalanceSlideScrollView()
             self.setupWalletSlideScrollView()
         }
     }

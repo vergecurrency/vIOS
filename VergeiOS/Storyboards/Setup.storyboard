@@ -339,6 +339,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnlockBackground" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-qA-WhT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dM1-lb-6ae">
                                 <rect key="frame" x="16" y="20" width="343" height="324"/>
                                 <subviews>
@@ -376,9 +379,6 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="mDH-q4-DkQ"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnlockBackground" translatesAutoresizingMaskIntoConstraints="NO" id="2Jk-qA-WhT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
@@ -415,9 +415,6 @@
         <image name="Rocket" width="30" height="30"/>
         <image name="Tor" width="90" height="90"/>
         <image name="UnlockBackground" width="4125" height="2436"/>
-        <namedColor name="BackgroundGrey">
-            <color red="0.97299999000000004" green="0.96899998190000003" blue="0.96899998190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="BackgroundGrey">
             <color red="0.97299999000000004" green="0.96899998190000003" blue="0.96899998190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

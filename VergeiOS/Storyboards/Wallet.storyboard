@@ -21,23 +21,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-zZ-lf9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="218.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="221.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26.334 XVG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPH-qn-Ykc">
-                                        <rect key="frame" x="25" y="72" width="325" height="52"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="38"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="0.0" height="0.0"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XVG BALANCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bp8-4q-qfX">
-                                        <rect key="frame" x="25" y="124" width="325" height="11"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="8"/>
-                                        <color key="textColor" name="BackgroundGrey"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrn-Uc-FZP">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="mYG-8O-pTU"/>
+                                        </constraints>
+                                    </scrollView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="rqG-B2-wHB">
+                                        <rect key="frame" x="176" y="129.5" width="23" height="37"/>
+                                    </pageControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HOc-68-7QK">
-                                        <rect key="frame" x="40" y="155" width="295" height="38.5"/>
+                                        <rect key="frame" x="40" y="158" width="295" height="38.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z7d-Ca-xcO">
                                                 <rect key="frame" x="0.0" y="0.0" width="63.5" height="38.5"/>
@@ -99,20 +95,20 @@
                                 <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstItem="HOc-68-7QK" firstAttribute="centerX" secondItem="uDU-zZ-lf9" secondAttribute="centerX" id="37N-S4-YeR"/>
-                                    <constraint firstItem="HOc-68-7QK" firstAttribute="top" secondItem="bp8-4q-qfX" secondAttribute="bottom" constant="20" id="9nY-NG-aNO"/>
+                                    <constraint firstItem="rqG-B2-wHB" firstAttribute="centerX" secondItem="uDU-zZ-lf9" secondAttribute="centerX" id="7Dw-Eh-06q"/>
+                                    <constraint firstItem="Nrn-Uc-FZP" firstAttribute="top" secondItem="uDU-zZ-lf9" secondAttribute="topMargin" id="Bue-nI-UCb"/>
+                                    <constraint firstItem="Nrn-Uc-FZP" firstAttribute="leading" secondItem="uDU-zZ-lf9" secondAttribute="leading" id="E2f-cO-gYI"/>
                                     <constraint firstAttribute="trailing" secondItem="HOc-68-7QK" secondAttribute="trailing" priority="750" constant="40" id="K10-Dl-wlT"/>
+                                    <constraint firstItem="rqG-B2-wHB" firstAttribute="top" secondItem="Nrn-Uc-FZP" secondAttribute="bottom" constant="-8" id="Lkd-qe-8nB"/>
                                     <constraint firstItem="HOc-68-7QK" firstAttribute="leading" secondItem="uDU-zZ-lf9" secondAttribute="leading" priority="750" constant="40" id="a5K-dC-A7B"/>
-                                    <constraint firstItem="bp8-4q-qfX" firstAttribute="top" secondItem="XPH-qn-Ykc" secondAttribute="bottom" id="bVD-KY-iax"/>
-                                    <constraint firstItem="XPH-qn-Ykc" firstAttribute="leading" secondItem="uDU-zZ-lf9" secondAttribute="leading" constant="25" id="byy-yn-q0X"/>
+                                    <constraint firstItem="HOc-68-7QK" firstAttribute="top" secondItem="Nrn-Uc-FZP" secondAttribute="bottom" constant="20" id="g6g-Cv-a0N"/>
                                     <constraint firstAttribute="bottom" secondItem="HOc-68-7QK" secondAttribute="bottom" constant="25" id="jqT-Oh-pcd"/>
-                                    <constraint firstAttribute="trailing" secondItem="XPH-qn-Ykc" secondAttribute="trailing" constant="25" id="jw1-nU-Q0C"/>
-                                    <constraint firstItem="XPH-qn-Ykc" firstAttribute="top" secondItem="uDU-zZ-lf9" secondAttribute="topMargin" id="n0N-Iq-CZU"/>
-                                    <constraint firstAttribute="trailing" secondItem="bp8-4q-qfX" secondAttribute="trailing" constant="25" id="qnN-ad-0US"/>
-                                    <constraint firstItem="bp8-4q-qfX" firstAttribute="leading" secondItem="uDU-zZ-lf9" secondAttribute="leading" constant="25" id="wnu-TF-0Mi"/>
+                                    <constraint firstItem="HOc-68-7QK" firstAttribute="top" secondItem="rqG-B2-wHB" secondAttribute="bottom" constant="-8" id="tTe-tC-ShU"/>
+                                    <constraint firstAttribute="trailing" secondItem="Nrn-Uc-FZP" secondAttribute="trailing" id="ynw-kl-l1C"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-bs-t2i">
-                                <rect key="frame" x="0.0" y="218.5" width="375" height="395.5"/>
+                                <rect key="frame" x="0.0" y="221.5" width="375" height="392.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Jb-Mxw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -122,7 +118,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFh-kB-F7Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="395.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="392.5"/>
                                     </scrollView>
                                 </subviews>
                                 <constraints>
@@ -163,11 +159,12 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
+                        <outlet property="balancePageControl" destination="rqG-B2-wHB" id="6oo-TB-tZO"/>
+                        <outlet property="balanceScrollView" destination="Nrn-Uc-FZP" id="5Jm-fG-Xet"/>
                         <outlet property="blockchainStatusLabelView" destination="58g-eU-5Oo" id="e4V-ao-s2s"/>
                         <outlet property="transactionsQuantityLabelView" destination="Uyd-ZJ-8Rp" id="Spx-x7-t9z"/>
                         <outlet property="walletSlidePageControl" destination="API-tf-Czt" id="ta0-p9-6r7"/>
                         <outlet property="walletSlideScrollView" destination="QFh-kB-F7Z" id="XcV-la-SRD"/>
-                        <outlet property="xvgAmountLabelView" destination="XPH-qn-Ykc" id="6Y9-jB-xZD"/>
                         <outlet property="xvgFiatPriceLabelView" destination="7aq-2h-WQx" id="WpD-Ep-QlE"/>
                     </connections>
                 </viewController>
