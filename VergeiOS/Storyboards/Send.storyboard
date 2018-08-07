@@ -27,17 +27,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="P6F-I0-dS0">
                                         <rect key="frame" x="40" y="84" width="295" height="91"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNP-xw-oXs" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNP-xw-oXs">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="39.324,44" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caY-zc-J5w">
-                                                        <rect key="frame" x="8" y="4" width="226" height="46"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caY-zc-J5w">
+                                                        <rect key="frame" x="0.0" y="4" width="242" height="46"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="38"/>
-                                                        <color key="textColor" name="SecondaryLight"/>
+                                                        <color key="textColor" name="PrimaryLight"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcp-ee-djK" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                                        <rect key="frame" x="242" y="8" width="45" height="34"/>
+                                                        <rect key="frame" x="250" y="8" width="45" height="34"/>
                                                         <color key="backgroundColor" name="PrimaryLight"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="45" id="F6Y-6n-kED"/>
@@ -50,9 +50,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="BackgroundGrey"/>
                                                 <constraints>
-                                                    <constraint firstItem="caY-zc-J5w" firstAttribute="leading" secondItem="fNP-xw-oXs" secondAttribute="leading" constant="8" id="E19-vI-ljb"/>
+                                                    <constraint firstItem="caY-zc-J5w" firstAttribute="leading" secondItem="fNP-xw-oXs" secondAttribute="leading" id="E19-vI-ljb"/>
                                                     <constraint firstItem="caY-zc-J5w" firstAttribute="top" secondItem="fNP-xw-oXs" secondAttribute="top" constant="4" id="IBQ-dh-l6c"/>
-                                                    <constraint firstAttribute="trailing" secondItem="gcp-ee-djK" secondAttribute="trailing" constant="8" id="K1J-X6-E1x"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gcp-ee-djK" secondAttribute="trailing" id="K1J-X6-E1x"/>
                                                     <constraint firstItem="gcp-ee-djK" firstAttribute="leading" secondItem="caY-zc-J5w" secondAttribute="trailing" constant="8" id="OdN-wI-cWT"/>
                                                     <constraint firstAttribute="bottom" secondItem="gcp-ee-djK" secondAttribute="bottom" constant="8" id="R4i-x7-0oN"/>
                                                     <constraint firstAttribute="bottom" secondItem="caY-zc-J5w" secondAttribute="bottom" id="UNI-v7-wAt"/>
@@ -67,14 +67,14 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="295" height="16.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9uu-uF-cya">
-                                                                <rect key="frame" x="0.0" y="0.0" width="94" height="16.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="94.5" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
                                                                 <color key="textColor" name="SecondaryLight"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.443.665,44 XVG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5D-aU-aD7">
-                                                                <rect key="frame" x="102" y="0.0" width="193" height="16.5"/>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                                                <rect key="frame" x="102.5" y="0.0" width="192.5" height="16.5"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                                                 <color key="textColor" name="SecondaryLight"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -91,7 +91,7 @@
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.1 XVG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njj-eh-1dX">
                                                                 <rect key="frame" x="194" y="0.0" width="101" height="16.5"/>
-                                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                                                 <color key="textColor" name="SecondaryLight"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
