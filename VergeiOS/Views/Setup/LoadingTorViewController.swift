@@ -21,8 +21,9 @@ class LoadingTorViewController: UIViewController {
             // Here we can determine whether to show
             // the wallet or the welcome guide.
             DispatchQueue.main.sync {
-                // self.performSegue(withIdentifier: "showWelcomeView", sender: self)
-                self.performSegue(withIdentifier: "showWallet", sender: self)
+                let identifier = WalletManager.default.setup ? "showWallet" : "showWelcomeView"
+                
+                self.performSegue(withIdentifier: identifier, sender: self)
             }
         }
     }

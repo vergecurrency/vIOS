@@ -43,10 +43,15 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
             }
             
             // When all pins are set.
-            if (pin.count == self.pinTextField.pinCharacterCount) {
+            if self.validate() {
                 self.performSegue(withIdentifier: "showWallet", sender: self)
             }
         }
+    }
+    
+    // Validate the wallet pin.
+    func validate() -> Bool {
+        return pin.count == self.pinTextField.pinCharacterCount && WalletManager.default.pin == pin
     }
     
 

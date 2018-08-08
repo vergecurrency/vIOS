@@ -70,5 +70,15 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
             // self.performSegue(withIdentifier: "backToEnterKey", sender: self)
         }
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Set the wallet pin.
+        if segue.identifier == "confirmPin" {
+            WalletManager.default.pin = self.pin
+        }
+    }
 
 }
