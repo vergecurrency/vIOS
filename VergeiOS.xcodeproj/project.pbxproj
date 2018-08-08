@@ -46,6 +46,10 @@
 		A32566582115AEE8006FB08A /* FiatBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566572115AEE8006FB08A /* FiatBalanceView.swift */; };
 		A325665A2115B0DF006FB08A /* BalanceSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566592115B0DF006FB08A /* BalanceSlide.swift */; };
 		A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */; };
+		A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A325665E211A2219006FB08A /* SwiftyJSON.framework */; };
+		A3256661211A22C4006FB08A /* BarcodeScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3256660211A22C4006FB08A /* BarcodeScanner.framework */; };
+		A3256663211A39A2006FB08A /* StatisicsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */; };
+		A3256665211A3B61006FB08A /* XvgInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* XvgInfo.swift */; };
 		A338E695210CF60B000D44EE /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A338E694210CF60B000D44EE /* Setup.storyboard */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
 		A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */; };
@@ -146,6 +150,10 @@
 		A32566572115AEE8006FB08A /* FiatBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatBalanceView.swift; sourceTree = "<group>"; };
 		A32566592115B0DF006FB08A /* BalanceSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceSlide.swift; sourceTree = "<group>"; };
 		A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendedNavigationBar.swift; sourceTree = "<group>"; };
+		A325665E211A2219006FB08A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		A3256660211A22C4006FB08A /* BarcodeScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BarcodeScanner.framework; path = Carthage/Build/iOS/BarcodeScanner.framework; sourceTree = "<group>"; };
+		A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisicsAPIClient.swift; sourceTree = "<group>"; };
+		A3256664211A3B61006FB08A /* XvgInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XvgInfo.swift; sourceTree = "<group>"; };
 		A338E694210CF60B000D44EE /* Setup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
 		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +211,8 @@
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
 				A376411D2108F7B500E04521 /* Tor.framework in Frameworks */,
+				A3256661211A22C4006FB08A /* BarcodeScanner.framework in Frameworks */,
+				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +236,8 @@
 		07B9F44B2107C69D00871990 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				07B9F44C2107C6C500871990 /* InsightAPIClient.swift */,
 				07B9F4532107C9EB00871990 /* BlockchainInfo.swift */,
+				A3256664211A3B61006FB08A /* XvgInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -521,6 +531,8 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3256660211A22C4006FB08A /* BarcodeScanner.framework */,
+				A325665E211A2219006FB08A /* SwiftyJSON.framework */,
 				A338E6CD21110A09000D44EE /* QRCode.framework */,
 				A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */,
 				A376411C2108F7B500E04521 /* Tor.framework */,
@@ -534,6 +546,8 @@
 			children = (
 				07C88D69210D047D00094EA1 /* URLSession.swift */,
 				A37641202108FC1F00E04521 /* TorClient.swift */,
+				07B9F44C2107C6C500871990 /* InsightAPIClient.swift */,
+				A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -704,11 +718,15 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BarcodeScanner.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Tor.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/QRCode.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BarcodeScanner.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -732,6 +750,7 @@
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
 				A32566582115AEE8006FB08A /* FiatBalanceView.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A3256663211A39A2006FB08A /* StatisicsAPIClient.swift in Sources */,
 				A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
@@ -763,6 +782,7 @@
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
 				07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */,
 				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
+				A3256665211A3B61006FB08A /* XvgInfo.swift in Sources */,
 				A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */,
 				A338E6A8210E2B92000D44EE /* AbstractRestoreViewController.swift in Sources */,
 				0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */,

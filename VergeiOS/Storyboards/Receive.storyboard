@@ -142,9 +142,7 @@
                         <viewLayoutGuide key="safeArea" id="8zb-LL-4yC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Receive" image="Receive" selectedImage="Receive" id="wDw-xm-lAP"/>
-                    <navigationItem key="navigationItem" title="Receive XVG" id="o86-2V-XBD">
-                        <barButtonItem key="rightBarButtonItem" title="Receive Amount" image="PriceTag" id="f4f-NQ-Z73"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Receive XVG" id="o86-2V-XBD"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="qrCodeImageView" destination="yWL-zG-viZ" id="d4t-2y-Jx8"/>
@@ -156,7 +154,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PriceTag" width="30" height="30"/>
         <image name="Receive" width="30" height="30"/>
         <image name="Refresh" width="30" height="30"/>
         <image name="Share" width="30" height="30"/>

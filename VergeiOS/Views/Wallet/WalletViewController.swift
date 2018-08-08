@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class WalletViewController: UIViewController, UIScrollViewDelegate {
 
@@ -21,9 +22,40 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     var balanceSlides: [BalanceSlide] = []
     var walletSlides: [WalletSlideView] = []
     
+    var xvgInfo: XvgInfo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setupSlides()
+        
+        StatisicsAPIClient.shared.infoBy(currency: "EUR") { info in
+            self.xvgInfo = info
+            
+            DispatchQueue.main.async {
+                self.xvgFiatPriceLabelView.text = info?.display.price
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setupSlides() {
         self.balanceScrollView.delegate = self
         self.balanceSlides = self.createBalanceSlides()
         
@@ -46,23 +78,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
                 self.walletSlideScrollView.addSubview(slide)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     

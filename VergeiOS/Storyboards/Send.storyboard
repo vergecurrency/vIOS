@@ -189,23 +189,18 @@ Please increase you're balance.</string>
                         <constraints>
                             <constraint firstItem="KeC-Cu-FEB" firstAttribute="trailing" secondItem="5M5-6X-YOg" secondAttribute="trailing" id="1Wc-I1-FWx"/>
                             <constraint firstItem="0ZO-97-XKt" firstAttribute="centerX" secondItem="p6T-9G-0KM" secondAttribute="centerX" id="9cF-P5-WlQ"/>
-                            <constraint firstItem="9p4-gg-a9I" firstAttribute="bottom" secondItem="KeC-Cu-FEB" secondAttribute="bottom" id="Bkz-aP-Vfi"/>
                             <constraint firstItem="0ZO-97-XKt" firstAttribute="leading" secondItem="KeC-Cu-FEB" secondAttribute="leading" priority="750" constant="40" id="CDE-bf-j3n"/>
-                            <constraint firstAttribute="trailing" secondItem="9p4-gg-a9I" secondAttribute="trailing" id="CiH-XE-qV4"/>
+                            <constraint firstItem="9p4-gg-a9I" firstAttribute="bottom" secondItem="KeC-Cu-FEB" secondAttribute="bottom" id="ENR-rc-q9H"/>
                             <constraint firstItem="0ZO-97-XKt" firstAttribute="top" secondItem="5M5-6X-YOg" secondAttribute="bottom" constant="8" id="F9F-dq-EKI"/>
-                            <constraint firstItem="9p4-gg-a9I" firstAttribute="top" secondItem="KeC-Cu-FEB" secondAttribute="top" id="MUZ-gE-WFg"/>
                             <constraint firstItem="KeC-Cu-FEB" firstAttribute="bottom" secondItem="0ZO-97-XKt" secondAttribute="bottom" constant="20" id="OEt-fe-7jZ"/>
                             <constraint firstItem="KeC-Cu-FEB" firstAttribute="trailing" secondItem="0ZO-97-XKt" secondAttribute="trailing" priority="750" constant="40" id="RW4-ja-2WD"/>
-                            <constraint firstItem="9p4-gg-a9I" firstAttribute="leading" secondItem="p6T-9G-0KM" secondAttribute="leading" id="Su3-Or-Q6n"/>
+                            <constraint firstItem="9p4-gg-a9I" firstAttribute="trailing" secondItem="KeC-Cu-FEB" secondAttribute="trailing" id="bIK-zD-Cly"/>
+                            <constraint firstItem="9p4-gg-a9I" firstAttribute="top" secondItem="KeC-Cu-FEB" secondAttribute="top" id="d78-QO-i2D"/>
                             <constraint firstItem="5M5-6X-YOg" firstAttribute="leading" secondItem="KeC-Cu-FEB" secondAttribute="leading" id="ghS-YE-AkJ"/>
                             <constraint firstItem="5M5-6X-YOg" firstAttribute="top" secondItem="KeC-Cu-FEB" secondAttribute="top" constant="8" id="iR4-vQ-9Hz"/>
+                            <constraint firstItem="9p4-gg-a9I" firstAttribute="leading" secondItem="KeC-Cu-FEB" secondAttribute="leading" id="tDh-5e-uyv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KeC-Cu-FEB"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="9p4-gg-a9I"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="nUu-cc-weU"/>
                     <navigationItem key="navigationItem" title="Send XVG" id="bg6-ol-xdW">
@@ -231,20 +226,11 @@ Please increase you're balance.</string>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="BackgroundGrey">
-            <color red="0.97299999000000004" green="0.96899998190000003" blue="0.96899998190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="PrimaryLight">
-            <color red="0.21600000559999999" green="0.74099999670000005" blue="0.88599997760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="SecondaryLight">
             <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryLight">
-            <color red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
