@@ -16,11 +16,13 @@ class Keyboard: PanelView {
     var delegate: KeyboardDelegate?
     
     override func createView() {
-        super.createView()
-        
-        self.characters = self.charactersInOrder()
-        
-        self.drawButtons()
+        DispatchQueue.main.async {
+            super.createView()
+            
+            self.characters = self.charactersInOrder()
+            
+            self.drawButtons()
+        }
     }
     
     func charactersInOrder() -> [KeyboardKey] {

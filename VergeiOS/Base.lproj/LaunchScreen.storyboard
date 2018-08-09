@@ -39,8 +39,8 @@
                                     <constraint firstAttribute="width" constant="200" id="jLw-5B-o45"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy As A Choice." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzs-yh-fq6">
-                                <rect key="frame" x="78" y="522" width="219.5" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy is our standard." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzs-yh-fq6">
+                                <rect key="frame" x="61.5" y="522" width="252" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8MV-Fl-6lX"/>
                                 </constraints>
