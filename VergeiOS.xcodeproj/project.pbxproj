@@ -87,10 +87,12 @@
 		A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
+		A35F3D7C211CCFCB006068A2 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F3D7B211CCFCB006068A2 /* Tor.framework */; };
+		A35F3D7D211CD001006068A2 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F3D7B211CCFCB006068A2 /* Tor.framework */; };
+		A35F3D7E211CD001006068A2 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A35F3D7B211CCFCB006068A2 /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
 		A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37641122108E79800E04521 /* NetworkExtension.framework */; };
 		A376411B2108F0C700E04521 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A376411A2108F0C700E04521 /* Cartfile */; };
-		A376411D2108F7B500E04521 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A376411C2108F7B500E04521 /* Tor.framework */; };
 		A37641212108FC1F00E04521 /* TorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641202108FC1F00E04521 /* TorClient.swift */; };
 		A37641232108FCFA00E04521 /* ConfirmPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */; };
 		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
@@ -114,6 +116,20 @@
 			remoteInfo = VergeiOS;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A35F3D7F211CD001006068A2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A35F3D7E211CD001006068A2 /* Tor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		07938403210DAD3800C3C799 /* RestoreGuide.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestoreGuide.storyboard; sourceTree = "<group>"; };
@@ -204,10 +220,10 @@
 		A33F6A7920EEE487001492C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A33F6A7C20EEE487001492C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A33F6A7E20EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A35F3D7B211CCFCB006068A2 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Frameworks/Tor.framework; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		A37641122108E79800E04521 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A376411A2108F0C700E04521 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		A376411C2108F7B500E04521 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = "<group>"; };
 		A37641202108FC1F00E04521 /* TorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
 		A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinViewController.swift; sourceTree = "<group>"; };
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
@@ -237,10 +253,11 @@
 				A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
-				A376411D2108F7B500E04521 /* Tor.framework in Frameworks */,
 				A3256661211A22C4006FB08A /* BarcodeScanner.framework in Frameworks */,
 				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
+				A35F3D7D211CD001006068A2 /* Tor.framework in Frameworks */,
+				A35F3D7C211CCFCB006068A2 /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,12 +576,12 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A35F3D7B211CCFCB006068A2 /* Tor.framework */,
 				A3256669211B9ABB006FB08A /* KeychainSwift.framework */,
 				A3256660211A22C4006FB08A /* BarcodeScanner.framework */,
 				A325665E211A2219006FB08A /* SwiftyJSON.framework */,
 				A338E6CD21110A09000D44EE /* QRCode.framework */,
 				A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */,
-				A376411C2108F7B500E04521 /* Tor.framework */,
 				A37641122108E79800E04521 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
@@ -637,6 +654,7 @@
 				A33F6A6920EEE485001492C2 /* Frameworks */,
 				A33F6A6A20EEE485001492C2 /* Resources */,
 				A376411E2108F7D200E04521 /* ShellScript */,
+				A35F3D7F211CD001006068A2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -747,7 +765,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
@@ -755,7 +772,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Tor.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/QRCode.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
