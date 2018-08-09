@@ -63,7 +63,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## Authors
 
 * **Swen van Zanten** - *Main developer* - [SwenVanZanten](https://github.com/SwenVanZanten)
-* **Marvin Piekarek** - *Main developer* - [Kyon](https://github.com/marpme)
+* **Marvin Piekarek** - *Main developer* - [marpme](https://github.com/marpme)
 
 ## Donate
 
