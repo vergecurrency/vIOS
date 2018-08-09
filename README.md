@@ -1,5 +1,6 @@
 <p align="center"><img src="http://staging.swenvanzanten.com/ios-icon.png" alt="Verge iOS Wallet"></p>
 <p align="center">
+  [![Build Status](https://travis-ci.org/vergecurrency/vIOS.svg?branch=master)](https://travis-ci.org/vergecurrency/vIOS)
   <img src="https://img.shields.io/badge/status-development-red.svg">
   <img src="https://img.shields.io/badge/latest build-0.2.1-lightgrey.svg">
   <img src="https://img.shields.io/badge/iOS-^11.4-green.svg">
