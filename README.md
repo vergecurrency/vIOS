@@ -32,7 +32,7 @@ brew install carthage automake autoconf libtool gettext
 
 3. In your cloned project folder run carthage build (this could take awile):
 ```sh
-carthage build
+carthage checkout && carthage build --platform iOS
 ```
 
 4. After that is done, open the project and start coding.
