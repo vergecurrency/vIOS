@@ -10,9 +10,7 @@ import Foundation
 
 class Fastfile: LaneFile {
 
-	func beforeAll(){
-		carthage()
-	}
+	func beforeAll() {}
 
 	func testLane() {
 	desc("Description of what the lane does")
