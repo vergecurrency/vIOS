@@ -2,4 +2,4 @@
 
 brew install automake autoconf libtool gettext && \
 echo "Installing Tor dependency" && \
-carthage update --verbose --platform iOS
+carthage update --platform iOS

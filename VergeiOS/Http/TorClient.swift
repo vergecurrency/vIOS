@@ -106,10 +106,13 @@ class TorClient {
     }
     
     private func startUrlSession(_ torController: TorController) {
+        print("Get session configuration 🚨")
+        
         torController.getSessionConfiguration() { sessionConfig in
-            print("Got session config 🙀")
             self.session = URLSession(configuration: sessionConfig!)
             self.connectionCompletion!(true)
+            
+            print("Session configuration retrieved! Tor setup done! 🏆")
         }
     }
 }

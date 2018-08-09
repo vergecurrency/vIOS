@@ -15,7 +15,7 @@ class WelcomeViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .lightContent
         
         InsightAPIClient().getInfo() { data in
-            print(data!)
+            // Do something with the data
         }
     }
 
