@@ -52,6 +52,10 @@
 		A3256665211A3B61006FB08A /* XvgInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* XvgInfo.swift */; };
 		A3256668211B8E1A006FB08A /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256667211B8E1A006FB08A /* WalletManager.swift */; };
 		A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3256669211B9ABB006FB08A /* KeychainSwift.framework */; };
+		A325666E211CABE7006FB08A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = A325666D211CABE6006FB08A /* .travis.yml */; };
+		A325667B211CBA9A006FB08A /* VergeiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325667A211CBA9A006FB08A /* VergeiOSTests.swift */; };
+		A3256697211CBBE2006FB08A /* VergeiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256696211CBBE2006FB08A /* VergeiOSUITests.swift */; };
+		A325669F211CBC50006FB08A /* InsightAPIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325669E211CBC50006FB08A /* InsightAPIClientTest.swift */; };
 		A338E695210CF60B000D44EE /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A338E694210CF60B000D44EE /* Setup.storyboard */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
 		A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */; };
@@ -81,12 +85,11 @@
 		A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
-		A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */; };
-		A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */; };
+		A35F3D7C211CCFCB006068A2 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F3D7B211CCFCB006068A2 /* Tor.framework */; };
+		A35F3D7E211CD001006068A2 /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A35F3D7B211CCFCB006068A2 /* Tor.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
 		A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37641122108E79800E04521 /* NetworkExtension.framework */; };
 		A376411B2108F0C700E04521 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A376411A2108F0C700E04521 /* Cartfile */; };
-		A376411D2108F7B500E04521 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A376411C2108F7B500E04521 /* Tor.framework */; };
 		A37641212108FC1F00E04521 /* TorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641202108FC1F00E04521 /* TorClient.swift */; };
 		A37641232108FCFA00E04521 /* ConfirmPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */; };
 		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
@@ -95,21 +98,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A33F6A8420EEE487001492C2 /* PBXContainerItemProxy */ = {
+		A3256680211CBA9E006FB08A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A33F6A6B20EEE485001492C2;
-			remoteInfo = VergeCurrencyWallet;
+			remoteInfo = VergeiOS;
 		};
-		A33F6A8F20EEE487001492C2 /* PBXContainerItemProxy */ = {
+		A325669C211CBBE5006FB08A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A33F6A6B20EEE485001492C2;
-			remoteInfo = VergeCurrencyWallet;
+			remoteInfo = VergeiOS;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A35F3D7F211CD001006068A2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A35F3D7E211CD001006068A2 /* Tor.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		07938403210DAD3800C3C799 /* RestoreGuide.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestoreGuide.storyboard; sourceTree = "<group>"; };
@@ -158,6 +175,14 @@
 		A3256664211A3B61006FB08A /* XvgInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XvgInfo.swift; sourceTree = "<group>"; };
 		A3256667211B8E1A006FB08A /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		A3256669211B9ABB006FB08A /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		A325666D211CABE6006FB08A /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A325667A211CBA9A006FB08A /* VergeiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeiOSTests.swift; sourceTree = "<group>"; };
+		A325667C211CBA9A006FB08A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3256696211CBBE2006FB08A /* VergeiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeiOSUITests.swift; sourceTree = "<group>"; };
+		A3256698211CBBE2006FB08A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A325669E211CBC50006FB08A /* InsightAPIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightAPIClientTest.swift; sourceTree = "<group>"; };
 		A338E694210CF60B000D44EE /* Setup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
 		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
@@ -189,16 +214,10 @@
 		A33F6A7920EEE487001492C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A33F6A7C20EEE487001492C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A33F6A7E20EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A33F6A8320EEE487001492C2 /* VergeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletTests.swift; sourceTree = "<group>"; };
-		A33F6A8920EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeCurrencyWalletUITests.swift; sourceTree = "<group>"; };
-		A33F6A9420EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A35F3D7B211CCFCB006068A2 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Frameworks/Tor.framework; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		A37641122108E79800E04521 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		A376411A2108F0C700E04521 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		A376411C2108F7B500E04521 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = "<group>"; };
 		A37641202108FC1F00E04521 /* TorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
 		A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinViewController.swift; sourceTree = "<group>"; };
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
@@ -207,6 +226,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A3256675211CBA9A006FB08A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3256691211CBBE2006FB08A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A33F6A6920EEE485001492C2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,24 +247,10 @@
 				A37641132108E79800E04521 /* NetworkExtension.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
-				A376411D2108F7B500E04521 /* Tor.framework in Frameworks */,
 				A3256661211A22C4006FB08A /* BarcodeScanner.framework in Frameworks */,
 				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A33F6A8020EEE487001492C2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A33F6A8B20EEE487001492C2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				A35F3D7C211CCFCB006068A2 /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +434,25 @@
 			path = Kernel;
 			sourceTree = "<group>";
 		};
+		A3256679211CBA9A006FB08A /* VergeiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A325669E211CBC50006FB08A /* InsightAPIClientTest.swift */,
+				A325667A211CBA9A006FB08A /* VergeiOSTests.swift */,
+				A325667C211CBA9A006FB08A /* Info.plist */,
+			);
+			path = VergeiOSTests;
+			sourceTree = "<group>";
+		};
+		A3256695211CBBE2006FB08A /* VergeiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A3256696211CBBE2006FB08A /* VergeiOSUITests.swift */,
+				A3256698211CBBE2006FB08A /* Info.plist */,
+			);
+			path = VergeiOSUITests;
+			sourceTree = "<group>";
+		};
 		A338E696210CF717000D44EE /* Setup */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,12 +521,13 @@
 		A33F6A6320EEE485001492C2 = {
 			isa = PBXGroup;
 			children = (
-				A376411A2108F0C700E04521 /* Cartfile */,
 				A305DDA6210694ED00911B64 /* README.md */,
+				A376411A2108F0C700E04521 /* Cartfile */,
 				A305DDA42106940E00911B64 /* .gitignore */,
+				A325666D211CABE6006FB08A /* .travis.yml */,
 				A33F6A6E20EEE485001492C2 /* VergeiOS */,
-				A33F6A8620EEE487001492C2 /* VergeiOSTests */,
-				A33F6A9120EEE487001492C2 /* VergeiOSUITests */,
+				A3256679211CBA9A006FB08A /* VergeiOSTests */,
+				A3256695211CBBE2006FB08A /* VergeiOSUITests */,
 				A33F6A6D20EEE485001492C2 /* Products */,
 				A37641112108E79800E04521 /* Frameworks */,
 			);
@@ -498,8 +537,8 @@
 			isa = PBXGroup;
 			children = (
 				A33F6A6C20EEE485001492C2 /* VergeiOS.app */,
-				A33F6A8320EEE487001492C2 /* VergeiOSTests.xctest */,
-				A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */,
+				A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */,
+				A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -524,33 +563,15 @@
 			path = VergeiOS;
 			sourceTree = "<group>";
 		};
-		A33F6A8620EEE487001492C2 /* VergeiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				A33F6A8720EEE487001492C2 /* VergeCurrencyWalletTests.swift */,
-				A33F6A8920EEE487001492C2 /* Info.plist */,
-			);
-			path = VergeiOSTests;
-			sourceTree = "<group>";
-		};
-		A33F6A9120EEE487001492C2 /* VergeiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A33F6A9220EEE487001492C2 /* VergeCurrencyWalletUITests.swift */,
-				A33F6A9420EEE487001492C2 /* Info.plist */,
-			);
-			path = VergeiOSUITests;
-			sourceTree = "<group>";
-		};
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A35F3D7B211CCFCB006068A2 /* Tor.framework */,
 				A3256669211B9ABB006FB08A /* KeychainSwift.framework */,
 				A3256660211A22C4006FB08A /* BarcodeScanner.framework */,
 				A325665E211A2219006FB08A /* SwiftyJSON.framework */,
 				A338E6CD21110A09000D44EE /* QRCode.framework */,
 				A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */,
-				A376411C2108F7B500E04521 /* Tor.framework */,
 				A37641122108E79800E04521 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
@@ -579,6 +600,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A3256677211CBA9A006FB08A /* VergeiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A325667D211CBA9A006FB08A /* Build configuration list for PBXNativeTarget "VergeiOSTests" */;
+			buildPhases = (
+				A3256674211CBA9A006FB08A /* Sources */,
+				A3256675211CBA9A006FB08A /* Frameworks */,
+				A3256676211CBA9A006FB08A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3256681211CBA9E006FB08A /* PBXTargetDependency */,
+			);
+			name = VergeiOSTests;
+			productName = VergeiOSTests;
+			productReference = A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A3256693211CBBE2006FB08A /* VergeiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3256699211CBBE2006FB08A /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */;
+			buildPhases = (
+				A3256690211CBBE2006FB08A /* Sources */,
+				A3256691211CBBE2006FB08A /* Frameworks */,
+				A3256692211CBBE2006FB08A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A325669D211CBBE5006FB08A /* PBXTargetDependency */,
+			);
+			name = VergeiOSUITests;
+			productName = VergeiOSUITests;
+			productReference = A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		A33F6A6B20EEE485001492C2 /* VergeiOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A33F6A9720EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOS" */;
@@ -587,6 +644,8 @@
 				A33F6A6920EEE485001492C2 /* Frameworks */,
 				A33F6A6A20EEE485001492C2 /* Resources */,
 				A376411E2108F7D200E04521 /* ShellScript */,
+				A35F3D7F211CD001006068A2 /* Embed Frameworks */,
+				A35F3D80211CDA2D006068A2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -596,42 +655,6 @@
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A33F6A8220EEE487001492C2 /* VergeiOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A33F6A9A20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSTests" */;
-			buildPhases = (
-				A33F6A7F20EEE487001492C2 /* Sources */,
-				A33F6A8020EEE487001492C2 /* Frameworks */,
-				A33F6A8120EEE487001492C2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A33F6A8520EEE487001492C2 /* PBXTargetDependency */,
-			);
-			name = VergeiOSTests;
-			productName = VergeCurrencyWalletTests;
-			productReference = A33F6A8320EEE487001492C2 /* VergeiOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A33F6A8D20EEE487001492C2 /* VergeiOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A33F6A9D20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */;
-			buildPhases = (
-				A33F6A8A20EEE487001492C2 /* Sources */,
-				A33F6A8B20EEE487001492C2 /* Frameworks */,
-				A33F6A8C20EEE487001492C2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A33F6A9020EEE487001492C2 /* PBXTargetDependency */,
-			);
-			name = VergeiOSUITests;
-			productName = VergeCurrencyWalletUITests;
-			productReference = A33F6A8E20EEE487001492C2 /* VergeiOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -643,6 +666,14 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Verge Currency";
 				TargetAttributes = {
+					A3256677211CBA9A006FB08A = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A33F6A6B20EEE485001492C2;
+					};
+					A3256693211CBBE2006FB08A = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = A33F6A6B20EEE485001492C2;
+					};
 					A33F6A6B20EEE485001492C2 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
@@ -650,14 +681,6 @@
 								enabled = 0;
 							};
 						};
-					};
-					A33F6A8220EEE487001492C2 = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = A33F6A6B20EEE485001492C2;
-					};
-					A33F6A8D20EEE487001492C2 = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = A33F6A6B20EEE485001492C2;
 					};
 				};
 			};
@@ -675,13 +698,27 @@
 			projectRoot = "";
 			targets = (
 				A33F6A6B20EEE485001492C2 /* VergeiOS */,
-				A33F6A8220EEE487001492C2 /* VergeiOSTests */,
-				A33F6A8D20EEE487001492C2 /* VergeiOSUITests */,
+				A3256677211CBA9A006FB08A /* VergeiOSTests */,
+				A3256693211CBBE2006FB08A /* VergeiOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A3256676211CBA9A006FB08A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3256692211CBBE2006FB08A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A33F6A6A20EEE485001492C2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -695,6 +732,7 @@
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
 				A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */,
 				A32566522115AEAC006FB08A /* XVGBalanceView.xib in Resources */,
+				A325666E211CABE7006FB08A /* .travis.yml in Resources */,
 				A3256647211372A7006FB08A /* Send.storyboard in Resources */,
 				A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */,
 				A338E6B32110D064000D44EE /* TransactionsWalletSlideView.xib in Resources */,
@@ -707,30 +745,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A33F6A8120EEE487001492C2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A33F6A8C20EEE487001492C2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A35F3D80211CDA2D006068A2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
 		A376411E2108F7D200E04521 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
@@ -738,7 +774,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Tor.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/QRCode.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
@@ -752,6 +787,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A3256674211CBA9A006FB08A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A325667B211CBA9A006FB08A /* VergeiOSTests.swift in Sources */,
+				A325669F211CBC50006FB08A /* InsightAPIClientTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3256690211CBBE2006FB08A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3256697211CBBE2006FB08A /* VergeiOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A33F6A6820EEE485001492C2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -817,34 +869,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A33F6A7F20EEE487001492C2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A33F6A8820EEE487001492C2 /* VergeCurrencyWalletTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A33F6A8A20EEE487001492C2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A33F6A9320EEE487001492C2 /* VergeCurrencyWalletUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A33F6A8520EEE487001492C2 /* PBXTargetDependency */ = {
+		A3256681211CBA9E006FB08A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A33F6A6B20EEE485001492C2 /* VergeiOS */;
-			targetProxy = A33F6A8420EEE487001492C2 /* PBXContainerItemProxy */;
+			targetProxy = A3256680211CBA9E006FB08A /* PBXContainerItemProxy */;
 		};
-		A33F6A9020EEE487001492C2 /* PBXTargetDependency */ = {
+		A325669D211CBBE5006FB08A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A33F6A6B20EEE485001492C2 /* VergeiOS */;
-			targetProxy = A33F6A8F20EEE487001492C2 /* PBXContainerItemProxy */;
+			targetProxy = A325669C211CBBE5006FB08A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -868,6 +904,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A325667E211CBA9A006FB08A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
+			};
+			name = Debug;
+		};
+		A325667F211CBA9A006FB08A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeiOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
+			};
+			name = Release;
+		};
+		A325669A211CBBE2006FB08A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VergeiOS;
+			};
+			name = Debug;
+		};
+		A325669B211CBBE2006FB08A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VergeiOS;
+			};
+			name = Release;
+		};
 		A33F6A9520EEE487001492C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1034,91 +1146,27 @@
 			};
 			name = Release;
 		};
-		A33F6A9B20EEE487001492C2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
-				INFOPLIST_FILE = VergeCurrencyWalletTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
-			};
-			name = Debug;
-		};
-		A33F6A9C20EEE487001492C2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
-				INFOPLIST_FILE = VergeCurrencyWalletTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
-			};
-			name = Release;
-		};
-		A33F6A9E20EEE487001492C2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
-				INFOPLIST_FILE = VergeCurrencyWalletUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = VergeCurrencyWallet;
-			};
-			name = Debug;
-		};
-		A33F6A9F20EEE487001492C2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
-				INFOPLIST_FILE = VergeCurrencyWalletUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.hdsign.VergeCurrencyWalletUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = VergeCurrencyWallet;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A325667D211CBA9A006FB08A /* Build configuration list for PBXNativeTarget "VergeiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A325667E211CBA9A006FB08A /* Debug */,
+				A325667F211CBA9A006FB08A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3256699211CBBE2006FB08A /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A325669A211CBBE2006FB08A /* Debug */,
+				A325669B211CBBE2006FB08A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A33F6A6720EEE485001492C2 /* Build configuration list for PBXProject "VergeiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1133,24 +1181,6 @@
 			buildConfigurations = (
 				A33F6A9820EEE487001492C2 /* Debug */,
 				A33F6A9920EEE487001492C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A33F6A9A20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A33F6A9B20EEE487001492C2 /* Debug */,
-				A33F6A9C20EEE487001492C2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A33F6A9D20EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A33F6A9E20EEE487001492C2 /* Debug */,
-				A33F6A9F20EEE487001492C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -21,4 +21,19 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-/Carthage
+
+Carthage/
+test_output/
+.DS_STORE
+
+# fastlane specific
+fastlane/report.xml
+
+# deliver temporary files
+fastlane/Preview.html
+
+# snapshot generated screenshots
+fastlane/screenshots
+
+# scan temporary files
+fastlane/test_output

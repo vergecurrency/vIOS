@@ -1,15 +1,14 @@
 //
-//  VergeCurrencyWalletTests.swift
-//  VergeCurrencyWalletTests
+//  VergeiOSTests.swift
+//  VergeiOSTests
 //
-//  Created by Swen van Zanten on 06-07-18.
+//  Created by Swen van Zanten on 09-08-18.
 //  Copyright © 2018 Verge Currency. All rights reserved.
 //
 
 import XCTest
-@testable import VergeCurrencyWallet
 
-class VergeCurrencyWalletTests: XCTestCase {
+class VergeiOSTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
