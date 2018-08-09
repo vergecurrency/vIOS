@@ -39,14 +39,14 @@ carthage build
 
 ## Build With
 
-* [Swift](https://github.com/apple/swift) - The language used for writing the app.
-* [Tor](https://www.torproject.org) - The intergration of Tor makes sure your transactions are private.
-* [iCepa/Tor.framework](https://github.com/iCepa/Tor.framework) - Provides a solid framework for using Tor.
-* [hackiftekhar/IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) - Makes working with keyboards and inputs painless.
-* [aschuch/QRCode](https://github.com/aschuch/QRCode) - Generates our beautiful XVG QR codes.
-* [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps with working with JSON responses.
-* [hyperoslo/BarcodeScanner](https://github.com/hyperoslo/BarcodeScanner) - Reading QR codes is done by this awesome package.
-* [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries on saving sensitive user data on your device.
+* [Swift](https://github.com/apple/swift) - Language used writing the application
+* [Tor](https://www.torproject.org) - The intergration of Tor makes sure your transactions are private
+* [iCepa/Tor.framework](https://github.com/iCepa/Tor.framework) - Provides a solid framework for using Tor
+* [hackiftekhar/IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) - Makes working with keyboards and inputs painless
+* [aschuch/QRCode](https://github.com/aschuch/QRCode) - Generates beautiful QR codes for receiving XVG
+* [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps working with JSON responses
+* [hyperoslo/BarcodeScanner](https://github.com/hyperoslo/BarcodeScanner) - Reading QR codes easily with this awesome package
+* [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
 
 ### Community
 
