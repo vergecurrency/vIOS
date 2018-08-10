@@ -13,7 +13,7 @@ The iOS application will provide a solid and secure iOS wallet app on your perso
 
 ## Features:
 
-* Store your XVG on your iOS device (iPhone, iPad and iPod Touch)
+* Shows your XVG on your iOS device (iPhone, iPad and iPod Touch)
 * Send XVG to other XVG wallets
 * Receive XVG
 * Store addresses of other recipients in the address book
