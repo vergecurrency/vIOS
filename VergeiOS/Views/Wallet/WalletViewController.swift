@@ -24,6 +24,10 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     var xvgInfo: XvgInfo?
     
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
