@@ -16,13 +16,17 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var amountKeyboard: XvgAmountKeyboard!
     
+    var amount = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.isSwipable()
         
         self.amountKeyboard.delegate = self
-        self.amountLabel.text = self.sendViewController?.amountTextField.valueLabel?.text
+        self.amount = self.sendViewController!.amount
+        
+        self.updateAmountLabel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +35,7 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
-        var xvg = self.amountLabel.text!
+        var xvg = amountLabel.text!
         
         if (keyboardKey.isKind(of: BackKey.self)) {
             if xvg.count > 1 {
@@ -51,12 +55,17 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
             xvg.append(input)
         }
         
-        self.amountLabel.text = xvg
+        amountLabel.text = xvg
+        amount = Double(xvg)!
     }
 
+    func updateAmountLabel() {
+        amountLabel.text = (amount > 0) ? String(describing: amount) : "0"
+    }
     
     @IBAction func setAmount(_ sender: Any) {
-        sendViewController?.amountTextField.valueLabel?.text = self.amountLabel.text
+        sendViewController?.amount = amount
+        sendViewController?.updateAmountLabel()
         
         self.closeViewController(self)
     }

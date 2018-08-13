@@ -26,6 +26,8 @@
 		A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */; };
 		A302D30E2120487700EA8091 /* UIViewController+Swipable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D30D2120487700EA8091 /* UIViewController+Swipable.swift */; };
 		A302D3152120F53D00EA8091 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3142120F53D00EA8091 /* AddressCell.swift */; };
+		A302D3412122053300EA8091 /* PriceTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3402122053300EA8091 /* PriceTicker.swift */; };
+		A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34221220A1E00EA8091 /* Notification+Names.swift */; };
 		A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */; };
 		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
 		A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */; };
@@ -158,6 +160,8 @@
 		A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransparentHoleOnOverlayView.swift; sourceTree = "<group>"; };
 		A302D30D2120487700EA8091 /* UIViewController+Swipable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swipable.swift"; sourceTree = "<group>"; };
 		A302D3142120F53D00EA8091 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		A302D3402122053300EA8091 /* PriceTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTicker.swift; sourceTree = "<group>"; };
+		A302D34221220A1E00EA8091 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabbarNavigator.storyboard; sourceTree = "<group>"; };
 		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
 		A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparantNavigationBar.swift; sourceTree = "<group>"; };
@@ -473,6 +477,8 @@
 			isa = PBXGroup;
 			children = (
 				A3256667211B8E1A006FB08A /* WalletManager.swift */,
+				A302D3402122053300EA8091 /* PriceTicker.swift */,
+				A302D34221220A1E00EA8091 /* Notification+Names.swift */,
 			);
 			path = Kernel;
 			sourceTree = "<group>";
@@ -855,6 +861,7 @@
 				A305DDB22107A1F100911B64 /* PinKeyboard.swift in Sources */,
 				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
 				A338E6B72110D5D4000D44EE /* TransactionsWalletSlideView.swift in Sources */,
+				A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */,
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
 				A338E6C12110F8E6000D44EE /* XvgAmountKeyboard.swift in Sources */,
 				A302D30E2120487700EA8091 /* UIViewController+Swipable.swift in Sources */,
@@ -889,6 +896,7 @@
 				A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
+				A302D3412122053300EA8091 /* PriceTicker.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
 				A302D2F1211F3B4400EA8091 /* SetAmountViewController.swift in Sources */,

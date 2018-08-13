@@ -32,14 +32,9 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         self.setupSlides()
+        self.setStats()
         
-        StatisicsAPIClient.shared.infoBy(currency: "EUR") { info in
-            self.xvgInfo = info
-            
-            DispatchQueue.main.async {
-                self.xvgFiatPriceLabelView.text = info?.display.price
-            }
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -166,6 +161,18 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.setupBalanceSlideScrollView()
             self.setupWalletSlideScrollView()
+        }
+    }
+    
+    @objc func didReceiveStats(_ notification: Notification) {
+        self.setStats()
+    }
+    
+    func setStats() {
+        DispatchQueue.main.async {
+            if let xvgInfo = PriceTicker.shared.xvgInfo {
+                self.xvgFiatPriceLabelView.text = xvgInfo.display.price
+            }
         }
     }
 

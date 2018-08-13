@@ -8,12 +8,20 @@
 
 import UIKit
 
+enum CurrencySwitch {
+    case XVG
+    case FIAT
+}
+
 class SendViewController: UIViewController {
 
     @IBOutlet weak var xvgCard: XVGCardImageView!
     @IBOutlet weak var noBalanceView: UIView!
     @IBOutlet weak var receipientTextField: SelectorButton!
     @IBOutlet weak var amountTextField: SelectorButton!
+    
+    var currency = CurrencySwitch.XVG
+    var amount: Double = 0.0
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -26,11 +34,7 @@ class SendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.noBalanceView.isHidden = false
-        
-        let _ = setTimeout(5) {
-            self.noBalanceView.isHidden = true
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +52,31 @@ class SendViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func didReceiveStats(_ notification: Notification) {
+        // Update price
+    }
+    
+    @IBAction func switchCurrency(_ sender: UIButton) {
+        currency = (currency == .XVG) ? .FIAT : .XVG
+        
+        // Get current price.
+        if let xvgInfo = PriceTicker.shared.xvgInfo {
+            if currency == .XVG {
+                sender.setTitle("XVG", for: .normal)
+                amount = amount / xvgInfo.raw.price
+            } else {
+                sender.setTitle(WalletManager.default.currency, for: .normal)
+                amount = amount * xvgInfo.raw.price
+            }
+        }
+        
+        self.updateAmountLabel()
+    }
+    
+    func updateAmountLabel() {
+        self.amountTextField.valueLabel?.text = "\(amount)"
     }
     
     // MARK: - Navigation
