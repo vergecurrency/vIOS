@@ -9,13 +9,17 @@
 import UIKit
 
 class XVGBalanceView: BalanceSlide {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    
+    @IBOutlet weak var valueLabel: UILabel!
+    
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        super.draw(rect)
+        
+        setWalletAmount()
     }
-    */
-
+    
+    private func setWalletAmount() {
+        self.valueLabel.text = WalletManager.default.amount.toCurrency(currency: "XVG")
+    }
+    
 }

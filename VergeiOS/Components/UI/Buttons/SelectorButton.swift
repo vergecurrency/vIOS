@@ -11,12 +11,14 @@ import UIKit
 @IBDesignable class SelectorButton: UIButton {
 
     var labelLabel: UILabel?
+    var placeholderLabel: UILabel?
     var valueLabel: UILabel?
     
     @IBInspectable var borderWidth: Int = 2
-    @IBInspectable var borderColor: UIColor = UIColor.vergeGrey()
+    @IBInspectable var borderColor: UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.9, alpha: 1)
     
     @IBInspectable private var label: String = ""
+    @IBInspectable private var placeholder: String = ""
     @IBInspectable private var value: String = ""
     
     @IBInspectable var titleColor: UIColor {
@@ -54,8 +56,7 @@ import UIKit
         self.layer.addSublayer(border)
         
         // Max width needs to be more dynamic..
-        let maxWidth = rect.width - (8.0 + 38.0 + 8.0)
-        let labelRect = CGRect(x: rect.minX, y: rect.minY, width: maxWidth, height: 14.0)
+        let labelRect = CGRect(x: rect.minX, y: rect.minY, width: rect.width, height: 14.0)
         
         self.labelLabel = UILabel(frame: labelRect)
         self.labelLabel?.text = label
@@ -64,15 +65,38 @@ import UIKit
         
         self.addSubview(self.labelLabel!)
         
-        let valueRect = CGRect(x: rect.minX, y: rect.minY + 19.0, width: maxWidth, height: 22.0)
+        let valueRect = CGRect(x: rect.minX, y: rect.minY + 19.0, width: rect.width, height: 22.0)
+        
+        self.placeholderLabel = UILabel(frame: valueRect)
+        self.placeholderLabel?.text = placeholder
+        self.placeholderLabel?.font = UIFont.avenir(size: 16).demiBold()
+        self.placeholderLabel?.textColor = UIColor(red: 0.769, green: 0.765, blue: 0.784, alpha: 1.00)
+        self.placeholderLabel?.adjustsFontSizeToFitWidth = true
+        self.placeholderLabel?.minimumScaleFactor = 0.0
+        
+        self.addSubview(self.placeholderLabel!)
         
         self.valueLabel = UILabel(frame: valueRect)
         self.valueLabel?.text = value
-        self.valueLabel?.font = UIFont.avenir(size: 22).demiBold()
+        self.valueLabel?.font = UIFont.avenir(size: 16).demiBold()
         self.valueLabel?.textColor = self.valueColor
         self.valueLabel?.adjustsFontSizeToFitWidth = true
         self.valueLabel?.minimumScaleFactor = 0.0
         
+        valueLabel?.addObserver(self, forKeyPath: "text", options: [.old, .new], context: nil)
+        
+        let _ = valueLabel?.observe(\UILabel.text, options: [.new, .old], changeHandler: { label, change in
+            self.placeholderLabel?.isHidden = (label.text?.count)! > 0
+        })
+        
         self.addSubview(self.valueLabel!)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            if let newValue = change?[.newKey] as? String {
+                self.placeholderLabel?.isHidden = newValue.count > 0
+            }
+        }
     }
 }

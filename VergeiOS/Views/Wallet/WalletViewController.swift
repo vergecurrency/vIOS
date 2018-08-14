@@ -13,9 +13,9 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var balanceScrollView: UIScrollView!
     @IBOutlet weak var balancePageControl: UIPageControl!
-    @IBOutlet weak var transactionsQuantityLabelView: UILabel!
     @IBOutlet weak var blockchainStatusLabelView: UILabel!
     @IBOutlet weak var xvgFiatPriceLabelView: UILabel!
+    @IBOutlet weak var xvgFiatLabel: UILabel!
     @IBOutlet weak var walletSlideScrollView: UIScrollView!
     @IBOutlet weak var walletSlidePageControl: UIPageControl!
     
@@ -172,6 +172,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         DispatchQueue.main.async {
             if let xvgInfo = PriceTicker.shared.xvgInfo {
                 self.xvgFiatPriceLabelView.text = xvgInfo.display.price
+                self.xvgFiatLabel.text = "\(WalletManager.default.currency)/XVG"
             }
         }
     }

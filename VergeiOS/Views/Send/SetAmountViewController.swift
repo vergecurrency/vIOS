@@ -24,7 +24,7 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
         self.isSwipable()
         
         self.amountKeyboard.delegate = self
-        self.amount = self.sendViewController!.amount
+        self.amount = Double(truncating: self.sendViewController!.amount)
         
         self.updateAmountLabel()
     }
@@ -64,7 +64,7 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     }
     
     @IBAction func setAmount(_ sender: Any) {
-        sendViewController?.amount = amount
+        sendViewController?.amount = NSNumber(value: amount)
         sendViewController?.updateAmountLabel()
         
         self.closeViewController(self)

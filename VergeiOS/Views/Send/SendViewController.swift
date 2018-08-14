@@ -15,13 +15,15 @@ enum CurrencySwitch {
 
 class SendViewController: UIViewController {
 
-    @IBOutlet weak var xvgCard: XVGCardImageView!
+    @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var noBalanceView: UIView!
+    @IBOutlet weak var walletAmountLabel: UILabel!
     @IBOutlet weak var receipientTextField: SelectorButton!
     @IBOutlet weak var amountTextField: SelectorButton!
     
     var currency = CurrencySwitch.XVG
-    var amount: Double = 0.0
+    var walletAmount: NSNumber = WalletManager.default.amount
+    var amount: NSNumber = 0.0
     
     override var prefersStatusBarHidden: Bool {
         return false
@@ -34,18 +36,23 @@ class SendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.main.async {
+            self.updateAmountLabel()
+            self.updateWalletAmountLabel()
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.xvgCard.alpha = 0.0
-        self.xvgCard.center.y += 20.0
+        self.xvgCardContainer.alpha = 0.0
+        self.xvgCardContainer.center.y += 20.0
         
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
-            self.xvgCard.alpha = 1.0
-            self.xvgCard.center.y -= 20.0
+            self.xvgCardContainer.alpha = 1.0
+            self.xvgCardContainer.center.y -= 20.0
         }, completion: nil)
     }
 
@@ -58,25 +65,36 @@ class SendViewController: UIViewController {
         // Update price
     }
     
-    @IBAction func switchCurrency(_ sender: UIButton) {
+    @IBAction func switchCurrency(_ sender: UIBarButtonItem) {
         currency = (currency == .XVG) ? .FIAT : .XVG
         
         // Get current price.
         if let xvgInfo = PriceTicker.shared.xvgInfo {
             if currency == .XVG {
-                sender.setTitle("XVG", for: .normal)
-                amount = amount / xvgInfo.raw.price
+                sender.title = "XVG"
+                amount = NSNumber(value: Double(truncating: amount) / xvgInfo.raw.price)
+                walletAmount = NSNumber(value: Double(truncating: walletAmount) / xvgInfo.raw.price)
             } else {
-                sender.setTitle(WalletManager.default.currency, for: .normal)
-                amount = amount * xvgInfo.raw.price
+                sender.title = WalletManager.default.currency
+                amount = NSNumber(value: Double(truncating: amount) * xvgInfo.raw.price)
+                walletAmount = NSNumber(value: Double(truncating: walletAmount) * xvgInfo.raw.price)
             }
         }
         
+        self.updateWalletAmountLabel()
         self.updateAmountLabel()
     }
     
+    func updateWalletAmountLabel() {
+        self.walletAmountLabel.text = walletAmount.toCurrency(currency: getCurrencyString())
+    }
+    
     func updateAmountLabel() {
-        self.amountTextField.valueLabel?.text = "\(amount)"
+        self.amountTextField.valueLabel?.text = amount.toCurrency(currency: getCurrencyString(), fractDigits: 6)
+    }
+    
+    func getCurrencyString() -> String {
+        return currency == .XVG ? "XVG" : WalletManager.default.currency
     }
     
     // MARK: - Navigation

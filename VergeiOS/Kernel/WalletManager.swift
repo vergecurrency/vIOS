@@ -37,10 +37,19 @@ class WalletManager {
     // TODO: String used for now until better solution.
     var currency: String {
         get {
-            return KeychainSwift().get("wallet.currency") ?? "USD"
+            return UserDefaults.standard.string(forKey: "wallet.currency") ?? "USD"
         }
         set {
-            KeychainSwift().set(newValue, forKey: "wallet.currency")
+            UserDefaults.standard.set(newValue, forKey: "wallet.currency")
+        }
+    }
+    
+    var amount: NSNumber {
+        get {
+            return NSNumber(value: UserDefaults.standard.double(forKey: "wallet.amount"))
+        }
+        set {
+            UserDefaults.standard.set(newValue.doubleValue, forKey: "wallet.amount")
         }
     }
     
