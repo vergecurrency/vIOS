@@ -65,11 +65,3 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 * **Swen van Zanten** - *Main developer* - [SwenVanZanten](https://github.com/SwenVanZanten)
 * **Marvin Piekarek** - *Main developer* - [marpme](https://github.com/marpme)
-
-## Donate
-
-You want to support the development of this project?
-And buy us a ☕️ or a 🍺, use one of the below.
-
-XVG: DDd1pVWr8PPAw1z7DRwoUW6maWh5SsnCcp (Verge Currency)  
-XVG: DPEgHsW1Sox3m6ZiYVjiqVxak4NAThXXix (Swen)
