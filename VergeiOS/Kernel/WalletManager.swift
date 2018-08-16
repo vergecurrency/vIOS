@@ -52,5 +52,14 @@ class WalletManager {
             UserDefaults.standard.set(newValue.doubleValue, forKey: "wallet.amount")
         }
     }
+
+    var currentBalanceSlide: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "wallet.currentBalanceSlide")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.currentBalanceSlide")
+        }
+    }
     
 }

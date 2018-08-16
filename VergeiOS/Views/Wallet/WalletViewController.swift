@@ -33,7 +33,12 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
 
         self.setupSlides()
         self.setStats()
-        
+
+        DispatchQueue.main.async {
+            // Set the balance scroll view current page to users defaults.
+            self.balanceScrollView.setCurrent(page: WalletManager.default.currentBalanceSlide)
+        }
+
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
     }
     
@@ -47,11 +52,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setupSlides() {
@@ -94,7 +94,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     func setupBalanceSlideScrollView() {
         let contentSizeWidth = balanceScrollView.frame.width * CGFloat(balanceSlides.count)
-        
+
         balanceScrollView.contentSize = CGSize(width: contentSizeWidth, height: balanceScrollView.frame.height)
         
         for i in 0 ..< balanceSlides.count {
@@ -149,17 +149,23 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView == balanceScrollView) {
-            self.balancePageControl.currentPage = Int(round(balanceScrollView.contentOffset.x/balanceScrollView.frame.width))
+            let currentPage = Int(round(balanceScrollView.contentOffset.x/balanceScrollView.frame.width))
+            self.balancePageControl.currentPage = currentPage
+
+            DispatchQueue.main.async {
+                // Save the balance slide current page.
+                WalletManager.default.currentBalanceSlide = currentPage
+            }
         }
         
         if (scrollView == walletSlideScrollView) {
-            self.walletSlidePageControl.currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
+            let currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
+            self.walletSlidePageControl.currentPage = currentPage
         }
     }
-    
+
     @objc func deviceRotated() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.setupBalanceSlideScrollView()
             self.setupWalletSlideScrollView()
         }
     }

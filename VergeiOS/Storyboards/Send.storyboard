@@ -74,13 +74,13 @@ Please increase you're balance.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="220"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 XVG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JLd-Rc-cv0">
-                                                        <rect key="frame" x="28" y="134" width="287" height="33"/>
+                                                        <rect key="frame" x="28" y="134.5" width="287" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="28"/>
                                                         <color key="textColor" name="BackgroundGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**** 1234" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNd-oW-MwN">
-                                                        <rect key="frame" x="28" y="167" width="287" height="25"/>
+                                                        <rect key="frame" x="28" y="167.5" width="287" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                                                         <color key="textColor" name="BackgroundGrey"/>
                                                         <nil key="highlightedColor"/>

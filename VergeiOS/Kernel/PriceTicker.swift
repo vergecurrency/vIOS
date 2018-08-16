@@ -24,13 +24,13 @@ class PriceTicker {
         }
 
         self.fetchStats()
-        
+
         self.interval = setInterval(60 * 5) {
             self.fetchStats()
         }
-        
+
         started = true
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeCurrency), name: .didChangeCurrency, object: nil)
     }
     
@@ -41,15 +41,18 @@ class PriceTicker {
     
     // Fetch statistics from the API and notify all absorbers.
     private func fetchStats() {
+        print("Fetching new stats")
         StatisicsAPIClient.shared.infoBy(currency: WalletManager.default.currency) { info in
             self.xvgInfo = info
-            
+
+            print("Stats received, posting notification")
             NotificationCenter.default.post(name: .didReceiveStats, object: self.xvgInfo)
         }
     }
     
     @objc private func didChangeCurrency(_ notification: Notification) {
         DispatchQueue.main.async {
+            print("Currency changed 💰")
             self.fetchStats()
         }
     }
