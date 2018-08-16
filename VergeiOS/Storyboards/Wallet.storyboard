@@ -35,25 +35,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HOc-68-7QK">
                                         <rect key="frame" x="40" y="158" width="295" height="38.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z7d-Ca-xcO">
-                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="38.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-ZJ-8Rp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="63.5" height="27.5"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSACTIONS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn2-zk-PAg">
-                                                        <rect key="frame" x="0.0" y="27.5" width="63.5" height="11"/>
-                                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="8"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iaW-lj-1in">
-                                                <rect key="frame" x="110" y="0.0" width="101.5" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="38.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58g-eU-5Oo">
                                                         <rect key="frame" x="0.0" y="0.0" width="101.5" height="27.5"/>
@@ -162,9 +145,9 @@
                         <outlet property="balancePageControl" destination="rqG-B2-wHB" id="6oo-TB-tZO"/>
                         <outlet property="balanceScrollView" destination="Nrn-Uc-FZP" id="5Jm-fG-Xet"/>
                         <outlet property="blockchainStatusLabelView" destination="58g-eU-5Oo" id="e4V-ao-s2s"/>
-                        <outlet property="transactionsQuantityLabelView" destination="Uyd-ZJ-8Rp" id="Spx-x7-t9z"/>
                         <outlet property="walletSlidePageControl" destination="API-tf-Czt" id="ta0-p9-6r7"/>
                         <outlet property="walletSlideScrollView" destination="QFh-kB-F7Z" id="XcV-la-SRD"/>
+                        <outlet property="xvgFiatLabel" destination="XnU-wF-6BW" id="Tb4-xc-C2G"/>
                         <outlet property="xvgFiatPriceLabelView" destination="7aq-2h-WQx" id="WpD-Ep-QlE"/>
                     </connections>
                 </viewController>

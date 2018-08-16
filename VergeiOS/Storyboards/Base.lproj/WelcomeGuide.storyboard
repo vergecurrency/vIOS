@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -56,11 +57,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6B-Nl-KcL" customClass="PinKeyboard" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="352" width="295" height="275"/>
+                                <rect key="frame" x="40" y="379" width="295" height="248"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="XcM-Rq-Igd"/>
-                                    <constraint firstAttribute="height" constant="275" id="Y6q-kb-OFR"/>
+                                    <constraint firstAttribute="width" secondItem="I6B-Nl-KcL" secondAttribute="height" multiplier="295:248" id="dwf-8q-u4G"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -99,7 +100,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddW-hg-uAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="AYn-Qt-5e0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1335" y="887"/>
+            <point key="canvasLocation" x="1333.5999999999999" y="886.50674662668678"/>
         </scene>
         <!--Re-enter the PIN-->
         <scene sceneID="FoU-40-VYx">
@@ -127,11 +128,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FlL-jt-V3e" customClass="PinKeyboard" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="352" width="295" height="275"/>
+                                <rect key="frame" x="40" y="379" width="295" height="248"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="eJS-YJ-2pd"/>
-                                    <constraint firstAttribute="height" constant="275" id="wNd-2P-Jk9"/>
+                                    <constraint firstAttribute="width" secondItem="FlL-jt-V3e" secondAttribute="height" multiplier="295:248" id="nDh-lJ-Fk8"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ei-N7-c8q" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">

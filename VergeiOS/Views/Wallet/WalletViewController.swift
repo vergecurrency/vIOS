@@ -13,9 +13,9 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var balanceScrollView: UIScrollView!
     @IBOutlet weak var balancePageControl: UIPageControl!
-    @IBOutlet weak var transactionsQuantityLabelView: UILabel!
     @IBOutlet weak var blockchainStatusLabelView: UILabel!
     @IBOutlet weak var xvgFiatPriceLabelView: UILabel!
+    @IBOutlet weak var xvgFiatLabel: UILabel!
     @IBOutlet weak var walletSlideScrollView: UIScrollView!
     @IBOutlet weak var walletSlidePageControl: UIPageControl!
     
@@ -24,18 +24,22 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     var xvgInfo: XvgInfo?
     
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupSlides()
-        
-        StatisicsAPIClient.shared.infoBy(currency: "EUR") { info in
-            self.xvgInfo = info
-            
-            DispatchQueue.main.async {
-                self.xvgFiatPriceLabelView.text = info?.display.price
-            }
+        self.setStats()
+
+        DispatchQueue.main.async {
+            // Set the balance scroll view current page to users defaults.
+            self.balanceScrollView.setCurrent(page: WalletManager.default.currentBalanceSlide)
         }
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +52,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setupSlides() {
@@ -95,7 +94,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     func setupBalanceSlideScrollView() {
         let contentSizeWidth = balanceScrollView.frame.width * CGFloat(balanceSlides.count)
-        
+
         balanceScrollView.contentSize = CGSize(width: contentSizeWidth, height: balanceScrollView.frame.height)
         
         for i in 0 ..< balanceSlides.count {
@@ -150,18 +149,37 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView == balanceScrollView) {
-            self.balancePageControl.currentPage = Int(round(balanceScrollView.contentOffset.x/balanceScrollView.frame.width))
+            let currentPage = Int(round(balanceScrollView.contentOffset.x/balanceScrollView.frame.width))
+            self.balancePageControl.currentPage = currentPage
+
+            DispatchQueue.main.async {
+                // Save the balance slide current page.
+                WalletManager.default.currentBalanceSlide = currentPage
+            }
         }
         
         if (scrollView == walletSlideScrollView) {
-            self.walletSlidePageControl.currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
+            let currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
+            self.walletSlidePageControl.currentPage = currentPage
+        }
+    }
+
+    @objc func deviceRotated() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.setupWalletSlideScrollView()
         }
     }
     
-    @objc func deviceRotated() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.setupBalanceSlideScrollView()
-            self.setupWalletSlideScrollView()
+    @objc func didReceiveStats(_ notification: Notification) {
+        self.setStats()
+    }
+    
+    func setStats() {
+        DispatchQueue.main.async {
+            if let xvgInfo = PriceTicker.shared.xvgInfo {
+                self.xvgFiatPriceLabelView.text = xvgInfo.display.price
+                self.xvgFiatLabel.text = "\(WalletManager.default.currency)/XVG"
+            }
         }
     }
 

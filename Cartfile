@@ -1,5 +1,4 @@
 github "hackiftekhar/IQKeyboardManager" "v6.1.1"
 github "aschuch/QRCode" "master"
 github "SwiftyJSON/SwiftyJSON" ~> 4.0
-github "hyperoslo/BarcodeScanner"
 github "evgenyneu/keychain-swift" ~> 11.0

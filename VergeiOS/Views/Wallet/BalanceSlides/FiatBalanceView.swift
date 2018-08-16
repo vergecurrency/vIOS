@@ -9,13 +9,42 @@
 import UIKit
 
 class FiatBalanceView: BalanceSlide {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var valueLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        observePriceChange()
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        observePriceChange()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        setStats()
+    }
+    
+    private func observePriceChange() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
+    }
+    
+    @objc private func didReceiveStats(_ notification: Notification) {
+        setStats()
+    }
+    
+    func setStats() {
+        DispatchQueue.main.async {
+            if let xvgInfo = PriceTicker.shared.xvgInfo {
+                let walletAmount = WalletManager.default.amount
+                self.valueLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.raw.price).toCurrency()
+            }
+        }
+    }
 
 }
