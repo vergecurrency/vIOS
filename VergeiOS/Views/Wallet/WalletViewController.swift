@@ -22,12 +22,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     var balanceSlides: [BalanceSlide] = []
     var walletSlides: [WalletSlideView] = []
     
-    var xvgInfo: XvgInfo?
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .fade
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +33,12 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
             self.balanceScrollView.setCurrent(page: WalletManager.default.currentBalanceSlide)
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveStats(notification:)),
+            name: .didReceiveStats,
+            object: nil
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,11 +46,21 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         
         UIApplication.shared.statusBarStyle = .lightContent
         
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector:
+            #selector(deviceRotated),
+            name: NSNotification.Name.UIDeviceOrientationDidChange,
+            object: nil
+        )
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: NSNotification.Name.UIDeviceOrientationDidChange,
+            object: nil
+        )
     }
     
     func setupSlides() {
@@ -143,7 +152,12 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
             
-            walletSlides[i].frame = CGRect(x: slideX, y: 0, width: slideWidth, height: walletSlideScrollView.frame.height)
+            walletSlides[i].frame = CGRect(
+                x: slideX,
+                y: 0,
+                width: slideWidth,
+                height: walletSlideScrollView.frame.height
+            )
         }
     }
     
@@ -170,7 +184,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    @objc func didReceiveStats(_ notification: Notification) {
+    @objc func didReceiveStats(notification: Notification? = nil) {
         self.setStats()
     }
     
@@ -182,15 +196,5 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

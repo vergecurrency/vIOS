@@ -15,10 +15,15 @@ class TorClient {
     static let shared = TorClient()
     
     var session: URLSession?
+    var torRunning = false
     
-    var connectionCompletion: ((_ connected: Bool) -> Void?)? = nil
+    var connectionCompletion: ((_ connected: Bool) -> Void)? = nil
     
     func start() {
+        if torRunning {
+            return
+        }
+
         // Get the tor configuration.
         let config = self.createTorConfiguration()
         
@@ -29,20 +34,23 @@ class TorClient {
         let thread = TorThread(configuration: config)
         thread.start()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+        DispatchQueue.main.async {
+            self.setupSessionBackup()
+            
             do {
                 try torController.connect()
-                let cookie = try Data(contentsOf:
-                    config.dataDirectory!.appendingPathComponent("control_auth_cookie"), options: NSData.ReadingOptions(rawValue: 0)
+                let cookie = try Data(
+                    contentsOf: config.dataDirectory!.appendingPathComponent("control_auth_cookie"),
+                    options: NSData.ReadingOptions(rawValue: 0)
                 )
                 
-                torController.authenticate(with: cookie, completion: { (success, error) -> Void in
+                torController.authenticate(with: cookie) { (success, error) in
                     if let error = error {
                         return print(error.localizedDescription)
                     }
                     
                     self.addControllerObserver(torController)
-                })
+                }
             } catch {
                 print("Tor can't be started. 🤷‍♀️")
             }
@@ -55,11 +63,18 @@ class TorClient {
     
     private func createTorConfiguration() -> TorConfiguration {
         let config = TorConfiguration()
-        config.options = ["DNSPort": "12345", "AutomapHostsOnResolve": "1", "SocksPort": "9050", "AvoidDiskWrites": "1"]
+        config.options = [
+            "DNSPort": "12345",
+            "AutomapHostsOnResolve": "1",
+            "SocksPort": "9050",
+            "AvoidDiskWrites": "1"
+        ]
         config.cookieAuthentication = true
         config.dataDirectory = URL(fileURLWithPath: self.createTorDirectory())
         config.controlSocket = config.dataDirectory?.appendingPathComponent("cp")
-        config.arguments = ["--ignore-missing-torrc"]
+        config.arguments = [
+            "--ignore-missing-torrc"
+        ]
         
         return config
     }
@@ -92,7 +107,7 @@ class TorClient {
     
     private func addControllerObserver(_ torController: TorController) {
         var observer: Any? = nil
-        observer = torController.addObserver(forCircuitEstablished: { (established) -> Void in
+        observer = torController.addObserver(forCircuitEstablished: { established in
             guard established else {
                 return
             }
@@ -106,18 +121,29 @@ class TorClient {
     }
     
     private func startUrlSession(_ torController: TorController) {
-        print("Get session configuration 🚨")
-        
         torController.getSessionConfiguration() { sessionConfig in
             self.session = URLSession(configuration: sessionConfig!)
             self.connectionCompletion!(true)
             
-            print("Session configuration retrieved! Tor setup done! 🏆")
+            self.torRunning = true
+        }
+    }
+    
+    private func setupSessionBackup() {
+        _ = setTimeout(6) {
+            if self.session == nil {
+                self.session = URLSession(configuration: .default)
+                self.connectionCompletion!(false)
+                
+                self.torRunning = false
+            }
         }
     }
 }
 
 func tor() -> URLSession {
+    // For now we fallback on the normal sessions..
+    // TODO: This should be as solid as a rock of course.
     return TorClient.shared.session ?? URLSession(configuration: .default)
 }
 

@@ -9,6 +9,10 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         // This view uses the light status bar.

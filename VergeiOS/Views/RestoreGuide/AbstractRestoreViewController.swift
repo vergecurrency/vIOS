@@ -9,6 +9,10 @@
 import UIKit
 
 class AbstractRestoreViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -22,8 +22,12 @@ class StatisicsAPIClient {
             if let data = data {
                 do {
                     let json = try JSON(data: data)
-                    let raw = try JSONDecoder().decode(XvgInfoRaw.self, from: try json["RAW"]["XVG"][currency].rawData())
-                    let display = try JSONDecoder().decode(XvgInfoDisplay.self, from: try json["DISPLAY"]["XVG"][currency].rawData())
+                    let raw = try JSONDecoder().decode(
+                        XvgInfoRaw.self, from: try json["RAW"]["XVG"][currency].rawData()
+                    )
+                    let display = try JSONDecoder().decode(
+                        XvgInfoDisplay.self, from: try json["DISPLAY"]["XVG"][currency].rawData()
+                    )
                     
                     completion(XvgInfo(raw: raw, display: display))
                 } catch {

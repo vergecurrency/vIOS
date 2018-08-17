@@ -11,7 +11,7 @@ import Foundation
 class PriceTicker {
     
     public static let shared = PriceTicker()
-    
+
     private var started: Bool = false
     private var interval: Timer?
     
@@ -23,20 +23,33 @@ class PriceTicker {
             return
         }
 
+        if !WalletManager.default.setup {
+            return
+        }
+
         self.fetchStats()
 
-        self.interval = setInterval(60 * 5) {
+        self.interval = setInterval(150) {
             self.fetchStats()
         }
 
         started = true
+        print("Price ticker started...")
 
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeCurrency), name: .didChangeCurrency, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didChangeCurrency),
+            name: .didChangeCurrency,
+            object: nil
+        )
     }
     
     // Stop the price ticker.
     func stop() {
         interval?.invalidate()
+        started = false
+
+        print("Price ticker stopped...")
     }
     
     // Fetch statistics from the API and notify all absorbers.

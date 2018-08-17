@@ -15,8 +15,6 @@ class PaperKeyDescriptionViewController: AbstractPaperkeyViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        
         self.paperKeyIcon.alpha = 0.0
         self.paperKeyIcon.center.y -= 20.0
         
