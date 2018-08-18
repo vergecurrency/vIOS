@@ -14,25 +14,10 @@ class LoadingTorViewController: UIViewController {
         return .lightContent
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func completeLoading() {
+        let identifier = WalletManager.default.setup ? "showWallet" : "showWelcomeView"
 
-        TorClient.shared.observeConnection { connected in
-            if (!connected) {
-                print("Whoops! Tor couldn't connect! 🤦‍♀️")
-            }
-            
-            // Here we can determine whether to show
-            // the wallet or the welcome guide.
-            DispatchQueue.main.async {
-                // Start price ticker
-                PriceTicker.shared.start()
-
-                let identifier = WalletManager.default.setup ? "showWallet" : "showWelcomeView"
-
-                self.performSegue(withIdentifier: identifier, sender: self)
-            }
-        }
+        self.performSegue(withIdentifier: identifier, sender: self)
     }
 
 }

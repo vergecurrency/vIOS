@@ -18,7 +18,7 @@ class StatisicsAPIClient {
     func infoBy(currency: String, completion: @escaping (_ data: XvgInfo?) -> Void) {
         let url = URL(string: "\(endpoint)pricemultifull?fsyms=XVG&tsyms=\(currency)")
     
-        let task = tor().dataTask(with: url!) { (data, resonse, error) in
+        let task = TorClient.shared.session.dataTask(with: url!) { (data, resonse, error) in
             if let data = data {
                 do {
                     let json = try JSON(data: data)

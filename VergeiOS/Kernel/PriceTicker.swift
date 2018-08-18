@@ -16,6 +16,15 @@ class PriceTicker {
     private var interval: Timer?
     
     var xvgInfo: XvgInfo?
+
+    init () {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didChangeCurrency),
+            name: .didChangeCurrency,
+            object: nil
+        )
+    }
     
     // Start the price ticker.
     func start() {
@@ -35,13 +44,6 @@ class PriceTicker {
 
         started = true
         print("Price ticker started...")
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didChangeCurrency),
-            name: .didChangeCurrency,
-            object: nil
-        )
     }
     
     // Stop the price ticker.

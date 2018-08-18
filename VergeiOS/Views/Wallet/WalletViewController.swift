@@ -21,7 +21,15 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     var balanceSlides: [BalanceSlide] = []
     var walletSlides: [WalletSlideView] = []
-    
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,22 +53,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector:
-            #selector(deviceRotated),
-            name: NSNotification.Name.UIDeviceOrientationDidChange,
-            object: nil
-        )
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(
-            self,
-            name: NSNotification.Name.UIDeviceOrientationDidChange,
-            object: nil
-        )
     }
     
     func setupSlides() {
@@ -69,10 +61,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         
         self.walletSlideScrollView.delegate = self
         self.walletSlides = self.createWalletSlides()
-        
-        if (UIDevice.current.userInterfaceIdiom == .pad) {
-            walletSlidePageControl.numberOfPages = 2
-        }
         
         DispatchQueue.main.async {
             self.setupBalanceSlideScrollView()
@@ -94,10 +82,12 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     func createBalanceSlides() -> [BalanceSlide] {
         let xvgBalance = Bundle.main.loadNibNamed("XVGBalanceView", owner: self, options: nil)?.first as! XVGBalanceView
         let fiatBalance = Bundle.main.loadNibNamed("FiatBalanceView", owner: self, options: nil)?.first as! FiatBalanceView
+        let placeholderBalance = Bundle.main.loadNibNamed("PlaceholderView", owner: self, options: nil)?.first as! PlaceholderView
         
         return [
             xvgBalance,
-            fiatBalance
+            fiatBalance,
+            placeholderBalance
         ]
     }
     
@@ -130,27 +120,14 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupWalletSlideScrollView() {
-        var contentSizeWidth = walletSlideScrollView.frame.width * CGFloat(walletSlides.count)
-        if (UIDevice.current.userInterfaceIdiom == .pad) {
-            contentSizeWidth = walletSlideScrollView.frame.width * 2
-        }
-        
-        walletSlideScrollView.contentSize = CGSize(width: contentSizeWidth, height: walletSlideScrollView.frame.height)
+        walletSlideScrollView.contentSize = CGSize(
+            width: walletSlideScrollView.frame.width * CGFloat(walletSlides.count),
+            height: walletSlideScrollView.frame.height
+        )
         
         for i in 0 ..< walletSlides.count {
-            var slideX = walletSlideScrollView.frame.width * CGFloat(i)
-            var slideWidth = walletSlideScrollView.frame.width
-            if (UIDevice.current.userInterfaceIdiom == .pad) {
-                if (i == 0) {
-                    slideX = 0
-                    slideWidth = slideWidth - 300
-                } else if (i == 1) {
-                    slideX = slideWidth - 300
-                    slideWidth = 300
-                } else if (i == 2) {
-                    slideX = slideWidth * 1
-                }
-            }
+            let slideX = walletSlideScrollView.frame.width * CGFloat(i)
+            let slideWidth = walletSlideScrollView.frame.width
             
             walletSlides[i].frame = CGRect(
                 x: slideX,

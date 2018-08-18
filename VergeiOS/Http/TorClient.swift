@@ -11,58 +11,30 @@ import NetworkExtension
 import Tor
 
 class TorClient {
-    
-    static let shared = TorClient()
-    
-    var session: URLSession?
-    var torRunning = false
-    
-    var connectionCompletion: ((_ connected: Bool) -> Void)? = nil
-    
-    func start() {
-        if torRunning {
-            return
-        }
 
-        // Get the tor configuration.
-        let config = self.createTorConfiguration()
-        
-        // Create the tor controller.
-        let torController = TorController(socketURL: config.controlSocket!)
-        
-        // Start a tor thread.
-        let thread = TorThread(configuration: config)
-        thread.start()
-        
-        DispatchQueue.main.async {
-            self.setupSessionBackup()
-            
-            do {
-                try torController.connect()
-                let cookie = try Data(
-                    contentsOf: config.dataDirectory!.appendingPathComponent("control_auth_cookie"),
-                    options: NSData.ReadingOptions(rawValue: 0)
-                )
-                
-                torController.authenticate(with: cookie) { (success, error) in
-                    if let error = error {
-                        return print(error.localizedDescription)
-                    }
-                    
-                    self.addControllerObserver(torController)
-                }
-            } catch {
-                print("Tor can't be started. 🤷‍♀️")
-            }
-        }
+    // The shared tor client.
+    static let shared = TorClient()
+
+    private var config: TorConfiguration = TorConfiguration()
+    private var thread: TorThread!
+    private var controller: TorController!
+
+    // Client status?
+    private var isOperational: Bool = false
+    private var isConnected: Bool {
+        return self.controller.isConnected
     }
-    
-    func observeConnection(completion: @escaping (_ connected: Bool) -> Void) {
-        self.connectionCompletion = completion
+
+    // The tor url session configuration.
+    // Start with default config as fallback.
+    private var sessionConfiguration: URLSessionConfiguration = .default
+
+    // The tor client url session including the tor configuration.
+    var session: URLSession {
+        return URLSession(configuration: sessionConfiguration)
     }
-    
-    private func createTorConfiguration() -> TorConfiguration {
-        let config = TorConfiguration()
+
+    init() {
         config.options = [
             "DNSPort": "12345",
             "AutomapHostsOnResolve": "1",
@@ -75,8 +47,72 @@ class TorClient {
         config.arguments = [
             "--ignore-missing-torrc"
         ]
-        
-        return config
+
+        controller = TorController(socketURL: config.controlSocket!)
+        thread = TorThread(configuration: config)
+    }
+
+    // Start the tor client.
+    func start(completion: @escaping () -> Void) {
+        // If already operational don't start a new client.
+        if isOperational {
+            return completion()
+        }
+
+        // Start a tor thread.
+        if thread.isExecuting == false {
+            thread.start()
+        }
+
+        DispatchQueue.main.async {
+            do {
+                if !self.controller.isConnected {
+                    try self.controller?.connect()
+                }
+
+                try self.authenticateController {
+                    completion()
+                }
+            } catch {
+                print(error.localizedDescription)
+                completion()
+            }
+        }
+    }
+
+    // Resign the tor client.
+    func resign() {
+        isOperational = false
+    }
+
+    private func authenticateController(completion: @escaping () -> Void) throws -> Void {
+        let cookie = try Data(
+            contentsOf: config.dataDirectory!.appendingPathComponent("control_auth_cookie"),
+            options: NSData.ReadingOptions(rawValue: 0)
+        )
+
+        self.controller?.authenticate(with: cookie) { success, error in
+            if let error = error {
+                return print(error.localizedDescription)
+            }
+
+            var observer: Any? = nil
+            observer = self.controller?.addObserver(forCircuitEstablished: { established in
+                guard established else {
+                    return
+                }
+                print("Tor tunnel started! 🤩")
+
+                self.controller?.getSessionConfiguration() { sessionConfig in
+                    self.sessionConfiguration = sessionConfig!
+
+                    self.isOperational = true
+                    completion()
+                }
+
+                self.controller?.removeObserver(observer)
+            })
+        }
     }
     
     private func createTorDirectory() -> String {
@@ -104,46 +140,4 @@ class TorClient {
 
         return documentsDirectory
     }
-    
-    private func addControllerObserver(_ torController: TorController) {
-        var observer: Any? = nil
-        observer = torController.addObserver(forCircuitEstablished: { established in
-            guard established else {
-                return
-            }
-            
-            torController.removeObserver(observer)
-            
-            self.startUrlSession(torController)
-            
-            print("Tor tunnel started! 🤩")
-        })
-    }
-    
-    private func startUrlSession(_ torController: TorController) {
-        torController.getSessionConfiguration() { sessionConfig in
-            self.session = URLSession(configuration: sessionConfig!)
-            self.connectionCompletion!(true)
-            
-            self.torRunning = true
-        }
-    }
-    
-    private func setupSessionBackup() {
-        _ = setTimeout(6) {
-            if self.session == nil {
-                self.session = URLSession(configuration: .default)
-                self.connectionCompletion!(false)
-                
-                self.torRunning = false
-            }
-        }
-    }
 }
-
-func tor() -> URLSession {
-    // For now we fallback on the normal sessions..
-    // TODO: This should be as solid as a rock of course.
-    return TorClient.shared.session ?? URLSession(configuration: .default)
-}
-

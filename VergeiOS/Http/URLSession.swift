@@ -14,7 +14,7 @@ extension URLSession {
         if url.absoluteString.range(of:"localhost") != nil || url.absoluteString.range(of:"127.0.0.1") != nil{
             session = URLSession(configuration: .default)
         } else {
-            session = tor()
+            session = TorClient.shared.session
         }
         
         let task = session.dataTask(with: URLRequest(url: url), completionHandler: completionFunc)
