@@ -33,5 +33,4 @@ class SettingsTableViewController: UITableViewController {
         currencyLabel.text = WalletManager.default.currency
     }
 
-
 }
