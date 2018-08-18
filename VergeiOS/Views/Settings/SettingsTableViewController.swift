@@ -29,7 +29,7 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.row == 2 && indexPath.section == 2 {
             SKStoreReviewController.requestReview() // Requesting alert view for getting rating from the user.
         }
-    }
+        
         currencyLabel.text = WalletManager.default.currency
     }
 
