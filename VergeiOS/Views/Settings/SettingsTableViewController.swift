@@ -25,12 +25,27 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //invoke rate app
-        if indexPath.row == 2 && indexPath.section == 2 {
-            SKStoreReviewController.requestReview() // Requesting alert view for getting rating from the user.
+        //handle sections
+        switch indexPath.section {
+        case 2: otherHandler(index: 2)
+        default: break
         }
         
         currencyLabel.text = WalletManager.default.currency
     }
-
+    
+    private func otherHandler(index: Int) -> Void {
+        switch index {
+            
+        case 2:
+            SKStoreReviewController.requestReview()
+        case 3:
+            if let url = URL(string: "https://vergecurrency.com/") {
+                UIApplication.shared.open(url, options: [:])
+            }
+        default:
+            break
+        }
+     
+    }
 }
