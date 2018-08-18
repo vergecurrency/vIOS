@@ -31,10 +31,15 @@ class FiatBalanceView: BalanceSlide {
     }
     
     private func observePriceChange() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveStats), name: .didReceiveStats, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveStats(notification:)),
+            name: .didReceiveStats,
+            object: nil
+        )
     }
     
-    @objc private func didReceiveStats(_ notification: Notification) {
+    @objc private func didReceiveStats(notification: Notification? = nil) {
         setStats()
     }
     

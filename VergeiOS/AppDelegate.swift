@@ -16,7 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        TorClient.shared.start()
+        // Start the tor client
+        TorClient.shared.start {
+            // Start the price ticker.
+            PriceTicker.shared.start()
+
+            DispatchQueue.main.async {
+                let loadingViewController = self.window?.rootViewController as! LoadingTorViewController
+                loadingViewController.completeLoading()
+            }
+        }
+
         IQKeyboardManager.shared.enable = true
         
         UITabBar.appearance().layer.borderWidth = 0
@@ -34,10 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        PriceTicker.shared.stop()
+        TorClient.shared.resign()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        TorClient.shared.start {
+            PriceTicker.shared.start()
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -62,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "VergeCurrencyWallet")
+        let container = NSPersistentContainer(name: "VergeiOS")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
