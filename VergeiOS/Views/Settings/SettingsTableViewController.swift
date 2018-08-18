@@ -39,14 +39,16 @@ class SettingsTableViewController: UITableViewController {
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
-            loadWebsite(url: URL(string: "https://vergecurrency.com/")!)
+            loadWebsite(url: "https://vergecurrency.com/")
         case 4:
-            loadWebsite(url: URL(string: "https://github.com/vergecurrency/vIOS")!)
+            loadWebsite(url: "https://github.com/vergecurrency/vIOS")
         default: break
         }
     }
     
-    private func loadWebsite(url: URL) -> Void {
-        UIApplication.shared.open(url, options: [:])
+    private func loadWebsite(url: String) -> Void {
+        if let path: URL = URL(string: url) {
+            UIApplication.shared.open(path, options: [:])
+        }
     }
 }
