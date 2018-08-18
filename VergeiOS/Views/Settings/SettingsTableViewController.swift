@@ -11,18 +11,11 @@ import StoreKit
 
 class SettingsTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+    @IBOutlet weak var currencyLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         UIApplication.shared.statusBarStyle = .default
     }
 
@@ -37,4 +30,8 @@ class SettingsTableViewController: UITableViewController {
             SKStoreReviewController.requestReview() // Requesting alert view for getting rating from the user.
         }
     }
+        currencyLabel.text = WalletManager.default.currency
+    }
+
+
 }

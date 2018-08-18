@@ -272,6 +272,9 @@
                     <navigationItem key="navigationItem" title="Settings" id="q74-JO-2Ld"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="currencyLabel" destination="iVZ-qT-Ore" id="opO-bC-bOD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VoE-JW-zbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

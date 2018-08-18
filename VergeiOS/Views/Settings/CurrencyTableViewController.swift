@@ -10,7 +10,9 @@ import UIKit
 
 class CurrencyTableViewController: UITableViewController {
 
-    var selectedCurrency = "EUR"
+    var selectedCurrency: String {
+        return WalletManager.default.currency
+    }
     
     var currencies = [
         [
@@ -100,6 +102,10 @@ class CurrencyTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        WalletManager.default.currency = currencies[indexPath.row]["currency"]!
+        
+        NotificationCenter.default.post(name: .didChangeCurrency, object: currencies[indexPath.row])
+        
         self.navigationController?.popViewController(animated: true)
     }
 

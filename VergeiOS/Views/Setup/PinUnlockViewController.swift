@@ -15,11 +15,13 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     
     var pin = ""
     
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.shared.statusBarStyle = .default
-
         self.pinKeyboard.delegate = self
     }
 

@@ -33,4 +33,33 @@ class WalletManager {
         }
     }
     
+    // Store the selected wallet currency. Defaults to USD.
+    // TODO: String used for now until better solution.
+    var currency: String {
+        get {
+            return UserDefaults.standard.string(forKey: "wallet.currency") ?? "USD"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.currency")
+        }
+    }
+    
+    var amount: NSNumber {
+        get {
+            return NSNumber(value: UserDefaults.standard.double(forKey: "wallet.amount"))
+        }
+        set {
+            UserDefaults.standard.set(newValue.doubleValue, forKey: "wallet.amount")
+        }
+    }
+
+    var currentBalanceSlide: Int {
+        get {
+            return UserDefaults.standard.integer(forKey: "wallet.currentBalanceSlide")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.currentBalanceSlide")
+        }
+    }
+    
 }
