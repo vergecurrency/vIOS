@@ -36,15 +36,17 @@ class SettingsTableViewController: UITableViewController {
     
     private func otherHandler(index: Int) -> Void {
         switch index {
-            
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
             if let url = URL(string: "https://vergecurrency.com/") {
                 UIApplication.shared.open(url, options: [:])
             }
-        default:
-            break
+        case 4:
+            if let url = URL(string: "https://github.com/vergecurrency/vIOS") {
+                UIApplication.shared.open(url, options: [:])
+            }
+        default: break
         }
      
     }
