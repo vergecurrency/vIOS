@@ -27,7 +27,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //handle sections
         switch indexPath.section {
-        case 2: otherHandler(index: 2)
+        case 2: otherHandler(index: indexPath.row)
         default: break
         }
         
@@ -39,15 +39,14 @@ class SettingsTableViewController: UITableViewController {
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
-            if let url = URL(string: "https://vergecurrency.com/") {
-                UIApplication.shared.open(url, options: [:])
-            }
+            loadWebsite(url: URL(string: "https://vergecurrency.com/")!)
         case 4:
-            if let url = URL(string: "https://github.com/vergecurrency/vIOS") {
-                UIApplication.shared.open(url, options: [:])
-            }
+            loadWebsite(url: URL(string: "https://github.com/vergecurrency/vIOS")!)
         default: break
         }
-     
+    }
+    
+    private func loadWebsite(url: URL) -> Void {
+        UIApplication.shared.open(url, options: [:])
     }
 }
