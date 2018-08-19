@@ -16,22 +16,15 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        UIApplication.shared.statusBarStyle = .default
+        currencyLabel.text = WalletManager.default.currency
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //handle sections
         switch indexPath.section {
         case 2: otherHandler(index: indexPath.row)
         default: break
         }
-        
-        currencyLabel.text = WalletManager.default.currency
     }
     
     private func otherHandler(index: Int) -> Void {
@@ -44,6 +37,8 @@ class SettingsTableViewController: UITableViewController {
             loadWebsite(url: "https://github.com/vergecurrency/vIOS")
         default: break
         }
+
+        tableView.deselectRow(at: IndexPath(row: index, section: 2), animated: true)
     }
     
     private func loadWebsite(url: String) -> Void {
