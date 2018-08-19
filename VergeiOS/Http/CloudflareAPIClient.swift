@@ -13,9 +13,12 @@ class CloudflareAPIClient {
     
     static let shared = CloudflareAPIClient()
     
-    let endpoint: String = "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query?"
+    let torEndpoint: String = "https://dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion/dns-query?"
+    let basicEndpoint: String = "https://cloudflare-dns.com/dns-query?"
     
-    func walletAddressFor(currency: String, domainName: String, completion: @escaping (_ address: String?) -> Void) {
+    func walletAddressFor(currency: String, domainName: String, torDns: Bool = true,
+                          completion: @escaping (_ address: String?) -> Void) {
+        let endpoint = torDns ? torEndpoint : basicEndpoint
         let url = URL(string: "\(endpoint)name=bans.\(currency).0.\(domainName)&type=TXT")
         
         var request = URLRequest(url: url!)
