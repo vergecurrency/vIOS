@@ -119,7 +119,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
 
     // MARK: - Navigation
-
+    
     @IBAction func closeController(_ sender: Any) {
         self.dismiss(animated: true) {
             self.captureSession?.stopRunning()

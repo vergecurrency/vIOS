@@ -14,4 +14,10 @@ class AddressCell: UITableViewCell {
     @IBAction func pasteButtonClicked(_ sender: Any) {
         addressTextField.text = UIPasteboard.general.string
     }
+    
+    @IBAction func bansInfoButtonClicked(_ sender: Any) {
+        if let url = URL(string: "https://github.com/hellc/bans") {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
 }

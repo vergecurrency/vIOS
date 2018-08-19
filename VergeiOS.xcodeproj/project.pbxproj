@@ -111,6 +111,7 @@
 		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
 		A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */; };
 		A3764131210AE1D500E04521 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764130210AE1D500E04521 /* Platform.swift */; };
+		CA50C67F2129CE7F004F5959 /* CloudflareAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50C67E2129CE7F004F5959 /* CloudflareAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +256,7 @@
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
 		A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyDescriptionViewController.swift; sourceTree = "<group>"; };
 		A3764130210AE1D500E04521 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		CA50C67E2129CE7F004F5959 /* CloudflareAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudflareAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,6 +657,7 @@
 				A37641202108FC1F00E04521 /* TorClient.swift */,
 				07B9F44C2107C6C500871990 /* InsightAPIClient.swift */,
 				A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */,
+				CA50C67E2129CE7F004F5959 /* CloudflareAPIClient.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */,
 				A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */,
+				CA50C67F2129CE7F004F5959 /* CloudflareAPIClient.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 				A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */,
 			);

@@ -38,12 +38,14 @@ class SelectRecipientTableViewController: UITableViewController, UITextFieldDele
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Send to XVG address"
+        } else if section == 1 {
+            return "or get address using BANS"
         }
         
         return "Or choose from the address book"
@@ -51,6 +53,8 @@ class SelectRecipientTableViewController: UITableViewController, UITextFieldDele
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
+            return 2
+        } else if section == 1 {
             return 2
         }
         
@@ -68,6 +72,19 @@ class SelectRecipientTableViewController: UITableViewController, UITextFieldDele
         }
         if indexPath.section == 0 && indexPath.row == 1 {
             return tableView.dequeueReusableCell(withIdentifier: "useAddressCell", for: indexPath)
+        }
+        
+        if indexPath.section == 1 && indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "bansAddressCell", for: indexPath) as! AddressCell
+            cell.addressTextField.delegate = self
+            
+            return cell
+        }
+        if indexPath.section == 1 && indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "useAddressCell", for: indexPath)
+            cell.textLabel?.text = "Search address"
+            
+            return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressBookCell", for: indexPath)
@@ -93,11 +110,41 @@ class SelectRecipientTableViewController: UITableViewController, UITextFieldDele
             }
             
             self.sendViewController?.receipientTextField.valueLabel?.text = address
+            self.closeViewController(self)
+        } else if indexPath.section == 1 {
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! AddressCell
+            
+            let bansDomainName = cell.addressTextField.text
+            CloudflareAPIClient.shared.walletAddressFor(currency: "xvg", domainName: bansDomainName!) { resultAddress in
+                
+                if resultAddress?.count != 34 {
+                    DispatchQueue.main.async {
+                        tableView.deselectRow(at: indexPath, animated: true)
+                        
+                        let alert = UIAlertController(title: "XVG address missing", message: "There are not domain related XVG addresses found", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    tableView.deselectRow(at: indexPath, animated: true)
+                    
+                    let alert = UIAlertController(title: resultAddress, message: "related XVG address has been found", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Use it", style: .default, handler: { _ in
+                        self.sendViewController?.receipientTextField.valueLabel?.text = resultAddress
+                        self.closeViewController(self)
+                    }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         } else {
             self.sendViewController?.receipientTextField.valueLabel?.text = addresses[indexPath.row].address
+            self.closeViewController(self)
         }
-        
-        self.closeViewController(self)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
