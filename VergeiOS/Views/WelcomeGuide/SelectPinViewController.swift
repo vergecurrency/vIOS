@@ -14,6 +14,8 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     
     var pin: String = ""
+    var segueIdentifier: String? = "confirmPinWelcome"
+    var completion: ((_ pin: String) -> Void)?
     
     override func viewDidLoad() {
         self.pinKeyboard.delegate = self
@@ -67,6 +69,8 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
                 navigationItem.backBarButtonItem = backItem
                 
                 vc.previousPin = self.pin
+                vc.segueIdentifier = segueIdentifier
+                vc.completion = completion
             }
         }
      }

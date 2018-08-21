@@ -84,6 +84,10 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
             // When all pins are set.
             if self.validate() {
                 closeView()
+            } else if pin.count == self.pinTextField.pinCharacterCount {
+                pinTextField.shake()
+                pinTextField.reset()
+                pin = ""
             }
         }
     }

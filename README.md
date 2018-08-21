@@ -46,7 +46,6 @@ carthage checkout && carthage build --platform iOS
 * [hackiftekhar/IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) - Makes working with keyboards and inputs painless
 * [aschuch/QRCode](https://github.com/aschuch/QRCode) - Generates beautiful QR codes for receiving XVG
 * [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps working with JSON responses
-* [hyperoslo/BarcodeScanner](https://github.com/hyperoslo/BarcodeScanner) - Reading QR codes easily with this awesome package
 * [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
 
 ### Community
