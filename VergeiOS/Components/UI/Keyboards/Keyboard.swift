@@ -8,21 +8,45 @@
 
 import UIKit
 
-class Keyboard: PanelView {
-    
+class Keyboard: UIView {
+
+    var shadowLayer: CAShapeLayer!
+    var containerView: UIView?
     var buttons: [UIButton] = []
     var characters: [KeyboardKey] = []
     
     var delegate: KeyboardDelegate?
-    
-    override func createView() {
-        DispatchQueue.main.async {
-            super.createView()
-            
-            self.characters = self.charactersInOrder()
-            
-            self.drawButtons()
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        backgroundColor = .clear
+
+        for view in subviews {
+            view.removeFromSuperview()
         }
+
+        containerView = UIView(frame: rect)
+        containerView?.layer.cornerRadius = 5
+        containerView?.clipsToBounds = true
+        addSubview(containerView!)
+
+        characters = charactersInOrder()
+        drawButtons()
+
+        layer.cornerRadius = 5
+
+        shadowLayer = CAShapeLayer()
+        shadowLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: 5).cgPath
+        shadowLayer.fillColor = UIColor.white.cgColor
+
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowPath = shadowLayer.path
+        shadowLayer.shadowOffset = CGSize.zero
+        shadowLayer.shadowOpacity = 0.15
+        shadowLayer.shadowRadius = 15
+
+        layer.insertSublayer(shadowLayer, at: 0)
     }
     
     func charactersInOrder() -> [KeyboardKey] {
@@ -42,7 +66,7 @@ class Keyboard: PanelView {
             let button = self.createButton(key, rect: buttonRect)
             
             self.buttons.append(button)
-            self.addSubview(button)
+            self.containerView?.addSubview(button)
             
             buttonsAdded += 1
             
@@ -67,6 +91,7 @@ class Keyboard: PanelView {
         }
         
         key.styleKey(button)
+        key.setButton(button)
         
         return button
     }

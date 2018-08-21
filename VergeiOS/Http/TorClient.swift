@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import NetworkExtension
 import Tor
 
 class TorClient {
@@ -38,27 +37,31 @@ class TorClient {
         config.options = [
             "DNSPort": "12345",
             "AutomapHostsOnResolve": "1",
-            "SocksPort": "9050",
             "AvoidDiskWrites": "1"
         ]
         config.cookieAuthentication = true
         config.dataDirectory = URL(fileURLWithPath: self.createTorDirectory())
         config.controlSocket = config.dataDirectory?.appendingPathComponent("cp")
         config.arguments = [
-            "--ignore-missing-torrc"
+            "--allow-missing-torrc",
+            "--ignore-missing-torrc",
+            "--clientonly", "1",
+            "--socksport", "39050",
+            "--controlport", "127.0.0.1:39060",
         ]
-
-        controller = TorController(socketURL: config.controlSocket!)
+        
         thread = TorThread(configuration: config)
     }
 
     // Start the tor client.
     func start(completion: @escaping () -> Void) {
         // If already operational don't start a new client.
-        if isOperational {
+        if isOperational || 1 == 1 {
             return completion()
         }
 
+        controller = TorController(socketURL: config.controlSocket!)
+        
         // Start a tor thread.
         if thread.isExecuting == false {
             thread.start()
@@ -82,7 +85,7 @@ class TorClient {
 
     // Resign the tor client.
     func resign() {
-        isOperational = false
+        // TODO
     }
 
     private func authenticateController(completion: @escaping () -> Void) throws -> Void {

@@ -27,7 +27,7 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    private func otherHandler(index: Int) -> Void {
+    private func otherHandler(index: Int) {
         switch index {
         case 2:
             SKStoreReviewController.requestReview()
@@ -44,6 +44,14 @@ class SettingsTableViewController: UITableViewController {
     private func loadWebsite(url: String) -> Void {
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LocalAuthTableViewController" {
+            let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
+            pinUnlockView.cancelable = true
+            present(pinUnlockView, animated: true)
         }
     }
 }
