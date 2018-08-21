@@ -12,6 +12,7 @@ class AbstractKey: NSObject, KeyboardKey {
     var label: String = ""
     var value: Any? = nil
     var image: UIImage?
+    var button: UIButton?
     
     init(label: String, value: Any? = nil) {
         self.label = label
@@ -19,8 +20,12 @@ class AbstractKey: NSObject, KeyboardKey {
     }
     
     func styleKey(_ button: KeyboardButton) {}
-    
+
     func getValue() -> Any? {
         return self.value
+    }
+
+    func setButton(_ button: UIButton) {
+        self.button = button
     }
 }

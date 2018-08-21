@@ -61,5 +61,22 @@ class WalletManager {
             UserDefaults.standard.set(newValue, forKey: "wallet.currentBalanceSlide")
         }
     }
-    
+
+    var localAuthForWalletUnlock: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "wallet.localAuth.unlockWallet")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.localAuth.unlockWallet")
+        }
+    }
+
+    var localAuthForSendingXvg: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "wallet.localAuth.sendingXvg")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.localAuth.sendingXvg")
+        }
+    }
 }

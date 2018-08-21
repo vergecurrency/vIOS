@@ -111,6 +111,11 @@
 		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
 		A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */; };
 		A3764131210AE1D500E04521 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764130210AE1D500E04521 /* Platform.swift */; };
+		A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */; };
+		A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B207212B0103004ACB73 /* LAContext+Type.swift */; };
+		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
+		A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */; };
+		A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +260,12 @@
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
 		A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyDescriptionViewController.swift; sourceTree = "<group>"; };
 		A3764130210AE1D500E04521 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
+		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
+		A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewCell.swift; sourceTree = "<group>"; };
+		A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthKey.swift; sourceTree = "<group>"; };
+		A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+VisibleViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +332,8 @@
 				A302D34221220A1E00EA8091 /* Notification+Names.swift */,
 				A302D3482123448200EA8091 /* NSNumber+Currency.swift */,
 				A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */,
+				A398B207212B0103004ACB73 /* LAContext+Type.swift */,
+				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +473,7 @@
 				A305DDC42107C9E300911B64 /* BackKey.swift */,
 				A37641092107DC4E00E04521 /* KeyboardButton.swift */,
 				A3764127210A298700E04521 /* AbstractKey.swift */,
+				A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */,
 			);
 			path = Keyboards;
 			sourceTree = "<group>";
@@ -582,9 +596,11 @@
 		A338E6C82110FC12000D44EE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A398B209212B01E3004ACB73 /* Cells */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
 				A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */,
+				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -638,6 +654,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A398B205212AFF71004ACB73 /* LocalAuthentication.framework */,
 				A302D35B2128A23200EA8091 /* Tor.framework */,
 				A302D3082120374C00EA8091 /* CoreGraphics.framework */,
 				A3256669211B9ABB006FB08A /* KeychainSwift.framework */,
@@ -666,6 +683,14 @@
 				A338E6A5210DE489000D44EE /* Timeout.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A398B209212B01E3004ACB73 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -894,6 +919,7 @@
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
 				A338E6C12110F8E6000D44EE /* XvgAmountKeyboard.swift in Sources */,
 				A302D30E2120487700EA8091 /* UIViewController+Swipable.swift in Sources */,
+				A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */,
 				A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */,
 				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
@@ -903,10 +929,12 @@
 				A32566582115AEE8006FB08A /* FiatBalanceView.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
 				A3256663211A39A2006FB08A /* StatisicsAPIClient.swift in Sources */,
+				A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */,
 				A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */,
+				A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */,
 				A3764131210AE1D500E04521 /* Platform.swift in Sources */,
 				A338E6C62110FB31000D44EE /* SendViewController.swift in Sources */,
 				A37641232108FCFA00E04521 /* ConfirmPinViewController.swift in Sources */,
@@ -944,6 +972,7 @@
 				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
 				A3256665211A3B61006FB08A /* XvgInfo.swift in Sources */,
 				A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */,
+				A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */,
 				A338E6A8210E2B92000D44EE /* AbstractRestoreViewController.swift in Sources */,
 				0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */,
 				A305DDBD2107C7F600911B64 /* KeyboardKey.swift in Sources */,
@@ -954,6 +983,7 @@
 				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
 				A338E6A6210DE489000D44EE /* Timeout.swift in Sources */,
 				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
+				A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */,
 				A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */,
 				A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,

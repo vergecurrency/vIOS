@@ -20,4 +20,13 @@ class LoadingTorViewController: UIViewController {
         self.performSegue(withIdentifier: identifier, sender: self)
     }
 
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showWallet" {
+            let vc = segue.destination as! PinUnlockViewController
+            vc.fillPinFor = .wallet
+        }
+    }
 }

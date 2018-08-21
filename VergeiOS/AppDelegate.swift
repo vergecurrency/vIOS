@@ -46,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         PriceTicker.shared.stop()
         TorClient.shared.resign()
+
+        showPinUnlockViewController()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -113,5 +115,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    func showPinUnlockViewController() {
+        if !WalletManager.default.setup {
+            return
+        }
+
+        if let rootVC = window?.visibleViewController() {
+            if rootVC.isKind(of: PinUnlockViewController.self) {
+                return
+            }
+
+            let vc = PinUnlockViewController.createFromStoryBoard()
+            vc.fillPinFor = .wallet
+
+            print("Show unlock view")
+            rootVC.present(vc, animated: false, completion: nil)
+        }
+    }
+    
 }
 

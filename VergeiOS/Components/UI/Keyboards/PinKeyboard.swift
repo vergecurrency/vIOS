@@ -6,9 +6,12 @@
 //  Copyright © 2018 Verge Currency. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class PinKeyboard: Keyboard {
+
+    let localAuthKey = LocalAuthKey()
+
     override func charactersInOrder() -> [KeyboardKey] {
         return [
             NumberKey(number: 1),
@@ -20,9 +23,13 @@ class PinKeyboard: Keyboard {
             NumberKey(number: 7, subtitle: "PORS"),
             NumberKey(number: 8, subtitle: "TUV"),
             NumberKey(number: 9, subtitle: "WYXZ"),
-            EmptyKey(),
+            localAuthKey,
             NumberKey(number: 0),
             BackKey()
         ]
+    }
+
+    func setShowLocalAuthKey(_ visible: Bool) {
+        localAuthKey.isHidden = !visible
     }
 }
