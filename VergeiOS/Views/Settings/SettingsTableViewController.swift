@@ -28,7 +28,12 @@ class SettingsTableViewController: UITableViewController {
     }
     
     private func otherHandler(index: Int) -> Void {
+        
         switch index {
+        case 0:
+            let creditsVC = storyboard?.instantiateViewController(withIdentifier: "creditsVC") as! UIViewController
+            creditsVC.title = "Credits"
+            navigationController?.pushViewController(creditsVC, animated: true)
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
