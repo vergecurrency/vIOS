@@ -123,6 +123,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="PrimaryLight"/>
+                                        <connections>
+                                            <segue destination="BK0-Ed-W6B" kind="show" identifier="SelectPinViewController" id="9iD-Q9-TwM"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0c1-Ze-gFD" imageView="cDS-42-UWJ" style="IBUITableViewCellStyleDefault" id="zgh-qW-2zt" customClass="LocalAuthTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="315.5" width="375" height="44"/>
@@ -315,7 +318,7 @@
         <!--Use Face ID-->
         <scene sceneID="VZs-4e-cK2">
             <objects>
-                <tableViewController id="9dK-qh-T3Q" customClass="LocalAuthTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="9dK-qh-T3Q" customClass="LocalAuthTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IgJ-HN-I40">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,7 +405,15 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcY-Rs-AwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="2111"/>
+            <point key="canvasLocation" x="3841" y="1737"/>
+        </scene>
+        <!--SelectPinViewController-->
+        <scene sceneID="Acc-0z-23f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="SelectPinViewController" id="BK0-Ed-W6B" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tYF-yO-4x5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3225" y="1692"/>
         </scene>
         <!--Fiat currency-->
         <scene sceneID="cTm-Aa-2iM">
@@ -449,7 +460,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lR0-7J-UuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2655" y="1429"/>
+            <point key="canvasLocation" x="2591" y="1737"/>
         </scene>
         <!--Development Settings-->
         <scene sceneID="Bjh-Eo-cxt">
@@ -523,20 +534,11 @@
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="BackgroundGrey">
-            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="PrimaryLight">
-            <color red="0.21600000559999999" green="0.74099999670000005" blue="0.88599997760000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="SecondaryDark">
             <color red="0.09799999744" green="0.23899999259999999" blue="0.33300000429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeGreen">
             <color red="0.0" green="0.52156862745098043" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

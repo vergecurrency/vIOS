@@ -53,5 +53,18 @@ class SettingsTableViewController: UITableViewController {
             pinUnlockView.cancelable = true
             present(pinUnlockView, animated: true)
         }
+
+        if segue.identifier == "SelectPinViewController" {
+            let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
+            pinUnlockView.cancelable = true
+            present(pinUnlockView, animated: true)
+
+            if let vc = segue.destination as? SelectPinViewController {
+                vc.navigationItem.leftBarButtonItem = nil
+                vc.completion = { pin in
+                    vc.navigationController?.popToViewController(self, animated: true)
+                }
+            }
+        }
     }
 }

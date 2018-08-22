@@ -17,6 +17,8 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     var previousPin: String = ""
     var pin: String = ""
+    var segueIdentifier: String?
+    var completion: ((_ pin: String) -> Void)?
     
     override func viewDidLoad() {
         self.pinKeyboard.delegate = self
@@ -67,17 +69,18 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
                 self.pinFailedView.center.y += 60.0
                 
             }, completion: nil)
-            // self.performSegue(withIdentifier: "backToEnterKey", sender: self)
         }
     }
     
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Set the wallet pin.
-        if segue.identifier == "confirmPin" {
-            WalletManager.default.pin = self.pin
+    @IBAction func confirmPin(_ sender: Any) {
+        WalletManager.default.pin = self.pin
+
+        if let completion = completion {
+            return completion(self.pin)
+        }
+
+        if let si = segueIdentifier {
+            performSegue(withIdentifier: si, sender: nil)
         }
     }
 
