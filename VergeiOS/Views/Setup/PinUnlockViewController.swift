@@ -24,6 +24,7 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     var fillPinFor: UnlockState?
     var showLocalAuthentication = false
     var cancelable = false
+    var completion: ((_ authenticated: Bool) -> Void)?
     
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
@@ -118,19 +119,18 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     }
 
     func closeView() {
-        if presentingViewController?.isKind(of: UITabBarController.self) ?? false {
-            dismiss(animated: true)
+        if completion != nil {
+            completion?(true)
         } else {
-            performSegue(withIdentifier: "showWallet", sender: self)
+            dismiss(animated: true)
         }
     }
 
     func cancelView() {
-        if let tabBar = presentingViewController as? UITabBarController {
-            if let nav = tabBar.selectedViewController as? UINavigationController {
-                nav.popViewController(animated: false)
-                dismiss(animated: true)
-            }
+        if completion != nil {
+            completion?(false)
+        } else {
+            dismiss(animated: true)
         }
     }
 

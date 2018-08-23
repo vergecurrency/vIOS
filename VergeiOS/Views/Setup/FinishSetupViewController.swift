@@ -76,6 +76,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         WalletManager.default.setup = true
+        PriceTicker.shared.start()
     }
 
 }
