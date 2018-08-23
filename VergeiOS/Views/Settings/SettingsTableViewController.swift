@@ -31,9 +31,7 @@ class SettingsTableViewController: UITableViewController {
         
         switch index {
         case 0:
-            let creditsVC = storyboard?.instantiateViewController(withIdentifier: "creditsVC") as! UIViewController
-            creditsVC.title = "Credits"
-            navigationController?.pushViewController(creditsVC, animated: true)
+            loadVC(identifer: "creditsVC", title: "Credits")
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
@@ -50,6 +48,12 @@ class SettingsTableViewController: UITableViewController {
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
         }
+    }
+    
+    private func loadVC(identifer: String, title: String) -> Void {
+        let creditsVC: UIViewController = (storyboard?.instantiateViewController(withIdentifier: "creditsVC"))! 
+            creditsVC.title = title
+            navigationController?.pushViewController(creditsVC, animated: true)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
