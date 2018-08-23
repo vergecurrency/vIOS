@@ -52,12 +52,28 @@ class SettingsTableViewController: UITableViewController {
         if segue.identifier == "LocalAuthTableViewController" {
             let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
             pinUnlockView.cancelable = true
+            pinUnlockView.completion = { authenticated in
+                if !authenticated {
+                    self.navigationController?.popViewController(animated: false)
+                }
+
+                pinUnlockView.dismiss(animated: true)
+            }
+
             present(pinUnlockView, animated: true)
         }
 
         if segue.identifier == "SelectPinViewController" {
             let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
             pinUnlockView.cancelable = true
+            pinUnlockView.completion = { authenticated in
+                if !authenticated {
+                    self.navigationController?.popViewController(animated: false)
+                }
+
+                pinUnlockView.dismiss(animated: true)
+            }
+
             present(pinUnlockView, animated: true)
 
             if let vc = segue.destination as? SelectPinViewController {

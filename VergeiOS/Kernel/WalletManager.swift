@@ -79,4 +79,10 @@ class WalletManager {
             UserDefaults.standard.set(newValue, forKey: "wallet.localAuth.sendingXvg")
         }
     }
+    
+    func reset() {
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+    }
 }

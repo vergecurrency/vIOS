@@ -27,6 +27,9 @@ class LoadingTorViewController: UIViewController {
         if segue.identifier == "showWallet" {
             let vc = segue.destination as! PinUnlockViewController
             vc.fillPinFor = .wallet
+            vc.completion = { authenticated in
+                vc.performSegue(withIdentifier: "showWallet", sender: vc)
+            }
         }
     }
 }

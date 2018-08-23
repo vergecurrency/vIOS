@@ -117,6 +117,7 @@
 		A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */; };
 		A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */; };
 		A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */; };
+		A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +269,7 @@
 		A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthKey.swift; sourceTree = "<group>"; };
 		A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+VisibleViewController.swift"; sourceTree = "<group>"; };
 		A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
+		A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectWalletViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -604,6 +606,7 @@
 				A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */,
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
+				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
 				A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */,
+				A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */,
 				A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,

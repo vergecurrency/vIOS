@@ -14,7 +14,7 @@ import UIKit
     var placeholderLabel: UILabel?
     var valueLabel: UILabel?
     
-    @IBInspectable var borderWidth: Int = 2
+    @IBInspectable var borderWidth: Double = 0.5
     @IBInspectable var borderColor: UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.9, alpha: 1)
     
     @IBInspectable private var label: String = ""
