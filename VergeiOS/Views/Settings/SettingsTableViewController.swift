@@ -26,8 +26,9 @@ class SettingsTableViewController: UITableViewController {
         default: break
         }
     }
-    
-    private func otherHandler(index: Int) {
+
+    private func otherHandler(index: Int) -> Void {
+        
         switch index {
         case 2:
             SKStoreReviewController.requestReview()

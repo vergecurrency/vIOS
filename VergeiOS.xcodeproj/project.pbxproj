@@ -116,6 +116,7 @@
 		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
 		A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */; };
 		A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */; };
+		A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +267,7 @@
 		A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewCell.swift; sourceTree = "<group>"; };
 		A398B20C212B0F47004ACB73 /* LocalAuthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthKey.swift; sourceTree = "<group>"; };
 		A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+VisibleViewController.swift"; sourceTree = "<group>"; };
+		A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -601,6 +603,7 @@
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
 				A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */,
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
+				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				A3256668211B8E1A006FB08A /* WalletManager.swift in Sources */,
 				A32566582115AEE8006FB08A /* FiatBalanceView.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */,
 				A3256663211A39A2006FB08A /* StatisicsAPIClient.swift in Sources */,
 				A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */,
 				A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */,
