@@ -56,7 +56,7 @@ import UIKit
         self.layer.addSublayer(border)
         
         // Max width needs to be more dynamic..
-        let labelRect = CGRect(x: rect.minX, y: rect.minY, width: rect.width, height: 14.0)
+        let labelRect = CGRect(x: rect.minX, y: rect.minY, width: rect.width - 8.0, height: 14.0)
         
         self.labelLabel = UILabel(frame: labelRect)
         self.labelLabel?.text = label
@@ -65,7 +65,7 @@ import UIKit
         
         self.addSubview(self.labelLabel!)
         
-        let valueRect = CGRect(x: rect.minX, y: rect.minY + 19.0, width: rect.width, height: 22.0)
+        let valueRect = CGRect(x: rect.minX, y: rect.minY + 19.0, width: rect.width - 8.0, height: 22.0)
         
         self.placeholderLabel = UILabel(frame: valueRect)
         self.placeholderLabel?.text = placeholder
