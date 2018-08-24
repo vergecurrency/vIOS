@@ -67,15 +67,16 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
             self.xvgCardContainer.alpha = 1.0
             self.xvgCardContainer.center.y -= 20.0
         }, completion: nil)
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        updateWalletAmount()
+        updateWalletAmountLabel()
+        updateAmountLabel()
     }
 
     @objc func didReceiveStats(_ notification: Notification) {
-        // Update price
+        updateWalletAmount()
+        updateAmountLabel()
+        updateWalletAmountLabel()
     }
 
     @IBAction func switchCurrency(_ sender: UIBarButtonItem) {
@@ -98,8 +99,13 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
         self.updateAmountLabel()
     }
 
+    func updateWalletAmount() {
+        walletAmount = WalletManager.default.amount
+    }
+
     func updateWalletAmountLabel() {
-        self.walletAmountLabel.text = walletAmount.toCurrency(currency: getCurrencyString())
+        let amountLeft = NSNumber(floatLiteral: walletAmount.doubleValue - amount.doubleValue - 0.1)
+        self.walletAmountLabel.text = amountLeft.toCurrency(currency: getCurrencyString())
     }
 
     func updateAmountLabel() {
@@ -156,22 +162,51 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
         let alertController = confirmSendView.makeActionSheet()
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let sendAction = UIAlertAction(title: "Send", style: .default) { alert in
-            self.didSelectRecipientAddress("")
-            self.didChangeAmount(0)
+            self.sendXvg()
         }
 
         alertController.addAction(sendAction)
         alertController.addAction(cancelAction)
 
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true, completion:{})
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
         }
+
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
+
+    func sendXvg() {
+        let unlockView = PinUnlockViewController.createFromStoryBoard()
+        unlockView.fillPinFor = .sending
+        unlockView.cancelable = true
+        unlockView.completion = { aunthenticated in
+            if !aunthenticated {
+                return unlockView.dismiss(animated: true)
+            }
+
+            unlockView.dismiss(animated: true)
+
+            // TODO ofcourse...
+            let newWalletAmount = NSNumber(floatLiteral: self.walletAmount.doubleValue - self.amount.doubleValue - 0.1)
+            WalletManager.default.amount = newWalletAmount
+
+            self.didSelectRecipientAddress("")
+            self.didChangeAmount(0)
+            self.updateWalletAmount()
+            self.memoTextField.text = ""
+        }
+
+        present(unlockView, animated: true)
     }
 
     // MARK: - Recipients
 
     func didSelectRecipientAddress(_ address: String) {
-        recipientTextField.valueLabel?.text = address
+        self.recipientTextField.valueLabel?.text = address
     }
 
     func selectedRecipientAddress() -> String {
@@ -185,6 +220,7 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
         self.amount = amount
 
         updateAmountLabel()
+        updateWalletAmountLabel()
     }
 
     func currentAmount() -> NSNumber {
