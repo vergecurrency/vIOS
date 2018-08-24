@@ -10,8 +10,8 @@ import UIKit
 import AVFoundation
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
-    var sendViewController: SendViewController?
+
+    var delegate: RecipientDelegate!
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -108,7 +108,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             
             // Make sure we have a value.
             if metadataObj.stringValue != nil && metadataObj.stringValue?.count == 34 {
-                self.sendViewController?.receipientTextField.valueLabel?.text = metadataObj.stringValue
+                delegate.didSelectRecipientAddress(metadataObj.stringValue ?? "")
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)

@@ -122,11 +122,22 @@ Please increase you're balance.</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DiS-Zu-TEe">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                         <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nc-Er-U4T">
+                                                                <rect key="frame" x="8" y="0.0" width="44" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="44" id="NZW-zI-jQA"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="SecondaryLight"/>
+                                                                <state key="normal" image="QRcode"/>
+                                                                <connections>
+                                                                    <segue destination="989-AL-BZZ" kind="presentation" identifier="scanQRCode" id="A1S-db-xcS"/>
+                                                                </connections>
+                                                            </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEH-ex-7NW">
-                                                                <rect key="frame" x="40" y="0.0" width="295" height="50"/>
+                                                                <rect key="frame" x="52" y="0.0" width="323" height="50"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRb-El-dPf" customClass="SelectorButton" customModule="VergeiOS" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="323" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="auR-1n-icR"/>
                                                                         </constraints>
@@ -143,7 +154,6 @@ Please increase you're balance.</string>
                                                                 <constraints>
                                                                     <constraint firstItem="MRb-El-dPf" firstAttribute="top" secondItem="TEH-ex-7NW" secondAttribute="top" id="0Qq-qI-huW"/>
                                                                     <constraint firstAttribute="height" constant="50" id="3WJ-Of-EQH"/>
-                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="clQ-Sr-do5"/>
                                                                     <constraint firstItem="MRb-El-dPf" firstAttribute="leading" secondItem="TEH-ex-7NW" secondAttribute="leading" id="eSI-cj-S6a"/>
                                                                     <constraint firstAttribute="trailing" secondItem="MRb-El-dPf" secondAttribute="trailing" id="gNo-I4-eaT"/>
                                                                     <constraint firstAttribute="bottom" secondItem="MRb-El-dPf" secondAttribute="bottom" id="hcE-As-7su"/>
@@ -152,21 +162,34 @@ Please increase you're balance.</string>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="TEH-ex-7NW" firstAttribute="leading" secondItem="DiS-Zu-TEe" secondAttribute="leading" priority="750" constant="40" id="AIn-gR-UpQ"/>
+                                                            <constraint firstItem="TEH-ex-7NW" firstAttribute="leading" secondItem="1Nc-Er-U4T" secondAttribute="trailing" id="6ez-cc-eV6"/>
                                                             <constraint firstItem="TEH-ex-7NW" firstAttribute="top" secondItem="DiS-Zu-TEe" secondAttribute="top" id="AuN-Dh-lC6"/>
+                                                            <constraint firstItem="1Nc-Er-U4T" firstAttribute="leading" secondItem="DiS-Zu-TEe" secondAttribute="leading" constant="8" id="CSK-DL-JYK"/>
                                                             <constraint firstAttribute="height" constant="50" id="R9X-qD-dGl"/>
-                                                            <constraint firstItem="TEH-ex-7NW" firstAttribute="centerX" secondItem="DiS-Zu-TEe" secondAttribute="centerX" id="c4X-O8-uPY"/>
-                                                            <constraint firstAttribute="trailing" secondItem="TEH-ex-7NW" secondAttribute="trailing" priority="750" constant="40" id="cKB-q0-r7E"/>
+                                                            <constraint firstAttribute="trailing" secondItem="TEH-ex-7NW" secondAttribute="trailing" id="cKB-q0-r7E"/>
+                                                            <constraint firstAttribute="bottom" secondItem="1Nc-Er-U4T" secondAttribute="bottom" id="hVq-1K-BEV"/>
+                                                            <constraint firstItem="1Nc-Er-U4T" firstAttribute="top" secondItem="DiS-Zu-TEe" secondAttribute="top" id="kvW-lY-Zdi"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFw-Lc-QGD">
                                                         <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                                         <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uk-oW-48C">
+                                                                <rect key="frame" x="8" y="0.0" width="44" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="44" id="0z6-RK-aie"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="SecondaryLight"/>
+                                                                <state key="normal" image="Currency"/>
+                                                                <connections>
+                                                                    <action selector="switchCurrency:" destination="aj0-hD-wgD" eventType="touchUpInside" id="ysj-BS-8Fy"/>
+                                                                </connections>
+                                                            </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3r-m1-gqb">
-                                                                <rect key="frame" x="40" y="-0.5" width="295" height="50"/>
+                                                                <rect key="frame" x="52" y="0.0" width="323" height="50"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYw-Td-wcA" customClass="SelectorButton" customModule="VergeiOS" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="323" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="0Oi-V1-vWH"/>
                                                                         </constraints>
@@ -185,28 +208,36 @@ Please increase you're balance.</string>
                                                                     <constraint firstAttribute="trailing" secondItem="hYw-Td-wcA" secondAttribute="trailing" id="4Tc-d3-GXg"/>
                                                                     <constraint firstItem="hYw-Td-wcA" firstAttribute="leading" secondItem="Y3r-m1-gqb" secondAttribute="leading" id="BaG-s2-T3M"/>
                                                                     <constraint firstAttribute="bottom" secondItem="hYw-Td-wcA" secondAttribute="bottom" id="ELU-gS-iEO"/>
-                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="kHn-sh-XHo"/>
                                                                     <constraint firstAttribute="height" constant="50" id="uAK-3D-KP7"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="Y3r-m1-gqb" firstAttribute="centerX" secondItem="vFw-Lc-QGD" secondAttribute="centerX" id="J8d-sL-r7m"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Y3r-m1-gqb" secondAttribute="trailing" priority="750" constant="40" id="JFL-Vu-FCp"/>
-                                                            <constraint firstItem="Y3r-m1-gqb" firstAttribute="leading" secondItem="vFw-Lc-QGD" secondAttribute="leading" priority="750" constant="40" id="Vr8-k4-5lp"/>
+                                                            <constraint firstItem="9Uk-oW-48C" firstAttribute="top" secondItem="vFw-Lc-QGD" secondAttribute="top" id="0dz-L4-RwX"/>
+                                                            <constraint firstItem="9Uk-oW-48C" firstAttribute="leading" secondItem="vFw-Lc-QGD" secondAttribute="leading" constant="8" id="9fS-yB-lLo"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Y3r-m1-gqb" secondAttribute="trailing" id="JFL-Vu-FCp"/>
+                                                            <constraint firstItem="Y3r-m1-gqb" firstAttribute="leading" secondItem="9Uk-oW-48C" secondAttribute="trailing" id="ZAv-I2-zum"/>
                                                             <constraint firstItem="Y3r-m1-gqb" firstAttribute="top" secondItem="vFw-Lc-QGD" secondAttribute="top" id="cKU-J9-opQ"/>
                                                             <constraint firstAttribute="height" constant="50" id="duM-Z3-0f8"/>
+                                                            <constraint firstAttribute="bottom" secondItem="9Uk-oW-48C" secondAttribute="bottom" id="pb9-ji-yp2"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aT-XQ-tyR">
                                                         <rect key="frame" x="0.0" y="128" width="375" height="50"/>
                                                         <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lR4-h2-cea">
+                                                                <rect key="frame" x="8" y="0.0" width="44" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="44" id="1y2-UZ-TVE"/>
+                                                                </constraints>
+                                                                <color key="tintColor" name="SecondaryLight"/>
+                                                            </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVL-qe-snM">
-                                                                <rect key="frame" x="40" y="0.0" width="295" height="50"/>
+                                                                <rect key="frame" x="52" y="0.0" width="323" height="50"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-dq-GwB" customClass="SelectorButton" customModule="VergeiOS" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="323" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="IZd-AG-5L5"/>
                                                                         </constraints>
@@ -215,7 +246,7 @@ Please increase you're balance.</string>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gift to Justin" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpu-X4-OV3">
-                                                                        <rect key="frame" x="0.0" y="20" width="295" height="30"/>
+                                                                        <rect key="frame" x="0.0" y="20" width="323" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="0Ji-qv-JTo"/>
                                                                         </constraints>
@@ -230,7 +261,6 @@ Please increase you're balance.</string>
                                                                     <constraint firstAttribute="bottom" secondItem="pBY-dq-GwB" secondAttribute="bottom" id="4Zk-IM-dtM"/>
                                                                     <constraint firstItem="dpu-X4-OV3" firstAttribute="top" secondItem="RVL-qe-snM" secondAttribute="top" constant="20" id="Dre-zh-EYv"/>
                                                                     <constraint firstAttribute="bottom" secondItem="dpu-X4-OV3" secondAttribute="bottom" id="I00-8K-Olv"/>
-                                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="PDV-JD-WHe"/>
                                                                     <constraint firstAttribute="trailing" secondItem="dpu-X4-OV3" secondAttribute="trailing" id="RPW-eP-eEv"/>
                                                                     <constraint firstItem="pBY-dq-GwB" firstAttribute="leading" secondItem="RVL-qe-snM" secondAttribute="leading" id="TUd-Vi-YFK"/>
                                                                     <constraint firstAttribute="trailing" secondItem="pBY-dq-GwB" secondAttribute="trailing" id="fcE-NO-CXl"/>
@@ -242,9 +272,11 @@ Please increase you're balance.</string>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="FG7-yo-dIl"/>
-                                                            <constraint firstAttribute="trailing" secondItem="RVL-qe-snM" secondAttribute="trailing" priority="750" constant="40" id="FQP-tX-KiH"/>
-                                                            <constraint firstItem="RVL-qe-snM" firstAttribute="leading" secondItem="1aT-XQ-tyR" secondAttribute="leading" priority="750" constant="40" id="Ya9-nF-Ses"/>
-                                                            <constraint firstItem="RVL-qe-snM" firstAttribute="centerX" secondItem="1aT-XQ-tyR" secondAttribute="centerX" id="hVw-lS-d99"/>
+                                                            <constraint firstAttribute="trailing" secondItem="RVL-qe-snM" secondAttribute="trailing" id="FQP-tX-KiH"/>
+                                                            <constraint firstAttribute="bottom" secondItem="lR4-h2-cea" secondAttribute="bottom" id="MJA-Xm-RP2"/>
+                                                            <constraint firstItem="lR4-h2-cea" firstAttribute="top" secondItem="1aT-XQ-tyR" secondAttribute="top" id="Xo6-Rk-osC"/>
+                                                            <constraint firstItem="RVL-qe-snM" firstAttribute="leading" secondItem="lR4-h2-cea" secondAttribute="trailing" id="abD-D8-EDQ"/>
+                                                            <constraint firstItem="lR4-h2-cea" firstAttribute="leading" secondItem="1aT-XQ-tyR" secondAttribute="leading" constant="8" id="oUA-qx-KYy"/>
                                                             <constraint firstItem="RVL-qe-snM" firstAttribute="top" secondItem="1aT-XQ-tyR" secondAttribute="top" id="p1k-aq-XRY"/>
                                                         </constraints>
                                                     </view>
@@ -253,18 +285,21 @@ Please increase you're balance.</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t83-X2-mLR">
                                                 <rect key="frame" x="0.0" y="273" width="375" height="70"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-5j-Srg" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-5j-Srg" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                                         <rect key="frame" x="41" y="0.0" width="294" height="50"/>
-                                                        <color key="backgroundColor" name="PrimaryLight"/>
+                                                        <color key="backgroundColor" name="VergeGrey"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="dW1-Nu-dH3"/>
                                                             <constraint firstAttribute="height" constant="50" id="ojd-3c-mJS"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title="Confirm" image="TouchID">
+                                                        <state key="normal" title="Confirm" image="Checked">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="confirm:" destination="aj0-hD-wgD" eventType="touchUpInside" id="fPv-uG-OUn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -300,23 +335,14 @@ Please increase you're balance.</string>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="nUu-cc-weU"/>
-                    <navigationItem key="navigationItem" title="Send XVG" id="bg6-ol-xdW">
-                        <barButtonItem key="leftBarButtonItem" title="XVG" id="3Cj-zH-jMT">
-                            <connections>
-                                <action selector="switchCurrency:" destination="aj0-hD-wgD" id="vr8-zk-6We"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="QRcode" id="3Px-po-gsq">
-                            <connections>
-                                <segue destination="989-AL-BZZ" kind="presentation" identifier="scanQRCode" id="jqs-xX-6xu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Send XVG" id="bg6-ol-xdW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="amountTextField" destination="hYw-Td-wcA" id="WmC-AL-Otw"/>
+                        <outlet property="confirmButton" destination="1qT-5j-Srg" id="oek-Wg-ded"/>
+                        <outlet property="memoTextField" destination="dpu-X4-OV3" id="LYr-J5-e1B"/>
                         <outlet property="noBalanceView" destination="9p4-gg-a9I" id="CO0-mv-FxX"/>
-                        <outlet property="receipientTextField" destination="MRb-El-dPf" id="2Si-jT-u8E"/>
+                        <outlet property="recipientTextField" destination="MRb-El-dPf" id="2Si-jT-u8E"/>
                         <outlet property="walletAmountLabel" destination="JLd-Rc-cv0" id="v14-yB-Q8U"/>
                         <outlet property="xvgCardContainer" destination="dFl-JU-45f" id="miB-GH-fAy"/>
                     </connections>
@@ -343,9 +369,6 @@ Please increase you're balance.</string>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="XVG address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emq-6W-gA3">
                                             <rect key="frame" x="16" y="0.0" width="295" height="43.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="44" id="g13-0D-6EO"/>
-                                            </constraints>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -658,13 +681,14 @@ Please increase you're balance.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="Checked" width="30" height="30"/>
         <image name="Close" width="30" height="30"/>
+        <image name="Currency" width="30" height="30"/>
         <image name="Image" width="30" height="30"/>
         <image name="NoBalancePlaceholder" width="300" height="300"/>
         <image name="Payment" width="30" height="30"/>
         <image name="QRcode" width="30" height="30"/>
         <image name="SendCard" width="735" height="475"/>
-        <image name="TouchID" width="30" height="30"/>
         <namedColor name="BackgroundGrey">
             <color red="0.97299999000000004" green="0.96899998190000003" blue="0.96899998190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -675,7 +699,19 @@ Please increase you're balance.</string>
             <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
+            <color red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryLight">
+            <color red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryLight">
             <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryLight">
+            <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VergeGrey">
+            <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

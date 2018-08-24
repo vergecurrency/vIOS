@@ -118,6 +118,11 @@
 		A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */; };
 		A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */; };
 		A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */; };
+		A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */; };
+		A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */; };
+		B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */; };
+		B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */; };
+		B2BD7F39EE96EB7B9E5A870A /* SendTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +275,11 @@
 		A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+VisibleViewController.swift"; sourceTree = "<group>"; };
 		A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
 		A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectWalletViewController.swift; sourceTree = "<group>"; };
+		A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSendView.swift; sourceTree = "<group>"; };
+		A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSendView.xib; sourceTree = "<group>"; };
+		B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDelegate.swift; sourceTree = "<group>"; };
+		B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTransaction.swift; sourceTree = "<group>"; };
+		B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +319,7 @@
 				07B9F4532107C9EB00871990 /* BlockchainInfo.swift */,
 				A3256664211A3B61006FB08A /* XvgInfo.swift */,
 				A302D2FA211F64FB00EA8091 /* Address.swift */,
+				B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +470,8 @@
 			isa = PBXGroup;
 			children = (
 				A305DDB92107BB8B00911B64 /* KeyboardDelegate.swift */,
+				B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */,
+				B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -585,6 +598,8 @@
 				A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */,
 				A302D2F0211F3B4400EA8091 /* SetAmountViewController.swift */,
 				A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */,
+				A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */,
+				A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -838,6 +853,7 @@
 				A325664B211373FF006FB08A /* Wallet.storyboard in Resources */,
 				A376411B2108F0C700E04521 /* Cartfile in Resources */,
 				A338E6B92110D60F000D44EE /* ChartWalletSlideView.xib in Resources */,
+				A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */,
 				A32566562115AEDB006FB08A /* FiatBalanceView.xib in Resources */,
 				A325664321135A00006FB08A /* Settings.storyboard in Resources */,
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
@@ -963,6 +979,7 @@
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A302D3412122053300EA8091 /* PriceTicker.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
+				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
 				A302D2F1211F3B4400EA8091 /* SetAmountViewController.swift in Sources */,
 				A32566542115AEBF006FB08A /* XVGBalanceView.swift in Sources */,
@@ -999,6 +1016,9 @@
 				A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 				A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */,
+				B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */,
+				B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */,
+				B2BD7F39EE96EB7B9E5A870A /* SendTransaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

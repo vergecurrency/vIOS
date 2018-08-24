@@ -69,6 +69,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="PrimaryLight"/>
+                                        <connections>
+                                            <segue destination="Ife-oh-km1" kind="show" id="Jec-BT-kEb"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -206,6 +209,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="PrimaryLight"/>
+                                        <connections>
+                                            <segue destination="bHm-Y1-Gw7" kind="show" id="cyL-st-QTt"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="fgj-Qr-47L" imageView="e4M-oV-doz" style="IBUITableViewCellStyleDefault" id="utf-xQ-5Db">
                                         <rect key="frame" x="0.0" y="503.5" width="375" height="44"/>
@@ -421,6 +427,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYF-yO-4x5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3225" y="1692"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="a5Z-69-Q5n">
+            <objects>
+                <viewController id="Ife-oh-km1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jSH-NW-MZW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your paperkey... Placeholder view" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Q3-5b-8xg">
+                                <rect key="frame" x="40" y="80" width="295" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PaperKey" translatesAutoresizingMaskIntoConstraints="NO" id="aei-PX-lY7">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <color key="tintColor" name="PrimaryLight"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="EFm-rf-wws"/>
+                                    <constraint firstAttribute="height" constant="200" id="mFH-g8-RRG"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="4Q3-5b-8xg" firstAttribute="centerX" secondItem="jSH-NW-MZW" secondAttribute="centerX" id="M7c-tt-0r4"/>
+                            <constraint firstItem="aei-PX-lY7" firstAttribute="centerY" secondItem="jSH-NW-MZW" secondAttribute="centerY" id="MO9-G0-5mS"/>
+                            <constraint firstItem="aei-PX-lY7" firstAttribute="centerX" secondItem="jSH-NW-MZW" secondAttribute="centerX" id="N0E-AO-EaI"/>
+                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="4Q3-5b-8xg" secondAttribute="trailing" constant="40" id="QsG-a1-4cr"/>
+                            <constraint firstItem="4Q3-5b-8xg" firstAttribute="top" secondItem="IMz-ci-RPJ" secondAttribute="top" constant="16" id="ZSm-GL-YR3"/>
+                            <constraint firstItem="4Q3-5b-8xg" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" constant="40" id="gre-q6-nsK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IMz-ci-RPJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8r-9b-faM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1621.5999999999999" y="1035.832083958021"/>
         </scene>
         <!--Disconnect Wallet View Controller-->
         <scene sceneID="cl0-4N-jbc">
@@ -674,6 +719,43 @@
             </objects>
             <point key="canvasLocation" x="2589.5999999999999" y="2524.5877061469268"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ia1-ru-tby">
+            <objects>
+                <viewController id="bHm-Y1-Gw7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Id8-cB-bs8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Donate" translatesAutoresizingMaskIntoConstraints="NO" id="lvy-qA-rpT">
+                                <rect key="frame" x="62" y="208" width="250" height="250"/>
+                                <color key="tintColor" name="PrimaryLight"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="TfX-Bc-arG"/>
+                                    <constraint firstAttribute="width" constant="250" id="gfp-gq-dYY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Placeholder view" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrC-ng-gBM">
+                                <rect key="frame" x="122" y="466" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="lvy-qA-rpT" firstAttribute="centerX" secondItem="Id8-cB-bs8" secondAttribute="centerX" id="LYs-iH-lqM"/>
+                            <constraint firstItem="lvy-qA-rpT" firstAttribute="centerY" secondItem="Id8-cB-bs8" secondAttribute="centerY" id="PQM-Rb-UnR"/>
+                            <constraint firstItem="SrC-ng-gBM" firstAttribute="top" secondItem="lvy-qA-rpT" secondAttribute="bottom" constant="8" id="lKh-RO-Yk7"/>
+                            <constraint firstItem="SrC-ng-gBM" firstAttribute="centerX" secondItem="Id8-cB-bs8" secondAttribute="centerX" id="yya-Om-Lo2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eRN-yb-R2e"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bc3-XR-h22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3410" y="2525"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Credits" width="30" height="30"/>
@@ -685,6 +767,7 @@
         <image name="FaceID" width="30" height="30"/>
         <image name="GitHub" width="30" height="30"/>
         <image name="Hero" width="30" height="30"/>
+        <image name="PaperKey" width="600" height="600"/>
         <image name="PaperKeyAlt" width="30" height="30"/>
         <image name="Pin" width="30" height="30"/>
         <image name="RateApp" width="30" height="30"/>
@@ -704,9 +787,6 @@
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
             <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

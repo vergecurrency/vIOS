@@ -10,7 +10,7 @@ import UIKit
 
 class SetAmountViewController: UIViewController, KeyboardDelegate {
 
-    var sendViewController: SendViewController?
+    var delegate: AmountDelegate!
     
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
@@ -24,7 +24,7 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
         self.isSwipable()
         
         self.amountKeyboard.delegate = self
-        self.amount = Double(truncating: self.sendViewController!.amount)
+        self.amount = Double(truncating: delegate.currentAmount())
         
         self.updateAmountLabel()
     }
@@ -64,21 +64,10 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     }
     
     @IBAction func setAmount(_ sender: Any) {
-        sendViewController?.amount = NSNumber(value: amount)
-        sendViewController?.updateAmountLabel()
+        delegate.didChangeAmount(NSNumber(value: amount))
         
         self.closeViewController(self)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func closeViewController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
