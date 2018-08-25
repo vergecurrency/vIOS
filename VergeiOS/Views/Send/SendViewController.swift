@@ -60,6 +60,10 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if walletAmount.doubleValue <= 0.1 {
+            noBalanceView.isHidden = false
+        }
+
         self.xvgCardContainer.alpha = 0.0
         self.xvgCardContainer.center.y += 20.0
 
@@ -161,9 +165,10 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
         confirmSendView.setTransaction(transaction)
         let alertController = confirmSendView.makeActionSheet()
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let sendAction = UIAlertAction(title: "Send", style: .default) { alert in
+        let sendAction = UIAlertAction(title: "Send XVG", style: .default) { alert in
             self.sendXvg()
         }
+        sendAction.setValue(UIImage(named: "Send"), forKey: "image")
 
         alertController.addAction(sendAction)
         alertController.addAction(cancelAction)
@@ -227,4 +232,7 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
         return amount
     }
 
+    func currentCurrency() -> String {
+        return getCurrencyString()
+    }
 }

@@ -17,25 +17,23 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var amountKeyboard: XvgAmountKeyboard!
     
     var amount = 0.0
+    var amountText: String = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.isSwipable()
+        isSwipable()
         
-        self.amountKeyboard.delegate = self
-        self.amount = Double(truncating: delegate.currentAmount())
+        amountKeyboard.delegate = self
+        amount = delegate.currentAmount().doubleValue
+        amountText = delegate.currentAmount().stringValue
+        currencyLabel.text = delegate.currentCurrency()
         
-        self.updateAmountLabel()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        updateAmountLabel()
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
-        var xvg = amountLabel.text!
+        var xvg = amountText
         
         if (keyboardKey.isKind(of: BackKey.self)) {
             if xvg.count > 1 {
@@ -48,29 +46,34 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
                 return
             }
             
-            if (xvg == "0") {
+            if (xvg == "0" && input != ".") {
                 xvg = ""
             }
             
             xvg.append(input)
         }
         
-        amountLabel.text = xvg
-        amount = Double(xvg)!
+        if let newAmount = Double(xvg) {
+            amount = newAmount
+        }
+        
+        amountText = xvg
+        
+        updateAmountLabel()
     }
 
     func updateAmountLabel() {
-        amountLabel.text = (amount > 0) ? String(describing: amount) : "0"
+        amountLabel.text = amountText
     }
     
     @IBAction func setAmount(_ sender: Any) {
         delegate.didChangeAmount(NSNumber(value: amount))
         
-        self.closeViewController(self)
+        closeViewController(self)
     }
     
     @IBAction func closeViewController(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

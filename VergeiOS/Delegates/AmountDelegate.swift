@@ -8,4 +8,5 @@ import Foundation
 protocol AmountDelegate {
     func didChangeAmount(_ amount: NSNumber)
     func currentAmount() -> NSNumber
+    func currentCurrency() -> String
 }

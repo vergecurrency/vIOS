@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().layer.borderWidth = 0
         UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
         UITabBar.appearance().clipsToBounds = true
-        
+
+        window?.tintColor = UIColor.primaryLight()
+
         return true
     }
 

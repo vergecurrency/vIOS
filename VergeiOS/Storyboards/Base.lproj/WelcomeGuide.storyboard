@@ -165,7 +165,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7h-d0-v79" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="209" width="295" height="250"/>
+                                <rect key="frame" x="40" y="208.5" width="295" height="250"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-58-B6e">
                                         <rect key="frame" x="110.5" y="89.5" width="75" height="71.5"/>
