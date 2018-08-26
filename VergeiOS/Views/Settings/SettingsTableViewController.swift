@@ -8,11 +8,14 @@
 
 import UIKit
 import StoreKit
+import LocalAuthentication
 
 class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
-    
+
+    let localAuthIndexPath = IndexPath(row: 2, section: 1)
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -83,5 +86,26 @@ class SettingsTableViewController: UITableViewController {
                 }
             }
         }
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+
+        if indexPath == localAuthIndexPath && LAContext.available(type: .touchID) {
+            cell.textLabel?.text = "Use Touch ID"
+            cell.imageView?.image = UIImage(named: "TouchID")
+        }
+
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let number = super.tableView(tableView, numberOfRowsInSection: section)
+
+        if section == localAuthIndexPath.section && !LAContext.anyAvailable() {
+            return number - 1
+        }
+
+        return number
     }
 }
