@@ -28,12 +28,12 @@ So you want to help us out? Here's a guide on how to get started:
 
 2. Now install the following tools via [brew](https://brew.sh) 
 ```sh
-brew install carthage automake autoconf libtool gettext
+brew install carthage
 ```
 
 3. In your cloned project folder run carthage build (this could take awile):
 ```sh
-carthage checkout && carthage build --platform iOS
+carthage update --platform iOS
 ```
 
 4. After that is done, open the project and start coding.
@@ -46,6 +46,7 @@ carthage checkout && carthage build --platform iOS
 * [hackiftekhar/IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) - Makes working with keyboards and inputs painless
 * [aschuch/QRCode](https://github.com/aschuch/QRCode) - Generates beautiful QR codes for receiving XVG
 * [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps working with JSON responses
+* [ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift) - Adds a reactive programming framework
 * [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
 
 ### Community

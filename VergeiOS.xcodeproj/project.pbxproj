@@ -103,6 +103,8 @@
 		A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
+		A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F32DF2134944600F7B8FD /* RxSwift.framework */; };
+		A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F32E02134944600F7B8FD /* RxCocoa.framework */; };
 		A35F3D82211CE738006068A2 /* WalletManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* WalletManagerTest.swift */; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
 		A376411B2108F0C700E04521 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A376411A2108F0C700E04521 /* Cartfile */; };
@@ -259,6 +261,8 @@
 		A33F6A7920EEE487001492C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A33F6A7C20EEE487001492C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A33F6A7E20EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A35F32DF2134944600F7B8FD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		A35F32E02134944600F7B8FD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		A35F3D81211CE738006068A2 /* WalletManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerTest.swift; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		A376411A2108F0C700E04521 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
@@ -303,7 +307,9 @@
 			files = (
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
+				A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
+				A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */,
 				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
 				A302D35D2128A24800EA8091 /* Tor.framework in Frameworks */,
@@ -675,6 +681,8 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A35F32E02134944600F7B8FD /* RxCocoa.framework */,
+				A35F32DF2134944600F7B8FD /* RxSwift.framework */,
 				A398B205212AFF71004ACB73 /* LocalAuthentication.framework */,
 				A302D35B2128A23200EA8091 /* Tor.framework */,
 				A302D3082120374C00EA8091 /* CoreGraphics.framework */,
@@ -899,12 +907,16 @@
 				"$(SRCROOT)/Carthage/Build/iOS/QRCode.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/QRCode.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyJSON.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

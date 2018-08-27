@@ -2,3 +2,4 @@ github "hackiftekhar/IQKeyboardManager" "v6.1.1"
 github "aschuch/QRCode" "master"
 github "SwiftyJSON/SwiftyJSON" ~> 4.0
 github "evgenyneu/keychain-swift" ~> 11.0
+github "ReactiveX/RxSwift" ~> 4.0
