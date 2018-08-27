@@ -49,7 +49,15 @@ class WalletManager {
             return NSNumber(value: UserDefaults.standard.double(forKey: "wallet.amount"))
         }
         set {
-            UserDefaults.standard.set(newValue.doubleValue, forKey: "wallet.amount")
+            // Make sure wallet amount never gets less then zero.
+            var correctNewValue = newValue.doubleValue
+            if newValue.doubleValue < 0.0 {
+                correctNewValue = 0.0
+            }
+
+            UserDefaults.standard.set(correctNewValue, forKey: "wallet.amount")
+
+            NotificationCenter.default.post(name: .didChangeWalletAmount, object: nil)
         }
     }
 

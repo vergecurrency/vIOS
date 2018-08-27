@@ -15,18 +15,19 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var amountKeyboard: XvgAmountKeyboard!
-    
-    var amount = 0.0
+
+    var sendTransaction: SendTransaction?
     var amountText: String = "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         isSwipable()
-        
+
+        var currentAmount = delegate.currentAmount()
+
         amountKeyboard.delegate = self
-        amount = delegate.currentAmount().doubleValue
-        amountText = delegate.currentAmount().stringValue
+        amountText = currentAmount.stringValue
         currencyLabel.text = delegate.currentCurrency()
         
         updateAmountLabel()
@@ -54,11 +55,11 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
         }
         
         if let newAmount = Double(xvg) {
-            amount = newAmount
+            sendTransaction?.setBy(currency: delegate.currentCurrency(), amount: NSNumber(value: newAmount))
         }
         
         amountText = xvg
-        
+
         updateAmountLabel()
     }
 
@@ -67,7 +68,7 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
     }
     
     @IBAction func setAmount(_ sender: Any) {
-        delegate.didChangeAmount(NSNumber(value: amount))
+        delegate.didChangeAmount(sendTransaction!)
         
         closeViewController(self)
     }

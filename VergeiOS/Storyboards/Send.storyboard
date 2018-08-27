@@ -646,8 +646,6 @@ Please increase you're balance.</string>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="GYZ-Ik-2RM" firstAttribute="trailing" secondItem="moh-Ac-vvB" secondAttribute="trailing" constant="40" id="6en-Bm-Bdr"/>
-                            <constraint firstItem="moh-Ac-vvB" firstAttribute="leading" secondItem="GYZ-Ik-2RM" secondAttribute="leading" constant="40" id="BJ4-m4-lDI"/>
                             <constraint firstItem="GYZ-Ik-2RM" firstAttribute="trailing" secondItem="Lga-dO-s2E" secondAttribute="trailing" constant="16" id="BLo-q5-YMi"/>
                             <constraint firstItem="GYZ-Ik-2RM" firstAttribute="bottom" secondItem="moh-Ac-vvB" secondAttribute="bottom" constant="20" id="EpJ-6J-ia1"/>
                             <constraint firstItem="GYZ-Ik-2RM" firstAttribute="trailing" secondItem="9xj-s8-Arq" secondAttribute="trailing" priority="750" constant="40" id="FX6-fE-fDv"/>
@@ -655,6 +653,7 @@ Please increase you're balance.</string>
                             <constraint firstItem="Lga-dO-s2E" firstAttribute="top" secondItem="sbt-2S-vmV" secondAttribute="top" constant="20" id="daG-XZ-5jZ"/>
                             <constraint firstItem="9xj-s8-Arq" firstAttribute="centerX" secondItem="sbt-2S-vmV" secondAttribute="centerX" id="hRu-e0-FfW"/>
                             <constraint firstItem="9xj-s8-Arq" firstAttribute="leading" secondItem="GYZ-Ik-2RM" secondAttribute="leading" priority="750" constant="40" id="l24-aJ-aB3"/>
+                            <constraint firstItem="moh-Ac-vvB" firstAttribute="width" secondItem="9xj-s8-Arq" secondAttribute="width" id="lPk-TA-7IY"/>
                             <constraint firstItem="Lga-dO-s2E" firstAttribute="leading" secondItem="GYZ-Ik-2RM" secondAttribute="leading" constant="16" id="lZz-kG-d3c"/>
                             <constraint firstItem="moh-Ac-vvB" firstAttribute="centerX" secondItem="sbt-2S-vmV" secondAttribute="centerX" id="mQB-BD-FXk"/>
                             <constraint firstItem="9xj-s8-Arq" firstAttribute="top" secondItem="Lga-dO-s2E" secondAttribute="bottom" constant="8" id="vpU-M7-ZMJ"/>

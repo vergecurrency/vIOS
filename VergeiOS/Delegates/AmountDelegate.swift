@@ -6,7 +6,7 @@
 import Foundation
 
 protocol AmountDelegate {
-    func didChangeAmount(_ amount: NSNumber)
+    func didChangeAmount(_ transaction: SendTransaction)
     func currentAmount() -> NSNumber
     func currentCurrency() -> String
 }

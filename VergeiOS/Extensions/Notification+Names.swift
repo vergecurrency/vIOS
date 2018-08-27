@@ -11,4 +11,5 @@ import Foundation
 extension Notification.Name {
     static let didReceiveStats = Notification.Name("didReceiveStats")
     static let didChangeCurrency = Notification.Name("didChangeCurrency")
+    static let didChangeWalletAmount = Notification.Name("didChangeWalletAmount")
 }
