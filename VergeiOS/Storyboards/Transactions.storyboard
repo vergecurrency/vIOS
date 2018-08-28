@@ -9,7 +9,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,39 +20,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hnN-wM-ZY4">
-                                <rect key="frame" x="30" y="145" width="315" height="378"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvt-6J-UT4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="8Lh-rI-pNE">
-                                        <rect key="frame" x="0.0" y="0.0" width="315" height="315"/>
-                                        <color key="tintColor" name="SecondaryLight"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="59A-0z-hSv">
+                                        <rect key="frame" x="24" y="90" width="327" height="374"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="ntO-sJ-AtH">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="327"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ntO-sJ-AtH" secondAttribute="height" multiplier="1:1" priority="750" id="Bbh-vK-ggv"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="335" id="saP-CC-0Nc"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions received yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JD-7a-fdL">
+                                                <rect key="frame" x="0.0" y="327" width="327" height="27.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                                <color key="textColor" red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="0.65427011989999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open the buy XVG guide or receive XVG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV0-4n-doB">
+                                                <rect key="frame" x="0.0" y="354.5" width="327" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                                                <color key="textColor" red="0.60799998040000003" green="0.60799998040000003" blue="0.60799998040000003" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="8Lh-rI-pNE" secondAttribute="height" multiplier="1:1" priority="750" id="L4k-o7-kH5"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="335" id="br8-Hg-5uY"/>
+                                            <constraint firstItem="ntO-sJ-AtH" firstAttribute="width" secondItem="59A-0z-hSv" secondAttribute="width" priority="250" id="N3V-dP-VBC"/>
                                         </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No transactions received yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5JD-7a-fdL">
-                                        <rect key="frame" x="26.5" y="323" width="262" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <color key="textColor" red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="0.65427011989999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open the bug XVG guide or receive XVG" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV0-4n-doB">
-                                        <rect key="frame" x="25.5" y="358.5" width="264" height="19.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
-                                        <color key="textColor" red="0.60799998040000003" green="0.60799998040000003" blue="0.60799998040000003" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="59A-0z-hSv" secondAttribute="trailing" constant="24" id="1Vk-xh-xmj"/>
+                                    <constraint firstItem="59A-0z-hSv" firstAttribute="centerY" secondItem="yvt-6J-UT4" secondAttribute="centerY" id="E1N-F1-bO6"/>
+                                    <constraint firstItem="59A-0z-hSv" firstAttribute="centerX" secondItem="yvt-6J-UT4" secondAttribute="centerX" id="fzw-c6-2zo"/>
+                                    <constraint firstItem="59A-0z-hSv" firstAttribute="leading" secondItem="yvt-6J-UT4" secondAttribute="leading" constant="24" id="xsf-F5-P4v"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="GIw-xF-gtM" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hnN-wM-ZY4" secondAttribute="trailing" constant="24" id="KQ4-Ga-ycW"/>
-                            <constraint firstItem="hnN-wM-ZY4" firstAttribute="centerY" secondItem="fDb-Km-i6R" secondAttribute="centerY" id="mEG-RE-Qqc"/>
-                            <constraint firstItem="8Lh-rI-pNE" firstAttribute="width" secondItem="fDb-Km-i6R" secondAttribute="width" priority="750" constant="-60" id="pc9-Mq-isy"/>
-                            <constraint firstItem="hnN-wM-ZY4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GIw-xF-gtM" secondAttribute="leading" constant="24" id="sET-Zi-jdQ"/>
-                            <constraint firstItem="hnN-wM-ZY4" firstAttribute="centerX" secondItem="fDb-Km-i6R" secondAttribute="centerX" id="y6r-oc-8bP"/>
+                            <constraint firstItem="GIw-xF-gtM" firstAttribute="trailing" secondItem="yvt-6J-UT4" secondAttribute="trailing" id="Iww-Ij-arZ"/>
+                            <constraint firstItem="yvt-6J-UT4" firstAttribute="top" secondItem="GIw-xF-gtM" secondAttribute="top" id="Zoe-lQ-aHl"/>
+                            <constraint firstItem="yvt-6J-UT4" firstAttribute="leading" secondItem="GIw-xF-gtM" secondAttribute="leading" id="evb-nJ-vin"/>
+                            <constraint firstItem="GIw-xF-gtM" firstAttribute="bottom" secondItem="yvt-6J-UT4" secondAttribute="bottom" id="gqR-6y-e1U"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GIw-xF-gtM"/>
                     </view>
@@ -63,6 +75,8 @@
                             <color key="tintColor" name="SecondaryDark"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcX-QA-sm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,11 +89,11 @@
         <namedColor name="BackgroundGrey">
             <color red="0.97299999000000004" green="0.96899998190000003" blue="0.96899998190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="BackgroundGrey">
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondaryDark">
             <color red="0.09799999744" green="0.23899999259999999" blue="0.33300000429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondaryLight">
-            <color red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

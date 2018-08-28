@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDj-Bo-mkh" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDj-Bo-mkh" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
                     <rect key="frame" x="20" y="0.0" width="335" height="667"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PriceStatistics" translatesAutoresizingMaskIntoConstraints="NO" id="c17-Lc-Wuu">

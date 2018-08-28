@@ -20,8 +20,6 @@ class Keyboard: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        backgroundColor = .clear
-
         for view in subviews {
             view.removeFromSuperview()
         }
@@ -33,20 +31,27 @@ class Keyboard: UIView {
 
         characters = charactersInOrder()
         drawButtons()
+    }
 
-        layer.cornerRadius = 5
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
-        shadowLayer = CAShapeLayer()
-        shadowLayer.path = UIBezierPath(roundedRect: rect, cornerRadius: 5).cgPath
-        shadowLayer.fillColor = UIColor.white.cgColor
+        if shadowLayer == nil {
+            shadowLayer = CAShapeLayer()
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5.0).cgPath
+            shadowLayer.fillColor = backgroundColor?.cgColor
 
-        shadowLayer.shadowColor = UIColor.black.cgColor
-        shadowLayer.shadowPath = shadowLayer.path
-        shadowLayer.shadowOffset = CGSize.zero
-        shadowLayer.shadowOpacity = 0.15
-        shadowLayer.shadowRadius = 15
+            shadowLayer.shadowColor = UIColor.darkGray.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = CGSize.zero
+            shadowLayer.shadowOpacity = 0.15
+            shadowLayer.shadowRadius = 15
 
-        layer.insertSublayer(shadowLayer, at: 0)
+            layer.insertSublayer(shadowLayer, at: 0)
+        }
+
+        layer.cornerRadius = 5.0
+        backgroundColor = .clear
     }
     
     func charactersInOrder() -> [KeyboardKey] {
