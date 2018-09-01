@@ -64,6 +64,11 @@
                         <constraint firstAttribute="trailing" secondItem="vBC-fc-GO9" secondAttribute="trailing" constant="12.5" id="zJA-2b-irY"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="WuU-94-vn0"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.050000000000000003"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

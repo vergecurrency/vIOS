@@ -69,6 +69,11 @@
                         <constraint firstItem="ljo-hi-NBd" firstAttribute="centerY" secondItem="XRh-Bu-78i" secondAttribute="centerY" id="hry-R3-ryi"/>
                         <constraint firstItem="Ah8-vB-MfD" firstAttribute="top" secondItem="XRh-Bu-78i" secondAttribute="top" constant="12" id="nmL-VM-QLK"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.050000000000000003"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

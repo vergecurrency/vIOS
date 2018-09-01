@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable class PanelView: UIView {
 
     @IBInspectable var cornerRadius: CGFloat = 5.0
+    @IBInspectable var shadowOpacity: Float = 0.15
+    @IBInspectable var shadowRadius: CGFloat = 15
 
     var shadowLayer: CAShapeLayer!
 
@@ -25,8 +27,8 @@ import UIKit
             shadowLayer.shadowColor = UIColor.darkGray.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize.zero
-            shadowLayer.shadowOpacity = 0.15
-            shadowLayer.shadowRadius = 15
+            shadowLayer.shadowOpacity = shadowOpacity
+            shadowLayer.shadowRadius = shadowRadius
 
             layer.insertSublayer(shadowLayer, at: 0)
         }
