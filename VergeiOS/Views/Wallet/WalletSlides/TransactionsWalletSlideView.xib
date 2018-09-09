@@ -39,8 +39,26 @@
                             <color key="textColor" name="SecondaryDark"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h63-4j-r7x">
+                            <rect key="frame" x="0.0" y="46" width="335" height="585"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="wAd-HK-D3r"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="liC-rs-KQQ"/>
+                            </connections>
+                        </tableView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See all transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggc-Ao-MuY">
+                            <rect key="frame" x="101" y="638.5" width="133" height="20.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="3IC-dj-7SV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                            <color key="textColor" name="PrimaryLight"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <stackView opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ljo-hi-NBd">
-                            <rect key="frame" x="54.5" y="280.5" width="227" height="106.5"/>
+                            <rect key="frame" x="54" y="280" width="227" height="106.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="jzh-iV-Vxd">
                                     <rect key="frame" x="76" y="0.0" width="75" height="75"/>
@@ -57,12 +75,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="Ggc-Ao-MuY" firstAttribute="centerX" secondItem="XRh-Bu-78i" secondAttribute="centerX" id="4Qm-zr-8ic"/>
+                        <constraint firstAttribute="bottom" secondItem="Ggc-Ao-MuY" secondAttribute="bottom" constant="8" id="59t-dv-pVk"/>
+                        <constraint firstItem="h63-4j-r7x" firstAttribute="top" secondItem="huF-N5-Kaa" secondAttribute="bottom" constant="8.5" id="A3j-z8-dzh"/>
+                        <constraint firstItem="h63-4j-r7x" firstAttribute="leading" secondItem="XRh-Bu-78i" secondAttribute="leading" id="Fu0-uk-fZW"/>
                         <constraint firstItem="huF-N5-Kaa" firstAttribute="leading" secondItem="Ah8-vB-MfD" secondAttribute="trailing" constant="8" id="G0Q-fe-BNZ"/>
                         <constraint firstItem="Ah8-vB-MfD" firstAttribute="leading" secondItem="XRh-Bu-78i" secondAttribute="leading" constant="12" id="KPM-5K-ynK"/>
+                        <constraint firstAttribute="trailing" secondItem="h63-4j-r7x" secondAttribute="trailing" id="ThW-lT-Yha"/>
+                        <constraint firstItem="Ggc-Ao-MuY" firstAttribute="top" secondItem="h63-4j-r7x" secondAttribute="bottom" constant="8" id="XmA-H0-S2q"/>
                         <constraint firstAttribute="trailing" secondItem="huF-N5-Kaa" secondAttribute="trailing" constant="12.5" id="ZAx-7k-BMm"/>
                         <constraint firstItem="huF-N5-Kaa" firstAttribute="top" secondItem="XRh-Bu-78i" secondAttribute="top" constant="12" id="dnV-bg-w9x"/>
                         <constraint firstItem="ljo-hi-NBd" firstAttribute="centerX" secondItem="XRh-Bu-78i" secondAttribute="centerX" id="gNg-hd-k4R"/>
@@ -84,11 +109,19 @@
                 <constraint firstItem="XRh-Bu-78i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qx0-27-SLF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="allTransactionsLabel" destination="Ggc-Ao-MuY" id="8Xs-tl-2Th"/>
+                <outlet property="placeholder" destination="ljo-hi-NBd" id="fH0-tJ-3cQ"/>
+                <outlet property="tableView" destination="h63-4j-r7x" id="FNy-fy-rPW"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
         <image name="Transactions" width="30" height="30"/>
+        <namedColor name="PrimaryLight">
+            <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondaryDark">
             <color red="0.09799999744" green="0.23899999259999999" blue="0.33300000429999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

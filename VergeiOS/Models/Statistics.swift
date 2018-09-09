@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct XvgInfo: Decodable {
-    public let raw: XvgInfoRaw
-    public let display: XvgInfoDisplay
+public struct Statistics: Decodable {
+    public let raw: InfoRaw
+    public let display: InfoDisplay
 }
 
-public struct XvgInfoRaw: Decodable {
+public struct InfoRaw: Decodable {
     public let price: Double
     public let openday: Double
     public let highday: Double
@@ -49,7 +49,7 @@ public struct XvgInfoRaw: Decodable {
     }
 }
 
-public struct XvgInfoDisplay: Decodable {
+public struct InfoDisplay: Decodable {
     public let price: String
     public let openday: String
     public let highday: String

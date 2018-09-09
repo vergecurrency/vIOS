@@ -10,7 +10,7 @@ import Foundation
 import KeychainSwift
 
 class WalletManager {
-    
+
     static let `default` = WalletManager()
     
     // Is the wallet already setup?
@@ -86,6 +86,21 @@ class WalletManager {
         set {
             UserDefaults.standard.set(newValue, forKey: "wallet.localAuth.sendingXvg")
         }
+    }
+
+    // Get transactions for core date.
+    func getTransactions(offset: Int = 0, limit: Int = 10) -> [Transaction] {
+        // TODO: For now we fetch them from an example json file.
+        if let path = Bundle.main.path(forResource: "transactions", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                return try JSONDecoder().decode([Transaction].self, from: data)
+            } catch {
+                return []
+            }
+        }
+
+        return []
     }
     
     func reset() {

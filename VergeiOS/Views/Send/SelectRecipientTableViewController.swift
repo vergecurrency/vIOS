@@ -12,16 +12,16 @@ class SelectRecipientTableViewController: UITableViewController, UITextFieldDele
 
     var delegate: RecipientDelegate!
 
-    var addresses: [Address] = []
+    var addresses: [Recipient] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let xvgAddress1 = Address()
+        let xvgAddress1 = Recipient()
         xvgAddress1.name = "Marvin Piekarek"
         xvgAddress1.address = "DDd1pVWr8PPAw1z7DRwoUW6maWh5SsnCcp"
         
-        let xvgAddress2 = Address()
+        let xvgAddress2 = Recipient()
         xvgAddress2.name = "Swen van Zanten"
         xvgAddress2.address = "DPEgHsW1Sox3m6ZiYVjiqVxak4NAThXXix"
         

@@ -17,10 +17,6 @@ class WelcomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // This view uses the light status bar.
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        InsightAPIClient().getInfo() { data in
-            // Do something with the data
-        }
     }
 
 }

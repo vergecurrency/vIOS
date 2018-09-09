@@ -15,14 +15,16 @@ extension NSNumber {
         formatter.numberStyle = .currency
         formatter.maximumFractionDigits = fractDigits
         
+        var suffix = ""
         if currency != "XVG" {
             formatter.currencyCode = currency
         } else {
-            formatter.currencySymbol = "XVG"
+            formatter.currencySymbol = ""
+            suffix = " XVG"
         }
         
         // Remove extra symbol space
-        return formatter.string(from: self)!
+        return "\(formatter.string(from: self)!)\(suffix)"
     }
     
 }

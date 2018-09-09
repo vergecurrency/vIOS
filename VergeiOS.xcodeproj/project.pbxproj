@@ -12,15 +12,13 @@
 		0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */; };
 		0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView+Shake.swift */; };
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
-		07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F44C2107C6C500871990 /* InsightAPIClient.swift */; };
-		07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F4532107C9EB00871990 /* BlockchainInfo.swift */; };
 		07C88D6A210D047E00094EA1 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C88D69210D047D00094EA1 /* URLSession.swift */; };
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
 		A302D2F1211F3B4400EA8091 /* SetAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2F0211F3B4400EA8091 /* SetAmountViewController.swift */; };
 		A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */; };
-		A302D2FB211F64FB00EA8091 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2FA211F64FB00EA8091 /* Address.swift */; };
+		A302D2FB211F64FB00EA8091 /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2FA211F64FB00EA8091 /* Recipient.swift */; };
 		A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */; };
 		A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302D3082120374C00EA8091 /* CoreGraphics.framework */; };
 		A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */; };
@@ -68,7 +66,7 @@
 		A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */; };
 		A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A325665E211A2219006FB08A /* SwiftyJSON.framework */; };
 		A3256663211A39A2006FB08A /* StatisicsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */; };
-		A3256665211A3B61006FB08A /* XvgInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* XvgInfo.swift */; };
+		A3256665211A3B61006FB08A /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* Statistics.swift */; };
 		A3256668211B8E1A006FB08A /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256667211B8E1A006FB08A /* WalletManager.swift */; };
 		A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3256669211B9ABB006FB08A /* KeychainSwift.framework */; };
 		A325666E211CABE7006FB08A /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = A325666D211CABE6006FB08A /* .travis.yml */; };
@@ -122,8 +120,14 @@
 		A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */; };
 		A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */; };
 		A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */; };
+		A3B8A7A92141BC440099D85F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8A7A82141BC440099D85F /* Transaction.swift */; };
+		A3B8A7AB2141BCE40099D85F /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8A7AA2141BCE40099D85F /* TransactionType.swift */; };
+		A3D6835E213DE9240067E0B9 /* InsightClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D6835D213DE9240067E0B9 /* InsightClient.framework */; };
+		A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */; };
+		A3D68366213F34E50067E0B9 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */; };
 		B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */; };
 		B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */; };
+		B2BD7E4561E44AB527F4B3CF /* transactions.json in Resources */ = {isa = PBXBuildFile; fileRef = B2BD7F875F84C84B935E28F7 /* transactions.json */; };
 		B2BD7F39EE96EB7B9E5A870A /* SendTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */; };
 /* End PBXBuildFile section */
 
@@ -164,15 +168,13 @@
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
-		07B9F44C2107C6C500871990 /* InsightAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightAPIClient.swift; sourceTree = "<group>"; };
-		07B9F4532107C9EB00871990 /* BlockchainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockchainInfo.swift; sourceTree = "<group>"; };
 		07C88D69210D047D00094EA1 /* URLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
 		A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableViewController.swift; sourceTree = "<group>"; };
 		A302D2F0211F3B4400EA8091 /* SetAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAmountViewController.swift; sourceTree = "<group>"; };
 		A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XVGCardImageView.swift; sourceTree = "<group>"; };
-		A302D2FA211F64FB00EA8091 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		A302D2FA211F64FB00EA8091 /* Recipient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
 		A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeViewController.swift; sourceTree = "<group>"; };
 		A302D3082120374C00EA8091 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransparentHoleOnOverlayView.swift; sourceTree = "<group>"; };
@@ -220,7 +222,7 @@
 		A325665C2116EF71006FB08A /* BlendedNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlendedNavigationBar.swift; sourceTree = "<group>"; };
 		A325665E211A2219006FB08A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisicsAPIClient.swift; sourceTree = "<group>"; };
-		A3256664211A3B61006FB08A /* XvgInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XvgInfo.swift; sourceTree = "<group>"; };
+		A3256664211A3B61006FB08A /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		A3256667211B8E1A006FB08A /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		A3256669211B9ABB006FB08A /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
 		A325666D211CABE6006FB08A /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
@@ -281,9 +283,16 @@
 		A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectWalletViewController.swift; sourceTree = "<group>"; };
 		A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSendView.swift; sourceTree = "<group>"; };
 		A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSendView.xib; sourceTree = "<group>"; };
+		A3B8A7A82141BC440099D85F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		A3B8A7AA2141BCE40099D85F /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		A3B8A7AC2145384E0099D85F /* VergeiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeiOS.entitlements; sourceTree = "<group>"; };
+		A3D6835D213DE9240067E0B9 /* InsightClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InsightClient.framework; path = Carthage/Build/iOS/InsightClient.framework; sourceTree = "<group>"; };
+		A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDelegate.swift; sourceTree = "<group>"; };
 		B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTransaction.swift; sourceTree = "<group>"; };
 		B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountDelegate.swift; sourceTree = "<group>"; };
+		B2BD7F875F84C84B935E28F7 /* transactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transactions.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +317,7 @@
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */,
+				A3D6835E213DE9240067E0B9 /* InsightClient.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
 				A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */,
 				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
@@ -319,15 +329,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07B9F44B2107C69D00871990 /* Model */ = {
+		07B9F44B2107C69D00871990 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				07B9F4532107C9EB00871990 /* BlockchainInfo.swift */,
-				A3256664211A3B61006FB08A /* XvgInfo.swift */,
-				A302D2FA211F64FB00EA8091 /* Address.swift */,
+				A3256664211A3B61006FB08A /* Statistics.swift */,
+				A302D2FA211F64FB00EA8091 /* Recipient.swift */,
 				B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */,
+				A3B8A7A82141BC440099D85F /* Transaction.swift */,
+				A3B8A7AA2141BCE40099D85F /* TransactionType.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A302D2F7211F3F4C00EA8091 /* Views */ = {
@@ -343,6 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				A302D3142120F53D00EA8091 /* AddressCell.swift */,
+				A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */,
+				A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */,
 			);
 			path = TableCellViews;
 			sourceTree = "<group>";
@@ -644,6 +657,7 @@
 				A3256695211CBBE2006FB08A /* VergeiOSUITests */,
 				A33F6A6D20EEE485001492C2 /* Products */,
 				A37641112108E79800E04521 /* Frameworks */,
+				B2BD72B84742432F0734D8C2 /* Examples */,
 			);
 			sourceTree = "<group>";
 		};
@@ -660,11 +674,12 @@
 		A33F6A6E20EEE485001492C2 /* VergeiOS */ = {
 			isa = PBXGroup;
 			children = (
+				A3B8A7AC2145384E0099D85F /* VergeiOS.entitlements */,
 				A3256666211B8D98006FB08A /* Kernel */,
 				A302D34B21260EE800EA8091 /* Extensions */,
 				A376412F210AE1CA00E04521 /* Utils */,
 				A376411F2108FC0200E04521 /* Http */,
-				07B9F44B2107C69D00871990 /* Model */,
+				07B9F44B2107C69D00871990 /* Models */,
 				A305DDB82107BB7F00911B64 /* Delegates */,
 				A305DD9A21066AE600911B64 /* Components */,
 				A305DD9321052AA400911B64 /* Storyboards */,
@@ -681,6 +696,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3D6835D213DE9240067E0B9 /* InsightClient.framework */,
 				A35F32E02134944600F7B8FD /* RxCocoa.framework */,
 				A35F32DF2134944600F7B8FD /* RxSwift.framework */,
 				A398B205212AFF71004ACB73 /* LocalAuthentication.framework */,
@@ -699,7 +715,6 @@
 			children = (
 				07C88D69210D047D00094EA1 /* URLSession.swift */,
 				A37641202108FC1F00E04521 /* TorClient.swift */,
-				07B9F44C2107C6C500871990 /* InsightAPIClient.swift */,
 				A3256662211A39A2006FB08A /* StatisicsAPIClient.swift */,
 			);
 			path = Http;
@@ -720,6 +735,14 @@
 				A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B2BD72B84742432F0734D8C2 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				B2BD7F875F84C84B935E28F7 /* transactions.json */,
+			);
+			path = Examples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -811,6 +834,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
+							com.apple.NearFieldCommunicationTagReading = {
+								enabled = 0;
+							};
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 0;
 							};
@@ -859,6 +885,7 @@
 			files = (
 				07938404210DAD3800C3C799 /* RestoreGuide.storyboard in Resources */,
 				A325664B211373FF006FB08A /* Wallet.storyboard in Resources */,
+				A3D68366213F34E50067E0B9 /* TransactionTableViewCell.xib in Resources */,
 				A376411B2108F0C700E04521 /* Cartfile in Resources */,
 				A338E6B92110D60F000D44EE /* ChartWalletSlideView.xib in Resources */,
 				A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */,
@@ -878,6 +905,7 @@
 				A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */,
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
+				B2BD7E4561E44AB527F4B3CF /* transactions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,6 +937,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/InsightClient.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
@@ -917,6 +946,7 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/InsightClient.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -984,12 +1014,14 @@
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
+				A3B8A7AB2141BCE40099D85F /* TransactionType.swift in Sources */,
 				A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */,
 				A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */,
 				A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
 				A302D3412122053300EA8091 /* PriceTicker.swift in Sources */,
+				A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
@@ -1001,13 +1033,11 @@
 				A325665A2115B0DF006FB08A /* BalanceSlide.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */,
-				07B9F44D2107C6C500871990 /* InsightAPIClient.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
 				A302D34F212754BE00EA8091 /* DevelopmentTableViewController.swift in Sources */,
 				07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */,
-				A302D2FB211F64FB00EA8091 /* Address.swift in Sources */,
-				07B9F4542107C9EB00871990 /* BlockchainInfo.swift in Sources */,
-				A3256665211A3B61006FB08A /* XvgInfo.swift in Sources */,
+				A302D2FB211F64FB00EA8091 /* Recipient.swift in Sources */,
+				A3256665211A3B61006FB08A /* Statistics.swift in Sources */,
 				A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */,
 				A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */,
 				A338E6A8210E2B92000D44EE /* AbstractRestoreViewController.swift in Sources */,
@@ -1021,6 +1051,7 @@
 				A338E6A6210DE489000D44EE /* Timeout.swift in Sources */,
 				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
 				A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */,
+				A3B8A7A92141BC440099D85F /* Transaction.swift in Sources */,
 				A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */,
 				A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,

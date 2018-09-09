@@ -54,9 +54,9 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         let item = items[indexPath.row]
         
         cell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
-        cell.detailTextLabel?.font = UIFont.avenir(size: 16).demiBold()
+        cell.detailTextLabel?.font = UIFont.avenir(size: 15).demiBold()
         
-        cell.textLabel?.textColor = UIColor.secondaryLight()
+        cell.textLabel?.textColor = UIColor.secondaryDark()
         cell.detailTextLabel?.textColor = UIColor.secondaryDark()
 
         return setupCell(cell, item: item)

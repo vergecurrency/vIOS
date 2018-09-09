@@ -15,7 +15,7 @@ class StatisicsAPIClient {
     
     let endpoint: String = "https://min-api.cryptocompare.com/data/"
     
-    func infoBy(currency: String, completion: @escaping (_ data: XvgInfo?) -> Void) {
+    func infoBy(currency: String, completion: @escaping (_ data: Statistics?) -> Void) {
         let url = URL(string: "\(endpoint)pricemultifull?fsyms=XVG&tsyms=\(currency)")
     
         let task = TorClient.shared.session.dataTask(with: url!) { (data, resonse, error) in
@@ -23,13 +23,13 @@ class StatisicsAPIClient {
                 do {
                     let json = try JSON(data: data)
                     let raw = try JSONDecoder().decode(
-                        XvgInfoRaw.self, from: try json["RAW"]["XVG"][currency].rawData()
+                        InfoRaw.self, from: try json["RAW"]["XVG"][currency].rawData()
                     )
                     let display = try JSONDecoder().decode(
-                        XvgInfoDisplay.self, from: try json["DISPLAY"]["XVG"][currency].rawData()
+                        InfoDisplay.self, from: try json["DISPLAY"]["XVG"][currency].rawData()
                     )
                     
-                    completion(XvgInfo(raw: raw, display: display))
+                    completion(Statistics(raw: raw, display: display))
                 } catch {
                     print("Error info: \(error)")
                     completion(nil)

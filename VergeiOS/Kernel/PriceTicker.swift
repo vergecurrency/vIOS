@@ -15,7 +15,7 @@ class PriceTicker {
     private var started: Bool = false
     private var interval: Timer?
     
-    var xvgInfo: XvgInfo?
+    var xvgInfo: Statistics?
 
     init () {
         NotificationCenter.default.addObserver(

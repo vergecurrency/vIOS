@@ -24,7 +24,7 @@ class SetAmountViewController: UIViewController, KeyboardDelegate {
         
         isSwipable()
 
-        var currentAmount = delegate.currentAmount()
+        let currentAmount = delegate.currentAmount()
 
         amountKeyboard.delegate = self
         amountText = currentAmount.stringValue
