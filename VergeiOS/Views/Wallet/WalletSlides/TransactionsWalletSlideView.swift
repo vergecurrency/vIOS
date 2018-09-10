@@ -15,12 +15,16 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     @IBOutlet weak var allTransactionsLabel: UILabel!
     @IBOutlet weak var placeholder: UIStackView!
     
+    let addressBookManager = AddressBookManager()
+    
     var items: [Transaction] = []
     
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        items = WalletManager.default.getTransactions(offset: 0, limit: 7)
+        items = WalletManager.default.getTransactions(offset: 0, limit: 7).sorted { a, b in
+            return a.blockindex > b.blockindex
+        }
         
         if items.count > 0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -45,7 +49,14 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         
         let item = items[indexPath.row]
 
-        cell.setTransaction(item)
+        var recipient: Address? = nil
+        if let name = addressBookManager.name(byAddress: item.address) {
+            recipient = Address()
+            recipient?.address = item.address
+            recipient?.name = name
+        }
+        
+        cell.setTransaction(item, address: recipient)
         
         return cell
     }

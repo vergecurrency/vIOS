@@ -23,14 +23,31 @@ class TransactionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setTransaction(_ transaction: Transaction) {
-        textLabel?.text = transaction.address
+    func setTransaction(_ transaction: Transaction, address: Address? = nil) {
+        setAccount(address)
+        setDateTime(transaction)
+        setAmount(transaction)
+    }
+    
+    fileprivate func setAccount(_ recipient: Address?) {
+        textLabel?.text = "Unknown"
         
+        if recipient != nil {
+            textLabel?.text = recipient?.name
+            textLabel?.textColor = UIColor.secondaryDark()
+        } else {
+            textLabel?.textColor = UIColor.vergeGrey().withAlphaComponent(0.5)
+        }
+    }
+    
+    fileprivate func setDateTime(_ transaction: Transaction) {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .short
         detailTextLabel?.text = df.string(from: transaction.time)
-        
+    }
+    
+    fileprivate func setAmount(_ transaction: Transaction) {
         var prefix = ""
         if transaction.category == .Send {
             amountLabel.textColor = UIColor.vergeRed()

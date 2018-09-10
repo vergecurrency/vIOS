@@ -12,21 +12,12 @@ class SelectRecipientTableViewController: UITableViewController, UITextFieldDele
 
     var delegate: RecipientDelegate!
 
-    var addresses: [Recipient] = []
+    var addresses: [Address] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let xvgAddress1 = Recipient()
-        xvgAddress1.name = "Marvin Piekarek"
-        xvgAddress1.address = "DDd1pVWr8PPAw1z7DRwoUW6maWh5SsnCcp"
-        
-        let xvgAddress2 = Recipient()
-        xvgAddress2.name = "Swen van Zanten"
-        xvgAddress2.address = "DPEgHsW1Sox3m6ZiYVjiqVxak4NAThXXix"
-        
-        self.addresses.append(xvgAddress1)
-        self.addresses.append(xvgAddress2)
+        addresses = AddressBookManager().all()
     }
 
     // MARK: - Table view data source

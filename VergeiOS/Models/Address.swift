@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Recipient {
+class Address {
     var name: String = "Recipient name"
     var address: String = ""
 }
