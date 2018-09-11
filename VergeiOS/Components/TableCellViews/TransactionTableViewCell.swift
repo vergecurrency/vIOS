@@ -24,19 +24,19 @@ class TransactionTableViewCell: UITableViewCell {
     }
     
     func setTransaction(_ transaction: Transaction, address: Address? = nil) {
-        setAccount(address)
+        setAccount(transaction, address: address)
         setDateTime(transaction)
         setAmount(transaction)
     }
     
-    fileprivate func setAccount(_ recipient: Address?) {
-        textLabel?.text = "Unknown"
+    fileprivate func setAccount(_ transaction: Transaction, address: Address? = nil) {
+        textLabel?.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
         
-        if recipient != nil {
-            textLabel?.text = recipient?.name
+        if address != nil {
+            textLabel?.text = address?.name
             textLabel?.textColor = UIColor.secondaryDark()
         } else {
-            textLabel?.textColor = UIColor.vergeGrey().withAlphaComponent(0.5)
+            textLabel?.textColor = UIColor.secondaryLight().withAlphaComponent(0.75)
         }
     }
     

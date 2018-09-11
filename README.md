@@ -48,6 +48,7 @@ carthage update --platform iOS
 * [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps working with JSON responses
 * [ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift) - Adds a reactive programming framework
 * [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
+* [HamzaGhazouani/HGPlaceholders](https://github.com/HamzaGhazouani/HGPlaceholders) - Library to show placeholders and Empty States for any UITableView
 
 ### Community
 

@@ -82,12 +82,10 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     func createBalanceSlides() -> [BalanceSlide] {
         let xvgBalance = Bundle.main.loadNibNamed("XVGBalanceView", owner: self, options: nil)?.first as! XVGBalanceView
         let fiatBalance = Bundle.main.loadNibNamed("FiatBalanceView", owner: self, options: nil)?.first as! FiatBalanceView
-        let placeholderBalance = Bundle.main.loadNibNamed("PlaceholderView", owner: self, options: nil)?.first as! PlaceholderView
         
         return [
             xvgBalance,
-            fiatBalance,
-            placeholderBalance
+            fiatBalance
         ]
     }
     
