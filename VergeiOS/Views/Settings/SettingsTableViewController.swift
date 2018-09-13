@@ -29,6 +29,10 @@ class SettingsTableViewController: UITableViewController {
         default: break
         }
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        addShadowedEdges(scrollView: scrollView)
+    }
 
     private func otherHandler(index: Int) -> Void {
         
@@ -108,4 +112,57 @@ class SettingsTableViewController: UITableViewController {
 
         return number
     }
+}
+
+extension UITableViewController {
+    
+    
+    func addShadowedEdges(scrollView: UIScrollView) {
+        guard let navBar = navigationController?.navigationBar else {
+            return
+        }
+        
+        if scrollView.contentOffset.y > 20 {
+            addShadow(navBar)
+        } else {
+            deleteShadow(navBar)
+        }
+    }
+    
+    func addShadow(_ view: UIView) {
+        if view.layer.shadowRadius == 10.0 {
+            return
+        }
+        
+        view.layer.shadowColor = UIColor.gray.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+        view.layer.masksToBounds = false
+        view.layer.shadowRadius = 10.0
+        
+        let fadeAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+        fadeAnimation.fromValue = 0.0
+        fadeAnimation.toValue = 0.2
+        fadeAnimation.duration = 0.2
+        
+        view.layer.add(fadeAnimation, forKey: "FadeAnimation")
+        view.layer.shadowOpacity = 0.2
+    }
+    
+    func deleteShadow(_ view: UIView) {
+        if view.layer.shadowRadius == 0.0 {
+            return
+        }
+        
+        view.layer.shadowOffset = CGSize(width: 0, height: 0.0)
+        view.layer.shadowRadius = 0
+        
+        let fadeAnimation = CABasicAnimation(keyPath: "shadowOpacity")
+        fadeAnimation.fromValue = 0.2
+        fadeAnimation.toValue = 0.0
+        fadeAnimation.duration = 0.2
+        
+        view.layer.add(fadeAnimation, forKey: "FadeAnimation")
+        view.layer.shadowOpacity = 0.0
+    }
+    
 }

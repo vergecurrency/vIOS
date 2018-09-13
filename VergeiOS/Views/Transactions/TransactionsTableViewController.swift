@@ -27,6 +27,10 @@ class TransactionsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        addShadowedEdges(scrollView: scrollView)
+    }
+    
     func installTableViewPlaceholder() {
         let nib = UINib(nibName: "NoTransactionsPlaceholderTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NoTransactionsPlaceholderTableViewCell")
