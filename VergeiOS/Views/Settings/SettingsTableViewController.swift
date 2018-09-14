@@ -10,12 +10,12 @@ import UIKit
 import StoreKit
 import LocalAuthentication
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
 
     let localAuthIndexPath = IndexPath(row: 2, section: 1)
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
