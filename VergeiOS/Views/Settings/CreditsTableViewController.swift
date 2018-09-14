@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreditsTableViewController: UITableViewController {
+class CreditsTableViewController: EdgedTableViewController {
 
     var developers = [
         [

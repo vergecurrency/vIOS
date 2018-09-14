@@ -9,7 +9,7 @@
 import UIKit
 import HGPlaceholders
 
-class TransactionsTableViewController: UITableViewController {
+class TransactionsTableViewController: EdgedTableViewController {
     
     let addressBookManager = AddressBookManager()
     var placeholderTableView: TableView?
@@ -25,10 +25,6 @@ class TransactionsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        addShadowedEdges(scrollView: scrollView)
     }
     
     func installTableViewPlaceholder() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectRecipientTableViewController: UITableViewController, UITextFieldDelegate {
+class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldDelegate {
 
     var delegate: RecipientDelegate!
 
