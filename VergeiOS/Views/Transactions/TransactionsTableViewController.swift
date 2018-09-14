@@ -9,7 +9,7 @@
 import UIKit
 import HGPlaceholders
 
-class TransactionsTableViewController: UITableViewController {
+class TransactionsTableViewController: EdgedTableViewController {
     
     let addressBookManager = AddressBookManager()
     var placeholderTableView: TableView?

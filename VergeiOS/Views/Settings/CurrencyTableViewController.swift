@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CurrencyTableViewController: UITableViewController {
+class CurrencyTableViewController: EdgedTableViewController {
 
     var selectedCurrency: String {
         return WalletManager.default.currency
