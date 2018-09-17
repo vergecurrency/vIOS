@@ -13,6 +13,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: PlaceholderTableView!
     
     let addressBookManager = AddressBookManager()
+    var scrollViewEdger: ScrollViewEdger!
     var items: [Transaction] = []
     
     override func viewDidLoad() {
@@ -23,6 +24,13 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         }
         
         items = transactions
+        
+        scrollViewEdger = ScrollViewEdger(scrollView: tableView)
+        scrollViewEdger.hideBottomShadow = true
+        
+        DispatchQueue.main.async {
+            self.scrollViewEdger.createShadowViews()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,6 +110,10 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         cell.setTransaction(item, address: recipient)
         
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewEdger.updateView()
     }
     
     @IBAction func closeViewController(_ sender: Any) {

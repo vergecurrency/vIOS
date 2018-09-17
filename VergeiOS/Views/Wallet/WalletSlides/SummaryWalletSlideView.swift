@@ -119,7 +119,9 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     }
 
     @objc func didReceiveStats(notification: Notification? = nil) {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
 }

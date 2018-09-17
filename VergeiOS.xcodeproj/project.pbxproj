@@ -129,6 +129,7 @@
 		A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2662148577000C31719 /* PlaceholderTableView.swift */; };
 		A3B2E26A214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E268214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.swift */; };
 		A3B2E26B214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E269214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib */; };
+		A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */; };
 		A3B8A7A92141BC440099D85F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8A7A82141BC440099D85F /* Transaction.swift */; };
 		A3B8A7AB2141BCE40099D85F /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B8A7AA2141BCE40099D85F /* TransactionType.swift */; };
 		A3D6835E213DE9240067E0B9 /* InsightClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D6835D213DE9240067E0B9 /* InsightClient.framework */; };
@@ -301,6 +302,7 @@
 		A3B2E2662148577000C31719 /* PlaceholderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableView.swift; sourceTree = "<group>"; };
 		A3B2E268214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWalletTransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		A3B2E269214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoWalletTransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
+		A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewEdger.swift; sourceTree = "<group>"; };
 		A3B8A7A82141BC440099D85F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		A3B8A7AA2141BCE40099D85F /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		A3D6835D213DE9240067E0B9 /* InsightClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InsightClient.framework; path = Carthage/Build/iOS/InsightClient.framework; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				A305DD9B21066AF100911B64 /* UI */,
 				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
 				A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */,
+				A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */,
 				A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */,
+				A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 				A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */,
 				B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */,
