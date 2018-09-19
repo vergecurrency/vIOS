@@ -1,5 +1,5 @@
 github "HamzaGhazouani/HGPlaceholders" "0.3.0"
-github "ReactiveX/RxSwift" "4.2.0"
+github "ReactiveX/RxSwift" "4.3.0"
 github "SwiftyJSON/SwiftyJSON" "4.1.0"
 github "aschuch/QRCode" "601af09fa394da662753a1d0bdfeb7d11e54e7e7"
 github "evgenyneu/keychain-swift" "11.0.0"

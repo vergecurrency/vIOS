@@ -115,6 +115,7 @@ class TransactionsTableViewController: EdgedTableViewController {
         if segue.identifier == "TransactionTableViewController" {
             if let vc = segue.destination as? TransactionTableViewController {
                 vc.navigationItem.leftBarButtonItem = nil
+                vc.transaction = transaction(byIndexpath: tableView.indexPathForSelectedRow!)
             }
         }
     }

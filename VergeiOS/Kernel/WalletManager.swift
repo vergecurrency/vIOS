@@ -61,15 +61,6 @@ class WalletManager {
         }
     }
 
-    var currentBalanceSlide: Int {
-        get {
-            return UserDefaults.standard.integer(forKey: "wallet.currentBalanceSlide")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "wallet.currentBalanceSlide")
-        }
-    }
-
     var localAuthForWalletUnlock: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "wallet.localAuth.unlockWallet")
