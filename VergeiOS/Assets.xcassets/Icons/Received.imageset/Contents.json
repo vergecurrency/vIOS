@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-collapse-arrow.pdf"
+      "filename" : "icons8-collapse-arrow-3.pdf"
     }
   ],
   "info" : {
@@ -10,7 +10,7 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
+    "template-rendering-intent" : "original",
     "preserves-vector-representation" : true
   }
 }
