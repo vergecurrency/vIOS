@@ -45,12 +45,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         )
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        UIApplication.shared.statusBarStyle = .lightContent
-    }
-    
     func setupSlides() {
         self.walletSlideScrollView.delegate = self
         self.walletSlides = self.createWalletSlides()

@@ -825,14 +825,17 @@
 				TargetAttributes = {
 					A3256677211CBA9A006FB08A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = A33F6A6B20EEE485001492C2;
 					};
 					A3256693211CBBE2006FB08A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = A33F6A6B20EEE485001492C2;
 					};
 					A33F6A6B20EEE485001492C2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -1126,7 +1129,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
 			};
@@ -1146,7 +1149,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VergeiOS.app/VergeiOS";
 			};
@@ -1165,7 +1168,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = VergeiOS;
 			};
@@ -1184,7 +1187,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.VergeiOSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = VergeiOS;
 			};
@@ -1326,7 +1329,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1352,7 +1355,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

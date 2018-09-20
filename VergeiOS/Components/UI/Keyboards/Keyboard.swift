@@ -92,7 +92,7 @@ class Keyboard: UIView {
         
         if (!key.isKind(of: EmptyKey.self)) {
             button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)
-            button.setBackgroundColor(color: UIColor.backgroundBlue(), forState: UIControlState.highlighted)
+            button.setBackgroundColor(color: UIColor.backgroundBlue(), forState: UIControl.State.highlighted)
         }
         
         key.styleKey(button)

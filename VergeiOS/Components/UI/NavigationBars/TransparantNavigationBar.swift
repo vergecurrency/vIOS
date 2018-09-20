@@ -17,7 +17,7 @@ class TransparantNavigationBar: UINavigationBar {
         
         let font = UIFont.avenir(size: 19).medium()
         
-        self.titleTextAttributes = [kCTFontAttributeName: font] as [NSAttributedStringKey : Any]
+        self.titleTextAttributes = [kCTFontAttributeName: font] as [NSAttributedString.Key : Any]
     }
 
 }

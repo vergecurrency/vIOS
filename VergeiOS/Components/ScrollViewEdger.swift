@@ -80,7 +80,7 @@ class ScrollViewEdger {
                 width: topShadow.frame.size.width,
                 height: topShadow.frame.size.height
             )
-            scrollView.bringSubview(toFront: topShadow)
+            scrollView.bringSubviewToFront(topShadow)
             
             if scrollView.contentOffset.y > shadowHeight / 2 {
                 UIView.animate(withDuration: animationDuration) {
@@ -100,7 +100,7 @@ class ScrollViewEdger {
                 width: bottomShadow.frame.size.width,
                 height: bottomShadow.frame.size.height
             )
-            scrollView.bringSubview(toFront: bottomShadow)
+            scrollView.bringSubviewToFront(bottomShadow)
             
             if scrollView.contentOffset.y + shadowHeight / 2 >= verticalOffsetForBottom + scrollView.safeAreaInsets.bottom {
                 UIView.animate(withDuration: animationDuration) {

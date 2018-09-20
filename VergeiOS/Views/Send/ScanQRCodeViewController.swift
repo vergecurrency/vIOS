@@ -73,7 +73,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Start video capture.
         captureSession?.startRunning()
         
-        self.view.bringSubview(toFront: self.overlayView)
+        self.view.bringSubviewToFront(self.overlayView)
     }
     
     override func viewWillAppear(_ animated: Bool) {

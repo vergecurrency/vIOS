@@ -17,15 +17,19 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     var segueIdentifier: String? = "confirmPinWelcome"
     var completion: ((_ pin: String) -> Void)?
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if (UIDevice.current.userInterfaceIdiom != .pad) {
+            return .default
+        }
+        
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         self.pinKeyboard.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if (UIDevice.current.userInterfaceIdiom != .pad) {
-            UIApplication.shared.statusBarStyle = .default
-        }
-        
         self.pin = ""
         self.pinTextField.reset()
     }

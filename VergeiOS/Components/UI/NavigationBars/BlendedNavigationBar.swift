@@ -32,9 +32,9 @@ class BlendedNavigationBar: UINavigationBar {
         self.barStyle = .default
         self.isTranslucent = false
         self.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor: UIColor.secondaryDark(),
+            NSAttributedString.Key.foregroundColor: UIColor.secondaryDark(),
             kCTFontAttributeName: font
-        ] as? [NSAttributedStringKey : Any]
+        ] as? [NSAttributedString.Key : Any]
     }
     
 }
