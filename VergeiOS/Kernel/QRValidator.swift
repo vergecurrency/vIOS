@@ -17,16 +17,23 @@ class QRValidator {
         metadataObject: AVMetadataMachineReadableCodeObject,
         completion: @escaping (_ valid: Bool, _ address: String?, _ amount: NSNumber?
     ) -> Void) {
+        validate(string: metadataObject.stringValue ?? "", completion: completion)
+    }
+    
+    func validate(
+        string: String,
+        completion: @escaping (_ valid: Bool, _ address: String?, _ amount: NSNumber?
+        ) -> Void) {
         var valid = false
         var address: String?
         var amount: NSNumber?
         
-        if metadataObject.stringValue?.count == 34 {
+        if string.count == addressCount {
             valid = true
-            address = metadataObject.stringValue
+            address = string
         }
         
-        let matches = regexMatches(for: requestRegex, in: metadataObject.stringValue ?? "")
+        let matches = regexMatches(for: requestRegex, in: string)
         if matches.indices.count == 2 && matches.indices.contains(0) {
             valid = true
             address = matches[0]
@@ -43,7 +50,7 @@ class QRValidator {
         completion(valid, address, amount)
     }
     
-    func regexMatches(for regex: String, in text: String) -> [String] {
+    fileprivate func regexMatches(for regex: String, in text: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: regex)
             let results = regex.matches(

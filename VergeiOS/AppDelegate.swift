@@ -14,6 +14,7 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var sendRequest: SendTransaction?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Start the tor client
@@ -35,6 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.tintColor = UIColor.primaryLight()
 
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        QRValidator().validate(string: url.absoluteString) { (valid, address, amount) in
+            if !valid {
+                return
+            }
+            
+            let transaction = SendTransaction()
+            transaction.address = address!
+            transaction.amount = amount ?? 0.0
+            
+            self.sendRequest = transaction
+        }
+        
         return true
     }
 
