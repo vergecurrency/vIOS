@@ -10,13 +10,16 @@ import UIKit
 
 class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldDelegate {
 
-    var delegate: RecipientDelegate!
+    var sendTransactionDelegate: SendTransactionDelegate!
 
     var addresses: [Address] = []
+    var sendTransaction: SendTransaction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        sendTransaction = sendTransactionDelegate.getSendTransaction()
+        
         addresses = AddressBookManager().all()
     }
 
@@ -47,7 +50,7 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! AddressCell
-            cell.addressTextField.text = delegate.selectedRecipientAddress()
+            cell.addressTextField.text = sendTransaction?.address
             cell.addressTextField.delegate = self
             
             return cell
@@ -61,7 +64,7 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
         cell.textLabel?.text = addresses[indexPath.row].name
         cell.detailTextLabel?.text = addresses[indexPath.row].address
         
-        if addresses[indexPath.row].address == delegate.selectedRecipientAddress() {
+        if addresses[indexPath.row].address == sendTransaction?.address {
             cell.accessoryType = .checkmark
         }
 
@@ -78,10 +81,12 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
                 return
             }
 
-            delegate.didSelectRecipientAddress(address ?? "")
+            sendTransaction?.address = address ?? ""
         } else {
-            delegate.didSelectRecipientAddress(addresses[indexPath.row].address)
+            sendTransaction?.address = addresses[indexPath.row].address
         }
+        
+        sendTransactionDelegate.didChangeSendTransaction(sendTransaction!)
         
         self.closeViewController(self)
     }

@@ -13,7 +13,7 @@ enum CurrencySwitch {
     case FIAT
 }
 
-class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
+class SendViewController: UIViewController, SendTransactionDelegate {
 
     @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var noBalanceView: UIView!
@@ -98,12 +98,12 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
             amount = convertXvgToFiat(amount)
         }
 
-        self.walletAmountLabel.text = amount.toCurrency(currency: getCurrencyString())
+        self.walletAmountLabel.text = amount.toCurrency(currency: currentCurrency())
     }
 
     func updateAmountLabel() {
         self.amountTextField.valueLabel?.text = currentAmount().toCurrency(
-            currency: getCurrencyString(),
+            currency: currentCurrency(),
             fractDigits: 6
         )
     }
@@ -116,10 +116,6 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
         return amount
     }
 
-    func getCurrencyString() -> String {
-        return currency == .XVG ? "XVG" : WalletManager.default.currency
-    }
-
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -129,24 +125,23 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
 
         if segue.identifier == "scanQRCode" {
             let vc = segue.destination as! ScanQRCodeViewController
-            vc.delegate = self
+            vc.sendTransactionDelegate = self
         }
 
         if segue.identifier == "selectRecipient" {
             let nc = segue.destination as! UINavigationController
             let vc = nc.viewControllers.first as! SelectRecipientTableViewController
-            vc.delegate = self
+            vc.sendTransactionDelegate = self
         }
 
         if segue.identifier == "setAmount" {
             let vc = segue.destination as! SetAmountViewController
-            vc.delegate = self
-            vc.sendTransaction = sendTransaction
+            vc.sendTransactionDelegate = self
         }
     }
 
     func isSendable() {
-        let enabled = sendTransaction.amount.doubleValue > 0.0 && selectedRecipientAddress() != ""
+        let enabled = sendTransaction.amount.doubleValue > 0.0 && sendTransaction.address != ""
 
         confirmButton.isEnabled = enabled
         confirmButton.backgroundColor = (enabled ? UIColor.primaryLight() : UIColor.vergeGrey())
@@ -198,39 +193,33 @@ class SendViewController: UIViewController, RecipientDelegate, AmountDelegate {
             )
             WalletManager.default.amount = newWalletAmount
 
-            self.didSelectRecipientAddress("")
-            self.didChangeAmount(SendTransaction())
+            self.didChangeSendTransaction(SendTransaction())
             self.memoTextField.text = ""
         }
 
         present(unlockView, animated: true)
     }
 
-    // MARK: - Recipients
-
-    func didSelectRecipientAddress(_ address: String) {
-        self.recipientTextField.valueLabel?.text = address
-        sendTransaction.address = address
-    }
-
-    func selectedRecipientAddress() -> String {
-        return sendTransaction.address
-    }
-
-
-    // MARK: - Amounts
-    func didChangeAmount(_ transaction: SendTransaction) {
-        self.sendTransaction = transaction
-
+    // MARK: - Send Transaction Delegate
+    
+    func didChangeSendTransaction(_ transaction: SendTransaction) {
+        sendTransaction = transaction
+        
+        self.recipientTextField.valueLabel?.text = sendTransaction.address
+        
         updateAmountLabel()
         updateWalletAmountLabel()
+    }
+    
+    func getSendTransaction() -> SendTransaction {
+        return sendTransaction
     }
 
     func currentAmount() -> NSNumber {
         return currency == .FIAT ? sendTransaction.fiatAmount : sendTransaction.amount
     }
-
+    
     func currentCurrency() -> String {
-        return getCurrencyString()
+        return currency == .XVG ? "XVG" : WalletManager.default.currency
     }
 }

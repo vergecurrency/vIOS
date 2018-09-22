@@ -11,7 +11,8 @@ import AVFoundation
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
-    var delegate: RecipientDelegate!
+    var sendTransactionDelegate: SendTransactionDelegate!
+    var sendTransaction: SendTransaction?
     
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -33,6 +34,8 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         super.viewDidLoad()
         
         self.isSwipable()
+        
+        sendTransaction = sendTransactionDelegate.getSendTransaction()
         
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
@@ -106,13 +109,22 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            // Make sure we have a value.
-            if metadataObj.stringValue != nil && metadataObj.stringValue?.count == 34 {
-                delegate.didSelectRecipientAddress(metadataObj.stringValue ?? "")
-                
+            QRValidator().validate(metadataObject: metadataObj) { (valid, address, amount) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)
                 }
+                
+                if !valid {
+                    return
+                }
+                
+                self.sendTransaction?.address = address!
+                
+                if amount != nil {
+                    self.sendTransaction?.amount = amount!
+                }
+                
+                self.sendTransactionDelegate.didChangeSendTransaction(self.sendTransaction!)
             }
         }
     }
