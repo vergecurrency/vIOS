@@ -88,8 +88,8 @@ class SendViewController: UIViewController, SendTransactionDelegate {
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
 
-        self.updateWalletAmountLabel()
-        self.updateAmountLabel()
+        updateWalletAmountLabel()
+        updateAmountLabel()
     }
 
     func updateWalletAmountLabel() {
@@ -98,14 +98,32 @@ class SendViewController: UIViewController, SendTransactionDelegate {
             amount = convertXvgToFiat(amount)
         }
 
-        self.walletAmountLabel.text = amount.toCurrency(currency: currentCurrency())
+        if amount.decimalValue < 0.0 {
+            amount = NSNumber(value: 0.0)
+        }
+        
+        DispatchQueue.main.async {
+            self.walletAmountLabel.text = amount.toCurrency(currency: self.currentCurrency())
+        }
     }
 
     func updateAmountLabel() {
-        self.amountTextField.valueLabel?.text = currentAmount().toCurrency(
+        amountTextField.valueLabel?.text = currentAmount().toCurrency(
             currency: currentCurrency(),
             fractDigits: 6
         )
+        
+        // Change the text color of the amount label when the selected amount is
+        // more then the wallet amount.
+        DispatchQueue.main.async {
+            if (self.currentAmount().doubleValue >= self.walletAmount.doubleValue) {
+                self.amountTextField.valueLabel?.textColor = UIColor.vergeRed()
+                
+                self.notifySelectedToMuchAmount()
+            } else {
+                self.amountTextField.valueLabel?.textColor = UIColor.secondaryDark()
+            }
+        }
     }
 
     func convertXvgToFiat(_ amount: NSNumber) -> NSNumber {
@@ -141,7 +159,12 @@ class SendViewController: UIViewController, SendTransactionDelegate {
     }
 
     func isSendable() {
-        let enabled = sendTransaction.amount.doubleValue > 0.0 && sendTransaction.address != ""
+        // Selected amount is higher then nothing.
+        // Selected amount is lower then wallet amount.
+        // Address is set.
+        let enabled = sendTransaction.amount.doubleValue > 0.0
+            && sendTransaction.amount.doubleValue < walletAmount.doubleValue
+            && sendTransaction.address != ""
 
         confirmButton.isEnabled = enabled
         confirmButton.backgroundColor = (enabled ? UIColor.primaryLight() : UIColor.vergeGrey())
@@ -198,6 +221,21 @@ class SendViewController: UIViewController, SendTransactionDelegate {
         }
 
         present(unlockView, animated: true)
+    }
+    
+    func notifySelectedToMuchAmount() {
+        let amount = amountTextField.valueLabel?.text ?? "..."
+        let alert = UIAlertController(
+            title: "That's Too Much! 🤔",
+            message: "You do not have enough balance to send \(amount). Change the amount to send in order to proceed.",
+            preferredStyle: .alert
+        )
+        
+        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        
+        alert.addAction(okButton)
+        
+        present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Send Transaction Delegate

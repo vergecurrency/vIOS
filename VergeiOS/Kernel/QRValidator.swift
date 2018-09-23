@@ -10,20 +10,20 @@ import Foundation
 import AVFoundation
 
 class QRValidator {
+    
+    typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
+    
     let requestRegex = "(verge:\\/\\/[a-z|A-Z|0-9]{34}\\?)|(amount=\\d+[\\.|\\,]?\\d+)$"
     let addressCount = 34
     
     func validate(
         metadataObject: AVMetadataMachineReadableCodeObject,
-        completion: @escaping (_ valid: Bool, _ address: String?, _ amount: NSNumber?
-    ) -> Void) {
+        completion: @escaping ValidationCompletion
+    ) {
         validate(string: metadataObject.stringValue ?? "", completion: completion)
     }
     
-    func validate(
-        string: String,
-        completion: @escaping (_ valid: Bool, _ address: String?, _ amount: NSNumber?
-        ) -> Void) {
+    func validate(string: String, completion: @escaping ValidationCompletion) {
         var valid = false
         var address: String?
         var amount: NSNumber?

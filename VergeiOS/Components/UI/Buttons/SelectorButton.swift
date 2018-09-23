@@ -92,9 +92,13 @@ import UIKit
         self.addSubview(self.valueLabel!)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {       
         if keyPath == "text" {
-            if let newValue = change?[.newKey] as? String {
+            guard let newValue = change?[.newKey] as? String else {
+                return
+            }
+            
+            DispatchQueue.main.async {
                 self.placeholderLabel?.isHidden = newValue.count > 0
             }
         }
