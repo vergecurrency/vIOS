@@ -17,6 +17,13 @@ class ConfirmSendView: UIView {
     @IBOutlet weak var recipientAddressLabel: UILabel!
 
     var transaction: SendTransaction!
+    var margin: CGFloat {
+        if #available(iOS 12.0, *) {
+            return 8.0
+        } else {
+            return 10.0
+        }
+    }
 
     func makeActionSheet() -> UIAlertController {
         let viewHeight: CGFloat = subviews.first?.frame.height ?? 0
@@ -26,7 +33,6 @@ class ConfirmSendView: UIView {
 
         let alertController = UIAlertController(title: enters, message: nil, preferredStyle: .actionSheet)
 
-        let margin: CGFloat = 10.0
         frame = CGRect(
             x: 0,
             y: 0,

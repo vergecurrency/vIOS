@@ -13,12 +13,12 @@ enum CurrencySwitch {
     case FIAT
 }
 
-class SendViewController: UIViewController, SendTransactionDelegate {
+class SendViewController: UIViewController {
 
     @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var noBalanceView: UIView!
     @IBOutlet weak var walletAmountLabel: UILabel!
-    @IBOutlet weak var recipientTextField: SelectorButton!
+    @IBOutlet weak var recipientTextField: UITextField!
     @IBOutlet weak var amountTextField: SelectorButton!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
@@ -47,6 +47,8 @@ class SendViewController: UIViewController, SendTransactionDelegate {
         confirmButtonInterval = setInterval(1) {
             self.isSendable()
         }
+
+        setupRecipientTextFieldKeyBoardToolbar()
 
         DispatchQueue.main.async {
             self.updateAmountLabel()
@@ -204,11 +206,11 @@ class SendViewController: UIViewController, SendTransactionDelegate {
         unlockView.fillPinFor = .sending
         unlockView.cancelable = true
         unlockView.completion = { aunthenticated in
-            if !aunthenticated {
-                return unlockView.dismiss(animated: true)
-            }
-
             unlockView.dismiss(animated: true)
+
+            if !aunthenticated {
+                return
+            }
 
             // TODO ofcourse...
             let newWalletAmount = NSNumber(
@@ -237,18 +239,126 @@ class SendViewController: UIViewController, SendTransactionDelegate {
         
         present(alert, animated: true, completion: nil)
     }
+}
 
+extension SendViewController: UITextFieldDelegate {
+    // MARK: - Recipient text field toolbar
+
+    fileprivate func setupRecipientTextFieldKeyBoardToolbar() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        keyboardToolbar.tintColor = UIColor.primaryLight()
+
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let fixedBarButton = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixedBarButton.width = 10
+
+        let contactsButton = UIBarButtonItem(
+            image: UIImage(named: "AddContact"),
+            style: .plain,
+            target: self,
+            action: #selector(SendViewController.openRecipientSelector)
+        )
+
+        let pasteButton = UIBarButtonItem(
+            image: UIImage(named: "Paste"),
+            style: .plain,
+            target: self,
+            action: #selector(SendViewController.pasteAddress)
+        )
+
+        let clearButton = UIBarButtonItem(
+            image: UIImage(named: "ClearTextField"),
+            style: .plain,
+            target: self,
+            action: #selector(SendViewController.clearRecipient)
+        )
+
+        let doneBarButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(SendViewController.dissmissKeyboard)
+        )
+
+        keyboardToolbar.items = [
+            contactsButton,
+            fixedBarButton,
+            pasteButton,
+            fixedBarButton,
+            clearButton,
+            flexBarButton,
+            doneBarButton
+        ]
+
+        recipientTextField.inputAccessoryView = keyboardToolbar
+        recipientTextField.delegate = self
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        dissmissKeyboard()
+
+        return false
+    }
+
+    @objc func openRecipientSelector() {
+        performSegue(withIdentifier: "selectRecipient", sender: self)
+    }
+
+    @objc func pasteAddress() {
+        guard let address = UIPasteboard.general.string else {
+            return
+        }
+
+        QRValidator().validate(string: address) { valid, address, amount in
+            if !valid {
+                return self.showInvalidAddressAlert()
+            }
+
+            guard let address = address else {
+                return self.showInvalidAddressAlert()
+            }
+
+            self.sendTransaction.address = address
+
+            self.didChangeSendTransaction(self.sendTransaction)
+        }
+    }
+
+    @objc func clearRecipient() {
+        sendTransaction.address = ""
+
+        didChangeSendTransaction(sendTransaction)
+    }
+
+    @objc func dissmissKeyboard() {
+        view.endEditing(true)
+    }
+
+    func showInvalidAddressAlert() {
+        let alert = UIAlertController(
+            title: "Wrong Address 🤷‍♀️",
+            message: "The entered address is an invalid Verge address. Please enter a valid verge address.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+
+        present(alert, animated: true)
+    }
+}
+
+extension SendViewController: SendTransactionDelegate {
     // MARK: - Send Transaction Delegate
-    
+
     func didChangeSendTransaction(_ transaction: SendTransaction) {
         sendTransaction = transaction
-        
-        self.recipientTextField.valueLabel?.text = sendTransaction.address
-        
+
+        self.recipientTextField.text = sendTransaction.address
+
         updateAmountLabel()
         updateWalletAmountLabel()
     }
-    
+
     func getSendTransaction() -> SendTransaction {
         return sendTransaction
     }
@@ -256,7 +366,7 @@ class SendViewController: UIViewController, SendTransactionDelegate {
     func currentAmount() -> NSNumber {
         return currency == .FIAT ? sendTransaction.fiatAmount : sendTransaction.amount
     }
-    
+
     func currentCurrency() -> String {
         return currency == .XVG ? "XVG" : WalletManager.default.currency
     }
