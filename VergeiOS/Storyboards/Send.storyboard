@@ -367,6 +367,9 @@ Please increase you're balance.</string>
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="O5k-R1-zas" id="4ZF-sg-Qyd"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressBookCell" textLabel="6GV-gi-Lfj" detailTextLabel="2oz-Rh-ZHo" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="nW3-Cq-3wT">
@@ -408,26 +411,10 @@ Please increase you're balance.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="6ap-k1-yQ1" id="olt-2T-ihn"/>
+                        <outlet property="searchBar" destination="DCk-Zw-Nbr" id="kmW-3b-fbH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCh-eR-O4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="1af-Gv-Wa0">
-                    <connections>
-                        <outlet property="delegate" destination="O5k-R1-zas" id="6cA-IH-nFS"/>
-                        <outlet property="searchContentsController" destination="O5k-R1-zas" id="tkc-PQ-0k8"/>
-                        <outlet property="searchResultsDataSource" destination="O5k-R1-zas" id="b4e-Ph-I8J"/>
-                        <outlet property="searchResultsDelegate" destination="O5k-R1-zas" id="k9Q-by-tT4"/>
-                    </connections>
-                </searchDisplayController>
-                <searchDisplayController id="6ap-k1-yQ1">
-                    <connections>
-                        <outlet property="delegate" destination="O5k-R1-zas" id="BDH-uT-qVH"/>
-                        <outlet property="searchContentsController" destination="O5k-R1-zas" id="ljT-cu-cNP"/>
-                        <outlet property="searchResultsDataSource" destination="O5k-R1-zas" id="9up-Kb-fpJ"/>
-                        <outlet property="searchResultsDelegate" destination="O5k-R1-zas" id="uKS-wb-rol"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="3373.5999999999999" y="89.505247376311857"/>
         </scene>

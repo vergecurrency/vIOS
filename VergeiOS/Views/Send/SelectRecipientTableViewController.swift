@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldDelegate {
+class SelectRecipientTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -16,6 +16,18 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
 
     var addresses: [Address] = []
     var sendTransaction: SendTransaction?
+    var searchQuery: String = ""
+
+    var filteredAddresses: [Address] {
+        if searchQuery == "" {
+            return addresses
+        }
+
+        return addresses.filter { (address: Address) -> Bool in
+            return address.address.lowercased().contains(self.searchQuery.lowercased())
+                || address.name.lowercased().contains(self.searchQuery.lowercased())
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +46,7 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.addresses.count
+        return self.filteredAddresses.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -44,10 +56,10 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressBookCell", for: indexPath)
 
-        cell.textLabel?.text = addresses[indexPath.row].name
-        cell.detailTextLabel?.text = addresses[indexPath.row].address
+        cell.textLabel?.text = filteredAddresses[indexPath.row].name
+        cell.detailTextLabel?.text = filteredAddresses[indexPath.row].address
         
-        if addresses[indexPath.row].address == sendTransaction?.address {
+        if filteredAddresses[indexPath.row].address == sendTransaction?.address {
             cell.accessoryType = .checkmark
         }
 
@@ -55,7 +67,7 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sendTransaction?.address = addresses[indexPath.row].address
+        sendTransaction?.address = filteredAddresses[indexPath.row].address
         
         sendTransactionDelegate.didChangeSendTransaction(sendTransaction!)
         
@@ -69,9 +81,14 @@ class SelectRecipientTableViewController: EdgedTableViewController, UITextFieldD
     @IBAction func closeViewController(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension SelectRecipientTableViewController: UISearchBarDelegate {
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchQuery = searchText
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
