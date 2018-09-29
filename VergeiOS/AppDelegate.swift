@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        QRValidator().validate(string: url.absoluteString) { (valid, address, amount) in
+        AddressValidator().validate(string: url.absoluteString) { (valid, address, amount) in
             if !valid {
                 return
             }

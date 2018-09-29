@@ -109,7 +109,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            QRValidator().validate(metadataObject: metadataObj) { (valid, address, amount) in
+            AddressValidator().validate(metadataObject: metadataObj) { (valid, address, amount) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)
                 }

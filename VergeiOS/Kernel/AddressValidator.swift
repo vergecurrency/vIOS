@@ -1,5 +1,5 @@
 //
-//  QRValidator.swift
+//  AddressValidator.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 21-09-18.
@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-class QRValidator {
+class AddressValidator {
     
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
     

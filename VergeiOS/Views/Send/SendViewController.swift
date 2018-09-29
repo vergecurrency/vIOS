@@ -309,7 +309,7 @@ extension SendViewController: UITextFieldDelegate {
             return
         }
 
-        QRValidator().validate(string: address) { valid, address, amount in
+        AddressValidator().validate(string: address) { valid, address, amount in
             if !valid {
                 return self.showInvalidAddressAlert()
             }

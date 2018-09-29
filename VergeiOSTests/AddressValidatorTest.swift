@@ -1,5 +1,5 @@
 //
-//  QRValidatorTest.swift
+//  AddressValidatorTest.swift
 //  VergeiOSTests
 //
 //  Created by Swen van Zanten on 22-09-18.
@@ -10,12 +10,12 @@ import XCTest
 import AVFoundation
 @testable import VergeiOS
 
-class QRValidatorTest: XCTestCase {
+class AddressValidatorTest: XCTestCase {
 
     func testValidatingInvalidXVGAddressByAVMetadata() {
-        let validator = QRValidator()
+        let validator = AddressValidator()
         
-        let metadata = QRValidatorAVMetaData()
+        let metadata = AddressValidatorAVMetaData()
         metadata.returnStringValue = "sada"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
@@ -26,9 +26,9 @@ class QRValidatorTest: XCTestCase {
     }
     
     func testValidatingAnotherInvalidXVGAddressByAVMetadata() {
-        let validator = QRValidator()
+        let validator = AddressValidator()
         
-        let metadata = QRValidatorAVMetaData()
+        let metadata = AddressValidatorAVMetaData()
         metadata.returnStringValue = "DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJusds"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
@@ -39,9 +39,9 @@ class QRValidatorTest: XCTestCase {
     }
     
     func testValidatingValidXVGAddressByAVMetadata() {
-        let validator = QRValidator()
+        let validator = AddressValidator()
         
-        let metadata = QRValidatorAVMetaData()
+        let metadata = AddressValidatorAVMetaData()
         metadata.returnStringValue = "DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJu"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
@@ -52,9 +52,9 @@ class QRValidatorTest: XCTestCase {
     }
     
     func testValidatingInvalidXVGAddressAndAmountByAVMetadata() {
-        let validator = QRValidator()
+        let validator = AddressValidator()
         
-        let metadata = QRValidatorAVMetaData()
+        let metadata = AddressValidatorAVMetaData()
         metadata.returnStringValue = "verge://DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJusddssd?amount=1000.0"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
@@ -65,9 +65,9 @@ class QRValidatorTest: XCTestCase {
     }
     
     func testValidatingValidXVGAddressAndAmountByAVMetadata() {
-        let validator = QRValidator()
+        let validator = AddressValidator()
         
-        let metadata = QRValidatorAVMetaData()
+        let metadata = AddressValidatorAVMetaData()
         metadata.returnStringValue = "verge://DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJu?amount=1000.0"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
@@ -78,9 +78,9 @@ class QRValidatorTest: XCTestCase {
     }
     
     func testValidatingValidXVGAddressAndMoreAmountByAVMetadata() {
-        let validator = QRValidator()
+        let validator = AddressValidator()
         
-        let metadata = QRValidatorAVMetaData()
+        let metadata = AddressValidatorAVMetaData()
         metadata.returnStringValue = "verge://DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJu?amount=454000.43"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
@@ -91,7 +91,7 @@ class QRValidatorTest: XCTestCase {
     }
 }
 
-class QRValidatorAVMetaData: AVMetadataMachineReadableCodeObject {
+class AddressValidatorAVMetaData: AVMetadataMachineReadableCodeObject {
     init(hello: String = "") {}
     
     var returnStringValue = ""
