@@ -32,6 +32,8 @@ class SelectRecipientTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scrollViewEdger.hideBottomShadow = true
+
         sendTransaction = sendTransactionDelegate.getSendTransaction()
         
         addresses = AddressBookManager().all()
@@ -47,10 +49,6 @@ class SelectRecipientTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.filteredAddresses.count
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "A"
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

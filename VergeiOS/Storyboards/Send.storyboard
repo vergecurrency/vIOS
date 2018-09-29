@@ -359,7 +359,7 @@ Please increase you're balance.</string>
         <scene sceneID="boC-Tm-yM4">
             <objects>
                 <tableViewController id="O5k-R1-zas" customClass="SelectRecipientTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Qry-K4-eUB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qry-K4-eUB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
@@ -373,7 +373,7 @@ Please increase you're balance.</string>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressBookCell" textLabel="6GV-gi-Lfj" detailTextLabel="2oz-Rh-ZHo" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="nW3-Cq-3wT">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="54"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nW3-Cq-3wT" id="nzV-FG-5mB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
@@ -395,6 +395,7 @@ Please increase you're balance.</string>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                             </tableViewCell>
                         </prototypes>
