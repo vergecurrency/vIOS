@@ -15,14 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var sendRequest: SendTransaction?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Start the tor client
         TorClient.shared.start {
             // Start the price ticker.
             PriceTicker.shared.start()
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 let loadingViewController = self.window?.rootViewController as! LoadingTorViewController
                 loadingViewController.completeLoading()
             }
@@ -71,7 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        // Start the tor client
         TorClient.shared.start {
+            // Start the price ticker.
             PriceTicker.shared.start()
         }
     }
@@ -87,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Stop price ticker.
         PriceTicker.shared.stop()
+        TorClient.shared.resign()
     }
 
     // MARK: - Core Data stack

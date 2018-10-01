@@ -33,7 +33,7 @@ class TorClient {
         return URLSession(configuration: sessionConfiguration)
     }
 
-    init() {
+    func setupThread() {
         config.options = [
             "DNSPort": "12345",
             "AutomapHostsOnResolve": "1",
@@ -49,31 +49,45 @@ class TorClient {
             "--socksport", "39050",
             "--controlport", "127.0.0.1:39060",
         ]
-        
+
         thread = TorThread(configuration: config)
     }
 
     // Start the tor client.
     func start(completion: @escaping () -> Void) {
         // If already operational don't start a new client.
-        if isOperational || 1 == 1 {
+        if isOperational {
             return completion()
         }
 
+        // Make sure we don't have a thread already.
+        if thread == nil {
+            setupThread()
+        }
+
+        // Initiate the controller.
         controller = TorController(socketURL: config.controlSocket!)
         
         // Start a tor thread.
         if thread.isExecuting == false {
             thread.start()
+
+            NotificationCenter.default.post(name: .didStartTorThread, object: self)
         }
 
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             do {
                 if !self.controller.isConnected {
                     try self.controller?.connect()
+
+                    NotificationCenter.default.post(name: .didConnectTorController, object: self)
                 }
 
                 try self.authenticateController {
+                    print("Tor tunnel started! 🤩")
+
+                    NotificationCenter.default.post(name: .didEstablishTorConnection, object: self)
+
                     completion()
                 }
             } catch {
@@ -85,7 +99,21 @@ class TorClient {
 
     // Resign the tor client.
     func resign() {
-        // TODO
+        if isOperational {
+            controller.disconnect()
+
+            self.isOperational = false
+            self.thread = nil
+
+            NotificationCenter.default.post(name: .didResignTorConnection, object: self)
+
+            return
+        }
+
+        // Retry in a sec.
+        let _ = setTimeout(1) {
+            self.resign()
+        }
     }
 
     private func authenticateController(completion: @escaping () -> Void) throws -> Void {
@@ -104,7 +132,6 @@ class TorClient {
                 guard established else {
                     return
                 }
-                print("Tor tunnel started! 🤩")
 
                 self.controller?.getSessionConfiguration() { sessionConfig in
                     self.sessionConfiguration = sessionConfig!
