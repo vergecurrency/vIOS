@@ -35,13 +35,13 @@ class PriceTicker {
         if !WalletManager.default.setup {
             return
         }
-
-        self.fetchStats()
-
-        self.interval = setInterval(150) {
+        
+        fetchStats()
+        
+        interval = Timer.scheduledTimer(withTimeInterval: 150, repeats: true) { timer in
             self.fetchStats()
         }
-
+        
         started = true
         print("Price ticker started...")
     }
@@ -55,7 +55,7 @@ class PriceTicker {
     }
     
     // Fetch statistics from the API and notify all absorbers.
-    private func fetchStats() {
+    @objc private func fetchStats() {
         print("Fetching new stats")
         StatisicsAPIClient.shared.infoBy(currency: WalletManager.default.currency) { info in
             self.xvgInfo = info

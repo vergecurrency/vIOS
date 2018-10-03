@@ -17,12 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var sendRequest: SendTransaction?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        TorStatusIndicator.shared.initialize()
+        
+        setupListeners()
+        
         // Start the tor client
         TorClient.shared.start {
-            // Start the price ticker.
-            PriceTicker.shared.start()
-
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                // Start the price ticker.
+                PriceTicker.shared.start()
+                
                 let loadingViewController = self.window?.rootViewController as! LoadingTorViewController
                 loadingViewController.completeLoading()
             }
@@ -91,6 +95,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Stop price ticker.
         PriceTicker.shared.stop()
         TorClient.shared.resign()
+    }
+
+    func setupListeners() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didStartTorThread(notification:)),
+            name: .didStartTorThread,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didEstablishTorConnection(notification:)),
+            name: .didEstablishTorConnection,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didResignTorConnection(notification:)),
+            name: .didResignTorConnection,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTurnOffTor(notification:)),
+            name: .didTurnOffTor,
+            object: nil
+        )
+    }
+
+    @objc func didStartTorThread(notification: Notification? = nil) {
+        TorStatusIndicator.shared.setStatus(.disconnected)
+    }
+
+    @objc func didEstablishTorConnection(notification: Notification? = nil) {
+        DispatchQueue.main.async {
+            TorStatusIndicator.shared.setStatus(.connected)
+        }
+    }
+    
+    @objc func didResignTorConnection(notification: Notification? = nil) {
+        TorStatusIndicator.shared.setStatus(.disconnected)
+    }
+    
+    @objc func didTurnOffTor(notification: Notification? = nil) {
+        TorStatusIndicator.shared.setStatus(.turnedOff)
     }
 
     // MARK: - Core Data stack

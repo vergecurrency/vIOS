@@ -56,7 +56,7 @@ class TorClient {
     // Start the tor client.
     func start(completion: @escaping () -> Void) {
         // If already operational don't start a new client.
-        if isOperational {
+        if isOperational || turnedOff() {
             return completion()
         }
 
@@ -75,7 +75,7 @@ class TorClient {
             NotificationCenter.default.post(name: .didStartTorThread, object: self)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             do {
                 if !self.controller.isConnected {
                     try self.controller?.connect()
@@ -100,6 +100,7 @@ class TorClient {
     // Resign the tor client.
     func resign() {
         if isOperational {
+            sessionConfiguration = .default
             controller.disconnect()
 
             self.isOperational = false
@@ -169,5 +170,9 @@ class TorClient {
         }
 
         return documentsDirectory
+    }
+    
+    func turnedOff() -> Bool {
+        return !WalletManager.default.useTor
     }
 }

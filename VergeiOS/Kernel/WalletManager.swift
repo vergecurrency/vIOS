@@ -33,6 +33,16 @@ class WalletManager {
         }
     }
     
+    // User wants to use tor or not.
+    var useTor: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "wallet.useTor")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.useTor")
+        }
+    }
+    
     // Store the selected wallet currency. Defaults to USD.
     // TODO: String used for now until better solution.
     var currency: String {

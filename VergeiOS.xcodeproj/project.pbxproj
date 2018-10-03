@@ -120,6 +120,11 @@
 		A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */; };
 		A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */; };
 		A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */; };
+		A3AA21FF2163F66B00160576 /* TorStatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA21FB2163F66A00160576 /* TorStatusIndicator.swift */; };
+		A3AA22012163F66B00160576 /* TorStatusIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA21FD2163F66A00160576 /* TorStatusIndicatorViewController.swift */; };
+		A3AA22022163F66B00160576 /* TorStatusIndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AA21FE2163F66A00160576 /* TorStatusIndicatorViewController.xib */; };
+		A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */; };
+		A3AA2206216576BE00160576 /* IpAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2205216576BE00160576 /* IpAddress.swift */; };
 		A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
 		A3B2E2642148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2622148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift */; };
 		A3B2E2652148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E2632148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib */; };
@@ -292,6 +297,12 @@
 		A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectWalletViewController.swift; sourceTree = "<group>"; };
 		A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSendView.swift; sourceTree = "<group>"; };
 		A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSendView.xib; sourceTree = "<group>"; };
+		A3AA21FB2163F66A00160576 /* TorStatusIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorStatusIndicator.swift; sourceTree = "<group>"; };
+		A3AA21FD2163F66A00160576 /* TorStatusIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorStatusIndicatorViewController.swift; sourceTree = "<group>"; };
+		A3AA21FE2163F66A00160576 /* TorStatusIndicatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TorStatusIndicatorViewController.xib; sourceTree = "<group>"; };
+		A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorConnectionTableViewController.swift; sourceTree = "<group>"; };
+		A3AA2205216576BE00160576 /* IpAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddress.swift; sourceTree = "<group>"; };
+		A3AA220721657BBE00160576 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A3B2E25A214836B500C31719 /* HGPlaceholders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HGPlaceholders.framework; path = Carthage/Build/iOS/HGPlaceholders.framework; sourceTree = "<group>"; };
 		A3B2E2622148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		A3B2E2632148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
@@ -355,6 +366,7 @@
 				B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */,
 				A3B8A7A82141BC440099D85F /* Transaction.swift */,
 				A3B8A7AA2141BCE40099D85F /* TransactionType.swift */,
+				A3AA2205216576BE00160576 /* IpAddress.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,6 +451,7 @@
 		A305DD9A21066AE600911B64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A3AA21FA2163F64F00160576 /* TorStatusIndicator */,
 				A302D3132120F52900EA8091 /* TableCellViews */,
 				A305DD9B21066AF100911B64 /* UI */,
 				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
@@ -658,6 +671,7 @@
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
 				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
+				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -712,6 +726,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3AA220721657BBE00160576 /* AVFoundation.framework */,
 				A3B2E25A214836B500C31719 /* HGPlaceholders.framework */,
 				A3D6835D213DE9240067E0B9 /* InsightClient.framework */,
 				A35F32E02134944600F7B8FD /* RxCocoa.framework */,
@@ -752,6 +767,16 @@
 				A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A3AA21FA2163F64F00160576 /* TorStatusIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				A3AA21FB2163F66A00160576 /* TorStatusIndicator.swift */,
+				A3AA21FD2163F66A00160576 /* TorStatusIndicatorViewController.swift */,
+				A3AA21FE2163F66A00160576 /* TorStatusIndicatorViewController.xib */,
+			);
+			path = TorStatusIndicator;
 			sourceTree = "<group>";
 		};
 		B2BD72B84742432F0734D8C2 /* Examples */ = {
@@ -905,6 +930,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07938404210DAD3800C3C799 /* RestoreGuide.storyboard in Resources */,
+				A3AA22022163F66B00160576 /* TorStatusIndicatorViewController.xib in Resources */,
 				A325664B211373FF006FB08A /* Wallet.storyboard in Resources */,
 				A3D68366213F34E50067E0B9 /* TransactionTableViewCell.xib in Resources */,
 				A376411B2108F0C700E04521 /* Cartfile in Resources */,
@@ -1026,6 +1052,7 @@
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */,
 				A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */,
+				A3AA2206216576BE00160576 /* IpAddress.swift in Sources */,
 				A3764131210AE1D500E04521 /* Platform.swift in Sources */,
 				A338E6C62110FB31000D44EE /* SendViewController.swift in Sources */,
 				A37641232108FCFA00E04521 /* ConfirmPinViewController.swift in Sources */,
@@ -1040,6 +1067,7 @@
 				A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */,
 				A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */,
 				A338E6B52110D075000D44EE /* WalletSlideView.swift in Sources */,
+				A3AA22012163F66B00160576 /* TorStatusIndicatorViewController.swift in Sources */,
 				A338E6B0210FD558000D44EE /* TransactionsTableViewController.swift in Sources */,
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
@@ -1076,6 +1104,7 @@
 				A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */,
 				A305DDAE210782EB00911B64 /* PinTextField.swift in Sources */,
 				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
+				A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */,
 				A338E6A6210DE489000D44EE /* Timeout.swift in Sources */,
 				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
 				A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */,
@@ -1090,6 +1119,7 @@
 				A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 				A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */,
+				A3AA21FF2163F66B00160576 /* TorStatusIndicator.swift in Sources */,
 				B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */,
 				B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */,
 				B2BD7F39EE96EB7B9E5A870A /* SendTransaction.swift in Sources */,

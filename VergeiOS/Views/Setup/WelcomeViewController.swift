@@ -13,6 +13,12 @@ class WelcomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Set Tor enabled as default.
+        WalletManager.default.useTor = true
+    }
 }
 

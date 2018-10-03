@@ -50,47 +50,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qjX-ps-wWE">
-                                <rect key="frame" x="123.5" y="627" width="128.5" height="20"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting up Tor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNv-gF-279">
-                                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="20"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZs-WA-vdw">
-                                        <rect key="frame" x="108.5" y="0.0" width="20" height="20"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tor" translatesAutoresizingMaskIntoConstraints="NO" id="Ema-ER-RKy">
-                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="pZx-j6-4h8"/>
-                                                    <constraint firstAttribute="height" constant="20" id="zKO-o1-Coi"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Ema-ER-RKy" secondAttribute="trailing" id="JRK-Q3-RK8"/>
-                                            <constraint firstItem="Ema-ER-RKy" firstAttribute="leading" secondItem="PZs-WA-vdw" secondAttribute="leading" id="ZxD-UZ-npG"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ema-ER-RKy" secondAttribute="bottom" id="ksG-eA-g2F"/>
-                                            <constraint firstItem="Ema-ER-RKy" firstAttribute="top" secondItem="PZs-WA-vdw" secondAttribute="top" id="y2e-AP-vFl"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="d3W-PA-UHV" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="6UK-8Y-y1Y"/>
                             <constraint firstItem="d3W-PA-UHV" firstAttribute="top" secondItem="jdy-ZC-H6U" secondAttribute="bottom" constant="8" id="O40-RI-MDP"/>
                             <constraint firstItem="Hyv-QW-gIp" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="TmF-aV-3Sz"/>
-                            <constraint firstItem="gb6-qf-ykk" firstAttribute="bottom" secondItem="qjX-ps-wWE" secondAttribute="bottom" constant="20" id="dru-3G-c04"/>
-                            <constraint firstItem="qjX-ps-wWE" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="mjx-jU-6nG"/>
                             <constraint firstItem="gb6-qf-ykk" firstAttribute="bottom" secondItem="Hyv-QW-gIp" secondAttribute="bottom" constant="95" id="oMs-t2-dAL"/>
                             <constraint firstItem="jdy-ZC-H6U" firstAttribute="top" secondItem="gb6-qf-ykk" secondAttribute="top" constant="75" id="q0x-eY-JOV"/>
                             <constraint firstItem="jdy-ZC-H6U" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="wwG-cQ-ssE"/>
@@ -700,7 +665,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="771" height="360"/>
+        <image name="Background" width="1542" height="721"/>
         <image name="ChecklistOneItem" width="600" height="600"/>
         <image name="Close" width="30" height="30"/>
         <image name="Help" width="30" height="30"/>
@@ -708,7 +673,6 @@
         <image name="PinConfirmed" width="90" height="90"/>
         <image name="PinUnconfirmed" width="90" height="90"/>
         <image name="Rocket" width="30" height="30"/>
-        <image name="Tor" width="90" height="90"/>
         <image name="UnlockBackground" width="4125" height="2436"/>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
