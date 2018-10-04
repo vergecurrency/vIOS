@@ -793,7 +793,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="365"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tor is here for your privacy and hides your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yc2-Gk-2PC">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tor is here for your privacy and hides your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yc2-Gk-2PC">
                                     <rect key="frame" x="40" y="8" width="295" height="60.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                     <color key="textColor" name="SecondaryDark"/>
@@ -806,7 +806,7 @@
                                         <constraint firstAttribute="height" constant="125" id="eWD-aH-LRi"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K28-mC-NAt">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="K28-mC-NAt">
                                     <rect key="frame" x="40" y="209.5" width="295" height="139.5"/>
                                     <string key="text">Your IP addresses are fully obfuscated and transactions are completely untraceable when you're using a Tor connection.
 
@@ -820,6 +820,7 @@ But you can always turn Tor off.</string>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="yc2-Gk-2PC" secondAttribute="trailing" constant="40" id="4f7-yO-Gez"/>
                                 <constraint firstItem="K28-mC-NAt" firstAttribute="top" secondItem="U9l-Av-2eM" secondAttribute="bottom" constant="8" id="Iy7-uS-ibI"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="K28-mC-NAt" secondAttribute="bottom" constant="8" id="Suu-mx-Av2"/>
                                 <constraint firstItem="yc2-Gk-2PC" firstAttribute="leading" secondItem="GWw-o4-DL5" secondAttribute="leading" constant="40" id="UmP-wc-XPS"/>
                                 <constraint firstItem="yc2-Gk-2PC" firstAttribute="top" secondItem="GWw-o4-DL5" secondAttribute="top" constant="8" id="bjK-rn-7S6"/>
                                 <constraint firstItem="U9l-Av-2eM" firstAttribute="leading" secondItem="GWw-o4-DL5" secondAttribute="leading" constant="40" id="dS5-bi-2fh"/>

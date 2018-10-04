@@ -23,7 +23,7 @@ class TorStatusIndicator: UIWindow {
 
     func initialize() {
         let hasNotch = self.hasNotch()
-        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height:  hasNotch ? 54 : 20)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height:  hasNotch ? 54 : 32)
         self.torStatusIndicatorViewController = TorStatusIndicatorViewController(nibName: "TorStatusIndicatorViewController", bundle: .main)
         self.torStatusIndicatorViewController?.view.frame = frame
         self.backgroundColor = .clear

@@ -5,14 +5,14 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TorStatusIndicatorViewController" customModule="VergeiOS" customModuleProvider="target">
             <connections>
                 <outlet property="containerView" destination="0PT-JF-SIi" id="Mrv-Q4-Ji4"/>
-                <outlet property="indicatorView" destination="sxe-kI-Aja" id="1qv-dG-n9X"/>
+                <outlet property="indicatorView" destination="oTq-G3-j66" id="SSb-3F-9E6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,19 +24,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PT-JF-SIi">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="34"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxe-kI-Aja">
-                            <rect key="frame" x="182.5" y="19" width="10" height="10"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Public" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-G3-j66">
+                            <rect key="frame" x="180" y="19" width="15" height="15"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="10" id="AH4-Wz-jTB"/>
-                                <constraint firstAttribute="width" constant="10" id="C1g-7a-k4h"/>
+                                <constraint firstAttribute="height" constant="15" id="FvP-h1-a9m"/>
+                                <constraint firstAttribute="width" constant="15" id="qQa-M7-3bb"/>
                             </constraints>
-                        </view>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="sxe-kI-Aja" secondAttribute="bottom" constant="5" id="YJv-L1-Mql"/>
-                        <constraint firstItem="sxe-kI-Aja" firstAttribute="centerX" secondItem="0PT-JF-SIi" secondAttribute="centerX" id="qsU-uS-ThJ"/>
+                        <constraint firstItem="oTq-G3-j66" firstAttribute="centerX" secondItem="0PT-JF-SIi" secondAttribute="centerX" id="UOp-rQ-PxS"/>
                         <constraint firstAttribute="height" constant="34" identifier="containerViewHeight" id="xct-MD-M8j"/>
+                        <constraint firstAttribute="bottom" secondItem="oTq-G3-j66" secondAttribute="bottom" id="yVr-lR-L2l"/>
                     </constraints>
                 </view>
             </subviews>
@@ -48,7 +48,10 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="92.5" y="51"/>
+            <point key="canvasLocation" x="92" y="50.374812593703155"/>
         </view>
     </objects>
+    <resources>
+        <image name="Public" width="30" height="30"/>
+    </resources>
 </document>
