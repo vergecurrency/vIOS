@@ -24,7 +24,7 @@ class TorStatusIndicatorViewController: UIViewController {
         switch status {
         case .connected:
             indicatorView.image = UIImage(named: "Locked")
-            indicatorView.tintColor = UIColor.vergeGreen()
+            indicatorView.tintColor = UIColor.secondaryDark()
         case .disconnected:
             indicatorView.image = UIImage(named: "Unlocked")
             indicatorView.tintColor = UIColor.orange

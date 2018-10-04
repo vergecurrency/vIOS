@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
-class TorConnectionTableViewController: UITableViewController {
+class TorConnectionTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var useTorSwitch: UISwitch!
     @IBOutlet weak var ipAddressLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +48,15 @@ class TorConnectionTableViewController: UITableViewController {
     
     func updateIPAddress() {
         setIpAddressLabel("Loading...")
-        
-        let url = URL(string: "https://api.ipify.org/?format=json")
+
+        let url = URL(string: "http://api.ipstack.com/check?access_key=e95ebddbee9137302b3cf50b39a33362&format=1")
         let task = TorClient.shared.session.dataTask(with: url!) { data, response, error in
             do {
                 if data != nil {
                     let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)
-                    
+
                     self.setIpAddressLabel(ipAddress.ip)
+                    self.centerMapView(withIpLocation: ipAddress)
                 }
             } catch {
                 print(error)
@@ -65,6 +68,21 @@ class TorConnectionTableViewController: UITableViewController {
     func setIpAddressLabel(_ label: String) {
         DispatchQueue.main.async {
             self.ipAddressLabel.text = label
+        }
+    }
+
+    func centerMapView(withIpLocation ipAddress: IpAddress) {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(ipAddress.latitude),
+            longitude: CLLocationDegrees(ipAddress.longitude)
+        )
+
+        let distance: CLLocationDistance = 12000
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
+
+        DispatchQueue.main.async {
+            self.mapView.setCenter(coordinate, animated: true)
+            self.mapView.setRegion(region, animated: true)
         }
     }
 

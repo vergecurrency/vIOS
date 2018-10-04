@@ -10,4 +10,7 @@ import Foundation
 
 public struct IpAddress: Decodable {
     public let ip: String
+    public let country_name: String
+    public let latitude: Double
+    public let longitude: Double
 }
