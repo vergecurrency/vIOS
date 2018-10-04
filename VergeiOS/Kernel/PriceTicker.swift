@@ -14,7 +14,8 @@ class PriceTicker {
 
     private var started: Bool = false
     private var interval: Timer?
-    
+
+    var statisicsClient: StatisicsAPIClient = StatisicsAPIClient()
     var xvgInfo: Statistics?
 
     init () {
@@ -57,7 +58,7 @@ class PriceTicker {
     // Fetch statistics from the API and notify all absorbers.
     @objc private func fetchStats() {
         print("Fetching new stats")
-        StatisicsAPIClient.shared.infoBy(currency: WalletManager.default.currency) { info in
+        statisicsClient.infoBy(currency: WalletManager.default.currency) { info in
             self.xvgInfo = info
 
             print("Stats received, posting notification")

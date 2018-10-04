@@ -58,7 +58,7 @@ class ConfirmSendView: UIView {
         if let xvgInfo = PriceTicker.shared.xvgInfo {
             let transactionFee = 0.1
             let totalXVG = transaction.amount.doubleValue + transactionFee
-            let totalFiat = totalXVG * xvgInfo.raw.price
+            let totalFiat = totalXVG * xvgInfo.price
 
             sendingAmountLabel.text = transaction.amount.toCurrency(currency: "XVG")
             transactionFeeAmountLabel.text = NSNumber(floatLiteral: 0.1).toCurrency(currency: "XVG")

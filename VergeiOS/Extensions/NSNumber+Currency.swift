@@ -27,4 +27,12 @@ extension NSNumber {
         return "\(formatter.string(from: self)!)\(suffix)"
     }
     
+    func toPairCurrency(fractDigits: Int = 2) -> String {
+        return toCurrency(currency: WalletManager.default.currency, fractDigits: fractDigits)
+    }
+    
+    func toXvgCurrency(fractDigits: Int = 2) -> String {
+        return toCurrency(currency: "XVG", fractDigits: fractDigits)
+    }
+    
 }

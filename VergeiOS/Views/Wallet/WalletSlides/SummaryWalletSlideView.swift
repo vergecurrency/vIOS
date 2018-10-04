@@ -67,43 +67,43 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         if let info = PriceTicker.shared.xvgInfo {
             switch item {
             case "price":
-                cell.textLabel?.text = "XVG/USD"
-                cell.detailTextLabel?.text = info.display.price
+                cell.textLabel?.text = "XVG/\(WalletManager.default.currency)"
+                cell.detailTextLabel?.text = NSNumber(value: info.price).toPairCurrency(fractDigits: 6)
                 break
             case "marketCap":
                 cell.textLabel?.text = "Market Cap"
-                cell.detailTextLabel?.text = info.display.mktcap
+                cell.detailTextLabel?.text = NSNumber(value: info.mktcap).toPairCurrency(fractDigits: 0)
                 break
             case "dayHigh":
                 cell.textLabel?.text = "24h High"
-                cell.detailTextLabel?.text = info.display.high24Hour
+                cell.detailTextLabel?.text = NSNumber(value: info.high24Hour).toPairCurrency(fractDigits: 6)
                 cell.detailTextLabel?.textColor = .vergeGreen()
                 break
             case "dayLow":
                 cell.textLabel?.text = "24h Low"
-                cell.detailTextLabel?.text = info.display.low24Hour
+                cell.detailTextLabel?.text = NSNumber(value: info.low24Hour).toPairCurrency(fractDigits: 6)
                 cell.detailTextLabel?.textColor = .vergeRed()
                 break
             case "rank":
                 cell.textLabel?.text = "CMC Rank"
-                cell.detailTextLabel?.text = "-"
+                cell.detailTextLabel?.text = "\(info.rank)"
                 break
             case "dayChangePercentage":
                 cell.textLabel?.text = "24h Change"
-                cell.detailTextLabel?.text = "\(info.display.changepct24Hour)%"
-                stylePercentageLabel(cell.detailTextLabel!, value: info.raw.change24Hour)
+                cell.detailTextLabel?.text = "\(String(format: "%.2f", info.changepct24Hour))%"
+                stylePercentageLabel(cell.detailTextLabel!, value: info.change24Hour)
                 break
             case "dayChangeValue":
                 cell.textLabel?.text = "24h Change"
-                cell.detailTextLabel?.text = info.display.change24Hour
+                cell.detailTextLabel?.text = NSNumber(value: info.change24Hour).toPairCurrency(fractDigits: 6)
                 break
             case "dayTotalvolume":
                 cell.textLabel?.text = "24h Volume"
-                cell.detailTextLabel?.text = info.display.totalvolume24H
+                cell.detailTextLabel?.text = NSNumber(value: info.totalvolume24H).toXvgCurrency(fractDigits: 0)
                 break
             case "dayTotalvolumePair":
                 cell.textLabel?.text = "24h Volume"
-                cell.detailTextLabel?.text = info.display.totalvolume24Hto
+                cell.detailTextLabel?.text = NSNumber(value: info.totalvolume24Hto).toPairCurrency(fractDigits: 0)
                 break
             default:
                 cell.textLabel?.text = "Not"

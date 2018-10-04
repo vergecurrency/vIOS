@@ -113,10 +113,10 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         DispatchQueue.main.async {
             if let xvgInfo = PriceTicker.shared.xvgInfo {
                 let walletAmount = WalletManager.default.amount
-                self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.raw.price).toCurrency()
+                self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
                 self.pairSymbolBalanceLabel.text = "\(WalletManager.default.currency) BALANCE"
                 
-                self.xvgPairBalanceLabel.text = xvgInfo.display.price
+                self.xvgPairBalanceLabel.text = NSNumber(value: xvgInfo.price).toPairCurrency(fractDigits: 6)
                 self.xvgPairSymbolLabel.text = "\(WalletManager.default.currency)/XVG"
             }
         }

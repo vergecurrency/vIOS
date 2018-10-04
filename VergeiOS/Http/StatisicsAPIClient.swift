@@ -10,26 +10,18 @@ import Foundation
 import SwiftyJSON
 
 class StatisicsAPIClient {
-    
-    static let shared = StatisicsAPIClient()
-    
-    let endpoint: String = "https://min-api.cryptocompare.com/data/"
+
+    let endpoint: String = "https://garagenet.internet-box.ch/api/v1/price/"
     
     func infoBy(currency: String, completion: @escaping (_ data: Statistics?) -> Void) {
-        let url = URL(string: "\(endpoint)pricemultifull?fsyms=XVG&tsyms=\(currency)")
+        let url = URL(string: "\(endpoint)\(currency)")
     
         let task = TorClient.shared.session.dataTask(with: url!) { (data, resonse, error) in
             if let data = data {
                 do {
-                    let json = try JSON(data: data)
-                    let raw = try JSONDecoder().decode(
-                        InfoRaw.self, from: try json["RAW"]["XVG"][currency].rawData()
-                    )
-                    let display = try JSONDecoder().decode(
-                        InfoDisplay.self, from: try json["DISPLAY"]["XVG"][currency].rawData()
-                    )
+                    let statistics = try JSONDecoder().decode(Statistics.self, from: data)
                     
-                    completion(Statistics(raw: raw, display: display))
+                    completion(statistics)
                 } catch {
                     print("Error info: \(error)")
                     completion(nil)

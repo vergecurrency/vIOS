@@ -25,9 +25,9 @@ class SendTransaction {
     func updateBy(currency: String) {
         if let xvgInfo = PriceTicker.shared.xvgInfo {
             if currency == "XVG" {
-                fiatAmount = NSNumber(value: amount.doubleValue * xvgInfo.raw.price)
+                fiatAmount = NSNumber(value: amount.doubleValue * xvgInfo.price)
             } else {
-                amount = NSNumber(value: fiatAmount.doubleValue / xvgInfo.raw.price)
+                amount = NSNumber(value: fiatAmount.doubleValue / xvgInfo.price)
             }
         }
     }

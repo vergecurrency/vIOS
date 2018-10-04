@@ -130,7 +130,7 @@ class SendViewController: UIViewController {
 
     func convertXvgToFiat(_ amount: NSNumber) -> NSNumber {
         if let xvgInfo = PriceTicker.shared.xvgInfo {
-            return NSNumber(value: amount.doubleValue * xvgInfo.raw.price)
+            return NSNumber(value: amount.doubleValue * xvgInfo.price)
         }
 
         return amount
