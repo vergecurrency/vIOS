@@ -26,33 +26,51 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     }
     
     override func viewDidLoad() {
-        self.pinKeyboard.delegate = self
+        pinKeyboard.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.pin = ""
-        self.pinTextField.reset()
+        pin = ""
+        pinTextField.reset()
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
         if (keyboardKey.isKind(of: BackKey.self)) {
-            self.pinTextField.removeCharacter()
+            pinTextField.removeCharacter()
             
             if (pin.count > 0) {
                 pin = String(pin[..<pin.index(pin.endIndex, offsetBy: -1)])
             }
         } else {
-            self.pinTextField.addCharacter()
+            pinTextField.addCharacter()
             
-            if (pin.count < self.pinTextField.pinCharacterCount) {
+            if (pin.count < pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
             
             // When all pins are set.
-            if (pin.count == self.pinTextField.pinCharacterCount) {
-                self.performSegue(withIdentifier: "confirmPin", sender: self)
+            if (pin.count == pinTextField.pinCharacterCount) {
+                performSegue(withIdentifier: "confirmPin", sender: self)
             }
         }
+    }
+    
+    @IBAction func showSettings(_ sender: Any) {
+        let settings = UIAlertController(title: "Choose a PIN size", message: nil, preferredStyle: .actionSheet)
+
+        let digitCounts = [4,5,6,7,8]
+        for count in digitCounts {
+            settings.addAction(UIAlertAction(title: "\(count) Digits", style: .default) { action in
+                WalletManager.default.pinCount = count
+                self.pinTextField.pinCharacterCount = WalletManager.default.pinCount
+                self.pinTextField.reset()
+                self.pin = ""
+            })
+        }
+
+        settings.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(settings, animated: true)
     }
     
     // Dismiss the view
@@ -72,7 +90,7 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
                 backItem.title = "Back"
                 navigationItem.backBarButtonItem = backItem
                 
-                vc.previousPin = self.pin
+                vc.previousPin = pin
                 vc.segueIdentifier = segueIdentifier
                 vc.completion = completion
             }

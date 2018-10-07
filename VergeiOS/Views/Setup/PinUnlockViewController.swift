@@ -43,7 +43,7 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
             closeButton.removeConstraints(closeButton.constraints)
         }
 
-        self.pinKeyboard.delegate = self
+        pinKeyboard.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {

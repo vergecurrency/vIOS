@@ -17,13 +17,14 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     var previousPin: String = ""
     var pin: String = ""
+    var pinCount: Int = WalletManager.default.pinCount
     var segueIdentifier: String?
     var completion: ((_ pin: String) -> Void)?
     
     override func viewDidLoad() {
-        self.pinKeyboard.delegate = self
-        self.pinConfirmedView.isHidden = true
-        self.pinFailedView.isHidden = true
+        pinKeyboard.delegate = self
+        pinConfirmedView.isHidden = true
+        pinFailedView.isHidden = true
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {

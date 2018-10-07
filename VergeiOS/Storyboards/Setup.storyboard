@@ -439,8 +439,11 @@
                                 <action selector="backToWelcome:" destination="MkY-zg-pVQ" id="n3C-OD-xwC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Help" id="FoY-am-3TD">
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="FoY-am-3TD">
                             <color key="tintColor" name="SecondaryDark"/>
+                            <connections>
+                                <action selector="showSettings:" destination="MkY-zg-pVQ" id="a9d-s8-Qmd"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -637,11 +640,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jGR-Rv-m9r"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Re-enter the PIN" id="Cpg-BE-SXH">
-                        <barButtonItem key="rightBarButtonItem" title="Help" image="Help" id="ly9-bO-6tG">
-                            <color key="tintColor" name="SecondaryDark"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Re-enter the PIN" id="Cpg-BE-SXH"/>
                     <connections>
                         <outlet property="pinConfirmedView" destination="nzs-ko-GVo" id="OF4-Ob-ajZ"/>
                         <outlet property="pinFailedView" destination="asU-sg-4JA" id="Qlu-4V-99g"/>
@@ -668,11 +667,11 @@
         <image name="Background" width="1542" height="721"/>
         <image name="ChecklistOneItem" width="600" height="600"/>
         <image name="Close" width="30" height="30"/>
-        <image name="Help" width="30" height="30"/>
         <image name="LogoWhite" width="284" height="284"/>
         <image name="PinConfirmed" width="90" height="90"/>
         <image name="PinUnconfirmed" width="90" height="90"/>
         <image name="Rocket" width="30" height="30"/>
+        <image name="Settings" width="30" height="30"/>
         <image name="UnlockBackground" width="4125" height="2436"/>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -32,6 +32,16 @@ class WalletManager {
             KeychainSwift().set(newValue, forKey: "wallet.pin")
         }
     }
+
+    var pinCount: Int {
+        get {
+            UserDefaults.standard.register(defaults: ["wallet.pinCount": 6])
+            return UserDefaults.standard.integer(forKey: "wallet.pinCount")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "wallet.pinCount")
+        }
+    }
     
     // User wants to use tor or not.
     var useTor: Bool {
