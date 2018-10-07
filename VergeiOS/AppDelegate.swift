@@ -15,10 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var sendRequest: SendTransaction?
+    var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TorStatusIndicator.shared.initialize()
         
+        backgroundTaskIdentifier = application.beginBackgroundTask {
+            if self.backgroundTaskIdentifier != nil {
+                application.endBackgroundTask(self.backgroundTaskIdentifier!)
+            }
+        }
+        
+        registerAppforDetectLockState()
         setupListeners()
         
         // Start the tor client
@@ -68,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         PriceTicker.shared.stop()
-        TorClient.shared.resign()
 
         showPinUnlockViewController()
     }
@@ -143,6 +150,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @objc func didTurnOffTor(notification: Notification? = nil) {
         TorStatusIndicator.shared.setStatus(.turnedOff)
+    }
+    
+    func registerAppforDetectLockState() {
+        let callback: CFNotificationCallback = { center, observer, name, object, info in
+            if TorClient.shared.isOperational {
+                TorClient.shared.resign()
+            }
+        }
+
+        CFNotificationCenterAddObserver(
+            CFNotificationCenterGetDarwinNotifyCenter(),
+            nil,
+            callback,
+            "com.apple.springboard.lockstate" as CFString,
+            nil,
+            .deliverImmediately
+        )
     }
 
     // MARK: - Core Data stack

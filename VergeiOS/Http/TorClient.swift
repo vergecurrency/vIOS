@@ -19,7 +19,7 @@ class TorClient {
     private var controller: TorController!
 
     // Client status?
-    private var isOperational: Bool = false
+    private(set) var isOperational: Bool = false
     private var isConnected: Bool {
         return self.controller.isConnected
     }
@@ -33,7 +33,9 @@ class TorClient {
         return URLSession(configuration: sessionConfiguration)
     }
 
-    func setupThread() {
+    private init() {}
+
+    private func setupThread() {
         config.options = [
             "DNSPort": "12345",
             "AutomapHostsOnResolve": "1",
