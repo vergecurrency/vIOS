@@ -164,6 +164,10 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            return
+        }
+        
         if items[indexPath.row].txid == transaction?.txid {
             return
         }

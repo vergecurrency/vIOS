@@ -28,15 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerAppforDetectLockState()
         setupListeners()
-        
+
         // Start the tor client
         TorClient.shared.start {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 // Start the price ticker.
                 PriceTicker.shared.start()
-                
-                let loadingViewController = self.window?.rootViewController as! LoadingTorViewController
-                loadingViewController.completeLoading()
             }
         }
 
@@ -233,4 +230,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
-

@@ -14,10 +14,14 @@ class LoadingTorViewController: UIViewController {
         return .lightContent
     }
 
-    func completeLoading() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         let identifier = WalletManager.default.setup ? "showWallet" : "showWelcomeView"
 
-        self.performSegue(withIdentifier: identifier, sender: self)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: identifier, sender: self)
+        }
     }
 
     // MARK: - Navigation

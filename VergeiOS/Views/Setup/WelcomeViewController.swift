@@ -16,9 +16,12 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // TODO: Create a Tor setup page and move this over.
         // Set Tor enabled as default.
         WalletManager.default.useTor = true
+        // Now start Tor.
+        TorClient.shared.start {}
     }
 }
 

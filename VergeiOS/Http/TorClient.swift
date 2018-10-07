@@ -77,24 +77,20 @@ class TorClient {
             NotificationCenter.default.post(name: .didStartTorThread, object: self)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            do {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // Connect Tor controller.
+            self.connectController(completion: completion)
+
+            // Make sure the controller connects.
+            var interval: Timer!
+            interval = setInterval(4) {
                 if !self.controller.isConnected {
-                    try self.controller?.connect()
-
-                    NotificationCenter.default.post(name: .didConnectTorController, object: self)
+                    print("Retry tor controller connection")
+                    self.connectController(completion: completion)
+                } else {
+                    print("Remove tor controller connection interval")
+                    interval.invalidate()
                 }
-
-                try self.authenticateController {
-                    print("Tor tunnel started! 🤩")
-
-                    NotificationCenter.default.post(name: .didEstablishTorConnection, object: self)
-
-                    completion()
-                }
-            } catch {
-                print(error.localizedDescription)
-                completion()
             }
         }
     }
@@ -116,6 +112,26 @@ class TorClient {
         // Retry in a sec.
         let _ = setTimeout(1) {
             self.resign()
+        }
+    }
+
+    private func connectController(completion: @escaping () -> Void) {
+        do {
+            if !self.controller.isConnected {
+                try self.controller?.connect()
+                NotificationCenter.default.post(name: .didConnectTorController, object: self)
+            }
+
+            try self.authenticateController {
+                print("Tor tunnel started! 🤩")
+
+                NotificationCenter.default.post(name: .didEstablishTorConnection, object: self)
+
+                completion()
+            }
+        } catch {
+            print(error.localizedDescription)
+            completion()
         }
     }
 
