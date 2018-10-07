@@ -38,6 +38,10 @@ class CreditsTableViewController: EdgedTableViewController {
             "name": "Swen",
             "twitter": "SwenVanZanten"
         ],
+        [
+            "name": "Vadim",
+            "twitter": "grevcev_vadim"
+        ],
     ]
     
     var translators = [

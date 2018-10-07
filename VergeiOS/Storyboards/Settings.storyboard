@@ -370,7 +370,7 @@
                             <tableViewSection headerTitle="Use for" id="vvU-1b-nGZ">
                                 <string key="footerTitle">Instead of having the need of filling in your wallet PIN a prompt will provide you with the alternative way of authenticating yourself.</string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="IS2-8P-mFv" style="IBUITableViewCellStyleDefault" id="e9W-Ob-cpX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="IS2-8P-mFv" style="IBUITableViewCellStyleDefault" id="e9W-Ob-cpX">
                                         <rect key="frame" x="0.0" y="175.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e9W-Ob-cpX" id="cbn-YP-Z25">
@@ -398,7 +398,7 @@
                                             <outlet property="accessoryView" destination="4P0-42-mbz" id="lFG-kQ-qSn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="XOT-jY-PyN" style="IBUITableViewCellStyleDefault" id="k8t-uB-UsW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="XOT-jY-PyN" style="IBUITableViewCellStyleDefault" id="k8t-uB-UsW">
                                         <rect key="frame" x="0.0" y="219.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k8t-uB-UsW" id="df5-3C-aNR">

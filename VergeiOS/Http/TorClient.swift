@@ -84,7 +84,7 @@ class TorClient {
             // Make sure the controller connects.
             var interval: Timer!
             interval = setInterval(4) {
-                if !self.controller.isConnected {
+                if !self.controller.isConnected || !self.isOperational {
                     print("Retry tor controller connection")
                     self.connectController(completion: completion)
                 } else {

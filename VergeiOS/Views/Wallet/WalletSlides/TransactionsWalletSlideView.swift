@@ -12,7 +12,6 @@ import HGPlaceholders
 class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: TableView!
-    @IBOutlet weak var allTransactionsLabel: UILabel!
     
     let addressBookManager = AddressBookManager()
     var items: [Transaction] = []
@@ -22,12 +21,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         
         installTableViewPlaceholder()
         getTransactions()
-        
-        let allTransactionsLabel = UIButton(type: .system)
-        allTransactionsLabel.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30)
-        allTransactionsLabel.setTitle("Show all transactions", for: .normal)
-        allTransactionsLabel.titleLabel?.font = UIFont.avenir(size: 15).demiBold()
-        tableView.tableFooterView = allTransactionsLabel
+
         tableView.layer.cornerRadius = 5.0
         tableView.clipsToBounds = true
     }

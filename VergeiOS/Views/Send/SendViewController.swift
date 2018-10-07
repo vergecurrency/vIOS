@@ -118,6 +118,10 @@ class SendViewController: UIViewController {
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
+            if self.walletAmount.doubleValue == 0.0 {
+                return
+            }
+
             if (self.currentAmount().doubleValue >= self.walletAmount.doubleValue) {
                 self.amountTextField.valueLabel?.textColor = UIColor.vergeRed()
                 
