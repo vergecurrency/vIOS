@@ -18,4 +18,6 @@ extension Notification.Name {
     static let didEstablishTorConnection = Notification.Name("didEstablishTorConnection")
     static let didResignTorConnection = Notification.Name("didResignTorConnection")
     static let didTurnOffTor = Notification.Name("didTurnOffTor")
+
+    static let demandSendView = Notification.Name("demandSendView")
 }

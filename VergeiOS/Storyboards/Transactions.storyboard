@@ -158,13 +158,18 @@
                                 <action selector="closeViewController:" destination="Igw-3T-6sZ" id="m57-hG-HEU"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Refresh" id="IhH-Ac-YiK"/>
+                        <barButtonItem key="rightBarButtonItem" image="Refresh" id="IhH-Ac-YiK">
+                            <connections>
+                                <action selector="repeatTransactionPushed:" destination="Igw-3T-6sZ" id="bpB-Co-fU3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="amountLabel" destination="SH2-Sm-iht" id="Ewe-V0-bKJ"/>
                         <outlet property="dateTimeLabel" destination="Zge-7U-fdr" id="65u-H3-UUS"/>
                         <outlet property="iconImageView" destination="VQB-xw-7HZ" id="Qtp-61-Fgc"/>
                         <outlet property="nameLabel" destination="hnr-1l-LV6" id="Edk-9z-8fb"/>
+                        <outlet property="repeatTransactionBarButtonItem" destination="IhH-Ac-YiK" id="Cmy-uX-3px"/>
                         <outlet property="tableView" destination="Ljw-hq-7uL" id="T12-6W-Ybm"/>
                     </connections>
                 </viewController>

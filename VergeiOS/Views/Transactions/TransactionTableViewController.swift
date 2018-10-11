@@ -14,6 +14,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet var repeatTransactionBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var tableView: PlaceholderTableView!
     
@@ -60,11 +61,13 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         
         var prefix = ""
         if transaction.category == .Send {
+            navigationItem.setRightBarButton(repeatTransactionBarButtonItem, animated: true)
             amountLabel.textColor = UIColor.vergeRed()
             iconImageView.image = UIImage(named: "Payment")
             
             prefix = "-"
         } else {
+            navigationItem.setRightBarButton(nil, animated: true)
             amountLabel.textColor = UIColor.vergeGreen()
             iconImageView.image = UIImage(named: "Receive")
             
@@ -76,11 +79,8 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func loadTransactions(_ transaction: Transaction) {
         let transactions = WalletManager.default
-            .getTransactions(offset: 0, limit: 7).sorted { a, b in
+            .getTransactions(byAddress: transaction.address, offset: 0, limit: 7).sorted { a, b in
                 return a.blockindex > b.blockindex
-            }
-            .filter { item in
-                return item.address == transaction.address
             }
         
         items = transactions
@@ -123,7 +123,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             switch indexPath.row {
             case 0:
                 cell.imageView?.image = UIImage(named: "Address")
-                cell.textLabel?.text = "From Address"
+                cell.textLabel?.text = "Address"
                 cell.detailTextLabel?.text = transaction?.address
                 break
             case 1:
@@ -154,7 +154,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         recipient.address = item.address
         recipient.name = nameLabel.text ?? item.address
         
-        cell.setTransaction(item, address: recipient)
+        cell.setTransaction(item)
         
         return cell
     }
@@ -162,7 +162,15 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewEdger.updateView()
     }
-    
+
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 0 {
+            return nil
+        }
+
+        return indexPath
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             return
@@ -184,6 +192,28 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 let indexPath = IndexPath(row: index, section: 1)
                 tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
             }
+        }
+    }
+
+    func repeatTransaction(_ transaction: Transaction) {
+        if self.navigationController?.popViewController(animated: true) == nil {
+            self.closeViewController(self)
+        }
+
+        DispatchQueue.main.async {
+            // Create a send transaction.
+            let sendTransaction = SendTransaction()
+            sendTransaction.address = transaction.address
+            sendTransaction.amount = transaction.amount
+
+            // Notify the system to show the send view.
+            NotificationCenter.default.post(name: .demandSendView, object: sendTransaction)
+        }
+    }
+
+    @IBAction func repeatTransactionPushed(_ sender: Any) {
+        if transaction != nil {
+            repeatTransaction(transaction!)
         }
     }
     

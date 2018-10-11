@@ -12,13 +12,20 @@ class TransactionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var amountLabel: UILabel!
     
-    func setTransaction(_ transaction: Transaction, address: Address? = nil) {
+    func setTransaction(_ transaction: Transaction, address: Address?) {
         setAccount(transaction, address: address)
         setDateTime(transaction)
         setAmount(transaction)
     }
+
+    func setTransaction(_ transaction: Transaction) {
+        textLabel?.text = transaction.blockhash
+        textLabel?.textColor = UIColor.secondaryLight().withAlphaComponent(0.75)
+        setDateTime(transaction)
+        setAmount(transaction)
+    }
     
-    fileprivate func setAccount(_ transaction: Transaction, address: Address? = nil) {
+    fileprivate func setAccount(_ transaction: Transaction, address: Address?) {
         textLabel?.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
         
         if address != nil {

@@ -107,11 +107,19 @@ class WalletManager {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 return try JSONDecoder().decode([Transaction].self, from: data)
             } catch {
+                print(error)
                 return []
             }
         }
 
         return []
+    }
+
+    func getTransactions(byAddress address: String, offset: Int = 0, limit: Int = 10) -> [Transaction] {
+        return getTransactions(offset: offset, limit: limit)
+            .filter { item in
+                return item.address == address
+            }
     }
     
     func reset() {

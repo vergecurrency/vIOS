@@ -11,7 +11,18 @@ import UIKit
 class MainTabBarController: UITabBarController {
 
     let sendViewIndex: Int = 2
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(demandSendView(notification:)),
+            name: .demandSendView,
+            object: nil
+        )
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -39,8 +50,14 @@ class MainTabBarController: UITabBarController {
         }
         
         // Set the transaction on the send view.
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             sendViewController.didChangeSendTransaction(transaction)
+        }
+    }
+
+    @objc func demandSendView(notification: Notification) {
+        if let sendTransaction = notification.object as? SendTransaction {
+            prepareSendView(transaction: sendTransaction)
         }
     }
 
