@@ -22,6 +22,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         installTableViewPlaceholder()
         getTransactions()
 
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.layer.cornerRadius = 5.0
         tableView.clipsToBounds = true
     }

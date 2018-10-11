@@ -58,14 +58,15 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     @IBAction func showSettings(_ sender: Any) {
         let settings = UIAlertController(title: "Choose a PIN size", message: nil, preferredStyle: .actionSheet)
 
-        let digitCounts = [4,5,6,7,8]
+        let digitCounts = [4, 5, 6, 7, 8]
         for count in digitCounts {
-            settings.addAction(UIAlertAction(title: "\(count) Digits", style: .default) { action in
-                WalletManager.default.pinCount = count
-                self.pinTextField.pinCharacterCount = WalletManager.default.pinCount
+            let action = UIAlertAction(title: "\(count) Digits", style: .default) { action in
+                self.pinTextField.pinCharacterCount = count
                 self.pinTextField.reset()
                 self.pin = ""
-            })
+            }
+            action.setValue(UIImage(named: "\(count)Digits"), forKey: "image")
+            settings.addAction(action)
         }
 
         settings.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -91,6 +92,7 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
                 navigationItem.backBarButtonItem = backItem
                 
                 vc.previousPin = pin
+                vc.pinCount = pinTextField.pinCharacterCount
                 vc.segueIdentifier = segueIdentifier
                 vc.completion = completion
             }

@@ -17,7 +17,7 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     var previousPin: String = ""
     var pin: String = ""
-    var pinCount: Int = WalletManager.default.pinCount
+    var pinCount: Int!
     var segueIdentifier: String?
     var completion: ((_ pin: String) -> Void)?
     
@@ -25,6 +25,8 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
         pinKeyboard.delegate = self
         pinConfirmedView.isHidden = true
         pinFailedView.isHidden = true
+        pinTextField.pinCharacterCount = pinCount
+        pinTextField.reset()
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
@@ -50,6 +52,8 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     func handlePinCreation() {
         if (self.pin == self.previousPin) {
+            WalletManager.default.pinCount = pinCount
+
             self.pinConfirmedView.alpha = 0.0
             self.pinConfirmedView.center.y -= 60.0
             UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseInOut, animations: {
