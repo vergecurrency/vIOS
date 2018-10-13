@@ -23,6 +23,7 @@ struct Transaction: Decodable {
         case timereceivedValue = "timereceived"
         case amountValue = "amount"
         case categoryValue = "category"
+        case memo
     }
 
     public let txid: String
@@ -32,6 +33,7 @@ struct Transaction: Decodable {
     public let confirmations: Int
     public let blockhash: String
     public let blockindex: Int
+    public let memo: String?
 
     private var blocktimeValue: Double
     private var timeValue: Double

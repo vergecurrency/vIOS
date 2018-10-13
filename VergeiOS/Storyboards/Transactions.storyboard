@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -69,15 +70,29 @@
                                             <constraint firstAttribute="width" secondItem="VQB-xw-7HZ" secondAttribute="height" multiplier="1:1" id="NdH-rB-lqU"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-1l-LV6">
-                                        <rect key="frame" x="8" y="95" width="359" height="28"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="TOT-td-IkK"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <color key="textColor" name="SecondaryDark"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-8b-yTk">
+                                        <rect key="frame" x="146.5" y="95" width="82.5" height="28"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQh-Ni-7Bo">
+                                                <rect key="frame" x="0.0" y="4" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="Cd2-5n-6Cu"/>
+                                                    <constraint firstAttribute="height" constant="20" id="msa-9Q-XdH"/>
+                                                </constraints>
+                                                <color key="tintColor" name="SecondaryDark"/>
+                                                <state key="normal" image="AddAddress"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-1l-LV6">
+                                                <rect key="frame" x="28" y="0.0" width="54.5" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="28" id="TOT-td-IkK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                                <color key="textColor" name="SecondaryDark"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00 XVG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-Sm-iht">
                                         <rect key="frame" x="8" y="139" width="359" height="38"/>
                                         <constraints>
@@ -90,18 +105,19 @@
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundGrey"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WyG-8b-yTk" secondAttribute="trailing" constant="8" id="3jJ-gr-d2a"/>
                                     <constraint firstItem="VQB-xw-7HZ" firstAttribute="centerX" secondItem="Dcc-rT-16c" secondAttribute="centerX" id="Ef8-RT-a2Z"/>
                                     <constraint firstItem="Zge-7U-fdr" firstAttribute="leading" secondItem="Dcc-rT-16c" secondAttribute="leading" constant="8" id="F2h-1F-8PP"/>
+                                    <constraint firstItem="WyG-8b-yTk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dcc-rT-16c" secondAttribute="leading" constant="8" id="KV0-aX-D0x"/>
                                     <constraint firstItem="SH2-Sm-iht" firstAttribute="leading" secondItem="Dcc-rT-16c" secondAttribute="leading" constant="8" id="MUm-T6-jSr"/>
                                     <constraint firstItem="Zge-7U-fdr" firstAttribute="top" secondItem="Dcc-rT-16c" secondAttribute="top" constant="8" id="PUr-NU-QIp"/>
+                                    <constraint firstItem="WyG-8b-yTk" firstAttribute="top" secondItem="VQB-xw-7HZ" secondAttribute="bottom" constant="8" id="Q3R-gy-LIu"/>
                                     <constraint firstAttribute="height" constant="193" id="TD2-U3-fYg"/>
-                                    <constraint firstAttribute="trailing" secondItem="hnr-1l-LV6" secondAttribute="trailing" constant="8" id="UvR-7l-ndB"/>
-                                    <constraint firstItem="hnr-1l-LV6" firstAttribute="leading" secondItem="Dcc-rT-16c" secondAttribute="leading" constant="8" id="aPa-50-wGe"/>
+                                    <constraint firstItem="WyG-8b-yTk" firstAttribute="centerX" secondItem="Dcc-rT-16c" secondAttribute="centerX" id="ZcA-xi-mjg"/>
                                     <constraint firstAttribute="trailing" secondItem="SH2-Sm-iht" secondAttribute="trailing" constant="8" id="cvb-ry-iMs"/>
                                     <constraint firstAttribute="bottom" secondItem="SH2-Sm-iht" secondAttribute="bottom" constant="16" id="dty-4s-zug"/>
+                                    <constraint firstItem="SH2-Sm-iht" firstAttribute="top" secondItem="WyG-8b-yTk" secondAttribute="bottom" constant="16" id="gNB-q7-2bM"/>
                                     <constraint firstItem="VQB-xw-7HZ" firstAttribute="top" secondItem="Zge-7U-fdr" secondAttribute="bottom" constant="8" id="mPx-cr-dhT"/>
-                                    <constraint firstItem="hnr-1l-LV6" firstAttribute="top" secondItem="VQB-xw-7HZ" secondAttribute="bottom" constant="8" id="umN-Io-f5h"/>
-                                    <constraint firstItem="SH2-Sm-iht" firstAttribute="top" secondItem="hnr-1l-LV6" secondAttribute="bottom" constant="16" id="yb8-8o-pu9"/>
                                     <constraint firstAttribute="trailing" secondItem="Zge-7U-fdr" secondAttribute="trailing" constant="8" id="zCU-jS-GEz"/>
                                 </constraints>
                             </view>
@@ -165,6 +181,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addAddressButton" destination="BQh-Ni-7Bo" id="i4O-fy-nn1"/>
                         <outlet property="amountLabel" destination="SH2-Sm-iht" id="Ewe-V0-bKJ"/>
                         <outlet property="dateTimeLabel" destination="Zge-7U-fdr" id="65u-H3-UUS"/>
                         <outlet property="iconImageView" destination="VQB-xw-7HZ" id="Qtp-61-Fgc"/>
@@ -179,6 +196,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddAddress" width="30" height="30"/>
         <image name="Close" width="30" height="30"/>
         <image name="Contacts" width="30" height="30"/>
         <image name="Receive" width="30" height="30"/>

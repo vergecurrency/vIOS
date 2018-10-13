@@ -13,6 +13,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var addAddressButton: UIButton!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var repeatTransactionBarButtonItem: UIBarButtonItem!
     
@@ -55,8 +56,10 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         
         if let name = addressBookManager.name(byAddress: transaction.address) {
             nameLabel.text = name
+            addAddressButton.isHidden = true
         } else {
             nameLabel.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
+            addAddressButton.isHidden = false
         }
         
         var prefix = ""
@@ -94,7 +97,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 3
+            return transaction?.category == .Send ? 4 : 3
         }
         
         return items.count
@@ -137,6 +140,11 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel?.text = "Blockhash"
                 cell.detailTextLabel?.text = transaction?.blockhash
                 cell.accessoryType = .detailButton
+                break
+            case 3:
+                cell.imageView?.image = UIImage(named: "Memo")
+                cell.textLabel?.text = "Memo"
+                cell.detailTextLabel?.text = transaction?.memo
                 break
             default:
                 break
