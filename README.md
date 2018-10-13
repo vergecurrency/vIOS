@@ -31,7 +31,7 @@ So you want to help us out? Here's a guide on how to get started:
 brew install carthage
 ```
 
-3. In your cloned project folder run carthage build (this could take awile):
+3. In your cloned project folder run carthage update (this could take awile):
 ```sh
 carthage update --platform iOS
 ```
