@@ -1,3 +1,4 @@
+binary "https://icepa.github.io/Tor.framework/Tor.json" "305.2.1"
 github "HamzaGhazouani/HGPlaceholders" "0.3.0"
 github "ReactiveX/RxSwift" "4.3.1"
 github "SwiftyJSON/SwiftyJSON" "4.2.0"

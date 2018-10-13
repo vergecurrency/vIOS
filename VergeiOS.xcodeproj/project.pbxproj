@@ -29,7 +29,6 @@
 		A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3482123448200EA8091 /* NSNumber+Currency.swift */; };
 		A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */; };
 		A302D34F212754BE00EA8091 /* DevelopmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */; };
-		A302D35D2128A24800EA8091 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302D35B2128A23200EA8091 /* Tor.framework */; };
 		A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */; };
 		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
 		A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */; };
@@ -94,6 +93,7 @@
 		A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
+		A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E492171FE0B009F0C9D /* Tor.framework */; };
 		A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F32DF2134944600F7B8FD /* RxSwift.framework */; };
 		A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F32E02134944600F7B8FD /* RxCocoa.framework */; };
 		A35F3D82211CE738006068A2 /* WalletManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* WalletManagerTest.swift */; };
@@ -197,7 +197,6 @@
 		A302D3482123448200EA8091 /* NSNumber+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Currency.swift"; sourceTree = "<group>"; };
 		A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Pagination.swift"; sourceTree = "<group>"; };
 		A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTableViewController.swift; sourceTree = "<group>"; };
-		A302D35B2128A23200EA8091 /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Frameworks/Tor.framework; sourceTree = "<group>"; };
 		A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabbarNavigator.storyboard; sourceTree = "<group>"; };
 		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
 		A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparantNavigationBar.swift; sourceTree = "<group>"; };
@@ -269,6 +268,7 @@
 		A33F6A7920EEE487001492C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A33F6A7C20EEE487001492C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A33F6A7E20EEE487001492C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3408E492171FE0B009F0C9D /* Tor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Tor.framework; path = Carthage/Build/iOS/Tor.framework; sourceTree = "<group>"; };
 		A35F32DF2134944600F7B8FD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		A35F32E02134944600F7B8FD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		A35F3D81211CE738006068A2 /* WalletManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerTest.swift; sourceTree = "<group>"; };
@@ -340,6 +340,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */,
@@ -349,7 +350,6 @@
 				A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */,
 				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
-				A302D35D2128A24800EA8091 /* Tor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,13 +724,13 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3408E492171FE0B009F0C9D /* Tor.framework */,
 				A3AA220721657BBE00160576 /* AVFoundation.framework */,
 				A3B2E25A214836B500C31719 /* HGPlaceholders.framework */,
 				A3D6835D213DE9240067E0B9 /* InsightClient.framework */,
 				A35F32E02134944600F7B8FD /* RxCocoa.framework */,
 				A35F32DF2134944600F7B8FD /* RxSwift.framework */,
 				A398B205212AFF71004ACB73 /* LocalAuthentication.framework */,
-				A302D35B2128A23200EA8091 /* Tor.framework */,
 				A302D3082120374C00EA8091 /* CoreGraphics.framework */,
 				A3256669211B9ABB006FB08A /* KeychainSwift.framework */,
 				A325665E211A2219006FB08A /* SwiftyJSON.framework */,
@@ -984,7 +984,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/InsightClient.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/HGPlaceholders.framework",
-				"$(SRCROOT)/Frameworks/Tor.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
@@ -999,7 +999,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
