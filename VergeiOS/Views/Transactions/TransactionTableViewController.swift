@@ -125,6 +125,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.imageView?.image = UIImage(named: "Address")
                 cell.textLabel?.text = "Address"
                 cell.detailTextLabel?.text = transaction?.address
+                cell.accessoryType = .detailButton
                 break
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
@@ -135,6 +136,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.imageView?.image = UIImage(named: "Block")
                 cell.textLabel?.text = "Blockhash"
                 cell.detailTextLabel?.text = transaction?.blockhash
+                cell.accessoryType = .detailButton
                 break
             default:
                 break
@@ -144,7 +146,6 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             
             return cell
         }
-        
         
         let cell = Bundle.main.loadNibNamed("TransactionTableViewCell", owner: self, options: nil)?.first as! TransactionTableViewCell
         
@@ -185,6 +186,18 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         tableView.reloadData()
         selectCurrentTransaction()
     }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        if indexPath.section == 0 && transaction != nil {
+            switch indexPath.row {
+            case 0:
+                loadWebsite(url: "https://verge-blockchain.info/address/\(transaction!.address)")
+            case 2:
+                loadWebsite(url: "https://verge-blockchain.info/block/\(transaction!.blockhash)")
+            default: break
+            }
+        }
+    }
     
     func selectCurrentTransaction() {
         for (index, item) in items.enumerated() {
@@ -211,12 +224,18 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
+    private func loadWebsite(url: String) -> Void {
+        if let path: URL = URL(string: url) {
+            UIApplication.shared.open(path, options: [:])
+        }
+    }
+
     @IBAction func repeatTransactionPushed(_ sender: Any) {
         if transaction != nil {
             repeatTransaction(transaction!)
         }
     }
-    
+
     @IBAction func closeViewController(_ sender: Any) {
         self.dismiss(animated: true)
     }
