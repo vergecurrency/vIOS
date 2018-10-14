@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TorStatusIndicator.shared.initialize()
+        NotificationManager.shared.initialize()
+        ThemeManager.shared.initialize(withWindow: window ?? UIWindow())
+        IQKeyboardManager.shared.enable = true
         
         backgroundTaskIdentifier = application.beginBackgroundTask {
             if self.backgroundTaskIdentifier != nil {
@@ -36,14 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 PriceTicker.shared.start()
             }
         }
-
-        IQKeyboardManager.shared.enable = true
-        
-        UITabBar.appearance().layer.borderWidth = 0
-        UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
-        UITabBar.appearance().clipsToBounds = true
-
-        window?.tintColor = UIColor.primaryLight()
 
         return true
     }

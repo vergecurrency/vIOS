@@ -129,6 +129,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel?.text = "Address"
                 cell.detailTextLabel?.text = transaction?.address
                 cell.accessoryType = .detailButton
+                addTapRecognizer(cell: cell, action: #selector(addressDoubleTapped(recognizer:)))
                 break
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
@@ -140,6 +141,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.textLabel?.text = "Blockhash"
                 cell.detailTextLabel?.text = transaction?.blockhash
                 cell.accessoryType = .detailButton
+                addTapRecognizer(cell: cell, action: #selector(blockDoubleTapped(recognizer:)))
                 break
             case 3:
                 cell.imageView?.image = UIImage(named: "Memo")
@@ -236,6 +238,23 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
         }
+    }
+
+    func addTapRecognizer(cell: UITableViewCell, action: Selector) {
+        let gesture = UITapGestureRecognizer(target: self, action: action)
+        gesture.numberOfTapsRequired = 2
+
+        cell.addGestureRecognizer(gesture)
+    }
+
+    @objc func addressDoubleTapped(recognizer: UIGestureRecognizer) {
+        UIPasteboard.general.string = transaction!.address
+        NotificationManager.shared.showMessage("Address copied!", duration: 3)
+    }
+
+    @objc func blockDoubleTapped(recognizer: UITapGestureRecognizer) {
+        UIPasteboard.general.string = transaction!.blockhash
+        NotificationManager.shared.showMessage("Blockhash copied!", duration: 3)
     }
 
     @IBAction func repeatTransactionPushed(_ sender: Any) {
