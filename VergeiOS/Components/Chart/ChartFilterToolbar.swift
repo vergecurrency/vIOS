@@ -46,6 +46,8 @@ class ChartFilterToolbar: UIToolbar {
                 action: #selector(didSelectFilter(sender:))
             )
 
+            button.tintColor = UIColor.vergeGrey()
+
             items?.append(button)
 
             if buttons.last != index {
@@ -54,7 +56,29 @@ class ChartFilterToolbar: UIToolbar {
         }
     }
 
+    func select(filter: Filter) {
+        deselectAllItems()
+        
+        if let delegate = delegate as? ChartFilterToolbarDelegate {
+            delegate.didSelectChartFilter(filter: filter)
+        }
+        
+        UISelectionFeedbackGenerator().selectionChanged()
+
+        guard let items = items else {
+            return
+        }
+
+        for item in items {
+            if item.title == names[filter] {
+                item.tintColor = UIColor.primaryLight()
+            }
+        }
+    }
+    
     @objc func didSelectFilter(sender: UIBarButtonItem) {
+        deselectAllItems()
+
         if let delegate = delegate as? ChartFilterToolbarDelegate {
             let name = sender.title
             let filter = names.first { _, value in
@@ -64,6 +88,20 @@ class ChartFilterToolbar: UIToolbar {
             if let filter = filter?.key {
                 delegate.didSelectChartFilter(filter: filter)
             }
+
+            UISelectionFeedbackGenerator().selectionChanged()
+
+            sender.tintColor = UIColor.primaryLight()
+        }
+    }
+
+    fileprivate func deselectAllItems() {
+        guard let items = items else {
+            return
+        }
+        
+        for button in items {
+            button.tintColor = UIColor.vergeGrey()
         }
     }
 }
