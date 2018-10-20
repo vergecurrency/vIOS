@@ -62,8 +62,6 @@ class ChartFilterToolbar: UIToolbar {
         if let delegate = delegate as? ChartFilterToolbarDelegate {
             delegate.didSelectChartFilter(filter: filter)
         }
-        
-        UISelectionFeedbackGenerator().selectionChanged()
 
         guard let items = items else {
             return

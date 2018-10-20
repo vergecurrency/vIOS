@@ -11,11 +11,12 @@ import Charts
 
 class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolbarDelegate {
 
-    @IBOutlet weak var highestPriceLabel: UILabel!
-    @IBOutlet weak var averagePriceLabel: UILabel!
-    @IBOutlet weak var lowestPriceLabel: UILabel!
+    @IBOutlet weak var highestPriceLabel: EFCountingLabel!
+    @IBOutlet weak var averagePriceLabel: EFCountingLabel!
+    @IBOutlet weak var lowestPriceLabel: EFCountingLabel!
     @IBOutlet weak var panelView: PanelView!
     @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     let priceChartView: PriceChartView = PriceChartView()
     let volumeChartView: VolumeChartView = VolumeChartView()
@@ -23,22 +24,8 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
     var initialized = false
 
-    var fromInterval: TimeInterval? = Date().yesterday.timeIntervalSince1970
-
-    var chartUrl: URL {
-        let endpoint = "https://graphs2.coinmarketcap.com/currencies/"
-
-        if fromInterval == nil {
-            return URL(string: "\(endpoint)verge")!
-        }
-
-        let now = Int(Date().timeIntervalSince1970)
-        let from = Int(fromInterval!)
-
-        let filter = "\(from)000/\(now)000/"
-
-        return URL(string: "\(endpoint)verge/\(filter)")!
-    }
+    var filter: ChartFilterToolbar.Filter = .oneDay
+    var lastChangeFilter: TimeInterval?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +33,13 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         chartView.addSubview(volumeChartView)
         chartView.addSubview(priceChartView)
         chartView.addSubview(filterToolbar)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveStats(notification:)),
+            name: .didReceiveStats,
+            object: nil
+        )
     }
 
     override func draw(_ rect: CGRect) {
@@ -60,16 +54,16 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         )
 
         priceChartView.frame = CGRect(
-            x: rect.origin.x,
+            x: 0,
             y: 0,
-            width: chartView.bounds.width,
-            height: 250
+            width: chartView.frame.width,
+            height: chartView.frame.height - filterToolbarHeight
         )
         volumeChartView.frame = CGRect(
-            x: rect.origin.x,
-            y: 150,
-            width: chartView.bounds.width,
-            height: 100
+            x: 0,
+            y: chartView.frame.height - (chartView.frame.height * 0.5),
+            width: chartView.frame.width,
+            height: (chartView.frame.height * 0.5) - filterToolbarHeight
         )
 
         chartView.layer.cornerRadius = panelView.cornerRadius
@@ -77,7 +71,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
         initialize()
     }
-    
+
     func initialize() {
         if initialized {
             return
@@ -89,25 +83,29 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
         filterToolbar.delegate = self
         filterToolbar.initialize()
-        filterToolbar.select(filter: .oneDay)
+        filterToolbar.select(filter: filter)
+        
+        let priceLabelHandler: ((CGFloat) -> String) = { value in
+            return NSNumber(value: Double(value)).toBlankCurrency(fractDigits: 4)
+        }
+        
+        highestPriceLabel.formatBlock = priceLabelHandler
+        highestPriceLabel.method = .easeInOut
+        averagePriceLabel.formatBlock = priceLabelHandler
+        averagePriceLabel.method = .easeInOut
+        lowestPriceLabel.formatBlock = priceLabelHandler
+        lowestPriceLabel.method = .easeInOut
+    }
+
+    @objc func didReceiveStats(notification: Notification) {
+        if Int(Date.timeIntervalSinceReferenceDate) > Int(lastChangeFilter ?? 0.0) {
+            print("Reload chart")
+            loadChartData()
+        }
     }
 
     func didSelectChartFilter(filter: ChartFilterToolbar.Filter) {
-        switch filter {
-        case .oneDay:
-            fromInterval = Date().yesterday.timeIntervalSince1970
-        case .oneWeek:
-            fromInterval = Date().weekAgo.timeIntervalSince1970
-        case .oneMonth:
-            fromInterval = Date().oneMonthAgo.timeIntervalSince1970
-        case .threeMonths:
-            fromInterval = Date().threeMonthsAgo.timeIntervalSince1970
-        case .oneYear:
-            fromInterval = Date().yearAgo.timeIntervalSince1970
-        case .all:
-            fromInterval = nil
-        }
-
+        self.filter = filter
         loadChartData()
     }
 
@@ -116,8 +114,13 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         var volumeData: [BarChartDataEntry] = []
         priceChartView.set(chartData: priceData)
         volumeChartView.set(chartData: volumeData)
+        lastChangeFilter = Date.timeIntervalSinceReferenceDate + Config.fetchTimeout
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
 
-        TorClient.shared.session.dataTask(with: chartUrl) { (data, response, error) in
+        TorClient.shared.session.dataTask(with: chartUrl()) { (data, response, error) in
             do {
                 if data == nil {
                     return
@@ -136,9 +139,14 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
                     self.priceChartView.set(chartData: priceData)
                     self.volumeChartView.set(chartData: volumeData)
                     self.setPriceLabels(withData: data.priceUsd)
+                    self.activityIndicator.stopAnimating()
                 }
             } catch {
                 print(error.localizedDescription, error)
+
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                }
             }
         }.resume()
     }
@@ -148,8 +156,42 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             return item[1]
         }
 
-        highestPriceLabel.text = NSNumber(value: prices.max()!).toBlankCurrency(fractDigits: 4)
-        averagePriceLabel.text = NSNumber(value: prices.average).toBlankCurrency(fractDigits: 4)
-        lowestPriceLabel.text = NSNumber(value: prices.min()!).toBlankCurrency(fractDigits: 4)
+        let duration = 1.0
+        highestPriceLabel.countFromCurrentValueTo(CGFloat(prices.max()!), withDuration: duration)
+        averagePriceLabel.countFromCurrentValueTo(CGFloat(prices.average), withDuration: duration)
+        lowestPriceLabel.countFromCurrentValueTo(CGFloat(prices.min()!), withDuration: duration)
+    }
+
+    func chartUrl() -> URL {
+        let endpoint = "https://graphs2.coinmarketcap.com/currencies/"
+        let fromInterval = timeInterval(byFilter: self.filter)
+
+        if fromInterval == nil {
+            return URL(string: "\(endpoint)verge")!
+        }
+
+        let now = Int(Date().timeIntervalSince1970)
+        let from = Int(fromInterval!)
+
+        let filter = "\(from)000/\(now)000/"
+
+        return URL(string: "\(endpoint)verge/\(filter)")!
+    }
+
+    func timeInterval(byFilter filter: ChartFilterToolbar.Filter) -> TimeInterval? {
+        switch filter {
+        case .oneDay:
+            return Date().yesterday.timeIntervalSince1970
+        case .oneWeek:
+            return Date().weekAgo.timeIntervalSince1970
+        case .oneMonth:
+            return Date().oneMonthAgo.timeIntervalSince1970
+        case .threeMonths:
+            return Date().threeMonthsAgo.timeIntervalSince1970
+        case .oneYear:
+            return Date().yearAgo.timeIntervalSince1970
+        case .all:
+            return nil
+        }
     }
 }

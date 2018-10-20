@@ -6,7 +6,7 @@
 import UIKit
 import Charts
 
-class PriceChartView: UIView {
+class PriceChartView: AbstractChartView {
 
     var chart: LineChartView = LineChartView()
 
@@ -36,23 +36,16 @@ class PriceChartView: UIView {
     }
 
     func set(chartData: [ChartDataEntry]) {
-        let priceSet = LineChartDataSet(values: nth(entries: chartData), label: "Price History")
+        let priceSet = LineChartDataSet(values: nth(entries: chartData, step: 3), label: "Price History")
         style(priceSet: priceSet)
 
         let data = LineChartData(dataSet: priceSet)
         data.setDrawValues(false)
 
-        chart.data = data
-        chart.animate(xAxisDuration: 0.5)
-        chart.notifyDataSetChanged()
-    }
-
-    func nth(entries: [ChartDataEntry], step: Int = 3) -> [ChartDataEntry] {
-        var position = 0
-
-        return entries.filter { args in
-            position = 1 + position
-            return position % step == 0
+        DispatchQueue.main.async {
+            self.chart.data = data
+            self.chart.animate(xAxisDuration: 1.2, easingOption: .easeInOutCirc)
+            self.chart.notifyDataSetChanged()
         }
     }
 

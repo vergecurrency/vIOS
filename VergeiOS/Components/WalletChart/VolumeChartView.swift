@@ -6,7 +6,7 @@
 import UIKit
 import Charts
 
-class VolumeChartView: UIView {
+class VolumeChartView: AbstractChartView {
 
     var chart: BarChartView = BarChartView()
 
@@ -36,22 +36,15 @@ class VolumeChartView: UIView {
     }
 
     func set(chartData: [BarChartDataEntry]) {
-        let priceSet = BarChartDataSet(values: nth(entries: chartData), label: "Volume History")
+        let priceSet = BarChartDataSet(values: nth(entries: chartData, step: 10), label: "Volume History")
         style(priceSet: priceSet)
 
-        chart.data = BarChartData(dataSet: priceSet)
-        chart.fitBars = true
-        chart.animate(yAxisDuration: 0.5)
-        chart.notifyDataSetChanged()
-        chart.setNeedsDisplay()
-    }
-
-    func nth(entries: [ChartDataEntry], step: Int = 10) -> [ChartDataEntry] {
-        var position = 0
-
-        return entries.filter { args in
-            position = 1 + position
-            return position % step == 0
+        DispatchQueue.main.async {
+            self.chart.data = BarChartData(dataSet: priceSet)
+            self.chart.fitBars = true
+            self.chart.animate(xAxisDuration: 1.2, easingOption: .easeInOutCirc)
+            self.chart.notifyDataSetChanged()
+            self.chart.setNeedsDisplay()
         }
     }
 
