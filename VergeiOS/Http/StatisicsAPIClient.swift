@@ -10,11 +10,9 @@ import Foundation
 import SwiftyJSON
 
 class StatisicsAPIClient {
-
-    let endpoint: String = "https://garagenet.internet-box.ch/api/v1/price/"
     
     func infoBy(currency: String, completion: @escaping (_ data: Statistics?) -> Void) {
-        let url = URL(string: "\(endpoint)\(currency)")
+        let url = URL(string: "\(Config.priceDataEndpoint)\(currency)")
     
         let task = TorClient.shared.session.dataTask(with: url!) { (data, resonse, error) in
             if let data = data {

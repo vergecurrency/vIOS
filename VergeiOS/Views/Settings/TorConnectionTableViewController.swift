@@ -49,7 +49,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
     func updateIPAddress() {
         setIpAddressLabel("Loading...")
 
-        let url = URL(string: "http://api.ipstack.com/check?access_key=e95ebddbee9137302b3cf50b39a33362&format=1")
+        let url = URL(string: Config.ipCheckEndpoint)
         let task = TorClient.shared.session.dataTask(with: url!) { data, response, error in
             do {
                 if data != nil {

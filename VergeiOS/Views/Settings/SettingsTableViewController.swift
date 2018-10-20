@@ -36,9 +36,9 @@ class SettingsTableViewController: EdgedTableViewController {
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
-            loadWebsite(url: "https://vergecurrency.com/")
+            loadWebsite(url: Config.website)
         case 4:
-            loadWebsite(url: "https://github.com/vergecurrency/vIOS")
+            loadWebsite(url: Config.iOSRepo)
         default: break
         }
 

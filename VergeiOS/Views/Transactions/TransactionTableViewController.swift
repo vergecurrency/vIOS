@@ -201,9 +201,9 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         if indexPath.section == 0 && transaction != nil {
             switch indexPath.row {
             case 0:
-                loadWebsite(url: "https://verge-blockchain.info/address/\(transaction!.address)")
+                loadWebsite(url: "\(Config.blockchainExlorer)address/\(transaction!.address)")
             case 2:
-                loadWebsite(url: "https://verge-blockchain.info/block/\(transaction!.blockhash)")
+                loadWebsite(url: "\(Config.blockchainExlorer)block/\(transaction!.blockhash)")
             default: break
             }
         }

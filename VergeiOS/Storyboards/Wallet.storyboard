@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-zZ-lf9">
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-zZ-lf9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="178.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="HOc-68-7QK">
@@ -89,20 +89,24 @@
                                 </subviews>
                                 <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
-                                    <constraint firstItem="HOc-68-7QK" firstAttribute="top" secondItem="Th7-Kf-Rjw" secondAttribute="bottom" constant="16" id="2ZL-eF-onW"/>
+                                    <constraint firstItem="HOc-68-7QK" firstAttribute="top" secondItem="Th7-Kf-Rjw" secondAttribute="bottom" priority="750" constant="16" id="2ZL-eF-onW"/>
                                     <constraint firstItem="HOc-68-7QK" firstAttribute="centerX" secondItem="uDU-zZ-lf9" secondAttribute="centerX" id="37N-S4-YeR"/>
                                     <constraint firstItem="Th7-Kf-Rjw" firstAttribute="centerX" secondItem="uDU-zZ-lf9" secondAttribute="centerX" id="8r8-A7-q8s"/>
                                     <constraint firstAttribute="trailing" secondItem="HOc-68-7QK" secondAttribute="trailing" priority="750" constant="40" id="K10-Dl-wlT"/>
-                                    <constraint firstItem="Th7-Kf-Rjw" firstAttribute="top" secondItem="Heq-ut-jgN" secondAttribute="top" constant="16" id="NsF-Eq-imO"/>
+                                    <constraint firstItem="Th7-Kf-Rjw" firstAttribute="top" secondItem="Heq-ut-jgN" secondAttribute="top" priority="750" constant="16" id="NsF-Eq-imO"/>
                                     <constraint firstItem="HOc-68-7QK" firstAttribute="leading" secondItem="uDU-zZ-lf9" secondAttribute="leading" priority="750" constant="40" id="a5K-dC-A7B"/>
                                     <constraint firstItem="Th7-Kf-Rjw" firstAttribute="leading" secondItem="uDU-zZ-lf9" secondAttribute="leading" priority="750" constant="40" id="crU-uK-LsU"/>
                                     <constraint firstAttribute="trailing" secondItem="Th7-Kf-Rjw" secondAttribute="trailing" priority="750" constant="40" id="e3f-Dl-pME"/>
-                                    <constraint firstAttribute="bottom" secondItem="HOc-68-7QK" secondAttribute="bottom" constant="25" id="jqT-Oh-pcd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="f4P-Xh-wqx"/>
+                                    <constraint firstItem="HOc-68-7QK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Th7-Kf-Rjw" secondAttribute="bottom" constant="5" id="fC1-TN-Cak"/>
+                                    <constraint firstAttribute="bottom" secondItem="HOc-68-7QK" secondAttribute="bottom" priority="750" constant="25" id="jqT-Oh-pcd"/>
+                                    <constraint firstItem="Th7-Kf-Rjw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Heq-ut-jgN" secondAttribute="top" constant="5" id="sje-gr-raU"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HOc-68-7QK" secondAttribute="bottom" constant="5" id="y81-h6-gw3"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="Heq-ut-jgN"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-bs-t2i">
-                                <rect key="frame" x="0.0" y="178.5" width="375" height="451.5"/>
+                                <rect key="frame" x="0.0" y="178.5" width="375" height="456.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Jb-Mxw">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -112,7 +116,7 @@
                                         </constraints>
                                     </view>
                                     <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFh-kB-F7Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="451.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="456.5"/>
                                     </scrollView>
                                 </subviews>
                                 <constraints>
@@ -126,7 +130,10 @@
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="API-tf-Czt">
-                                <rect key="frame" x="168" y="630" width="39" height="37"/>
+                                <rect key="frame" x="168" y="635" width="39" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="sN4-pH-YaH"/>
+                                </constraints>
                                 <color key="pageIndicatorTintColor" name="VergeGrey"/>
                                 <color key="currentPageIndicatorTintColor" name="PrimaryLight"/>
                             </pageControl>
