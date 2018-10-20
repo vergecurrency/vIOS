@@ -163,11 +163,10 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     }
 
     func chartUrl() -> URL {
-        let endpoint = "https://graphs2.coinmarketcap.com/currencies/"
         let fromInterval = timeInterval(byFilter: self.filter)
 
         if fromInterval == nil {
-            return URL(string: "\(endpoint)verge")!
+            return URL(string: "\(Config.chartDataEndpoint)verge")!
         }
 
         let now = Int(Date().timeIntervalSince1970)
@@ -175,7 +174,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
         let filter = "\(from)000/\(now)000/"
 
-        return URL(string: "\(endpoint)verge/\(filter)")!
+        return URL(string: "\(Config.chartDataEndpoint)verge/\(filter)")!
     }
 
     func timeInterval(byFilter filter: ChartFilterToolbar.Filter) -> TimeInterval? {
