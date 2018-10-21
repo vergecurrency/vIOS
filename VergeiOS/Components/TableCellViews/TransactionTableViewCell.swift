@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Eureka
 
-class TransactionTableViewCell: UITableViewCell {
+class TransactionTableViewCell: Cell<String>, CellType {
 
     @IBOutlet weak var amountLabel: UILabel!
-    
+
+    override func setup() {}
+
+    override func update() {}
+
     func setTransaction(_ transaction: Transaction, address: Address?) {
         setAccount(transaction, address: address)
         setDateTime(transaction)
@@ -59,5 +64,14 @@ class TransactionTableViewCell: UITableViewCell {
         }
         
         amountLabel.text = "\(prefix) \(transaction.amount.toCurrency(currency: "XVG", fractDigits: 2))"
+    }
+}
+
+// The custom Row also has the cell: CustomCell and its correspond value
+final class TransactionRow: Row<TransactionTableViewCell>, RowType {
+    required public init(tag: String?) {
+        super.init(tag: tag)
+        // We set the cellProvider to load the .xib corresponding to our cell
+        cellProvider = CellProvider<TransactionTableViewCell>(nibName: "TransactionTableViewCell")
     }
 }

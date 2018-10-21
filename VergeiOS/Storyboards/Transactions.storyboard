@@ -20,6 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="BackgroundGrey"/>
+                        <searchBar key="tableFooterView" contentMode="redraw" searchBarStyle="minimal" placeholder="Find a transaction" id="Cgg-i7-u96">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <connections>
                             <outlet property="dataSource" destination="psA-ew-6Z8" id="6m9-9W-1bB"/>
                             <outlet property="delegate" destination="psA-ew-6Z8" id="C2D-Id-r5Q"/>
@@ -27,7 +32,11 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Transactions" image="Transactions" selectedImage="Transactions" id="qIH-em-MbO"/>
                     <navigationItem key="navigationItem" title="Transactions" id="Rwy-vi-rId">
-                        <barButtonItem key="leftBarButtonItem" image="Contacts" id="osU-A5-NEZ"/>
+                        <barButtonItem key="leftBarButtonItem" image="Contacts" id="osU-A5-NEZ">
+                            <connections>
+                                <segue destination="ISY-5g-P8F" kind="show" id="EXG-8e-jE1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="Rqp-eu-SAy">
                             <color key="tintColor" name="SecondaryDark"/>
                         </barButtonItem>
@@ -35,12 +44,106 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="Cgg-i7-u96" id="qAw-Td-znt"/>
                         <segue destination="Igw-3T-6sZ" kind="show" identifier="TransactionTableViewController" id="kZb-dD-6mC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3GJ-86-HbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1727" y="-478"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="t0Y-ct-okm">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="ISY-5g-P8F" customClass="ContactsTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lFz-It-rM8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search a contact" id="eb3-yA-vg8">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressBookCell" textLabel="UjC-jW-2fs" detailTextLabel="Jd6-Zs-Fed" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="u01-2G-Blp">
+                                <rect key="frame" x="0.0" y="72" width="375" height="54"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u01-2G-Blp" id="LRb-bh-RcY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UjC-jW-2fs">
+                                            <rect key="frame" x="16" y="7" width="34.5" height="23.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" name="SecondaryDark"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jd6-Zs-Fed">
+                                            <rect key="frame" x="16" y="30.5" width="42" height="16.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" name="PrimaryLight"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="BackgroundGrey"/>
+                                <color key="tintColor" name="PrimaryLight"/>
+                                <connections>
+                                    <segue destination="Bnx-KG-5UX" kind="show" id="hUW-WV-KOl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ISY-5g-P8F" id="8CX-wY-upr"/>
+                            <outlet property="delegate" destination="ISY-5g-P8F" id="ExD-9b-ljL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Contacts" id="Xa6-QW-mKB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kjz-eM-oxV">
+                            <connections>
+                                <segue destination="Bnx-KG-5UX" kind="show" id="eCP-jO-xqX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S7A-MZ-VTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1726" y="239"/>
+        </scene>
+        <!--Contact-->
+        <scene sceneID="ohm-Zr-Gec">
+            <objects>
+                <viewController id="Bnx-KG-5UX" customClass="ContactTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JKZ-ky-Pnk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TiJ-3y-v9e"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact" id="1YU-p8-wKj">
+                        <rightBarButtonItems>
+                            <barButtonItem tag="2" systemItem="trash" id="TIi-jk-9bS">
+                                <connections>
+                                    <action selector="deleteContact:" destination="Bnx-KG-5UX" id="qaG-dV-5Mv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem tag="1" systemItem="save" id="erg-I3-yEF">
+                                <connections>
+                                    <action selector="saveContact:" destination="Bnx-KG-5UX" id="QwT-O7-mh0"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Igw-3T-6sZ" kind="show" identifier="TransactionTableViewController" id="3Na-Sc-yfM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSH-1U-av1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2513" y="239"/>
         </scene>
         <!--Transaction Table View Controller-->
         <scene sceneID="fEa-D3-iOj">
@@ -218,4 +321,8 @@
             <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3Na-Sc-yfM"/>
+        <segue reference="hUW-WV-KOl"/>
+    </inferredMetricsTieBreakers>
 </document>
