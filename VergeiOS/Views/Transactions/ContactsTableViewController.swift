@@ -10,8 +10,11 @@ import UIKit
 
 class ContactsTableViewController: EdgedTableViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+
     var contacts: [[Address]] = []
     var letters:[String] = []
+    var searchQuery: String = ""
 
     var addressBookManager: AddressBookManager!
 
@@ -20,13 +23,33 @@ class ContactsTableViewController: EdgedTableViewController {
         scrollViewEdger.hideBottomShadow = true
 
         addressBookManager = AddressBookManager()
+    }
 
-        let addresses = addressBookManager.all()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        loadContacts()
+
+        tableView.reloadData()
+    }
+
+    func loadContacts() {
+        contacts.removeAll()
+        letters.removeAll()
+
+        let addresses = addressBookManager.all().filter { address in
+            if self.searchQuery == "" {
+                return true
+            }
+
+            return address.address.lowercased().contains(self.searchQuery.lowercased())
+                || address.name.lowercased().contains(self.searchQuery.lowercased())
+        }
 
         let items = Dictionary(grouping: addresses, by: {
             return String($0.name).first?.description ?? ""
         }).sorted(by: { $0.key < $1.key })
-        
+
         for item in items {
             contacts.append(item.value)
             letters.append(item.key)
@@ -74,40 +97,33 @@ class ContactsTableViewController: EdgedTableViewController {
         return sectionLetter(bySection: section)
     }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+            addressBookManager.remove(address: contact(byIndexpath: indexPath))
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+            contacts[indexPath.section].remove(at: indexPath.row)
 
+            // Now check if the section needs deleting
+            if contacts[indexPath.section].count == 0 {
+                contacts.remove(at: indexPath.section)
+                letters.remove(at: indexPath.section)
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+            } else {
+                // Delete the row from the data source
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
@@ -124,4 +140,15 @@ class ContactsTableViewController: EdgedTableViewController {
         }
     }
 
+}
+
+extension ContactsTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchQuery = searchText
+
+        DispatchQueue.main.async {
+            self.loadContacts()
+            self.tableView.reloadData()
+        }
+    }
 }

@@ -25,7 +25,13 @@ class TransactionsTableViewController: EdgedTableViewController {
 
         tableView.tableHeaderView = searchBar
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
+    }
+
     func installTableViewPlaceholder() {
         let nib = UINib(nibName: "NoTransactionsPlaceholderTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NoTransactionsPlaceholderTableViewCell")

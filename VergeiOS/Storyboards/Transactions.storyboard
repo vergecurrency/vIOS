@@ -64,6 +64,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="ISY-5g-P8F" id="FiJ-6t-cDJ"/>
+                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressBookCell" textLabel="UjC-jW-2fs" detailTextLabel="Jd6-Zs-Fed" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="u01-2G-Blp">
@@ -108,12 +111,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="eb3-yA-vg8" id="rYT-mH-LQp"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7A-MZ-VTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1726" y="239"/>
         </scene>
-        <!--Contact-->
+        <!--Contact Table View Controller-->
         <scene sceneID="ohm-Zr-Gec">
             <objects>
                 <viewController id="Bnx-KG-5UX" customClass="ContactTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,9 +129,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TiJ-3y-v9e"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Contact" id="1YU-p8-wKj">
+                    <navigationItem key="navigationItem" id="1YU-p8-wKj">
                         <rightBarButtonItems>
                             <barButtonItem tag="2" systemItem="trash" id="TIi-jk-9bS">
+                                <color key="tintColor" name="VergeRed"/>
                                 <connections>
                                     <action selector="deleteContact:" destination="Bnx-KG-5UX" id="qaG-dV-5Mv"/>
                                 </connections>
@@ -319,6 +326,9 @@
         </namedColor>
         <namedColor name="VergeGrey">
             <color red="0.60799998044967651" green="0.60799998044967651" blue="0.60799998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VergeRed">
+            <color red="1" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

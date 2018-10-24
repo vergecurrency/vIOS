@@ -50,7 +50,7 @@ carthage update --platform iOS
 * [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
 * [HamzaGhazouani/HGPlaceholders](https://github.com/HamzaGhazouani/HGPlaceholders) - Library to show placeholders and Empty States for any UITableView
 * [danielgindi/Charts](https://github.com/danielgindi/Charts) - This library is used for making beautiful charts
-* [CosmicMind/Graph](https://github.com/CosmicMind/Graph) - Handy core data library
+* [JohnEstropia/CoreStore](https://github.com/JohnEstropia/CoreStore) - Handy core data library
 * [xmartlabs/Eureka](https://github.com/xmartlabs/Eureka) - Library for easily creating forms
 
 ### Community

@@ -11,6 +11,7 @@ import Eureka
 
 class ContactTableViewController: FormViewController {
 
+    let addressBook: AddressBookManager = AddressBookManager()
     var contact: Address?
     var transactions: [Transaction] = []
 
@@ -25,8 +26,9 @@ class ContactTableViewController: FormViewController {
         }
 
         tableView.backgroundColor = UIColor.backgroundGrey()
+
         form +++ Section("Contact Details")
-            <<< TextRow() { row in
+            <<< TextRow("name") { row in
             row.title = "Name"
             row.placeholder = "Swen van Zanten"
             row.value = contact?.name ?? ""
@@ -34,7 +36,7 @@ class ContactTableViewController: FormViewController {
         }.cellUpdate { cell, row in
             styleCell(cell)
         }
-            <<< TextRow() { row in
+            <<< TextRow("address") { row in
             row.title = "Address"
             row.placeholder = "ErBhGNN9x8G513q3h5wdEgkoi2KbysUblJ8Jk7cjpG"
             row.value = contact?.address ?? ""
@@ -43,6 +45,10 @@ class ContactTableViewController: FormViewController {
             styleCell(cell)
         }
 
+        addTransactions()
+    }
+
+    func addTransactions() {
         guard let contact = contact else {
             return
         }
@@ -75,8 +81,28 @@ class ContactTableViewController: FormViewController {
         }
     }
 
+    override func insertAnimation(forRows rows: [BaseRow]) -> UITableView.RowAnimation {
+        return .fade
+    }
+
+    override func insertAnimation(forSections sections: [Section]) -> UITableView.RowAnimation {
+        return .fade
+    }
+
     @IBAction func saveContact(_ sender: Any) {
-        print(form.validate())
+        if form.validate().count == 0 {
+            let address = Address()
+            address.name = (form.rowBy(tag: "name") as! TextRow).value ?? ""
+            address.address = (form.rowBy(tag: "address") as! TextRow).value ?? ""
+
+            addressBook.put(address: address)
+
+            self.contact = address
+
+            if self.transactions.count == 0 {
+                self.addTransactions()
+            }
+        }
     }
 
     @IBAction func deleteContact(_ sender: Any) {
@@ -87,7 +113,13 @@ class ContactTableViewController: FormViewController {
         )
 
         let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
-            print("Delete!")
+            guard let contact = self.contact else {
+                return
+            }
+
+            self.addressBook.remove(address: contact)
+
+            self.navigationController?.popViewController(animated: true)
         }
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
