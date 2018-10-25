@@ -28,11 +28,6 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let transaction = transaction {
-            setTransaction(transaction)
-            loadTransactions(transaction)
-        }
-        
         scrollViewEdger = ScrollViewEdger(scrollView: tableView)
         scrollViewEdger.hideBottomShadow = true
         
@@ -40,6 +35,15 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             self.scrollViewEdger.createShadowViews()
             // Select the current transaction.
             self.selectCurrentTransaction()
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let transaction = transaction {
+            setTransaction(transaction)
+            loadTransactions(transaction)
         }
     }
 
@@ -267,4 +271,11 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         self.dismiss(animated: true)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ContactTableViewController {
+            let contact = Address()
+            contact.address = transaction!.address
+            vc.contact = contact
+        }
+    }
 }

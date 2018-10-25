@@ -14,9 +14,21 @@ class ContactTableViewController: FormViewController {
     let addressBook: AddressBookManager = AddressBookManager()
     var contact: Address?
     var transactions: [Transaction] = []
+    var trashButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        trashButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .trash,
+            target: self,
+            action: #selector(deleteContact)
+        )
+        trashButtonItem.tintColor = UIColor.vergeRed()
+
+        if contact != nil && contact!.name != "" {
+            navigationItem.rightBarButtonItems?.append(trashButtonItem)
+        }
 
         let styleCell = { (cell: TextCell) in
             cell.textLabel?.font = UIFont.avenir(size: 17)
@@ -97,22 +109,20 @@ class ContactTableViewController: FormViewController {
 
             addressBook.put(address: address)
 
-            self.contact = address
+            contact = address
 
-            if self.transactions.count == 0 {
-                self.addTransactions()
+            if transactions.count == 0 {
+                addTransactions()
+            }
+
+            if navigationItem.rightBarButtonItems?.count == 1 {
+                navigationItem.rightBarButtonItems?.append(trashButtonItem)
             }
         }
     }
 
-    @IBAction func deleteContact(_ sender: Any) {
-        let alert = UIAlertController(
-            title: "Remove contact",
-            message: "Are you sure you want to remove the contact?",
-            preferredStyle: .alert
-        )
-
-        let delete = UIAlertAction(title: "Delete", style: .destructive) { action in
+    @objc func deleteContact(_ sender: Any) {
+        let alert = UIAlertController.createDeleteContactAlert { action in
             guard let contact = self.contact else {
                 return
             }
@@ -121,9 +131,6 @@ class ContactTableViewController: FormViewController {
 
             self.navigationController?.popViewController(animated: true)
         }
-
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(delete)
 
         present(alert, animated: true)
     }
