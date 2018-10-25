@@ -90,7 +90,7 @@
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
-		A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */; };
+		A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		A33F6A7D20EEE487001492C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */; };
 		A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E492171FE0B009F0C9D /* Tor.framework */; };
@@ -100,6 +100,10 @@
 		A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F32DF2134944600F7B8FD /* RxSwift.framework */; };
 		A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A35F32E02134944600F7B8FD /* RxCocoa.framework */; };
 		A35F3D82211CE738006068A2 /* WalletManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* WalletManagerTest.swift */; };
+		A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364727D217C7787001B1B18 /* ContactTableViewController.swift */; };
+		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
+		A3647286217CF9A9001B1B18 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3647285217CF9A9001B1B18 /* Eureka.framework */; };
+		A3647288217E604B001B1B18 /* CoreStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3647287217E604B001B1B18 /* CoreStore.framework */; };
 		A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */; };
 		A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
 		A36F8A8B21470B4100304777 /* addresses.json in Resources */ = {isa = PBXBuildFile; fileRef = A36F8A8A21470B4100304777 /* addresses.json */; };
@@ -150,6 +154,8 @@
 		B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */; };
 		B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */; };
 		B2BD777C8DE885732CFA2D1E /* ChartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74F46B6A7DA606BCB794 /* ChartInfo.swift */; };
+		B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */; };
+		B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */; };
 		B2BD7A81D726B7C482B57EA8 /* ChartFilterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD71B08FC506AC51C07E3B /* ChartFilterToolbar.swift */; };
 		B2BD7AC777EC6838A1322F0E /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788E0A10804387327127 /* ThemeManager.swift */; };
 		B2BD7B44BD3879802B5A1FF2 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7EF009F29B5AAA801A96 /* NotificationManager.swift */; };
@@ -290,6 +296,10 @@
 		A35F32DF2134944600F7B8FD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		A35F32E02134944600F7B8FD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		A35F3D81211CE738006068A2 /* WalletManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerTest.swift; sourceTree = "<group>"; };
+		A364727D217C7787001B1B18 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
+		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		A3647285217CF9A9001B1B18 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		A3647287217E604B001B1B18 /* CoreStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreStore.framework; path = Carthage/Build/iOS/CoreStore.framework; sourceTree = "<group>"; };
 		A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedTableViewController.swift; sourceTree = "<group>"; };
 		A36F8A882146EE0F00304777 /* String+Subs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subs.swift"; sourceTree = "<group>"; };
 		A36F8A8A21470B4100304777 /* addresses.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = addresses.json; sourceTree = "<group>"; };
@@ -343,9 +353,11 @@
 		B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendTransaction.swift; sourceTree = "<group>"; };
 		B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountDelegate.swift; sourceTree = "<group>"; };
 		B2BD788E0A10804387327127 /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Statics.swift"; sourceTree = "<group>"; };
 		B2BD7AA4FFBD193456C18CA6 /* AbstractChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractChartView.swift; sourceTree = "<group>"; };
 		B2BD7B2EDECD1C4C0462D84A /* VolumeChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeChartView.swift; sourceTree = "<group>"; };
 		B2BD7BE7344909C100B67E17 /* ChartFilterToolbarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbarDelegate.swift; sourceTree = "<group>"; };
+		B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractContactsTableViewController.swift; sourceTree = "<group>"; };
 		B2BD7EF009F29B5AAA801A96 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B2BD7F875F84C84B935E28F7 /* transactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transactions.json; sourceTree = "<group>"; };
 		B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +384,7 @@
 			files = (
 				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
+				A3647288217E604B001B1B18 /* CoreStore.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A35F32E12134944600F7B8FD /* RxSwift.framework in Frameworks */,
 				A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */,
@@ -379,6 +392,7 @@
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
 				A35F32E22134944600F7B8FD /* RxCocoa.framework in Frameworks */,
 				A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */,
+				A3647286217CF9A9001B1B18 /* Eureka.framework in Frameworks */,
 				A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
 			);
@@ -431,6 +445,7 @@
 				A398B207212B0103004ACB73 /* LAContext+Type.swift */,
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 				A36F8A882146EE0F00304777 /* String+Subs.swift */,
+				B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -673,6 +688,9 @@
 				A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */,
 				A3B2E2622148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift */,
 				A3B2E2632148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib */,
+				A364727D217C7787001B1B18 /* ContactTableViewController.swift */,
+				A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */,
+				B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -755,7 +773,7 @@
 				A33F6A7920EEE487001492C2 /* Assets.xcassets */,
 				A33F6A7B20EEE487001492C2 /* LaunchScreen.storyboard */,
 				A33F6A7E20EEE487001492C2 /* Info.plist */,
-				A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */,
+				A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */,
 			);
 			path = VergeiOS;
 			sourceTree = "<group>";
@@ -763,6 +781,8 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3647287217E604B001B1B18 /* CoreStore.framework */,
+				A3647285217CF9A9001B1B18 /* Eureka.framework */,
 				A3408E55217687F9009F0C9D /* Charts.framework */,
 				A3408E492171FE0B009F0C9D /* Tor.framework */,
 				A3AA220721657BBE00160576 /* AVFoundation.framework */,
@@ -1057,6 +1077,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/HGPlaceholders.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Tor.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CoreStore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -1070,6 +1092,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/HGPlaceholders.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Tor.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Charts.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CoreStore.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Eureka.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1106,6 +1130,7 @@
 				A338E6B72110D5D4000D44EE /* TransactionsWalletSlideView.swift in Sources */,
 				A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */,
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
+				A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */,
 				A338E6C12110F8E6000D44EE /* XvgAmountKeyboard.swift in Sources */,
 				A302D30E2120487700EA8091 /* UIViewController+Swipable.swift in Sources */,
 				A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */,
@@ -1115,7 +1140,7 @@
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
 				A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */,
 				A3256668211B8E1A006FB08A /* WalletManager.swift in Sources */,
-				A33F6A7820EEE485001492C2 /* VergeiOS.xcdatamodeld in Sources */,
+				A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */,
 				A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */,
 				A3256663211A39A2006FB08A /* StatisicsAPIClient.swift in Sources */,
 				A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */,
@@ -1160,6 +1185,7 @@
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
 				A302D2F1211F3B4400EA8091 /* SetAmountViewController.swift in Sources */,
 				A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */,
+				A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
@@ -1210,6 +1236,8 @@
 				B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */,
 				B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */,
 				B2BD7C21A80B98CD8857B476 /* AbstractChartView.swift in Sources */,
+				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */,
+				B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1536,13 +1564,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A33F6A7620EEE485001492C2 /* VergeiOS.xcdatamodeld */ = {
+		A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				A33F6A7720EEE485001492C2 /* VergeiOS.xcdatamodel */,
 			);
 			currentVersion = A33F6A7720EEE485001492C2 /* VergeiOS.xcdatamodel */;
-			path = VergeiOS.xcdatamodeld;
+			path = CoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

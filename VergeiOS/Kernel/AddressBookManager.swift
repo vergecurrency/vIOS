@@ -8,50 +8,79 @@
 
 import Foundation
 import SwiftyJSON
+import CoreStore
 
 class AddressBookManager {
     
     func name(byAddress address: String) -> String? {
-        // TODO: For now we fetch them from an example json file.
-        if let path = Bundle.main.path(forResource: "addresses", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let json = try JSON(data: data)
-                
-                return json[address].string
-            } catch {
-                print(error)
-                return nil
-            }
-        }
-        
-        return nil
+        let entity = CoreStore.fetchOne(From<AddressType>().where(\.address == address))
+
+        return entity?.name
+    }
+
+    func get(byName name: String) -> Address? {
+        return transform(entity: CoreStore.fetchOne(From<AddressType>().where(\.name == name)))
+    }
+
+    func get(byAddress address: String) -> Address? {
+        return transform(entity: CoreStore.fetchOne(From<AddressType>().where(\.address == address)))
     }
     
     func all() -> [Address] {
-        // TODO: For now we fetch them from an example json file.
-        if let path = Bundle.main.path(forResource: "addresses", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let json = try JSON(data: data)
-                var addresses: [Address] = []
-                
-                for (address, name) : (String, JSON) in json {
-                    let item = Address()
-                    item.address = address
-                    item.name = name.stringValue
-                    
-                    addresses.append(item)
-                }
-                
-                return addresses
-            } catch {
-                print(error)
-                return []
-            }
+        let entities = CoreStore.fetchAll(From<AddressType>())
+        var addresses: [Address] = []
+
+        for entity in entities ?? [] {
+            addresses.append(transform(entity: entity))
         }
         
-        return []
+        return addresses
     }
-    
+
+    func put(address: Address) {
+        var entity: AddressType? = nil
+        if let existingEntity = CoreStore.fetchOne(From<AddressType>().where(\.address == address.address)) {
+            entity = existingEntity
+        }
+        
+        do {
+            let _ = try CoreStore.perform(synchronous: { transaction -> Bool in
+                if entity == nil {
+                    entity = transaction.create(Into<AddressType>())
+                } else {
+                    entity = transaction.edit(entity)
+                }
+
+                entity?.name = address.name
+                entity?.address = address.address
+
+                return transaction.hasChanges
+            })
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func remove(address: Address) {
+        let entity = CoreStore.fetchOne(From<AddressType>().where(\.name == address.name))
+
+        do {
+            let _ = try CoreStore.perform(synchronous: { transaction -> Bool in
+                transaction.delete(entity)
+
+                return transaction.hasChanges
+            })
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func transform(entity: AddressType?) -> Address {
+        let address = Address()
+        address.name = entity?.name ?? ""
+        address.address = entity?.address ?? ""
+
+        return address
+    }
+
 }

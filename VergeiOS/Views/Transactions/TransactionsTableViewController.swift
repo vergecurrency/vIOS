@@ -10,7 +10,9 @@ import UIKit
 import HGPlaceholders
 
 class TransactionsTableViewController: EdgedTableViewController {
-    
+
+    @IBOutlet weak var searchBar: UISearchBar!
+
     let addressBookManager = AddressBookManager()
     var placeholderTableView: TableView?
     var items: [Date: [Transaction]] = [:]
@@ -20,13 +22,16 @@ class TransactionsTableViewController: EdgedTableViewController {
         
         installTableViewPlaceholder()
         getTransactions()
+
+        tableView.tableHeaderView = searchBar
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
     }
-    
+
     func installTableViewPlaceholder() {
         let nib = UINib(nibName: "NoTransactionsPlaceholderTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NoTransactionsPlaceholderTableViewCell")
@@ -40,9 +45,10 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
     
     func getTransactions() {
-        let transactions = WalletManager.default.getTransactions(offset: 0, limit: 7).sorted { a, b in
+        let transactions = WalletManager.default.getTransactions(offset: 0, limit: 7)
+            /*.sorted { a, b in
             return a.blockindex > b.blockindex
-        }
+        }*/
         
         let cal = Calendar.current
         items = Dictionary(grouping: transactions, by: { cal.startOfDay(for: $0.time) })

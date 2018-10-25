@@ -9,6 +9,6 @@
 import Foundation
 
 class Address {
-    var name: String = "Recipient name"
+    var name: String = ""
     var address: String = ""
 }

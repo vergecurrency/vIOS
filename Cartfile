@@ -7,3 +7,5 @@ github "vergecurrency/SwiftInsightClient" "master"
 github "HamzaGhazouani/HGPlaceholders"
 binary "https://icepa.github.io/Tor.framework/Tor.json" == 305.2.1
 github "danielgindi/Charts" ~> 3.2.1
+github "JohnEstropia/CoreStore" >= 5.0.0
+github "xmartlabs/Eureka" ~> 4.3
