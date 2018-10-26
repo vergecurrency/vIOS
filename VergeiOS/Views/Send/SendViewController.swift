@@ -110,14 +110,14 @@ class SendViewController: UIViewController {
     }
 
     func updateAmountLabel() {
-        amountTextField.valueLabel?.text = currentAmount().toCurrency(
-            currency: currentCurrency(),
-            fractDigits: 6
-        )
-        
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
+            self.amountTextField.valueLabel?.text = self.currentAmount().toCurrency(
+                currency: self.currentCurrency(),
+                fractDigits: 6
+            )
+            
             if self.walletAmount.doubleValue == 0.0 {
                 return
             }
