@@ -33,7 +33,18 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if navigationController?.viewControllers.first?.isKind(of: PaperKeyWordsViewController.self) ?? false {
+            let closeButton = UIBarButtonItem(
+                image: UIImage(named: "Close"),
+                style: .plain,
+                target: self,
+                action: #selector(dismissView)
+            )
+
+            navigationItem.setLeftBarButton(closeButton, animated: false)
+        }
+
         self.wordLabel.text = self.words.first
         
         self.updateView()
@@ -111,6 +122,10 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
             let vc = segue.destination as! ConfirmPaperkeyViewController
             vc.words = self.words
         }
+    }
+
+    @objc func dismissView(_ sender: Any) {
+        dismiss(animated: true)
     }
 
 }

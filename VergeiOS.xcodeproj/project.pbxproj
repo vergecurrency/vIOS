@@ -150,6 +150,7 @@
 		B2BD717BC2C013EDDB11EB48 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */; };
 		B2BD71BB2B06C6F10205ECBC /* ChartFilterToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7BE7344909C100B67E17 /* ChartFilterToolbarDelegate.swift */; };
 		B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */; };
+		B2BD736A7A645161F7FF846D /* PaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */; };
 		B2BD74F4EC93C6025BE4DC28 /* VolumeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2EDECD1C4C0462D84A /* VolumeChartView.swift */; };
 		B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */; };
 		B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */; };
@@ -359,6 +360,7 @@
 		B2BD7AA4FFBD193456C18CA6 /* AbstractChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractChartView.swift; sourceTree = "<group>"; };
 		B2BD7B2EDECD1C4C0462D84A /* VolumeChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeChartView.swift; sourceTree = "<group>"; };
 		B2BD7BE7344909C100B67E17 /* ChartFilterToolbarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbarDelegate.swift; sourceTree = "<group>"; };
+		B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperkeyViewController.swift; sourceTree = "<group>"; };
 		B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractContactsTableViewController.swift; sourceTree = "<group>"; };
 		B2BD7EF009F29B5AAA801A96 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B2BD7F875F84C84B935E28F7 /* transactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transactions.json; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 				B2BD70361646D756C13B826D /* DonateTableViewController.swift */,
+				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1242,6 +1245,7 @@
 				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */,
 				B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */,
 				B2BD7CB257BA213ABAE9958D /* DonateTableViewController.swift in Sources */,
+				B2BD736A7A645161F7FF846D /* PaperkeyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

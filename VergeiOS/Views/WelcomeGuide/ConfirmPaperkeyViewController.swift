@@ -63,17 +63,12 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
             self.secondWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
             return
         }
-        
-        self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
-    }
-    
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        super.prepare(for: segue, sender: sender)
+        if WalletManager.default.setup {
+            return dismiss(animated: true)
+        }
+
+        self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
     }
 
 }

@@ -453,44 +453,107 @@
             </objects>
             <point key="canvasLocation" x="3225" y="1692"/>
         </scene>
-        <!--View Controller-->
+        <!--Paperkey View Controller-->
         <scene sceneID="a5Z-69-Q5n">
             <objects>
-                <viewController id="Ife-oh-km1" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Ife-oh-km1" customClass="PaperkeyViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jSH-NW-MZW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your paperkey... Placeholder view" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Q3-5b-8xg">
-                                <rect key="frame" x="40" y="80" width="295" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2E-iK-uHw" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                                <rect key="frame" x="40" y="597" width="295" height="50"/>
+                                <color key="backgroundColor" name="PrimaryLight"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RgP-cp-8Uc"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="a62-t8-cko"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Show Paperkey">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="showPaperkey:" destination="Ife-oh-km1" eventType="touchUpInside" id="NqM-Z5-e8L"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your wallet paperkey again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-qQ-8GG">
+                                <rect key="frame" x="40" y="72" width="295" height="60.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                <color key="textColor" name="SecondaryDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PaperKey" translatesAutoresizingMaskIntoConstraints="NO" id="aei-PX-lY7">
-                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PaperkeyPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="b4i-Xt-rF5">
+                                <rect key="frame" x="40" y="140.5" width="295" height="125"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="EFm-rf-wws"/>
-                                    <constraint firstAttribute="height" constant="200" id="mFH-g8-RRG"/>
+                                    <constraint firstAttribute="height" constant="125" id="g9o-wb-AYz"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROh-3r-DCP">
+                                <rect key="frame" x="40" y="273.5" width="295" height="116.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="OGA-cr-81b"/>
+                                </constraints>
+                                <string key="text">You want to see your paperkey again? On the next screen, you'll be shown a list of words to write down on a piece of paper, which you should keep very safe!</string>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" name="SecondaryLight"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="4Q3-5b-8xg" firstAttribute="centerX" secondItem="jSH-NW-MZW" secondAttribute="centerX" id="M7c-tt-0r4"/>
-                            <constraint firstItem="aei-PX-lY7" firstAttribute="centerY" secondItem="jSH-NW-MZW" secondAttribute="centerY" id="MO9-G0-5mS"/>
-                            <constraint firstItem="aei-PX-lY7" firstAttribute="centerX" secondItem="jSH-NW-MZW" secondAttribute="centerX" id="N0E-AO-EaI"/>
-                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="4Q3-5b-8xg" secondAttribute="trailing" constant="40" id="QsG-a1-4cr"/>
-                            <constraint firstItem="4Q3-5b-8xg" firstAttribute="top" secondItem="IMz-ci-RPJ" secondAttribute="top" constant="16" id="ZSm-GL-YR3"/>
-                            <constraint firstItem="4Q3-5b-8xg" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" constant="40" id="gre-q6-nsK"/>
+                            <constraint firstItem="q2E-iK-uHw" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" priority="750" constant="40" id="2om-hA-kZ4"/>
+                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="o8D-qQ-8GG" secondAttribute="trailing" constant="40" id="AD6-wO-vl4"/>
+                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="q2E-iK-uHw" secondAttribute="trailing" priority="750" constant="40" id="BHB-XX-lHd"/>
+                            <constraint firstItem="q2E-iK-uHw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ROh-3r-DCP" secondAttribute="leading" constant="8" id="HDx-IM-Dhw"/>
+                            <constraint firstItem="q2E-iK-uHw" firstAttribute="centerX" secondItem="jSH-NW-MZW" secondAttribute="centerX" id="Md7-MZ-0BM"/>
+                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="ROh-3r-DCP" secondAttribute="trailing" priority="750" constant="40" id="Na5-4b-1Tx"/>
+                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="b4i-Xt-rF5" secondAttribute="trailing" constant="40" id="Qnm-iU-Ucb"/>
+                            <constraint firstItem="b4i-Xt-rF5" firstAttribute="top" secondItem="o8D-qQ-8GG" secondAttribute="bottom" constant="8" id="R1y-I1-Tcz"/>
+                            <constraint firstItem="o8D-qQ-8GG" firstAttribute="top" secondItem="IMz-ci-RPJ" secondAttribute="top" constant="8" id="Tag-tH-heQ"/>
+                            <constraint firstItem="ROh-3r-DCP" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" priority="750" constant="40" id="Zd1-B7-QBi"/>
+                            <constraint firstItem="o8D-qQ-8GG" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" constant="40" id="ap0-Jp-WGv"/>
+                            <constraint firstItem="IMz-ci-RPJ" firstAttribute="bottom" secondItem="q2E-iK-uHw" secondAttribute="bottom" constant="20" id="gav-yF-BDg"/>
+                            <constraint firstItem="ROh-3r-DCP" firstAttribute="top" secondItem="b4i-Xt-rF5" secondAttribute="bottom" constant="8" id="hKY-13-ZNP"/>
+                            <constraint firstItem="b4i-Xt-rF5" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" constant="40" id="jSk-5G-1PC"/>
+                            <constraint firstItem="ROh-3r-DCP" firstAttribute="centerX" secondItem="jSH-NW-MZW" secondAttribute="centerX" id="kyW-4c-3Ce"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IMz-ci-RPJ"/>
                     </view>
+                    <connections>
+                        <segue destination="EJT-TO-hr5" kind="presentation" identifier="ShowPaperkey" modalPresentationStyle="formSheet" id="dJN-uV-VXa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8r-9b-faM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1621.5999999999999" y="1035.832083958021"/>
+            <point key="canvasLocation" x="1622" y="1027"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tdG-gH-mRv">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pld-Yk-v8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="EJT-TO-hr5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgc-A0-eHQ" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qpT-q5-jap" kind="relationship" relationship="rootViewController" id="Mh5-5D-L82"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1622" y="310"/>
+        </scene>
+        <!--PaperKeyWordsViewController-->
+        <scene sceneID="liG-rG-xMN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WelcomeGuide" referencedIdentifier="PaperKeyWordsViewController" id="qpT-q5-jap" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Yrf-lI-lVg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gdy-qI-IpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2315" y="309"/>
         </scene>
         <!--Disconnect Wallet View Controller-->
         <scene sceneID="cl0-4N-jbc">
@@ -515,6 +578,9 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEF-8K-bNN">
                                 <rect key="frame" x="40" y="273.5" width="295" height="139.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="MHy-Dw-sv6"/>
+                                </constraints>
                                 <string key="text">Your about to disconnect this device from your current wallet. Please make absolutely sure you have written down your paperkey. Remember that your paperkey is the only way to restore your current wallet.</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <color key="textColor" name="SecondaryLight"/>
@@ -525,6 +591,7 @@
                                 <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Tej-8k-lb4"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="ahv-DG-3wJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -538,19 +605,21 @@
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
+                            <constraint firstItem="7P9-rp-OVn" firstAttribute="centerX" secondItem="yWC-6F-4Ky" secondAttribute="centerX" id="1xF-lZ-CYz"/>
                             <constraint firstItem="JEF-8K-bNN" firstAttribute="top" secondItem="rrC-hP-YHx" secondAttribute="bottom" constant="8" id="2Ut-Ow-8Rq"/>
                             <constraint firstItem="rCv-fT-eLO" firstAttribute="trailing" secondItem="L9g-jN-Hhp" secondAttribute="trailing" constant="40" id="71O-pe-f8s"/>
-                            <constraint firstItem="7P9-rp-OVn" firstAttribute="leading" secondItem="rCv-fT-eLO" secondAttribute="leading" constant="40" id="8HS-qu-VLL"/>
+                            <constraint firstItem="7P9-rp-OVn" firstAttribute="leading" secondItem="rCv-fT-eLO" secondAttribute="leading" priority="750" constant="40" id="8HS-qu-VLL"/>
                             <constraint firstItem="rCv-fT-eLO" firstAttribute="trailing" secondItem="rrC-hP-YHx" secondAttribute="trailing" constant="40" id="AzC-gh-uAo"/>
-                            <constraint firstItem="JEF-8K-bNN" firstAttribute="leading" secondItem="rCv-fT-eLO" secondAttribute="leading" constant="40" id="By9-tn-Xyk"/>
+                            <constraint firstItem="JEF-8K-bNN" firstAttribute="leading" secondItem="rCv-fT-eLO" secondAttribute="leading" priority="750" constant="40" id="By9-tn-Xyk"/>
                             <constraint firstItem="rrC-hP-YHx" firstAttribute="top" secondItem="L9g-jN-Hhp" secondAttribute="bottom" constant="8" id="DE4-72-9aK"/>
-                            <constraint firstItem="rCv-fT-eLO" firstAttribute="trailing" secondItem="JEF-8K-bNN" secondAttribute="trailing" constant="40" id="QlF-OZ-fgx"/>
+                            <constraint firstItem="rCv-fT-eLO" firstAttribute="trailing" secondItem="JEF-8K-bNN" secondAttribute="trailing" priority="750" constant="40" id="QlF-OZ-fgx"/>
                             <constraint firstItem="L9g-jN-Hhp" firstAttribute="leading" secondItem="rCv-fT-eLO" secondAttribute="leading" constant="40" id="VfI-bZ-mng"/>
                             <constraint firstItem="rrC-hP-YHx" firstAttribute="leading" secondItem="rCv-fT-eLO" secondAttribute="leading" constant="40" id="Yoa-UZ-fuw"/>
                             <constraint firstItem="rCv-fT-eLO" firstAttribute="bottom" secondItem="7P9-rp-OVn" secondAttribute="bottom" constant="20" id="ZOI-S4-ShT"/>
                             <constraint firstItem="L9g-jN-Hhp" firstAttribute="top" secondItem="rCv-fT-eLO" secondAttribute="top" constant="8" id="Zbz-rw-aLV"/>
                             <constraint firstItem="7P9-rp-OVn" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JEF-8K-bNN" secondAttribute="leading" constant="8" id="dpe-lj-gBW"/>
-                            <constraint firstItem="rCv-fT-eLO" firstAttribute="trailing" secondItem="7P9-rp-OVn" secondAttribute="trailing" constant="40" id="rxE-OH-XTr"/>
+                            <constraint firstItem="rCv-fT-eLO" firstAttribute="trailing" secondItem="7P9-rp-OVn" secondAttribute="trailing" priority="750" constant="40" id="rxE-OH-XTr"/>
+                            <constraint firstItem="JEF-8K-bNN" firstAttribute="centerX" secondItem="yWC-6F-4Ky" secondAttribute="centerX" id="wb0-Kl-p3P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rCv-fT-eLO"/>
                     </view>
@@ -1028,8 +1097,8 @@ But you can always turn Tor off.</string>
         <image name="Gift" width="30" height="30"/>
         <image name="GitHub" width="30" height="30"/>
         <image name="Hero" width="30" height="30"/>
-        <image name="PaperKey" width="600" height="600"/>
         <image name="PaperKeyAlt" width="30" height="30"/>
+        <image name="PaperkeyPlaceholder" width="842" height="596"/>
         <image name="Pin" width="30" height="30"/>
         <image name="RateApp" width="30" height="30"/>
         <image name="Settings" width="30" height="30"/>

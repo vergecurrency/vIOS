@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n4K-27-6eS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n4K-27-6eS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -141,7 +140,7 @@
         <!--Paperkey-->
         <scene sceneID="LP0-Ag-TLk">
             <objects>
-                <viewController id="uko-sR-DPL" customClass="PaperKeyWordsViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaperKeyWordsViewController" id="uko-sR-DPL" customClass="PaperKeyWordsViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="iOF-Ad-ELc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +167,7 @@
                                 <rect key="frame" x="40" y="208.5" width="295" height="250"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k0a-58-B6e">
-                                        <rect key="frame" x="110.5" y="89.5" width="75" height="71.5"/>
+                                        <rect key="frame" x="110" y="89.5" width="75" height="71.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="only" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Oy-Cn-RjB">
                                                 <rect key="frame" x="0.0" y="0.0" width="75" height="52"/>
@@ -423,13 +422,13 @@
                 <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="FinishSetupViewController" id="83k-ba-mYT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MU6-bG-4tw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2840" y="1751"/>
+            <point key="canvasLocation" x="2850" y="1751"/>
         </scene>
     </scenes>
     <resources>
         <image name="ArrowLeft" width="30" height="30"/>
         <image name="ArrowRight" width="30" height="30"/>
-        <image name="Background" width="771" height="360"/>
+        <image name="Background" width="1542" height="721"/>
         <image name="Close" width="30" height="30"/>
         <image name="ConfirmPaperkey" width="600" height="600"/>
         <image name="Help" width="30" height="30"/>
@@ -439,7 +438,7 @@
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryDark">
-            <color red="0.067000001668930054" green="0.1289999932050705" blue="0.20399999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.066666666666666666" green="0.12549019607843137" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
