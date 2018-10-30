@@ -8,8 +8,4 @@
 
 import HGPlaceholders
 
-class PlaceholderTableView: TableView {
-    override func customSetup() {
-        placeholdersProvider = .basic
-    }
-}
+class PlaceholderTableView: TableView {}

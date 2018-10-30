@@ -50,7 +50,7 @@ class TransactionTableViewCell: Cell<String>, CellType {
     
     fileprivate func setAmount(_ transaction: Transaction) {
         var prefix = ""
-        if transaction.category == .Send {
+        if transaction.category == .Sent {
             amountLabel.textColor = UIColor.vergeRed()
             imageView?.tintColor = UIColor.vergeRed()
             imageView?.image = UIImage(named: "Sent")

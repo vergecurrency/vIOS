@@ -5,31 +5,55 @@
 
 import UIKit
 
-class AbstractContactsTableViewController: EdgedTableViewController {
-
-    @IBOutlet weak var searchBar: UISearchBar!
+class AbstractContactsTableViewController: UITableViewController {
 
     var contacts: [[Address]] = []
     var letters:[String] = []
-    var searchQuery: String = ""
     let addressBookManager: AddressBookManager = AddressBookManager()
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollViewEdger.hideBottomShadow = true
+
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Contacts"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        edgesForExtendedLayout = UIRectEdge.all
+        extendedLayoutIncludesOpaqueBars = true
+
+        // Setup the Scope Bar
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
     }
 
-    func loadContacts() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if searchController.isActive {
+            TorStatusIndicator.shared.hide()
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        TorStatusIndicator.shared.show()
+    }
+
+    func loadContacts(_ searchText: String = "") {
         contacts.removeAll()
         letters.removeAll()
 
         let addresses = addressBookManager.all().filter { address in
-            if self.searchQuery == "" {
+            if searchText == "" {
                 return true
             }
 
-            return address.address.lowercased().contains(self.searchQuery.lowercased())
-                || address.name.lowercased().contains(self.searchQuery.lowercased())
+            return address.address.lowercased().contains(searchText.lowercased())
+                || address.name.lowercased().contains(searchText.lowercased())
         }
 
         let items = Dictionary(grouping: addresses, by: {
@@ -37,8 +61,10 @@ class AbstractContactsTableViewController: EdgedTableViewController {
         }).sorted(by: { $0.key < $1.key })
 
         for item in items {
-            contacts.append(item.value)
             letters.append(item.key)
+            contacts.append(item.value.sorted { thule, thule2 in
+                return thule.name < thule2.name
+            })
         }
     }
 
@@ -73,7 +99,7 @@ class AbstractContactsTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addressBookCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addressBookCell")!
 
         let address = contact(byIndexpath: indexPath)
 
@@ -86,12 +112,25 @@ class AbstractContactsTableViewController: EdgedTableViewController {
 }
 
 extension AbstractContactsTableViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchQuery = searchText
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        loadContacts(searchBar.text!)
+        tableView.reloadData()
+    }
+}
 
-        DispatchQueue.main.async {
-            self.loadContacts()
-            self.tableView.reloadData()
-        }
+extension AbstractContactsTableViewController: UISearchResultsUpdating, UISearchControllerDelegate {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        loadContacts(searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+
+    public func willPresentSearchController(_ searchController: UISearchController) {
+        TorStatusIndicator.shared.hide()
+    }
+
+    public func willDismissSearchController(_ searchController: UISearchController) {
+        TorStatusIndicator.shared.show()
     }
 }
