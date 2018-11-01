@@ -67,7 +67,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         }
         
         var prefix = ""
-        if transaction.category == .Send {
+        if transaction.category == .Sent {
             navigationItem.setRightBarButton(repeatTransactionBarButtonItem, animated: true)
             amountLabel.textColor = UIColor.vergeRed()
             iconImageView.image = UIImage(named: "Payment")
@@ -101,7 +101,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return transaction?.category == .Send ? 4 : 3
+            return transaction?.category == .Sent ? 4 : 3
         }
         
         return items.count

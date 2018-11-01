@@ -360,7 +360,7 @@
                                                 <rect key="frame" x="40" y="263.5" width="295" height="50"/>
                                                 <color key="backgroundColor" name="PrimaryLight"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="2yY-pq-XeC"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="2yY-pq-XeC"/>
                                                     <constraint firstAttribute="height" constant="50" id="oPE-ix-uOu"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>

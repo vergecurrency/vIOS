@@ -28,17 +28,19 @@ class SelectRecipientTableViewController: AbstractContactsTableViewController {
 
         if address.address == sendTransaction?.address {
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sendTransaction?.address = contact(byIndexpath: indexPath).address
-        
         sendTransactionDelegate.didChangeSendTransaction(sendTransaction!)
-        
-        self.closeViewController(self)
+
+        searchController.isActive = false
+        closeViewController(self)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,6 +48,6 @@ class SelectRecipientTableViewController: AbstractContactsTableViewController {
     }
 
     @IBAction func closeViewController(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

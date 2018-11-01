@@ -61,4 +61,8 @@ class ContactsTableViewController: AbstractContactsTableViewController {
         }
     }
 
+    @IBAction func dismissView(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
 }

@@ -25,16 +25,18 @@ class BlendedNavigationBar: UINavigationBar {
     func setupLayout() {
         let font = UIFont.avenir(size: 19).medium()
         
-        self.shadowImage = UIImage()
-        self.tintColor = UIColor.primaryLight()
-        self.barTintColor = UIColor.backgroundGrey()
-        self.backgroundColor = UIColor.backgroundGrey()
-        self.barStyle = .default
-        self.isTranslucent = false
-        self.titleTextAttributes = [
+        shadowImage = UIImage()
+        tintColor = UIColor.primaryLight()
+        barTintColor = UIColor.backgroundGrey()
+        backgroundColor = UIColor.backgroundGrey()
+        barStyle = .default
+        isTranslucent = false
+        titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.secondaryDark(),
             kCTFontAttributeName: font
         ] as? [NSAttributedString.Key : Any]
+
+        setValue(true, forKey: "hidesShadow")
     }
     
 }

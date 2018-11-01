@@ -73,6 +73,10 @@ class ScrollViewEdger {
     }
     
     func updateView() {
+        if topShadow == nil || bottomShadow == nil {
+            return
+        }
+        
         if !hideTopShadow {
             topShadow.frame = CGRect(
                 x: topShadow.frame.origin.x,

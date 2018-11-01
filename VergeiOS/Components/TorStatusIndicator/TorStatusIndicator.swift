@@ -20,10 +20,10 @@ class TorStatusIndicator: UIWindow {
     static var shared = TorStatusIndicator()
     var torStatusIndicatorViewController: TorStatusIndicatorViewController?
     let defaultStatus: TorStatusIndicator.status = .turnedOff
+    var isShown = true
 
     func initialize() {
-        let hasNotch = self.hasNotch()
-        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height:  hasNotch ? 54 : 32)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: frameHeight())
         self.torStatusIndicatorViewController = TorStatusIndicatorViewController(nibName: "TorStatusIndicatorViewController", bundle: .main)
         self.torStatusIndicatorViewController?.view.frame = frame
         self.backgroundColor = .clear
@@ -35,7 +35,7 @@ class TorStatusIndicator: UIWindow {
         
         self.layoutIfNeeded()
         
-        self.torStatusIndicatorViewController?.setHasNotch(hasNotch)
+        self.torStatusIndicatorViewController?.setHasNotch(hasNotch())
         self.makeKeyAndVisible()
         
         self.setStatus(defaultStatus)
@@ -55,8 +55,33 @@ class TorStatusIndicator: UIWindow {
         }
         return hasNotch
     }
+
+    func frameHeight() -> CGFloat {
+        return hasNotch() ? 54 : 32
+    }
     
     func setStatus(_ status: TorStatusIndicator.status) {
         torStatusIndicatorViewController?.setStatus(status)
+    }
+
+    func hide() {
+        toggleView(show: false)
+    }
+
+    func show() {
+        toggleView(show: true)
+    }
+
+    func toggleView(show: Bool) {
+        if isShown == show {
+            return
+        }
+
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.center.y = show ? self.frameHeight() / 2 : -40
+            self.alpha = show ? 1 : 0
+            self.isShown = show
+            self.layoutIfNeeded()
+        })
     }
 }

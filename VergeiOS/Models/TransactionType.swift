@@ -9,6 +9,6 @@
 import Foundation
 
 enum TransactionType: String {
-    case Send
+    case Sent
     case Received
 }

@@ -79,7 +79,7 @@ struct Transaction: Decodable {
 
     var category: TransactionType {
         get {
-            return (categoryValue == "receive") ? .Received : .Send
+            return (categoryValue == "receive") ? .Received : .Sent
         }
         set {
             categoryValue = (newValue == .Received) ? "receive" : "send"
