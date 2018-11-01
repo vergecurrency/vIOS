@@ -121,6 +121,10 @@ class WalletManager {
                 return item.address == address
             }
     }
+
+    func hasTransactions() -> Bool {
+        return getTransactions().count > 0
+    }
     
     func reset() {
         let domain = Bundle.main.bundleIdentifier!

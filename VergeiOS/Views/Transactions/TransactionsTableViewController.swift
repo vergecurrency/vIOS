@@ -19,21 +19,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Transactions"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        edgesForExtendedLayout = UIRectEdge.all
-        extendedLayoutIncludesOpaqueBars = true
-
-        // Setup the Scope Bar
-        searchController.searchBar.scopeButtonTitles = ["All", "Sent", "Received"]
-        searchController.searchBar.delegate = self
-        searchController.delegate = self
-
-        loadTransactions()
+        setupView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +38,35 @@ class TransactionsTableViewController: EdgedTableViewController {
         super.viewWillDisappear(animated)
 
         TorStatusIndicator.shared.show()
+    }
+
+    func setupView() {
+        if !WalletManager.default.hasTransactions() {
+            if let placeholder = Bundle.main.loadNibNamed("NoTransactionsPlaceholderView", owner: self, options: nil)?.first as? NoTransactionsPlaceholderView {
+                placeholder.frame = tableView.frame
+                tableView.backgroundView = placeholder
+                tableView.backgroundView?.backgroundColor = .backgroundGrey()
+                tableView.tableFooterView = UIView()
+                navigationItem.searchController = nil
+            }
+            return
+        }
+
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Transactions"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        edgesForExtendedLayout = UIRectEdge.all
+        extendedLayoutIncludesOpaqueBars = true
+
+        // Setup the Scope Bar
+        searchController.searchBar.scopeButtonTitles = ["All", "Sent", "Received"]
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
+
+        loadTransactions()
     }
 
     func loadTransactions(_ searchText: String = "", scope: String = "All") {

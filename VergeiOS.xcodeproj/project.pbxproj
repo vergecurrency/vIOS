@@ -131,8 +131,8 @@
 		A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */; };
 		A3AA2206216576BE00160576 /* IpAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2205216576BE00160576 /* IpAddress.swift */; };
 		A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
-		A3B2E2642148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2622148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift */; };
-		A3B2E2652148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E2632148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib */; };
+		A3B2E2642148421300C31719 /* NoTransactionsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */; };
+		A3B2E2652148421300C31719 /* NoTransactionsPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */; };
 		A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2662148577000C31719 /* PlaceholderTableView.swift */; };
 		A3B2E26A214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E268214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.swift */; };
 		A3B2E26B214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E269214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib */; };
@@ -330,8 +330,8 @@
 		A3AA2205216576BE00160576 /* IpAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddress.swift; sourceTree = "<group>"; };
 		A3AA220721657BBE00160576 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A3B2E25A214836B500C31719 /* HGPlaceholders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HGPlaceholders.framework; path = Carthage/Build/iOS/HGPlaceholders.framework; sourceTree = "<group>"; };
-		A3B2E2622148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
-		A3B2E2632148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
+		A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionsPlaceholderView.swift; sourceTree = "<group>"; };
+		A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTransactionsPlaceholderView.xib; sourceTree = "<group>"; };
 		A3B2E2662148577000C31719 /* PlaceholderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableView.swift; sourceTree = "<group>"; };
 		A3B2E268214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoWalletTransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		A3B2E269214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoWalletTransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
@@ -688,8 +688,8 @@
 			children = (
 				A338E6AF210FD558000D44EE /* TransactionsTableViewController.swift */,
 				A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */,
-				A3B2E2622148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift */,
-				A3B2E2632148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib */,
+				A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */,
+				A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */,
 				A364727D217C7787001B1B18 /* ContactTableViewController.swift */,
 				A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */,
 				B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */,
@@ -1035,7 +1035,7 @@
 				A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */,
 				A338E6B32110D064000D44EE /* TransactionsWalletSlideView.xib in Resources */,
 				A3256649211372B3006FB08A /* Transactions.storyboard in Resources */,
-				A3B2E2652148421300C31719 /* NoTransactionsPlaceholderTableViewCell.xib in Resources */,
+				A3B2E2652148421300C31719 /* NoTransactionsPlaceholderView.xib in Resources */,
 				A338E695210CF60B000D44EE /* Setup.storyboard in Resources */,
 				A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */,
 				A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */,
@@ -1149,7 +1149,7 @@
 				A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */,
-				A3B2E2642148421300C31719 /* NoTransactionsPlaceholderTableViewCell.swift in Sources */,
+				A3B2E2642148421300C31719 /* NoTransactionsPlaceholderView.swift in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */,
 				A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */,
