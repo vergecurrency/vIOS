@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aj0-hD-wgD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aj0-hD-wgD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -435,29 +435,6 @@ Please increase you're balance.</string>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-My-zdT" customClass="MakeTransparentHoleOnOverlayView" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcI-1B-xOR">
-                                        <rect key="frame" x="24" y="24" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="9s4-qU-PGy"/>
-                                            <constraint firstAttribute="width" constant="30" id="dnv-Zl-Mfm"/>
-                                        </constraints>
-                                        <viewLayoutGuide key="safeArea" id="XQT-xI-xEN"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="Close"/>
-                                        <connections>
-                                            <action selector="closeController:" destination="989-AL-BZZ" eventType="touchUpInside" id="4ce-Eg-ZMX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOn-UO-cCJ">
-                                        <rect key="frame" x="321" y="24" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="fwx-F3-luf"/>
-                                            <constraint firstAttribute="width" constant="30" id="lFV-cU-GHI"/>
-                                        </constraints>
-                                        <viewLayoutGuide key="safeArea" id="isP-W7-1Eb"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="Image"/>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgB-Qb-mJf">
                                         <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -472,17 +449,26 @@ Please increase you're balance.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-rK-VF6">
+                                        <rect key="frame" x="147.5" y="601" width="80" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5sO-34-djg"/>
+                                            <constraint firstAttribute="width" constant="80" id="d3i-ov-NAm"/>
+                                        </constraints>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closeController:" destination="989-AL-BZZ" eventType="touchUpInside" id="a6f-NE-nhy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75050834760273977" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="qOn-UO-cCJ" secondAttribute="trailing" constant="16" id="3w2-UN-IAq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mal-rK-VF6" secondAttribute="bottom" constant="16" id="6l5-oV-h1C"/>
                                     <constraint firstItem="0WT-oX-zie" firstAttribute="centerX" secondItem="RCP-My-zdT" secondAttribute="centerX" id="Aa9-AM-jll"/>
-                                    <constraint firstItem="ZcI-1B-xOR" firstAttribute="top" secondItem="RCP-My-zdT" secondAttribute="topMargin" constant="16" id="HST-f9-0z7"/>
                                     <constraint firstItem="jgB-Qb-mJf" firstAttribute="top" secondItem="0WT-oX-zie" secondAttribute="bottom" constant="30" id="JSq-8F-py7"/>
-                                    <constraint firstItem="ZcI-1B-xOR" firstAttribute="leading" secondItem="RCP-My-zdT" secondAttribute="leadingMargin" constant="16" id="T8H-OS-K3r"/>
-                                    <constraint firstItem="qOn-UO-cCJ" firstAttribute="top" secondItem="RCP-My-zdT" secondAttribute="topMargin" constant="16" id="ZaF-7g-lgq"/>
                                     <constraint firstItem="jgB-Qb-mJf" firstAttribute="centerY" secondItem="RCP-My-zdT" secondAttribute="centerY" id="buG-5R-jD6"/>
                                     <constraint firstItem="jgB-Qb-mJf" firstAttribute="centerX" secondItem="RCP-My-zdT" secondAttribute="centerX" id="exU-QJ-E2W"/>
+                                    <constraint firstItem="Mal-rK-VF6" firstAttribute="centerX" secondItem="RCP-My-zdT" secondAttribute="centerX" id="yWE-jI-zMQ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="transparentHoleView" destination="jgB-Qb-mJf" id="ZRm-j8-U0K"/>
@@ -615,7 +601,6 @@ Please increase you're balance.</string>
         <image name="Checked" width="30" height="30"/>
         <image name="Close" width="30" height="30"/>
         <image name="Currency" width="30" height="30"/>
-        <image name="Image" width="30" height="30"/>
         <image name="NoBalancePlaceholder" width="300" height="300"/>
         <image name="Payment" width="30" height="30"/>
         <image name="QRcode" width="30" height="30"/>
