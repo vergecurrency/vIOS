@@ -33,8 +33,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.isSwipable()
-        
         sendTransaction = sendTransactionDelegate.getSendTransaction()
         
         // Get the back-facing camera for capturing videos
