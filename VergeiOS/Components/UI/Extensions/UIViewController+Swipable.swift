@@ -13,12 +13,11 @@ extension UIViewController {
     // MARK: IS SWIPABLE - FUNCTION
     func isSwipable() {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        self.view.addGestureRecognizer(panGestureRecognizer)
+        view.addGestureRecognizer(panGestureRecognizer)
     }
 
     // MARK: HANDLE PAN GESTURE - FUNCTION
     @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
-
         let percentThreshold: CGFloat = 0.3
         let translation = sender.translation(in: view)
 
@@ -30,7 +29,7 @@ extension UIViewController {
         if sender.state == .ended {
             let velocity = sender.velocity(in: view)
             if velocity.y >= 300 || progress > percentThreshold {
-                self.dismiss(animated: true) //Perform dismiss
+                dismiss(animated: true) //Perform dismiss
             } else {
                 UIView.animate(withDuration: 0.2, animations: {
                     self.view.frame.origin.y = 0 // Revert animation
