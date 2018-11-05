@@ -125,6 +125,14 @@ class WalletManager {
     func hasTransactions() -> Bool {
         return getTransactions().count > 0
     }
+
+    func getAddress(stealth: Bool = false) -> String {
+        let length = stealth ? 68 : 34
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0...length - 1).map { _ in
+            letters.randomElement()!
+        })
+    }
     
     func reset() {
         let domain = Bundle.main.bundleIdentifier!

@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum CurrencySwitch {
-    case XVG
-    case FIAT
-}
-
 class SendViewController: UIViewController {
+
+    enum CurrencySwitch {
+        case XVG
+        case FIAT
+    }
 
     @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var noBalanceView: UIView!

@@ -12,6 +12,11 @@ import QRCode
 @IBDesignable
 class ReceiveViewController: UIViewController {
 
+    enum CurrencySwitch {
+        case XVG
+        case FIAT
+    }
+
     @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var xvgCardImageView: UIImageView!
     @IBOutlet weak var qrCodeImageView: UIImageView!
@@ -19,27 +24,28 @@ class ReceiveViewController: UIViewController {
     @IBOutlet weak var cardAddress: UILabel!
 
     @IBOutlet weak var addressTextField: SelectorButton!
-    @IBOutlet weak var amountTextField: SelectorButton!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var stealthSwitch: UISwitch!
-    
+
+    var address = ""
+    var amount = 0.0
+    var currency = CurrencySwitch.XVG
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let address = "1NMcHbiZuUYU9su1BDKTRtJvxnq14Z8YiT"
+        address = WalletManager.default.getAddress()
 
         qrCodeContainerView.layer.cornerRadius = 10.0
         qrCodeContainerView.clipsToBounds = true
 
-        cardAddress.text = address
-
         addTapRecognizer(target: addressTextField, action: #selector(copyAddress(recognizer:)))
         addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
 
-        DispatchQueue.main.async {
-            self.addressTextField.valueLabel?.text = address
-            self.amountTextField.valueLabel?.text = NSNumber(value: 0.0).toXvgCurrency(fractDigits: 6)
-            self.createQRCode(address: address, stealth: self.stealthSwitch.isOn)
-        }
+        changeAddress(address)
+        
+        amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +60,21 @@ class ReceiveViewController: UIViewController {
         }, completion: nil)
     }
 
-    func createQRCode(address: String, stealth: Bool = false) {
+    func changeAddress(_ address: String) {
+        self.address = address
+
+        DispatchQueue.main.async {
+            self.cardAddress.text = address
+            self.addressTextField.valueLabel?.text = address
+            self.createQRCode()
+        }
+    }
+
+    func createQRCode() {
+        let address = amount > 0.0 ? "verge://\(self.address)?amount=\(amount)" : self.address
         var qrCode = QRCode(address)
 
-        if stealth {
+        if stealthSwitch.isOn {
             qrCode?.color = CIColor(cgColor: UIColor.backgroundBlue().cgColor)
             qrCode?.backgroundColor = CIColor(cgColor: UIColor.primaryDark().cgColor)
         } else {
@@ -68,8 +85,57 @@ class ReceiveViewController: UIViewController {
         qrCodeImageView.image = (qrCode?.image)!
     }
 
+    @IBAction func newAddress(_ sender: UIButton) {
+        changeAddress(WalletManager.default.getAddress(stealth: stealthSwitch.isOn))
+    }
+
+    @IBAction func amountChanged(_ sender: UITextField) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = ""
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+
+        amount = formatter.number(from: sender.text!)?.doubleValue ?? 0
+
+        if currency == .FIAT {
+            if let xvgInfo = PriceTicker.shared.xvgInfo {
+                amount = amount / xvgInfo.price
+            }
+        }
+
+        createQRCode()
+    }
+
+    @IBAction func switchCurrency(_ sender: Any) {
+        currency = (currency == .XVG) ? .FIAT : .XVG
+        var newAmount = ""
+        if let xvgInfo = PriceTicker.shared.xvgInfo {
+            if currency == .XVG {
+                currencyLabel.text = "XVG"
+                newAmount = String(Int(amount * 100))
+            } else {
+                currencyLabel.text = WalletManager.default.currency
+                newAmount = String(Int((amount * 100) * xvgInfo.price))
+            }
+        }
+
+        amountTextField.text = newAmount.currencyInputFormatting()
+    }
+
+    @IBAction func shareAddress(_ sender: UIButton) {
+        UIGraphicsBeginImageContextWithOptions(xvgCardContainer.bounds.size, false, 0.0)
+        xvgCardImageView.clipsToBounds = true
+        xvgCardContainer.drawHierarchy(in: xvgCardContainer.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        xvgCardImageView.clipsToBounds = false
+
+        openShareSheet(shareText: "My XVG address: \(address)", shareImage: image)
+    }
+
     @IBAction func switchStealth(_ sender: UISwitch) {
-        createQRCode(address: cardAddress.text!, stealth: sender.isOn)
+        changeAddress(WalletManager.default.getAddress(stealth: sender.isOn))
 
         if sender.isOn {
             xvgCardImageView.image = UIImage(named: "StealthReceiveCard")
@@ -86,7 +152,37 @@ class ReceiveViewController: UIViewController {
     }
 
     @objc func copyAddress(recognizer: UIGestureRecognizer) {
-        UIPasteboard.general.string = cardAddress.text
+        UIPasteboard.general.string = address
         NotificationManager.shared.showMessage("Address copied!", duration: 3)
+    }
+
+    func openShareSheet(shareText text: String?, shareImage: UIImage?) {
+        var objectsToShare = [Any]()
+
+        if let shareTextObj = text {
+            objectsToShare.append(shareTextObj)
+        }
+
+        if let shareImageObj = shareImage {
+            objectsToShare.append(shareImageObj.pngData()!)
+        }
+
+        if text != nil || shareImage != nil {
+            let activityViewController = UIActivityViewController(
+                activityItems: objectsToShare,
+                applicationActivities: nil
+            )
+            activityViewController.popoverPresentationController?.sourceView = self.view
+
+            present(activityViewController, animated: true)
+        } else {
+            print("There is nothing to share")
+        }
+    }
+    
+    @objc func myTextFieldDidChange(_ textField: UITextField) {
+        if let amountString = textField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
     }
 }
