@@ -30,11 +30,12 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         
         scrollViewEdger = ScrollViewEdger(scrollView: tableView)
         scrollViewEdger.hideBottomShadow = true
-        
+
         DispatchQueue.main.async {
             self.scrollViewEdger.createShadowViews()
             // Select the current transaction.
             self.selectCurrentTransaction()
+            self.tableView.setContentOffset(.zero, animated: true)
         }
     }
 
@@ -86,8 +87,8 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func loadTransactions(_ transaction: Transaction) {
         let transactions = WalletManager.default
-            .getTransactions(byAddress: transaction.address, offset: 0, limit: 7).sorted { a, b in
-                return a.blockindex > b.blockindex
+            .getTransactions(byAddress: transaction.address, offset: 0, limit: 7).sorted { thule, thule2 in
+                return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
             }
         
         items = transactions
@@ -139,6 +140,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.imageView?.image = UIImage(named: "Confirmations")
                 cell.textLabel?.text = "Confirmations"
                 cell.detailTextLabel?.text = "\(transaction?.confirmations ?? 0)"
+                cell.accessoryType = .none
                 break
             case 2:
                 cell.imageView?.image = UIImage(named: "Block")
@@ -151,6 +153,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 cell.imageView?.image = UIImage(named: "Memo")
                 cell.textLabel?.text = "Memo"
                 cell.detailTextLabel?.text = transaction?.memo
+                cell.accessoryType = .none
                 break
             default:
                 break

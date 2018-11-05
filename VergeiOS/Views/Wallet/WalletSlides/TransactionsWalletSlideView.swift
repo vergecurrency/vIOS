@@ -36,8 +36,8 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
     
     func getTransactions() {
-        items = WalletManager.default.getTransactions(offset: 0, limit: 20).sorted { a, b in
-            return a.blockindex > b.blockindex
+        items = WalletManager.default.getTransactions(offset: 0, limit: 20).sorted { thule, thule2 in
+            return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
         }
     }
     
