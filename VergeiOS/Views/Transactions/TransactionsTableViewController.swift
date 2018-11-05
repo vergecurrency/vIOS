@@ -179,9 +179,10 @@ class TransactionsTableViewController: EdgedTableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "TransactionTableViewController" {
-            if let vc = segue.destination as? TransactionTableViewController {
-                vc.navigationItem.leftBarButtonItem = nil
-                vc.transaction = transaction(byIndexpath: tableView.indexPathForSelectedRow!)
+            if let nc = segue.destination as? UINavigationController {
+                if let vc = nc.viewControllers.first as? TransactionTableViewController {
+                    vc.transaction = transaction(byIndexpath: tableView.indexPathForSelectedRow!)
+                }
             }
         }
     }

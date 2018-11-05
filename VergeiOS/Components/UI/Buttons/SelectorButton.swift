@@ -86,7 +86,8 @@ import UIKit
         self.valueLabel?.font = UIFont.avenir(size: 16).demiBold()
         self.valueLabel?.textColor = self.valueColor
         self.valueLabel?.adjustsFontSizeToFitWidth = true
-        self.valueLabel?.minimumScaleFactor = 0.0
+        self.valueLabel?.minimumScaleFactor = 0.8
+        self.valueLabel?.lineBreakMode = .byTruncatingMiddle
 
         self.addSubview(self.valueLabel!)
     }

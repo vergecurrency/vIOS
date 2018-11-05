@@ -456,13 +456,13 @@
         <!--Paperkey View Controller-->
         <scene sceneID="a5Z-69-Q5n">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Ife-oh-km1" customClass="PaperkeyViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ife-oh-km1" customClass="PaperkeyViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jSH-NW-MZW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2E-iK-uHw" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="597" width="295" height="50"/>
+                                <rect key="frame" x="40" y="548" width="295" height="50"/>
                                 <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RgP-cp-8Uc"/>
@@ -558,7 +558,7 @@
         <!--Disconnect Wallet View Controller-->
         <scene sceneID="cl0-4N-jbc">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="aSs-cW-UuY" customClass="DisconnectWalletViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aSs-cW-UuY" customClass="DisconnectWalletViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yWC-6F-4Ky">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -587,7 +587,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P9-rp-OVn" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="597" width="295" height="50"/>
+                                <rect key="frame" x="40" y="548" width="295" height="50"/>
                                 <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Tej-8k-lb4"/>
