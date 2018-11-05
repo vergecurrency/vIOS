@@ -16,13 +16,11 @@
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
-		A302D2F1211F3B4400EA8091 /* SetAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2F0211F3B4400EA8091 /* SetAmountViewController.swift */; };
 		A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */; };
 		A302D2FB211F64FB00EA8091 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2FA211F64FB00EA8091 /* Address.swift */; };
 		A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */; };
 		A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302D3082120374C00EA8091 /* CoreGraphics.framework */; };
 		A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */; };
-		A302D30E2120487700EA8091 /* UIViewController+Swipable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D30D2120487700EA8091 /* UIViewController+Swipable.swift */; };
 		A302D3152120F53D00EA8091 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3142120F53D00EA8091 /* AddressCell.swift */; };
 		A302D3412122053300EA8091 /* PriceTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3402122053300EA8091 /* PriceTicker.swift */; };
 		A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34221220A1E00EA8091 /* Notification+Names.swift */; };
@@ -82,7 +80,6 @@
 		A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6BA2110D620000D44EE /* ChartWalletSlideView.swift */; };
 		A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A338E6BC2110D642000D44EE /* SummaryWalletSlideView.xib */; };
 		A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6BE2110D64C000D44EE /* SummaryWalletSlideView.swift */; };
-		A338E6C12110F8E6000D44EE /* XvgAmountKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C02110F8E6000D44EE /* XvgAmountKeyboard.swift */; };
 		A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C22110F9CB000D44EE /* StringKey.swift */; };
 		A338E6C62110FB31000D44EE /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C52110FB31000D44EE /* SendViewController.swift */; };
 		A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */; };
@@ -206,13 +203,11 @@
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
 		A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableViewController.swift; sourceTree = "<group>"; };
-		A302D2F0211F3B4400EA8091 /* SetAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAmountViewController.swift; sourceTree = "<group>"; };
 		A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XVGCardImageView.swift; sourceTree = "<group>"; };
 		A302D2FA211F64FB00EA8091 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeViewController.swift; sourceTree = "<group>"; };
 		A302D3082120374C00EA8091 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransparentHoleOnOverlayView.swift; sourceTree = "<group>"; };
-		A302D30D2120487700EA8091 /* UIViewController+Swipable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Swipable.swift"; sourceTree = "<group>"; };
 		A302D3142120F53D00EA8091 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		A302D3402122053300EA8091 /* PriceTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTicker.swift; sourceTree = "<group>"; };
 		A302D34221220A1E00EA8091 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
@@ -277,7 +272,6 @@
 		A338E6BA2110D620000D44EE /* ChartWalletSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartWalletSlideView.swift; sourceTree = "<group>"; };
 		A338E6BC2110D642000D44EE /* SummaryWalletSlideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryWalletSlideView.xib; sourceTree = "<group>"; };
 		A338E6BE2110D64C000D44EE /* SummaryWalletSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryWalletSlideView.swift; sourceTree = "<group>"; };
-		A338E6C02110F8E6000D44EE /* XvgAmountKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XvgAmountKeyboard.swift; sourceTree = "<group>"; };
 		A338E6C22110F9CB000D44EE /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
 		A338E6C52110FB31000D44EE /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
@@ -550,7 +544,6 @@
 				0793840D210DD2ED00C3C799 /* UIView+Shake.swift */,
 				A305DDA021068BCF00911B64 /* UIFont+Default.swift */,
 				A305DDAF2107889200911B64 /* UIColor+Default.swift */,
-				A302D30D2120487700EA8091 /* UIViewController+Swipable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -587,7 +580,6 @@
 			isa = PBXGroup;
 			children = (
 				A305DDB12107A1F100911B64 /* PinKeyboard.swift */,
-				A338E6C02110F8E6000D44EE /* XvgAmountKeyboard.swift */,
 				A305DDB32107A1FB00911B64 /* Keyboard.swift */,
 				A305DDBC2107C7F600911B64 /* KeyboardKey.swift */,
 				A305DDBE2107C82200911B64 /* EmptyKey.swift */,
@@ -702,7 +694,6 @@
 			children = (
 				A338E6C52110FB31000D44EE /* SendViewController.swift */,
 				A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */,
-				A302D2F0211F3B4400EA8091 /* SetAmountViewController.swift */,
 				A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */,
 				A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */,
 				A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */,
@@ -1133,8 +1124,6 @@
 				A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */,
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
 				A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */,
-				A338E6C12110F8E6000D44EE /* XvgAmountKeyboard.swift in Sources */,
-				A302D30E2120487700EA8091 /* UIViewController+Swipable.swift in Sources */,
 				A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */,
 				A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */,
 				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
@@ -1185,7 +1174,6 @@
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
-				A302D2F1211F3B4400EA8091 /* SetAmountViewController.swift in Sources */,
 				A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */,
 				A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,

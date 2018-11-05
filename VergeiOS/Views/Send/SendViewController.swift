@@ -19,7 +19,8 @@ class SendViewController: UIViewController {
     @IBOutlet weak var noBalanceView: UIView!
     @IBOutlet weak var walletAmountLabel: UILabel!
     @IBOutlet weak var recipientTextField: UITextField!
-    @IBOutlet weak var amountTextField: SelectorButton!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
 
@@ -47,6 +48,10 @@ class SendViewController: UIViewController {
         confirmButtonInterval = setInterval(1) {
             self.isSendable()
         }
+
+        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
+        amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
+        amountTextField.text = amountTextField.text?.currencyInputFormatting()
 
         setupRecipientTextFieldKeyBoardToolbar()
 
@@ -89,6 +94,7 @@ class SendViewController: UIViewController {
 
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
+        currencyLabel.text = currency == .XVG ? "XVG" : WalletManager.default.currency
 
         updateWalletAmountLabel()
         updateAmountLabel()
@@ -113,21 +119,18 @@ class SendViewController: UIViewController {
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
-            self.amountTextField.valueLabel?.text = self.currentAmount().toCurrency(
-                currency: self.currentCurrency(),
-                fractDigits: 6
-            )
+            self.amountTextField.text = String(Int(self.currentAmount().doubleValue * 100)).currencyInputFormatting()
             
             if self.walletAmount.doubleValue == 0.0 {
                 return
             }
 
             if (self.currentAmount().doubleValue >= self.walletAmount.doubleValue) {
-                self.amountTextField.valueLabel?.textColor = UIColor.vergeRed()
+                self.amountTextField.textColor = UIColor.vergeRed()
                 
                 self.notifySelectedToMuchAmount()
             } else {
-                self.amountTextField.valueLabel?.textColor = UIColor.secondaryDark()
+                self.amountTextField.textColor = UIColor.secondaryDark()
             }
         }
     }
@@ -155,11 +158,6 @@ class SendViewController: UIViewController {
         if segue.identifier == "selectRecipient" {
             let nc = segue.destination as! UINavigationController
             let vc = nc.viewControllers.first as! SelectRecipientTableViewController
-            vc.sendTransactionDelegate = self
-        }
-
-        if segue.identifier == "setAmount" {
-            let vc = segue.destination as! SetAmountViewController
             vc.sendTransactionDelegate = self
         }
     }
@@ -230,7 +228,7 @@ class SendViewController: UIViewController {
     }
     
     func notifySelectedToMuchAmount() {
-        let amount = amountTextField.valueLabel?.text ?? "..."
+        let amount = amountTextField.text ?? "..."
         let alert = UIAlertController(
             title: "That's Too Much! 🤔",
             message: "You do not have enough balance to send \(amount). Change the amount to send in order to proceed.",
@@ -336,6 +334,31 @@ extension SendViewController: UITextFieldDelegate {
 
     @objc func dissmissKeyboard() {
         view.endEditing(true)
+    }
+
+    @objc func amountTextFieldDidChange(_ textField: UITextField) {
+        if let amountString = textField.text?.currencyInputFormatting() {
+            textField.text = amountString
+        }
+    }
+
+    @objc func amountChanged(_ textField: UITextField) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = ""
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+
+        var amount = formatter.number(from: textField.text!)?.doubleValue ?? 0
+
+        if currency == .FIAT {
+            if let xvgInfo = PriceTicker.shared.xvgInfo {
+                amount = amount / xvgInfo.price
+            }
+        }
+
+        sendTransaction.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
+        didChangeSendTransaction(sendTransaction)
     }
 
     func showInvalidAddressAlert() {

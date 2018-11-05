@@ -163,20 +163,43 @@
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount"/>
-                                                                            <userDefinedRuntimeAttribute type="string" keyPath="value" value="0"/>
                                                                         </userDefinedRuntimeAttributes>
-                                                                        <connections>
-                                                                            <segue destination="wSv-G7-JMQ" kind="presentation" identifier="setAmount" modalPresentationStyle="overFullScreen" id="Hwd-XU-kp4"/>
-                                                                        </connections>
                                                                     </button>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="Amount to send" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xgY-8O-dQL">
+                                                                        <rect key="frame" x="42" y="20" width="281" height="20"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="20" id="3WM-5g-1OH"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" name="SecondaryDark"/>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                    </textField>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XVG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIN-AK-ry6">
+                                                                        <rect key="frame" x="0.0" y="20" width="34" height="20"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="20" id="3ae-Ca-HcE"/>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="ZVA-a1-oaQ"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                                                        <color key="textColor" name="SecondaryLight"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="xgY-8O-dQL" secondAttribute="bottom" constant="10" id="0g3-T5-tpv"/>
                                                                     <constraint firstItem="hYw-Td-wcA" firstAttribute="top" secondItem="Y3r-m1-gqb" secondAttribute="top" id="2di-LY-tiv"/>
                                                                     <constraint firstAttribute="trailing" secondItem="hYw-Td-wcA" secondAttribute="trailing" id="4Tc-d3-GXg"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="xgY-8O-dQL" secondAttribute="trailing" id="AnE-e1-X1j"/>
                                                                     <constraint firstItem="hYw-Td-wcA" firstAttribute="leading" secondItem="Y3r-m1-gqb" secondAttribute="leading" id="BaG-s2-T3M"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="sIN-AK-ry6" secondAttribute="bottom" constant="10" id="Bx1-bC-Cgk"/>
                                                                     <constraint firstAttribute="bottom" secondItem="hYw-Td-wcA" secondAttribute="bottom" id="ELU-gS-iEO"/>
+                                                                    <constraint firstItem="xgY-8O-dQL" firstAttribute="leading" secondItem="sIN-AK-ry6" secondAttribute="trailing" constant="8" id="TZe-6m-js1"/>
+                                                                    <constraint firstItem="sIN-AK-ry6" firstAttribute="top" secondItem="Y3r-m1-gqb" secondAttribute="top" constant="20" id="en9-92-KmG"/>
+                                                                    <constraint firstItem="xgY-8O-dQL" firstAttribute="leading" secondItem="sIN-AK-ry6" secondAttribute="trailing" constant="8" id="s3J-bg-Sk0"/>
+                                                                    <constraint firstItem="sIN-AK-ry6" firstAttribute="leading" secondItem="Y3r-m1-gqb" secondAttribute="leading" id="sfY-iE-h6I"/>
                                                                     <constraint firstAttribute="height" constant="50" id="uAK-3D-KP7"/>
+                                                                    <constraint firstItem="xgY-8O-dQL" firstAttribute="top" secondItem="Y3r-m1-gqb" secondAttribute="top" constant="20" id="zig-Y4-CbG"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -213,7 +236,7 @@
                                                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Internal Memo (optional)"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gift to Justin" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpu-X4-OV3">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Gift to Swen" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpu-X4-OV3">
                                                                         <rect key="frame" x="0.0" y="20" width="323" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="0Ji-qv-JTo"/>
@@ -335,14 +358,20 @@ Please increase you're balance.</string>
                             <constraint firstItem="9p4-gg-a9I" firstAttribute="leading" secondItem="KeC-Cu-FEB" secondAttribute="leading" id="tDh-5e-uyv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KeC-Cu-FEB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="9p4-gg-a9I"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="nUu-cc-weU"/>
                     <navigationItem key="navigationItem" title="Send" id="bg6-ol-xdW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="amountTextField" destination="hYw-Td-wcA" id="WmC-AL-Otw"/>
+                        <outlet property="amountTextField" destination="xgY-8O-dQL" id="fwV-hY-xJ3"/>
                         <outlet property="confirmButton" destination="1qT-5j-Srg" id="oek-Wg-ded"/>
+                        <outlet property="currencyLabel" destination="sIN-AK-ry6" id="mk4-2L-Ac8"/>
                         <outlet property="memoTextField" destination="dpu-X4-OV3" id="LYr-J5-e1B"/>
                         <outlet property="noBalanceView" destination="9p4-gg-a9I" id="CO0-mv-FxX"/>
                         <outlet property="recipientTextField" destination="OF3-fl-QB1" id="9cc-xT-hSP"/>
@@ -493,113 +522,9 @@ Please increase you're balance.</string>
             </objects>
             <point key="canvasLocation" x="1621.5999999999999" y="953.97301349325346"/>
         </scene>
-        <!--Set amount-->
-        <scene sceneID="m8F-qD-lFA">
-            <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="wSv-G7-JMQ" customClass="SetAmountViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="sbt-2S-vmV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lga-dO-s2E">
-                                <rect key="frame" x="16" y="20" width="343" height="313"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-Wn-drb">
-                                        <rect key="frame" x="20" y="117.5" width="303" height="78.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XVG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-hb-ChG">
-                                                <rect key="frame" x="0.0" y="0.0" width="303" height="15.5"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="11"/>
-                                                <color key="textColor" name="PrimaryLight"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="SgR-fB-sy1">
-                                                <rect key="frame" x="0.0" y="23.5" width="303" height="55"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="40"/>
-                                                <color key="textColor" name="SecondaryDark"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtP-Ma-u9Z">
-                                        <rect key="frame" x="8" y="16" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="h3U-L3-kHE"/>
-                                            <constraint firstAttribute="width" constant="30" id="xCg-nb-McH"/>
-                                        </constraints>
-                                        <color key="tintColor" name="PrimaryLight"/>
-                                        <state key="normal" image="Close"/>
-                                        <connections>
-                                            <action selector="closeViewController:" destination="wSv-G7-JMQ" eventType="touchUpInside" id="K1A-9V-kMY"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="YhU-Wn-drb" firstAttribute="centerY" secondItem="Lga-dO-s2E" secondAttribute="centerY" id="BuH-Cp-AJJ"/>
-                                    <constraint firstItem="YhU-Wn-drb" firstAttribute="centerX" secondItem="Lga-dO-s2E" secondAttribute="centerX" id="Qbf-MF-nki"/>
-                                    <constraint firstAttribute="trailing" secondItem="YhU-Wn-drb" secondAttribute="trailing" constant="20" id="Sld-nb-51v"/>
-                                    <constraint firstItem="YhU-Wn-drb" firstAttribute="leading" secondItem="Lga-dO-s2E" secondAttribute="leading" constant="20" id="WI9-Yv-42I"/>
-                                    <constraint firstItem="FtP-Ma-u9Z" firstAttribute="leading" secondItem="Lga-dO-s2E" secondAttribute="leadingMargin" id="pZA-XJ-jFe"/>
-                                    <constraint firstItem="FtP-Ma-u9Z" firstAttribute="top" secondItem="Lga-dO-s2E" secondAttribute="top" constant="16" id="vhw-qa-kcs"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xj-s8-Arq" customClass="XvgAmountKeyboard" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="341" width="295" height="248"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="V1A-oT-otb"/>
-                                    <constraint firstAttribute="width" secondItem="9xj-s8-Arq" secondAttribute="height" multiplier="295:248" id="yHB-ru-u21"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moh-Ac-vvB" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="597" width="295" height="50"/>
-                                <color key="backgroundColor" name="PrimaryLight"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="M5b-5h-uVd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Set amount">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="setAmount:" destination="wSv-G7-JMQ" eventType="touchUpInside" id="rbl-YX-CWE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
-                        <constraints>
-                            <constraint firstItem="GYZ-Ik-2RM" firstAttribute="trailing" secondItem="Lga-dO-s2E" secondAttribute="trailing" constant="16" id="BLo-q5-YMi"/>
-                            <constraint firstItem="GYZ-Ik-2RM" firstAttribute="bottom" secondItem="moh-Ac-vvB" secondAttribute="bottom" constant="20" id="EpJ-6J-ia1"/>
-                            <constraint firstItem="GYZ-Ik-2RM" firstAttribute="trailing" secondItem="9xj-s8-Arq" secondAttribute="trailing" priority="750" constant="40" id="FX6-fE-fDv"/>
-                            <constraint firstItem="moh-Ac-vvB" firstAttribute="top" secondItem="9xj-s8-Arq" secondAttribute="bottom" constant="8" id="Z5C-xQ-xJt"/>
-                            <constraint firstItem="Lga-dO-s2E" firstAttribute="top" secondItem="sbt-2S-vmV" secondAttribute="top" constant="20" id="daG-XZ-5jZ"/>
-                            <constraint firstItem="9xj-s8-Arq" firstAttribute="centerX" secondItem="sbt-2S-vmV" secondAttribute="centerX" id="hRu-e0-FfW"/>
-                            <constraint firstItem="9xj-s8-Arq" firstAttribute="leading" secondItem="GYZ-Ik-2RM" secondAttribute="leading" priority="750" constant="40" id="l24-aJ-aB3"/>
-                            <constraint firstItem="moh-Ac-vvB" firstAttribute="width" secondItem="9xj-s8-Arq" secondAttribute="width" id="lPk-TA-7IY"/>
-                            <constraint firstItem="Lga-dO-s2E" firstAttribute="leading" secondItem="GYZ-Ik-2RM" secondAttribute="leading" constant="16" id="lZz-kG-d3c"/>
-                            <constraint firstItem="moh-Ac-vvB" firstAttribute="centerX" secondItem="sbt-2S-vmV" secondAttribute="centerX" id="mQB-BD-FXk"/>
-                            <constraint firstItem="9xj-s8-Arq" firstAttribute="top" secondItem="Lga-dO-s2E" secondAttribute="bottom" constant="8" id="vpU-M7-ZMJ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="GYZ-Ik-2RM"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Set amount" id="FWh-k8-LNZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="pNQ-b7-4mI"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="amountKeyboard" destination="9xj-s8-Arq" id="4if-LS-kgr"/>
-                        <outlet property="amountLabel" destination="SgR-fB-sy1" id="qYc-lS-DSh"/>
-                        <outlet property="currencyLabel" destination="Pfd-hb-ChG" id="I7u-WM-vPt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bzf-ai-cO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2566" y="807"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Checked" width="30" height="30"/>
-        <image name="Close" width="30" height="30"/>
         <image name="Currency" width="30" height="30"/>
         <image name="NoBalancePlaceholder" width="300" height="300"/>
         <image name="Payment" width="30" height="30"/>

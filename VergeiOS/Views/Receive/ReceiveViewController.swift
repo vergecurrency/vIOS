@@ -45,7 +45,7 @@ class ReceiveViewController: UIViewController {
 
         changeAddress(address)
         
-        amountTextField.addTarget(self, action: #selector(myTextFieldDidChange), for: .editingChanged)
+        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -180,7 +180,7 @@ class ReceiveViewController: UIViewController {
         }
     }
     
-    @objc func myTextFieldDidChange(_ textField: UITextField) {
+    @objc func amountTextFieldDidChange(_ textField: UITextField) {
         if let amountString = textField.text?.currencyInputFormatting() {
             textField.text = amountString
         }
