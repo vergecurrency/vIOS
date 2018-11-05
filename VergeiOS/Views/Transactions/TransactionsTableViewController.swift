@@ -165,6 +165,7 @@ class TransactionsTableViewController: EdgedTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.backgroundView?.backgroundColor = .backgroundGrey()
         header.textLabel?.textColor = UIColor.secondaryDark()
         header.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         header.textLabel?.frame = header.frame
