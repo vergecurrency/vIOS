@@ -62,4 +62,18 @@ extension String {
 
         return formatter.string(from: number)!
     }
+
+    func currencyNumberValue() -> NSNumber {
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        let amountWithPrefix = regex.stringByReplacingMatches(
+            in: self,
+            options: NSRegularExpression.MatchingOptions(rawValue: 0),
+            range: NSMakeRange(0, self.count),
+            withTemplate: ""
+        )
+
+        let double = (amountWithPrefix as NSString).doubleValue
+
+        return NSNumber(value: (double / 100))
+    }
 }

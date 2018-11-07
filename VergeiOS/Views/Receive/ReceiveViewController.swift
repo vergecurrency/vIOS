@@ -90,13 +90,8 @@ class ReceiveViewController: UIViewController {
     }
 
     @IBAction func amountChanged(_ sender: UITextField) {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = ""
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-
-        amount = formatter.number(from: sender.text!)?.doubleValue ?? 0
+        amount = sender.text?.currencyNumberValue().doubleValue ?? 0
+        print(NSNumber(value: amount), amount, sender.text)
 
         if currency == .FIAT {
             if let xvgInfo = PriceTicker.shared.xvgInfo {

@@ -249,13 +249,7 @@ class SendViewController: UIViewController {
     }
 
     @objc func amountChanged(_ textField: UITextField) {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
-        formatter.currencySymbol = ""
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
-
-        let amount = formatter.number(from: textField.text!)?.doubleValue ?? 0
+        let amount = textField.text?.currencyNumberValue().doubleValue ?? 0
 
         sendTransaction.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
         didChangeSendTransaction(sendTransaction)
