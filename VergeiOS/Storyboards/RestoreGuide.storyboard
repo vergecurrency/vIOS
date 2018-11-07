@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JCK-f3-LRX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JCK-f3-LRX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Restore Wallet-->
         <scene sceneID="cv9-hU-wwP">
             <objects>
-                <viewController id="Qd3-vz-0Tr" customClass="RestoreWalletController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestoreWalletController" id="Qd3-vz-0Tr" customClass="RestoreWalletController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YQS-cc-y1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +36,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="PaperKey" translatesAutoresizingMaskIntoConstraints="NO" id="hlW-DL-avy">
-                                <rect key="frame" x="87" y="106" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="106" width="200" height="200"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="cUQ-Vb-oWT"/>
@@ -99,10 +98,8 @@
                                 <action selector="backToWelcome:" destination="Qd3-vz-0Tr" id="VYh-H4-Tha"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Help" id="JYm-Nq-iJE">
-                            <color key="tintColor" name="BackgroundGrey"/>
-                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="paperKeyImage" destination="hlW-DL-avy" id="plD-5r-ITc"/>
                         <outlet property="view" destination="YQS-cc-y1K" id="6QQ-2N-LCc"/>
@@ -136,41 +133,6 @@
                                     <constraint firstAttribute="bottom" secondItem="7cj-CO-JJe" secondAttribute="bottom" id="wZY-et-T3G"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jey-Bj-mFe">
-                                <rect key="frame" x="40" y="597" width="295" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0n-Q0-1N3" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="143.5" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="NQh-yg-Cwb"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                        <color key="tintColor" name="PrimaryDark"/>
-                                        <state key="normal" title="Previous" image="ArrowLeft">
-                                            <color key="titleColor" name="PrimaryDark"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="previousClick:" destination="sKp-L4-6YB" eventType="touchDown" id="Z0z-kc-MIv"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-wF-mMy" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="151.5" y="0.0" width="143.5" height="50"/>
-                                        <color key="backgroundColor" name="PrimaryLight"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="If2-J6-FCL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Next" image="ArrowRight">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextClick:" destination="sKp-L4-6YB" eventType="touchDown" id="SSB-Om-PrZ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter word #1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-2b-DoG">
                                 <rect key="frame" x="40" y="336" width="295" height="34.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="25"/>
@@ -178,7 +140,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="ConfirmPaperkey" translatesAutoresizingMaskIntoConstraints="NO" id="Sxp-cd-hKR">
-                                <rect key="frame" x="87" y="106" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="106" width="200" height="200"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="200" id="5RT-l6-K8b"/>
@@ -191,16 +153,15 @@
                                 <color key="textColor" name="SecondaryDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m77-yG-vwX">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="m77-yG-vwX">
                                 <rect key="frame" x="40" y="398" width="295" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <color key="textColor" name="PrimaryDark"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="LA2-Cs-ogv" firstAttribute="bottom" secondItem="jey-Bj-mFe" secondAttribute="bottom" constant="20" id="4nA-ff-ZA8"/>
                             <constraint firstAttribute="trailing" secondItem="fln-oq-Ave" secondAttribute="trailing" id="76T-cp-3pt"/>
                             <constraint firstItem="Sxp-cd-hKR" firstAttribute="centerX" secondItem="IzA-7G-SNR" secondAttribute="centerX" id="907-AF-urZ"/>
                             <constraint firstItem="fln-oq-Ave" firstAttribute="top" secondItem="IzA-7G-SNR" secondAttribute="top" id="9fa-6A-YdA"/>
@@ -212,9 +173,6 @@
                             <constraint firstItem="Sxp-cd-hKR" firstAttribute="top" secondItem="fln-oq-Ave" secondAttribute="bottom" constant="-119" id="QLj-kI-5qq"/>
                             <constraint firstItem="LA2-Cs-ogv" firstAttribute="trailing" secondItem="tmQ-9i-zxc" secondAttribute="trailing" constant="40" id="SLG-0p-j9C"/>
                             <constraint firstItem="LA2-Cs-ogv" firstAttribute="trailing" secondItem="m77-yG-vwX" secondAttribute="trailing" constant="40" id="VJ0-d6-j3M"/>
-                            <constraint firstItem="LA2-Cs-ogv" firstAttribute="trailing" secondItem="jey-Bj-mFe" secondAttribute="trailing" constant="40" id="bKV-PA-8LP"/>
-                            <constraint firstItem="jey-Bj-mFe" firstAttribute="leading" secondItem="LA2-Cs-ogv" secondAttribute="leading" constant="40" id="d0Z-NS-IFp"/>
-                            <constraint firstItem="Cy3-wF-mMy" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m77-yG-vwX" secondAttribute="bottom" constant="16" id="fgM-kv-KZ6"/>
                             <constraint firstItem="tmQ-9i-zxc" firstAttribute="leading" secondItem="LA2-Cs-ogv" secondAttribute="leading" constant="40" id="gqX-cd-VA8"/>
                             <constraint firstItem="m77-yG-vwX" firstAttribute="leading" secondItem="LA2-Cs-ogv" secondAttribute="leading" constant="40" id="r3i-93-Mfq"/>
                             <constraint firstItem="tmQ-9i-zxc" firstAttribute="top" secondItem="jKk-2b-DoG" secondAttribute="bottom" id="wqX-AQ-d4p"/>
@@ -223,11 +181,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Restore Wallet" id="swz-nW-6pe"/>
                     <connections>
-                        <outlet property="KeyLabel" destination="jKk-2b-DoG" id="fOJ-iu-mCh"/>
-                        <outlet property="KeyProgressLabel" destination="tmQ-9i-zxc" id="hb3-IC-XAO"/>
-                        <outlet property="KeyTextField" destination="m77-yG-vwX" id="S7v-j7-YqT"/>
-                        <outlet property="NextButton" destination="Cy3-wF-mMy" id="Ad9-Sn-j1x"/>
-                        <outlet property="PreviousButton" destination="o0n-Q0-1N3" id="EFJ-CR-Vxe"/>
+                        <outlet property="keyLabel" destination="jKk-2b-DoG" id="fOJ-iu-mCh"/>
+                        <outlet property="keyProgressLabel" destination="tmQ-9i-zxc" id="hb3-IC-XAO"/>
+                        <outlet property="keyTextField" destination="m77-yG-vwX" id="S7v-j7-YqT"/>
                         <segue destination="Vlh-H2-OCO" kind="show" identifier="showFinalRecovery" id="MYX-hu-IUx"/>
                     </connections>
                 </viewController>
@@ -260,7 +216,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="FinalizeRestore" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-p9-5GM">
-                                <rect key="frame" x="88" y="106" width="200" height="200.5"/>
+                                <rect key="frame" x="87.5" y="106" width="200" height="200"/>
                                 <color key="tintColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Maj-dc-XQX"/>
@@ -268,7 +224,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your entered key:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yb-KI-9LW">
-                                <rect key="frame" x="40" y="336.5" width="295" height="36"/>
+                                <rect key="frame" x="40" y="336" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="iIT-KG-d0U"/>
                                 </constraints>
@@ -277,7 +233,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rjf-FU-VoU">
-                                <rect key="frame" x="40" y="380.5" width="295" height="75.5"/>
+                                <rect key="frame" x="40" y="380" width="295" height="75.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE DOG WALKS ALONG THE BEACH WITH HIS OWNER AND IS HAPPY ABOUT HIS LIVE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ede-Xa-IRI">
                                         <rect key="frame" x="8" y="8" width="279" height="59.5"/>
@@ -354,40 +310,44 @@
                 <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="FinishSetupViewController" id="vF5-5m-2f3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEY-Z0-1jl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1433" y="88"/>
+            <point key="canvasLocation" x="1222" y="88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VpH-l3-y5m">
             <objects>
                 <navigationController id="JCK-f3-LRX" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="FrX-WM-cNF" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FrX-WM-cNF" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
+                        <color key="tintColor" name="SecondaryDark"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4iA-Sa-Ust">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Qd3-vz-0Tr" kind="relationship" relationship="rootViewController" id="alR-Y2-wkI"/>
+                        <segue destination="Paj-O2-xpf" kind="relationship" relationship="rootViewController" id="UAh-2Y-Gv4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pft-Kk-bZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1630" y="89"/>
+            <point key="canvasLocation" x="-831" y="-691"/>
+        </scene>
+        <!--SelectPinViewController-->
+        <scene sceneID="TAE-fY-eUQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="SelectPinViewController" id="Paj-O2-xpf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gn1-mC-ZgB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="43H-Wv-YCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="-692"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ArrowLeft" width="30" height="30"/>
-        <image name="ArrowRight" width="30" height="30"/>
-        <image name="Background" width="771" height="360"/>
+        <image name="Background" width="1542" height="721"/>
         <image name="Close" width="30" height="30"/>
         <image name="ConfirmPaperkey" width="600" height="600"/>
         <image name="FinalizeRestore" width="600" height="600"/>
-        <image name="Help" width="30" height="30"/>
         <image name="PaperKey" width="600" height="600"/>
         <image name="RestoreKey" width="30" height="30"/>
         <image name="Restoring" width="30" height="30"/>
@@ -395,7 +355,7 @@
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryDark">
-            <color red="0.067000001670000003" green="0.1289999932" blue="0.20399999620000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.066666666666666666" green="0.12549019607843137" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

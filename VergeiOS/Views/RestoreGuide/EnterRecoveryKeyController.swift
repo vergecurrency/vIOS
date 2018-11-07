@@ -10,38 +10,61 @@ import UIKit
 
 class EnterRecoveryKeyController: AbstractRestoreViewController {
     
-    @IBOutlet weak var KeyLabel: UILabel!
-    @IBOutlet weak var PreviousButton: RoundedButton!
-    @IBOutlet weak var NextButton: RoundedButton!
-    @IBOutlet weak var KeyTextField: UITextField!
-    @IBOutlet weak var KeyProgressLabel: UILabel!
+    @IBOutlet weak var keyLabel: UILabel!
+    @IBOutlet weak var keyTextField: UITextField!
+    @IBOutlet weak var keyProgressLabel: UILabel!
     
     private var index: Int = 0
     private var keys: [String] = [
-        String("Dog"), String("Life"), String("Head"),
-        String("House"), String("Mice"), String("Lol"),
-        String("Elefant"), String("Doctor"), String("Walking"),
-        String("Outdoor"), String("New"), String("Buying"),
+        "Dog",
+        "Life",
+        "Head",
+        "House",
+        "Mice",
+        "Lol",
+        "Elefant",
+        "Doctor",
+        "Walking",
+        "Outdoor",
+        "New",
+        "Buying",
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.updateView(index: self.index)
+
+        keyTextField.becomeFirstResponder()
+
+        setupTextFieldBar()
+        updateView(index: index)
     }
-    
-    private func updateButton(index: Int) {
-        if index > 0 {
-            self.showButton(PreviousButton)
-        } else {
-            self.hideButton(PreviousButton)
-        }
-        
-        if index < keys.count - 1 {
-            self.showButton(NextButton)
-        } else {
-            NextButton.setTitle("Restore", for: .normal)
-        }
+
+    private func setupTextFieldBar() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        keyboardToolbar.tintColor = UIColor.primaryLight()
+
+        let previousButton = UIBarButtonItem(
+            image: UIImage(named: "ArrowLeft"),
+            style: .plain,
+            target: self,
+            action: #selector(EnterRecoveryKeyController.previousClick)
+        )
+
+        let nextButton = UIBarButtonItem(
+            image: UIImage(named: "ArrowRight"),
+            style: .plain,
+            target: self,
+            action: #selector(EnterRecoveryKeyController.nextClick)
+        )
+
+        keyboardToolbar.items = [
+            previousButton,
+            nextButton
+        ]
+
+        keyTextField.inputAccessoryView = keyboardToolbar
+        keyTextField.delegate = self
     }
     
     private func createLabelText(index: Int) -> String {
@@ -57,11 +80,18 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
     
     private func updateView(index: Int) {
-        self.KeyLabel.text = self.createLabelText(index: self.index)
-        self.KeyTextField.text = self.keys[self.index]
-        self.KeyTextField.placeholder = self.createPlaceholderText(index: self.index)
-        self.KeyProgressLabel.text = self.createProgressText(index: self.index)
-        self.updateButton(index: self.index)
+        keyLabel.text = createLabelText(index: index)
+        keyTextField.text = keys[index]
+        keyTextField.placeholder = createPlaceholderText(index: index)
+        keyProgressLabel.text = createProgressText(index: index)
+
+        guard let toolbar = keyTextField.inputAccessoryView as? UIToolbar else {
+            return
+        }
+
+        if let previousButton = toolbar.items?.first {
+            previousButton.isEnabled = (index > 0)
+        }
     }
     
     private func addKeyToList(text: String?) -> Bool {
@@ -69,42 +99,28 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             return false
         }
         
-        self.keys[self.index] = text!
+        keys[index] = text!
         return true
     }
-    
-    @IBAction func previousClick(_ sender: Any) {
-        self.index -= 1
-        self.updateView(index: self.index)
+
+    @objc func previousClick() {
+        index -= 1
+        updateView(index: index)
     }
     
-    func hideButton(_ button: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-            button.alpha = 0.5
-            button.isEnabled = false
-        }
-    }
-    
-    func showButton(_ button: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-            button.alpha = 1
-            button.isEnabled = true
-        }
-    }
-    
-    @IBAction func nextClick(_ sender: Any) {
-        let isAdded: Bool = self.addKeyToList(text: self.KeyTextField.text)
+    @objc func nextClick() {
+        let isAdded: Bool = addKeyToList(text: keyTextField.text)
         
-        if self.index < self.keys.count-1 {
+        if index < keys.count-1 {
             if isAdded {
-                self.index += 1
-                self.updateView(index: self.index)
+                index += 1
+                updateView(index: index)
             } else {
-                self.KeyTextField.shake()
+                keyTextField.shake()
                 return
             }
         } else {
-            self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
+            performSegue(withIdentifier: "showFinalRecovery", sender: self)
         }
         
     }
@@ -116,5 +132,13 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             let finalRecoverController = segue.destination as? FinalRecoveryController
             finalRecoverController?.keys = self.keys
         }
+    }
+}
+
+extension EnterRecoveryKeyController: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nextClick()
+
+        return true
     }
 }
