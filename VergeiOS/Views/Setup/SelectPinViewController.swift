@@ -14,7 +14,7 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     
     var pin: String = ""
-    var segueIdentifier: String? = "confirmPinWelcome"
+    var segueIdentifier: String?
     var completion: ((_ pin: String) -> Void)?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

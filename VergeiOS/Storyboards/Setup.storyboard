@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZAV-rD-AY1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZAV-rD-AY1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -130,7 +130,7 @@
                                     <color key="titleColor" red="0.066666666669999999" green="0.12941176469999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="rZo-DU-OJR" kind="presentation" modalPresentationStyle="formSheet" id="G4m-E0-zTa"/>
+                                    <segue destination="rZo-DU-OJR" kind="presentation" identifier="restore" modalPresentationStyle="formSheet" id="G4m-E0-zTa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb9-iT-8WP" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
@@ -144,7 +144,7 @@
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-12" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Create a new wallet"/>
                                 <connections>
-                                    <segue destination="9e4-GJ-wDF" kind="presentation" modalPresentationStyle="formSheet" id="pYY-yw-8Tf"/>
+                                    <segue destination="9e4-GJ-wDF" kind="presentation" identifier="create" modalPresentationStyle="formSheet" id="pYY-yw-8Tf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new XVG wallet on your iOS device." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9R-19-jxd">
@@ -646,7 +646,8 @@
                         <outlet property="pinFailedView" destination="asU-sg-4JA" id="Qlu-4V-99g"/>
                         <outlet property="pinKeyboard" destination="tct-zh-ODE" id="mJT-w1-lkq"/>
                         <outlet property="pinTextField" destination="9GH-uN-bl5" id="Zb0-Z5-1Bc"/>
-                        <segue destination="7ox-gK-Xrr" kind="show" identifier="confirmPinWelcome" id="mKB-jX-3Mr"/>
+                        <segue destination="7ox-gK-Xrr" kind="show" identifier="create" id="mKB-jX-3Mr"/>
+                        <segue destination="HOl-yL-yqw" kind="show" identifier="restore" id="Hnd-F4-0iY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H85-ql-97v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -660,7 +661,15 @@
                 <viewControllerPlaceholder storyboardName="WelcomeGuide" referencedIdentifier="PaperKeyDescriptionViewController" id="7ox-gK-Xrr" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5PB-wT-1fX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="1717"/>
+            <point key="canvasLocation" x="1678" y="1666"/>
+        </scene>
+        <!--RestoreWalletController-->
+        <scene sceneID="GkG-tk-EVU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RestoreGuide" referencedIdentifier="RestoreWalletController" id="HOl-yL-yqw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZW-2m-9kE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="1769"/>
         </scene>
     </scenes>
     <resources>

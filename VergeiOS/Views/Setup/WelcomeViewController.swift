@@ -23,5 +23,17 @@ class WelcomeViewController: UIViewController {
         // Now start Tor.
         TorClient.shared.start {}
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let navigationController = segue.destination as? UINavigationController else {
+            return
+        }
+
+        if let vc = navigationController.viewControllers.first as? SelectPinViewController {
+            vc.segueIdentifier = segue.identifier
+        }
+    }
 }
 
