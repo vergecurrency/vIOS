@@ -31,7 +31,7 @@ class SendViewController: UIViewController {
     var confirmButtonInterval: Timer?
 
     var walletAmount: NSNumber {
-        return WalletManager.default.amount
+        return ApplicationManager.default.amount
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -94,7 +94,7 @@ class SendViewController: UIViewController {
 
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
-        currencyLabel.text = currency == .XVG ? "XVG" : WalletManager.default.currency
+        currencyLabel.text = currency == .XVG ? "XVG" : ApplicationManager.default.currency
 
         updateWalletAmountLabel()
         updateAmountLabel()
@@ -218,7 +218,7 @@ class SendViewController: UIViewController {
             let newWalletAmount = NSNumber(
                 floatLiteral: self.walletAmount.doubleValue - self.sendTransaction.amount.doubleValue - self.transactionFee
             )
-            WalletManager.default.amount = newWalletAmount
+            ApplicationManager.default.amount = newWalletAmount
 
             self.didChangeSendTransaction(SendTransaction())
             self.memoTextField.text = ""
@@ -383,6 +383,6 @@ extension SendViewController: SendTransactionDelegate {
     }
 
     func currentCurrency() -> String {
-        return currency == .XVG ? "XVG" : WalletManager.default.currency
+        return currency == .XVG ? "XVG" : ApplicationManager.default.currency
     }
 }

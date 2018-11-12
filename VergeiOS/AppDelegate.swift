@@ -168,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showPinUnlockViewController() {
-        if !WalletManager.default.setup {
+        if !ApplicationManager.default.setup {
             return
         }
 

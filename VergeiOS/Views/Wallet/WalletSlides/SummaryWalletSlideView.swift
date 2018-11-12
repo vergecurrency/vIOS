@@ -67,7 +67,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         if let info = PriceTicker.shared.xvgInfo {
             switch item {
             case "price":
-                cell.textLabel?.text = "XVG/\(WalletManager.default.currency)"
+                cell.textLabel?.text = "XVG/\(ApplicationManager.default.currency)"
                 cell.detailTextLabel?.text = NSNumber(value: info.price).toPairCurrency(fractDigits: 6)
                 break
             case "marketCap":

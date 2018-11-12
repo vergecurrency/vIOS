@@ -33,7 +33,7 @@ class PriceTicker {
             return
         }
 
-        if !WalletManager.default.setup {
+        if !ApplicationManager.default.setup {
             return
         }
         
@@ -58,7 +58,7 @@ class PriceTicker {
     // Fetch statistics from the API and notify all absorbers.
     @objc private func fetchStats() {
         print("Fetching new stats")
-        statisicsClient.infoBy(currency: WalletManager.default.currency) { info in
+        statisicsClient.infoBy(currency: ApplicationManager.default.currency) { info in
             self.xvgInfo = info
 
             print("Stats received, posting notification")

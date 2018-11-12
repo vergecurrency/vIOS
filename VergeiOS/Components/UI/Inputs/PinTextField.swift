@@ -10,7 +10,7 @@ import UIKit
 
 class PinTextField: UIView {
 
-    var pinCharacterCount: Int = WalletManager.default.pinCount
+    var pinCharacterCount: Int = ApplicationManager.default.pinCount
     let pinHeight: CGFloat = 24.0
     let pinMargin: CGFloat = 36.0
     let pinRadius: CGFloat = 12.0

@@ -69,7 +69,7 @@ class ConfirmSendView: UIView {
             )
 
             totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toCurrency(
-                currency: WalletManager.default.currency,
+                currency: ApplicationManager.default.currency,
                 fractDigits: 6
             )
 

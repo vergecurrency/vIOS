@@ -13,12 +13,12 @@ class DevelopmentTableViewController: UITableViewController {
     @IBOutlet weak var walletAmountTextField: UITextField!
     
     override func viewDidLoad() {
-        walletAmountTextField.text = "\(WalletManager.default.amount)"
+        walletAmountTextField.text = "\(ApplicationManager.default.amount)"
     }
     
     @IBAction func saveSettings(_ sender: Any) {
         if let amount = Double(walletAmountTextField.text!) {
-            WalletManager.default.amount = NSNumber(value: amount)
+            ApplicationManager.default.amount = NSNumber(value: amount)
         }
     }
 }

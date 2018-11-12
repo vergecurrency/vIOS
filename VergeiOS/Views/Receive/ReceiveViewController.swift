@@ -35,7 +35,7 @@ class ReceiveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        address = WalletManager.default.getAddress()
+        address = ApplicationManager.default.getAddress()
 
         qrCodeContainerView.layer.cornerRadius = 10.0
         qrCodeContainerView.clipsToBounds = true
@@ -86,7 +86,7 @@ class ReceiveViewController: UIViewController {
     }
 
     @IBAction func newAddress(_ sender: UIButton) {
-        changeAddress(WalletManager.default.getAddress(stealth: stealthSwitch.isOn))
+        changeAddress(ApplicationManager.default.getAddress(stealth: stealthSwitch.isOn))
     }
 
     @IBAction func amountChanged(_ sender: UITextField) {
@@ -110,7 +110,7 @@ class ReceiveViewController: UIViewController {
                 currencyLabel.text = "XVG"
                 newAmount = String(Int(amount * 100))
             } else {
-                currencyLabel.text = WalletManager.default.currency
+                currencyLabel.text = ApplicationManager.default.currency
                 newAmount = String(Int((amount * 100) * xvgInfo.price))
             }
         }
@@ -130,7 +130,7 @@ class ReceiveViewController: UIViewController {
     }
 
     @IBAction func switchStealth(_ sender: UISwitch) {
-        changeAddress(WalletManager.default.getAddress(stealth: sender.isOn))
+        changeAddress(ApplicationManager.default.getAddress(stealth: sender.isOn))
 
         if sender.isOn {
             xvgCardImageView.image = UIImage(named: "StealthReceiveCard")

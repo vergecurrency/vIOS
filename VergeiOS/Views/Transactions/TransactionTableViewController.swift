@@ -86,7 +86,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func loadTransactions(_ transaction: Transaction) {
-        let transactions = WalletManager.default
+        let transactions = ApplicationManager.default
             .getTransactions(byAddress: transaction.address, offset: 0, limit: 7).sorted { thule, thule2 in
                 return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
             }

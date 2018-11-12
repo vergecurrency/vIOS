@@ -41,7 +41,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     func setupView() {
-        if !WalletManager.default.hasTransactions() {
+        if !ApplicationManager.default.hasTransactions() {
             if let placeholder = Bundle.main.loadNibNamed("NoTransactionsPlaceholderView", owner: self, options: nil)?.first as? NoTransactionsPlaceholderView {
                 placeholder.frame = tableView.frame
                 tableView.backgroundView = placeholder
@@ -78,7 +78,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             "Received": TransactionType.Received
         ]
 
-        let ftransactions = WalletManager.default.getTransactions().filter { transaction in
+        let ftransactions = ApplicationManager.default.getTransactions().filter { transaction in
             let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
 
             if searchText == "" {

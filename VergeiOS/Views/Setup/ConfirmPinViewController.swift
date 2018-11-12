@@ -52,7 +52,7 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     func handlePinCreation() {
         if (self.pin == self.previousPin) {
-            WalletManager.default.pinCount = pinCount
+            ApplicationManager.default.pinCount = pinCount
 
             self.pinConfirmedView.alpha = 0.0
             self.pinConfirmedView.center.y -= 60.0
@@ -78,7 +78,7 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     }
     
     @IBAction func confirmPin(_ sender: Any) {
-        WalletManager.default.pin = self.pin
+        ApplicationManager.default.pin = self.pin
 
         if let completion = completion {
             return completion(self.pin)

@@ -31,7 +31,7 @@ class DisconnectWalletViewController: UIViewController {
                     }
                     
                     // Reset wallet manager.
-                    WalletManager.default.reset()
+                    ApplicationManager.default.reset()
                     PriceTicker.shared.stop()
                 } else {
                     pinUnlockView.dismiss(animated: true)

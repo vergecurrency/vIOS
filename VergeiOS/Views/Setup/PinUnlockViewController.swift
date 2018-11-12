@@ -51,9 +51,9 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
 
         if LAContext.anyAvailable() {
             if fillPinFor == .wallet {
-                showLocalAuthentication = WalletManager.default.localAuthForWalletUnlock
+                showLocalAuthentication = ApplicationManager.default.localAuthForWalletUnlock
             } else if fillPinFor == .sending {
-                showLocalAuthentication = WalletManager.default.localAuthForSendingXvg
+                showLocalAuthentication = ApplicationManager.default.localAuthForSendingXvg
             }
         }
 
@@ -95,7 +95,7 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     
     // Validate the wallet pin.
     func validate() -> Bool {
-        return pin.count == self.pinTextField.pinCharacterCount && WalletManager.default.pin == pin
+        return pin.count == self.pinTextField.pinCharacterCount && ApplicationManager.default.pin == pin
     }
 
     func promptLocalAuthentication() {

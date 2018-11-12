@@ -68,7 +68,7 @@ class ContactTableViewController: FormViewController {
         let transactionsSection = Section("Transaction History")
         form +++ transactionsSection
 
-        transactions = WalletManager.default.getTransactions(byAddress: contact.address)
+        transactions = ApplicationManager.default.getTransactions(byAddress: contact.address)
         for transaction in transactions {
             transactionsSection
                 <<< TransactionRow().cellSetup { cell, row in

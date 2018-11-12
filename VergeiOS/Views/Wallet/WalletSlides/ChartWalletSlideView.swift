@@ -120,7 +120,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             self.activityIndicator.startAnimating()
         }
 
-        TorClient.shared.session.dataTask(with: chartUrl()) { (data, response, error) in
+        URLSession.shared.dataTask(with: chartUrl()) { (data, response, error) in
             do {
                 if data == nil {
                     return

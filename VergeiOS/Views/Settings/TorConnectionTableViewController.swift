@@ -18,7 +18,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        useTorSwitch.setOn(WalletManager.default.useTor, animated: false)
+        useTorSwitch.setOn(ApplicationManager.default.useTor, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,7 +28,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
     }
     
     @IBAction func changeTorUsage(_ sender: UISwitch) {
-        WalletManager.default.useTor = sender.isOn
+        ApplicationManager.default.useTor = sender.isOn
         
         if sender.isOn {
             setIpAddressLabel("Loading...")
