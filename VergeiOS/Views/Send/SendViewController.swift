@@ -214,14 +214,15 @@ class SendViewController: UIViewController {
                 return
             }
 
-            // TODO ofcourse...
-            let newWalletAmount = NSNumber(
-                floatLiteral: self.walletAmount.doubleValue - self.sendTransaction.amount.doubleValue - self.transactionFee
+            let proposal = TxProposal(
+                address: self.sendTransaction.address,
+                amount: self.sendTransaction.amount,
+                message: self.sendTransaction.memo
             )
-            ApplicationManager.default.amount = newWalletAmount
 
-            self.didChangeSendTransaction(SendTransaction())
-            self.memoTextField.text = ""
+            WalletClient.shared.createTxProposal(proposal: proposal) {
+                self.didChangeSendTransaction(SendTransaction())
+            }
         }
 
         present(unlockView, animated: true)
@@ -307,6 +308,8 @@ extension SendViewController: UITextFieldDelegate {
 
         recipientTextField.inputAccessoryView = keyboardToolbar
         recipientTextField.delegate = self
+
+        memoTextField.delegate = self
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -347,6 +350,11 @@ extension SendViewController: UITextFieldDelegate {
 
     @objc func dissmissKeyboard() {
         view.endEditing(true)
+
+        sendTransaction.address = recipientTextField.text ?? ""
+        sendTransaction.memo = memoTextField.text ?? ""
+
+        didChangeSendTransaction(sendTransaction)
     }
 
     func showInvalidAddressAlert() {
@@ -369,6 +377,7 @@ extension SendViewController: SendTransactionDelegate {
         sendTransaction = transaction
 
         self.recipientTextField.text = sendTransaction.address
+        self.memoTextField.text = sendTransaction.memo
 
         updateAmountLabel()
         updateWalletAmountLabel()

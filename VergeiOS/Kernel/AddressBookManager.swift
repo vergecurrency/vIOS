@@ -18,17 +18,17 @@ class AddressBookManager {
         return entity?.name
     }
 
-    func get(byName name: String) -> Address? {
+    func get(byName name: String) -> Contact? {
         return transform(entity: CoreStore.fetchOne(From<AddressType>().where(\.name == name)))
     }
 
-    func get(byAddress address: String) -> Address? {
+    func get(byAddress address: String) -> Contact? {
         return transform(entity: CoreStore.fetchOne(From<AddressType>().where(\.address == address)))
     }
     
-    func all() -> [Address] {
+    func all() -> [Contact] {
         let entities = CoreStore.fetchAll(From<AddressType>())
-        var addresses: [Address] = []
+        var addresses: [Contact] = []
 
         for entity in entities ?? [] {
             addresses.append(transform(entity: entity))
@@ -37,7 +37,7 @@ class AddressBookManager {
         return addresses
     }
 
-    func put(address: Address) {
+    func put(address: Contact) {
         var entity: AddressType? = nil
         if let existingEntity = CoreStore.fetchOne(From<AddressType>().where(\.address == address.address)) {
             entity = existingEntity
@@ -61,7 +61,7 @@ class AddressBookManager {
         }
     }
 
-    func remove(address: Address) {
+    func remove(address: Contact) {
         let entity = CoreStore.fetchOne(From<AddressType>().where(\.name == address.name))
 
         do {
@@ -75,8 +75,8 @@ class AddressBookManager {
         }
     }
 
-    private func transform(entity: AddressType?) -> Address {
-        let address = Address()
+    private func transform(entity: AddressType?) -> Contact {
+        let address = Contact()
         address.name = entity?.name ?? ""
         address.address = entity?.address ?? ""
 

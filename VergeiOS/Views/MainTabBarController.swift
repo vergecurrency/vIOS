@@ -23,14 +23,6 @@ class MainTabBarController: UITabBarController {
             name: .demandSendView,
             object: nil
         )
-
-        WalletClient.shared.getBalance { error, info in
-            print(info)
-        }
-
-        WalletClient.shared.getMainAddresses { strings in
-
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

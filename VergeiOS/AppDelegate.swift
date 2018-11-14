@@ -36,8 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Start the tor client
         TorClient.shared.start {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                // Start the price ticker.
-                PriceTicker.shared.start()
+                self.torClientStarted()
             }
         }
 
@@ -84,8 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Start the tor client
         TorClient.shared.start {
-            // Start the price ticker.
-            PriceTicker.shared.start()
+            self.torClientStarted()
         }
     }
 
@@ -100,6 +98,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Stop price ticker.
         PriceTicker.shared.stop()
         TorClient.shared.resign()
+    }
+
+    func torClientStarted() {
+        // Start the price ticker.
+        PriceTicker.shared.start()
+
+        // TODO: Replace this with notifications subscriber.
+        // Get wallet balance.
+        WalletClient.shared.getBalance { error, info in
+            if let info = info {
+                ApplicationManager.default.amount = info.totalAmountValue
+            }
+        }
     }
 
     func setupListeners() {

@@ -12,7 +12,7 @@ class TransactionsTableViewController: EdgedTableViewController {
 
     let addressBookManager = AddressBookManager()
 
-    var transactions: [[Transaction]] = []
+    var transactions: [[TxHistory]] = []
     var dates: [Date] = []
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -41,7 +41,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     func setupView() {
-        if !ApplicationManager.default.hasTransactions() {
+        if 1 == 1 {
             if let placeholder = Bundle.main.loadNibNamed("NoTransactionsPlaceholderView", owner: self, options: nil)?.first as? NoTransactionsPlaceholderView {
                 placeholder.frame = tableView.frame
                 tableView.backgroundView = placeholder
@@ -74,34 +74,36 @@ class TransactionsTableViewController: EdgedTableViewController {
         dates.removeAll()
 
         let categories = [
-            "Sent": TransactionType.Sent,
-            "Received": TransactionType.Received
+            "Sent": TxAction.Sent,
+            "Received": TxAction.Received
         ]
 
-        let ftransactions = ApplicationManager.default.getTransactions().filter { transaction in
-            let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
+        WalletClient.shared.getTxHistory { transactions in
+            let ftransactions = transactions.filter { transaction in
+                let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
 
-            if searchText == "" {
-                return doesCategoryMatch
+                if searchText == "" {
+                    return doesCategoryMatch
+                }
+
+                return doesCategoryMatch && (
+                    transaction.address.lowercased().contains(searchText.lowercased())
+                        || transaction.amount.description.lowercased().contains(searchText.lowercased())
+                        || transaction.address.lowercased().contains(searchText.lowercased())
+                )
             }
 
-            return doesCategoryMatch && (
-                transaction.address.lowercased().contains(searchText.lowercased())
-                || transaction.amount.description.lowercased().contains(searchText.lowercased())
-                || transaction.account.lowercased().contains(searchText.lowercased())
+            let cal = Calendar.current
+            let items = Dictionary(grouping: ftransactions, by: { cal.startOfDay(for: $0.timeReceived) }).sorted(
+                by: { $0.key > $1.key }
             )
-        }
 
-        let cal = Calendar.current
-        let items = Dictionary(grouping: ftransactions, by: { cal.startOfDay(for: $0.time) }).sorted(
-            by: { $0.key > $1.key }
-        )
-
-        for item in items {
-            dates.append(item.key)
-            transactions.append(item.value.sorted { thule, thule2 in
-                return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
-            })
+            for item in items {
+                self.dates.append(item.key)
+                self.transactions.append(item.value.sorted { thule, thule2 in
+                    return thule.timeReceived.timeIntervalSinceReferenceDate > thule2.timeReceived.timeIntervalSinceReferenceDate
+                })
+            }
         }
     }
     
@@ -109,11 +111,11 @@ class TransactionsTableViewController: EdgedTableViewController {
         return dates[section]
     }
     
-    func transactions(bySection section: Int) -> [Transaction] {
+    func transactions(bySection section: Int) -> [TxHistory] {
         return transactions[section]
     }
     
-    func transaction(byIndexpath indexPath: IndexPath) -> Transaction {
+    func transaction(byIndexpath indexPath: IndexPath) -> TxHistory {
         let items = transactions(bySection: indexPath.section)
         
         return items[indexPath.row]
@@ -138,9 +140,9 @@ class TransactionsTableViewController: EdgedTableViewController {
         
         let item = transaction(byIndexpath: indexPath)
 
-        var recipient: Address? = nil
+        var recipient: Contact? = nil
         if let name = addressBookManager.name(byAddress: item.address) {
-            recipient = Address()
+            recipient = Contact()
             recipient?.address = item.address
             recipient?.name = name
         }

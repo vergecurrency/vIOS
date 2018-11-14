@@ -14,11 +14,11 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: TableView!
     
     let addressBookManager = AddressBookManager()
-    var items: [Transaction] = []
+    var items: [TxHistory] = []
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         installTableViewPlaceholder()
         getTransactions()
 
@@ -36,8 +36,14 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
     
     func getTransactions() {
-        items = ApplicationManager.default.getTransactions(offset: 0, limit: 20).sorted { thule, thule2 in
-            return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
+        WalletClient.shared.getTxHistory { txHistories in
+            self.items = txHistories.sorted { thule, thule2 in
+                return thule.timeReceived.timeIntervalSinceReferenceDate > thule2.timeReceived.timeIntervalSinceReferenceDate
+            }
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -56,9 +62,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         
         let item = items[indexPath.row]
 
-        var recipient: Address? = nil
+        var recipient: Contact? = nil
         if let name = addressBookManager.name(byAddress: item.address) {
-            recipient = Address()
+            recipient = Contact()
             recipient?.address = item.address
             recipient?.name = name
         }
