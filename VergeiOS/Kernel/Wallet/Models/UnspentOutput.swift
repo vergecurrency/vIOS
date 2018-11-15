@@ -8,6 +8,11 @@ import BitcoinKit
 
 public struct UnspentOutput: Codable {
 
+    enum UnspentOutputError: Error {
+        case invalidScriptPubKeyHex(hex: String)
+        case invalidTxIdHex(hex: String)
+    }
+
     public let address: String
     public let confirmations: Int
     public let satoshis: Int64
@@ -32,17 +37,27 @@ public struct UnspentOutput: Codable {
 }
 
 extension UnspentOutput {
-    public func asUnspentTransaction() -> UnspentTransaction {
-        let transactionOutput = TransactionOutput(value: satoshis, lockingScript: Data(hex: scriptPubKey)!)
-        let txid: Data = Data(hex: String(txID))!
+    public func asUnspentTransaction() throws -> UnspentTransaction {
+        guard let lockingScript = Data(hex: scriptPubKey) else {
+            throw UnspentOutputError.invalidScriptPubKeyHex(hex: scriptPubKey)
+        }
+
+        guard let txid = Data(hex: txID) else {
+            throw UnspentOutputError.invalidTxIdHex(hex: txID)
+        }
+        
+        let transactionOutput = TransactionOutput(value: satoshis, lockingScript: lockingScript)
         let txHash: Data = Data(txid.reversed())
         let transactionOutpoint = TransactionOutPoint(hash: txHash, index: vout)
 
         return UnspentTransaction(output: transactionOutput, outpoint: transactionOutpoint)
     }
 
-    public func asInputTransaction() -> TransactionInput {
-        let txid: Data = Data(hex: String(txID))!
+    public func asInputTransaction() throws -> TransactionInput {
+        guard let txid = Data(hex: txID) else {
+            throw UnspentOutputError.invalidTxIdHex(hex: txID)
+        }
+
         let txHash: Data = Data(txid.reversed())
         let transactionOutpoint = TransactionOutPoint(hash: txHash, index: vout)
 

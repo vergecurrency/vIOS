@@ -9,6 +9,7 @@ public struct TxOutput: Decodable {
 
     public let amount: Int64
     public let message: String?
+    public let encryptedMessage: String?
     public let toAddress: String
 
 }

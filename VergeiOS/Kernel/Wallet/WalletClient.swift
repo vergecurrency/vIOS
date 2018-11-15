@@ -9,6 +9,13 @@ import SwiftyJSON
 
 public class WalletClient {
 
+    enum WalletClientError: Error {
+        case addressToScriptError(address: Address)
+        case invalidDeriver(value: String)
+        case invalidMessageData(message: String)
+        case invalidWidHex(id: String)
+    }
+
     public static let shared = WalletClient(baseUrl: Config.bwsEndpoint, urlSession: TorClient.shared.session)
 
     private let sjcl = SJCL()
@@ -75,7 +82,7 @@ public class WalletClient {
 
                     ApplicationManager.default.walletId = walletId.identifier
                     ApplicationManager.default.walletName = walletName
-                    ApplicationManager.default.walletSecret = self.buildSecret(walletId: walletId.identifier)
+                    ApplicationManager.default.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
 
                     completion(nil, walletId.identifier)
                 } catch {
@@ -92,7 +99,7 @@ public class WalletClient {
                     let addressInfo = try JSONDecoder().decode(AddressInfo.self, from: data)
                     completion(error, addressInfo)
                 } catch {
-                    print(error.localizedDescription)
+                    print(error)
                     completion(error, nil)
                 }
             }
@@ -106,7 +113,7 @@ public class WalletClient {
                     let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
                     completion(error, balanceInfo)
                 } catch {
-                    print(error.localizedDescription)
+                    print(error)
                     completion(error, nil)
                 }
             }
@@ -123,7 +130,7 @@ public class WalletClient {
                     let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
                     completion(addresses)
                 } catch {
-                    print(error.localizedDescription)
+                    print(error)
                     completion([])
                 }
             }
@@ -141,14 +148,17 @@ public class WalletClient {
                     let transactions = try JSONDecoder().decode([TxHistory].self, from: data)
                     completion(transactions)
                 } catch {
-                    print(error.localizedDescription)
+                    print(error)
                     completion([])
                 }
             }
         }
     }
 
-    public func getUnspentOutputs(address: String? = nil, completion: @escaping (_ unspentOutputs: [UnspentOutput]) -> Void) {
+    public func getUnspentOutputs(
+        address: String? = nil,
+        completion: @escaping (_ unspentOutputs: [UnspentOutput]) -> Void
+    ) {
         getRequest(url: "/v1/utxos/") { data, response, error in
             if let data = data {
                 do {
@@ -156,14 +166,17 @@ public class WalletClient {
                     let unspentOutputs = try JSONDecoder().decode([UnspentOutput].self, from: data)
                     completion(unspentOutputs)
                 } catch {
-                    print(error.localizedDescription)
+                    print(error)
                     completion([])
                 }
             }
         }
     }
 
-    public func createTxProposal(proposal: TxProposal, completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void) {
+    public func createTxProposal(
+        proposal: TxProposal,
+        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+    ) {
         var arguments = JSON()
         var output = JSON()
         output["toAddress"].stringValue = proposal.address
@@ -171,8 +184,8 @@ public class WalletClient {
         output["message"].null = nil
 
         arguments["outputs"] = [output]
-        arguments["message"].stringValue = encryptMessage(plaintext: proposal.message)
         arguments["feePerKb"].intValue = 10000
+        arguments["message"].null = nil
         arguments["payProUrl"].null = nil
 
         postRequest(url: "/v2/txproposals/", arguments: arguments) { data, response, error in
@@ -190,62 +203,79 @@ public class WalletClient {
         }
     }
 
-    public func publishTxProposal(txp: TxProposalResponse, completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void) {
-        let unsignedTx = getUnsignedTx(txp: txp)
+    public func publishTxProposal(
+        txp: TxProposalResponse,
+        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+    ) {
+        do {
+            let unsignedTx = try getUnsignedTx(txp: txp)
 
-        let transactionHash = unsignedTx.tx.serialized().hex
+            let transactionHash = unsignedTx.tx.serialized().hex
 
-        var arguments = JSON()
-        arguments["proposalSignature"].stringValue = self.signMessage(transactionHash)
+            var arguments = JSON()
+            arguments["proposalSignature"].stringValue = try signMessage(transactionHash)
 
-        postRequest(
-            url: "/v1/txproposals/\(txp.id)/publish/",
-            arguments: arguments
-        ) { data, response, error in
-            if let data = data {
-                do {
-                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
-                } catch {
-                    print(try! JSON(data: data), txp)
+            postRequest(
+                url: "/v1/txproposals/\(txp.id)/publish/",
+                arguments: arguments
+            ) { data, response, error in
+                if let data = data {
+                    do {
+                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
+                    } catch {
+                        print(try! JSON(data: data), txp)
 
+                        return completion(nil, error)
+                    }
+                } else {
                     return completion(nil, error)
                 }
-            } else {
-                return completion(nil, error)
             }
+        } catch {
+            completion(nil, error)
         }
     }
 
-    public func signTxProposal(txp: TxProposalResponse, completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void) {
-        let unsignedTx = getUnsignedTx(txp: txp)
+    public func signTxProposal(
+        txp: TxProposalResponse,
+        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+    ) {
+        do {
+            let unsignedTx = try getUnsignedTx(txp: txp)
 
-        let privateKeys: [PrivateKey] = txp.inputs.map { output in
-            return privateKeyBy(path: output.path, privateKey: bip44PrivateKey)
-        }
+            let privateKeys: [PrivateKey] = try txp.inputs.map { output in
+                return try privateKeyBy(path: output.path, privateKey: bip44PrivateKey)
+            }
 
-        var arguments = JSON()
-        let signatures = JSON(signTx(unsignedTx: unsignedTx, keys: privateKeys))
-        arguments["signatures"] = signatures
+            var arguments = JSON()
+            let signatures = JSON(try signTx(unsignedTx: unsignedTx, keys: privateKeys))
+            arguments["signatures"] = signatures
 
-        postRequest(
-            url: "/v1/txproposals/\(txp.id)/signatures/",
-            arguments: arguments
-        ) { data, response, error in
-            if let data = data {
-                do {
-                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
-                } catch {
-                    print(try! JSON(data: data), txp)
+            postRequest(
+                url: "/v1/txproposals/\(txp.id)/signatures/",
+                arguments: arguments
+            ) { data, response, error in
+                if let data = data {
+                    do {
+                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
+                    } catch {
+                        print(try! JSON(data: data), txp)
 
+                        return completion(nil, error)
+                    }
+                } else {
                     return completion(nil, error)
                 }
-            } else {
-                return completion(nil, error)
             }
+        } catch {
+            completion(nil, error)
         }
     }
 
-    public func broadcastTxProposal(txp: TxProposalResponse, completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void) {
+    public func broadcastTxProposal(
+        txp: TxProposalResponse,
+        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+    ) {
         postRequest(
             url: "/v1/txproposals/\(txp.id)/broadcast/",
             arguments: nil
@@ -272,7 +302,12 @@ public class WalletClient {
         }
 
         let copayerId = getCopayerId()
-        let signature = getSignature(url: referencedUrl, method: "get")
+        var signature = ""
+        do {
+            signature = try getSignature(url: referencedUrl, method: "get")
+        } catch {
+            return completion(nil, nil, error)
+        }
 
         print("Get request to: \(url)")
         print("With signature: \(signature)")
@@ -299,13 +334,14 @@ public class WalletClient {
         }
 
         do {
+            let argumentsData = try arguments?.rawData()
             var argumentsString = "{}"
-            if let argumentsData = try arguments?.rawData() {
-                argumentsString = String(data: argumentsData, encoding: .utf8) ?? "{}"
+            if argumentsData != nil {
+                argumentsString = String(data: argumentsData!, encoding: .utf8) ?? "{}"
             }
 
             let copayerId = getCopayerId()
-            let signature = getSignature(url: uri, method: "post", arguments: argumentsString)
+            let signature = try getSignature(url: uri, method: "post", arguments: argumentsString)
 
             print("Post request to: \(url)")
             print("With signature: \(signature)")
@@ -315,11 +351,15 @@ public class WalletClient {
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
             request.setValue(signature, forHTTPHeaderField: "x-signature")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = argumentsString.data(using: .utf8)
+            request.httpBody = argumentsData
 
-            urlSession.dataTask(with: request) { data, response, error in
+            let task = urlSession.dataTask(with: request) { data, response, error in
                 completion(data, response, error)
-            }.resume()
+            }
+
+            DispatchQueue.main.async {
+                task.resume()
+            }
         } catch {
             return completion(nil, nil, error)
         }
@@ -332,25 +372,20 @@ public class WalletClient {
         return sjcl.hexFromBits(hash: hash)
     }
 
-    private func getSignature(url: String, method: String, arguments: String = "{}") -> String {
-        return signMessage([method, url, arguments].joined(separator: "|"))
+    private func getSignature(url: String, method: String, arguments: String = "{}") throws -> String {
+        return try signMessage([method, url, arguments].joined(separator: "|"))
     }
 
-    private func signMessage(_ message: String) -> String {
+    private func signMessage(_ message: String) throws -> String {
         guard let messageData = message.data(using: .utf8) else {
-            return ""
+            throw WalletClientError.invalidMessageData(message: message)
         }
 
         var ret = Crypto.sha256sha256(messageData)
         ret.reverse()
         ret.reverse()
 
-        do {
-            return try Crypto.sign(ret, privateKey: requestPrivateKey.privateKey()).hex
-        } catch {
-            print(error.localizedDescription)
-            return ""
-        }
+        return try Crypto.sign(ret, privateKey: requestPrivateKey.privateKey()).hex
     }
 
     private func encryptMessage(plaintext: String) -> String {
@@ -359,9 +394,12 @@ public class WalletClient {
         return sjcl.encrypt(password: key, plaintext: plaintext, params: ["ks": 128, "iter": 1])
     }
 
-    private func buildSecret(walletId: String) -> String {
-        let widHex = Data(hex: walletId.replacingOccurrences(of: "-", with: ""))
-        let widBase58 = Base58.encode(widHex!).padding(toLength: 22, withPad: "0", startingAt: 0)
+    private func buildSecret(walletId: String) throws -> String {
+        guard let widHex = Data(hex: walletId.replacingOccurrences(of: "-", with: "")) else {
+            throw WalletClientError.invalidWidHex(id: walletId)
+        }
+
+        let widBase58 = Base58.encode(widHex).padding(toLength: 22, withPad: "0", startingAt: 0)
 
         // TODO: Replace T with L when not using testnet!
         // TODO: Replace btc with verge when not using testnet!
@@ -374,45 +412,63 @@ public class WalletClient {
         return "\(referenceUrl)r=\(Int.random(in: 10000 ... 99999))"
     }
 
-    private func getUnsignedTx(txp: TxProposalResponse) -> UnsignedTransaction {
-        let changeAddress: Address = try! AddressFactory.create(txp.changeAddress.address)
-        let toAddress: Address = try! AddressFactory.create(txp.outputs.first!.toAddress)
+    private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {
+        let changeAddress: Address = try AddressFactory.create(txp.changeAddress.address)
+        let toAddress: Address = try AddressFactory.create(txp.outputs.first!.toAddress)
 
         let unspentOutputs = txp.inputs
-        let unspentTransactions: [UnspentTransaction] = unspentOutputs.map { output in
-            return output.asUnspentTransaction()
+        let unspentTransactions: [UnspentTransaction] = try unspentOutputs.map { output in
+            return try output.asUnspentTransaction()
         }
 
         let amount = txp.amount
         let totalAmount: Int64 = unspentTransactions.reduce(0) { $0 + $1.output.value }
         let change: Int64 = totalAmount - amount - txp.fee
 
-        let lockingScriptChange = Script(address: changeAddress)
-        let lockingScriptTo = Script(address: toAddress)
-
-        let changeOutput = TransactionOutput(value: change, lockingScript: lockingScriptChange!.data)
-        let toOutput = TransactionOutput(value: amount, lockingScript: lockingScriptTo!.data)
-
-        let unsignedInputs: [TransactionInput] = unspentOutputs.map { output in
-            return output.asInputTransaction()
+        guard let lockingScriptChange = Script(address: changeAddress) else {
+            throw WalletClientError.addressToScriptError(address: changeAddress)
+        }
+        guard let lockingScriptTo = Script(address: toAddress) else {
+            throw WalletClientError.addressToScriptError(address: toAddress)
         }
 
-        let tx = Transaction(version: 1, inputs: unsignedInputs, outputs: [changeOutput, toOutput], lockTime: 0)
+        let changeOutput = TransactionOutput(value: change, lockingScript: lockingScriptChange.data)
+        let toOutput = TransactionOutput(value: amount, lockingScript: lockingScriptTo.data)
+
+        let unsignedInputs: [TransactionInput] = try unspentOutputs.map { output in
+            return try output.asInputTransaction()
+        }
+
+        var outputs = [toOutput, changeOutput]
+        if txp.outputOrder == [1, 0] {
+            outputs = [changeOutput, toOutput]
+        }
+
+        let tx = Transaction(version: 1, inputs: unsignedInputs, outputs: outputs, lockTime: 0)
         let unsignedTx = UnsignedTransaction(tx: tx, utxos: unspentTransactions)
         return unsignedTx
     }
 
-    public func signTx(unsignedTx: UnsignedTransaction, keys: [PrivateKey]) -> [String] {
+    private func signTx(unsignedTx: UnsignedTransaction, keys: [PrivateKey]) throws -> [String] {
         var inputsToSign = unsignedTx.tx.inputs
         var transactionToSign: Transaction {
-            return Transaction(version: unsignedTx.tx.version, inputs: inputsToSign, outputs: unsignedTx.tx.outputs, lockTime: unsignedTx.tx.lockTime)
+            return Transaction(
+                version: unsignedTx.tx.version,
+                inputs: inputsToSign,
+                outputs: unsignedTx.tx.outputs,
+                lockTime: unsignedTx.tx.lockTime
+            )
         }
 
         var hexes = [String]()
         // Signing
         for (i, utxo) in unsignedTx.utxos.enumerated() {
-            let sighash: Data = transactionToSign.signatureHash(for: utxo.output, inputIndex: i, hashType: SighashType.BTC.ALL)
-            let signature: Data = try! Crypto.sign(sighash, privateKey: keys[i])
+            let sighash: Data = transactionToSign.signatureHash(
+                for: utxo.output,
+                inputIndex: i,
+                hashType: SighashType.BTC.ALL
+            )
+            let signature: Data = try Crypto.sign(sighash, privateKey: keys[i])
 
             hexes.append(signature.hex)
         }
@@ -420,10 +476,14 @@ public class WalletClient {
         return hexes
     }
 
-    private func privateKeyBy(path: String, privateKey: HDPrivateKey) -> PrivateKey {
+    private func privateKeyBy(path: String, privateKey: HDPrivateKey) throws -> PrivateKey {
         var key = privateKey
         for deriver in path.replacingOccurrences(of: "m/", with: "").split(separator: "/") {
-            key = try! key.derived(at: UInt32(deriver) ?? 0)
+            guard let deriverInt32 = UInt32(deriver) else {
+                throw WalletClientError.invalidDeriver(value: String(deriver))
+            }
+
+            key = try key.derived(at: deriverInt32)
         }
 
         return key.privateKey()

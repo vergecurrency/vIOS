@@ -42,7 +42,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
             self.updateIPAddress()
             
             // Notify the whole application.
-            NotificationCenter.default.post(name: .didTurnOffTor, object: self, userInfo: nil)
+            NotificationCenter.default.post(name: .didTurnOffTor, object: self)
         }
     }
     
