@@ -220,8 +220,21 @@ class SendViewController: UIViewController {
                 message: self.sendTransaction.memo
             )
 
+            let sendingView = Bundle.main.loadNibNamed(
+                "SendingView",
+                owner: self
+            )?.first as! SendingView
+
+            let actionSheet = sendingView.makeActionSheet()
+
+            self.present(actionSheet, animated: true)
+
             TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, error  in
                 self.didChangeSendTransaction(SendTransaction())
+
+                let _ = setTimeout(3) {
+                    actionSheet.dismiss(animated: true)
+                }
             }
         }
 

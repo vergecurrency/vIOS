@@ -113,6 +113,8 @@
 		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
 		A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */; };
 		A3764131210AE1D500E04521 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764130210AE1D500E04521 /* Platform.swift */; };
+		A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A386CA98219E28ED00FBF465 /* SendingView.swift */; };
+		A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A386CA9A219E28FA00FBF465 /* SendingView.xib */; };
 		A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */; };
 		A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B207212B0103004ACB73 /* LAContext+Type.swift */; };
 		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
@@ -325,6 +327,8 @@
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
 		A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyDescriptionViewController.swift; sourceTree = "<group>"; };
 		A3764130210AE1D500E04521 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		A386CA98219E28ED00FBF465 /* SendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingView.swift; sourceTree = "<group>"; };
+		A386CA9A219E28FA00FBF465 /* SendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendingView.xib; sourceTree = "<group>"; };
 		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
 		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
@@ -733,6 +737,8 @@
 				A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */,
 				A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */,
 				A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */,
+				A386CA98219E28ED00FBF465 /* SendingView.swift */,
+				A386CA9A219E28FA00FBF465 /* SendingView.xib */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -1107,6 +1113,7 @@
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
 				B2BD7E4561E44AB527F4B3CF /* transactions.json in Resources */,
+				A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,6 +1327,7 @@
 				B2BD7216E5E949A43C2B4FC4 /* TxOutput.swift in Sources */,
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
+				A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
