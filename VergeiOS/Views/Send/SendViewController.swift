@@ -220,8 +220,32 @@ class SendViewController: UIViewController {
                 message: self.sendTransaction.memo
             )
 
-            WalletClient.shared.createTxProposal(proposal: proposal) {
-                self.didChangeSendTransaction(SendTransaction())
+            WalletClient.shared.createTxProposal(proposal: proposal) { txp, error in
+                guard let txp = txp else {
+                    return print(error?.localizedDescription ?? "Undefined error")
+                }
+
+                WalletClient.shared.publishTxProposal(txp: txp) { txp, error in
+                    guard let txp = txp else {
+                        return print(error?.localizedDescription ?? "Undefined error")
+                    }
+
+                    WalletClient.shared.signTxProposal(txp: txp) { txp, error in
+                        guard let txp = txp else {
+                            return print(error?.localizedDescription ?? "Undefined error")
+                        }
+
+                        WalletClient.shared.broadcastTxProposal(txp: txp) { txp, error in
+                            guard let _ = txp else {
+                                return print(error?.localizedDescription ?? "Undefined error")
+                            }
+
+                            DispatchQueue.main.async {
+                                self.didChangeSendTransaction(SendTransaction())
+                            }
+                        }
+                    }
+                }
             }
         }
 

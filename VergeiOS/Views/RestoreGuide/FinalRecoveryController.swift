@@ -19,4 +19,14 @@ class FinalRecoveryController: AbstractRestoreViewController {
         
         recoveryKeyView.text = self.keys!.joined(separator: " ")
     }
+
+    @IBAction func restoreWallet(_ sender: Any) {
+        // Save the mnemonic.
+        ApplicationManager.default.mnemonic = keys
+
+        DispatchQueue.main.async {
+            // Finish the welcome guide.
+            self.performSegue(withIdentifier: "finishRestoreGuide", sender: self)
+        }
+    }
 }

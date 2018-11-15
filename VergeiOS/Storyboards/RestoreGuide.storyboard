@@ -268,7 +268,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vF5-5m-2f3" kind="show" identifier="finishRestoreGuide" id="mGK-py-jQ0"/>
+                                    <action selector="restoreWallet:" destination="Vlh-H2-OCO" eventType="touchUpInside" id="GLp-OY-OXj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -298,6 +298,7 @@
                     <navigationItem key="navigationItem" title="Restore Wallet" id="mzO-y3-sQ9"/>
                     <connections>
                         <outlet property="recoveryKeyView" destination="ede-Xa-IRI" id="z4Q-td-1Xz"/>
+                        <segue destination="vF5-5m-2f3" kind="show" identifier="finishRestoreGuide" id="EHS-3O-Muf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EW4-Ak-zUW" userLabel="First Responder" sceneMemberID="firstResponder"/>

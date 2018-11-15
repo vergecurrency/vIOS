@@ -104,6 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Start the price ticker.
         PriceTicker.shared.start()
 
+        if !ApplicationManager.default.setup {
+            return
+        }
+
         // TODO: Replace this with notifications subscriber.
         // Get wallet balance.
         WalletClient.shared.getBalance { error, info in

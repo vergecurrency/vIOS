@@ -40,4 +40,12 @@ extension UnspentOutput {
 
         return UnspentTransaction(output: transactionOutput, outpoint: transactionOutpoint)
     }
+
+    public func asInputTransaction() -> TransactionInput {
+        let txid: Data = Data(hex: String(txID))!
+        let txHash: Data = Data(txid.reversed())
+        let transactionOutpoint = TransactionOutPoint(hash: txHash, index: vout)
+
+        return TransactionInput(previousOutput: transactionOutpoint, signatureScript: Data(), sequence: UInt32.max)
+    }
 }
