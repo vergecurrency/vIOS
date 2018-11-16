@@ -49,15 +49,15 @@ class SendingView: UIView {
     }
 
     private func setupListeners() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didCreateTx(notification:)), name: .didCreateTx, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didPublishTx(notification:)), name: .didPublishTx, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didSignTx(notification:)), name: .didSignTx, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didBroadcastTx(notification:)), name: .didBroadcastTx, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didCreateTx, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didPublishTx, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didSignTx, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didBroadcastTx, object: nil)
     }
 
     private func animateImage() {
         var imgListArray: [UIImage] = []
-        for countValue in 0...31 {
+        for countValue in 5...23 {
             let strImageName: String = "frame-\(countValue)"
             let image = UIImage(named: strImageName)
 
@@ -65,39 +65,30 @@ class SendingView: UIView {
         }
 
         imageView.animationImages = imgListArray;
-        imageView.animationDuration = 5.5
+        imageView.animationDuration = 4.5
         imageView.startAnimating()
     }
 
-    @objc private func didCreateTx(notification: Notification) {
+    @objc private func handleNotification(notification: Notification) {
         DispatchQueue.main.async {
-            self.statusLabel.text = "Publishing Transaction"
+            switch notification.name {
+            case Notification.Name.didCreateTx:
+                self.statusLabel.text = "Publishing Transaction"
+                break
+            case Notification.Name.didPublishTx:
+                self.statusLabel.text = "Signing Transaction"
+                break
+            case Notification.Name.didSignTx:
+                self.statusLabel.text = "Broadcasting Transaction"
+                break
+            case Notification.Name.didBroadcastTx:
+                self.statusLabel.text = "Transaction Sent!"
+                break
+            default:
+                break
+            }
         }
 
-        NotificationCenter.default.removeObserver(self, name: .didCreateTx, object: nil)
-    }
-
-    @objc private func didPublishTx(notification: Notification) {
-        DispatchQueue.main.async {
-            self.statusLabel.text = "Signing Transaction"
-        }
-
-        NotificationCenter.default.removeObserver(self, name: .didPublishTx, object: nil)
-    }
-
-    @objc private func didSignTx(notification: Notification) {
-        DispatchQueue.main.async {
-            self.statusLabel.text = "Broadcasting Transaction"
-        }
-
-        NotificationCenter.default.removeObserver(self, name: .didSignTx, object: nil)
-    }
-
-    @objc private func didBroadcastTx(notification: Notification) {
-        DispatchQueue.main.async {
-            self.statusLabel.text = "Transaction Sent!"
-        }
-
-        NotificationCenter.default.removeObserver(self, name: .didBroadcastTx, object: nil)
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
     }
 }

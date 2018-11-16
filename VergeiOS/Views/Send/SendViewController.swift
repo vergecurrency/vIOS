@@ -87,6 +87,19 @@ class SendViewController: UIViewController {
         updateAmountLabel()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let sendingView = Bundle.main.loadNibNamed(
+            "SendingView",
+            owner: self
+        )?.first as! SendingView
+
+        let actionSheet = sendingView.makeActionSheet()
+
+        self.present(actionSheet, animated: true)
+    }
+
     @objc func didReceiveStats(_ notification: Notification) {
         updateAmountLabel()
         updateWalletAmountLabel()
@@ -232,7 +245,8 @@ class SendViewController: UIViewController {
             TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, error  in
                 self.didChangeSendTransaction(SendTransaction())
 
-                let _ = setTimeout(3) {
+                let timeout = (error == nil) ? 3.0 : 0.0
+                let _ = setTimeout(timeout) {
                     actionSheet.dismiss(animated: true)
                 }
             }
