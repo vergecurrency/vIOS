@@ -1,5 +1,5 @@
 //
-//  TransactionType.swift
+//  TxAction.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 06-09-18.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum TransactionType: String {
+public enum TxAction: String {
     case Sent
     case Received
+    case Moved
 }

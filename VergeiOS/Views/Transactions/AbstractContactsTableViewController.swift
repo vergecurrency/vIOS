@@ -7,9 +7,9 @@ import UIKit
 
 class AbstractContactsTableViewController: UITableViewController {
 
-    var contacts: [[Address]] = []
+    var contacts: [[Contact]] = []
     var letters:[String] = []
-    let addressBookManager: AddressBookManager = AddressBookManager()
+    let addressBookManager: AddressBookRepository = AddressBookRepository()
     let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
@@ -72,11 +72,11 @@ class AbstractContactsTableViewController: UITableViewController {
         return letters[section]
     }
 
-    func contacts(bySection section: Int) -> [Address] {
+    func contacts(bySection section: Int) -> [Contact] {
         return contacts[section]
     }
 
-    func contact(byIndexpath indexPath: IndexPath) -> Address {
+    func contact(byIndexpath indexPath: IndexPath) -> Contact {
         let items = contacts(bySection: indexPath.section)
 
         return items[indexPath.row]

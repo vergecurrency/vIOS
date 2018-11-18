@@ -191,6 +191,6 @@ class TorClient {
     }
     
     func turnedOff() -> Bool {
-        return !WalletManager.default.useTor
+        return !ApplicationManager.default.useTor
     }
 }

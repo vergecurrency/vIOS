@@ -19,7 +19,7 @@ class SettingsTableViewController: EdgedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        currencyLabel.text = WalletManager.default.currency
+        currencyLabel.text = ApplicationManager.default.currency
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

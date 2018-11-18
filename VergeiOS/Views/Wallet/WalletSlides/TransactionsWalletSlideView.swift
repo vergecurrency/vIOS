@@ -13,12 +13,30 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: TableView!
     
-    let addressBookManager = AddressBookManager()
-    var items: [Transaction] = []
+    let addressBookManager = AddressBookRepository()
+    var items: [TxHistory] = []
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(getTransactions(notification:)),
+            name: .didBroadcastTx,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(getTransactions(notification:)),
+            name: .didReceiveTransaction,
+            object: nil
+        )
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         installTableViewPlaceholder()
         getTransactions()
 
@@ -35,9 +53,13 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         )
     }
     
-    func getTransactions() {
-        items = WalletManager.default.getTransactions(offset: 0, limit: 20).sorted { thule, thule2 in
-            return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
+    @objc func getTransactions(notification: Notification? = nil) {
+        TransactionManager.shared.all { transactions in
+            self.items = transactions
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -56,9 +78,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         
         let item = items[indexPath.row]
 
-        var recipient: Address? = nil
+        var recipient: Contact? = nil
         if let name = addressBookManager.name(byAddress: item.address) {
-            recipient = Address()
+            recipient = Contact()
             recipient?.address = item.address
             recipient?.name = name
         }

@@ -14,21 +14,9 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     @IBOutlet weak var keyTextField: UITextField!
     @IBOutlet weak var keyProgressLabel: UILabel!
     
+    private let numberOfWords = 12
     private var index: Int = 0
-    private var keys: [String] = [
-        "Dog",
-        "Life",
-        "Head",
-        "House",
-        "Mice",
-        "Lol",
-        "Elefant",
-        "Doctor",
-        "Walking",
-        "Outdoor",
-        "New",
-        "Buying",
-    ]
+    private var keys: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +60,7 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
     
     private func createProgressText(index: Int) -> String {
-        return "\(index + 1) out of \(self.keys.count)"
+        return "\(index + 1) out of \(numberOfWords)"
     }
     
     private func createPlaceholderText(index: Int) -> String {
@@ -80,8 +68,9 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
     
     private func updateView(index: Int) {
+        print(keys)
         keyLabel.text = createLabelText(index: index)
-        keyTextField.text = keys[index]
+        keyTextField.text = keys.indices.contains(index) ? keys[index] : ""
         keyTextField.placeholder = createPlaceholderText(index: index)
         keyProgressLabel.text = createProgressText(index: index)
 
@@ -99,21 +88,22 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             return false
         }
         
-        keys[index] = text!
+        keys.insert(text!, at: index)
         return true
     }
 
     @objc func previousClick() {
-        index -= 1
+        keys.removeLast()
+        index = index - 1
         updateView(index: index)
     }
     
     @objc func nextClick() {
         let isAdded: Bool = addKeyToList(text: keyTextField.text)
         
-        if index < keys.count-1 {
+        if index < numberOfWords - 1 {
             if isAdded {
-                index += 1
+                index = index + 1
                 updateView(index: index)
             } else {
                 keyTextField.shake()

@@ -22,29 +22,39 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationItem.hidesBackButton = true
         self.openWalletButton.isHidden = true
         self.openWalletButton.alpha = 0
         self.openWalletButton.center.y += 30
-        
+
         var selectedImage = 0
         var images = [
             "ChecklistTwoItem",
             "ChecklistThreeItem",
             "CheckmarkCircle"
         ]
-        
-        DispatchQueue.main.async {
-           self.interval = setInterval(1) {
-                self.checklistImage.image = UIImage(named: images[selectedImage])
-                selectedImage += 1
-            
-                if selectedImage == images.count {
-                    self.interval?.invalidate()
-                    
-                    self.checklistDescription.text = "Your wallet is ready! Congratulations!"
-                    self.showWalletButton()
+
+        WalletClient.shared.createWallet(
+            walletName: "ioswallet",
+            copayerName: "iosuser",
+            m: 1,
+            n: 1,
+            options: nil
+        ) { error, secret in
+            print(secret)
+
+            DispatchQueue.main.async {
+                self.interval = setInterval(1) {
+                    self.checklistImage.image = UIImage(named: images[selectedImage])
+                    selectedImage += 1
+
+                    if selectedImage == images.count {
+                        self.interval?.invalidate()
+
+                        self.checklistDescription.text = "Your wallet is ready! Congratulations!"
+                        self.showWalletButton()
+                    }
                 }
             }
         }
@@ -75,7 +85,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        WalletManager.default.setup = true
+        ApplicationManager.default.setup = true
         PriceTicker.shared.start()
     }
 

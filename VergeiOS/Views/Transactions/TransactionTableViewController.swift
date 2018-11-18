@@ -19,11 +19,11 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var tableView: PlaceholderTableView!
     
-    let addressBookManager = AddressBookManager()
+    let addressBookManager = AddressBookRepository()
     var scrollViewEdger: ScrollViewEdger!
     
-    var transaction: Transaction?
-    var items: [Transaction] = []
+    var transaction: TxHistory?
+    var items: [TxHistory] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +53,11 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
     
-    func setTransaction(_ transaction: Transaction) {
+    func setTransaction(_ transaction: TxHistory) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        dateTimeLabel.text = dateFormatter.string(from: transaction.time)
+        dateTimeLabel.text = dateFormatter.string(from: transaction.timeReceived)
         
         if let name = addressBookManager.name(byAddress: transaction.address) {
             nameLabel.text = name
@@ -82,16 +82,11 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             prefix = "+"
         }
         
-        amountLabel.text = "\(prefix) \(transaction.amount.toCurrency(currency: "XVG", fractDigits: 2))"
+        amountLabel.text = "\(prefix) \(transaction.amountValue.toCurrency(currency: "XVG", fractDigits: 2))"
     }
     
-    func loadTransactions(_ transaction: Transaction) {
-        let transactions = WalletManager.default
-            .getTransactions(byAddress: transaction.address, offset: 0, limit: 7).sorted { thule, thule2 in
-                return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
-            }
-        
-        items = transactions
+    func loadTransactions(_ transaction: TxHistory) {
+        items = TransactionManager.shared.all(byAddress: transaction.address)
     }
 
     // MARK: - Table view data source
@@ -139,13 +134,13 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
                 cell.textLabel?.text = "Confirmations"
-                cell.detailTextLabel?.text = "\(transaction?.confirmations ?? 0)"
+                cell.detailTextLabel?.text = transaction?.confirmationsCount ?? "Unsynced"
                 cell.accessoryType = .none
                 break
             case 2:
                 cell.imageView?.image = UIImage(named: "Block")
-                cell.textLabel?.text = "Blockhash"
-                cell.detailTextLabel?.text = transaction?.blockhash
+                cell.textLabel?.text = "txid"
+                cell.detailTextLabel?.text = transaction?.txid
                 cell.accessoryType = .detailButton
                 addTapRecognizer(cell: cell, action: #selector(blockDoubleTapped(recognizer:)))
                 break
@@ -168,7 +163,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         
         let item = items[indexPath.row]
         
-        let recipient = Address()
+        let recipient = Contact()
         recipient.address = item.address
         recipient.name = nameLabel.text ?? item.address
         
@@ -210,7 +205,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             case 0:
                 loadWebsite(url: "\(Config.blockchainExlorer)address/\(transaction!.address)")
             case 2:
-                loadWebsite(url: "\(Config.blockchainExlorer)block/\(transaction!.blockhash)")
+                loadWebsite(url: "\(Config.blockchainExlorer)txid/\(transaction!.txid)")
             default: break
             }
         }
@@ -225,7 +220,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
-    func repeatTransaction(_ transaction: Transaction) {
+    func repeatTransaction(_ transaction: TxHistory) {
         if self.navigationController?.popViewController(animated: true) == nil {
             self.closeViewController(self)
         }
@@ -234,7 +229,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             // Create a send transaction.
             let sendTransaction = SendTransaction()
             sendTransaction.address = transaction.address
-            sendTransaction.amount = transaction.amount
+            sendTransaction.amount = transaction.amountValue
 
             // Notify the system to show the send view.
             NotificationCenter.default.post(name: .demandSendView, object: sendTransaction)
@@ -260,8 +255,8 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     @objc func blockDoubleTapped(recognizer: UITapGestureRecognizer) {
-        UIPasteboard.general.string = transaction!.blockhash
-        NotificationManager.shared.showMessage("Blockhash copied!", duration: 3)
+        UIPasteboard.general.string = transaction!.txid
+        NotificationManager.shared.showMessage("Txid copied!", duration: 3)
     }
 
     @IBAction func repeatTransactionPushed(_ sender: Any) {
@@ -276,7 +271,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ContactTableViewController {
-            let contact = Address()
+            let contact = Contact()
             contact.address = transaction!.address
             vc.contact = contact
         }

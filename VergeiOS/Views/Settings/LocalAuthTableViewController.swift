@@ -23,16 +23,16 @@ class LocalAuthTableViewController: UITableViewController {
             navigationItem.title = "Use Touch ID"
         }
 
-        unlockWalletSwitch.setOn(WalletManager.default.localAuthForWalletUnlock, animated: false)
-        sendXvgSwitch.setOn(WalletManager.default.localAuthForSendingXvg, animated: false)
+        unlockWalletSwitch.setOn(ApplicationManager.default.localAuthForWalletUnlock, animated: false)
+        sendXvgSwitch.setOn(ApplicationManager.default.localAuthForSendingXvg, animated: false)
     }
 
     @IBAction func switchForUnlockingWallet(_ sender: UISwitch) {
-        WalletManager.default.localAuthForWalletUnlock = sender.isOn
+        ApplicationManager.default.localAuthForWalletUnlock = sender.isOn
     }
     
     @IBAction func switchForSendingXvg(_ sender: UISwitch) {
-        WalletManager.default.localAuthForSendingXvg = sender.isOn
+        ApplicationManager.default.localAuthForSendingXvg = sender.isOn
     }
     
 }

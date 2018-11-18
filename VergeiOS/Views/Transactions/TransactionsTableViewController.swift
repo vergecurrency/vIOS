@@ -10,16 +10,31 @@ import UIKit
 
 class TransactionsTableViewController: EdgedTableViewController {
 
-    let addressBookManager = AddressBookManager()
+    let addressBookManager = AddressBookRepository()
 
-    var transactions: [[Transaction]] = []
+    var transactions: [[TxHistory]] = []
     var dates: [Date] = []
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveTransaction(notification:)),
+            name: .didBroadcastTx,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveTransaction(notification:)),
+            name: .didReceiveTransaction,
+            object: nil
+        )
+
         setupView()
+        getTransactions()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +56,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     func setupView() {
-        if !WalletManager.default.hasTransactions() {
+        if !TransactionManager.shared.hasTransactions && tableView.backgroundView == nil {
             if let placeholder = Bundle.main.loadNibNamed("NoTransactionsPlaceholderView", owner: self, options: nil)?.first as? NoTransactionsPlaceholderView {
                 placeholder.frame = tableView.frame
                 tableView.backgroundView = placeholder
@@ -52,56 +67,58 @@ class TransactionsTableViewController: EdgedTableViewController {
             return
         }
 
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Transactions"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        edgesForExtendedLayout = UIRectEdge.all
-        extendedLayoutIncludesOpaqueBars = true
+        if TransactionManager.shared.hasTransactions && navigationItem.searchController == nil {
+            // Setup the Search Controller
+            searchController.searchResultsUpdater = self
+            searchController.obscuresBackgroundDuringPresentation = false
+            searchController.searchBar.placeholder = "Search Transactions"
+            navigationItem.searchController = searchController
+            definesPresentationContext = true
+            edgesForExtendedLayout = UIRectEdge.all
+            extendedLayoutIncludesOpaqueBars = true
 
-        // Setup the Scope Bar
-        searchController.searchBar.scopeButtonTitles = ["All", "Sent", "Received"]
-        searchController.searchBar.delegate = self
-        searchController.delegate = self
-
-        loadTransactions()
+            // Setup the Scope Bar
+            searchController.searchBar.scopeButtonTitles = ["All", "Sent", "Received"]
+            searchController.searchBar.delegate = self
+            searchController.delegate = self
+        }
     }
 
-    func loadTransactions(_ searchText: String = "", scope: String = "All") {
+    func getTransactions(_ searchText: String = "", scope: String = "All") {
         transactions.removeAll()
         dates.removeAll()
 
         let categories = [
-            "Sent": TransactionType.Sent,
-            "Received": TransactionType.Received
+            "Sent": TxAction.Sent,
+            "Received": TxAction.Received
         ]
 
-        let ftransactions = WalletManager.default.getTransactions().filter { transaction in
-            let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
+        TransactionManager.shared.all { transactions in
+            let ftransactions = transactions.filter { transaction in
+                let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
 
-            if searchText == "" {
-                return doesCategoryMatch
+                if searchText == "" {
+                    return doesCategoryMatch
+                }
+
+                return doesCategoryMatch && (
+                    transaction.address.lowercased().contains(searchText.lowercased())
+                        || transaction.amount.description.lowercased().contains(searchText.lowercased())
+                        || transaction.address.lowercased().contains(searchText.lowercased())
+                )
             }
 
-            return doesCategoryMatch && (
-                transaction.address.lowercased().contains(searchText.lowercased())
-                || transaction.amount.description.lowercased().contains(searchText.lowercased())
-                || transaction.account.lowercased().contains(searchText.lowercased())
+            let cal = Calendar.current
+            let items = Dictionary(grouping: ftransactions, by: { cal.startOfDay(for: $0.timeReceived) }).sorted(
+                by: { $0.key > $1.key }
             )
-        }
 
-        let cal = Calendar.current
-        let items = Dictionary(grouping: ftransactions, by: { cal.startOfDay(for: $0.time) }).sorted(
-            by: { $0.key > $1.key }
-        )
-
-        for item in items {
-            dates.append(item.key)
-            transactions.append(item.value.sorted { thule, thule2 in
-                return thule.time.timeIntervalSinceReferenceDate > thule2.time.timeIntervalSinceReferenceDate
-            })
+            for item in items {
+                self.dates.append(item.key)
+                self.transactions.append(item.value.sorted { thule, thule2 in
+                    return thule.sortBy(txHistory: thule2)
+                })
+            }
         }
     }
     
@@ -109,11 +126,11 @@ class TransactionsTableViewController: EdgedTableViewController {
         return dates[section]
     }
     
-    func transactions(bySection section: Int) -> [Transaction] {
+    func transactions(bySection section: Int) -> [TxHistory] {
         return transactions[section]
     }
     
-    func transaction(byIndexpath indexPath: IndexPath) -> Transaction {
+    func transaction(byIndexpath indexPath: IndexPath) -> TxHistory {
         let items = transactions(bySection: indexPath.section)
         
         return items[indexPath.row]
@@ -138,9 +155,9 @@ class TransactionsTableViewController: EdgedTableViewController {
         
         let item = transaction(byIndexpath: indexPath)
 
-        var recipient: Address? = nil
+        var recipient: Contact? = nil
         if let name = addressBookManager.name(byAddress: item.address) {
-            recipient = Address()
+            recipient = Contact()
             recipient?.address = item.address
             recipient?.name = name
         }
@@ -188,12 +205,25 @@ class TransactionsTableViewController: EdgedTableViewController {
         }
     }
 
+    @objc func didReceiveTransaction(notification: Notification) {
+        DispatchQueue.main.async {
+            self.setupView()
+
+            let searchText = self.searchController.searchBar.text ?? ""
+            let scopeIndex = self.searchController.searchBar.selectedScopeButtonIndex
+            let scope = self.searchController.searchBar.scopeButtonTitles![scopeIndex]
+
+            self.getTransactions(searchText, scope: scope)
+
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension TransactionsTableViewController: UISearchBarDelegate {
     // MARK: - UISearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        loadTransactions(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        getTransactions(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
         tableView.reloadData()
     }
 }
@@ -204,7 +234,7 @@ extension TransactionsTableViewController: UISearchResultsUpdating, UISearchCont
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
 
-        loadTransactions(searchBar.text!, scope: scope)
+        getTransactions(searchBar.text!, scope: scope)
         tableView.reloadData()
     }
 

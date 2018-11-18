@@ -76,4 +76,8 @@ extension String {
 
         return NSNumber(value: (double / 100))
     }
+
+    func urlify() -> String {
+        return self.replacingOccurrences(of: "//", with: "/").replacingOccurrences(of: "https:/", with: "https://")
+    }
 }

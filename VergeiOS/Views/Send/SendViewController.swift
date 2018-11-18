@@ -31,7 +31,7 @@ class SendViewController: UIViewController {
     var confirmButtonInterval: Timer?
 
     var walletAmount: NSNumber {
-        return WalletManager.default.amount
+        return ApplicationManager.default.amount
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -94,7 +94,7 @@ class SendViewController: UIViewController {
 
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
-        currencyLabel.text = currency == .XVG ? "XVG" : WalletManager.default.currency
+        currencyLabel.text = currency == .XVG ? "XVG" : ApplicationManager.default.currency
 
         updateWalletAmountLabel()
         updateAmountLabel()
@@ -214,14 +214,29 @@ class SendViewController: UIViewController {
                 return
             }
 
-            // TODO ofcourse...
-            let newWalletAmount = NSNumber(
-                floatLiteral: self.walletAmount.doubleValue - self.sendTransaction.amount.doubleValue - self.transactionFee
+            let proposal = TxProposal(
+                address: self.sendTransaction.address,
+                amount: self.sendTransaction.amount,
+                message: self.sendTransaction.memo
             )
-            WalletManager.default.amount = newWalletAmount
 
-            self.didChangeSendTransaction(SendTransaction())
-            self.memoTextField.text = ""
+            let sendingView = Bundle.main.loadNibNamed(
+                "SendingView",
+                owner: self
+            )?.first as! SendingView
+
+            let actionSheet = sendingView.makeActionSheet()
+
+            self.present(actionSheet, animated: true)
+
+            TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, error  in
+                self.didChangeSendTransaction(SendTransaction())
+
+                let timeout = (error == nil) ? 3.0 : 0.0
+                let _ = setTimeout(timeout) {
+                    actionSheet.dismiss(animated: true)
+                }
+            }
         }
 
         present(unlockView, animated: true)
@@ -307,6 +322,8 @@ extension SendViewController: UITextFieldDelegate {
 
         recipientTextField.inputAccessoryView = keyboardToolbar
         recipientTextField.delegate = self
+
+        memoTextField.delegate = self
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -347,6 +364,11 @@ extension SendViewController: UITextFieldDelegate {
 
     @objc func dissmissKeyboard() {
         view.endEditing(true)
+
+        sendTransaction.address = recipientTextField.text ?? ""
+        sendTransaction.memo = memoTextField.text ?? ""
+
+        didChangeSendTransaction(sendTransaction)
     }
 
     func showInvalidAddressAlert() {
@@ -369,6 +391,7 @@ extension SendViewController: SendTransactionDelegate {
         sendTransaction = transaction
 
         self.recipientTextField.text = sendTransaction.address
+        self.memoTextField.text = sendTransaction.memo
 
         updateAmountLabel()
         updateWalletAmountLabel()
@@ -383,6 +406,6 @@ extension SendViewController: SendTransactionDelegate {
     }
 
     func currentCurrency() -> String {
-        return currency == .XVG ? "XVG" : WalletManager.default.currency
+        return currency == .XVG ? "XVG" : ApplicationManager.default.currency
     }
 }

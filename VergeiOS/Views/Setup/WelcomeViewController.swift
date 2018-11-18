@@ -19,7 +19,7 @@ class WelcomeViewController: UIViewController {
 
         // TODO: Create a Tor setup page and move this over.
         // Set Tor enabled as default.
-        WalletManager.default.useTor = true
+        ApplicationManager.default.useTor = true
         // Now start Tor.
         TorClient.shared.start {}
     }
@@ -30,6 +30,8 @@ class WelcomeViewController: UIViewController {
         guard let navigationController = segue.destination as? UINavigationController else {
             return
         }
+
+        ApplicationManager.default.reset()
 
         if let vc = navigationController.viewControllers.first as? SelectPinViewController {
             vc.segueIdentifier = segue.identifier

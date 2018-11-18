@@ -17,7 +17,7 @@ class LoadingTorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let identifier = WalletManager.default.setup ? "showWallet" : "showWelcomeView"
+        let identifier = ApplicationManager.default.setup ? "showWallet" : "showWelcomeView"
 
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: identifier, sender: self)

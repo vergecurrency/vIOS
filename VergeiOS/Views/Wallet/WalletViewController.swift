@@ -32,8 +32,6 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        xvgBalanceLabel.text = WalletManager.default.amount.toCurrency(currency: "XVG")
-        
         self.setupSlides()
         self.setStats()
 
@@ -41,6 +39,13 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
             self,
             selector: #selector(didReceiveStats(notification:)),
             name: .didReceiveStats,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didChangeWalletAmount(notification:)),
+            name: .didChangeWalletAmount,
             object: nil
         )
     }
@@ -98,26 +103,26 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
             self.walletSlidePageControl.currentPage = currentPage
         }
     }
-
-    @objc func deviceRotated() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.setupWalletSlideScrollView()
-        }
-    }
     
     @objc func didReceiveStats(notification: Notification? = nil) {
-        self.setStats()
+        setStats()
+    }
+
+    @objc func didChangeWalletAmount(notification: Notification? = nil) {
+        setStats()
     }
     
     func setStats() {
         DispatchQueue.main.async {
+            self.xvgBalanceLabel.text = ApplicationManager.default.amount.toCurrency(currency: "XVG", fractDigits: 3)
+
             if let xvgInfo = PriceTicker.shared.xvgInfo {
-                let walletAmount = WalletManager.default.amount
+                let walletAmount = ApplicationManager.default.amount
                 self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
-                self.pairSymbolBalanceLabel.text = "\(WalletManager.default.currency) BALANCE"
+                self.pairSymbolBalanceLabel.text = "\(ApplicationManager.default.currency) BALANCE"
                 
                 self.xvgPairBalanceLabel.text = NSNumber(value: xvgInfo.price).toPairCurrency(fractDigits: 6)
-                self.xvgPairSymbolLabel.text = "\(WalletManager.default.currency)/XVG"
+                self.xvgPairSymbolLabel.text = "\(ApplicationManager.default.currency)/XVG"
             }
         }
     }
@@ -126,7 +131,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         if segue.identifier == "TransactionTableViewController" {
             if let nc = segue.destination as? UINavigationController {
                 if let vc = nc.viewControllers.first as? TransactionTableViewController {
-                    vc.transaction = sender as? Transaction
+                    vc.transaction = sender as? TxHistory
                 }
             }
         }

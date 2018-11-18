@@ -17,22 +17,26 @@ class TransactionTableViewCell: Cell<String>, CellType {
 
     override func update() {}
 
-    func setTransaction(_ transaction: Transaction, address: Address?) {
+    func setTransaction(_ transaction: TxHistory, address: Contact?) {
         setAccount(transaction, address: address)
         setDateTime(transaction)
         setAmount(transaction)
     }
 
-    func setTransaction(_ transaction: Transaction) {
-        textLabel?.text = transaction.blockhash
+    func setTransaction(_ transaction: TxHistory) {
+        textLabel?.text = transaction.txid
         textLabel?.textColor = UIColor.secondaryLight().withAlphaComponent(0.75)
         setDateTime(transaction)
         setAmount(transaction)
     }
     
-    fileprivate func setAccount(_ transaction: Transaction, address: Address?) {
+    fileprivate func setAccount(_ transaction: TxHistory, address: Contact?) {
         textLabel?.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
-        
+
+        if transaction.category == .Moved {
+            textLabel?.text = "Moved"
+        }
+
         if address != nil {
             textLabel?.text = address?.name
             textLabel?.textColor = UIColor.secondaryDark()
@@ -41,21 +45,27 @@ class TransactionTableViewCell: Cell<String>, CellType {
         }
     }
     
-    fileprivate func setDateTime(_ transaction: Transaction) {
+    fileprivate func setDateTime(_ transaction: TxHistory) {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .short
-        detailTextLabel?.text = df.string(from: transaction.time)
+        detailTextLabel?.text = df.string(from: transaction.timeReceived)
     }
     
-    fileprivate func setAmount(_ transaction: Transaction) {
+    fileprivate func setAmount(_ transaction: TxHistory) {
         var prefix = ""
         if transaction.category == .Sent {
             amountLabel.textColor = UIColor.vergeRed()
-            imageView?.tintColor = UIColor.vergeRed()
-            imageView?.image = UIImage(named: "Sent")
-            
+            imageView?.tintColor = transaction.confirmations < 6 ? UIColor.vergeGrey() : UIColor.vergeRed()
+            imageView?.image = UIImage(named: transaction.confirmations < 6 ? "Sending" : "Sent")
+
             prefix = "-"
+        } else if transaction.category == .Moved {
+            amountLabel.textColor = UIColor.vergeGrey()
+            imageView?.tintColor = UIColor.vergeGrey()
+            imageView?.image = UIImage(named: "Moved")
+
+            prefix = ""
         } else {
             amountLabel.textColor = UIColor.vergeGreen()
             imageView?.tintColor = UIColor.vergeGreen()
@@ -63,7 +73,7 @@ class TransactionTableViewCell: Cell<String>, CellType {
             prefix = "+"
         }
         
-        amountLabel.text = "\(prefix) \(transaction.amount.toCurrency(currency: "XVG", fractDigits: 2))"
+        amountLabel.text = "\(prefix) \(transaction.amountValue.toCurrency(currency: "XVG", fractDigits: 2))"
     }
 }
 

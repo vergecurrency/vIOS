@@ -114,13 +114,13 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         var volumeData: [BarChartDataEntry] = []
         priceChartView.set(chartData: priceData)
         volumeChartView.set(chartData: volumeData)
-        lastChangeFilter = Date.timeIntervalSinceReferenceDate + Config.fetchTimeout
+        lastChangeFilter = Date.timeIntervalSinceReferenceDate + Config.fetchPriceTimeout
         
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
         }
 
-        TorClient.shared.session.dataTask(with: chartUrl()) { (data, response, error) in
+        URLSession.shared.dataTask(with: chartUrl()) { (data, response, error) in
             do {
                 if data == nil {
                     return

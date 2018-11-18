@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BitcoinKit
 
 class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     
@@ -15,24 +16,21 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     @IBOutlet weak var previousButton: RoundedButton!
     @IBOutlet weak var nextButton: RoundedButton!
     
-    var words: [String] = [
-        "words",
-        "coming",
-        "from",
-        "the",
-        "insight",
-        "api",
-        "verge",
-        "is",
-        "freking",
-        "awesome",
-        "wen",
-        "moon"
-    ]
+    var mnemonic: [String] = []
     var selectedWord = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Generate a new mnemonic.
+        do {
+            let newMnemonic = try Mnemonic.generate()
+            mnemonic = ApplicationManager.default.mnemonic ?? newMnemonic
+        } catch {
+            // TODO: handle the error.
+            print(error.localizedDescription)
+            navigationController?.popViewController(animated: true)
+        }
 
         if navigationController?.viewControllers.first?.isKind(of: PaperKeyWordsViewController.self) ?? false {
             let closeButton = UIBarButtonItem(
@@ -45,25 +43,25 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
             navigationItem.setLeftBarButton(closeButton, animated: false)
         }
 
-        self.wordLabel.text = self.words.first
+        self.wordLabel.text = self.mnemonic.first
         
         self.updateView()
     }
     
     @IBAction func previousWord(_ sender: Any) {
         self.selectedWord -= 1
-        self.wordLabel.text = self.words[self.selectedWord]
+        self.wordLabel.text = self.mnemonic[self.selectedWord]
         
         self.updateView()
     }
     
     @IBAction func nextWord(_ sender: Any) {
-        if (self.selectedWord == (self.words.count - 1)) {
+        if (self.selectedWord == (self.mnemonic.count - 1)) {
             return self.performSegue(withIdentifier: "confirmPaperkey", sender: self)
         }
         
         self.selectedWord += 1
-        self.wordLabel.text = self.words[self.selectedWord]
+        self.wordLabel.text = self.mnemonic[self.selectedWord]
         
         self.updateView()
     }
@@ -79,7 +77,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     }
     
     func updateView() {
-        self.progressionLabel.text = "\(self.selectedWord + 1) out of \(self.words.count)"
+        self.progressionLabel.text = "\(self.selectedWord + 1) out of \(self.mnemonic.count)"
         
         if (self.selectedWord == 0) {
             self.hideButton(self.previousButton)
@@ -89,7 +87,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
             self.showButton(self.previousButton)
         }
         
-        if (self.selectedWord == (self.words.count - 1)) {
+        if (self.selectedWord == (self.mnemonic.count - 1)) {
             self.showDoneButton()
         } else {
             self.showNextButton()
@@ -120,7 +118,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
         
         if (segue.identifier == "confirmPaperkey") {
             let vc = segue.destination as! ConfirmPaperkeyViewController
-            vc.words = self.words
+            vc.mnemonic = self.mnemonic
         }
     }
 
