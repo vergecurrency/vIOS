@@ -13,8 +13,26 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     
     @IBOutlet weak var tableView: TableView!
     
-    let addressBookManager = AddressBookManager()
+    let addressBookManager = AddressBookRepository()
     var items: [TxHistory] = []
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(getTransactions(notification:)),
+            name: .didBroadcastTx,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(getTransactions(notification:)),
+            name: .didReceiveTransaction,
+            object: nil
+        )
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -35,11 +53,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         )
     }
     
-    func getTransactions() {
-        WalletClient.shared.getTxHistory { txHistories in
-            self.items = txHistories.sorted { thule, thule2 in
-                return thule.timeReceived.timeIntervalSinceReferenceDate > thule2.timeReceived.timeIntervalSinceReferenceDate
-            }
+    @objc func getTransactions(notification: Notification? = nil) {
+        TransactionManager.shared.all { transactions in
+            self.items = transactions
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()

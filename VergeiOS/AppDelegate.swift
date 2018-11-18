@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        
+
         return true
     }
     
@@ -73,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        WalletTicker.shared.stop()
         PriceTicker.shared.stop()
 
         showPinUnlockViewController()
@@ -96,6 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         
         // Stop price ticker.
+        WalletTicker.shared.stop()
         PriceTicker.shared.stop()
         TorClient.shared.resign()
     }
@@ -108,61 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        // TODO: Replace this with notifications subscriber.
-        // Get wallet balance.
-        WalletClient.shared.getBalance { error, info in
-            if let info = info {
-                ApplicationManager.default.amount = info.totalAmountValue
-            }
-        }
-    }
-
-    func setupListeners() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didStartTorThread(notification:)),
-            name: .didStartTorThread,
-            object: nil
-        )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didEstablishTorConnection(notification:)),
-            name: .didEstablishTorConnection,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didResignTorConnection(notification:)),
-            name: .didResignTorConnection,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didTurnOffTor(notification:)),
-            name: .didTurnOffTor,
-            object: nil
-        )
-    }
-
-    @objc func didStartTorThread(notification: Notification? = nil) {
-        TorStatusIndicator.shared.setStatus(.disconnected)
-    }
-
-    @objc func didEstablishTorConnection(notification: Notification? = nil) {
-        DispatchQueue.main.async {
-            TorStatusIndicator.shared.setStatus(.connected)
-        }
-    }
-    
-    @objc func didResignTorConnection(notification: Notification? = nil) {
-        TorStatusIndicator.shared.setStatus(.disconnected)
-    }
-    
-    @objc func didTurnOffTor(notification: Notification? = nil) {
-        TorStatusIndicator.shared.setStatus(.turnedOff)
+        // Start the wallet ticker.
+        WalletTicker.shared.start()
     }
     
     func registerAppforDetectLockState() {

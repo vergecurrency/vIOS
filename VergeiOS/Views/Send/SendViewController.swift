@@ -87,19 +87,6 @@ class SendViewController: UIViewController {
         updateAmountLabel()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        let sendingView = Bundle.main.loadNibNamed(
-            "SendingView",
-            owner: self
-        )?.first as! SendingView
-
-        let actionSheet = sendingView.makeActionSheet()
-
-        self.present(actionSheet, animated: true)
-    }
-
     @objc func didReceiveStats(_ notification: Notification) {
         updateAmountLabel()
         updateWalletAmountLabel()

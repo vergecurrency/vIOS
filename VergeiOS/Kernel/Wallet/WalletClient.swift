@@ -138,11 +138,16 @@ public class WalletClient {
     }
 
     public func getTxHistory(
-        skip: Int = 0,
-        limit: Int = 15,
+        skip: Int? = nil,
+        limit: Int? = nil,
         completion: @escaping (_ transactions: [TxHistory]) -> Void
     ) {
-        getRequest(url: "/v1/txhistory/?skip=\(skip)&limit=\(limit)&includeExtendedInfo=1") { data, response, error in
+        var url = "/v1/txhistory/?includeExtendedInfo=1"
+        if (skip != nil && limit != nil) {
+            url = "\(url)&skip=\(skip!)&limit=\(limit!)"
+        }
+
+        getRequest(url: url) { data, response, error in
             if let data = data {
                 do {
                     let transactions = try JSONDecoder().decode([TxHistory].self, from: data)
@@ -290,6 +295,20 @@ public class WalletClient {
                 }
             } else {
                 return completion(nil, error)
+            }
+        }
+    }
+
+    public func pushNotificationsSubscribe(deviceToken: String) {
+        var arguments = JSON()
+        arguments["type"].stringValue = "ios"
+        arguments["token"].stringValue = deviceToken
+
+        postRequest(url: "/v1/pushnotifications/subscriptions/", arguments: arguments) { data, response, error in
+            if let data = data {
+                print(try! JSON(data: data))
+            } else {
+                print(error)
             }
         }
     }

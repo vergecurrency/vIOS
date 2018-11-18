@@ -39,7 +39,7 @@ class PriceTicker {
         
         fetchStats()
         
-        interval = Timer.scheduledTimer(withTimeInterval: Config.fetchTimeout, repeats: true) { timer in
+        interval = Timer.scheduledTimer(withTimeInterval: Config.fetchPriceTimeout, repeats: true) { timer in
             self.fetchStats()
         }
         

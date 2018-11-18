@@ -11,7 +11,7 @@ import Eureka
 
 class ContactTableViewController: FormViewController {
 
-    let addressBook: AddressBookManager = AddressBookManager()
+    let addressBook: AddressBookRepository = AddressBookRepository()
     var contact: Contact?
     var transactions: [TxHistory] = []
     var trashButtonItem: UIBarButtonItem!
@@ -68,13 +68,14 @@ class ContactTableViewController: FormViewController {
         let transactionsSection = Section("Transaction History")
         form +++ transactionsSection
 
-//        transactions = ApplicationManager.default.getTransactions(byAddress: contact.address)
-//        for transaction in transactions {
-//            transactionsSection
-//                <<< TransactionRow().cellSetup { cell, row in
-//                cell.setTransaction(transaction)
-//            }
-//        }
+        transactions = TransactionManager.shared.all(byAddress: contact.address)
+        
+        for transaction in transactions {
+            transactionsSection
+                <<< TransactionRow().cellSetup { cell, row in
+                cell.setTransaction(transaction)
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

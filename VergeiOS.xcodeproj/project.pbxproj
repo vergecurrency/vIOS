@@ -103,7 +103,7 @@
 		A3647288217E604B001B1B18 /* CoreStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3647287217E604B001B1B18 /* CoreStore.framework */; };
 		A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */; };
 		A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
-		A36F8A8D21470C6C00304777 /* AddressBookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8C21470C6C00304777 /* AddressBookManager.swift */; };
+		A36F8A8D21470C6C00304777 /* AddressBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8C21470C6C00304777 /* AddressBookRepository.swift */; };
 		A36F8A8F21471B4300304777 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */; };
 		A373E6EC2154601D00C67390 /* SendTransactionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A373E6EB2154601D00C67390 /* SendTransactionDelegate.swift */; };
 		A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37641092107DC4E00E04521 /* KeyboardButton.swift */; };
@@ -159,9 +159,11 @@
 		B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */; };
 		B2BD74F4EC93C6025BE4DC28 /* VolumeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2EDECD1C4C0462D84A /* VolumeChartView.swift */; };
 		B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */; };
+		B2BD76C55CCA3241E93A1A2B /* WalletTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */; };
 		B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */; };
 		B2BD777C8DE885732CFA2D1E /* ChartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74F46B6A7DA606BCB794 /* ChartInfo.swift */; };
 		B2BD782690228E5BDAFE38C4 /* TxProposal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD707901E103DAE1455E18 /* TxProposal.swift */; };
+		B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */; };
 		B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */; };
 		B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */; };
@@ -173,8 +175,10 @@
 		B2BD7C21A80B98CD8857B476 /* AbstractChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7AA4FFBD193456C18CA6 /* AbstractChartView.swift */; };
 		B2BD7CB257BA213ABAE9958D /* DonateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD70361646D756C13B826D /* DonateTableViewController.swift */; };
 		B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7557B745B64D241A9CEB /* WalletInfo.swift */; };
+		B2BD7D87D41E757FCBBF6D75 /* AppDelegate+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */; };
 		B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */; };
 		B2BD7E4561E44AB527F4B3CF /* transactions.json in Resources */ = {isa = PBXBuildFile; fileRef = B2BD7F875F84C84B935E28F7 /* transactions.json */; };
+		B2BD7E5B76A0F41F95F9AE4A /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7E6AD20C5E8F2318BE53 /* TransactionRepository.swift */; };
 		B2BD7EAD955C16295629FF73 /* AddressBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */; };
 		B2BD7EADE85BFC16E792F913 /* WalletID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD791F2A29BF10031F61A9 /* WalletID.swift */; };
 		B2BD7F005F419E6C2A8B8A9A /* TxHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B38FF9FBCE00640E947 /* TxHistory.swift */; };
@@ -317,7 +321,7 @@
 		A3647287217E604B001B1B18 /* CoreStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreStore.framework; path = Carthage/Build/iOS/CoreStore.framework; sourceTree = "<group>"; };
 		A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedTableViewController.swift; sourceTree = "<group>"; };
 		A36F8A882146EE0F00304777 /* String+Subs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subs.swift"; sourceTree = "<group>"; };
-		A36F8A8C21470C6C00304777 /* AddressBookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookManager.swift; sourceTree = "<group>"; };
+		A36F8A8C21470C6C00304777 /* AddressBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookRepository.swift; sourceTree = "<group>"; };
 		A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		A373E6EB2154601D00C67390 /* SendTransactionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionDelegate.swift; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 		A3764130210AE1D500E04521 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		A386CA98219E28ED00FBF465 /* SendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingView.swift; sourceTree = "<group>"; };
 		A386CA9A219E28FA00FBF465 /* SendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendingView.xib; sourceTree = "<group>"; };
+		A386CA9C21A03C5200FBF465 /* VergeiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeiOS.entitlements; sourceTree = "<group>"; };
 		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
 		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
@@ -364,6 +369,7 @@
 		B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnspentOutput.swift; sourceTree = "<group>"; };
 		B2BD707901E103DAE1455E18 /* TxProposal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposal.swift; sourceTree = "<group>"; };
 		B2BD71B08FC506AC51C07E3B /* ChartFilterToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbar.swift; sourceTree = "<group>"; };
+		B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFCountingLabel.swift; sourceTree = "<group>"; };
 		B2BD733F9D032CB620B66904 /* TxOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxOutput.swift; sourceTree = "<group>"; };
 		B2BD7365DCBB13FEA0B32516 /* TxAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxAction.swift; sourceTree = "<group>"; };
@@ -392,9 +398,12 @@
 		B2BD7BE7344909C100B67E17 /* ChartFilterToolbarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbarDelegate.swift; sourceTree = "<group>"; };
 		B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperkeyViewController.swift; sourceTree = "<group>"; };
 		B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletBalanceInfo.swift; sourceTree = "<group>"; };
+		B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTicker.swift; sourceTree = "<group>"; };
 		B2BD7C53911E392911DFA15D /* TxProposalResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposalResponse.swift; sourceTree = "<group>"; };
 		B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractContactsTableViewController.swift; sourceTree = "<group>"; };
+		B2BD7E6AD20C5E8F2318BE53 /* TransactionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		B2BD7EF009F29B5AAA801A96 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationCenter.swift"; sourceTree = "<group>"; };
 		B2BD7F875F84C84B935E28F7 /* transactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = transactions.json; sourceTree = "<group>"; };
 		B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -481,6 +490,7 @@
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 				A36F8A882146EE0F00304777 /* String+Subs.swift */,
 				B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */,
+				B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -652,11 +662,14 @@
 		A3256666211B8D98006FB08A /* Kernel */ = {
 			isa = PBXGroup;
 			children = (
-				A36F8A8C21470C6C00304777 /* AddressBookManager.swift */,
+				A36F8A8C21470C6C00304777 /* AddressBookRepository.swift */,
 				A3256667211B8E1A006FB08A /* ApplicationManager.swift */,
 				A302D3402122053300EA8091 /* PriceTicker.swift */,
 				A316B0AE215454FB00FF5200 /* AddressValidator.swift */,
 				A3E8FF32217B7ED700CB50ED /* Config.swift */,
+				B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */,
+				B2BD7E6AD20C5E8F2318BE53 /* TransactionRepository.swift */,
+				B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */,
 				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
 			);
 			path = Kernel;
@@ -812,6 +825,7 @@
 				A33F6A7E20EEE487001492C2 /* Info.plist */,
 				A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */,
 				A3C5C3CD21985B11003B6C02 /* sjcl.js */,
+				A386CA9C21A03C5200FBF465 /* VergeiOS.entitlements */,
 			);
 			path = VergeiOS;
 			sourceTree = "<group>";
@@ -1037,13 +1051,16 @@
 								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.NearFieldCommunicationTagReading = {
 								enabled = 0;
 							};
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
 							};
 						};
 					};
@@ -1233,7 +1250,7 @@
 				A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */,
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
-				A36F8A8D21470C6C00304777 /* AddressBookManager.swift in Sources */,
+				A36F8A8D21470C6C00304777 /* AddressBookRepository.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
 				A3E8FF33217B7ED700CB50ED /* Config.swift in Sources */,
 				A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */,
@@ -1328,6 +1345,10 @@
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
 				A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */,
+				B2BD7D87D41E757FCBBF6D75 /* AppDelegate+NotificationCenter.swift in Sources */,
+				B2BD76C55CCA3241E93A1A2B /* WalletTicker.swift in Sources */,
+				B2BD7E5B76A0F41F95F9AE4A /* TransactionRepository.swift in Sources */,
+				B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1564,6 +1585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = S7743EWR3C;
@@ -1589,6 +1611,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = S7743EWR3C;

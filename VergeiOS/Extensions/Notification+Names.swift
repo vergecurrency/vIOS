@@ -24,4 +24,5 @@ extension Notification.Name {
     static let didPublishTx = Notification.Name("didPublishTx")
     static let didSignTx = Notification.Name("didSignTx")
     static let didBroadcastTx = Notification.Name("didBroadcastTx")
+    static let didReceiveTransaction = Notification.Name("didReceiveTransaction")
 }

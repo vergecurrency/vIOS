@@ -168,6 +168,15 @@ class ApplicationManager {
         }
     }
 
+    var deviceToken: String? {
+        get {
+            return userDefaults.string(forKey: "deviceToken")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "deviceToken")
+        }
+    }
+
     func getAddress(stealth: Bool = false) -> String {
         let length = stealth ? 68 : 34
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

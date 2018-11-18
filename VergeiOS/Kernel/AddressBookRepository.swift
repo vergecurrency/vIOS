@@ -1,5 +1,5 @@
 //
-//  AddressBookManager.swift
+//  AddressBookRepository.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 10-09-18.
@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import SwiftyJSON
 import CoreStore
 
-class AddressBookManager {
+class AddressBookRepository {
     
     func name(byAddress address: String) -> String? {
         let entity = CoreStore.fetchOne(From<AddressType>().where(\.address == address))

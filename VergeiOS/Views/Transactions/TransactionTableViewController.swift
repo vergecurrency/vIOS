@@ -19,7 +19,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var tableView: PlaceholderTableView!
     
-    let addressBookManager = AddressBookManager()
+    let addressBookManager = AddressBookRepository()
     var scrollViewEdger: ScrollViewEdger!
     
     var transaction: TxHistory?
@@ -86,11 +86,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func loadTransactions(_ transaction: TxHistory) {
-        WalletClient.shared.getTxHistory { transactions in
-            self.items = transactions.sorted { thule, thule2 in
-                return thule.timeReceived.timeIntervalSinceReferenceDate > thule2.timeReceived.timeIntervalSinceReferenceDate
-            }
-        }
+        items = TransactionManager.shared.all(byAddress: transaction.address)
     }
 
     // MARK: - Table view data source
@@ -138,7 +134,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
                 cell.textLabel?.text = "Confirmations"
-                cell.detailTextLabel?.text = "\(transaction?.confirmations ?? 0)"
+                cell.detailTextLabel?.text = transaction?.confirmationsCount ?? "Unsynced"
                 cell.accessoryType = .none
                 break
             case 2:
