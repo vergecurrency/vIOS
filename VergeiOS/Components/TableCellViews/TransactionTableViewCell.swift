@@ -56,8 +56,8 @@ class TransactionTableViewCell: Cell<String>, CellType {
         var prefix = ""
         if transaction.category == .Sent {
             amountLabel.textColor = UIColor.vergeRed()
-            imageView?.tintColor = transaction.confirmations < 6 ? UIColor.vergeGrey() : UIColor.vergeRed()
-            imageView?.image = UIImage(named: transaction.confirmations < 6 ? "Sending" : "Sent")
+            imageView?.tintColor = transaction.confirmations < 1 ? UIColor.vergeGrey() : UIColor.vergeRed()
+            imageView?.image = UIImage(named: transaction.confirmations < 1 ? "Sending" : "Sent")
 
             prefix = "-"
         } else if transaction.category == .Moved {
