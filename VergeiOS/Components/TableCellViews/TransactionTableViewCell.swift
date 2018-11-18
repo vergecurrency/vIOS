@@ -32,7 +32,11 @@ class TransactionTableViewCell: Cell<String>, CellType {
     
     fileprivate func setAccount(_ transaction: TxHistory, address: Contact?) {
         textLabel?.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
-        
+
+        if transaction.category == .Moved {
+            textLabel?.text = "Moved"
+        }
+
         if address != nil {
             textLabel?.text = address?.name
             textLabel?.textColor = UIColor.secondaryDark()
@@ -52,10 +56,16 @@ class TransactionTableViewCell: Cell<String>, CellType {
         var prefix = ""
         if transaction.category == .Sent {
             amountLabel.textColor = UIColor.vergeRed()
-            imageView?.tintColor = UIColor.vergeRed()
-            imageView?.image = UIImage(named: "Sent")
-            
+            imageView?.tintColor = transaction.confirmations < 6 ? UIColor.vergeGrey() : UIColor.vergeRed()
+            imageView?.image = UIImage(named: transaction.confirmations < 6 ? "Sending" : "Sent")
+
             prefix = "-"
+        } else if transaction.category == .Moved {
+            amountLabel.textColor = UIColor.vergeGrey()
+            imageView?.tintColor = UIColor.vergeGrey()
+            imageView?.image = UIImage(named: "Moved")
+
+            prefix = ""
         } else {
             amountLabel.textColor = UIColor.vergeGreen()
             imageView?.tintColor = UIColor.vergeGreen()

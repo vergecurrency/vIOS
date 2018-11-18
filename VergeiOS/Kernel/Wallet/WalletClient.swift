@@ -88,6 +88,8 @@ public class WalletClient {
                 } catch {
                     completion(error, nil)
                 }
+            } else {
+                completion(error, nil)
             }
         }
     }

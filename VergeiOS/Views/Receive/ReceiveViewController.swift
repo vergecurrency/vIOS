@@ -35,15 +35,13 @@ class ReceiveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        address = ApplicationManager.default.getAddress()
+        getNewAddress()
 
         qrCodeContainerView.layer.cornerRadius = 10.0
         qrCodeContainerView.clipsToBounds = true
 
         addTapRecognizer(target: addressTextField, action: #selector(copyAddress(recognizer:)))
         addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
-
-        changeAddress(address)
         
         amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
     }
@@ -58,6 +56,16 @@ class ReceiveViewController: UIViewController {
             self.xvgCardContainer.alpha = 1.0
             self.xvgCardContainer.center.y -= 20.0
         }, completion: nil)
+    }
+
+    func getNewAddress() {
+        WalletClient.shared.createAddress { error, addressInfo in
+            guard let addressInfo = addressInfo else {
+                return
+            }
+
+            self.changeAddress(addressInfo.address)
+        }
     }
 
     func changeAddress(_ address: String) {
@@ -86,7 +94,7 @@ class ReceiveViewController: UIViewController {
     }
 
     @IBAction func newAddress(_ sender: UIButton) {
-        changeAddress(ApplicationManager.default.getAddress(stealth: stealthSwitch.isOn))
+        getNewAddress()
     }
 
     @IBAction func amountChanged(_ sender: UITextField) {
@@ -130,7 +138,7 @@ class ReceiveViewController: UIViewController {
     }
 
     @IBAction func switchStealth(_ sender: UISwitch) {
-        changeAddress(ApplicationManager.default.getAddress(stealth: sender.isOn))
+        changeAddress(address)
 
         if sender.isOn {
             xvgCardImageView.image = UIImage(named: "StealthReceiveCard")

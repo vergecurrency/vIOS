@@ -176,14 +176,6 @@ class ApplicationManager {
             userDefaults.set(newValue, forKey: "deviceToken")
         }
     }
-
-    func getAddress(stealth: Bool = false) -> String {
-        let length = stealth ? 68 : 34
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0...length - 1).map { _ in
-            letters.randomElement()!
-        })
-    }
     
     func reset() {
         userDefaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
