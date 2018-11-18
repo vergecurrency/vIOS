@@ -45,6 +45,8 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             print(secret)
 
             DispatchQueue.main.async {
+                WalletTicker.shared.start()
+
                 self.interval = setInterval(1) {
                     self.checklistImage.image = UIImage(named: images[selectedImage])
                     selectedImage += 1
