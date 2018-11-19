@@ -10,3 +10,4 @@ github "danielgindi/Charts" ~> 3.2.1
 github "JohnEstropia/CoreStore" >= 5.0.0
 github "xmartlabs/Eureka" ~> 4.3
 github "yenom/BitcoinKit"
+github "krzyzanowskim/CryptoSwift"

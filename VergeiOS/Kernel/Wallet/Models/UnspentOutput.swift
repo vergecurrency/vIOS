@@ -38,11 +38,11 @@ public struct UnspentOutput: Codable {
 
 extension UnspentOutput {
     public func asUnspentTransaction() throws -> UnspentTransaction {
-        guard let lockingScript = Data(hex: scriptPubKey) else {
+        guard let lockingScript = Data(fromHex: scriptPubKey) else {
             throw UnspentOutputError.invalidScriptPubKeyHex(hex: scriptPubKey)
         }
 
-        guard let txid = Data(hex: txID) else {
+        guard let txid = Data(fromHex: txID) else {
             throw UnspentOutputError.invalidTxIdHex(hex: txID)
         }
         
@@ -54,7 +54,7 @@ extension UnspentOutput {
     }
 
     public func asInputTransaction() throws -> TransactionInput {
-        guard let txid = Data(hex: txID) else {
+        guard let txid = Data(fromHex: txID) else {
             throw UnspentOutputError.invalidTxIdHex(hex: txID)
         }
 

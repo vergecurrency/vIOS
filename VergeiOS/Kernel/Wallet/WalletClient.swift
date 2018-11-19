@@ -6,6 +6,7 @@
 import Foundation
 import BitcoinKit
 import SwiftyJSON
+import CryptoSwift
 
 public class WalletClient {
 
@@ -30,6 +31,10 @@ public class WalletClient {
         return HDPrivateKey(seed: Mnemonic.seed(mnemonic: ApplicationManager.default.mnemonic!), network: network)
     }
 
+    private var walletPrivateKey: HDPrivateKey {
+        return try! privateKey.derived(at: 0, hardened: true)
+    }
+
     private var requestPrivateKey: HDPrivateKey {
         return try! privateKey.derived(at: 1, hardened: true).derived(at: 0)
     }
@@ -45,11 +50,19 @@ public class WalletClient {
         return bip44PrivateKey.extendedPublicKey()
     }
 
-    private var sharedEncryptingKey: String {
-        var sha256Data = Crypto.sha256(privateKey.privateKey().raw)
-        sha256Data.removeSubrange(0..<16)
+    private var personalEncryptingKey: String {
+        let data = Crypto.sha256(requestPrivateKey.privateKey().raw)
+        let key = "personalKey".data(using: .utf8)!
 
-        return sha256Data.base64EncodedString()
+        var b2 = try! HMAC(key: key.bytes, variant: .sha256).authenticate(data.bytes)
+
+        return Data(b2[0..<16]).base64EncodedString()
+    }
+
+    private var sharedEncryptingKey: String {
+        var sha256Data = walletPrivateKey.privateKey().raw.sha256()
+
+        return sha256Data[0..<16].base64EncodedString()
     }
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
@@ -67,13 +80,15 @@ public class WalletClient {
         options: WalletOptions?,
         completion: @escaping (_ error: Error?, _ secret: String?) -> Void
     ) {
-        let encWalletName = encryptMessage(plaintext: walletName)
+        let encWalletName = encryptMessage(plaintext: walletName, encryptingKey: sharedEncryptingKey)
 
         var args = JSON()
         args["name"].stringValue = encWalletName
-        args["pubKey"].stringValue = publicKey.publicKey().description
+        args["pubKey"].stringValue = walletPrivateKey.privateKey().publicKey().description
         args["m"].intValue = m
         args["n"].intValue = n
+        args["coin"].stringValue = "btc"
+        args["network"].stringValue = "testnet"
 
         postRequest(url: "/v2/wallets/", arguments: args) { data, response, error in
             if let data = data {
@@ -86,10 +101,42 @@ public class WalletClient {
 
                     completion(nil, walletId.identifier)
                 } catch {
+                    print(error)
                     completion(error, nil)
                 }
             } else {
+                print(error)
                 completion(error, nil)
+            }
+        }
+    }
+
+    public func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void) {
+        let xPubKey = publicKey.extended()
+        let requestPubKey = requestPrivateKey.extendedPublicKey().publicKey().description
+
+        let encCopayerName = encryptMessage(plaintext: "ios-copayer", encryptingKey: sharedEncryptingKey)
+        let copayerSignatureHash = [encCopayerName, xPubKey, requestPubKey].joined(separator: "|")
+        let customData = "{\"walletPrivKey\": \"\(walletPrivateKey.privateKey().description)\"}"
+
+        var arguments = JSON()
+        arguments["walletId"].stringValue = walletIdentifier
+        arguments["coin"].stringValue = "btc"
+        arguments["name"].stringValue = encCopayerName
+        arguments["xPubKey"].stringValue = xPubKey
+        arguments["requestPubKey"].stringValue = requestPubKey
+        arguments["customData"].stringValue = encryptMessage(plaintext: customData, encryptingKey: personalEncryptingKey)
+        arguments["copayerSignature"].stringValue = try! signMessage(copayerSignatureHash, privateKey: walletPrivateKey)
+        
+        postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, response, error in
+            if let data = data {
+                do {
+                    print(try JSON(data: data))
+                } catch {
+                    print(error)
+                }
+            } else {
+                print(error)
             }
         }
     }
@@ -169,7 +216,6 @@ public class WalletClient {
         getRequest(url: "/v1/utxos/") { data, response, error in
             if let data = data {
                 do {
-                    print(try JSON(data: data))
                     let unspentOutputs = try JSONDecoder().decode([UnspentOutput].self, from: data)
                     completion(unspentOutputs)
                 } catch {
@@ -220,7 +266,7 @@ public class WalletClient {
             let transactionHash = unsignedTx.tx.serialized().hex
 
             var arguments = JSON()
-            arguments["proposalSignature"].stringValue = try signMessage(transactionHash)
+            arguments["proposalSignature"].stringValue = try signMessage(transactionHash, privateKey: requestPrivateKey)
 
             postRequest(
                 url: "/v1/txproposals/\(txp.id)/publish/",
@@ -394,10 +440,10 @@ public class WalletClient {
     }
 
     private func getSignature(url: String, method: String, arguments: String = "{}") throws -> String {
-        return try signMessage([method, url, arguments].joined(separator: "|"))
+        return try signMessage([method, url, arguments].joined(separator: "|"), privateKey: requestPrivateKey)
     }
 
-    private func signMessage(_ message: String) throws -> String {
+    private func signMessage(_ message: String, privateKey: HDPrivateKey) throws -> String {
         guard let messageData = message.data(using: .utf8) else {
             throw WalletClientError.invalidMessageData(message: message)
         }
@@ -406,17 +452,17 @@ public class WalletClient {
         ret.reverse()
         ret.reverse()
 
-        return try Crypto.sign(ret, privateKey: requestPrivateKey.privateKey()).hex
+        return try Crypto.sign(ret, privateKey: privateKey.privateKey()).hex
     }
 
-    private func encryptMessage(plaintext: String) -> String {
-        let key = sjcl.base64ToBits(encryptingKey: sharedEncryptingKey)
+    private func encryptMessage(plaintext: String, encryptingKey: String) -> String {
+        let key = sjcl.base64ToBits(encryptingKey: encryptingKey)
 
         return sjcl.encrypt(password: key, plaintext: plaintext, params: ["ks": 128, "iter": 1])
     }
 
     private func buildSecret(walletId: String) throws -> String {
-        guard let widHex = Data(hex: walletId.replacingOccurrences(of: "-", with: "")) else {
+        guard let widHex = Data(fromHex: walletId.replacingOccurrences(of: "-", with: "")) else {
             throw WalletClientError.invalidWidHex(id: walletId)
         }
 

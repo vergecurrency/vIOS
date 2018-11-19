@@ -44,8 +44,17 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         ) { error, secret in
             print(secret)
 
+            if (error != nil || secret == nil) {
+                self.navigationController?.popViewController(animated: true)
+                return
+            }
+
             DispatchQueue.main.async {
                 WalletTicker.shared.start()
+
+                WalletClient.shared.joinWallet(walletIdentifier: ApplicationManager.default.walletId!) { error in
+                    print(error)
+                }
 
                 self.interval = setInterval(1) {
                     self.checklistImage.image = UIImage(named: images[selectedImage])
