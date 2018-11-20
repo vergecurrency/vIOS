@@ -8,4 +8,3 @@ github "danielgindi/Charts" ~> 3.2.1
 github "JohnEstropia/CoreStore" >= 5.0.0
 github "xmartlabs/Eureka" ~> 4.3
 github "krzyzanowskim/CryptoSwift"
-binary "https://raw.githubusercontent.com/vergecurrency/vIOS/master/BitcoinKit.framework.json" == 1.1.0
