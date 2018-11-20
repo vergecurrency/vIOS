@@ -46,12 +46,13 @@ carthage update --platform iOS
 * [hackiftekhar/IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) - Makes working with keyboards and inputs painless
 * [aschuch/QRCode](https://github.com/aschuch/QRCode) - Generates beautiful QR codes for receiving XVG
 * [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps working with JSON responses
-* [ReactiveX/RxSwift](https://github.com/ReactiveX/RxSwift) - Adds a reactive programming framework
 * [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
 * [HamzaGhazouani/HGPlaceholders](https://github.com/HamzaGhazouani/HGPlaceholders) - Library to show placeholders and Empty States for any UITableView
 * [danielgindi/Charts](https://github.com/danielgindi/Charts) - This library is used for making beautiful charts
 * [JohnEstropia/CoreStore](https://github.com/JohnEstropia/CoreStore) - Handy core data library
 * [xmartlabs/Eureka](https://github.com/xmartlabs/Eureka) - Library for easily creating forms
+* [yenom/BitcoinKit](https://github.com/yenom/BitcoinKit) - The BitcoinKit library is a Swift implementation of the Bitcoin protocol
+* [krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) - Crypto related functions and helpers for Swift implemented in Swift.
 
 ### Community
 
