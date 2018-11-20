@@ -105,7 +105,7 @@ public class WalletClient {
                     completion(error, nil)
                 }
             } else {
-                print(error)
+                print(error!)
                 completion(error, nil)
             }
         }
@@ -136,7 +136,7 @@ public class WalletClient {
                     print(error)
                 }
             } else {
-                print(error)
+                print(error!)
             }
         }
     }
@@ -356,7 +356,7 @@ public class WalletClient {
             if let data = data {
                 print(try! JSON(data: data))
             } else {
-                print(error)
+                print(error!)
             }
         }
     }

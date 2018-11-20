@@ -99,7 +99,6 @@ class ReceiveViewController: UIViewController {
 
     @IBAction func amountChanged(_ sender: UITextField) {
         amount = sender.text?.currencyNumberValue().doubleValue ?? 0
-        print(NSNumber(value: amount), amount, sender.text)
 
         if currency == .FIAT {
             if let xvgInfo = PriceTicker.shared.xvgInfo {

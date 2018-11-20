@@ -116,7 +116,7 @@ class ApplicationManager {
             return mnemonic
         }
         set {
-            guard let mnemonic = newValue as? [String] else {
+            guard let mnemonic = newValue else {
                 for index in 0..<12 {
                     keychain.delete("mnemonic.word.\(index)")
                 }
