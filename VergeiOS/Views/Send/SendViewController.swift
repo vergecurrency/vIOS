@@ -20,7 +20,7 @@ class SendViewController: UIViewController {
     @IBOutlet weak var walletAmountLabel: UILabel!
     @IBOutlet weak var recipientTextField: UITextField!
     @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var amountTextField: CurrencyInput!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
 
@@ -49,9 +49,7 @@ class SendViewController: UIViewController {
             self.isSendable()
         }
 
-        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
         amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
-        amountTextField.text = amountTextField.text?.currencyInputFormatting()
 
         setupRecipientTextFieldKeyBoardToolbar()
 
@@ -119,7 +117,8 @@ class SendViewController: UIViewController {
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
-            self.amountTextField.text = String(Int(self.currentAmount().doubleValue * 100)).currencyInputFormatting()
+            self.amountTextField.text = String(self.currentAmount().doubleValue)
+            self.amountTextField.format()
             
             if self.walletAmount.doubleValue == 0.0 {
                 return
@@ -257,14 +256,8 @@ class SendViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    @objc func amountTextFieldDidChange(_ textField: UITextField) {
-        if let amountString = textField.text?.currencyInputFormatting() {
-            textField.text = amountString
-        }
-    }
-
-    @objc func amountChanged(_ textField: UITextField) {
-        let amount = textField.text?.currencyNumberValue().doubleValue ?? 0
+    @objc func amountChanged(_ textField: CurrencyInput) {
+        let amount = textField.getNumber().doubleValue
 
         sendTransaction.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
         didChangeSendTransaction(sendTransaction)

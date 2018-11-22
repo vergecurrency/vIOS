@@ -15,7 +15,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     var items: [String] = [
         "price",
         "marketCap",
-        "rank",
+        // "rank",
         "dayChangePercentage",
         "dayHigh",
         "dayLow",

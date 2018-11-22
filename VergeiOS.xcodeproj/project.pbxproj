@@ -26,7 +26,6 @@
 		A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34221220A1E00EA8091 /* Notification+Names.swift */; };
 		A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3482123448200EA8091 /* NSNumber+Currency.swift */; };
 		A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */; };
-		A302D34F212754BE00EA8091 /* DevelopmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */; };
 		A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */; };
 		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
 		A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */; };
@@ -85,7 +84,8 @@
 		A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */; };
 		A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A338E6CD21110A09000D44EE /* QRCode.framework */; };
 		A33B759421A22F5A00030CCF /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759321A22F5A00030CCF /* CryptoSwift.framework */; };
-		A33B759C21A4D48C00030CCF /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759B21A4D48C00030CCF /* BitcoinKit.framework */; };
+		A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
+		A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B75BF21A61A3500030CCF /* CurrencyInput.swift */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
@@ -235,7 +235,6 @@
 		A302D34221220A1E00EA8091 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		A302D3482123448200EA8091 /* NSNumber+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Currency.swift"; sourceTree = "<group>"; };
 		A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Pagination.swift"; sourceTree = "<group>"; };
-		A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTableViewController.swift; sourceTree = "<group>"; };
 		A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabbarNavigator.storyboard; sourceTree = "<group>"; };
 		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
 		A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparantNavigationBar.swift; sourceTree = "<group>"; };
@@ -299,7 +298,8 @@
 		A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		A338E6CD21110A09000D44EE /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		A33B759321A22F5A00030CCF /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
-		A33B759B21A4D48C00030CCF /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = Frameworks/BitcoinKit.framework; sourceTree = "<group>"; };
+		A33B759D21A5CDD400030CCF /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = Carthage/Build/iOS/BitcoinKit.framework; sourceTree = "<group>"; };
+		A33B75BF21A61A3500030CCF /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -427,7 +427,7 @@
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
 				A3647288217E604B001B1B18 /* CoreStore.framework in Frameworks */,
 				A33B759421A22F5A00030CCF /* CryptoSwift.framework in Frameworks */,
-				A33B759C21A4D48C00030CCF /* BitcoinKit.framework in Frameworks */,
+				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
@@ -596,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				A305DDAD210782EB00911B64 /* PinTextField.swift */,
+				A33B75BF21A61A3500030CCF /* CurrencyInput.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -765,7 +766,6 @@
 				A398B209212B01E3004ACB73 /* Cells */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
-				A302D34E212754BE00EA8091 /* DevelopmentTableViewController.swift */,
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
 				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
@@ -827,7 +827,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A33B759B21A4D48C00030CCF /* BitcoinKit.framework */,
+				A33B759D21A5CDD400030CCF /* BitcoinKit.framework */,
 				A33B759321A22F5A00030CCF /* CryptoSwift.framework */,
 				A3647287217E604B001B1B18 /* CoreStore.framework */,
 				A3647285217CF9A9001B1B18 /* Eureka.framework */,
@@ -1148,7 +1148,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Charts.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CoreStore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
-				"$(SRCROOT)/Frameworks/BitcoinKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BitcoinKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 			);
 			name = "Run Script";
@@ -1236,6 +1236,7 @@
 				A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */,
 				A338E6B52110D075000D44EE /* WalletSlideView.swift in Sources */,
 				A3AA22012163F66B00160576 /* TorStatusIndicatorViewController.swift in Sources */,
+				A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */,
 				A338E6B0210FD558000D44EE /* TransactionsTableViewController.swift in Sources */,
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
@@ -1259,7 +1260,6 @@
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
-				A302D34F212754BE00EA8091 /* DevelopmentTableViewController.swift in Sources */,
 				07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */,
 				A302D2FB211F64FB00EA8091 /* Contact.swift in Sources */,
 				A3256665211A3B61006FB08A /* Statistics.swift in Sources */,

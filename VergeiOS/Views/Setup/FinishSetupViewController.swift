@@ -28,13 +28,6 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         self.openWalletButton.alpha = 0
         self.openWalletButton.center.y += 30
 
-        var selectedImage = 0
-        var images = [
-            "ChecklistTwoItem",
-            "ChecklistThreeItem",
-            "CheckmarkCircle"
-        ]
-
         WalletClient.shared.createWallet(
             walletName: "ioswallet",
             copayerName: "iosuser",
@@ -42,30 +35,17 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             n: 1,
             options: nil
         ) { error, secret in
-            print(secret)
 
             if (error != nil || secret == nil) {
                 self.navigationController?.popViewController(animated: true)
                 return
             }
 
-            DispatchQueue.main.async {
-                WalletTicker.shared.start()
+            WalletClient.shared.joinWallet(walletIdentifier: ApplicationManager.default.walletId!) { error in
+                print(error)
 
-                WalletClient.shared.joinWallet(walletIdentifier: ApplicationManager.default.walletId!) { error in
-                    print(error)
-                }
-
-                self.interval = setInterval(1) {
-                    self.checklistImage.image = UIImage(named: images[selectedImage])
-                    selectedImage += 1
-
-                    if selectedImage == images.count {
-                        self.interval?.invalidate()
-
-                        self.checklistDescription.text = "Your wallet is ready! Congratulations!"
-                        self.showWalletButton()
-                    }
+                DispatchQueue.main.async {
+                    self.animateProgress()
                 }
             }
         }
@@ -80,6 +60,27 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func animateProgress() {
+        var selectedImage = 0
+        var images = [
+            "ChecklistTwoItem",
+            "ChecklistThreeItem",
+            "CheckmarkCircle"
+        ]
+
+        interval = setInterval(1) {
+            self.checklistImage.image = UIImage(named: images[selectedImage])
+            selectedImage += 1
+
+            if selectedImage == images.count {
+                self.interval?.invalidate()
+
+                self.checklistDescription.text = "Your wallet is ready! Congratulations!"
+                self.showWalletButton()
+            }
+        }
     }
     
     func showWalletButton() {
@@ -97,7 +98,9 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         ApplicationManager.default.setup = true
+
         PriceTicker.shared.start()
+        WalletTicker.shared.start()
     }
 
 }

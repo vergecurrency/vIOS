@@ -24,12 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ThemeManager.shared.initialize(withWindow: window ?? UIWindow())
         IQKeyboardManager.shared.enable = true
         
-        backgroundTaskIdentifier = application.beginBackgroundTask {
-            if self.backgroundTaskIdentifier != nil {
-                application.endBackgroundTask(self.backgroundTaskIdentifier!)
-            }
-        }
-        
         registerAppforDetectLockState()
         setupListeners()
 
@@ -75,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         WalletTicker.shared.stop()
         PriceTicker.shared.stop()
+        TorClient.shared.resign()
 
         showPinUnlockViewController()
     }

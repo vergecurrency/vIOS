@@ -129,15 +129,40 @@ public class WalletClient {
         arguments["copayerSignature"].stringValue = try! signMessage(copayerSignatureHash, privateKey: walletPrivateKey)
         
         postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, response, error in
-            if let data = data {
-                do {
-                    print(try JSON(data: data))
-                } catch {
-                    print(error)
-                }
-            } else {
-                print(error!)
+            guard let data = data else {
+                return print(error!)
             }
+
+            guard let jsonResponse = try? JSON(data: data) else {
+                return print(error!)
+            }
+
+            print(jsonResponse)
+
+            if jsonResponse["code"].stringValue == "COPAYER_REGISTERED" {
+                self.openWallet { error in
+                    completion(error)
+                }
+                return
+            }
+
+            completion(error)
+        }
+    }
+
+    public func openWallet(completion: @escaping (_ error: Error?) -> Void) {
+        // COPAYER_REGISTERED
+        getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, response, error in
+            guard let data = data else {
+                return print(error!)
+            }
+
+            guard let jsonResponse = try? JSON(data: data) else {
+                return print(error!)
+            }
+
+            print(jsonResponse)
+            completion(error)
         }
     }
 
