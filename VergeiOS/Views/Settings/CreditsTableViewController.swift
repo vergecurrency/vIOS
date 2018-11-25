@@ -12,16 +12,16 @@ class CreditsTableViewController: EdgedTableViewController {
 
     var developers = [
         [
-            "name": "Justin",
-            "twitter": "justinvendetta"
-        ],
-        [
             "name": "Swen",
             "twitter": "SwenVanZanten"
         ],
         [
             "name": "Marvin",
             "twitter": "marpme_"
+        ],
+        [
+            "name": "Justin",
+            "twitter": "justinvendetta"
         ],
         [
             "name": "Kris",

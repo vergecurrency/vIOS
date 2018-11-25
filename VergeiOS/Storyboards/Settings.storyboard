@@ -327,7 +327,7 @@
         <!--Use Face ID-->
         <scene sceneID="VZs-4e-cK2">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="9dK-qh-T3Q" customClass="LocalAuthTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9dK-qh-T3Q" customClass="LocalAuthTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IgJ-HN-I40">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -504,27 +504,82 @@
         <scene sceneID="tdG-gH-mRv">
             <objects>
                 <navigationController id="EJT-TO-hr5" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgc-A0-eHQ" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgc-A0-eHQ" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="qpT-q5-jap" kind="relationship" relationship="rootViewController" id="Mh5-5D-L82"/>
+                        <segue destination="K7u-WG-qlZ" kind="relationship" relationship="rootViewController" id="jNg-bM-lYA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pld-Yk-v8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1622" y="310"/>
         </scene>
-        <!--PaperKeyWordsViewController-->
-        <scene sceneID="liG-rG-xMN">
+        <!--View Controller-->
+        <scene sceneID="MLW-bm-GQ4">
             <objects>
-                <viewControllerPlaceholder storyboardName="WelcomeGuide" referencedIdentifier="PaperKeyWordsViewController" id="qpT-q5-jap" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Yrf-lI-lVg"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gdy-qI-IpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="K7u-WG-qlZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8JF-dm-4Az">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cws-fz-4I9">
+                                <rect key="frame" x="40" y="208.5" width="295" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Paperkey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-af-j8d">
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="30.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30.5" id="FgV-ZH-LRv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <color key="textColor" name="SecondaryDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ7-OT-VPE" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40.5" width="295" height="209.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE DOG WALKS ALONG THE BEACH WITH HIS OWNER AND IS HAPPY ABOUT HIS LIVE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkd-wH-xQK">
+                                                <rect key="frame" x="20" y="20" width="255" height="169.5"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                                <color key="textColor" name="SecondaryDark"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="tkd-wH-xQK" firstAttribute="top" secondItem="hZ7-OT-VPE" secondAttribute="top" constant="20" id="Dwq-Ls-zGD"/>
+                                            <constraint firstAttribute="bottom" secondItem="tkd-wH-xQK" secondAttribute="bottom" constant="20" id="RGd-ec-R9s"/>
+                                            <constraint firstItem="tkd-wH-xQK" firstAttribute="leading" secondItem="hZ7-OT-VPE" secondAttribute="leading" constant="20" id="SIy-aI-GuO"/>
+                                            <constraint firstAttribute="trailing" secondItem="tkd-wH-xQK" secondAttribute="trailing" constant="20" id="knU-LR-phP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hZ7-OT-VPE" secondAttribute="trailing" id="1NA-2c-nHY"/>
+                                    <constraint firstItem="hZ7-OT-VPE" firstAttribute="leading" secondItem="cws-fz-4I9" secondAttribute="leading" id="D8t-Os-IS8"/>
+                                    <constraint firstItem="FAR-af-j8d" firstAttribute="leading" secondItem="cws-fz-4I9" secondAttribute="leading" id="L7c-cP-pAv"/>
+                                    <constraint firstAttribute="trailing" secondItem="FAR-af-j8d" secondAttribute="trailing" id="Wny-49-dbP"/>
+                                    <constraint firstAttribute="height" constant="250" id="zFz-kY-oVz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <constraints>
+                            <constraint firstItem="cws-fz-4I9" firstAttribute="leading" secondItem="FiB-Pn-F5D" secondAttribute="leading" constant="40" id="OPC-e8-oUn"/>
+                            <constraint firstItem="cws-fz-4I9" firstAttribute="centerY" secondItem="8JF-dm-4Az" secondAttribute="centerY" id="e1k-a1-2Cj"/>
+                            <constraint firstAttribute="trailing" secondItem="cws-fz-4I9" secondAttribute="trailing" constant="40" id="oUB-rp-Pq8"/>
+                            <constraint firstItem="cws-fz-4I9" firstAttribute="centerX" secondItem="8JF-dm-4Az" secondAttribute="centerX" id="tTA-gw-cnz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FiB-Pn-F5D"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QD1-8o-Wbb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Kea-2p-XyA"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4B-y9-hMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2315" y="309"/>
+            <point key="canvasLocation" x="2590" y="310"/>
         </scene>
         <!--Disconnect Wallet View Controller-->
         <scene sceneID="cl0-4N-jbc">
@@ -605,8 +660,8 @@
         <!--WelcomeViewController-->
         <scene sceneID="pNK-1S-NFM">
             <objects>
-                <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="WelcomeViewController" id="ihU-0k-uOE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iu-Wz-3Ex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="WelcomeViewController" id="ihU-0k-uOE" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="3318" y="1026"/>
         </scene>

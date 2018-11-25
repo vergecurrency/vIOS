@@ -64,10 +64,6 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
             return
         }
 
-        if ApplicationManager.default.setup {
-            return dismiss(animated: true)
-        }
-
         // Save the mnemonic.
         ApplicationManager.default.mnemonic = mnemonic
 
