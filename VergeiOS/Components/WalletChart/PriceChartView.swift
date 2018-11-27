@@ -36,7 +36,7 @@ class PriceChartView: AbstractChartView {
     }
 
     func set(chartData: [ChartDataEntry]) {
-        let priceSet = LineChartDataSet(values: nth(entries: chartData, step: 3), label: "Price History")
+        let priceSet = LineChartDataSet(values: chartData, label: "Price History")
         style(priceSet: priceSet)
 
         let data = LineChartData(dataSet: priceSet)

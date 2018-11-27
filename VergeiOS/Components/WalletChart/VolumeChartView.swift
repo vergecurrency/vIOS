@@ -36,7 +36,7 @@ class VolumeChartView: AbstractChartView {
     }
 
     func set(chartData: [BarChartDataEntry]) {
-        let priceSet = BarChartDataSet(values: nth(entries: chartData, step: 10), label: "Volume History")
+        let priceSet = BarChartDataSet(values: chartData, label: "Volume History")
         style(priceSet: priceSet)
 
         DispatchQueue.main.async {

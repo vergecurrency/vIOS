@@ -27,6 +27,15 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     var filter: ChartFilterToolbar.Filter = .oneDay
     var lastChangeFilter: TimeInterval?
     
+    var nthFilter = [
+        ChartFilterToolbar.Filter.all: 3,
+        ChartFilterToolbar.Filter.oneYear: 1,
+        ChartFilterToolbar.Filter.threeMonths: 3,
+        ChartFilterToolbar.Filter.oneMonth: 3,
+        ChartFilterToolbar.Filter.oneWeek: 3,
+        ChartFilterToolbar.Filter.oneDay: 2,
+    ]
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -136,8 +145,8 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
                 }
 
                 DispatchQueue.main.async {
-                    self.priceChartView.set(chartData: priceData)
-                    self.volumeChartView.set(chartData: volumeData)
+                    self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
+                    self.volumeChartView.set(chartData: self.nth(entries: volumeData, step: self.nthFilter[self.filter]! + 5) as! [BarChartDataEntry])
                     self.setPriceLabels(withData: data.priceUsd)
                     self.activityIndicator.stopAnimating()
                 }
@@ -193,4 +202,25 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             return nil
         }
     }
+    
+    func nth(entries: [ChartDataEntry], step: Int) -> [ChartDataEntry] {
+        var position = 0
+        
+        let values: [Double] = entries.map { item in
+            return item.y
+        }
+        
+        let highest = values.max()
+        let lowest = values.min()
+        
+        return entries.filter { args in
+            if args.y == highest || args.y == lowest {
+                return true
+            }
+            
+            position = 1 + position
+            return position % step == 0
+        }
+    }
+    
 }

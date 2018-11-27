@@ -403,7 +403,8 @@ public class WalletClient {
 
         print("Get request to: \(url)")
         print("With signature: \(signature)")
-
+        print("And Copayer id: \(copayerId)")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue(copayerId, forHTTPHeaderField: "x-identity")
