@@ -74,6 +74,14 @@ class TransactionRepository {
         }
     }
 
+    func removeAll() {
+        let txs = all()
+
+        for tx in txs {
+            remove(tx: tx)
+        }
+    }
+
     private func transform(entity: TransactionType?) -> TxHistory {
         let transaction = TxHistory(
             txid: entity?.txid ?? "",

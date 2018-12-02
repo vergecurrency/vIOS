@@ -358,11 +358,6 @@ Please increase you're balance.</string>
                             <constraint firstItem="9p4-gg-a9I" firstAttribute="leading" secondItem="KeC-Cu-FEB" secondAttribute="leading" id="tDh-5e-uyv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KeC-Cu-FEB"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="9p4-gg-a9I"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="nUu-cc-weU"/>
                     <navigationItem key="navigationItem" title="Send" id="bg6-ol-xdW"/>

@@ -24,7 +24,7 @@ class SendViewController: UIViewController {
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
 
-    let transactionFee = 0.1
+    let transactionFee = Config.fee
     var currency = CurrencySwitch.XVG
     var sendTransaction = SendTransaction()
     
@@ -117,8 +117,7 @@ class SendViewController: UIViewController {
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
-            self.amountTextField.text = String(self.currentAmount().doubleValue)
-            self.amountTextField.format()
+            self.amountTextField.setAmount(self.currentAmount())
             
             if self.walletAmount.doubleValue == 0.0 {
                 return

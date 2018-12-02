@@ -516,16 +516,16 @@
             </objects>
             <point key="canvasLocation" x="1622" y="310"/>
         </scene>
-        <!--View Controller-->
+        <!--Paperkey Show View Controller-->
         <scene sceneID="MLW-bm-GQ4">
             <objects>
-                <viewController id="K7u-WG-qlZ" sceneMemberID="viewController">
+                <viewController id="K7u-WG-qlZ" customClass="PaperkeyShowViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8JF-dm-4Az">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cws-fz-4I9">
-                                <rect key="frame" x="40" y="208.5" width="295" height="250"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cws-fz-4I9">
+                                <rect key="frame" x="40" y="86.5" width="295" height="494.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Paperkey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-af-j8d">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="30.5"/>
@@ -536,50 +536,96 @@
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taking a screenshot is not secure. Write down the paperkey on a piece of paper with a pen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-hu-VkN">
+                                        <rect key="frame" x="1" y="46.5" width="293.5" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" name="PrimaryLight"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down each word carefully without capital letters." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYr-IF-5ln">
+                                        <rect key="frame" x="19.5" y="101" width="256" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" name="SecondaryDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ7-OT-VPE" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40.5" width="295" height="209.5"/>
+                                        <rect key="frame" x="0.0" y="155.5" width="295" height="295"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE DOG WALKS ALONG THE BEACH WITH HIS OWNER AND IS HAPPY ABOUT HIS LIVE" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkd-wH-xQK">
-                                                <rect key="frame" x="20" y="20" width="255" height="169.5"/>
-                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkd-wH-xQK">
+                                                <rect key="frame" x="20" y="20" width="255" height="255"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="22"/>
                                                 <color key="textColor" name="SecondaryDark"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-Wz-Yl6">
+                                                <rect key="frame" x="20" y="20" width="255" height="255"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="A7u-Wz-Yl6" firstAttribute="top" secondItem="hZ7-OT-VPE" secondAttribute="top" constant="20" id="9sQ-pI-hJi"/>
+                                            <constraint firstAttribute="trailing" secondItem="A7u-Wz-Yl6" secondAttribute="trailing" constant="20" id="A3i-H1-PCb"/>
                                             <constraint firstItem="tkd-wH-xQK" firstAttribute="top" secondItem="hZ7-OT-VPE" secondAttribute="top" constant="20" id="Dwq-Ls-zGD"/>
                                             <constraint firstAttribute="bottom" secondItem="tkd-wH-xQK" secondAttribute="bottom" constant="20" id="RGd-ec-R9s"/>
                                             <constraint firstItem="tkd-wH-xQK" firstAttribute="leading" secondItem="hZ7-OT-VPE" secondAttribute="leading" constant="20" id="SIy-aI-GuO"/>
+                                            <constraint firstItem="A7u-Wz-Yl6" firstAttribute="leading" secondItem="hZ7-OT-VPE" secondAttribute="leading" constant="20" id="ZUM-PD-mTM"/>
+                                            <constraint firstAttribute="bottom" secondItem="A7u-Wz-Yl6" secondAttribute="bottom" constant="20" id="hGk-3l-cHg"/>
                                             <constraint firstAttribute="trailing" secondItem="tkd-wH-xQK" secondAttribute="trailing" constant="20" id="knU-LR-phP"/>
+                                            <constraint firstAttribute="width" secondItem="hZ7-OT-VPE" secondAttribute="height" multiplier="1:1" id="lC4-WU-SwW"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hf7-Aj-Yyj">
+                                        <rect key="frame" x="0.0" y="466.5" width="295" height="28"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-J9-1ot">
+                                                <rect key="frame" x="0.0" y="0.0" width="295" height="29"/>
+                                                <segments>
+                                                    <segment title="Words"/>
+                                                    <segment title="QR"/>
+                                                </segments>
+                                                <color key="tintColor" name="SecondaryLight"/>
+                                                <connections>
+                                                    <action selector="switchView:" destination="K7u-WG-qlZ" eventType="valueChanged" id="rNE-al-93W"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hZ7-OT-VPE" secondAttribute="trailing" id="1NA-2c-nHY"/>
                                     <constraint firstItem="hZ7-OT-VPE" firstAttribute="leading" secondItem="cws-fz-4I9" secondAttribute="leading" id="D8t-Os-IS8"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="FVS-nS-6WD"/>
                                     <constraint firstItem="FAR-af-j8d" firstAttribute="leading" secondItem="cws-fz-4I9" secondAttribute="leading" id="L7c-cP-pAv"/>
                                     <constraint firstAttribute="trailing" secondItem="FAR-af-j8d" secondAttribute="trailing" id="Wny-49-dbP"/>
-                                    <constraint firstAttribute="height" constant="250" id="zFz-kY-oVz"/>
+                                    <constraint firstItem="hf7-Aj-Yyj" firstAttribute="leading" secondItem="cws-fz-4I9" secondAttribute="leading" id="gxE-xz-1K7"/>
+                                    <constraint firstAttribute="trailing" secondItem="hf7-Aj-Yyj" secondAttribute="trailing" id="u3J-hE-waV"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
-                            <constraint firstItem="cws-fz-4I9" firstAttribute="leading" secondItem="FiB-Pn-F5D" secondAttribute="leading" constant="40" id="OPC-e8-oUn"/>
+                            <constraint firstItem="cws-fz-4I9" firstAttribute="leading" secondItem="FiB-Pn-F5D" secondAttribute="leading" priority="750" constant="40" id="OPC-e8-oUn"/>
                             <constraint firstItem="cws-fz-4I9" firstAttribute="centerY" secondItem="8JF-dm-4Az" secondAttribute="centerY" id="e1k-a1-2Cj"/>
-                            <constraint firstAttribute="trailing" secondItem="cws-fz-4I9" secondAttribute="trailing" constant="40" id="oUB-rp-Pq8"/>
+                            <constraint firstAttribute="trailing" secondItem="cws-fz-4I9" secondAttribute="trailing" priority="750" constant="40" id="oUB-rp-Pq8"/>
                             <constraint firstItem="cws-fz-4I9" firstAttribute="centerX" secondItem="8JF-dm-4Az" secondAttribute="centerX" id="tTA-gw-cnz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FiB-Pn-F5D"/>
                     </view>
                     <navigationItem key="navigationItem" id="QD1-8o-Wbb">
-                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Kea-2p-XyA"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Kea-2p-XyA">
+                            <connections>
+                                <action selector="closeView:" destination="K7u-WG-qlZ" id="qSW-Ou-l9X"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="qrImageView" destination="A7u-Wz-Yl6" id="Tju-Nv-D8l"/>
+                        <outlet property="wordsLabel" destination="tkd-wH-xQK" id="FQZ-t3-ecm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4B-y9-hMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2590" y="310"/>
+            <point key="canvasLocation" x="2589.5999999999999" y="309.89505247376314"/>
         </scene>
         <!--Disconnect Wallet View Controller-->
         <scene sceneID="cl0-4N-jbc">
@@ -660,8 +706,8 @@
         <!--WelcomeViewController-->
         <scene sceneID="pNK-1S-NFM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0iu-Wz-3Ex" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="WelcomeViewController" id="ihU-0k-uOE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0iu-Wz-3Ex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3318" y="1026"/>
         </scene>

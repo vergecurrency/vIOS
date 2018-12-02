@@ -211,7 +211,7 @@ class TransactionsTableViewController: EdgedTableViewController {
 
             let searchText = self.searchController.searchBar.text ?? ""
             let scopeIndex = self.searchController.searchBar.selectedScopeButtonIndex
-            let scope = self.searchController.searchBar.scopeButtonTitles![scopeIndex]
+            let scope = self.searchController.searchBar.scopeButtonTitles?[scopeIndex] ?? "All"
 
             self.getTransactions(searchText, scope: scope)
 

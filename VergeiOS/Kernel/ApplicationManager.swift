@@ -178,6 +178,7 @@ class ApplicationManager {
     }
     
     func reset() {
+        TransactionManager.shared.removeAll()
         userDefaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         userDefaults.synchronize()
         keychain.clear()

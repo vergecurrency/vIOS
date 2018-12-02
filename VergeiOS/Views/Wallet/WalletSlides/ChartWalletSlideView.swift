@@ -33,7 +33,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         ChartFilterToolbar.Filter.threeMonths: 3,
         ChartFilterToolbar.Filter.oneMonth: 3,
         ChartFilterToolbar.Filter.oneWeek: 3,
-        ChartFilterToolbar.Filter.oneDay: 2,
+        ChartFilterToolbar.Filter.oneDay: 1,
     ]
     
     override func awakeFromNib() {

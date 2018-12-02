@@ -48,6 +48,15 @@ class CurrencyInput: UITextField {
         return NSNumber(value: Double(text) ?? 0.0)
     }
 
+    public func setAmount(_ amount: NSNumber) {
+        let amountString = String(amount.doubleValue)
+
+        if let decimal = formatter.decimalSeparator {
+            text = amountString.replacingOccurrences(of: ".", with: decimal)
+            format()
+        }
+    }
+
     public func format() {
         handleFormatting()
 
@@ -70,8 +79,13 @@ class CurrencyInput: UITextField {
             return
         }
 
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currencyAccounting
+        // If the last character isn't a number we remove it and add the decimal separator.
+        if text.last?.description != nil && !CharacterSet.decimalDigits.isSuperset(
+            of: CharacterSet(charactersIn: text.last!.description)
+        ) {
+            text.removeLast()
+            text = "\(text)\(formatter.decimalSeparator.description)"
+        }
 
         text = text.replacingOccurrences(of: formatter.groupingSeparator, with: "")
 
@@ -91,10 +105,10 @@ class CurrencyInput: UITextField {
         // Group the numbers above the decimal separator.
         var counted = 0
         var newText = ""
-        let includesDecimalSeparator = String(text).contains(".")
+        let includesDecimalSeparator = String(text).contains(formatter.decimalSeparator)
 
         for number in String(text).reversed() {
-            if includesDecimalSeparator && !newText.contains(".") {
+            if includesDecimalSeparator && !newText.contains(formatter.decimalSeparator) {
                 newText.insert(number, at: String.Index.init(encodedOffset: 0))
                 continue
             }
