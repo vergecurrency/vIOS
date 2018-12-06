@@ -525,14 +525,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cws-fz-4I9">
-                                <rect key="frame" x="40" y="86.5" width="295" height="494.5"/>
+                                <rect key="frame" x="40" y="76.5" width="295" height="494.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Paperkey" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-af-j8d">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="30.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30.5" id="FgV-ZH-LRv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="28"/>
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -605,7 +605,7 @@
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
                             <constraint firstItem="cws-fz-4I9" firstAttribute="leading" secondItem="FiB-Pn-F5D" secondAttribute="leading" priority="750" constant="40" id="OPC-e8-oUn"/>
-                            <constraint firstItem="cws-fz-4I9" firstAttribute="centerY" secondItem="8JF-dm-4Az" secondAttribute="centerY" id="e1k-a1-2Cj"/>
+                            <constraint firstItem="cws-fz-4I9" firstAttribute="centerY" secondItem="8JF-dm-4Az" secondAttribute="centerY" constant="-10" id="e1k-a1-2Cj"/>
                             <constraint firstAttribute="trailing" secondItem="cws-fz-4I9" secondAttribute="trailing" priority="750" constant="40" id="oUB-rp-Pq8"/>
                             <constraint firstItem="cws-fz-4I9" firstAttribute="centerX" secondItem="8JF-dm-4Az" secondAttribute="centerX" id="tTA-gw-cnz"/>
                         </constraints>

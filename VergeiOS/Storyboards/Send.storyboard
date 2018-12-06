@@ -310,7 +310,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NZZ-HO-kir">
-                                        <rect key="frame" x="24" y="86" width="327" height="382"/>
+                                        <rect key="frame" x="24" y="76" width="327" height="382"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoBalancePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="hgi-lO-m42">
                                                 <rect key="frame" x="13.5" y="0.0" width="300" height="300"/>
@@ -339,7 +339,7 @@ Please increase you're balance.</string>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundGrey"/>
                                 <constraints>
-                                    <constraint firstItem="NZZ-HO-kir" firstAttribute="centerY" secondItem="9p4-gg-a9I" secondAttribute="centerY" id="A1j-xd-HPQ"/>
+                                    <constraint firstItem="NZZ-HO-kir" firstAttribute="centerY" secondItem="9p4-gg-a9I" secondAttribute="centerY" constant="-10" id="A1j-xd-HPQ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NZZ-HO-kir" secondAttribute="trailing" constant="24" id="BL4-m2-cIK"/>
                                     <constraint firstItem="NZZ-HO-kir" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9p4-gg-a9I" secondAttribute="leading" constant="24" id="tsq-sE-KRi"/>
                                     <constraint firstItem="NZZ-HO-kir" firstAttribute="centerX" secondItem="9p4-gg-a9I" secondAttribute="centerX" id="vMj-f0-Xr0"/>

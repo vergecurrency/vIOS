@@ -27,8 +27,13 @@ public class WalletClient {
     private let network = Network.testnet
 
     private var privateKey: HDPrivateKey {
+        let seed = Mnemonic.seed(
+            mnemonic: ApplicationManager.default.mnemonic!,
+            passphrase: ApplicationManager.default.passphrase!
+        )
+
         // This should fail when no mnemonic is set.
-        return HDPrivateKey(seed: Mnemonic.seed(mnemonic: ApplicationManager.default.mnemonic!), network: network)
+        return HDPrivateKey(seed: seed, network: network)
     }
 
     private var walletPrivateKey: HDPrivateKey {

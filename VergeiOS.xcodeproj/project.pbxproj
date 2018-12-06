@@ -83,6 +83,8 @@
 		A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */; };
 		A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A338E6CD21110A09000D44EE /* QRCode.framework */; };
 		A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */; };
+		A339393621B877750010CC4A /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393521B877750010CC4A /* PassphraseViewController.swift */; };
+		A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393921B877AE0010CC4A /* TorViewController.swift */; };
 		A33B759421A22F5A00030CCF /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759321A22F5A00030CCF /* CryptoSwift.framework */; };
 		A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
 		A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B75BF21A61A3500030CCF /* CurrencyInput.swift */; };
@@ -298,6 +300,8 @@
 		A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		A338E6CD21110A09000D44EE /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperkeyShowViewController.swift; sourceTree = "<group>"; };
+		A339393521B877750010CC4A /* PassphraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseViewController.swift; sourceTree = "<group>"; };
+		A339393921B877AE0010CC4A /* TorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorViewController.swift; sourceTree = "<group>"; };
 		A33B759321A22F5A00030CCF /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		A33B759D21A5CDD400030CCF /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = Carthage/Build/iOS/BitcoinKit.framework; sourceTree = "<group>"; };
 		A33B75BF21A61A3500030CCF /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 				A325664C211375E5006FB08A /* PinUnlockViewController.swift */,
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
 				A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */,
+				A339393521B877750010CC4A /* PassphraseViewController.swift */,
+				A339393921B877AE0010CC4A /* TorViewController.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";
@@ -1239,6 +1245,7 @@
 				A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */,
 				A338E6B52110D075000D44EE /* WalletSlideView.swift in Sources */,
 				A3AA22012163F66B00160576 /* TorStatusIndicatorViewController.swift in Sources */,
+				A339393621B877750010CC4A /* PassphraseViewController.swift in Sources */,
 				A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */,
 				A338E6B0210FD558000D44EE /* TransactionsTableViewController.swift in Sources */,
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
@@ -1326,6 +1333,7 @@
 				B2BD7216E5E949A43C2B4FC4 /* TxOutput.swift in Sources */,
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
+				A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */,
 				A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */,
 				A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */,
 				B2BD7D87D41E757FCBBF6D75 /* AppDelegate+NotificationCenter.swift in Sources */,
