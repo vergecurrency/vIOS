@@ -99,6 +99,7 @@
 		A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3408E4B217333B5009F0C9D /* NotificationViewController.xib */; };
 		A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E55217687F9009F0C9D /* Charts.framework */; };
 		A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3408E5721768AF4009F0C9D /* Date+Extensions.swift */; };
+		A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */; };
 		A35F3D82211CE738006068A2 /* WalletManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* WalletManagerTest.swift */; };
 		A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364727D217C7787001B1B18 /* ContactTableViewController.swift */; };
 		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
@@ -318,6 +319,7 @@
 		A3408E4B217333B5009F0C9D /* NotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		A3408E55217687F9009F0C9D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		A3408E5721768AF4009F0C9D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseConfirmationViewController.swift; sourceTree = "<group>"; };
 		A35F3D81211CE738006068A2 /* WalletManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerTest.swift; sourceTree = "<group>"; };
 		A364727D217C7787001B1B18 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 				A305DD98210666AD00911B64 /* SelectPinViewController.swift */,
 				A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */,
 				A339393521B877750010CC4A /* PassphraseViewController.swift */,
+				A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */,
 				A339393921B877AE0010CC4A /* TorViewController.swift */,
 			);
 			path = Setup;
@@ -1319,6 +1322,7 @@
 				B2BD734546C80289A73FBA46 /* WalletClient.swift in Sources */,
 				B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */,
 				B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */,
+				A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */,
 				B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */,
 				B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */,
 				B2BD70891B57E89471E5B492 /* WalletAddressesOptions.swift in Sources */,

@@ -14,6 +14,12 @@ class TorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        // TODO: Create a Tor setup page and move this over.
+        // Set Tor enabled as default.
+        ApplicationManager.default.useTor = true
+        // Now start Tor.
+        TorClient.shared.start {}
     }
     
 

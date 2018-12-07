@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PassphraseViewController: UIViewController {
+class PassphraseViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passphraseTextfield: UITextField!
     @IBOutlet weak var proceedButton: UIButton!
@@ -31,9 +31,8 @@ class PassphraseViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .primaryLight()
         navigationController?.navigationBar.barStyle = .default
 
-        proceedButton.isEnabled = false
-
         passphraseTextfield.addTarget(self, action: #selector(validatePassphrase(_:)), for: .editingChanged)
+        passphraseTextfield.delegate = self
     }
 
     @objc func validatePassphrase(_ textField: UITextField) {
@@ -101,6 +100,26 @@ class PassphraseViewController: UIViewController {
         }
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let passphrase = textField.text else {
+            return false
+        }
+
+        let length = checkLength(passphrase)
+        let cases = checkCase(passphrase)
+        let specials = checkSpecials(passphrase)
+
+        if (length && cases && specials) {
+            performSegue(withIdentifier: "proceed", sender: self)
+        }
+
+        return length && cases && specials
+    }
+
+    @objc func nice() {
+        print("nice")
+    }
+
     @IBAction func closeView(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -112,7 +131,9 @@ class PassphraseViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "proceed" {
-            ApplicationManager.default.passphrase = passphraseTextfield.text
+            if let vc = segue.destination as? PassphraseConfirmationViewController {
+                vc.previousPassphrase = passphraseTextfield.text!
+            }
         }
     }
 

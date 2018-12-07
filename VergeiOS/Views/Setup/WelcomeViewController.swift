@@ -16,12 +16,6 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // TODO: Create a Tor setup page and move this over.
-        // Set Tor enabled as default.
-        ApplicationManager.default.useTor = true
-        // Now start Tor.
-        TorClient.shared.start {}
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
