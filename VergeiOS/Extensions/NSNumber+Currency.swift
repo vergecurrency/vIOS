@@ -31,7 +31,9 @@ extension NSNumber {
         return toCurrency(currency: ApplicationManager.default.currency, fractDigits: fractDigits)
     }
     
-    func toXvgCurrency(fractDigits: Int = 2) -> String {
+    func toXvgCurrency(fractDigits: Int? = nil) -> String {
+        let fractDigits = 6
+
         return toCurrency(currency: "XVG", fractDigits: fractDigits)
     }
 

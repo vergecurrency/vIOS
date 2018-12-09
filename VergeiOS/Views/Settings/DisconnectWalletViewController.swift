@@ -34,6 +34,7 @@ class DisconnectWalletViewController: UIViewController {
                     ApplicationManager.default.reset()
                     PriceTicker.shared.stop()
                     WalletTicker.shared.stop()
+                    TorClient.shared.resign()
                 } else {
                     pinUnlockView.dismiss(animated: true)
                 }

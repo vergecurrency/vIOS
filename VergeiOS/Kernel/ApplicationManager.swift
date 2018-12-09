@@ -129,6 +129,19 @@ class ApplicationManager {
         }
     }
 
+    var passphrase: String? {
+        get {
+            return keychain.get("wallet.passphrase")
+        }
+        set {
+            if let passphrase = newValue {
+                keychain.set(passphrase, forKey: "wallet.passphrase")
+            } else {
+                keychain.delete("wallet.passphrase")
+            }
+        }
+    }
+
     var walletId: String? {
         get {
             return keychain.get("wallet.id")

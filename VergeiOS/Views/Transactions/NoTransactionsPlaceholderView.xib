@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cCd-x2-0kG">
-                            <rect key="frame" x="24" y="163" width="327" height="341"/>
+                            <rect key="frame" x="24" y="153" width="327" height="341"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransactionsPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Pkt-LK-K93">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="294"/>
@@ -56,7 +56,7 @@
                     <color key="backgroundColor" name="BackgroundGrey"/>
                     <constraints>
                         <constraint firstItem="cCd-x2-0kG" firstAttribute="centerX" secondItem="Br9-EO-Rea" secondAttribute="centerX" id="diw-5E-1Lu"/>
-                        <constraint firstItem="cCd-x2-0kG" firstAttribute="centerY" secondItem="Br9-EO-Rea" secondAttribute="centerY" id="i3d-rW-SNn"/>
+                        <constraint firstItem="cCd-x2-0kG" firstAttribute="centerY" secondItem="Br9-EO-Rea" secondAttribute="centerY" constant="-10" id="i3d-rW-SNn"/>
                         <constraint firstItem="cCd-x2-0kG" firstAttribute="leading" secondItem="Br9-EO-Rea" secondAttribute="leading" constant="24" id="qmy-15-cWq"/>
                         <constraint firstAttribute="trailing" secondItem="cCd-x2-0kG" secondAttribute="trailing" constant="24" id="xI5-kU-KBZ"/>
                     </constraints>
