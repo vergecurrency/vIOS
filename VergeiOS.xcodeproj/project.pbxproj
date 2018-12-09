@@ -123,6 +123,7 @@
 		A38D6F7821BBFA7C00280FFE /* TorSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7721BBFA7C00280FFE /* TorSetup2View.xib */; };
 		A38D6F7A21BBFA9700280FFE /* TorSetup3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */; };
 		A38D6F7C21BBFAA700280FFE /* TorSetup3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */; };
+		A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */; };
 		A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */; };
 		A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B207212B0103004ACB73 /* LAContext+Type.swift */; };
 		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
@@ -348,6 +349,7 @@
 		A38D6F7721BBFA7C00280FFE /* TorSetup2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorSetup2View.xib; sourceTree = "<group>"; };
 		A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorSetup3View.swift; sourceTree = "<group>"; };
 		A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorSetup3View.xib; sourceTree = "<group>"; };
+		A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperkeyQRViewController.swift; sourceTree = "<group>"; };
 		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
 		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				07938406210DB46C00C3C799 /* RestoreWalletController.swift */,
 				0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */,
 				0793840F210DD73900C3C799 /* FinalRecoveryController.swift */,
+				A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */,
 			);
 			path = RestoreGuide;
 			sourceTree = "<group>";
@@ -1357,6 +1360,7 @@
 				B2BD711DC7A69C1F9F9C2875 /* TxAction.swift in Sources */,
 				B2BD782690228E5BDAFE38C4 /* TxProposal.swift in Sources */,
 				B2BD741F2CC30614537FA183 /* TxProposalResponse.swift in Sources */,
+				A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */,
 				B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */,
 				B2BD7216E5E949A43C2B4FC4 /* TxOutput.swift in Sources */,
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
