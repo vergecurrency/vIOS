@@ -119,6 +119,10 @@
 		A3764131210AE1D500E04521 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764130210AE1D500E04521 /* Platform.swift */; };
 		A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A386CA98219E28ED00FBF465 /* SendingView.swift */; };
 		A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A386CA9A219E28FA00FBF465 /* SendingView.xib */; };
+		A38D6F7621BBFA6D00280FFE /* TorSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7521BBFA6D00280FFE /* TorSetup1View.xib */; };
+		A38D6F7821BBFA7C00280FFE /* TorSetup2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7721BBFA7C00280FFE /* TorSetup2View.xib */; };
+		A38D6F7A21BBFA9700280FFE /* TorSetup3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */; };
+		A38D6F7C21BBFAA700280FFE /* TorSetup3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */; };
 		A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */; };
 		A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B207212B0103004ACB73 /* LAContext+Type.swift */; };
 		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
@@ -340,6 +344,10 @@
 		A386CA98219E28ED00FBF465 /* SendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingView.swift; sourceTree = "<group>"; };
 		A386CA9A219E28FA00FBF465 /* SendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendingView.xib; sourceTree = "<group>"; };
 		A386CA9C21A03C5200FBF465 /* VergeiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeiOS.entitlements; sourceTree = "<group>"; };
+		A38D6F7521BBFA6D00280FFE /* TorSetup1View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorSetup1View.xib; sourceTree = "<group>"; };
+		A38D6F7721BBFA7C00280FFE /* TorSetup2View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorSetup2View.xib; sourceTree = "<group>"; };
+		A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorSetup3View.swift; sourceTree = "<group>"; };
+		A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorSetup3View.xib; sourceTree = "<group>"; };
 		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
 		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
@@ -702,6 +710,7 @@
 		A338E696210CF717000D44EE /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				A38D6F7421BBFA4D00280FFE /* TorSetup */,
 				A338E697210CF725000D44EE /* LoadingTorViewController.swift */,
 				A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */,
 				A338E6A1210DD893000D44EE /* FinishSetupViewController.swift */,
@@ -874,6 +883,17 @@
 				A338E6A5210DE489000D44EE /* Timeout.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A38D6F7421BBFA4D00280FFE /* TorSetup */ = {
+			isa = PBXGroup;
+			children = (
+				A38D6F7521BBFA6D00280FFE /* TorSetup1View.xib */,
+				A38D6F7721BBFA7C00280FFE /* TorSetup2View.xib */,
+				A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */,
+				A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */,
+			);
+			path = TorSetup;
 			sourceTree = "<group>";
 		};
 		A398B209212B01E3004ACB73 /* Cells */ = {
@@ -1101,6 +1121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A38D6F7621BBFA6D00280FFE /* TorSetup1View.xib in Resources */,
 				07938404210DAD3800C3C799 /* RestoreGuide.storyboard in Resources */,
 				A3AA22022163F66B00160576 /* TorStatusIndicatorViewController.xib in Resources */,
 				A325664B211373FF006FB08A /* Wallet.storyboard in Resources */,
@@ -1116,11 +1137,13 @@
 				A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */,
 				A338E6B32110D064000D44EE /* TransactionsWalletSlideView.xib in Resources */,
 				A3256649211372B3006FB08A /* Transactions.storyboard in Resources */,
+				A38D6F7821BBFA7C00280FFE /* TorSetup2View.xib in Resources */,
 				A3B2E2652148421300C31719 /* NoTransactionsPlaceholderView.xib in Resources */,
 				A338E695210CF60B000D44EE /* Setup.storyboard in Resources */,
 				A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */,
 				A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */,
 				A3C5C3CE21985B11003B6C02 /* sjcl.js in Resources */,
+				A38D6F7C21BBFAA700280FFE /* TorSetup3View.xib in Resources */,
 				A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */,
 				A3B2E26B214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib in Resources */,
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
@@ -1256,6 +1279,7 @@
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
 				A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */,
 				A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */,
+				A38D6F7A21BBFA9700280FFE /* TorSetup3View.swift in Sources */,
 				A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
