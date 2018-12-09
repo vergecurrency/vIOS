@@ -179,7 +179,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LA2-Cs-ogv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Restore Wallet" id="swz-nW-6pe"/>
+                    <navigationItem key="navigationItem" title="Restore Wallet" id="swz-nW-6pe">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="QRcode" id="8IQ-HB-t3f">
+                            <connections>
+                                <segue destination="gje-7t-YmI" kind="presentation" identifier="scanQrCode" id="bDZ-LB-ec3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="keyLabel" destination="jKk-2b-DoG" id="fOJ-iu-mCh"/>
                         <outlet property="keyProgressLabel" destination="tmQ-9i-zxc" id="hb3-IC-XAO"/>
@@ -343,12 +349,82 @@
             </objects>
             <point key="canvasLocation" x="-252" y="-692"/>
         </scene>
+        <!--PaperkeyQR View Controller-->
+        <scene sceneID="mgJ-jK-TBL">
+            <objects>
+                <viewController id="gje-7t-YmI" customClass="PaperkeyQRViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xe8-4i-WDO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skZ-ch-7wk" customClass="MakeTransparentHoleOnOverlayView" customModule="VergeiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="av2-LP-Qyq">
+                                        <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="Qcq-GX-smg"/>
+                                            <constraint firstAttribute="height" constant="240" id="nYR-sk-NY0"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a paperkey QR code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qr0-VI-KQG">
+                                        <rect key="frame" x="87.5" y="159.5" width="200" height="24"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwC-BM-nbX">
+                                        <rect key="frame" x="147.5" y="601" width="80" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ShZ-DL-ugs"/>
+                                            <constraint firstAttribute="width" constant="80" id="kaN-Ht-DQd"/>
+                                        </constraints>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closeController:" destination="gje-7t-YmI" eventType="touchUpInside" id="dTW-LX-Vzn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75050834759999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="av2-LP-Qyq" firstAttribute="centerX" secondItem="skZ-ch-7wk" secondAttribute="centerX" id="9FM-HS-Z8C"/>
+                                    <constraint firstItem="qr0-VI-KQG" firstAttribute="centerX" secondItem="skZ-ch-7wk" secondAttribute="centerX" id="IYN-X6-w6l"/>
+                                    <constraint firstItem="fwC-BM-nbX" firstAttribute="centerX" secondItem="skZ-ch-7wk" secondAttribute="centerX" id="baN-me-K1L"/>
+                                    <constraint firstAttribute="bottom" secondItem="fwC-BM-nbX" secondAttribute="bottom" constant="16" id="dpp-y8-Qa4"/>
+                                    <constraint firstItem="av2-LP-Qyq" firstAttribute="centerY" secondItem="skZ-ch-7wk" secondAttribute="centerY" id="vKI-zQ-Iqi"/>
+                                    <constraint firstItem="av2-LP-Qyq" firstAttribute="top" secondItem="qr0-VI-KQG" secondAttribute="bottom" constant="30" id="xgX-0a-1XO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="transparentHoleView" destination="av2-LP-Qyq" id="5fF-Mf-CuC"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="skZ-ch-7wk" firstAttribute="top" secondItem="Xe8-4i-WDO" secondAttribute="top" id="ABU-iE-jub"/>
+                            <constraint firstAttribute="trailing" secondItem="skZ-ch-7wk" secondAttribute="trailing" id="TfA-ND-LmY"/>
+                            <constraint firstAttribute="bottom" secondItem="skZ-ch-7wk" secondAttribute="bottom" id="UcS-RZ-UTd"/>
+                            <constraint firstItem="skZ-ch-7wk" firstAttribute="leading" secondItem="Xe8-4i-WDO" secondAttribute="leading" id="v6B-PW-6CT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sNH-ed-KQC"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="overlayView" destination="skZ-ch-7wk" id="YSq-TS-HyT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uEz-Fi-BaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617" y="-691"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Background" width="1542" height="721"/>
         <image name="ConfirmPaperkey" width="600" height="600"/>
         <image name="FinalizeRestore" width="600" height="600"/>
         <image name="PaperKey" width="600" height="600"/>
+        <image name="QRcode" width="30" height="30"/>
         <image name="RestoreKey" width="30" height="30"/>
         <image name="Restoring" width="30" height="30"/>
         <namedColor name="BackgroundGrey">
@@ -361,7 +437,7 @@
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.094117647058823528" green="0.23529411764705882" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -21,10 +21,14 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        keyTextField.becomeFirstResponder()
-
         setupTextFieldBar()
         updateView(index: index)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        keyTextField.becomeFirstResponder()
     }
 
     private func setupTextFieldBar() {
@@ -114,10 +118,21 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         }
         
     }
+
+    func setMnemonicAndProceed(_ mnemonic: [String]) {
+        keys = mnemonic
+
+        performSegue(withIdentifier: "showFinalRecovery", sender: self)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+
+        if (segue.identifier == "scanQrCode") {
+            let scanQrController = segue.destination as? PaperkeyQRViewController
+            scanQrController?.paperkeyViewController = self
+        }
+
         if (segue.identifier == "showFinalRecovery") {
             let finalRecoverController = segue.destination as? FinalRecoveryController
             finalRecoverController?.keys = self.keys
