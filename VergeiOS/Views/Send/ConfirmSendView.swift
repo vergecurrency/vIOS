@@ -59,19 +59,14 @@ class ConfirmSendView: UIView {
             let totalXVG = transaction.amount.doubleValue + Config.fee
             let totalFiat = totalXVG * xvgInfo.price
 
-            sendingAmountLabel.text = transaction.amount.toCurrency(currency: "XVG")
-            transactionFeeAmountLabel.text = NSNumber(floatLiteral: Config.fee).toCurrency(currency: "XVG")
+            sendingAmountLabel.text = transaction.amount.toXvgCurrency()
+            transactionFeeAmountLabel.text = NSNumber(floatLiteral: Config.fee).toXvgCurrency()
 
-            totalXvgAmountLabel.text = NSNumber(floatLiteral: (transaction.amount.doubleValue + Config.fee)).toCurrency(
-                currency: "XVG",
-                fractDigits: 6
-            )
+            totalXvgAmountLabel.text = NSNumber(
+                floatLiteral: (transaction.amount.doubleValue + Config.fee)
+            ).toXvgCurrency()
 
-            totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toCurrency(
-                currency: ApplicationManager.default.currency,
-                fractDigits: 6
-            )
-
+            totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toPairCurrency()
             recipientAddressLabel.text = transaction.address
         }
     }

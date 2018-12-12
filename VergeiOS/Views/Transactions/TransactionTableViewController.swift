@@ -82,7 +82,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             prefix = "+"
         }
         
-        amountLabel.text = "\(prefix) \(transaction.amountValue.toCurrency(currency: "XVG", fractDigits: 2))"
+        amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
     }
     
     func loadTransactions(_ transaction: TxHistory) {

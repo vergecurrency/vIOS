@@ -124,6 +124,8 @@
 		A38D6F7A21BBFA9700280FFE /* TorSetup3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */; };
 		A38D6F7C21BBFAA700280FFE /* TorSetup3View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */; };
 		A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */; };
+		A38D6F8021C06C2A00280FFE /* ServiceUrlTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */; };
+		A38D6F8221C17EFB00280FFE /* AddressesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */; };
 		A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */; };
 		A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B207212B0103004ACB73 /* LAContext+Type.swift */; };
 		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
@@ -350,6 +352,8 @@
 		A38D6F7921BBFA9700280FFE /* TorSetup3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorSetup3View.swift; sourceTree = "<group>"; };
 		A38D6F7B21BBFAA700280FFE /* TorSetup3View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorSetup3View.xib; sourceTree = "<group>"; };
 		A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperkeyQRViewController.swift; sourceTree = "<group>"; };
+		A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrlTableViewController.swift; sourceTree = "<group>"; };
+		A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewController.swift; sourceTree = "<group>"; };
 		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
 		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
@@ -796,6 +800,8 @@
 				B2BD70361646D756C13B826D /* DonateTableViewController.swift */,
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
+				A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */,
+				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1291,6 +1297,7 @@
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
+				A38D6F8221C17EFB00280FFE /* AddressesTableViewController.swift in Sources */,
 				A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */,
 				A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
@@ -1349,6 +1356,7 @@
 				B2BD734546C80289A73FBA46 /* WalletClient.swift in Sources */,
 				B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */,
 				B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */,
+				A38D6F8021C06C2A00280FFE /* ServiceUrlTableViewController.swift in Sources */,
 				A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */,
 				B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */,
 				B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */,

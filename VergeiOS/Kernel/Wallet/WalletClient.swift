@@ -17,7 +17,10 @@ public class WalletClient {
         case invalidWidHex(id: String)
     }
 
-    public static let shared = WalletClient(baseUrl: Config.bwsEndpoint, urlSession: TorClient.shared.session)
+    public static let shared = WalletClient(
+        baseUrl: ApplicationManager.default.walletServiceUrl,
+        urlSession: TorClient.shared.session
+    )
 
     private let sjcl = SJCL()
 
@@ -171,6 +174,14 @@ public class WalletClient {
         }
     }
 
+    public func scanAddresses(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+        postRequest(url: "/v1/addresses/scan", arguments: nil) { data, response, error in
+            print(try? JSON(data: data ?? Data()))
+            print(error)
+            completion(error)
+        }
+    }
+
     public func createAddress(completion: @escaping (_ error: Error?, _ address: AddressInfo?) -> Void) {
         postRequest(url: "/v3/addresses/", arguments: nil) { data, response, error in
             if let data = data {
@@ -203,7 +214,22 @@ public class WalletClient {
         options: WalletAddressesOptions? = nil,
         completion: @escaping (_ addresses: [AddressInfo]) -> Void
     ) {
-        getRequest(url: "/v1/addresses/") { data, response, error in
+        var args: [String] = []
+        var qs = ""
+
+        if options?.limit != nil {
+            args.append("limit=\(options!.limit!)")
+        }
+
+        if options?.reverse ?? false {
+            args.append("reverse=1")
+        }
+
+        if args.count > 0 {
+            qs = "?\(args.joined(separator: "&"))"
+        }
+
+        getRequest(url: "/v1/addresses/\(qs)") { data, response, error in
             if let data = data {
                 do {
                     let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)

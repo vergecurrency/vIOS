@@ -73,7 +73,7 @@ class TransactionTableViewCell: Cell<String>, CellType {
             prefix = "+"
         }
         
-        amountLabel.text = "\(prefix) \(transaction.amountValue.toCurrency(currency: "XVG", fractDigits: 2))"
+        amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
     }
 }
 

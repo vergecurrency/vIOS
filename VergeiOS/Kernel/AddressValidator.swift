@@ -13,7 +13,7 @@ class AddressValidator {
     
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
     
-    let requestRegex = "(verge:\\/\\/[a-z|A-Z|0-9]{34}\\?)|(amount=\\d+[\\.|\\,]?\\d+)$"
+    let requestRegex = "(verge:[\\/]{0,2}[a-z|A-Z|0-9]{34}\\?)|(amount=\\d+[\\.|\\,]?\\d+)$"
     let addressCount = 34
     
     func validate(
@@ -38,6 +38,7 @@ class AddressValidator {
             valid = true
             address = matches[0]
                 .replacingOccurrences(of: "verge://", with: "")
+                .replacingOccurrences(of: "verge:", with: "")
                 .replacingOccurrences(of: "?", with: "")
         }
         

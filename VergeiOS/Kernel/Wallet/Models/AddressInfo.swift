@@ -21,3 +21,9 @@ public struct AddressInfo: Decodable {
     public let hasActivity: Bool?
 
 }
+
+extension AddressInfo {
+    public var createdOnDate: Date {
+        return Date(timeIntervalSince1970: TimeInterval(createdOn))
+    }
+}

@@ -51,7 +51,8 @@ class SendViewController: UIViewController {
 
         amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
 
-        setupRecipientTextFieldKeyBoardToolbar()
+        setupRecipientTextFieldKeyboardToolbar()
+        setupAmountTextFieldKeyboardToolbar()
 
         DispatchQueue.main.async {
             self.updateAmountLabel()
@@ -109,7 +110,8 @@ class SendViewController: UIViewController {
         }
         
         DispatchQueue.main.async {
-            self.walletAmountLabel.text = amount.toCurrency(currency: self.currentCurrency())
+            // self.walletAmountLabel.text = amount.toCurrency(currency: self.currentCurrency())
+            self.walletAmountLabel.text = amount.toXvgCurrency()
         }
     }
 
@@ -123,7 +125,7 @@ class SendViewController: UIViewController {
                 return
             }
 
-            if (self.currentAmount().doubleValue >= self.walletAmount.doubleValue) {
+            if (self.currentAmount().doubleValue > self.walletAmount.doubleValue) {
                 self.amountTextField.textColor = UIColor.vergeRed()
                 
                 self.notifySelectedToMuchAmount()
@@ -165,7 +167,7 @@ class SendViewController: UIViewController {
         // Selected amount is lower then wallet amount.
         // Address is set.
         let enabled = sendTransaction.amount.doubleValue > 0.0
-            && sendTransaction.amount.doubleValue < walletAmount.doubleValue
+            && sendTransaction.amount.doubleValue <= walletAmount.doubleValue
             && sendTransaction.address != ""
 
         confirmButton.isEnabled = enabled
@@ -261,12 +263,17 @@ class SendViewController: UIViewController {
         sendTransaction.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
         didChangeSendTransaction(sendTransaction)
     }
+
+    @objc func setMaximumAmount() {
+        sendTransaction.setBy(currency: "XVG", amount: walletAmount)
+        didChangeSendTransaction(sendTransaction)
+    }
 }
 
 extension SendViewController: UITextFieldDelegate {
     // MARK: - Recipient text field toolbar
 
-    fileprivate func setupRecipientTextFieldKeyBoardToolbar() {
+    fileprivate func setupRecipientTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         keyboardToolbar.tintColor = UIColor.primaryLight()
@@ -316,6 +323,35 @@ extension SendViewController: UITextFieldDelegate {
         recipientTextField.delegate = self
 
         memoTextField.delegate = self
+    }
+
+    func setupAmountTextFieldKeyboardToolbar() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        keyboardToolbar.tintColor = UIColor.primaryLight()
+
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        let maximumButton = UIBarButtonItem(
+            title: "Send Max",
+            style: .plain,
+            target: self,
+            action: #selector(SendViewController.setMaximumAmount)
+        )
+
+        let doneBarButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(SendViewController.dissmissKeyboard)
+        )
+
+        keyboardToolbar.items = [
+            maximumButton,
+            flexBarButton,
+            doneBarButton
+        ]
+
+        amountTextField.inputAccessoryView = keyboardToolbar
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -32,9 +32,25 @@ extension NSNumber {
     }
     
     func toXvgCurrency(fractDigits: Int? = nil) -> String {
-        let fractDigits = 6
+        var fractDigits = fractDigits
 
-        return toCurrency(currency: "XVG", fractDigits: fractDigits)
+        if fractDigits == nil {
+            fractDigits = 8
+
+            if self.doubleValue > 99 {
+                fractDigits = 6
+            }
+
+            if self.doubleValue > 999 {
+                fractDigits = 4
+            }
+
+            if self.doubleValue > 9999 {
+                fractDigits = 2
+            }
+        }
+
+        return toCurrency(currency: "XVG", fractDigits: fractDigits!)
     }
 
     func toBlankCurrency(fractDigits: Int = 2) -> String {

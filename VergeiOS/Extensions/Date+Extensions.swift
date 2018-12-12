@@ -28,4 +28,12 @@ extension Date {
     var yearAgo: Date {
         return Calendar.current.date(byAdding: .year, value: -1, to: self)!
     }
+
+    var string: String {
+        let df = DateFormatter()
+        df.dateStyle = .medium
+        df.timeStyle = .short
+
+        return df.string(from: self)
+    }
 }

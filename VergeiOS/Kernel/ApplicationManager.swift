@@ -142,6 +142,15 @@ class ApplicationManager {
         }
     }
 
+    var walletServiceUrl: String {
+        get {
+            return keychain.get("wallet.service.url") ?? Config.bwsEndpoint
+        }
+        set {
+            keychain.set(newValue, forKey: "wallet.service.url")
+        }
+    }
+
     var walletId: String? {
         get {
             return keychain.get("wallet.id")

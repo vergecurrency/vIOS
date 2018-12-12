@@ -6,5 +6,8 @@
 import Foundation
 
 public struct WalletAddressesOptions {
-    //
+
+    public var limit: Int? = nil
+    public var reverse: Bool = false
+
 }
