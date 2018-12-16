@@ -41,6 +41,7 @@ class WalletTicker {
     // Stop the price ticker.
     func stop() {
         interval?.invalidate()
+        interval = nil
         started = false
 
         print("Wallet ticker stopped...")
@@ -57,8 +58,9 @@ class WalletTicker {
     }
 
     // Fetch statistics from the API and notify all absorbers.
-    @objc private func fetchTransactions() {
+    private func fetchTransactions() {
         print("Fetching new transactions")
+
         TransactionManager.shared.sync(limit: 10) { transactions in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
         }

@@ -417,6 +417,10 @@ public class WalletClient {
         }
     }
 
+    public func resetServiceUrl(baseUrl: String) {
+        self.baseUrl = baseUrl
+    }
+
     private func getRequest(url: String, completion: @escaping URLCompletion) {
         let referencedUrl = addUrlReference(url)
 

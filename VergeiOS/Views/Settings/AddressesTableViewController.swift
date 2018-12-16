@@ -42,7 +42,7 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Last 15 unused addresses"
+        return "Last \(addresses.count) unused addresses"
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -54,7 +54,20 @@ class AddressesTableViewController: EdgedTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    @IBAction func scanAddresses(_ sender: Any) {
+    @IBAction func scanAddresses(_ sender: UIButton) {
         WalletClient.shared.scanAddresses()
+
+        sender.isEnabled = false
+        sender.backgroundColor = UIColor.vergeGrey()
+
+        let alert = UIAlertController(
+            title: "Scanning Addresses",
+            message: "Scanning addresses for balance. This might take some time to complete.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+
+        present(alert, animated: true)
     }
 }

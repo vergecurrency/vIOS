@@ -15,6 +15,18 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     
     let addressBookManager = AddressBookRepository()
     var items: [TxHistory] = []
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(
+            self,
+            action: #selector(TransactionsWalletSlideView.handleRefresh(_:)),
+            for: UIControl.Event.valueChanged
+        )
+        refreshControl.tintColor = UIColor.primaryLight()
+        
+        return refreshControl
+    }()
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,9 +52,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         installTableViewPlaceholder()
         getTransactions()
 
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.layer.cornerRadius = 5.0
         tableView.clipsToBounds = true
+        tableView.addSubview(refreshControl)
     }
     
     func installTableViewPlaceholder() {
@@ -94,6 +106,20 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         parentContainerViewController()?.performSegue(withIdentifier: "TransactionTableViewController", sender: items[indexPath.row])
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        WalletClient.shared.getBalance { error, info in
+            if let info = info {
+                ApplicationManager.default.amount = info.totalAmountValue
+            }
+
+            TransactionManager.shared.sync(limit: 10) { transactions in
+                NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
+
+                DispatchQueue.main.async { self.refreshControl.endRefreshing() }
+            }
+        }
     }
     
 }
