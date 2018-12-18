@@ -73,6 +73,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             searchController.obscuresBackgroundDuringPresentation = false
             searchController.searchBar.placeholder = "Search Transactions"
             navigationItem.searchController = searchController
+            navigationItem.hidesSearchBarWhenScrolling = false
             definesPresentationContext = true
             edgesForExtendedLayout = UIRectEdge.all
             extendedLayoutIncludesOpaqueBars = true
