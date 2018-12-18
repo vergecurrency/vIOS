@@ -306,7 +306,7 @@ extension SendViewController: UITextFieldDelegate {
         let doneBarButton = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
-            action: #selector(SendViewController.dissmissKeyboard)
+            action: #selector(SendViewController.dismissKeyboard)
         )
 
         keyboardToolbar.items = [
@@ -342,7 +342,7 @@ extension SendViewController: UITextFieldDelegate {
         let doneBarButton = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
-            action: #selector(SendViewController.dissmissKeyboard)
+            action: #selector(SendViewController.dismissKeyboard)
         )
 
         keyboardToolbar.items = [
@@ -355,7 +355,7 @@ extension SendViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dissmissKeyboard()
+        dismissKeyboard()
 
         return false
     }
@@ -390,11 +390,8 @@ extension SendViewController: UITextFieldDelegate {
         didChangeSendTransaction(sendTransaction)
     }
 
-    @objc func dissmissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
-
-        sendTransaction.address = recipientTextField.text ?? ""
-        sendTransaction.memo = memoTextField.text ?? ""
 
         didChangeSendTransaction(sendTransaction)
     }
@@ -410,6 +407,22 @@ extension SendViewController: UITextFieldDelegate {
 
         present(alert, animated: true)
     }
+
+    @IBAction func didChangeRecipientTextField(_ textfield: UITextField) {
+        guard let text = textfield.text else {
+            return
+        }
+
+        sendTransaction.address = text
+    }
+
+    @IBAction func didChangeMemoTextField(_ textfield: UITextField) {
+        guard let text = textfield.text else {
+            return
+        }
+
+        sendTransaction.memo = text
+    }
 }
 
 extension SendViewController: SendTransactionDelegate {
@@ -418,8 +431,8 @@ extension SendViewController: SendTransactionDelegate {
     func didChangeSendTransaction(_ transaction: SendTransaction) {
         sendTransaction = transaction
 
-        self.recipientTextField.text = sendTransaction.address
-        self.memoTextField.text = sendTransaction.memo
+        recipientTextField.text = sendTransaction.address
+        memoTextField.text = sendTransaction.memo
 
         updateAmountLabel()
         updateWalletAmountLabel()
