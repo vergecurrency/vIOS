@@ -26,6 +26,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSx-FT-FEJ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                         <subviews>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uUB-Sf-1XD">
+                                                <rect key="frame" x="169" y="101.5" width="37" height="37"/>
+                                                <color key="color" name="SecondaryDark"/>
+                                            </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIy-dK-o4n">
                                                 <rect key="frame" x="16" y="0.0" width="343" height="220"/>
                                                 <subviews>
@@ -75,12 +79,14 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="uUB-Sf-1XD" firstAttribute="centerY" secondItem="rSx-FT-FEJ" secondAttribute="centerY" id="3Ar-iX-e22"/>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="QAl-vY-1r7"/>
                                             <constraint firstItem="JIy-dK-o4n" firstAttribute="centerX" secondItem="rSx-FT-FEJ" secondAttribute="centerX" id="QTg-WR-CpQ"/>
                                             <constraint firstItem="JIy-dK-o4n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rSx-FT-FEJ" secondAttribute="leading" constant="16" id="RfZ-Tx-thT"/>
                                             <constraint firstItem="JIy-dK-o4n" firstAttribute="top" secondItem="rSx-FT-FEJ" secondAttribute="top" id="S5y-je-15r"/>
                                             <constraint firstAttribute="width" secondItem="rSx-FT-FEJ" secondAttribute="height" multiplier="359:230" priority="750" id="ZHQ-rQ-e8G"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JIy-dK-o4n" secondAttribute="trailing" constant="16" id="t3y-KU-W8f"/>
+                                            <constraint firstItem="uUB-Sf-1XD" firstAttribute="centerX" secondItem="rSx-FT-FEJ" secondAttribute="centerX" id="w7F-Ol-scY"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6s3-Dc-bZS">
@@ -322,6 +328,7 @@
                     <navigationItem key="navigationItem" title="Receive" id="c1O-e2-IJc"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="uUB-Sf-1XD" id="eqD-ib-kw3"/>
                         <outlet property="addressTextField" destination="HeY-dn-cCf" id="u9g-ta-XtL"/>
                         <outlet property="amountTextField" destination="NwL-uT-WTm" id="NIZ-vG-oZw"/>
                         <outlet property="cardAddress" destination="8To-PP-rsq" id="koU-Ax-jrM"/>
@@ -348,13 +355,13 @@
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
-            <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.094117647058823528" green="0.23529411764705882" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
-            <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38823529411764707" green="0.47058823529411764" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

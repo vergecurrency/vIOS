@@ -22,6 +22,7 @@ class ReceiveViewController: UIViewController {
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var qrCodeContainerView: UIView!
     @IBOutlet weak var cardAddress: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet weak var addressTextField: SelectorButton!
     @IBOutlet weak var currencyLabel: UILabel!
@@ -31,9 +32,18 @@ class ReceiveViewController: UIViewController {
     var address = ""
     var amount = 0.0
     var currency = CurrencySwitch.XVG
+    var cardShown = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        xvgCardContainer.alpha = 0.0
+
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+            self.activityIndicator.isHidden = false
+            self.xvgCardContainer.center.y += 20.0
+        }
 
         getNewAddress()
 
@@ -49,22 +59,67 @@ class ReceiveViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.xvgCardContainer.alpha = 0.0
-        self.xvgCardContainer.center.y += 20.0
+        if cardShown && address.count > 0 {
+            cardShown = false
+            DispatchQueue.main.async {
+                self.xvgCardContainer.alpha = 0.0
+                self.xvgCardContainer.center.y += 20.0
+                self.showCard()
+            }
+        }
+    }
+
+    func showCard() {
+        if cardShown {
+            return
+        }
+
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+
+        xvgCardContainer.alpha = 0.0
 
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
             self.xvgCardContainer.alpha = 1.0
             self.xvgCardContainer.center.y -= 20.0
         }, completion: nil)
+
+        cardShown = true
+    }
+
+    func hideCard() {
+        if !cardShown {
+            return
+        }
+
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+
+        xvgCardContainer.alpha = 1.0
+
+        UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
+            self.xvgCardContainer.alpha = 0.0
+            self.xvgCardContainer.center.y += 20.0
+        }, completion: nil)
+
+        cardShown = false
     }
 
     func getNewAddress() {
-        WalletClient.shared.createAddress { error, addressInfo in
-            guard let addressInfo = addressInfo else {
-                return
-            }
+        DispatchQueue.main.async {
+            self.hideCard()
 
-            self.changeAddress(addressInfo.address)
+            WalletClient.shared.createAddress { error, addressInfo in
+                guard let addressInfo = addressInfo else {
+                    return
+                }
+
+                self.changeAddress(addressInfo.address)
+
+                DispatchQueue.main.async {
+                    self.showCard()
+                }
+            }
         }
     }
 

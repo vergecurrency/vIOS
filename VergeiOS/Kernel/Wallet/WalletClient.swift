@@ -95,9 +95,12 @@ public class WalletClient {
         args["pubKey"].stringValue = walletPrivateKey.privateKey().publicKey().description
         args["m"].intValue = m
         args["n"].intValue = n
-        args["coin"].stringValue = "btc"
-        args["network"].stringValue = "testnet"
+        args["coin"].stringValue = "btc" // "xvg"
+        args["network"].stringValue = "testnet" // "mainnet"
+        // args["path"].stringValue = "m/44'/0'/0'"
+        // args["chain"].stringValue = "XVG"
 
+        // new url: "api/XVG/mainnet/wallet/"
         postRequest(url: "/v2/wallets/", arguments: args) { data, response, error in
             if let data = data {
                 do {
@@ -129,7 +132,7 @@ public class WalletClient {
 
         var arguments = JSON()
         arguments["walletId"].stringValue = walletIdentifier
-        arguments["coin"].stringValue = "btc"
+        arguments["coin"].stringValue = "btc" // "xvg"
         arguments["name"].stringValue = encCopayerName
         arguments["xPubKey"].stringValue = xPubKey
         arguments["requestPubKey"].stringValue = requestPubKey
