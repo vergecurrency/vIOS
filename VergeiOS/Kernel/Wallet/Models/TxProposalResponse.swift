@@ -13,13 +13,13 @@ public struct TxProposalResponse: Decodable {
     public let network: String
     public let message: String?
     public let inputs: [UnspentOutput]
-    public let fee: Int64
+    public let fee: UInt64
     public let status: String
     public let creatorId: String
     public let walletN: Int64
     public let walletM: Int64
     public let outputs: [TxOutput]
-    public let amount: Int64
+    public let amount: UInt64
     public let changeAddress: TxChangeAddress
     public let walletId: String
     public let requiredSignatures: Int64

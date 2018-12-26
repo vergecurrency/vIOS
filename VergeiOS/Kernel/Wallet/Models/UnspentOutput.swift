@@ -15,7 +15,7 @@ public struct UnspentOutput: Codable {
 
     public let address: String
     public let confirmations: Int
-    public let satoshis: Int64
+    public let satoshis: UInt64
     public let scriptPubKey: String
     public let txID: String
     public let vout: UInt32

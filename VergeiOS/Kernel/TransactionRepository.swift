@@ -49,7 +49,7 @@ class TransactionRepository {
                 entity?.fees = tx.fees
                 entity?.time = tx.time
                 entity?.confirmations = tx.confirmations
-                entity?.feePerKb = tx.feePerKb
+                entity?.feePerKb = tx.feePerKb ?? 0
                 entity?.address = tx.address
                 entity?.createdOn = tx.createdOn ?? 0
 

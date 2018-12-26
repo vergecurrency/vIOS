@@ -27,7 +27,7 @@ public class WalletClient {
     private var baseUrl: String = ""
     private var urlSession: URLSession!
 
-    private let network = Network.testnet
+    private let network = Network.mainnetXVG
 
     private var privateKey: HDPrivateKey {
         let seed = Mnemonic.seed(
@@ -50,7 +50,7 @@ public class WalletClient {
     private var bip44PrivateKey: HDPrivateKey {
         return try! privateKey
             .derived(at: 44, hardened: true)
-            .derived(at: 1, hardened: true)
+            .derived(at: 0, hardened: true)
             .derived(at: 0, hardened: true)
     }
 
@@ -59,7 +59,7 @@ public class WalletClient {
     }
 
     private var personalEncryptingKey: String {
-        let data = Crypto.sha256(requestPrivateKey.privateKey().raw)
+        let data = Crypto.sha256(requestPrivateKey.privateKey().data)
         let key = "personalKey".data(using: .utf8)!
 
         var b2 = try! HMAC(key: key.bytes, variant: .sha256).authenticate(data.bytes)
@@ -68,7 +68,7 @@ public class WalletClient {
     }
 
     private var sharedEncryptingKey: String {
-        var sha256Data = walletPrivateKey.privateKey().raw.sha256()
+        var sha256Data = walletPrivateKey.privateKey().data.sha256()
 
         return sha256Data[0..<16].base64EncodedString()
     }
@@ -95,12 +95,9 @@ public class WalletClient {
         args["pubKey"].stringValue = walletPrivateKey.privateKey().publicKey().description
         args["m"].intValue = m
         args["n"].intValue = n
-        args["coin"].stringValue = "btc" // "xvg"
-        args["network"].stringValue = "testnet" // "mainnet"
-        // args["path"].stringValue = "m/44'/0'/0'"
-        // args["chain"].stringValue = "XVG"
-
-        // new url: "api/XVG/mainnet/wallet/"
+        args["coin"].stringValue = "xvg"
+        args["network"].stringValue = "livenet"
+        
         postRequest(url: "/v2/wallets/", arguments: args) { data, response, error in
             if let data = data {
                 do {
@@ -132,7 +129,7 @@ public class WalletClient {
 
         var arguments = JSON()
         arguments["walletId"].stringValue = walletIdentifier
-        arguments["coin"].stringValue = "btc" // "xvg"
+        arguments["coin"].stringValue = "xvg"
         arguments["name"].stringValue = encCopayerName
         arguments["xPubKey"].stringValue = xPubKey
         arguments["requestPubKey"].stringValue = requestPubKey
@@ -200,6 +197,8 @@ public class WalletClient {
     }
 
     public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void) {
+        print(privateKey.privateKey().description)
+        print(bip44PrivateKey.privateKey().description)
         getRequest(url: "/v1/balance/") { data, response, error in
             if let data = data {
                 do {
@@ -498,7 +497,7 @@ public class WalletClient {
 
     private func getCopayerId() -> String {
         let xPubKey = publicKey.extended()
-        let hash = sjcl.sha256Hash(data: xPubKey)
+        let hash = sjcl.sha256Hash(data: "xvg\(xPubKey)")
 
         return sjcl.hexFromBits(hash: hash)
     }
@@ -534,7 +533,7 @@ public class WalletClient {
 
         // TODO: Replace T with L when not using testnet!
         // TODO: Replace btc with verge when not using testnet!
-        return "\(widBase58)\(privateKey.privateKey().toWIF())Tbtc"
+        return "\(widBase58)\(privateKey.privateKey().toWIF())Lxvg"
     }
 
     private func addUrlReference(_ url: String) -> String {
@@ -553,8 +552,8 @@ public class WalletClient {
         }
 
         let amount = txp.amount
-        let totalAmount: Int64 = unspentTransactions.reduce(0) { $0 + $1.output.value }
-        let change: Int64 = totalAmount - amount - txp.fee
+        let totalAmount: UInt64 = unspentTransactions.reduce(0) { $0 + $1.output.value }
+        let change: UInt64 = totalAmount - amount - txp.fee
 
         guard let lockingScriptChange = Script(address: changeAddress) else {
             throw WalletClientError.addressToScriptError(address: changeAddress)

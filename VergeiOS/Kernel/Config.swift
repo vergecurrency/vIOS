@@ -12,14 +12,16 @@ struct Config {
 
     static let fetchWalletTimeout: Double = 30
     static let fetchPriceTimeout: Double = 150
-    static let satoshiDivider: Double = 100000000.0
-    static let fee: Double = 0.0
+    static let satoshiDivider: Double = 1000000.0
+    static let fee: Double = 0.1
 
     static let website: String = "https://vergecurrency.com/"
     static let iOSRepo: String = "https://github.com/vergecurrency/vIOS"
     static let blockchainExlorer: String = "https://verge-blockchain.info/"
-    static let bwsEndpoint: String = "https://bws2.swenvanzanten.com:3232/bws/api/"
+    static let bwsEndpoint: String = "http://localhost/vws/api/"
     static let priceDataEndpoint: String = "https://usxvglw.vergecoreteam.com/price/api/v1/price/"
+
+    // TODO use other endpoints.
     static let chartDataEndpoint: String = "https://graphs2.coinmarketcap.com/currencies/"
     static let ipCheckEndpoint: String = "http://api.ipstack.com/check?access_key=e95ebddbee9137302b3cf50b39a33362&format=1"
 

@@ -205,7 +205,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             case 0:
                 loadWebsite(url: "\(Config.blockchainExlorer)address/\(transaction!.address)")
             case 2:
-                loadWebsite(url: "\(Config.blockchainExlorer)txid/\(transaction!.txid)")
+                loadWebsite(url: "\(Config.blockchainExlorer)tx/\(transaction!.txid)")
             default: break
             }
         }

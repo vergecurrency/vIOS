@@ -13,7 +13,7 @@ public struct TxHistory: Decodable {
     public let fees: Int64
     public let time: Int64
     public let confirmations: Int64
-    public let feePerKb: Int64
+    public let feePerKb: Int64?
     public let inputs: [InputOutput]?
     public let outputs: [InputOutput]
     public let savedAddress: String?
