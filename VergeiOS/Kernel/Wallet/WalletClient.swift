@@ -197,8 +197,6 @@ public class WalletClient {
     }
 
     public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void) {
-        print(privateKey.privateKey().description)
-        print(bip44PrivateKey.privateKey().description)
         getRequest(url: "/v1/balance/") { data, response, error in
             if let data = data {
                 do {
@@ -295,9 +293,9 @@ public class WalletClient {
         output["message"].null = nil
 
         arguments["outputs"] = [output]
-        arguments["feePerKb"].intValue = 10000
         arguments["message"].null = nil
         arguments["payProUrl"].null = nil
+        arguments["fee"].intValue = 100000
 
         postRequest(url: "/v2/txproposals/", arguments: arguments) { data, response, error in
             if let data = data {
@@ -574,9 +572,15 @@ public class WalletClient {
             outputs = [changeOutput, toOutput]
         }
 
-        let tx = Transaction(version: 1, inputs: unsignedInputs, outputs: outputs, lockTime: 0)
-        let unsignedTx = UnsignedTransaction(tx: tx, utxos: unspentTransactions)
-        return unsignedTx
+        let tx = Transaction(
+            version: 1,
+            timestamp: txp.createdOn,
+            inputs: unsignedInputs,
+            outputs: outputs,
+            lockTime: 0
+        )
+
+        return UnsignedTransaction(tx: tx, utxos: unspentTransactions)
     }
 
     private func signTx(unsignedTx: UnsignedTransaction, keys: [PrivateKey]) throws -> [String] {
@@ -584,6 +588,7 @@ public class WalletClient {
         var transactionToSign: Transaction {
             return Transaction(
                 version: unsignedTx.tx.version,
+                timestamp: unsignedTx.tx.timestamp,
                 inputs: inputsToSign,
                 outputs: unsignedTx.tx.outputs,
                 lockTime: unsignedTx.tx.lockTime

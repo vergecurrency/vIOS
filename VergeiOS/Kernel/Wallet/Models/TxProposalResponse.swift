@@ -7,7 +7,7 @@ import Foundation
 
 public struct TxProposalResponse: Decodable {
 
-    public let createdOn: Int64
+    public let createdOn: UInt32
     public let coin: String
     public let id: String
     public let network: String
@@ -27,7 +27,6 @@ public struct TxProposalResponse: Decodable {
     public let excludeUnconfirmedUtxos: Bool
     public let addressType: String
     public let requiredRejections: Int64
-    public let feePerKb: Int64
     public let outputOrder: [Int64]
     public let inputPaths: [String]
 
