@@ -18,7 +18,7 @@ struct Config {
     static let website: String = "https://vergecurrency.com/"
     static let iOSRepo: String = "https://github.com/vergecurrency/vIOS"
     static let blockchainExlorer: String = "https://verge-blockchain.info/"
-    static let bwsEndpoint: String = "http://localhost/vws/api/"
+    static let bwsEndpoint: String = "https://vws.swenvanzanten.com/vws/api/"
     static let priceDataEndpoint: String = "https://usxvglw.vergecoreteam.com/price/api/v1/price/"
 
     // TODO use other endpoints.

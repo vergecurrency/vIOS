@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PriceTicker.shared.stop()
         TorClient.shared.resign()
 
-        showPinUnlockViewController()
+        showPinUnlockViewController(application)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -126,21 +126,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
     }
 
-    func showPinUnlockViewController() {
+    func showPinUnlockViewController(_ application: UIApplication) {
         if !ApplicationManager.default.setup {
             return
         }
 
-        if let rootVC = window?.visibleViewController() {
-            if rootVC.isKind(of: PinUnlockViewController.self) {
-                return
+        if var topController = application.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
             }
-
+            
+            if let openedPinView = topController as? PinUnlockViewController {
+                openedPinView.closeButtonPushed(self)
+                
+                return showPinUnlockViewController(application)
+            }
+            
             let vc = PinUnlockViewController.createFromStoryBoard()
             vc.fillPinFor = .wallet
-
+            
             print("Show unlock view")
-            rootVC.present(vc, animated: false, completion: nil)
+            topController.present(vc, animated: false, completion: nil)
         }
     }
     
