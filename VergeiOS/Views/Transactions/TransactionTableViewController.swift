@@ -58,14 +58,20 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         dateTimeLabel.text = dateFormatter.string(from: transaction.timeReceived)
-        
-        if let name = addressBookManager.name(byAddress: transaction.address) {
-            nameLabel.text = name
-            addAddressButton.isHidden = true
+
+        if transaction.category == .Sent {
+            if let name = addressBookManager.name(byAddress: transaction.address) {
+                nameLabel.text = name
+                addAddressButton.isHidden = true
+            } else {
+                nameLabel.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
+                addAddressButton.isHidden = false
+            }
         } else {
             nameLabel.text = transaction.address.truncated(limit: 6, position: .tail, leader: "******")
-            addAddressButton.isHidden = false
+            addAddressButton.isHidden = true
         }
+
         
         var prefix = ""
         if transaction.category == .Sent {

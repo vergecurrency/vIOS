@@ -90,6 +90,7 @@ class TransactionRepository {
             fees: entity?.fees ?? 0,
             time: entity?.time ?? 0,
             confirmations: entity?.confirmations ?? 0,
+            blockheight: nil,
             feePerKb: entity?.feePerKb ?? 0,
             inputs: [],
             outputs: [],

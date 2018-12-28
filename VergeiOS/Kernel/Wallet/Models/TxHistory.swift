@@ -13,6 +13,7 @@ public struct TxHistory: Decodable {
     public let fees: Int64
     public let time: Int64
     public let confirmations: Int64
+    public let blockheight: Int64?
     public let feePerKb: Int64?
     public let inputs: [InputOutput]?
     public let outputs: [InputOutput]
@@ -32,7 +33,9 @@ extension TxHistory {
         }
 
         if category == .Received {
-            return inputs?.first?.address ?? ""
+            if let address = inputs?.first?.address {
+                return address
+            }
         }
 
         return outputs.first { output in
