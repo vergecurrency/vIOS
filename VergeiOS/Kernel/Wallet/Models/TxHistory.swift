@@ -69,6 +69,10 @@ extension TxHistory {
     public var confirmationsCount: String {
         return confirmations > 6 ? "6+" : String(confirmations)
     }
+    
+    public var confirmed: Bool {
+        return confirmations < Config.confirmationsNeeded
+    }
 
     public func sortBy(txHistory: TxHistory) -> Bool {
         if self.time == txHistory.time {
