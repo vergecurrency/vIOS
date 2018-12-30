@@ -44,7 +44,7 @@ class ContactsTableViewController: AbstractContactsTableViewController {
                 // Delete the row from the data source
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
-            
+
             setupView()
         }
     }

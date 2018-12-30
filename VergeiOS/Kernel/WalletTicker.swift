@@ -52,7 +52,7 @@ class WalletTicker {
 
         WalletClient.shared.getBalance { error, info in
             if let info = info {
-                ApplicationManager.default.amount = info.totalConfirmedAmountValue
+                ApplicationManager.default.amount = info.availableAmountValue
             }
         }
     }
