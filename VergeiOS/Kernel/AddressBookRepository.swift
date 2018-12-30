@@ -74,6 +74,10 @@ class AddressBookRepository {
         }
     }
 
+    func isEmpty() -> Bool {
+        return all().count == 0
+    }
+
     private func transform(entity: AddressType?) -> Contact {
         let address = Contact()
         address.name = entity?.name ?? ""

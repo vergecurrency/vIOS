@@ -15,19 +15,7 @@ class AbstractContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Setup the Search Controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Contacts"
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
-        edgesForExtendedLayout = UIRectEdge.all
-        extendedLayoutIncludesOpaqueBars = true
-
-        // Setup the Scope Bar
-        searchController.searchBar.delegate = self
-        searchController.delegate = self
+        setupView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +30,41 @@ class AbstractContactsTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
 
         TorStatusIndicator.shared.show()
+    }
+
+    func setupView() {
+        if addressBookManager.isEmpty() {
+            if let placeholder = Bundle.main.loadNibNamed(
+                "NoContactsPlaceholderView",
+                owner: self,
+                options: nil
+            )?.first as? NoContactsPlaceholderView {
+                placeholder.frame = tableView.frame
+                tableView.backgroundView = placeholder
+                tableView.backgroundView?.backgroundColor = .backgroundGrey()
+                tableView.tableFooterView = UIView()
+                navigationItem.searchController = nil
+            }
+            return
+        }
+
+        tableView.backgroundView = nil
+        tableView.backgroundView?.backgroundColor = .backgroundGrey()
+        tableView.tableFooterView = nil
+
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Contacts"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        edgesForExtendedLayout = UIRectEdge.all
+        extendedLayoutIncludesOpaqueBars = true
+
+        // Setup the Scope Bar
+        searchController.searchBar.delegate = self
+        searchController.delegate = self
     }
 
     func loadContacts(_ searchText: String = "") {
