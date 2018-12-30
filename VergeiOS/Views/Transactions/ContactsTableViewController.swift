@@ -13,6 +13,7 @@ class ContactsTableViewController: AbstractContactsTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        setupView()
         loadContacts()
 
         tableView.reloadData()
@@ -43,6 +44,8 @@ class ContactsTableViewController: AbstractContactsTableViewController {
                 // Delete the row from the data source
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
+            
+            setupView()
         }
     }
 

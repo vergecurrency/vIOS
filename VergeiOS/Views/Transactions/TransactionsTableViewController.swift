@@ -57,7 +57,11 @@ class TransactionsTableViewController: EdgedTableViewController {
 
     func setupView() {
         if !TransactionManager.shared.hasTransactions && tableView.backgroundView == nil {
-            if let placeholder = Bundle.main.loadNibNamed("NoTransactionsPlaceholderView", owner: self, options: nil)?.first as? NoTransactionsPlaceholderView {
+            if let placeholder = Bundle.main.loadNibNamed(
+                "NoTransactionsPlaceholderView",
+                owner: self,
+                options: nil
+            )?.first as? NoTransactionsPlaceholderView {
                 placeholder.frame = tableView.frame
                 tableView.backgroundView = placeholder
                 tableView.backgroundView?.backgroundColor = .backgroundGrey()

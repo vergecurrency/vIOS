@@ -140,6 +140,8 @@
 		A3AA22022163F66B00160576 /* TorStatusIndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AA21FE2163F66A00160576 /* TorStatusIndicatorViewController.xib */; };
 		A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */; };
 		A3AA2206216576BE00160576 /* IpAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2205216576BE00160576 /* IpAddress.swift */; };
+		A3AF9A5F21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */; };
+		A3AF9A6121D8F03900B5CDF6 /* NoContactsPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */; };
 		A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
 		A3B2E2642148421300C31719 /* NoTransactionsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */; };
 		A3B2E2652148421300C31719 /* NoTransactionsPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */; };
@@ -370,6 +372,8 @@
 		A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorConnectionTableViewController.swift; sourceTree = "<group>"; };
 		A3AA2205216576BE00160576 /* IpAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddress.swift; sourceTree = "<group>"; };
 		A3AA220721657BBE00160576 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsPlaceholderView.swift; sourceTree = "<group>"; };
+		A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoContactsPlaceholderView.xib; sourceTree = "<group>"; };
 		A3B2E25A214836B500C31719 /* HGPlaceholders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HGPlaceholders.framework; path = Carthage/Build/iOS/HGPlaceholders.framework; sourceTree = "<group>"; };
 		A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionsPlaceholderView.swift; sourceTree = "<group>"; };
 		A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTransactionsPlaceholderView.xib; sourceTree = "<group>"; };
@@ -761,6 +765,8 @@
 				A364727D217C7787001B1B18 /* ContactTableViewController.swift */,
 				A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */,
 				B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */,
+				A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */,
+				A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -1148,6 +1154,7 @@
 				A3256649211372B3006FB08A /* Transactions.storyboard in Resources */,
 				A38D6F7821BBFA7C00280FFE /* TorSetup2View.xib in Resources */,
 				A3B2E2652148421300C31719 /* NoTransactionsPlaceholderView.xib in Resources */,
+				A3AF9A6121D8F03900B5CDF6 /* NoContactsPlaceholderView.xib in Resources */,
 				A338E695210CF60B000D44EE /* Setup.storyboard in Resources */,
 				A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */,
 				A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */,
@@ -1371,6 +1378,7 @@
 				A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */,
 				B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */,
 				B2BD7216E5E949A43C2B4FC4 /* TxOutput.swift in Sources */,
+				A3AF9A5F21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift in Sources */,
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
 				A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */,
