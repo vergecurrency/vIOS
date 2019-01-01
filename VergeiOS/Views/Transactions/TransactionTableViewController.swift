@@ -140,7 +140,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
                 cell.textLabel?.text = "Confirmations"
-                cell.detailTextLabel?.text = transaction?.confirmationsCount ?? "Unsynced"
+                cell.detailTextLabel?.text = transaction?.confirmationsCount
                 cell.accessoryType = .none
                 break
             case 2:

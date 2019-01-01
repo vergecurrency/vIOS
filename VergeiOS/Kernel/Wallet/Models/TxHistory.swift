@@ -67,7 +67,7 @@ extension TxHistory {
     }
 
     public var confirmationsCount: String {
-        return confirmations > 6 ? "6+" : String(confirmations)
+        return confirmations > 6 ? "6+" : String(confirmations < 0 ? 0 : confirmations)
     }
     
     public var confirmed: Bool {

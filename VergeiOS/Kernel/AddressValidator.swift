@@ -13,7 +13,7 @@ class AddressValidator {
     
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
     
-    let requestRegex = "(verge:[\\/]{0,2}[a-z|A-Z|0-9]{34}\\?)|(amount=\\d+[\\.|\\,]?\\d+)$"
+    let requestRegex = "(verge:[\\/]{0,2}[a-z|A-Z|0-9]{34})|(\\?amount=\\d+[\\.|\\,]?\\d+)"
     let addressCount = 34
     
     func validate(
@@ -44,7 +44,9 @@ class AddressValidator {
         
         if matches.indices.count == 2 && matches.indices.contains(1) {
             amount = amountToNumber(
-                stringAmount: matches[1].replacingOccurrences(of: "amount=", with: "")
+                stringAmount: matches[1]
+                    .replacingOccurrences(of: "?", with: "")
+                    .replacingOccurrences(of: "amount=", with: "")
             )
         }
         

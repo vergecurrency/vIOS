@@ -65,10 +65,14 @@ class ContactTableViewController: FormViewController {
             return
         }
 
+        transactions = TransactionManager.shared.all(byAddress: contact.address)
+
+        if transactions.count == 0 {
+            return
+        }
+
         let transactionsSection = Section("Transaction History")
         form +++ transactionsSection
-
-        transactions = TransactionManager.shared.all(byAddress: contact.address)
         
         for transaction in transactions {
             transactionsSection

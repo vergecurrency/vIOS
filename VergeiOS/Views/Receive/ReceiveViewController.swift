@@ -134,7 +134,7 @@ class ReceiveViewController: UIViewController {
     }
 
     func createQRCode() {
-        let address = amount > 0.0 ? "verge://\(self.address)?amount=\(amount)" : self.address
+        let address = amount > 0.0 ? "verge:\(self.address)?amount=\(amount)" : self.address
         var qrCode = QRCode(address)
 
         if stealthSwitch.isOn {
