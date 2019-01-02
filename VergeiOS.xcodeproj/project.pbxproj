@@ -174,6 +174,7 @@
 		B2BD76C55CCA3241E93A1A2B /* WalletTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */; };
 		B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */; };
 		B2BD777C8DE885732CFA2D1E /* ChartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74F46B6A7DA606BCB794 /* ChartInfo.swift */; };
+		B2BD77F17789C2C495FDA9A9 /* TxProposalErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */; };
 		B2BD782690228E5BDAFE38C4 /* TxProposal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD707901E103DAE1455E18 /* TxProposal.swift */; };
 		B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */; };
 		B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
@@ -398,6 +399,7 @@
 		B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxChangeAddress.swift; sourceTree = "<group>"; };
 		B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBalance.swift; sourceTree = "<group>"; };
 		B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDelegate.swift; sourceTree = "<group>"; };
+		B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposalErrorResponse.swift; sourceTree = "<group>"; };
 		B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		B2BD74F46B6A7DA606BCB794 /* ChartInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInfo.swift; sourceTree = "<group>"; };
 		B2BD7557B745B64D241A9CEB /* WalletInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletInfo.swift; sourceTree = "<group>"; };
@@ -976,6 +978,7 @@
 				B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */,
 				B2BD733F9D032CB620B66904 /* TxOutput.swift */,
 				B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */,
+				B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1389,6 +1392,7 @@
 				B2BD7E5B76A0F41F95F9AE4A /* TransactionRepository.swift in Sources */,
 				B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */,
 				B2BD73C50F4BA27C71F772FB /* Data+Extensions.swift in Sources */,
+				B2BD77F17789C2C495FDA9A9 /* TxProposalErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

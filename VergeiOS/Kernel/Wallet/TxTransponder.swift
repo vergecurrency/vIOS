@@ -14,11 +14,12 @@ class TxTransponder {
         case broadcast = 3
     }
 
-    typealias completionType = (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+    typealias completionType = (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
 
     private var walletClient: WalletClient!
     private var completion: completionType!
     private var step: Step = .create
+    private var previousTxp: TxProposalResponse?
 
     public init(walletClient: WalletClient) {
         self.walletClient = walletClient
@@ -32,6 +33,7 @@ class TxTransponder {
     }
 
     private func progress(txp: TxProposalResponse) {
+        previousTxp = txp
         switch step {
         case .publish:
             return walletClient.publishTxProposal(txp: txp, completion: completionHandler)
@@ -40,7 +42,7 @@ class TxTransponder {
         case .broadcast:
             return walletClient.broadcastTxProposal(txp: txp, completion: completionHandler)
         default:
-            completionHandler(nil, NSError(domain: "Whoops", code: 500))
+            completionHandler(nil, nil, NSError(domain: "Whoops", code: 500))
         }
     }
 
@@ -57,12 +59,23 @@ class TxTransponder {
         }
     }
 
-    private func completionHandler(_ txp: TxProposalResponse?, _ error: Error?) -> Void {
-        // When we have an error we try again.
+    private func completionHandler(
+        _ txp: TxProposalResponse?,
+        _ errorResponse: TxProposalErrorResponse?,
+        _ error: Error?
+    ) -> Void {
+        if let errorResponse = errorResponse {
+            print(errorResponse)
+            DispatchQueue.main.async {
+                self.completion(self.previousTxp, errorResponse, error)
+            }
+            return
+        }
+
         if let error = error {
             print(error)
             DispatchQueue.main.async {
-                self.completion(txp, error)
+                self.completion(txp, errorResponse, error)
             }
             return
         }
@@ -78,7 +91,7 @@ class TxTransponder {
 
         // Complete the sequence.
         DispatchQueue.main.async {
-            self.completion(txp, error)
+            self.completion(txp, errorResponse, error)
         }
     }
 }

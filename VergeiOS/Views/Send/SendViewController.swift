@@ -227,19 +227,42 @@ class SendViewController: UIViewController {
 
             let actionSheet = sendingView.makeActionSheet()
 
-            self.present(actionSheet, animated: true)
+            self.present(actionSheet, animated: true) {
+                TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, errorResponse, error  in
+                    if let errorResponse = errorResponse {
+                        actionSheet.dismiss(animated: true) {
+                            self.showTransactionError(errorResponse, txp: txp)
+                        }
+                        return
+                    }
 
-            TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, error  in
-                self.didChangeSendTransaction(SendTransaction())
+                    self.didChangeSendTransaction(SendTransaction())
 
-                let timeout = (error == nil) ? 3.0 : 0.0
-                let _ = setTimeout(timeout) {
-                    actionSheet.dismiss(animated: true)
+                    let timeout = (error == nil) ? 3.0 : 0.0
+                    let _ = setTimeout(timeout) {
+                        actionSheet.dismiss(animated: true)
+                    }
                 }
             }
         }
 
         present(unlockView, animated: true)
+    }
+
+    func showTransactionError(_ errorResponse: TxProposalErrorResponse, txp: TxProposalResponse?) {
+        let actionSheet = UIAlertController(
+            title: "Transaction Failed",
+            message: "Your transaction has failed with the following error: \(errorResponse.message)",
+            preferredStyle: .actionSheet
+        )
+
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .destructive) { action in
+            if let txp = txp {
+                WalletClient.shared.rejectTxProposal(txp: txp)
+            }
+        })
+
+        present(actionSheet, animated: true)
     }
     
     func notifySelectedToMuchAmount() {

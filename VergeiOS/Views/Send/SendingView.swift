@@ -48,6 +48,10 @@ class SendingView: UIView {
         return alertController
     }
 
+    func showError(_ errorResponse: TxProposalErrorResponse) {
+        statusLabel.text = errorResponse.message
+    }
+
     private func setupListeners() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didCreateTx, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didPublishTx, object: nil)

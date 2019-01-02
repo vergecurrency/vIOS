@@ -284,7 +284,7 @@ public class WalletClient {
 
     public func createTxProposal(
         proposal: TxProposal,
-        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+        completion: @escaping (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
     ) {
         var arguments = JSON()
         var output = JSON()
@@ -300,21 +300,19 @@ public class WalletClient {
         postRequest(url: "/v2/txproposals/", arguments: arguments) { data, response, error in
             if let data = data {
                 do {
-                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
+                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
                 } catch {
-                    print(try! JSON(data: data))
-
-                    return completion(nil, error)
+                    return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data), error)
                 }
             } else {
-                return completion(nil, error)
+                return completion(nil, nil, error)
             }
         }
     }
 
     public func publishTxProposal(
         txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+        completion: @escaping (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
     ) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
@@ -330,24 +328,22 @@ public class WalletClient {
             ) { data, response, error in
                 if let data = data {
                     do {
-                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
+                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
                     } catch {
-                        print(try! JSON(data: data), txp)
-
-                        return completion(nil, error)
+                        return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data), error)
                     }
                 } else {
-                    return completion(nil, error)
+                    return completion(nil, nil, error)
                 }
             }
         } catch {
-            completion(nil, error)
+            completion(nil, nil, error)
         }
     }
 
     public func signTxProposal(
         txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+        completion: @escaping (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
     ) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
@@ -366,24 +362,22 @@ public class WalletClient {
             ) { data, response, error in
                 if let data = data {
                     do {
-                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
+                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
                     } catch {
-                        print(try! JSON(data: data), txp)
-
-                        return completion(nil, error)
+                        return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data), error)
                     }
                 } else {
-                    return completion(nil, error)
+                    return completion(nil, nil, error)
                 }
             }
         } catch {
-            completion(nil, error)
+            completion(nil, nil, error)
         }
     }
 
     public func broadcastTxProposal(
         txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?, _ error: Error?) -> Void
+        completion: @escaping (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
     ) {
         postRequest(
             url: "/v1/txproposals/\(txp.id)/broadcast/",
@@ -391,14 +385,25 @@ public class WalletClient {
         ) { data, response, error in
             if let data = data {
                 do {
-                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil)
+                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
                 } catch {
-                    print(try! JSON(data: data), txp)
-
-                    return completion(nil, error)
+                    return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data), error)
                 }
             } else {
-                return completion(nil, error)
+                return completion(nil, nil, error)
+            }
+        }
+    }
+
+    public func rejectTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+        postRequest(
+            url: "/v1/txproposals/\(txp.id)/rejections/",
+            arguments: nil
+        ) { data, response, error in
+            if let _ = data {
+                return completion(nil)
+            } else {
+                return completion(error)
             }
         }
     }
