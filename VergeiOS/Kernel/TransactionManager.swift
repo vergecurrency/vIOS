@@ -56,6 +56,10 @@ class TransactionManager {
             completion(self.transactionRepository.all())
         }
     }
+    
+    public func remove(transaction: TxHistory) {
+        transactionRepository.remove(tx: transaction)
+    }
 
     public func removeAll() {
         transactionRepository.removeAll()

@@ -7,7 +7,7 @@ import Foundation
 
 public struct AddressBalance: Decodable {
     public let address: String
-    public let path: String
+    public let path: String?
     public let amount: Int
 }
 

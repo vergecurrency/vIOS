@@ -288,7 +288,7 @@ class SendViewController: UIViewController {
     }
 
     @objc func setMaximumAmount() {
-        sendTransaction.setBy(currency: "XVG", amount: walletAmount)
+        sendTransaction.setBy(currency: "XVG", amount: NSNumber(value: walletAmount.doubleValue - transactionFee))
         didChangeSendTransaction(sendTransaction)
     }
 }

@@ -572,9 +572,12 @@ public class WalletClient {
             return try output.asInputTransaction()
         }
 
-        var outputs = [toOutput, changeOutput]
-        if txp.outputOrder == [1, 0] {
-            outputs = [changeOutput, toOutput]
+        var outputs = [toOutput]
+        if change > 0 {
+            outputs = [toOutput, changeOutput]
+            if txp.outputOrder == [1, 0] {
+                outputs = [changeOutput, toOutput]
+            }
         }
 
         let tx = Transaction(

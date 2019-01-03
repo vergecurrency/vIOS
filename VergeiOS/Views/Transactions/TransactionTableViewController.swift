@@ -15,6 +15,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet var addAddressButton: UIButton!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet var deleteTransactionBarButtonItem: UIBarButtonItem!
     @IBOutlet var repeatTransactionBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var tableView: PlaceholderTableView!
@@ -81,11 +82,22 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             
             prefix = "-"
         } else {
-            navigationItem.setRightBarButton(nil, animated: true)
+            navigationItem.rightBarButtonItems?.removeAll { item in
+                return item == repeatTransactionBarButtonItem
+            }
             amountLabel.textColor = UIColor.vergeGreen()
             iconImageView.image = UIImage(named: "Receive")
             
             prefix = "+"
+        }
+        
+        
+        if !transaction.confirmed {
+            navigationItem.rightBarButtonItems?.removeAll { item in
+                return item == deleteTransactionBarButtonItem
+            }
+        } else {
+            navigationItem.rightBarButtonItems?.append(deleteTransactionBarButtonItem)
         }
         
         amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
@@ -264,10 +276,17 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         UIPasteboard.general.string = transaction!.txid
         NotificationManager.shared.showMessage("Txid copied!", duration: 3)
     }
+    
+    @IBAction func deleteTransactionPushed(_ sender: Any) {
+        if let transaction = transaction {
+            TransactionManager.shared.remove(transaction: transaction)
+            dismiss(animated: true)
+        }
+    }
 
     @IBAction func repeatTransactionPushed(_ sender: Any) {
-        if transaction != nil {
-            repeatTransaction(transaction!)
+        if let transaction = transaction {
+            repeatTransaction(transaction)
         }
     }
 

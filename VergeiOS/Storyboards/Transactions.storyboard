@@ -279,16 +279,24 @@
                                 <action selector="closeViewController:" destination="Igw-3T-6sZ" id="qKQ-TR-aZn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Refresh" id="IhH-Ac-YiK">
-                            <connections>
-                                <action selector="repeatTransactionPushed:" destination="Igw-3T-6sZ" id="bpB-Co-fU3"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="Refresh" id="IhH-Ac-YiK">
+                                <connections>
+                                    <action selector="repeatTransactionPushed:" destination="Igw-3T-6sZ" id="bpB-Co-fU3"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="UZf-cW-at8">
+                                <connections>
+                                    <action selector="deleteTransactionPushed:" destination="Igw-3T-6sZ" id="pSr-XO-AyE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addAddressButton" destination="BQh-Ni-7Bo" id="i4O-fy-nn1"/>
                         <outlet property="amountLabel" destination="SH2-Sm-iht" id="Ewe-V0-bKJ"/>
                         <outlet property="dateTimeLabel" destination="Zge-7U-fdr" id="65u-H3-UUS"/>
+                        <outlet property="deleteTransactionBarButtonItem" destination="UZf-cW-at8" id="h4Q-oU-DQG"/>
                         <outlet property="iconImageView" destination="VQB-xw-7HZ" id="Qtp-61-Fgc"/>
                         <outlet property="nameLabel" destination="hnr-1l-LV6" id="Edk-9z-8fb"/>
                         <outlet property="repeatTransactionBarButtonItem" destination="IhH-Ac-YiK" id="Cmy-uX-3px"/>
@@ -330,7 +338,7 @@
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.094117647058823528" green="0.23529411764705882" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
             <color red="0.38823529411764707" green="0.47058823529411764" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
