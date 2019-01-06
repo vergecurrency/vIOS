@@ -44,6 +44,16 @@ class TransactionManager {
 
     public func sync(skip: Int = 0, limit: Int = 50, completion: @escaping (_ transactions: [TxHistory]) -> Void) {
         walletClient.getTxHistory(skip: skip, limit: limit) { transactions in
+            var txids = [String]()
+            let transactions = transactions.filter { tx in
+                if txids.contains(tx.txid) && tx.category == .Moved {
+                    return false
+                }
+                
+                txids.append(tx.txid)
+                return true
+            }
+            
             for transaction in transactions {
                 self.transactionRepository.remove(tx: transaction)
                 self.transactionRepository.put(tx: transaction)

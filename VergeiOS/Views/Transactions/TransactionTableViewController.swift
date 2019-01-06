@@ -114,8 +114,15 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return transaction?.category == .Sent ? 4 : 3
+        if section == 0 && transaction != nil {
+            switch transaction!.category {
+            case .Sent:
+                return 4
+            case .Received:
+                return 3
+            case .Moved:
+                return 2
+            }
         }
         
         return items.count
@@ -141,7 +148,9 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell")!
             
-            switch indexPath.row {
+            let indexRow: Int = indexPath.row + (transaction?.category == .Moved ? 1 : 0)
+            
+            switch indexRow {
             case 0:
                 cell.imageView?.image = UIImage(named: "Address")
                 cell.textLabel?.text = "Address"

@@ -39,7 +39,7 @@ extension TxHistory {
         }
         
         if category == .Moved {
-            return "Moved"
+            return ""
         }
 
         return outputs?.first { output in
