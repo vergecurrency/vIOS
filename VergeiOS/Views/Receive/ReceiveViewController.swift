@@ -221,7 +221,7 @@ class ReceiveViewController: UIViewController {
         }
 
         if let shareImageObj = shareImage {
-            objectsToShare.append(shareImageObj.pngData()!)
+            objectsToShare.append(shareImageObj)
         }
 
         if text != nil || shareImage != nil {
