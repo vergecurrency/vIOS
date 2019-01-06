@@ -50,12 +50,9 @@ class CurrencyInput: UITextField {
     }
 
     public func setAmount(_ amount: NSNumber) {
-        let amountString = amount.toBlankCurrency(fractDigits: 8)
-
-        if let decimal = formatter.decimalSeparator {
-            text = amountString.replacingOccurrences(of: ".", with: decimal)
-            format()
-        }
+        text = amount.toBlankCurrency(fractDigits: 8)
+        
+        format()
     }
 
     public func format() {
