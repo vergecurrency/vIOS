@@ -65,17 +65,22 @@ class SendViewController: UIViewController {
             name: .didReceiveStats,
             object: nil
         )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didReceiveTransaction),
+            name: .didReceiveTransaction,
+            object: nil
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if walletAmount.doubleValue <= transactionFee {
-            noBalanceView.isHidden = false
-        }
+        noBalanceView.isHidden = (walletAmount.doubleValue >= transactionFee)
 
-        self.xvgCardContainer.alpha = 0.0
-        self.xvgCardContainer.center.y += 20.0
+        xvgCardContainer.alpha = 0.0
+        xvgCardContainer.center.y += 20.0
 
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
             self.xvgCardContainer.alpha = 1.0
@@ -89,6 +94,12 @@ class SendViewController: UIViewController {
     @objc func didReceiveStats(_ notification: Notification) {
         updateAmountLabel()
         updateWalletAmountLabel()
+    }
+    
+    @objc func didReceiveTransaction(notification: Notification) {
+        DispatchQueue.main.async {
+            self.noBalanceView.isHidden = (self.walletAmount.doubleValue >= self.transactionFee)
+        }
     }
 
     @IBAction func switchCurrency(_ sender: Any) {

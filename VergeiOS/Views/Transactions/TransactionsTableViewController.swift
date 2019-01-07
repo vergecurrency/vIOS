@@ -72,6 +72,8 @@ class TransactionsTableViewController: EdgedTableViewController {
         }
 
         if TransactionManager.shared.hasTransactions && navigationItem.searchController == nil {
+            tableView.backgroundView = nil
+            tableView.tableFooterView = nil
             // Setup the Search Controller
             searchController.searchResultsUpdater = self
             searchController.obscuresBackgroundDuringPresentation = false
