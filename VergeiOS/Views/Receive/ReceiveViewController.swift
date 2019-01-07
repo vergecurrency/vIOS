@@ -141,8 +141,8 @@ class ReceiveViewController: UIViewController {
             qrCode?.color = CIColor(cgColor: UIColor.backgroundBlue().cgColor)
             qrCode?.backgroundColor = CIColor(cgColor: UIColor.primaryDark().cgColor)
         } else {
-            qrCode?.color = .white
-            qrCode?.backgroundColor = CIColor(cgColor: UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor)
+            qrCode?.color = CIColor(cgColor: UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor)
+            qrCode?.backgroundColor = .white
         }
 
         qrCodeImageView.image = (qrCode?.image)!

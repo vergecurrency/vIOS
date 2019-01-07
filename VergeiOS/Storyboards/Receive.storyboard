@@ -47,16 +47,16 @@
                                                         <rect key="frame" x="137.5" y="14" width="191.5" height="192"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0uN-ln-KKw">
-                                                                <rect key="frame" x="-6" y="-6" width="203.5" height="204"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="191.5" height="192"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="wbF-m7-GU7" secondAttribute="height" multiplier="1:1" id="1g1-pi-a5G"/>
-                                                            <constraint firstItem="0uN-ln-KKw" firstAttribute="leading" secondItem="wbF-m7-GU7" secondAttribute="leading" constant="-6" id="D2E-UI-DMB"/>
-                                                            <constraint firstItem="0uN-ln-KKw" firstAttribute="top" secondItem="wbF-m7-GU7" secondAttribute="top" constant="-6" id="X7a-2X-Ak5"/>
-                                                            <constraint firstAttribute="trailing" secondItem="0uN-ln-KKw" secondAttribute="trailing" constant="-6" id="evG-Oc-ZLe"/>
-                                                            <constraint firstAttribute="bottom" secondItem="0uN-ln-KKw" secondAttribute="bottom" constant="-6" id="x09-KT-qSi"/>
+                                                            <constraint firstItem="0uN-ln-KKw" firstAttribute="leading" secondItem="wbF-m7-GU7" secondAttribute="leading" id="D2E-UI-DMB"/>
+                                                            <constraint firstItem="0uN-ln-KKw" firstAttribute="top" secondItem="wbF-m7-GU7" secondAttribute="top" id="X7a-2X-Ak5"/>
+                                                            <constraint firstAttribute="trailing" secondItem="0uN-ln-KKw" secondAttribute="trailing" id="evG-Oc-ZLe"/>
+                                                            <constraint firstAttribute="bottom" secondItem="0uN-ln-KKw" secondAttribute="bottom" id="x09-KT-qSi"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
