@@ -34,7 +34,7 @@ class AddressValidator {
         }
         
         let matches = regexMatches(for: requestRegex, in: string)
-        if matches.indices.count == 2 && matches.indices.contains(0) {
+        if matches.indices.count > 0 && matches.indices.contains(0) {
             valid = true
             address = matches[0]
                 .replacingOccurrences(of: "verge://", with: "")
