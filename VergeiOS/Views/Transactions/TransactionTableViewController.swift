@@ -90,13 +90,12 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             
             prefix = "+"
         }
-        
-        
+
+        // Always remove the trash bin and then add it if needed.
+        navigationItem.rightBarButtonItems?.removeAll { item in
+            return item == deleteTransactionBarButtonItem
+        }
         if !transaction.confirmed {
-            navigationItem.rightBarButtonItems?.removeAll { item in
-                return item == deleteTransactionBarButtonItem
-            }
-        } else {
             navigationItem.rightBarButtonItems?.append(deleteTransactionBarButtonItem)
         }
         
@@ -287,10 +286,19 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func deleteTransactionPushed(_ sender: Any) {
-        if let transaction = transaction {
-            TransactionManager.shared.remove(transaction: transaction)
-            dismiss(animated: true)
+        guard let transaction = transaction else {
+            return
         }
+
+        let confirmation = UIAlertController.createDeleteTransactionAlert { action in
+            TransactionManager.shared.remove(transaction: transaction)
+
+            NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
+
+            self.dismiss(animated: true)
+        }
+
+        present(confirmation, animated: true)
     }
 
     @IBAction func repeatTransactionPushed(_ sender: Any) {

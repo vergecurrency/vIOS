@@ -32,4 +32,19 @@ extension UIAlertController {
         
         return alert
     }
+
+    static func createDeleteTransactionAlert(handler: ((UIAlertAction) -> Void)?) -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Remove transaction",
+            message: "Are you sure you want to remove this transaction?",
+            preferredStyle: .alert
+        )
+
+        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: handler)
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(delete)
+
+        return alert
+    }
 }
