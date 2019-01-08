@@ -26,6 +26,10 @@ class CreditsTableViewController: EdgedTableViewController {
         [
             "name": "Kris",
             "twitter": "ksteigerwald"
+        ],
+        [
+            "name": "Ivan",
+            "twitter": "ihellc"
         ]
     ]
     
