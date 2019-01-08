@@ -55,19 +55,21 @@ class ConfirmSendView: UIView {
     }
 
     func updateTransactionValues() {
+        let totalXVG = transaction.amount.doubleValue + Config.fee
+
+        sendingAmountLabel.text = transaction.amount.toXvgCurrency()
+        transactionFeeAmountLabel.text = NSNumber(floatLiteral: Config.fee).toXvgCurrency()
+
+        totalXvgAmountLabel.text = NSNumber(
+            floatLiteral: (transaction.amount.doubleValue + Config.fee)
+        ).toXvgCurrency()
+
+        recipientAddressLabel.text = transaction.address
+
         if let xvgInfo = PriceTicker.shared.xvgInfo {
-            let totalXVG = transaction.amount.doubleValue + Config.fee
             let totalFiat = totalXVG * xvgInfo.price
 
-            sendingAmountLabel.text = transaction.amount.toXvgCurrency()
-            transactionFeeAmountLabel.text = NSNumber(floatLiteral: Config.fee).toXvgCurrency()
-
-            totalXvgAmountLabel.text = NSNumber(
-                floatLiteral: (transaction.amount.doubleValue + Config.fee)
-            ).toXvgCurrency()
-
             totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toPairCurrency()
-            recipientAddressLabel.text = transaction.address
         }
     }
     
