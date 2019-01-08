@@ -29,6 +29,8 @@ So you want to help us out? Here's a guide on how to get started:
 2. Now install the following tools via [brew](https://brew.sh) 
 ```sh
 brew install carthage
+brew install automake
+brew install libtool
 ```
 
 3. In your cloned project folder run carthage update (this could take awile):
