@@ -20,4 +20,16 @@ extension UIAlertController {
 
         return alert
     }
+    
+    static func createInvalidContactAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Can't save",
+            message: "Please provide correct contact data",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        
+        return alert
+    }
 }

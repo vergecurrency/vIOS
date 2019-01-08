@@ -13,6 +13,7 @@ class AddressValidator {
     
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
     
+    static let addressRegex = "([a-z|A-Z|0-9]{34})"
     let requestRegex = "(verge:[\\/]{0,2}[a-z|A-Z|0-9]{34})|(\\?amount=\\d+[\\.|\\,]?\\d+)"
     let addressCount = 34
     
@@ -21,6 +22,16 @@ class AddressValidator {
         completion: @escaping ValidationCompletion
     ) {
         validate(string: metadataObject.stringValue ?? "", completion: completion)
+    }
+    
+    // Sugesstion: better to make it static.
+    // No need to create AddressValidator each time to validate something like in contact model
+    static func validate(address: String) -> Bool {
+        let matches = regexMatches(for: addressRegex, in: address)
+        if matches.indices.count > 0 && matches.indices.contains(0) {
+            return true
+        }
+        return false
     }
     
     func validate(string: String, completion: @escaping ValidationCompletion) {
@@ -33,7 +44,7 @@ class AddressValidator {
             address = string
         }
         
-        let matches = regexMatches(for: requestRegex, in: string)
+        let matches = AddressValidator.regexMatches(for: requestRegex, in: string)
         if matches.indices.count > 0 && matches.indices.contains(0) {
             valid = true
             address = matches[0]
@@ -53,7 +64,7 @@ class AddressValidator {
         completion(valid, address, amount)
     }
     
-    fileprivate func regexMatches(for regex: String, in text: String) -> [String] {
+    fileprivate static func regexMatches(for regex: String, in text: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: regex)
             let results = regex.matches(

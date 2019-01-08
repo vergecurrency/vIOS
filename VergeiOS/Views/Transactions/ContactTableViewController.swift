@@ -107,23 +107,29 @@ class ContactTableViewController: FormViewController {
     }
 
     @IBAction func saveContact(_ sender: Any) {
-        if form.validate().count == 0 {
-            let address = Contact()
-            address.name = (form.rowBy(tag: "name") as! TextRow).value ?? ""
-            address.address = (form.rowBy(tag: "address") as! TextRow).value ?? ""
-
-            addressBook.put(address: address)
-
-            contact = address
-
-            if transactions.count == 0 {
-                addTransactions()
-            }
-
-            if navigationItem.rightBarButtonItems?.count == 1 {
-                navigationItem.rightBarButtonItems?.append(trashButtonItem)
-            }
+        let tempContact = Contact()
+        tempContact.name = (form.rowBy(tag: "name") as! TextRow).value ?? ""
+        tempContact.address = (form.rowBy(tag: "address") as! TextRow).value ?? ""
+        
+        // validate contact
+        // if invalid - show alert with description // or TODO: highlight invalid fields
+        if (!tempContact.isValid()) {
+            let alert = UIAlertController.createInvalidContactAlert()
+            present(alert, animated: true)
+            
+            return
         }
+        // if valid - continue
+        
+        addressBook.put(address: tempContact)
+        
+        contact = tempContact
+        
+        if transactions.count == 0 {
+            addTransactions()
+        }
+        // pop screen on completion
+        self.navigationController?.popViewController(animated: true)
     }
 
     @objc func deleteContact(_ sender: Any) {
