@@ -26,7 +26,7 @@ class ReceiveViewController: UIViewController {
 
     @IBOutlet weak var addressTextField: SelectorButton!
     @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var amountTextField: CurrencyInput!
     @IBOutlet weak var stealthSwitch: UISwitch!
 
     var address = ""
@@ -152,18 +152,6 @@ class ReceiveViewController: UIViewController {
         getNewAddress()
     }
 
-    @IBAction func amountChanged(_ sender: UITextField) {
-        amount = sender.text?.currencyNumberValue().doubleValue ?? 0
-
-        if currency == .FIAT {
-            if let xvgInfo = PriceTicker.shared.xvgInfo {
-                amount = amount / xvgInfo.price
-            }
-        }
-
-        createQRCode()
-    }
-
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
         var newAmount = ""
@@ -237,9 +225,15 @@ class ReceiveViewController: UIViewController {
         }
     }
     
-    @objc func amountTextFieldDidChange(_ textField: UITextField) {
-        if let amountString = textField.text?.currencyInputFormatting() {
-            textField.text = amountString
+    @objc func amountTextFieldDidChange(_ textField: CurrencyInput) {
+        amount = textField.getNumber().doubleValue
+
+        if currency == .FIAT {
+            if let xvgInfo = PriceTicker.shared.xvgInfo {
+                amount = amount / xvgInfo.price
+            }
         }
+
+        createQRCode()
     }
 }
