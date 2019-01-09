@@ -240,6 +240,12 @@ class SendViewController: UIViewController {
 
             let actionSheet = sendingView.makeActionSheet()
 
+            if let popoverController = actionSheet.popoverPresentationController {
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.permittedArrowDirections = []
+            }
+
             self.present(actionSheet, animated: true) {
                 TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, errorResponse, error  in
                     if let errorResponse = errorResponse {
@@ -274,6 +280,12 @@ class SendViewController: UIViewController {
                 WalletClient.shared.rejectTxProposal(txp: txp)
             }
         })
+
+        if let popoverController = actionSheet.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
 
         present(actionSheet, animated: true)
     }
