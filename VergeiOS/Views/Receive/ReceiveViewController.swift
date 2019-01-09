@@ -53,7 +53,7 @@ class ReceiveViewController: UIViewController {
         addTapRecognizer(target: addressTextField, action: #selector(copyAddress(recognizer:)))
         addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
         
-        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingChanged)
+        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingDidEnd)
     }
 
     override func viewWillAppear(_ animated: Bool) {

@@ -32,7 +32,11 @@ class CurrencyInput: UITextField {
     @objc public func editingDidEnd(_ textField: UITextField) {
         if getNumber().doubleValue == 0.0 {
             textField.text = ""
+            return
         }
+
+        // Final Format.
+        setAmount(getNumber())
     }
 
     public func getNumber() -> NSNumber {
