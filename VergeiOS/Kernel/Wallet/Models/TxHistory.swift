@@ -75,7 +75,7 @@ extension TxHistory {
     }
     
     public var confirmed: Bool {
-        return confirmations < Config.confirmationsNeeded
+        return confirmations >= Config.confirmationsNeeded
     }
 
     public func sortBy(txHistory: TxHistory) -> Bool {

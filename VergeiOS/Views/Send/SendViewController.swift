@@ -111,7 +111,10 @@ class SendViewController: UIViewController {
     }
 
     func updateWalletAmountLabel() {
-        var amount = NSNumber(floatLiteral: walletAmount.doubleValue - sendTransaction.amount.doubleValue - transactionFee)
+        let sendAmount = sendTransaction.amount.doubleValue > 0 ? (
+            sendTransaction.amount.doubleValue + transactionFee
+        ) : 0
+        var amount = NSNumber(floatLiteral: walletAmount.doubleValue - sendAmount)
         if currency == .FIAT {
             amount = convertXvgToFiat(amount)
         }
@@ -121,7 +124,6 @@ class SendViewController: UIViewController {
         }
         
         DispatchQueue.main.async {
-            // self.walletAmountLabel.text = amount.toCurrency(currency: self.currentCurrency())
             self.walletAmountLabel.text = amount.toXvgCurrency()
         }
     }

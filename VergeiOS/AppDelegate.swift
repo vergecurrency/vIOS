@@ -79,7 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Start the tor client
         TorClient.shared.start {
-            self.torClientStarted()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                self.torClientStarted()
+            }
         }
     }
 

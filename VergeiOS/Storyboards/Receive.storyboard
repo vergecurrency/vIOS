@@ -170,7 +170,7 @@
                                                                             <userDefinedRuntimeAttribute type="string" keyPath="label" value="Amount"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount to receive" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NwL-uT-WTm">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount to receive" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NwL-uT-WTm" customClass="CurrencyInput" customModule="VergeiOS" customModuleProvider="target">
                                                                         <rect key="frame" x="42" y="20" width="281" height="20"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="INo-iP-LTr"/>
@@ -178,9 +178,6 @@
                                                                         <color key="textColor" name="SecondaryDark"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                                                        <connections>
-                                                                            <action selector="amountChanged:" destination="0dW-f5-Hat" eventType="editingDidEnd" id="wyU-n5-fIy"/>
-                                                                        </connections>
                                                                     </textField>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XVG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXa-vB-ggI">
                                                                         <rect key="frame" x="0.0" y="20" width="34" height="20"/>

@@ -45,7 +45,7 @@ class TransactionTableViewCell: Cell<String>, CellType {
         }
         
         if transaction.category == .Received {
-            textLabel?.text = transaction.confirmed ? "Pending" : "Received"
+            textLabel?.text = transaction.confirmed ? "Received" : "Pending"
         }
     }
     
@@ -60,8 +60,8 @@ class TransactionTableViewCell: Cell<String>, CellType {
         var prefix = ""
         if transaction.category == .Sent {
             amountLabel.textColor = UIColor.vergeRed()
-            imageView?.tintColor = transaction.confirmed ? UIColor.vergeGrey() : UIColor.vergeRed()
-            imageView?.image = UIImage(named: transaction.confirmed ? "Sending" : "Sent")
+            imageView?.tintColor = transaction.confirmed ? UIColor.vergeRed() : UIColor.vergeGrey()
+            imageView?.image = UIImage(named: transaction.confirmed ?  "Sent" : "Sending")
 
             prefix = "-"
         } else if transaction.category == .Moved {
@@ -72,8 +72,8 @@ class TransactionTableViewCell: Cell<String>, CellType {
             prefix = ""
         } else {
             amountLabel.textColor = UIColor.vergeGreen()
-            imageView?.tintColor = transaction.confirmed ? UIColor.vergeGrey() : UIColor.vergeGreen()
-            imageView?.image = UIImage(named: transaction.confirmed ? "Receiving" : "Received")
+            imageView?.tintColor = transaction.confirmed ? UIColor.vergeGreen() : UIColor.vergeGrey()
+            imageView?.image = UIImage(named: transaction.confirmed ? "Received" : "Receiving")
             
             prefix = "+"
         }

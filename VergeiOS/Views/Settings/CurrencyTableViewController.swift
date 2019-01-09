@@ -36,6 +36,10 @@ class CurrencyTableViewController: EdgedTableViewController {
             "name": "Chinese Yuan",
         ],
         [
+            "currency": "DKK",
+            "name": "Danish krone",
+        ],
+        [
             "currency": "EUR",
             "name": "Euro",
         ],
@@ -50,6 +54,18 @@ class CurrencyTableViewController: EdgedTableViewController {
         [
             "currency": "IDR",
             "name": "Indonesian Rupiah",
+        ],
+        [
+            "currency": "RUB",
+            "name": "Russian Ruble",
+        ],
+        [
+            "currency": "SGD",
+            "name": "Singapore dollar",
+        ],
+        [
+            "currency": "THB",
+            "name": "Thai Baht",
         ],
         [
             "currency": "USD",
