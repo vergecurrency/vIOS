@@ -21,6 +21,10 @@ class SendingView: UIView {
         }
     }
 
+    var iPadWidth: CGFloat {
+        return 320.0
+    }
+
     // TODO: Add this to an abstract class.
     func makeActionSheet() -> UIAlertController {
         let viewHeight: CGFloat = subviews.first?.frame.height ?? 0
@@ -30,10 +34,12 @@ class SendingView: UIView {
 
         let alertController = UIAlertController(title: enters, message: nil, preferredStyle: .actionSheet)
 
+        let width = UIDevice.current.userInterfaceIdiom == .pad ? iPadWidth : alertController.view.bounds.size.width
+
         frame = CGRect(
             x: 0,
             y: 0,
-            width: alertController.view.bounds.size.width - margin * 2.0,
+            width: width - margin * 2.0,
             height: viewHeight
         )
 

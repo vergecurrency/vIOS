@@ -25,6 +25,10 @@ class ConfirmSendView: UIView {
         }
     }
 
+    var iPadWidth: CGFloat {
+        return 320.0
+    }
+
     func makeActionSheet() -> UIAlertController {
         let viewHeight: CGFloat = subviews.first?.frame.height ?? 0
         let lineHeight: CGFloat = 18.33
@@ -33,10 +37,12 @@ class ConfirmSendView: UIView {
 
         let alertController = UIAlertController(title: enters, message: nil, preferredStyle: .actionSheet)
 
+        let width = UIDevice.current.userInterfaceIdiom == .pad ? iPadWidth : alertController.view.bounds.size.width
+
         frame = CGRect(
             x: 0,
             y: 0,
-            width: alertController.view.bounds.size.width - margin * 2.0,
+            width: width - margin * 2.0,
             height: viewHeight
         )
 
