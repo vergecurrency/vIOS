@@ -56,6 +56,10 @@
 	<string>This app uses Face ID to unlock it</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app uses the photo library to save QR codes</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>VergePriceIntent</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
