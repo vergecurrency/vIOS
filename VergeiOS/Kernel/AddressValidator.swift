@@ -8,22 +8,23 @@
 
 import Foundation
 import AVFoundation
+import BitcoinKit
 
 class AddressValidator {
     
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
 
-    static let addressCount = 34
+    static func validate(address: String) -> Bool {
+        let validAddress = try? LegacyAddress(address)
+
+        return validAddress != nil
+    }
     
     func validate(
         metadataObject: AVMetadataMachineReadableCodeObject,
         completion: @escaping ValidationCompletion
     ) {
         validate(string: metadataObject.stringValue ?? "", completion: completion)
-    }
-
-    static func validate(address: String) -> Bool {
-        return address.count == addressCount
     }
     
     func validate(string: String, completion: @escaping ValidationCompletion) {

@@ -23,8 +23,8 @@ extension UIAlertController {
     
     static func createInvalidContactAlert() -> UIAlertController {
         let alert = UIAlertController(
-            title: "Can't save",
-            message: "Please provide correct contact data",
+            title: "Invalid contact data",
+            message: "Please provide a valid name and XVG address",
             preferredStyle: .alert
         )
         
