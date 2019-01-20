@@ -128,8 +128,11 @@ class ContactTableViewController: FormViewController {
         if transactions.count == 0 {
             addTransactions()
         }
-        // pop screen on completion
-        self.navigationController?.popViewController(animated: true)
+
+        NotificationManager.shared.showMessage("Contact saved!", duration: 1)
+
+        // Pop screen on completion
+        navigationController?.popViewController(animated: true)
     }
 
     @objc func deleteContact(_ sender: Any) {
