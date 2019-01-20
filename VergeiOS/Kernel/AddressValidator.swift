@@ -12,10 +12,8 @@ import AVFoundation
 class AddressValidator {
     
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
-    
-    static let addressRegex = "([a-z|A-Z|0-9]{34})"
-    let requestRegex = "(verge:[\\/]{0,2}[a-z|A-Z|0-9]{34})|(\\?amount=\\d+[\\.|\\,]?\\d+)"
-    let addressCount = 34
+
+    static let addressCount = 34
     
     func validate(
         metadataObject: AVMetadataMachineReadableCodeObject,
@@ -23,15 +21,9 @@ class AddressValidator {
     ) {
         validate(string: metadataObject.stringValue ?? "", completion: completion)
     }
-    
-    // Sugesstion: better to make it static.
-    // No need to create AddressValidator each time to validate something like in contact model
+
     static func validate(address: String) -> Bool {
-        let matches = regexMatches(for: addressRegex, in: address)
-        if matches.indices.count > 0 && matches.indices.contains(0) {
-            return true
-        }
-        return false
+        return address.count == addressCount
     }
     
     func validate(string: String, completion: @escaping ValidationCompletion) {
@@ -39,26 +31,35 @@ class AddressValidator {
         var address: String?
         var amount: NSNumber?
         
-        if string.count == addressCount {
+        if AddressValidator.validate(address: string) {
             valid = true
             address = string
         }
-        
-        let matches = AddressValidator.regexMatches(for: requestRegex, in: string)
-        if matches.indices.count > 0 && matches.indices.contains(0) {
+
+        let splittedRequest: [Substring] = string
+            .replacingOccurrences(of: "verge://", with: "")
+            .replacingOccurrences(of: "verge:", with: "")
+            .split(separator: "?")
+
+        let parametersString: [Substring] = splittedRequest.last?.split(separator: "&") ?? []
+
+        if AddressValidator.validate(address: splittedRequest.first?.description ?? "") {
             valid = true
-            address = matches[0]
-                .replacingOccurrences(of: "verge://", with: "")
-                .replacingOccurrences(of: "verge:", with: "")
-                .replacingOccurrences(of: "?", with: "")
+            address = splittedRequest.first!.description
+        } else {
+            return completion(valid, address, amount)
         }
         
-        if matches.indices.count == 2 && matches.indices.contains(1) {
-            amount = amountToNumber(
-                stringAmount: matches[1]
-                    .replacingOccurrences(of: "?", with: "")
-                    .replacingOccurrences(of: "amount=", with: "")
-            )
+        let splittedParameters = parametersString.last?.split(separator: "&") ?? []
+        var parameters = [String: String]()
+        
+        for param in splittedParameters {
+            let splittedParam = param.split(separator: "=")
+            parameters[splittedParam.first!.description] = splittedParam.last!.description
+        }
+        
+        if let amountParam = parameters["amount"] {
+            amount = amountToNumber(stringAmount: amountParam)
         }
         
         completion(valid, address, amount)
@@ -80,8 +81,8 @@ class AddressValidator {
         }
     }
     
-    fileprivate func amountToNumber(stringAmount: String?) -> NSNumber? {
-        if stringAmount != nil, let double = Double(stringAmount!) {
+    fileprivate func amountToNumber(stringAmount: String) -> NSNumber? {
+        if let double = Double(stringAmount) {
             return NSNumber(value: double)
         }
         
