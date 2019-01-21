@@ -36,7 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         do {
-            try CoreStore.addStorageAndWait()
+            CoreStore.defaultStack = DataStack(
+                xcodeModelName: "CoreData",
+                bundle: Bundle.main,
+                migrationChain: [
+                    "VergeiOS",
+                    "VergeiOS 2"
+                ]
+            )
+
+            try CoreStore.addStorageAndWait(
+                SQLiteStore(fileName: "VergeiOS.sqlite", localStorageOptions: .allowSynchronousLightweightMigration)
+            )
         } catch {
             print(error.localizedDescription)
         }

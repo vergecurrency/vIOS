@@ -116,7 +116,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         if section == 0 && transaction != nil {
             switch transaction!.category {
             case .Sent:
-                return 4
+                return transaction!.memo != nil ? 4 : 3
             case .Received:
                 return 3
             case .Moved:
