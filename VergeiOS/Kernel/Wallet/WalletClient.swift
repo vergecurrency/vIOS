@@ -491,6 +491,8 @@ public class WalletClient {
             var argumentsString = "{}"
             if argumentsData != nil {
                 argumentsString = String(data: argumentsData!, encoding: .utf8) ?? "{}"
+                // Remove escaped slashes.
+                argumentsString = argumentsString.replacingOccurrences(of: "\\/", with: "/")
             }
 
             let copayerId = getCopayerId()
