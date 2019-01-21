@@ -45,7 +45,7 @@ class ReceiveViewController: UIViewController {
             self.xvgCardContainer.center.y += 20.0
         }
 
-        getNewAddress()
+        setAddress()
 
         qrCodeContainerView.layer.cornerRadius = 10.0
         qrCodeContainerView.clipsToBounds = true
@@ -105,21 +105,51 @@ class ReceiveViewController: UIViewController {
         cardShown = false
     }
 
-    func getNewAddress() {
+    func setAddress() {
         DispatchQueue.main.async {
             self.hideCard()
 
-            WalletClient.shared.createAddress { error, addressInfo in
-                guard let addressInfo = addressInfo else {
-                    return
+            var options = WalletAddressesOptions()
+            options.limit = 1
+            options.reverse = true
+
+            WalletClient.shared.getMainAddresses(options: options) { addresses in
+                guard let lastAddress = addresses.first else {
+                    return self.getNewAddress()
                 }
 
-                self.changeAddress(addressInfo.address)
-
-                DispatchQueue.main.async {
-                    self.showCard()
+                if TransactionManager.shared.all(byAddress: lastAddress.address).count == 0 {
+                    return self.handleChangeAddress(lastAddress.address)
                 }
+
+                self.getNewAddress()
             }
+        }
+    }
+
+    func getNewAddress() {
+        WalletClient.shared.createAddress { error, addressInfo, errorResponse in
+            if errorResponse?.error == .MainAddressGapReached {
+                let alert = UIAlertController.createAddressGapReachedAlert()
+
+                self.present(alert, animated: true)
+
+                return
+            }
+
+            guard let addressInfo = addressInfo else {
+                return
+            }
+
+            self.handleChangeAddress(addressInfo.address)
+        }
+    }
+
+    func handleChangeAddress(_ address: String) {
+        self.changeAddress(address)
+
+        DispatchQueue.main.async {
+            self.showCard()
         }
     }
 
