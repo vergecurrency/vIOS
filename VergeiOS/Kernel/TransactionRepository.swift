@@ -52,7 +52,7 @@ class TransactionRepository {
                 entity?.feePerKb = tx.feePerKb ?? 0
                 entity?.address = tx.address
                 entity?.createdOn = tx.createdOn ?? 0
-                entity?.message = tx.message ?? ""
+                entity?.message = tx.message
 
                 return transaction.hasChanges
             })

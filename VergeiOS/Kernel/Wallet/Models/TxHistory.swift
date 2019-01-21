@@ -67,8 +67,8 @@ extension TxHistory {
         return createdOn != nil ? Date(timeIntervalSince1970: TimeInterval(createdOn!)) : nil
     }
 
-    public var memo: String {
-        return message ?? ""
+    public var memo: String? {
+        return message
     }
 
     public var confirmationsCount: String {
