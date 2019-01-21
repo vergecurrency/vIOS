@@ -182,16 +182,19 @@ public class WalletClient {
         }
     }
 
-    public func createAddress(completion: @escaping (_ error: Error?, _ address: AddressInfo?) -> Void) {
+    public func createAddress(
+        completion: @escaping (_ error: Error?, _ address: AddressInfo?, _ createAddressErrorResponse: CreateAddressErrorResponse?) -> Void
+    ) {
         postRequest(url: "/v3/addresses/", arguments: nil) { data, response, error in
             if let data = data {
                 do {
                     let addressInfo = try JSONDecoder().decode(AddressInfo.self, from: data)
-                    completion(error, addressInfo)
+                    completion(error, addressInfo, nil)
                 } catch {
-                    print(error)
-                    completion(error, nil)
+                    completion(error, nil, try? JSONDecoder().decode(CreateAddressErrorResponse.self, from: data))
                 }
+            } else {
+                completion(error, nil, nil)
             }
         }
     }

@@ -16,12 +16,15 @@ class AddressesTableViewController: EdgedTableViewController {
         super.viewDidLoad()
 
         var options = WalletAddressesOptions()
-        options.limit = 15
+        options.limit = 25
         options.reverse = true
 
         WalletClient.shared.getMainAddresses(options: options) { addresses in
+            self.addresses = addresses.filter { addressInfo in
+                return TransactionManager.shared.all(byAddress: addressInfo.address).count == 0
+            }
+
             DispatchQueue.main.async {
-                self.addresses = addresses
                 self.tableView.reloadData()
             }
         }
@@ -42,7 +45,7 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Last \(addresses.count) unused addresses"
+        return "Unused addresses"
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

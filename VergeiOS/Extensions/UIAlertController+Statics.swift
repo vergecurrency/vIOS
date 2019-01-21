@@ -47,4 +47,17 @@ extension UIAlertController {
 
         return alert
     }
+
+    static func createAddressGapReachedAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Cannot create address",
+            message: "The maximum of inactive addresses have been reached. " +
+                "Use one of the already generated addresses to create a new one.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+
+        return alert
+    }
 }
