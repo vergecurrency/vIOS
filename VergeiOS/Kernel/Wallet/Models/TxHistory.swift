@@ -19,6 +19,7 @@ public struct TxHistory: Decodable {
     public let outputs: [InputOutput]?
     public let savedAddress: String?
     public let createdOn: Int64?
+    public var message: String?
 
 }
 
@@ -67,7 +68,7 @@ extension TxHistory {
     }
 
     public var memo: String {
-        return "Memo bro"
+        return message ?? ""
     }
 
     public var confirmationsCount: String {

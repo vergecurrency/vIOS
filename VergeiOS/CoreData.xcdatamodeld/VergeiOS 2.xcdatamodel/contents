@@ -12,11 +12,12 @@
         <attribute name="createdOn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="feePerKb" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fees" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" customClassName="." syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="txid" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="AddressType" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="TransactionType" positionX="-63" positionY="0" width="128" height="180"/>
+        <element name="TransactionType" positionX="-63" positionY="0" width="128" height="195"/>
     </elements>
 </model>

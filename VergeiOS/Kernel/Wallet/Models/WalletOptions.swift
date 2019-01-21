@@ -6,5 +6,5 @@
 import Foundation
 
 public struct WalletOptions {
-
+    //
 }

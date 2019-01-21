@@ -256,7 +256,19 @@ public class WalletClient {
             if let data = data {
                 do {
                     let transactions = try JSONDecoder().decode([TxHistory].self, from: data)
-                    completion(transactions)
+                    var transformedTransactions: [TxHistory] = []
+                    for var transaction in transactions {
+                        if let message = transaction.message {
+                            transaction.message = self.decryptMessage(
+                                ciphertext: message,
+                                encryptingKey: self.sharedEncryptingKey
+                            )
+                        }
+
+                        transformedTransactions.append(transaction)
+                    }
+
+                    completion(transformedTransactions)
                 } catch {
                     print(error)
                     completion([])
@@ -293,9 +305,17 @@ public class WalletClient {
         output["message"].null = nil
 
         arguments["outputs"] = [output]
-        arguments["message"].null = nil
         arguments["payProUrl"].null = nil
         arguments["fee"].intValue = 100000
+
+        if proposal.message.count > 0 {
+            arguments["message"].stringValue = encryptMessage(
+                plaintext: proposal.message,
+                encryptingKey: sharedEncryptingKey
+            )
+        } else {
+            arguments["message"].null = nil
+        }
 
         postRequest(url: "/v2/txproposals/", arguments: arguments) { data, response, error in
             if let data = data {
@@ -525,6 +545,12 @@ public class WalletClient {
         let key = sjcl.base64ToBits(encryptingKey: encryptingKey)
 
         return sjcl.encrypt(password: key, plaintext: plaintext, params: ["ks": 128, "iter": 1])
+    }
+
+    private func decryptMessage(ciphertext: String, encryptingKey: String) -> String {
+        let key = sjcl.base64ToBits(encryptingKey: encryptingKey)
+
+        return sjcl.decrypt(password: key, ciphertext: ciphertext, params: [])
     }
 
     private func buildSecret(walletId: String) throws -> String {
