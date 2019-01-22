@@ -81,7 +81,7 @@ class AddressValidatorTest: XCTestCase {
         let validator = AddressValidator()
         
         let metadata = AddressValidatorAVMetaData()
-        metadata.returnStringValue = "verge://DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJu?amount=454000.43"
+        metadata.returnStringValue = "verge:DCys4K9buSLAgd4jG9qqZn3vB9CdXJLMJu?amount=454000.43"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount) in
             XCTAssert(valid)

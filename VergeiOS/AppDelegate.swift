@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Intents
 import CoreData
 import CoreStore
 import IQKeyboardManagerSwift
@@ -35,7 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         do {
-            try CoreStore.addStorageAndWait()
+            CoreStore.defaultStack = DataStack(
+                xcodeModelName: "CoreData",
+                bundle: Bundle.main,
+                migrationChain: [
+                    "VergeiOS",
+                    "VergeiOS 2"
+                ]
+            )
+
+            try CoreStore.addStorageAndWait(
+                SQLiteStore(fileName: "VergeiOS.sqlite", localStorageOptions: .allowSynchronousLightweightMigration)
+            )
         } catch {
             print(error.localizedDescription)
         }
@@ -109,6 +121,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Start the wallet ticker.
         WalletTicker.shared.start()
+        
+        if #available(iOS 12.0, *) {
+            self.donateSiriIntents()
+        }
     }
     
     func registerAppforDetectLockState() {
@@ -152,4 +168,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    @available(iOS 12.0, *)
+    func donateSiriIntents() {
+        let priceIntent = VergePriceIntent()
+        priceIntent.suggestedInvocationPhrase = "Verge price"
+        
+        let interaction = INInteraction(intent: priceIntent, response: nil)
+        
+        interaction.donate { (error) in
+            if error != nil {
+                if let error = error as NSError? {
+                    NSLog("Interaction donation failed: %@", error)
+                } else {
+                    NSLog("Successfully donated interaction")
+                }
+            }
+        }
+    }
 }

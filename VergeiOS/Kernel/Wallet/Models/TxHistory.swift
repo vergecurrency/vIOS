@@ -19,6 +19,7 @@ public struct TxHistory: Decodable {
     public let outputs: [InputOutput]?
     public let savedAddress: String?
     public let createdOn: Int64?
+    public var message: String?
 
 }
 
@@ -66,8 +67,8 @@ extension TxHistory {
         return createdOn != nil ? Date(timeIntervalSince1970: TimeInterval(createdOn!)) : nil
     }
 
-    public var memo: String {
-        return "Memo bro"
+    public var memo: String? {
+        return message
     }
 
     public var confirmationsCount: String {
