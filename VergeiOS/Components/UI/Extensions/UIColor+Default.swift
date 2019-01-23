@@ -34,14 +34,14 @@ extension UIColor {
     }
     
     static func vergeGrey() -> UIColor {
-        return UIColor(named: "VergeGrey") ?? .blue
+        return UIColor(named: "VergeGrey") ?? .gray
     }
     
     static func vergeGreen() -> UIColor {
-        return UIColor(named: "VergeGreen") ?? .blue
+        return UIColor(named: "VergeGreen") ?? .green
     }
     
     static func vergeRed() -> UIColor {
-        return UIColor(named: "VergeRed") ?? .blue
+        return UIColor(named: "VergeRed") ?? .red
     }
 }
