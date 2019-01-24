@@ -67,8 +67,3 @@ carthage update --platform iOS
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Authors
-
-* **Swen van Zanten** - *Main developer* - [SwenVanZanten](https://github.com/SwenVanZanten)
-* **Marvin Piekarek** - *Main developer* - [marpme](https://github.com/marpme)
