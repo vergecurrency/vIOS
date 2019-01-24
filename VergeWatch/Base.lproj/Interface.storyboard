@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="VergeWatch" customModuleProvider="target">
+                    <items>
+                        <group width="1" height="1" alignment="left" layout="vertical" id="8i6-yh-oql">
+                            <items>
+                                <imageView width="50" height="50" alignment="center" image="watch_logo" contentMode="scaleAspectFit" id="vez-W3-VMD"/>
+                                <label alignment="center" text="Getting data..." textAlignment="center" id="ezj-I9-LmL">
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="21"/>
+                                    <variation key="device=watch38mm">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="21"/>
+                                    </variation>
+                                    <variation key="device=watch42mm">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="24"/>
+                                    </variation>
+                                </label>
+                                <group width="1" alignment="left" verticalAlignment="bottom" layout="vertical" id="xDW-y6-viP">
+                                    <items>
+                                        <label alignment="center" verticalAlignment="bottom" text="-5%" id="Iba-A7-EWR">
+                                            <color key="textColor" name="VergeRed"/>
+                                            <fontDescription key="font" type="system" weight="medium" pointSize="20"/>
+                                        </label>
+                                        <label alignment="center" verticalAlignment="bottom" text="24 hours" id="oO9-xB-LHs">
+                                            <fontDescription key="font" type="system" weight="medium" pointSize="12"/>
+                                        </label>
+                                        <group width="1" alignment="left" verticalAlignment="bottom" id="PKa-5z-jSV">
+                                            <items>
+                                                <group width="0.5" alignment="left" layout="vertical" id="QIl-sR-6kY">
+                                                    <items>
+                                                        <label alignment="left" text="Low" id="mJg-dL-hz5">
+                                                            <color key="textColor" name="VergeRed"/>
+                                                            <fontDescription key="font" type="system" pointSize="11"/>
+                                                        </label>
+                                                        <label alignment="left" text="Label" id="6IV-Mw-lrh">
+                                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                                        </label>
+                                                    </items>
+                                                </group>
+                                                <group width="0.5" alignment="left" layout="vertical" id="ZBH-O5-LWA">
+                                                    <items>
+                                                        <label alignment="right" text="High" id="KzQ-Cp-GJd">
+                                                            <color key="textColor" name="VergeGreen"/>
+                                                            <fontDescription key="font" type="system" pointSize="11"/>
+                                                        </label>
+                                                        <label alignment="right" verticalAlignment="bottom" text="Label" id="CpE-tj-yln">
+                                                            <fontDescription key="font" type="system" pointSize="12"/>
+                                                        </label>
+                                                    </items>
+                                                </group>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="priceDiffLabel" destination="Iba-A7-EWR" id="Tdu-M0-qfX"/>
+                        <outlet property="priceDiffTypeLabel" destination="oO9-xB-LHs" id="fE9-We-OL5"/>
+                        <outlet property="priceHighLabel" destination="CpE-tj-yln" id="A6O-UT-gxU"/>
+                        <outlet property="priceLabel" destination="ezj-I9-LmL" id="YY6-c6-OhM"/>
+                        <outlet property="priceLowLabel" destination="6IV-Mw-lrh" id="YcQ-rc-psx"/>
+                        <outlet property="priceMetaGroup" destination="xDW-y6-viP" id="mwJ-au-pPb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="VergeWatch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="VergeWatch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="643"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="VergeGreen">
+            <color red="0.0" green="0.52156862745098043" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VergeRed">
+            <color red="1" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

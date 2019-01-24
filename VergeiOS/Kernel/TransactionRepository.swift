@@ -97,7 +97,8 @@ class TransactionRepository {
             outputs: [],
             savedAddress: entity?.address ?? "",
             createdOn: entity?.createdOn,
-            message: entity?.message
+            message: entity?.message,
+            addressTo: ""
         )
 
         return transaction

@@ -197,6 +197,17 @@
 		B2BD7F39EE96EB7B9E5A870A /* SendTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */; };
 		B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */; };
 		B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */; };
+		CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4921F7C3A20069D150 /* Interface.storyboard */; };
+		CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
+		CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA8FCF5921F7C3A30069D150 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5821F7C3A30069D150 /* InterfaceController.swift */; };
+		CA8FCF5B21F7C3A30069D150 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */; };
+		CA8FCF5D21F7C3A30069D150 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */; };
+		CA8FCF5F21F7C3A40069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF5E21F7C3A40069D150 /* Assets.xcassets */; };
+		CA8FCF6421F7C3A40069D150 /* VergeWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CA8FCF4721F7C3A20069D150 /* VergeWatch.app */; };
+		CA8FCF6D21F7D2270069D150 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Config.swift */; };
+		CA8FCF6E21F7D2420069D150 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* Statistics.swift */; };
+		CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAF2107889200911B64 /* UIColor+Default.swift */; };
 		CAD929F521E7DFA300CD5EBA /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */; };
 		CAD929F921E7DFA300CD5EBA /* VergeSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAD92A0021E7E07100CD5EBA /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
@@ -220,6 +231,20 @@
 			remoteGlobalIDString = A33F6A6B20EEE485001492C2;
 			remoteInfo = VergeiOS;
 		};
+		CA8FCF5521F7C3A30069D150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA8FCF5221F7C3A30069D150;
+			remoteInfo = "VergeWatch Extension";
+		};
+		CA8FCF6221F7C3A40069D150 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA8FCF4621F7C3A20069D150;
+			remoteInfo = VergeWatch;
+		};
 		CAD929F721E7DFA300CD5EBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
@@ -238,6 +263,28 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8FCF6A21F7C3A40069D150 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8FCF6C21F7C3A40069D150 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CA8FCF6421F7C3A40069D150 /* VergeWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CAD929FD21E7DFA300CD5EBA /* Embed App Extensions */ = {
@@ -455,6 +502,17 @@
 		B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationCenter.swift"; sourceTree = "<group>"; };
 		B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B2BD7FE6CE69F7288EADDB6F /* CreateAddressErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressErrorResponse.swift; sourceTree = "<group>"; };
+		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8FCF4A21F7C3A20069D150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA8FCF4E21F7C3A30069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VergeWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8FCF5821F7C3A30069D150 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		CA8FCF5E21F7C3A40069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA8FCF6021F7C3A40069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		CAD929F621E7DFA300CD5EBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -492,6 +550,13 @@
 				A3647286217CF9A9001B1B18 /* Eureka.framework in Frameworks */,
 				A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8FCF5021F7C3A30069D150 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,6 +926,8 @@
 				A3256679211CBA9A006FB08A /* VergeiOSTests */,
 				A3256695211CBBE2006FB08A /* VergeiOSUITests */,
 				CAD929F321E7DFA300CD5EBA /* VergeSiri */,
+				CA8FCF4821F7C3A20069D150 /* VergeWatch */,
+				CA8FCF5721F7C3A30069D150 /* VergeWatch Extension */,
 				A33F6A6D20EEE485001492C2 /* Products */,
 				A37641112108E79800E04521 /* Frameworks */,
 			);
@@ -873,6 +940,8 @@
 				A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */,
 				A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */,
 				CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */,
+				CA8FCF4721F7C3A20069D150 /* VergeWatch.app */,
+				CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1034,6 +1103,29 @@
 			path = WalletChart;
 			sourceTree = "<group>";
 		};
+		CA8FCF4821F7C3A20069D150 /* VergeWatch */ = {
+			isa = PBXGroup;
+			children = (
+				CA8FCF4921F7C3A20069D150 /* Interface.storyboard */,
+				CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */,
+				CA8FCF4E21F7C3A30069D150 /* Info.plist */,
+			);
+			path = VergeWatch;
+			sourceTree = "<group>";
+		};
+		CA8FCF5721F7C3A30069D150 /* VergeWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CA8FCF5821F7C3A30069D150 /* InterfaceController.swift */,
+				CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */,
+				CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */,
+				CA8FCF5E21F7C3A40069D150 /* Assets.xcassets */,
+				CA8FCF6021F7C3A40069D150 /* Info.plist */,
+				CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */,
+			);
+			path = "VergeWatch Extension";
+			sourceTree = "<group>";
+		};
 		CAD929F321E7DFA300CD5EBA /* VergeSiri */ = {
 			isa = PBXGroup;
 			children = (
@@ -1101,16 +1193,52 @@
 				A3C5C3C42196EFB6003B6C02 /* Embed Frameworks */,
 				A35F3D80211CDA2D006068A2 /* ShellScript */,
 				CAD929FD21E7DFA300CD5EBA /* Embed App Extensions */,
+				CA8FCF6C21F7C3A40069D150 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CAD929F821E7DFA300CD5EBA /* PBXTargetDependency */,
+				CA8FCF6321F7C3A40069D150 /* PBXTargetDependency */,
 			);
 			name = VergeiOS;
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CA8FCF4621F7C3A20069D150 /* VergeWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA8FCF6B21F7C3A40069D150 /* Build configuration list for PBXNativeTarget "VergeWatch" */;
+			buildPhases = (
+				CA8FCF4521F7C3A20069D150 /* Resources */,
+				CA8FCF6A21F7C3A40069D150 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA8FCF5621F7C3A30069D150 /* PBXTargetDependency */,
+			);
+			name = VergeWatch;
+			productName = VergeWatch;
+			productReference = CA8FCF4721F7C3A20069D150 /* VergeWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		CA8FCF5221F7C3A30069D150 /* VergeWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA8FCF6921F7C3A40069D150 /* Build configuration list for PBXNativeTarget "VergeWatch Extension" */;
+			buildPhases = (
+				CA8FCF4F21F7C3A30069D150 /* Sources */,
+				CA8FCF5021F7C3A30069D150 /* Frameworks */,
+				CA8FCF5121F7C3A30069D150 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VergeWatch Extension";
+			productName = "VergeWatch Extension";
+			productReference = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		CAD929F121E7DFA200CD5EBA /* VergeSiri */ = {
 			isa = PBXNativeTarget;
@@ -1176,6 +1304,12 @@
 							};
 						};
 					};
+					CA8FCF4621F7C3A20069D150 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					CA8FCF5221F7C3A30069D150 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					CAD929F121E7DFA200CD5EBA = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -1198,6 +1332,8 @@
 				A3256677211CBA9A006FB08A /* VergeiOSTests */,
 				A3256693211CBBE2006FB08A /* VergeiOSUITests */,
 				CAD929F121E7DFA200CD5EBA /* VergeSiri */,
+				CA8FCF4621F7C3A20069D150 /* VergeWatch */,
+				CA8FCF5221F7C3A30069D150 /* VergeWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -1250,6 +1386,23 @@
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
 				A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8FCF4521F7C3A20069D150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */,
+				CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA8FCF5121F7C3A30069D150 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8FCF5F21F7C3A40069D150 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1486,6 +1639,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA8FCF4F21F7C3A30069D150 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA8FCF5D21F7C3A30069D150 /* NotificationController.swift in Sources */,
+				CA8FCF6D21F7D2270069D150 /* Config.swift in Sources */,
+				CA8FCF5B21F7C3A30069D150 /* ExtensionDelegate.swift in Sources */,
+				CA8FCF6E21F7D2420069D150 /* Statistics.swift in Sources */,
+				CA8FCF5921F7C3A30069D150 /* InterfaceController.swift in Sources */,
+				CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD929EE21E7DFA200CD5EBA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1510,6 +1676,16 @@
 			target = A33F6A6B20EEE485001492C2 /* VergeiOS */;
 			targetProxy = A325669C211CBBE5006FB08A /* PBXContainerItemProxy */;
 		};
+		CA8FCF5621F7C3A30069D150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA8FCF5221F7C3A30069D150 /* VergeWatch Extension */;
+			targetProxy = CA8FCF5521F7C3A30069D150 /* PBXContainerItemProxy */;
+		};
+		CA8FCF6321F7C3A40069D150 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA8FCF4621F7C3A20069D150 /* VergeWatch */;
+			targetProxy = CA8FCF6221F7C3A40069D150 /* PBXContainerItemProxy */;
+		};
 		CAD929F821E7DFA300CD5EBA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CAD929F121E7DFA200CD5EBA /* VergeSiri */;
@@ -1532,6 +1708,14 @@
 				A33F6A7C20EEE487001492C2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CA8FCF4921F7C3A20069D150 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA8FCF4A21F7C3A20069D150 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1787,6 +1971,94 @@
 			};
 			name = Release;
 		};
+		CA8FCF6521F7C3A40069D150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				IBSC_MODULE = VergeWatch_Extension;
+				INFOPLIST_FILE = VergeWatch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		CA8FCF6621F7C3A40069D150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				IBSC_MODULE = VergeWatch_Extension;
+				INFOPLIST_FILE = VergeWatch/Info.plist;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		CA8FCF6721F7C3A40069D150 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = "VergeWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		CA8FCF6821F7C3A40069D150 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = "VergeWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
 		CAD929FB21E7DFA300CD5EBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1873,6 +2145,24 @@
 			buildConfigurations = (
 				A33F6A9820EEE487001492C2 /* Debug */,
 				A33F6A9920EEE487001492C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA8FCF6921F7C3A40069D150 /* Build configuration list for PBXNativeTarget "VergeWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA8FCF6721F7C3A40069D150 /* Debug */,
+				CA8FCF6821F7C3A40069D150 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA8FCF6B21F7C3A40069D150 /* Build configuration list for PBXNativeTarget "VergeWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA8FCF6521F7C3A40069D150 /* Debug */,
+				CA8FCF6621F7C3A40069D150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
