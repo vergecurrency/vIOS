@@ -20,6 +20,7 @@ public struct TxHistory: Decodable {
     public let savedAddress: String?
     public let createdOn: Int64?
     public var message: String?
+    public var addressTo: String?
 
 }
 
@@ -45,7 +46,7 @@ extension TxHistory {
 
         return outputs?.first { output in
             return output.amount == amount
-        }?.address ?? ""
+        }?.address ?? (addressTo ?? "")
     }
 
     public var category: TxAction {
