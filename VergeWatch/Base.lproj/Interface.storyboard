@@ -18,8 +18,14 @@
                         <group width="1" height="1" alignment="left" layout="vertical" id="8i6-yh-oql">
                             <items>
                                 <imageView width="50" height="50" alignment="center" image="watch_logo" contentMode="scaleAspectFit" id="vez-W3-VMD"/>
-                                <label alignment="center" text="Getting data..." textAlignment="center" numberOfLines="2" id="ezj-I9-LmL">
-                                    <fontDescription key="font" type="system" weight="semibold" pointSize="24"/>
+                                <label alignment="center" text="Getting data..." textAlignment="center" id="ezj-I9-LmL">
+                                    <fontDescription key="font" type="system" weight="semibold" pointSize="21"/>
+                                    <variation key="device=watch38mm">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="21"/>
+                                    </variation>
+                                    <variation key="device=watch42mm">
+                                        <fontDescription key="font" type="system" weight="semibold" pointSize="24"/>
+                                    </variation>
                                 </label>
                                 <group width="1" alignment="left" verticalAlignment="bottom" layout="vertical" id="xDW-y6-viP">
                                     <items>
