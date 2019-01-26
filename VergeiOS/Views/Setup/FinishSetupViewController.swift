@@ -42,7 +42,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             }
 
             WalletClient.shared.joinWallet(walletIdentifier: ApplicationManager.default.walletId!) { error in
-                print(error)
+                print(error ?? "")
 
                 DispatchQueue.main.async {
                     self.animateProgress()

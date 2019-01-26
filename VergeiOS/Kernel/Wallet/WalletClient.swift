@@ -176,8 +176,6 @@ public class WalletClient {
 
     public func scanAddresses(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         postRequest(url: "/v1/addresses/scan", arguments: nil) { data, response, error in
-            print(try? JSON(data: data ?? Data()))
-            print(error)
             completion(error)
         }
     }

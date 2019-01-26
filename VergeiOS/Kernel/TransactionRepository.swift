@@ -8,7 +8,7 @@ import CoreStore
 
 class TransactionRepository {
     public func get(byAddress address: String) -> [TxHistory] {
-        let entities = CoreStore.fetchAll(From<TransactionType>().where(\.address == address))
+        let entities = try? CoreStore.fetchAll(From<TransactionType>().where(\.address == address))
         var transactions: [TxHistory] = []
 
         for entity in entities ?? [] {
@@ -19,7 +19,7 @@ class TransactionRepository {
     }
 
     func all() -> [TxHistory] {
-        let entities = CoreStore.fetchAll(From<TransactionType>())
+        let entities = try? CoreStore.fetchAll(From<TransactionType>())
         var transactions: [TxHistory] = []
 
         for entity in entities ?? [] {
@@ -31,7 +31,7 @@ class TransactionRepository {
 
     func put(tx: TxHistory) {
         var entity: TransactionType? = nil
-        if let existingEntity = CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)) {
+        if let existingEntity = try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)) {
             entity = existingEntity
         }
 
@@ -62,7 +62,9 @@ class TransactionRepository {
     }
 
     func remove(tx: TxHistory) {
-        let entity = CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid))
+        guard let entity = try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)) else {
+            return
+        }
 
         do {
             let _ = try CoreStore.perform(synchronous: { transaction -> Bool in

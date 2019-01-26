@@ -12,21 +12,31 @@ import CoreStore
 class AddressBookRepository {
     
     func name(byAddress address: String) -> String? {
-        let entity = CoreStore.fetchOne(From<AddressType>().where(\.address == address))
+        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.address == address)) else {
+            return nil
+        }
 
         return entity?.name
     }
 
     func get(byName name: String) -> Contact? {
-        return transform(entity: CoreStore.fetchOne(From<AddressType>().where(\.name == name)))
+        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.name == name)) else {
+            return nil
+        }
+
+        return transform(entity: entity)
     }
 
     func get(byAddress address: String) -> Contact? {
-        return transform(entity: CoreStore.fetchOne(From<AddressType>().where(\.address == address)))
+        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.address == address)) else {
+            return nil
+        }
+
+        return transform(entity: entity)
     }
     
     func all() -> [Contact] {
-        let entities = CoreStore.fetchAll(From<AddressType>())
+        let entities = try? CoreStore.fetchAll(From<AddressType>())
         var addresses: [Contact] = []
 
         for entity in entities ?? [] {
@@ -38,7 +48,7 @@ class AddressBookRepository {
 
     func put(address: Contact) {
         var entity: AddressType? = nil
-        if let existingEntity = CoreStore.fetchOne(From<AddressType>().where(\.address == address.address)) {
+        if let existingEntity = try? CoreStore.fetchOne(From<AddressType>().where(\.address == address.address)) {
             entity = existingEntity
         }
         
@@ -61,7 +71,9 @@ class AddressBookRepository {
     }
 
     func remove(address: Contact) {
-        let entity = CoreStore.fetchOne(From<AddressType>().where(\.name == address.name))
+        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.name == address.name)) else {
+            return
+        }
 
         do {
             let _ = try CoreStore.perform(synchronous: { transaction -> Bool in
