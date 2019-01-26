@@ -490,14 +490,42 @@ Please increase your balance.</string>
                                             <action selector="closeController:" destination="989-AL-BZZ" eventType="touchUpInside" id="a6f-NE-nhy"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRE-oP-e5M">
+                                        <rect key="frame" x="8" y="601" width="70" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="UNC-qP-So6"/>
+                                            <constraint firstAttribute="width" constant="70" id="mLR-Bk-jJy"/>
+                                        </constraints>
+                                        <color key="tintColor" name="PrimaryLight"/>
+                                        <state key="normal" image="FlashOn"/>
+                                        <connections>
+                                            <action selector="toggleFlash:" destination="989-AL-BZZ" eventType="touchUpInside" id="CuN-hm-4f8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljW-j8-pK7">
+                                        <rect key="frame" x="297" y="601" width="70" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="2U5-is-OG1"/>
+                                            <constraint firstAttribute="height" constant="50" id="qEa-f8-u3J"/>
+                                        </constraints>
+                                        <color key="tintColor" name="PrimaryLight"/>
+                                        <state key="normal" image="Image"/>
+                                        <connections>
+                                            <action selector="openImage:" destination="989-AL-BZZ" eventType="touchUpInside" id="d3z-Lj-3k2"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75050834760273977" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="LRE-oP-e5M" firstAttribute="leading" secondItem="RCP-My-zdT" secondAttribute="leading" constant="8" id="3xh-BM-jNh"/>
                                     <constraint firstAttribute="bottom" secondItem="Mal-rK-VF6" secondAttribute="bottom" constant="16" id="6l5-oV-h1C"/>
                                     <constraint firstItem="0WT-oX-zie" firstAttribute="centerX" secondItem="RCP-My-zdT" secondAttribute="centerX" id="Aa9-AM-jll"/>
                                     <constraint firstItem="jgB-Qb-mJf" firstAttribute="top" secondItem="0WT-oX-zie" secondAttribute="bottom" constant="30" id="JSq-8F-py7"/>
                                     <constraint firstItem="jgB-Qb-mJf" firstAttribute="centerY" secondItem="RCP-My-zdT" secondAttribute="centerY" id="buG-5R-jD6"/>
                                     <constraint firstItem="jgB-Qb-mJf" firstAttribute="centerX" secondItem="RCP-My-zdT" secondAttribute="centerX" id="exU-QJ-E2W"/>
+                                    <constraint firstAttribute="bottom" secondItem="ljW-j8-pK7" secondAttribute="bottom" constant="16" id="kq5-li-wPE"/>
+                                    <constraint firstAttribute="trailing" secondItem="ljW-j8-pK7" secondAttribute="trailing" constant="8" id="t3a-N1-t0D"/>
+                                    <constraint firstAttribute="bottom" secondItem="LRE-oP-e5M" secondAttribute="bottom" constant="16" id="xTE-Os-qrG"/>
                                     <constraint firstItem="Mal-rK-VF6" firstAttribute="centerX" secondItem="RCP-My-zdT" secondAttribute="centerX" id="yWE-jI-zMQ"/>
                                 </constraints>
                                 <connections>
@@ -516,6 +544,7 @@ Please increase your balance.</string>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="flashButton" destination="LRE-oP-e5M" id="cji-y7-XJV"/>
                         <outlet property="overlayView" destination="RCP-My-zdT" id="mbZ-4M-gQT"/>
                     </connections>
                 </viewController>
@@ -527,6 +556,8 @@ Please increase your balance.</string>
     <resources>
         <image name="Checked" width="30" height="30"/>
         <image name="Currency" width="30" height="30"/>
+        <image name="FlashOn" width="30" height="30"/>
+        <image name="Image" width="30" height="30"/>
         <image name="NoBalancePlaceholder" width="300" height="300"/>
         <image name="Payment" width="30" height="30"/>
         <image name="QRcode" width="30" height="30"/>
