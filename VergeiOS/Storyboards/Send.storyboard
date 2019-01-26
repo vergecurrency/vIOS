@@ -246,7 +246,7 @@
                                                                         </constraints>
                                                                         <color key="textColor" name="SecondaryDark"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                                         <connections>
                                                                             <action selector="didChangeMemoTextField:" destination="aj0-hD-wgD" eventType="editingChanged" id="QFk-AO-1lt"/>
                                                                         </connections>
