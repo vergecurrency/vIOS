@@ -24,7 +24,7 @@ struct Config {
 
     // TODO use other endpoints.
     static let chartDataEndpoint: String = "https://graphs2.coinmarketcap.com/currencies/"
-    static let ipCheckEndpoint: String = "http://api.ipstack.com/check?access_key=e95ebddbee9137302b3cf50b39a33362&format=1"
+    static let ipCheckEndpoint: String = "http://api.ipstack.com/check?access_key=a9e03264eab585d224212a5edcac8fcf&format=1"
 
     static let donationXvgAddress: String = "DHe3mTNQztY1wWokdtMprdeCKNoMxyThoV"
 

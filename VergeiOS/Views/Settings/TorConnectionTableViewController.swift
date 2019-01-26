@@ -59,6 +59,8 @@ class TorConnectionTableViewController: EdgedTableViewController {
                     self.centerMapView(withIpLocation: ipAddress)
                 }
             } catch {
+                self.setIpAddressLabel("Service not available")
+
                 print(error)
             }
         }
