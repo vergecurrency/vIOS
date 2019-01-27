@@ -93,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="260" width="375" height="343"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="aJo-6I-ueT">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOU-XB-kSS">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -218,8 +218,8 @@
                                                             <constraint firstItem="4Nh-uR-eBP" firstAttribute="top" secondItem="OOn-Ee-pZj" secondAttribute="top" id="qJ9-kh-HqS"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-fo-5vX">
-                                                        <rect key="frame" x="0.0" y="128" width="375" height="50"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-fo-5vX">
+                                                        <rect key="frame" x="0.0" y="114" width="375" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSh-0O-LT9">
                                                                 <rect key="frame" x="8" y="0.0" width="44" height="50"/>
