@@ -37,11 +37,14 @@ class AddressesTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let address = addresses[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addresses") as! UITableViewCell
-        cell.textLabel?.text = address.address
-        cell.detailTextLabel?.text = "xpub\(address.path.replacingOccurrences(of: "m", with: "")) \(address.createdOnDate.string)"
-
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "addresses") {
+            cell.textLabel?.text = address.address
+            cell.detailTextLabel?.text = "xpub\(address.path.replacingOccurrences(of: "m", with: "")) \(address.createdOnDate.string)"
+            
+            return cell
+        }
+        
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

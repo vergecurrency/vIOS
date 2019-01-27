@@ -109,15 +109,11 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        WalletClient.shared.getBalance { error, info in
-            if let info = info {
-                ApplicationManager.default.amount = info.totalAmountValue
-            }
+        TransactionManager.shared.sync(limit: 10) { transactions in
+            NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
-            TransactionManager.shared.sync(limit: 10) { transactions in
-                NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
-
-                DispatchQueue.main.async { self.refreshControl.endRefreshing() }
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
             }
         }
     }

@@ -53,6 +53,7 @@ class SendViewController: UIViewController {
 
         setupRecipientTextFieldKeyboardToolbar()
         setupAmountTextFieldKeyboardToolbar()
+        setupMemoTextFieldKeyboardToolbar()
 
         DispatchQueue.main.async {
             self.updateAmountLabel()
@@ -293,7 +294,7 @@ class SendViewController: UIViewController {
     func notifySelectedToMuchAmount() {
         let amount = amountTextField.text ?? "..."
         let alert = UIAlertController(
-            title: "That's Too Much! 🤔",
+            title: "Not enough balance ⚖️🤔",
             message: "You do not have enough balance to send \(amount). Change the amount to send in order to proceed.",
             preferredStyle: .alert
         )
@@ -315,6 +316,10 @@ class SendViewController: UIViewController {
     @objc func setMaximumAmount() {
         sendTransaction.setBy(currency: "XVG", amount: NSNumber(value: walletAmount.doubleValue - transactionFee))
         didChangeSendTransaction(sendTransaction)
+    }
+
+    @objc func clearTransactionDetails() {
+        didChangeSendTransaction(SendTransaction())
     }
 }
 
@@ -369,8 +374,6 @@ extension SendViewController: UITextFieldDelegate {
 
         recipientTextField.inputAccessoryView = keyboardToolbar
         recipientTextField.delegate = self
-
-        memoTextField.delegate = self
     }
 
     func setupAmountTextFieldKeyboardToolbar() {
@@ -400,6 +403,28 @@ extension SendViewController: UITextFieldDelegate {
         ]
 
         amountTextField.inputAccessoryView = keyboardToolbar
+    }
+
+    func setupMemoTextFieldKeyboardToolbar() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        keyboardToolbar.tintColor = UIColor.primaryLight()
+
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+        let doneBarButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(SendViewController.dismissKeyboard)
+        )
+
+        keyboardToolbar.items = [
+            flexBarButton,
+            doneBarButton
+        ]
+
+        memoTextField.inputAccessoryView = keyboardToolbar
+        memoTextField.delegate = self
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -481,6 +506,23 @@ extension SendViewController: SendTransactionDelegate {
 
         recipientTextField.text = sendTransaction.address
         memoTextField.text = sendTransaction.memo
+
+        let clearable = sendTransaction.amount.doubleValue > 0.0
+            || sendTransaction.address != ""
+            || sendTransaction.memo != ""
+
+        if clearable {
+            let clearButton = UIBarButtonItem(
+                image: UIImage(named: "ClearTextField")!,
+                style: .plain,
+                target: self,
+                action: #selector(SendViewController.clearTransactionDetails)
+            )
+
+            navigationItem.setRightBarButton(clearButton, animated: true)
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
 
         updateAmountLabel()
         updateWalletAmountLabel()

@@ -15,7 +15,6 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     var items: [String] = [
         "price",
         "marketCap",
-        // "rank",
         "dayChangePercentage",
         "dayHigh",
         "dayLow",
@@ -83,10 +82,6 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
                 cell.textLabel?.text = "24h Low"
                 cell.detailTextLabel?.text = NSNumber(value: info.low24Hour).toPairCurrency(fractDigits: 6)
                 cell.detailTextLabel?.textColor = .vergeRed()
-                break
-            case "rank":
-                cell.textLabel?.text = "CMC Rank"
-                cell.detailTextLabel?.text = "\(info.rank)"
                 break
             case "dayChangePercentage":
                 cell.textLabel?.text = "24h Change"

@@ -11,12 +11,17 @@ import AVFoundation
 
 class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
+    @IBOutlet weak var flashButton: UIButton!
+
     var sendTransactionDelegate: SendTransactionDelegate!
     var sendTransaction: SendTransaction?
     
     var captureSession: AVCaptureSession?
+    var captureDevice: AVCaptureDevice?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
+
+    var imagePicker = UIImagePickerController()
     
     var statusBarShouldBeHidden = false
     
@@ -32,21 +37,29 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        imagePicker.delegate = self
         
         sendTransaction = sendTransactionDelegate.getSendTransaction()
         
         // Get the back-facing camera for capturing videos
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera],
+            mediaType: AVMediaType.video,
+            position: .back
+        )
         
         guard let captureDevice = deviceDiscoverySession.devices.first else {
             print("Failed to get the camera device")
             return
         }
-        
+
+        self.captureDevice = captureDevice
+
         do {
             // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            
+
             captureSession = AVCaptureSession()
             
             // Set the input device on the capture session.
@@ -126,13 +139,92 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             }
         }
     }
-    
+
+    func flash(turnOff: Bool = false) {
+        guard let device = captureDevice else { return }
+        guard device.hasTorch else { return }
+
+        do {
+            try device.lockForConfiguration()
+
+            if (device.torchMode == AVCaptureDevice.TorchMode.on || turnOff) {
+                device.torchMode = AVCaptureDevice.TorchMode.off
+            } else {
+                do {
+                    try device.setTorchModeOn(level: 1.0)
+                } catch {
+                    print(error)
+                }
+            }
+
+            device.unlockForConfiguration()
+        } catch {
+            print(error)
+        }
+
+        if device.torchMode == .on {
+            flashButton.setImage(UIImage(named: "FlashOff"), for: .normal)
+        } else {
+            flashButton.setImage(UIImage(named: "FlashOn"), for: .normal)
+        }
+    }
+
+    @IBAction func toggleFlash(_ sender: Any) {
+        flash()
+    }
+
+    @IBAction func openImage(_ sender: Any) {
+        present(imagePicker, animated: true)
+    }
 
     // MARK: - Navigation
 
     @IBAction func closeController(_ sender: Any) {
         dismiss(animated: true) {
             self.captureSession?.stopRunning()
+            self.flash(turnOff: true)
         }
+    }
+}
+
+extension ScanQRCodeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    public func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        if let image = info[.originalImage] as? UIImage {
+            let detector = CIDetector(
+                ofType: CIDetectorTypeQRCode,
+                context: nil,
+                options: [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+            )!
+            let ciImage = CIImage(image: image)!
+            var qrCode = ""
+
+            let features = detector.features(in: ciImage)
+            for feature in features as! [CIQRCodeFeature] {
+                qrCode += feature.messageString!
+            }
+
+            AddressValidator().validate(string: qrCode) { (valid, address, amount) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.closeController(self)
+                }
+
+                if !valid {
+                    return
+                }
+
+                self.sendTransaction?.address = address!
+
+                if amount != nil {
+                    self.sendTransaction?.amount = amount!
+                }
+
+                self.sendTransactionDelegate.didChangeSendTransaction(self.sendTransaction!)
+            }
+        }
+
+        dismiss(animated: true, completion: nil)
     }
 }

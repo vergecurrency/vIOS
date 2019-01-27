@@ -51,12 +51,12 @@ class ServiceUrlTableViewController: UITableViewController {
                     self.errorDuringChange(alert: alert)
                 }
 
-                print(error)
+                print(error ?? "")
                 return
             }
 
             WalletClient.shared.joinWallet(walletIdentifier: ApplicationManager.default.walletId!) { error in
-                print(error)
+                print(error ?? "")
 
                 DispatchQueue.main.async {
                     WalletTicker.shared.start()
