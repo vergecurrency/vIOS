@@ -18,7 +18,7 @@
 			<key>INIntentCategory</key>
 			<string>download</string>
 			<key>INIntentDescription</key>
-			<string>Ask Siri about Verge Price</string>
+			<string>Get the current Verge Currency price</string>
 			<key>INIntentDescriptionID</key>
 			<string>yuY2j3</string>
 			<key>INIntentLastParameterTag</key>
@@ -32,7 +32,7 @@
 					<key>INIntentParameterCombinationIsPrimary</key>
 					<true/>
 					<key>INIntentParameterCombinationSubtitle</key>
-					<string></string>
+					<string>Get the current Verge Currency price</string>
 					<key>INIntentParameterCombinationSubtitleID</key>
 					<string>u43rt7</string>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
