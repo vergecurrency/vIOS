@@ -3,7 +3,6 @@ osx_image: xcode10.1
 cache:
   directories:
     - Carthage
-
 install:
   - bundle install
   - chmod u+x install.sh && ./install.sh
