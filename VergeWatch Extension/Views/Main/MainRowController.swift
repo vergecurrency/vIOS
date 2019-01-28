@@ -12,4 +12,3 @@ class MainRowController: NSObject {
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var subtitleLabel: WKInterfaceLabel!
 }
-

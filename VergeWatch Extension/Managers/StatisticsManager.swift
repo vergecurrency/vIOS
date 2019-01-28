@@ -10,8 +10,11 @@ import Foundation
 import WatchConnectivity
 
 public let didUpdateStats = NSNotification.Name(rawValue: "kWatchNotificationStatsUpdated")
+public let didUpdateAddress = NSNotification.Name(rawValue: "kWatchNotificationAddressUpdated")
+
 public let kWatchCurrency = NSNotification.Name(rawValue: "kWatchDefaultsCurrency").rawValue
 public let kWatchAddress = NSNotification.Name(rawValue: "kWatchDefaultsAddress").rawValue
+public let kWatchQrCode = NSNotification.Name(rawValue: "kWatchDefaultsQrCode").rawValue
 public let kWatchAmount = NSNotification.Name(rawValue: "kWatchDefaultsAmount").rawValue
 
 class StatisticsManager: NSObject, WCSessionDelegate {
@@ -25,11 +28,13 @@ class StatisticsManager: NSObject, WCSessionDelegate {
     var currency: String!
     var amount: NSNumber!
     var address: String!
+    var qrCode: Data!
     
     override init() {
         currency = UserDefaults.standard.object(forKey: kWatchCurrency) as? String
         amount = UserDefaults.standard.object(forKey: kWatchAmount) as? NSNumber
         address = UserDefaults.standard.object(forKey: kWatchAddress) as? String
+        qrCode = UserDefaults.standard.object(forKey: kWatchQrCode) as? Data
     }
     
     var lastStats: Statistics?
@@ -106,8 +111,16 @@ class StatisticsManager: NSObject, WCSessionDelegate {
         }
         
         if (message["address"] != nil) {
-            self.address = (message["address"] as! String)
+            let addressInfo = message["address"] as! Dictionary<String, Any>
+            
+            self.address = (addressInfo["value"] as! String)
+            self.qrCode = (addressInfo["qr"] as! Data)
+            
             UserDefaults.standard.set(self.address, forKey: kWatchAddress)
+            UserDefaults.standard.set(self.qrCode, forKey: kWatchQrCode)
+            
+            NotificationCenter.default.post(name: didUpdateAddress,
+                                            object: nil)
         }
         
         self.updateStats()

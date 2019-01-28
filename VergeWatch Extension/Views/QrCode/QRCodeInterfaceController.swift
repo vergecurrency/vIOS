@@ -13,7 +13,17 @@ class QRCodeInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        //TODO
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateQr),
+                                               name: didUpdateAddress,
+                                               object: nil)
+        updateQr()
     }
-
+    
+    @objc func updateQr() {
+        if StatisticsManager.shared.qrCode != nil {
+            image.setImage(UIImage.init(data: StatisticsManager.shared.qrCode))
+        }
+    }
 }

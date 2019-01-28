@@ -8,6 +8,7 @@
 
 import UIKit
 import WatchConnectivity
+import QRCode
 
 class WatchSyncManager: NSObject, WCSessionDelegate {
     static let shared = WatchSyncManager()
@@ -30,13 +31,13 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
             name: .didChangeWalletAmount,
             object: nil
         )
-            
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(syncAddress(notification:)),
             name: .didChangeReceiveAddress,
             object: nil
-            )
+        )
     }
     
     // MARK: Private properties
@@ -74,7 +75,19 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     
     @objc private func syncAddress(notification: Notification? = nil) {
         let address = notification?.object as! String;
-        _ = self.transferMessage(message: ["address" : address as AnyObject])
+        
+        if var qrCodeObject = QRCode(address) {
+            qrCodeObject.size = CGSize(width: 135, height: 135)
+            qrCodeObject.color = CIColor(cgColor: UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor)
+            qrCodeObject.backgroundColor = CIColor(color: UIColor.white)
+            
+            let qrImg = qrCodeObject.image!
+            let data = qrImg.pngData()
+            
+            _ = self.transferMessage(message:
+                ["address" : ["value" : address, "qr" : data! ] as AnyObject]
+            )
+        }
     }
     
     private func transferMessage(message: [String : AnyObject]){
@@ -96,3 +109,4 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     func sessionDidDeactivate(_ session: WCSession) {
     }
 }
+
