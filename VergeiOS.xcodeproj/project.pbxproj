@@ -200,7 +200,7 @@
 		CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4921F7C3A20069D150 /* Interface.storyboard */; };
 		CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
 		CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CA8FCF5921F7C3A30069D150 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5821F7C3A30069D150 /* InterfaceController.swift */; };
+		CA8FCF5921F7C3A30069D150 /* MainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5821F7C3A30069D150 /* MainInterfaceController.swift */; };
 		CA8FCF5B21F7C3A30069D150 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */; };
 		CA8FCF5D21F7C3A30069D150 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */; };
 		CA8FCF5F21F7C3A40069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF5E21F7C3A40069D150 /* Assets.xcassets */; };
@@ -208,6 +208,13 @@
 		CA8FCF6D21F7D2270069D150 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Config.swift */; };
 		CA8FCF6E21F7D2420069D150 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* Statistics.swift */; };
 		CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAF2107889200911B64 /* UIColor+Default.swift */; };
+		CAD6F28D21FE143400AA3162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
+		CAD6F29721FE1C3900AA3162 /* MainRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29621FE1C3900AA3162 /* MainRowController.swift */; };
+		CAD6F29821FE29A600AA3162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
+		CAD6F29921FE29D400AA3162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
+		CAD6F29D21FE345500AA3162 /* QRCodeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29C21FE345500AA3162 /* QRCodeInterfaceController.swift */; };
+		CAD6F2A021FE3DE400AA3162 /* StatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29F21FE3DE400AA3162 /* StatisticsManager.swift */; };
+		CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F2A321FE4DDD00AA3162 /* WatchSyncManager.swift */; };
 		CAD929F521E7DFA300CD5EBA /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */; };
 		CAD929F921E7DFA300CD5EBA /* VergeSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAD92A0021E7E07100CD5EBA /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
@@ -507,12 +514,16 @@
 		CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA8FCF4E21F7C3A30069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VergeWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA8FCF5821F7C3A30069D150 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CA8FCF5821F7C3A30069D150 /* MainInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInterfaceController.swift; sourceTree = "<group>"; };
 		CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		CA8FCF5E21F7C3A40069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA8FCF6021F7C3A40069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		CAD6F29621FE1C3900AA3162 /* MainRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRowController.swift; sourceTree = "<group>"; };
+		CAD6F29C21FE345500AA3162 /* QRCodeInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeInterfaceController.swift; sourceTree = "<group>"; };
+		CAD6F29F21FE3DE400AA3162 /* StatisticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsManager.swift; sourceTree = "<group>"; };
+		CAD6F2A321FE4DDD00AA3162 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
 		CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		CAD929F621E7DFA300CD5EBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -665,6 +676,7 @@
 		A305DD9A21066AE600911B64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CAD6F2A221FE4D9E00AA3162 /* Watch */,
 				CAD929FE21E7E05900CD5EBA /* Siri */,
 				B2BD7DE012024B6499CAA5BE /* WalletChart */,
 				B2BD7713B76A4A8371FACC27 /* Notification */,
@@ -1106,7 +1118,7 @@
 		CA8FCF4821F7C3A20069D150 /* VergeWatch */ = {
 			isa = PBXGroup;
 			children = (
-				CA8FCF4921F7C3A20069D150 /* Interface.storyboard */,
+				CAD6F29021FE192000AA3162 /* Storyboards */,
 				CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */,
 				CA8FCF4E21F7C3A30069D150 /* Info.plist */,
 			);
@@ -1116,14 +1128,81 @@
 		CA8FCF5721F7C3A30069D150 /* VergeWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CA8FCF5821F7C3A30069D150 /* InterfaceController.swift */,
-				CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */,
-				CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */,
+				CAD6F29E21FE3DCC00AA3162 /* Managers */,
+				CAD6F28E21FE18FB00AA3162 /* Views */,
+				CAD6F28F21FE191300AA3162 /* Delegates */,
 				CA8FCF5E21F7C3A40069D150 /* Assets.xcassets */,
 				CA8FCF6021F7C3A40069D150 /* Info.plist */,
 				CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */,
 			);
 			path = "VergeWatch Extension";
+			sourceTree = "<group>";
+		};
+		CAD6F28E21FE18FB00AA3162 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAD6F29321FE1BB900AA3162 /* Main */,
+				CAD6F29A21FE339100AA3162 /* QrCode */,
+				CAD6F29B21FE33A300AA3162 /* Notification */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CAD6F28F21FE191300AA3162 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CAD6F29021FE192000AA3162 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CA8FCF4921F7C3A20069D150 /* Interface.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CAD6F29321FE1BB900AA3162 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CA8FCF5821F7C3A30069D150 /* MainInterfaceController.swift */,
+				CAD6F29621FE1C3900AA3162 /* MainRowController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CAD6F29A21FE339100AA3162 /* QrCode */ = {
+			isa = PBXGroup;
+			children = (
+				CAD6F29C21FE345500AA3162 /* QRCodeInterfaceController.swift */,
+			);
+			path = QrCode;
+			sourceTree = "<group>";
+		};
+		CAD6F29B21FE33A300AA3162 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		CAD6F29E21FE3DCC00AA3162 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CAD6F29F21FE3DE400AA3162 /* StatisticsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CAD6F2A221FE4D9E00AA3162 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				CAD6F2A321FE4DDD00AA3162 /* WatchSyncManager.swift */,
+			);
+			path = Watch;
 			sourceTree = "<group>";
 		};
 		CAD929F321E7DFA300CD5EBA /* VergeSiri */ = {
@@ -1394,6 +1473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */,
+				CAD6F28D21FE143400AA3162 /* Assets.xcassets in Resources */,
 				CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1402,6 +1482,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD6F29821FE29A600AA3162 /* Assets.xcassets in Resources */,
+				CAD6F29921FE29D400AA3162 /* Assets.xcassets in Resources */,
 				CA8FCF5F21F7C3A40069D150 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1601,6 +1683,7 @@
 				B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */,
 				B2BD7C21A80B98CD8857B476 /* AbstractChartView.swift in Sources */,
 				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */,
+				CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */,
 				B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */,
 				B2BD7CB257BA213ABAE9958D /* DonateTableViewController.swift in Sources */,
 				B2BD736A7A645161F7FF846D /* PaperkeyViewController.swift in Sources */,
@@ -1643,11 +1726,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD6F29721FE1C3900AA3162 /* MainRowController.swift in Sources */,
+				CAD6F29D21FE345500AA3162 /* QRCodeInterfaceController.swift in Sources */,
 				CA8FCF5D21F7C3A30069D150 /* NotificationController.swift in Sources */,
 				CA8FCF6D21F7D2270069D150 /* Config.swift in Sources */,
 				CA8FCF5B21F7C3A30069D150 /* ExtensionDelegate.swift in Sources */,
 				CA8FCF6E21F7D2420069D150 /* Statistics.swift in Sources */,
-				CA8FCF5921F7C3A30069D150 /* InterfaceController.swift in Sources */,
+				CA8FCF5921F7C3A30069D150 /* MainInterfaceController.swift in Sources */,
+				CAD6F2A021FE3DE400AA3162 /* StatisticsManager.swift in Sources */,
 				CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2016,6 +2102,10 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "VergeWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2040,6 +2130,10 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "VergeWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
