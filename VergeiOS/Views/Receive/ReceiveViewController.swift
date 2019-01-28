@@ -155,6 +155,8 @@ class ReceiveViewController: UIViewController {
 
     func changeAddress(_ address: String) {
         self.address = address
+        
+        NotificationCenter.default.post(name: .didChangeReceiveAddress, object: address)
 
         DispatchQueue.main.async {
             self.cardAddress.text = address
