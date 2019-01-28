@@ -94,9 +94,9 @@ class MainInterfaceController: WKInterfaceController {
                 title = "\(amount ?? 0)" + " XVG"
                 
                 if (lastStats != nil) {
-                    subtitle = String.init(format: "%@%d",
-                                           self.symbolForCurrency(currency: currency ?? "USD"),
-                                           (lastStats!.price * (amount?.doubleValue)!))
+                    let funds = (lastStats!.price * (amount?.doubleValue)!)
+                    subtitle = String.init(format: "%@%0.4f",
+                                           self.symbolForCurrency(currency: currency ?? "USD"), funds)
                 }
             }
             
