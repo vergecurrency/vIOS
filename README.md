@@ -9,36 +9,41 @@
 
 #  VERGE iOS Wallet
 
-The iOS application will provide a solid and secure iOS wallet app on your personal iPhone, iPad or iPod Touch. Keeping **Tor** between all your outside http communications makes sure all of your transactions, wallet creations and price request remain private. Sending and receiving XVG in a secure and beautiful wallet application will actually change the way you use Verge Currency. 💪
+This iOS wallet provides an easy and secure wallet on your iOS device. With **Tor** integrated you can be sure your http communication is private. Sending and receiving XVG in a secure and easy to use wallet will actually change the way you use Verge Currency. 💪
 
 ## Features:
 
-* Shows your XVG on your iOS device (iPhone, iPad and iPod Touch)
-* Send XVG to other XVG wallets
-* Receive XVG
-* Store addresses of other recipients in the address book
-* Keep track of your transactions
-* See what you XVG is worth in your own fiat currency
+* Sending and receiving XVG
+* Store addresses in an address book
+* Tor integrated
+* Price statistics in different fiat currencies
+* Share your receive card
+* Private keys are yours
+* Possibility to choose your own wallet service
+* Touch ID & Face ID support
 
 ## Local Development
 
-So you want to help us out? Here's a guide on how to get started:
+If you want to help us out on the development use this guide:
 
 1. Fork the project, and clone it to your local machine.
 
-2. Now install the following tools via [brew](https://brew.sh) 
+2. Install the following tools via [brew](https://brew.sh) 
 ```sh
 brew install carthage
 brew install automake
 brew install libtool
 ```
 
-3. In your cloned project folder run carthage update (this could take awile):
+3. In your cloned project folder run carthage update (this could take a while):
 ```sh
 carthage update --platform iOS
 ```
 
-4. After that is done, open the project and start coding.
+4. Open the project:
+```sh
+open VergeiOS.xcodeproj
+```
 
 ## Build With
 

@@ -34,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.torClientStarted()
             }
         }
+        
+        WatchSyncManager.shared.startSession()
 
         do {
             CoreStore.defaultStack = DataStack(
