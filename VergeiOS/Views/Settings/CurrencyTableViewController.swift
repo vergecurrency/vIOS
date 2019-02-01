@@ -102,7 +102,9 @@ class CurrencyTableViewController: EdgedTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fiatCurrencyTableCell", for: indexPath)
-
+        
+        cell.accessoryType = .none //But the right way is to subclass cell and perform the same in prepare for reuse
+        
         let currency = self.currencies[indexPath.row]
         
         cell.textLabel?.font = UIFont.avenir(size: 17).demiBold()
