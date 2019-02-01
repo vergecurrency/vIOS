@@ -25,7 +25,12 @@ public class WalletClient {
     private let sjcl = SJCL()
 
     private var baseUrl: String = ""
-    private var urlSession: URLSession!
+    private var urlSession: URLSession! {
+        get {
+            //get the refreshed pointer on url session each time
+            return TorClient.shared.session
+        }
+    }
 
     private let network = Network.mainnetXVG
 
@@ -77,7 +82,7 @@ public class WalletClient {
 
     public init(baseUrl: String, urlSession: URLSession) {
         self.baseUrl = baseUrl
-        self.urlSession = urlSession
+//        self.urlSession = urlSession
     }
 
     public func createWallet(
