@@ -44,6 +44,8 @@ class SendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        amountTextField.delegate = self
 
         confirmButtonInterval = setInterval(1) {
             self.isSendable()
@@ -125,7 +127,7 @@ class SendViewController: UIViewController {
         }
         
         DispatchQueue.main.async {
-            self.walletAmountLabel.text = amount.toXvgCurrency()
+            self.walletAmountLabel.text = (self.currency == .XVG) ? amount.toXvgCurrency() : amount.toCurrency()
         }
     }
 
@@ -431,6 +433,15 @@ extension SendViewController: UITextFieldDelegate {
         dismissKeyboard()
 
         return false
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        if textField == self.amountTextField {
+            sendTransaction.amount = 0.0
+            sendTransaction.fiatAmount = 0.0
+            didChangeSendTransaction(sendTransaction)
+        }
+        return true
     }
 
     @objc func openRecipientSelector() {
