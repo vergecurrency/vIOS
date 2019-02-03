@@ -18,14 +18,15 @@ public class WalletClient {
     }
 
     public static let shared = WalletClient(
-        baseUrl: ApplicationManager.default.walletServiceUrl,
-        urlSession: TorClient.shared.session
+        baseUrl: ApplicationManager.default.walletServiceUrl
     )
 
     private let sjcl = SJCL()
 
     private var baseUrl: String = ""
-    private var urlSession: URLSession!
+    private var urlSession: URLSession {
+        return TorClient.shared.session
+    }
 
     private let network = Network.mainnetXVG
 
@@ -75,11 +76,10 @@ public class WalletClient {
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
-    public init(baseUrl: String, urlSession: URLSession) {
+    public init(baseUrl: String) {
         self.baseUrl = baseUrl
-        self.urlSession = urlSession
     }
-
+    
     public func createWallet(
         walletName: String,
         copayerName: String,
