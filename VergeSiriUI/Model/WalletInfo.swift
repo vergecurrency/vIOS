@@ -12,7 +12,7 @@ class WalletInfo: NSObject {
     var cardImage: UIImage?
     
     static func fetchWalletInfo(completion: @escaping (WalletInfo?) -> Void) {
-        let defaults = UserDefaults(suiteName: "group.org.verge.ioswallet")
+        let defaults = UserDefaults(suiteName: "group.org.verge")
         let data = defaults?.data(forKey: "wallet.receive.image.shared")
         
         let walletInfo = WalletInfo()
