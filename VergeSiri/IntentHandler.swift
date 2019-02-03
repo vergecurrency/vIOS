@@ -11,12 +11,35 @@ import Intents
 @available(iOSApplicationExtension 12.0, *)
 class IntentHandler: INExtension {
     override func handler(for intent: INIntent) -> Any {
-        guard intent is VergePriceIntent else {
-            fatalError("Unhandled intent type: \(intent)")
+        switch intent {
+        case is VergePriceIntent:
+            return PriceIntentHandler()
+            
+        case is ReceiveFundsIntent:
+            return ReceiveFundsIntentHandler()
+            
+        default:
+            // The app extension should only be called for intents it knows about.
+            fatalError()
         }
-        
-        return PriceIntentHandler()
     }
+}
+
+@available(iOSApplicationExtension 12.0, *)
+class ReceiveFundsIntentHandler: NSObject, ReceiveFundsIntentHandling {
+    
+    func handle(intent: ReceiveFundsIntent, completion: @escaping (ReceiveFundsIntentResponse) -> Void) {
+        WalletInfo.fetchWalletInfo { (walletInfo) in
+            if let walletInfo = walletInfo {
+                if walletInfo.cardImage != nil {
+                    completion(ReceiveFundsIntentResponse(code: .success, userActivity: nil))
+                } else {
+                    completion(ReceiveFundsIntentResponse(code: .failureNoAddress, userActivity: nil))
+                }
+            }
+        }
+    }
+    
 }
 
 @available(iOSApplicationExtension 12.0, *)
@@ -53,4 +76,5 @@ class PriceIntentHandler: NSObject, VergePriceIntentHandling {
         
         task.resume()
     }
+    
 }

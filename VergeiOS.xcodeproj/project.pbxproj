@@ -197,6 +197,11 @@
 		B2BD7F39EE96EB7B9E5A870A /* SendTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD780B0BE45F52AD3B526D /* SendTransaction.swift */; };
 		B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */; };
 		B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */; };
+		CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA522EA6220318B000331B0F /* IntentsUI.framework */; };
+		CA522EAA220318B000331B0F /* SiriReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */; };
+		CA522EAD220318B000331B0F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA522EAB220318B000331B0F /* MainInterface.storyboard */; };
+		CA522EB1220318B000331B0F /* VergeSiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA522EA5220318B000331B0F /* VergeSiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA522EB622032A5600331B0F /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
 		CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4921F7C3A20069D150 /* Interface.storyboard */; };
 		CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
 		CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -221,6 +226,9 @@
 		CAD92A0121E7E12900CD5EBA /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
 		CAD92A0721E7EC3B00CD5EBA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Config.swift */; };
 		CAD92A0821E7ECE300CD5EBA /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* Statistics.swift */; };
+		CADA0BE72203AE0900FE74C1 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */; };
+		CADA0BE82203AEA700FE74C1 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */; };
+		CADA0BEB2203B38400FE74C1 /* IntentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +245,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A33F6A6B20EEE485001492C2;
 			remoteInfo = VergeiOS;
+		};
+		CA522EAF220318B000331B0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A33F6A6420EEE485001492C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA522EA4220318B000331B0F;
+			remoteInfo = VergeSiriUI;
 		};
 		CA8FCF5521F7C3A30069D150 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -301,6 +316,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				CAD929F921E7DFA300CD5EBA /* VergeSiri.appex in Embed App Extensions */,
+				CA522EB1220318B000331B0F /* VergeSiriUI.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +525,12 @@
 		B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationCenter.swift"; sourceTree = "<group>"; };
 		B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B2BD7FE6CE69F7288EADDB6F /* CreateAddressErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressErrorResponse.swift; sourceTree = "<group>"; };
+		CA522EA5220318B000331B0F /* VergeSiriUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiriUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA522EA6220318B000331B0F /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriReceiveViewController.swift; sourceTree = "<group>"; };
+		CA522EAC220318B000331B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CA522EAE220318B000331B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA522EB72203323A00331B0F /* VergeSiriUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiriUI.entitlements; sourceTree = "<group>"; };
 		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8FCF4A21F7C3A20069D150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -528,6 +550,9 @@
 		CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		CAD929F621E7DFA300CD5EBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfo.swift; sourceTree = "<group>"; };
+		CADA0BE92203B15E00FE74C1 /* VergeSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiri.entitlements; sourceTree = "<group>"; };
+		CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +586,14 @@
 				A3647286217CF9A9001B1B18 /* Eureka.framework in Frameworks */,
 				A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */,
 				A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA522EA2220318B000331B0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,6 +971,7 @@
 				A3256679211CBA9A006FB08A /* VergeiOSTests */,
 				A3256695211CBBE2006FB08A /* VergeiOSUITests */,
 				CAD929F321E7DFA300CD5EBA /* VergeSiri */,
+				CA522EA8220318B000331B0F /* VergeSiriUI */,
 				CA8FCF4821F7C3A20069D150 /* VergeWatch */,
 				CA8FCF5721F7C3A30069D150 /* VergeWatch Extension */,
 				A33F6A6D20EEE485001492C2 /* Products */,
@@ -954,6 +988,7 @@
 				CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */,
 				CA8FCF4721F7C3A20069D150 /* VergeWatch.app */,
 				CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */,
+				CA522EA5220318B000331B0F /* VergeSiriUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -998,6 +1033,7 @@
 				A325665E211A2219006FB08A /* SwiftyJSON.framework */,
 				A338E6CD21110A09000D44EE /* QRCode.framework */,
 				A338E69F210DC037000D44EE /* IQKeyboardManagerSwift.framework */,
+				CA522EA6220318B000331B0F /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1115,6 +1151,18 @@
 			path = WalletChart;
 			sourceTree = "<group>";
 		};
+		CA522EA8220318B000331B0F /* VergeSiriUI */ = {
+			isa = PBXGroup;
+			children = (
+				CADA0BE52203ADFC00FE74C1 /* Model */,
+				CA522EB72203323A00331B0F /* VergeSiriUI.entitlements */,
+				CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */,
+				CA522EAB220318B000331B0F /* MainInterface.storyboard */,
+				CA522EAE220318B000331B0F /* Info.plist */,
+			);
+			path = VergeSiriUI;
+			sourceTree = "<group>";
+		};
 		CA8FCF4821F7C3A20069D150 /* VergeWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1208,6 +1256,7 @@
 		CAD929F321E7DFA300CD5EBA /* VergeSiri */ = {
 			isa = PBXGroup;
 			children = (
+				CADA0BE92203B15E00FE74C1 /* VergeSiri.entitlements */,
 				CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */,
 				CAD929F621E7DFA300CD5EBA /* Info.plist */,
 			);
@@ -1218,8 +1267,17 @@
 			isa = PBXGroup;
 			children = (
 				CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */,
+				CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */,
 			);
 			path = Siri;
+			sourceTree = "<group>";
+		};
+		CADA0BE52203ADFC00FE74C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1279,11 +1337,29 @@
 			dependencies = (
 				CAD929F821E7DFA300CD5EBA /* PBXTargetDependency */,
 				CA8FCF6321F7C3A40069D150 /* PBXTargetDependency */,
+				CA522EB0220318B000331B0F /* PBXTargetDependency */,
 			);
 			name = VergeiOS;
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CA522EA4220318B000331B0F /* VergeSiriUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA522EB2220318B000331B0F /* Build configuration list for PBXNativeTarget "VergeSiriUI" */;
+			buildPhases = (
+				CA522EA1220318B000331B0F /* Sources */,
+				CA522EA2220318B000331B0F /* Frameworks */,
+				CA522EA3220318B000331B0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VergeSiriUI;
+			productName = VergeSiriUI;
+			productReference = CA522EA5220318B000331B0F /* VergeSiriUI.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		CA8FCF4621F7C3A20069D150 /* VergeWatch */ = {
 			isa = PBXNativeTarget;
@@ -1364,7 +1440,7 @@
 						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1383,6 +1459,14 @@
 							};
 						};
 					};
+					CA522EA4220318B000331B0F = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					CA8FCF4621F7C3A20069D150 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -1391,6 +1475,11 @@
 					};
 					CAD929F121E7DFA200CD5EBA = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1411,6 +1500,7 @@
 				A3256677211CBA9A006FB08A /* VergeiOSTests */,
 				A3256693211CBBE2006FB08A /* VergeiOSUITests */,
 				CAD929F121E7DFA200CD5EBA /* VergeSiri */,
+				CA522EA4220318B000331B0F /* VergeSiriUI */,
 				CA8FCF4621F7C3A20069D150 /* VergeWatch */,
 				CA8FCF5221F7C3A30069D150 /* VergeWatch Extension */,
 			);
@@ -1465,6 +1555,14 @@
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
 				A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA522EA3220318B000331B0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA522EAD220318B000331B0F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1637,6 +1735,7 @@
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
+				CADA0BEB2203B38400FE74C1 /* IntentsManager.swift in Sources */,
 				A3D3A06B2156FC130018599A /* MainTabBarController.swift in Sources */,
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */,
@@ -1722,6 +1821,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA522EA1220318B000331B0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA522EB622032A5600331B0F /* Intents.intentdefinition in Sources */,
+				CADA0BE72203AE0900FE74C1 /* WalletInfo.swift in Sources */,
+				CA522EAA220318B000331B0F /* SiriReceiveViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA8FCF4F21F7C3A30069D150 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1745,6 +1854,7 @@
 				CAD92A0121E7E12900CD5EBA /* Intents.intentdefinition in Sources */,
 				CAD929F521E7DFA300CD5EBA /* IntentHandler.swift in Sources */,
 				CAD92A0821E7ECE300CD5EBA /* Statistics.swift in Sources */,
+				CADA0BE82203AEA700FE74C1 /* WalletInfo.swift in Sources */,
 				CAD92A0721E7EC3B00CD5EBA /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1761,6 +1871,11 @@
 			isa = PBXTargetDependency;
 			target = A33F6A6B20EEE485001492C2 /* VergeiOS */;
 			targetProxy = A325669C211CBBE5006FB08A /* PBXContainerItemProxy */;
+		};
+		CA522EB0220318B000331B0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA522EA4220318B000331B0F /* VergeSiriUI */;
+			targetProxy = CA522EAF220318B000331B0F /* PBXContainerItemProxy */;
 		};
 		CA8FCF5621F7C3A30069D150 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1794,6 +1909,14 @@
 				A33F6A7C20EEE487001492C2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CA522EAB220318B000331B0F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA522EAC220318B000331B0F /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		CA8FCF4921F7C3A20069D150 /* Interface.storyboard */ = {
@@ -2055,6 +2178,51 @@
 			};
 			name = Release;
 		};
+		CA522EB3220318B000331B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VergeSiriUI/VergeSiriUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeSiriUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.siri.ui;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA522EB4220318B000331B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VergeSiriUI/VergeSiriUI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S7743EWR3C;
+				INFOPLIST_FILE = VergeSiriUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.siri.ui;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CA8FCF6521F7C3A40069D150 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2100,6 +2268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2116,6 +2285,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -2128,6 +2298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2143,6 +2314,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -2154,6 +2326,7 @@
 		CAD929FB21E7DFA300CD5EBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VergeSiri/VergeSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2169,7 +2342,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.VergeSiri;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.siri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -2180,6 +2353,7 @@
 		CAD929FC21E7DFA300CD5EBA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = VergeSiri/VergeSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2194,7 +2368,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.VergeSiri;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.ioswallet.siri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -2237,6 +2411,15 @@
 			buildConfigurations = (
 				A33F6A9820EEE487001492C2 /* Debug */,
 				A33F6A9920EEE487001492C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA522EB2220318B000331B0F /* Build configuration list for PBXNativeTarget "VergeSiriUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA522EB3220318B000331B0F /* Debug */,
+				CA522EB4220318B000331B0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

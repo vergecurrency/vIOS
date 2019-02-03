@@ -58,6 +58,7 @@
 	<string>This app uses the photo library to save QR codes</string>
 	<key>NSUserActivityTypes</key>
 	<array>
+		<string>ReceiveFundsIntent</string>
 		<string>VergePriceIntent</string>
 	</array>
 	<key>UIBackgroundModes</key>

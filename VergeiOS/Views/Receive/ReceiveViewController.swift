@@ -82,8 +82,16 @@ class ReceiveViewController: UIViewController {
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
             self.xvgCardContainer.alpha = 1.0
             self.xvgCardContainer.center.y -= 20.0
-        }, completion: nil)
-
+        }, completion: { (true) in
+            let image = self.imageCard()
+            let imageData = image!.pngData()
+            
+            if imageData != nil {
+                let defaults = UserDefaults(suiteName: "group.org.verge.ioswallet")
+                defaults?.setData(imageData!, forKey: "wallet.receive.image.shared")
+            }
+        })
+        
         cardShown = true
     }
 
@@ -179,6 +187,19 @@ class ReceiveViewController: UIViewController {
 
         qrCodeImageView.image = (qrCode?.image)!
     }
+    
+    func imageCard() -> UIImage? {
+        var image: UIImage?
+        
+        UIGraphicsBeginImageContextWithOptions(xvgCardContainer.bounds.size, false, 0.0)
+        xvgCardImageView.clipsToBounds = true
+        xvgCardContainer.drawHierarchy(in: xvgCardContainer.bounds, afterScreenUpdates: true)
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        xvgCardImageView.clipsToBounds = false
+        
+        return image
+    }
 
     @IBAction func newAddress(_ sender: UIButton) {
         getNewAddress()
@@ -201,14 +222,7 @@ class ReceiveViewController: UIViewController {
     }
 
     @IBAction func shareAddress(_ sender: UIButton) {
-        UIGraphicsBeginImageContextWithOptions(xvgCardContainer.bounds.size, false, 0.0)
-        xvgCardImageView.clipsToBounds = true
-        xvgCardContainer.drawHierarchy(in: xvgCardContainer.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        xvgCardImageView.clipsToBounds = false
-
-        openShareSheet(shareText: "My XVG address: \(address)", shareImage: image)
+        openShareSheet(shareText: "My XVG address: \(address)", shareImage: self.imageCard())
     }
 
     @IBAction func switchStealth(_ sender: UISwitch) {
