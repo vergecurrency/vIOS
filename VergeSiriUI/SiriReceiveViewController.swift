@@ -19,11 +19,13 @@ class SiriReceiveViewController: UIViewController, INUIHostedViewControlling {
         
     // MARK: - INUIHostedViewControlling
     
-    func configureView(for parameters: Set<INParameter>,
-                       of interaction: INInteraction,
-                       interactiveBehavior: INUIInteractiveBehavior,
-                       context: INUIHostedViewContext,
-                       completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
+    func configureView(
+        for parameters: Set<INParameter>,
+        of interaction: INInteraction,
+        interactiveBehavior: INUIInteractiveBehavior,
+        context: INUIHostedViewContext,
+        completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void
+    ) {
         
         guard interaction.intent is ReceiveFundsIntent else {
             completion(false, Set(), .zero)
@@ -35,11 +37,13 @@ class SiriReceiveViewController: UIViewController, INUIHostedViewControlling {
                 self.qrCodeImageView.image = walletInfo!.cardImage
             }
             
-            completion(true,
-                       parameters,
-                       (walletInfo?.cardImage != nil) ?
-                        CGSize.init(width: 343.0, height: 240.0) :
-                        CGSize.zero)
+            completion(
+                true,
+                parameters,
+                (walletInfo?.cardImage != nil) ?
+                CGSize.init(width: 343.0, height: 240.0) :
+                CGSize.zero
+            )
         }
         
     }
