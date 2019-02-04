@@ -191,6 +191,6 @@ class TorClient {
     }
     
     func turnedOff() -> Bool {
-        return !ApplicationManager.default.useTor
+        return !ApplicationRepository.default.useTor
     }
 }

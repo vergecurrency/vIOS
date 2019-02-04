@@ -60,4 +60,16 @@ extension UIAlertController {
 
         return alert
     }
+
+    static func createSendMaxInfoAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "Failed fetching data",
+            message: "Failed to fetch the send maximum info from the server, please try again.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+
+        return alert
+    }
 }

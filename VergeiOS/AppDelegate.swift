@@ -15,7 +15,7 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var sendRequest: SendTransaction?
+    var sendRequest: TransactionFactory?
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             
-            let transaction = SendTransaction()
+            let transaction = TransactionFactory()
             transaction.address = address!
             transaction.amount = amount ?? 0.0
             
@@ -116,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Start the price ticker.
         PriceTicker.shared.start()
         
-        if !ApplicationManager.default.setup {
+        if !ApplicationRepository.default.setup {
             return
         }
         
@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showPinUnlockViewController(_ application: UIApplication) {
-        if !ApplicationManager.default.setup {
+        if !ApplicationRepository.default.setup {
             return
         }
         

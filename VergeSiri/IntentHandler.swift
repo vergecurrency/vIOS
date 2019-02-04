@@ -58,12 +58,12 @@ class PriceIntentHandler: NSObject, VergePriceIntentHandling {
     }
     
     func getPriceForCurrency(currency: String, completion: @escaping (_ result: NSDecimalNumber?) -> Void) {
-        let url = URL(string: "\(Config.priceDataEndpoint)\(currency)")
+        let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let data = data {
                 do {
-                    let statistics = try JSONDecoder().decode(Statistics.self, from: data)
+                    let statistics = try JSONDecoder().decode(FiatRate.self, from: data)
                     completion(NSDecimalNumber(value: statistics.price))
                 } catch {
                     print("Error info: \(error)")
