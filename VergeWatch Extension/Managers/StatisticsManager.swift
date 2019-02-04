@@ -37,7 +37,7 @@ class StatisticsManager: NSObject, WCSessionDelegate {
         qrCode = UserDefaults.standard.object(forKey: kWatchQrCode) as? Data
     }
     
-    var lastStats: Statistics?
+    var lastStats: FiatRate?
     
     // MARK: - Public methods
     
@@ -71,13 +71,13 @@ class StatisticsManager: NSObject, WCSessionDelegate {
         }
     }
     
-    private func getStatsForCurrency(currency: String, completion: @escaping (_ result: Statistics?) -> Void) {
-        let url = URL(string: "\(Config.priceDataEndpoint)\(currency)")
+    private func getStatsForCurrency(currency: String, completion: @escaping (_ result: FiatRate?) -> Void) {
+        let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
         
         let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
             if let data = data {
                 do {
-                    let statistics = try JSONDecoder().decode(Statistics.self, from: data)
+                    let statistics = try JSONDecoder().decode(FiatRate.self, from: data)
                     completion(statistics)
                 } catch {
                     print("Error info: \(error)")

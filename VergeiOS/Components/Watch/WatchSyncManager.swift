@@ -61,13 +61,13 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     //MARK: Private methods
     
     @objc private func syncCurrency() {
-        let currency = ApplicationManager.default.currency;
+        let currency = ApplicationRepository.default.currency;
         _ = self.transferMessage(message: ["currency" : currency as AnyObject])
     }
     
     @objc private func syncAmount() {
-        let amount = ApplicationManager.default.amount;
-        let currency = ApplicationManager.default.currency;
+        let amount = ApplicationRepository.default.amount;
+        let currency = ApplicationRepository.default.currency;
         
         _ = self.transferMessage(message: ["amount" : amount])
         _ = self.transferMessage(message: ["currency" : currency as AnyObject])

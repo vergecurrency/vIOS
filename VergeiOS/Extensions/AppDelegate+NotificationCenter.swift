@@ -71,7 +71,7 @@ extension AppDelegate {
     @objc func didBroadcastTx(notification: Notification) {
         WalletClient.shared.getBalance { error, info in
             if let info = info {
-                ApplicationManager.default.amount = info.totalAmountValue
+                ApplicationRepository.default.amount = info.totalAmountValue
             }
         }
     }

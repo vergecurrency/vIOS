@@ -8,11 +8,16 @@
 
 import Foundation
 
-class Contact {
-    var name: String = ""
-    var address: String = ""
+public struct Contact: Decodable {
     
-    func isValid() -> Bool {
+    public var name: String = ""
+    public var address: String = ""
+    
+}
+
+extension Contact {
+    
+    public func isValid() -> Bool {
         var valid = false
         
         if (name.trimmingCharacters(in: .whitespaces).count > 0 &&
@@ -22,4 +27,5 @@ class Contact {
         
         return valid
     }
+    
 }
