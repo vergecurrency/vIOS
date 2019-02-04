@@ -25,7 +25,7 @@ class SendViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
 
     var currency = CurrencySwitch.XVG
-    var sendTransaction = TransactionFactory()
+    var txFactory = TransactionFactory()
     var txTransponder: TxTransponder!
     
     var confirmButtonInterval: Timer?
@@ -115,7 +115,7 @@ class SendViewController: UIViewController {
     }
 
     func updateWalletAmountLabel() {
-        let sendAmount = sendTransaction.amount.doubleValue
+        let sendAmount = txFactory.amount.doubleValue
         var amount = NSNumber(floatLiteral: walletAmount.doubleValue - sendAmount)
         if currency == .FIAT {
             amount = convertXvgToFiat(amount)
@@ -181,9 +181,9 @@ class SendViewController: UIViewController {
         // Selected amount is higher then nothing.
         // Selected amount is lower then wallet amount.
         // Address is set.
-        let enabled = sendTransaction.amount.doubleValue > 0.0
-            && sendTransaction.amount.doubleValue <= walletAmount.doubleValue
-            && sendTransaction.address != ""
+        let enabled = txFactory.amount.doubleValue > 0.0
+            && txFactory.amount.doubleValue <= walletAmount.doubleValue
+            && txFactory.address != ""
 
         confirmButton.isEnabled = enabled
         confirmButton.backgroundColor = (enabled ? UIColor.primaryLight() : UIColor.vergeGrey())
@@ -228,11 +228,11 @@ class SendViewController: UIViewController {
     }
 
     func getTxProposal(completion: @escaping (_ proposal: TxProposal) -> Void) {
-        if sendTransaction.amount.doubleValue < walletAmount.doubleValue {
+        if txFactory.amount.doubleValue < walletAmount.doubleValue {
             return completion(TxProposal(
-                address: sendTransaction.address,
-                amount: sendTransaction.amount,
-                message: sendTransaction.memo
+                address: txFactory.address,
+                amount: txFactory.amount,
+                message: txFactory.memo
             ))
         }
 
@@ -241,15 +241,15 @@ class SendViewController: UIViewController {
                 return self.present(UIAlertController.createSendMaxInfoAlert(), animated: true)
             }
 
-            self.sendTransaction.setBy(
+            self.txFactory.setBy(
                 currency: "XVG",
                 amount: NSNumber(floatLiteral: Double(info.amount) / Constants.satoshiDivider)
             )
 
             completion(TxProposal(
-                address: self.sendTransaction.address,
-                amount: self.sendTransaction.amount,
-                message: self.sendTransaction.memo
+                address: self.txFactory.address,
+                amount: self.txFactory.amount,
+                message: self.txFactory.memo
             ))
         }
     }
@@ -342,14 +342,14 @@ class SendViewController: UIViewController {
     @objc func amountChanged(_ textField: CurrencyInput) {
         let amount = textField.getNumber().doubleValue
 
-        sendTransaction.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
-        didChangeSendTransaction(sendTransaction)
+        txFactory.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
+        didChangeSendTransaction(txFactory)
     }
 
     @objc func setMaximumAmount() {
-        sendTransaction.setBy(currency: "XVG", amount: walletAmount)
+        txFactory.setBy(currency: "XVG", amount: walletAmount)
 
-        didChangeSendTransaction(sendTransaction)
+        didChangeSendTransaction(txFactory)
     }
 
     @objc func clearTransactionDetails() {
@@ -469,9 +469,9 @@ extension SendViewController: UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == self.amountTextField {
-            sendTransaction.amount = 0.0
-            sendTransaction.fiatAmount = 0.0
-            didChangeSendTransaction(sendTransaction)
+            txFactory.amount = 0.0
+            txFactory.fiatAmount = 0.0
+            didChangeSendTransaction(txFactory)
         }
         return true
     }
@@ -494,22 +494,22 @@ extension SendViewController: UITextFieldDelegate {
                 return self.showInvalidAddressAlert()
             }
 
-            self.sendTransaction.address = address
+            self.txFactory.address = address
 
-            self.didChangeSendTransaction(self.sendTransaction)
+            self.didChangeSendTransaction(self.txFactory)
         }
     }
 
     @objc func clearRecipient() {
-        sendTransaction.address = ""
+        txFactory.address = ""
 
-        didChangeSendTransaction(sendTransaction)
+        didChangeSendTransaction(txFactory)
     }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
 
-        didChangeSendTransaction(sendTransaction)
+        didChangeSendTransaction(txFactory)
     }
 
     func showInvalidAddressAlert() {
@@ -529,7 +529,7 @@ extension SendViewController: UITextFieldDelegate {
             return
         }
 
-        sendTransaction.address = text
+        txFactory.address = text
     }
 
     @IBAction func didChangeMemoTextField(_ textfield: UITextField) {
@@ -537,7 +537,7 @@ extension SendViewController: UITextFieldDelegate {
             return
         }
 
-        sendTransaction.memo = text
+        txFactory.memo = text
     }
 }
 
@@ -545,14 +545,14 @@ extension SendViewController: SendTransactionDelegate {
     // MARK: - Send Transaction Delegate
 
     func didChangeSendTransaction(_ transaction: TransactionFactory) {
-        sendTransaction = transaction
+        txFactory = transaction
 
-        recipientTextField.text = sendTransaction.address
-        memoTextField.text = sendTransaction.memo
+        recipientTextField.text = txFactory.address
+        memoTextField.text = txFactory.memo
 
-        let clearable = sendTransaction.amount.doubleValue > 0.0
-            || sendTransaction.address != ""
-            || sendTransaction.memo != ""
+        let clearable = txFactory.amount.doubleValue > 0.0
+            || txFactory.address != ""
+            || txFactory.memo != ""
 
         if clearable {
             let clearButton = UIBarButtonItem(
@@ -572,11 +572,11 @@ extension SendViewController: SendTransactionDelegate {
     }
 
     func getSendTransaction() -> TransactionFactory {
-        return sendTransaction
+        return txFactory
     }
 
     func currentAmount() -> NSNumber {
-        return currency == .FIAT ? sendTransaction.fiatAmount : sendTransaction.amount
+        return currency == .FIAT ? txFactory.fiatAmount : txFactory.amount
     }
 
     func currentCurrency() -> String {
