@@ -29,7 +29,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didReceiveStats(notification:)),
-            name: .didReceiveStats,
+            name: .didReceiveFiatRatings,
             object: nil
         )
     }
@@ -63,7 +63,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     
     func setupCell(_ cell: UITableViewCell, item: String) -> UITableViewCell {
         
-        if let info = PriceTicker.shared.xvgInfo {
+        if let info = FiatRateTicker.shared.rateInfo {
             switch item {
             case "price":
                 cell.textLabel?.text = "XVG/\(ApplicationRepository.default.currency)"

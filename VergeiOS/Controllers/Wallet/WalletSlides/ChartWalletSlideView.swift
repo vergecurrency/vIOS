@@ -46,7 +46,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didReceiveStats(notification:)),
-            name: .didReceiveStats,
+            name: .didReceiveFiatRatings,
             object: nil
         )
     }
@@ -123,7 +123,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         var volumeData: [BarChartDataEntry] = []
         priceChartView.set(chartData: priceData)
         volumeChartView.set(chartData: volumeData)
-        lastChangeFilter = Date.timeIntervalSinceReferenceDate + Constants.fetchPriceTimeout
+        lastChangeFilter = Date.timeIntervalSinceReferenceDate + Constants.fetchRateTimeout
         
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()

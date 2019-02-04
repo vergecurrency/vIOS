@@ -65,8 +65,8 @@ class SendViewController: UIViewController {
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(didReceiveStats),
-            name: .didReceiveStats,
+            selector: #selector(didReceiveFiatRatings),
+            name: .didReceiveFiatRatings,
             object: nil
         )
         
@@ -151,7 +151,7 @@ class SendViewController: UIViewController {
     }
 
     func convertXvgToFiat(_ amount: NSNumber) -> NSNumber {
-        if let xvgInfo = PriceTicker.shared.xvgInfo {
+        if let xvgInfo = FiatRateTicker.shared.rateInfo {
             return NSNumber(value: amount.doubleValue * xvgInfo.price)
         }
 

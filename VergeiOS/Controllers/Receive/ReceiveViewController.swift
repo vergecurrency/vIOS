@@ -208,7 +208,7 @@ class ReceiveViewController: UIViewController {
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
         var newAmount = ""
-        if let xvgInfo = PriceTicker.shared.xvgInfo {
+        if let xvgInfo = FiatRateTicker.shared.rateInfo {
             if currency == .XVG {
                 currencyLabel.text = "XVG"
                 newAmount = String(Int(amount * 100))
@@ -275,7 +275,7 @@ class ReceiveViewController: UIViewController {
         amount = textField.getNumber().doubleValue
 
         if currency == .FIAT {
-            if let xvgInfo = PriceTicker.shared.xvgInfo {
+            if let xvgInfo = FiatRateTicker.shared.rateInfo {
                 amount = amount / xvgInfo.price
             }
         }

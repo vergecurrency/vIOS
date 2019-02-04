@@ -9,9 +9,16 @@
 import Foundation
 
 public struct Constants {
-
+    
+    /**
+     * The timeout used for fetching wallet data.
+     */
     public static let fetchWalletTimeout: Double = 30
-    public static let fetchPriceTimeout: Double = 150
+    
+    /**
+     * The timeout used for fetching fiat rating data.
+     */
+    public static let fetchRateTimeout: Double = 150
     public static let satoshiDivider: Double = 1000000.0
     public static let confirmationsNeeded: Int = 1
 
