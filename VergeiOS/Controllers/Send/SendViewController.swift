@@ -95,7 +95,7 @@ class SendViewController: UIViewController {
         updateAmountLabel()
     }
 
-    @objc func didReceiveStats(_ notification: Notification) {
+    @objc func didReceiveFiatRatings(_ notification: Notification) {
         updateAmountLabel()
         updateWalletAmountLabel()
     }
