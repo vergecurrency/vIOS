@@ -8,35 +8,36 @@ import Foundation
 class TxTransponder {
 
     enum Step: Int {
-        case create = 0
-        case publish = 1
-        case sign = 2
-        case broadcast = 3
+        case publish = 0
+        case sign = 1
+        case broadcast = 2
     }
 
     typealias completionType = (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
 
     private var walletClient: WalletClient!
     private var completion: completionType!
-    private var step: Step = .create
+    private var step: Step = .publish
     private var previousTxp: TxProposalResponse?
 
     public init(walletClient: WalletClient) {
         self.walletClient = walletClient
     }
 
-    public func send(proposal: TxProposal, completion: @escaping completionType) {
+    public func create(proposal: TxProposal, completion: @escaping completionType) {
+        walletClient.createTxProposal(proposal: proposal, completion: completion)
+    }
+
+    public func send(txp: TxProposalResponse, completion: @escaping completionType) {
         self.completion = completion
 
-        // Create a tx proposal and start the sequence.
-        walletClient.createTxProposal(proposal: proposal, completion: completionHandler)
+        // Publish the tx proposal and start the sequence.
+        walletClient.publishTxProposal(txp: txp, completion: completionHandler)
     }
 
     private func progress(txp: TxProposalResponse) {
         previousTxp = txp
         switch step {
-        case .publish:
-            return walletClient.publishTxProposal(txp: txp, completion: completionHandler)
         case .sign:
             return walletClient.signTxProposal(txp: txp, completion: completionHandler)
         case .broadcast:
@@ -54,8 +55,6 @@ class TxTransponder {
             NotificationCenter.default.post(name: .didSignTx, object: self)
         case .broadcast:
             NotificationCenter.default.post(name: .didBroadcastTx, object: self)
-        default:
-            NotificationCenter.default.post(name: .didCreateTx, object: self)
         }
     }
 

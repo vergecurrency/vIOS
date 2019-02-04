@@ -191,6 +191,7 @@
 		B2BD7D87D41E757FCBBF6D75 /* AppDelegate+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */; };
 		B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */; };
 		B2BD7E5B76A0F41F95F9AE4A /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7E6AD20C5E8F2318BE53 /* TransactionRepository.swift */; };
+		B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F271D86AF3260FFBF11 /* SendMaxInfo.swift */; };
 		B2BD7EAD955C16295629FF73 /* AddressBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */; };
 		B2BD7EADE85BFC16E792F913 /* WalletID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD791F2A29BF10031F61A9 /* WalletID.swift */; };
 		B2BD7F005F419E6C2A8B8A9A /* TxHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B38FF9FBCE00640E947 /* TxHistory.swift */; };
@@ -522,6 +523,7 @@
 		B2BD7E6AD20C5E8F2318BE53 /* TransactionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		B2BD7E6BDB05995D9DB9E0D0 /* Data+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		B2BD7EF009F29B5AAA801A96 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		B2BD7F271D86AF3260FFBF11 /* SendMaxInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendMaxInfo.swift; sourceTree = "<group>"; };
 		B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+NotificationCenter.swift"; sourceTree = "<group>"; };
 		B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B2BD7FE6CE69F7288EADDB6F /* CreateAddressErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressErrorResponse.swift; sourceTree = "<group>"; };
@@ -1135,6 +1137,7 @@
 				B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */,
 				B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */,
 				B2BD7FE6CE69F7288EADDB6F /* CreateAddressErrorResponse.swift */,
+				B2BD7F271D86AF3260FFBF11 /* SendMaxInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1818,6 +1821,7 @@
 				B2BD73C50F4BA27C71F772FB /* Data+Extensions.swift in Sources */,
 				B2BD77F17789C2C495FDA9A9 /* TxProposalErrorResponse.swift in Sources */,
 				B2BD724949D1989F82E187A8 /* CreateAddressErrorResponse.swift in Sources */,
+				B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

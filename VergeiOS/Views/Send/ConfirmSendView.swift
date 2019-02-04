@@ -15,8 +15,8 @@ class ConfirmSendView: UIView {
     @IBOutlet weak var totalXvgAmountLabel: UILabel!
     @IBOutlet weak var totalFiatAmountLabel: UILabel!
     @IBOutlet weak var recipientAddressLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
-    var transaction: SendTransaction!
     var margin: CGFloat {
         if #available(iOS 12.0, *) {
             return 8.0
@@ -54,29 +54,23 @@ class ConfirmSendView: UIView {
         return alertController
     }
 
-    func setTransaction(_ transaction: SendTransaction) {
-        self.transaction = transaction
+    func setup(_ txp: TxProposalResponse) {
+        let amount = NSNumber(floatLiteral: Double(txp.amount) / Config.satoshiDivider)
+        let fee = NSNumber(floatLiteral: Double(txp.fee) / Config.satoshiDivider)
+        let total = NSNumber(floatLiteral: amount.doubleValue + fee.doubleValue)
 
-        updateTransactionValues()
-    }
-
-    func updateTransactionValues() {
-        let totalXVG = transaction.amount.doubleValue + Config.fee
-
-        sendingAmountLabel.text = transaction.amount.toXvgCurrency()
-        transactionFeeAmountLabel.text = NSNumber(floatLiteral: Config.fee).toXvgCurrency()
-
-        totalXvgAmountLabel.text = NSNumber(
-            floatLiteral: (transaction.amount.doubleValue + Config.fee)
-        ).toXvgCurrency()
-
-        recipientAddressLabel.text = transaction.address
+        sendingAmountLabel.text = amount.toXvgCurrency()
+        transactionFeeAmountLabel.text = fee.toXvgCurrency()
+        totalXvgAmountLabel.text = total.toXvgCurrency()
+        recipientAddressLabel.text = txp.outputs.first?.toAddress
 
         if let xvgInfo = PriceTicker.shared.xvgInfo {
-            let totalFiat = totalXVG * xvgInfo.price
+            let totalFiat = total.doubleValue * xvgInfo.price
 
             totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toPairCurrency()
         }
+
+        activityIndicatorView.removeFromSuperview()
     }
     
 }

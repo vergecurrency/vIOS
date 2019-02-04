@@ -21,7 +21,6 @@ extension Notification.Name {
     static let didTurnOffTor = Notification.Name("didTurnOffTor")
 
     static let demandSendView = Notification.Name("demandSendView")
-    static let didCreateTx = Notification.Name("didCreateTx")
     static let didPublishTx = Notification.Name("didPublishTx")
     static let didSignTx = Notification.Name("didSignTx")
     static let didBroadcastTx = Notification.Name("didBroadcastTx")

@@ -13,7 +13,6 @@ struct Config {
     static let fetchWalletTimeout: Double = 30
     static let fetchPriceTimeout: Double = 150
     static let satoshiDivider: Double = 1000000.0
-    static let fee: Double = 0.1
     static let confirmationsNeeded: Int = 1
 
     static let website: String = "https://vergecurrency.com/"

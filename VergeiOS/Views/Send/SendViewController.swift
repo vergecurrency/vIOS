@@ -24,9 +24,9 @@ class SendViewController: UIViewController {
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
 
-    let transactionFee = Config.fee
     var currency = CurrencySwitch.XVG
     var sendTransaction = SendTransaction()
+    var txTransponder: TxTransponder!
     
     var confirmButtonInterval: Timer?
 
@@ -44,13 +44,14 @@ class SendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        amountTextField.delegate = self
 
         confirmButtonInterval = setInterval(1) {
             self.isSendable()
         }
 
+        txTransponder = TxTransponder(walletClient: WalletClient.shared)
+
+        amountTextField.delegate = self
         amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
 
         setupRecipientTextFieldKeyboardToolbar()
@@ -80,7 +81,7 @@ class SendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        noBalanceView.isHidden = (walletAmount.doubleValue >= transactionFee)
+        noBalanceView.isHidden = (walletAmount.doubleValue > 0)
 
         xvgCardContainer.alpha = 0.0
         xvgCardContainer.center.y += 20.0
@@ -101,7 +102,7 @@ class SendViewController: UIViewController {
     
     @objc func didReceiveTransaction(notification: Notification) {
         DispatchQueue.main.async {
-            self.noBalanceView.isHidden = (self.walletAmount.doubleValue >= self.transactionFee)
+            self.noBalanceView.isHidden = (self.walletAmount.doubleValue > 0)
         }
     }
 
@@ -114,9 +115,7 @@ class SendViewController: UIViewController {
     }
 
     func updateWalletAmountLabel() {
-        let sendAmount = sendTransaction.amount.doubleValue > 0 ? (
-            sendTransaction.amount.doubleValue + transactionFee
-        ) : 0
+        let sendAmount = sendTransaction.amount.doubleValue
         var amount = NSNumber(floatLiteral: walletAmount.doubleValue - sendAmount)
         if currency == .FIAT {
             amount = convertXvgToFiat(amount)
@@ -197,29 +196,65 @@ class SendViewController: UIViewController {
             options: nil
         )?.first as! ConfirmSendView
 
-        confirmSendView.setTransaction(sendTransaction)
         let alertController = confirmSendView.makeActionSheet()
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let sendAction = UIAlertAction(title: "Send XVG", style: .default) { alert in
-            self.sendXvg()
-        }
-        sendAction.setValue(UIImage(named: "Send"), forKey: "image")
-
-        alertController.addAction(sendAction)
-        alertController.addAction(cancelAction)
-
         if let popoverController = alertController.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.sourceView = view
+            popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
             popoverController.permittedArrowDirections = []
         }
 
-        DispatchQueue.main.async {
-            self.present(alertController, animated: true)
+        present(alertController, animated: true)
+
+        getTxProposal { proposal in
+            self.txTransponder.create(proposal: proposal) { txp, errorResponse, error in
+                guard let txp = txp else {
+                    return alertController.dismiss(animated: true) {
+                        self.showTransactionError(errorResponse, txp: nil)
+                    }
+                }
+
+                confirmSendView.setup(txp)
+
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                let sendAction = UIAlertAction(title: "Send XVG", style: .default) { alert in
+                    self.send(txp: txp)
+                }
+                sendAction.setValue(UIImage(named: "Send"), forKey: "image")
+
+                alertController.addAction(sendAction)
+                alertController.addAction(cancelAction)
+            }
         }
     }
 
-    func sendXvg() {
+    func getTxProposal(completion: @escaping (_ proposal: TxProposal) -> Void) {
+        if sendTransaction.amount.doubleValue < walletAmount.doubleValue {
+            return completion(TxProposal(
+                address: sendTransaction.address,
+                amount: sendTransaction.amount,
+                message: sendTransaction.memo
+            ))
+        }
+
+        WalletClient.shared.getSendMaxInfo { info in
+            guard let info = info else {
+                return print("Whoops!")
+            }
+
+            self.sendTransaction.setBy(
+                currency: "XVG",
+                amount: NSNumber(floatLiteral: Double(info.amount) / Config.satoshiDivider)
+            )
+
+            completion(TxProposal(
+                address: self.sendTransaction.address,
+                amount: self.sendTransaction.amount,
+                message: self.sendTransaction.memo
+            ))
+        }
+    }
+
+    func send(txp: TxProposalResponse) {
         let unlockView = PinUnlockViewController.createFromStoryBoard()
         unlockView.fillPinFor = .sending
         unlockView.cancelable = true
@@ -229,12 +264,6 @@ class SendViewController: UIViewController {
             if !aunthenticated {
                 return
             }
-
-            let proposal = TxProposal(
-                address: self.sendTransaction.address,
-                amount: self.sendTransaction.amount,
-                message: self.sendTransaction.memo
-            )
 
             let sendingView = Bundle.main.loadNibNamed(
                 "SendingView",
@@ -250,7 +279,7 @@ class SendViewController: UIViewController {
             }
 
             self.present(actionSheet, animated: true) {
-                TxTransponder(walletClient: WalletClient.shared).send(proposal: proposal) { txp, errorResponse, error  in
+                self.txTransponder.send(txp: txp) { txp, errorResponse, error  in
                     if let errorResponse = errorResponse {
                         actionSheet.dismiss(animated: true) {
                             self.showTransactionError(errorResponse, txp: txp)
@@ -271,10 +300,12 @@ class SendViewController: UIViewController {
         present(unlockView, animated: true)
     }
 
-    func showTransactionError(_ errorResponse: TxProposalErrorResponse, txp: TxProposalResponse?) {
+    func showTransactionError(_ errorResponse: TxProposalErrorResponse?, txp: TxProposalResponse?) {
+        let error: String = errorResponse != nil ? errorResponse!.message : "No connection"
+
         let actionSheet = UIAlertController(
             title: "Transaction Failed",
-            message: "Your transaction has failed with the following error: \(errorResponse.message)",
+            message: "Your transaction has failed with the following error: \(error)",
             preferredStyle: .actionSheet
         )
 
@@ -316,7 +347,8 @@ class SendViewController: UIViewController {
     }
 
     @objc func setMaximumAmount() {
-        sendTransaction.setBy(currency: "XVG", amount: NSNumber(value: walletAmount.doubleValue - transactionFee))
+        sendTransaction.setBy(currency: "XVG", amount: walletAmount)
+
         didChangeSendTransaction(sendTransaction)
     }
 

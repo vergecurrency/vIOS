@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhd-J9-cVY">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="301"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="301.5"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checked" translatesAutoresizingMaskIntoConstraints="NO" id="3Yq-t2-PNp">
                             <rect key="frame" x="8" y="8" width="25" height="25"/>
@@ -146,7 +146,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3S-6w-Gfz" customClass="BorderPanelView" customModule="VergeiOS" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="213.5" width="375" height="41"/>
+                            <rect key="frame" x="0.0" y="214" width="375" height="41"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-v2-U5W">
                                     <rect key="frame" x="20" y="8" width="335" height="25"/>
@@ -181,12 +181,16 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgR-SI-RO6">
-                            <rect key="frame" x="20" y="262.5" width="335" height="30.5"/>
+                            <rect key="frame" x="20" y="263" width="335" height="30.5"/>
                             <string key="text">Double check that the wallet address is correct. Verge Currency cannot be held accountable for loss of XVG sent to wrong wallets.</string>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="11"/>
                             <color key="textColor" name="SecondaryLight"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JYY-bg-GFA">
+                            <rect key="frame" x="169" y="132.5" width="37" height="37"/>
+                            <color key="color" name="PrimaryLight"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -199,6 +203,7 @@
                         <constraint firstItem="3Yq-t2-PNp" firstAttribute="top" secondItem="Yhd-J9-cVY" secondAttribute="topMargin" id="Q2A-1H-4kT"/>
                         <constraint firstItem="gus-NB-GEB" firstAttribute="leading" secondItem="iSO-qs-MS4" secondAttribute="trailing" constant="8" id="VHp-UY-Ytf"/>
                         <constraint firstItem="hrk-Ot-eqP" firstAttribute="leading" secondItem="3Yq-t2-PNp" secondAttribute="trailing" constant="8" id="ZuE-Oa-4Pm"/>
+                        <constraint firstItem="JYY-bg-GFA" firstAttribute="centerY" secondItem="Yhd-J9-cVY" secondAttribute="centerY" id="d83-8K-wdT"/>
                         <constraint firstAttribute="bottom" secondItem="kgR-SI-RO6" secondAttribute="bottom" constant="8" id="eVP-OH-Oe0"/>
                         <constraint firstAttribute="trailing" secondItem="gus-NB-GEB" secondAttribute="trailing" constant="8" id="fzT-cS-s18"/>
                         <constraint firstAttribute="trailing" secondItem="x3S-6w-Gfz" secondAttribute="trailing" id="gfk-O8-H9m"/>
@@ -207,6 +212,7 @@
                         <constraint firstAttribute="trailing" secondItem="kgR-SI-RO6" secondAttribute="trailing" constant="20" id="iDS-aZ-F0Y"/>
                         <constraint firstItem="x3S-6w-Gfz" firstAttribute="top" secondItem="iSO-qs-MS4" secondAttribute="bottom" constant="8" id="lkE-Nq-RfC"/>
                         <constraint firstItem="3Yq-t2-PNp" firstAttribute="leading" secondItem="Yhd-J9-cVY" secondAttribute="leading" constant="8" id="skR-tL-reD"/>
+                        <constraint firstItem="JYY-bg-GFA" firstAttribute="centerX" secondItem="Yhd-J9-cVY" secondAttribute="centerX" id="tr8-yR-sAI"/>
                         <constraint firstItem="kgR-SI-RO6" firstAttribute="top" secondItem="x3S-6w-Gfz" secondAttribute="bottom" constant="8" id="wSY-bj-5c6"/>
                         <constraint firstItem="x3S-6w-Gfz" firstAttribute="top" secondItem="gus-NB-GEB" secondAttribute="bottom" constant="8" id="xcz-hE-AE4"/>
                         <constraint firstAttribute="trailingMargin" secondItem="hrk-Ot-eqP" secondAttribute="trailing" id="ypH-oD-j6V"/>
@@ -226,6 +232,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="JYY-bg-GFA" id="kYH-la-krs"/>
                 <outlet property="recipientAddressLabel" destination="r4d-ev-iF1" id="Adz-Po-iei"/>
                 <outlet property="sendingAmountLabel" destination="hvj-Ks-Ja4" id="7rW-J6-Y01"/>
                 <outlet property="totalFiatAmountLabel" destination="Dsj-Lb-T7H" id="eXL-5m-b4G"/>
@@ -242,13 +249,13 @@
             <color red="0.066666666666666666" green="0.12549019607843137" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
-            <color red="0.21600000560283661" green="0.74099999666213989" blue="0.88599997758865356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
-            <color red="0.097999997437000275" green="0.23899999260902405" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.094117647058823528" green="0.23529411764705882" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
-            <color red="0.3919999897480011" green="0.47099998593330383" blue="0.52499997615814209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.38823529411764707" green="0.47058823529411764" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeGreen">
             <color red="0.0" green="0.52156862745098043" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

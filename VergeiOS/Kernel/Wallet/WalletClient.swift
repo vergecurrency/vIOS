@@ -35,7 +35,7 @@ public class WalletClient {
             mnemonic: ApplicationManager.default.mnemonic!,
             passphrase: ApplicationManager.default.passphrase!
         )
-
+        
         // This should fail when no mnemonic is set.
         return HDPrivateKey(seed: seed, network: network)
     }
@@ -283,15 +283,21 @@ public class WalletClient {
         completion: @escaping (_ unspentOutputs: [UnspentOutput]) -> Void
     ) {
         getRequest(url: "/v1/utxos/") { data, response, error in
-            if let data = data {
-                do {
-                    let unspentOutputs = try JSONDecoder().decode([UnspentOutput].self, from: data)
-                    completion(unspentOutputs)
-                } catch {
-                    print(error)
-                    completion([])
-                }
+            guard let data = data else {
+                return completion([])
             }
+
+            completion((try? JSONDecoder().decode([UnspentOutput].self, from: data)) ?? [])
+        }
+    }
+
+    public func getSendMaxInfo(completion: @escaping (_ sendMaxInfo: SendMaxInfo?) -> Void) {
+        getRequest(url: "/v1/sendmaxinfo/") { data, response, error in
+            guard let data = data else {
+                return completion(nil)
+            }
+
+            completion(try? JSONDecoder().decode(SendMaxInfo.self, from: data))
         }
     }
 
@@ -307,7 +313,6 @@ public class WalletClient {
 
         arguments["outputs"] = [output]
         arguments["payProUrl"].null = nil
-        arguments["fee"].intValue = 100000
 
         if proposal.message.count > 0 {
             arguments["message"].stringValue = encryptMessage(
@@ -473,7 +478,9 @@ public class WalletClient {
         request.setValue("application/json", forHTTPHeaderField: "accept")
         
         let task = urlSession.dataTask(with: request) { data, response, error in
-            completion(data, response, error)
+            DispatchQueue.main.sync {
+                completion(data, response, error)
+            }
         }
 
         DispatchQueue.main.async {
@@ -510,7 +517,9 @@ public class WalletClient {
             request.httpBody = argumentsData
 
             let task = urlSession.dataTask(with: request) { data, response, error in
-                completion(data, response, error)
+                DispatchQueue.main.sync {
+                    completion(data, response, error)
+                }
             }
 
             DispatchQueue.main.async {
@@ -586,7 +595,7 @@ public class WalletClient {
         let amount = txp.amount
         let totalAmount: UInt64 = unspentTransactions.reduce(0) { $0 + $1.output.value }
         let change: UInt64 = totalAmount - amount - txp.fee
-
+        
         guard let lockingScriptChange = Script(address: changeAddress) else {
             throw WalletClientError.addressToScriptError(address: changeAddress)
         }
@@ -635,13 +644,24 @@ public class WalletClient {
         var hexes = [String]()
         // Signing
         for (i, utxo) in unsignedTx.utxos.enumerated() {
+            let pubkeyHash: Data = Script.getPublicKeyHash(from: utxo.output.lockingScript)
+            
+            let keysOfUtxo: [PrivateKey] = keys.filter { $0.publicKey().pubkeyHash == pubkeyHash }
+            guard let key = keysOfUtxo.first else {
+                print("No keys to this txout : \(utxo.output.value)")
+                continue
+            }
+            print("Value of signing txout : \(utxo.output.value)")
+            print(key.data.hex)
+            
             let sighash: Data = transactionToSign.signatureHash(
                 for: utxo.output,
                 inputIndex: i,
                 hashType: SighashType.BTC.ALL
             )
-            let signature: Data = try Crypto.sign(sighash, privateKey: keys[i])
-
+            
+            let signature: Data = try Crypto.sign(sighash, privateKey: key)
+            
             hexes.append(signature.hex)
         }
 

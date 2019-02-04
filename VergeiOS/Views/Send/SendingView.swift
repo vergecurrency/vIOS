@@ -59,7 +59,6 @@ class SendingView: UIView {
     }
 
     private func setupListeners() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didCreateTx, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didPublishTx, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didSignTx, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didBroadcastTx, object: nil)
@@ -82,9 +81,6 @@ class SendingView: UIView {
     @objc private func handleNotification(notification: Notification) {
         DispatchQueue.main.async {
             switch notification.name {
-            case Notification.Name.didCreateTx:
-                self.statusLabel.text = "Publishing Transaction"
-                break
             case Notification.Name.didPublishTx:
                 self.statusLabel.text = "Signing Transaction"
                 break
