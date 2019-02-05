@@ -8,3 +8,5 @@ install:
   - chmod u+x install.sh && ./install.sh
 script:
   - fastlane test
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t aa91f9a4-319f-4977-b33f-4ac5ad2d0090
