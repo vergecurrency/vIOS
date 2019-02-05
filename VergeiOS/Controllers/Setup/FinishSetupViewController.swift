@@ -99,7 +99,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         // Pass the selected object to the new view controller.
         ApplicationRepository.default.setup = true
 
-        PriceTicker.shared.start()
+        FiatRateTicker.shared.start()
         WalletTicker.shared.start()
     }
 

@@ -1,5 +1,5 @@
 //
-//  PriceTicker.swift
+//  FiatRateTicker.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 13-08-18.
@@ -8,17 +8,18 @@
 
 import Foundation
 
-class PriceTicker {
+class FiatRateTicker {
     
-    public static let shared = PriceTicker()
+    public static let shared = FiatRateTicker()
 
     private var started: Bool = false
     private var interval: Timer?
 
     var statisicsClient: RatesClient = RatesClient()
-    var xvgInfo: FiatRate?
+    var rateInfo: FiatRate?
 
     init () {
+        // TODO: Move to event manager.
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didChangeCurrency),
@@ -27,7 +28,7 @@ class PriceTicker {
         )
     }
     
-    // Start the price ticker.
+    // Start the fiat rate ticker.
     func start() {
         if started {
             return
@@ -37,14 +38,14 @@ class PriceTicker {
             return
         }
         
-        fetchStats()
+        fetch()
         
-        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchPriceTimeout, repeats: true) { timer in
-            self.fetchStats()
+        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchRateTimeout, repeats: true) { timer in
+            self.fetch()
         }
         
         started = true
-        print("Price ticker started...")
+        print("Fiat rate ticker started...")
     }
     
     // Stop the price ticker.
@@ -52,24 +53,24 @@ class PriceTicker {
         interval?.invalidate()
         started = false
 
-        print("Price ticker stopped...")
+        print("Fiat rate ticker stopped...")
     }
     
     // Fetch statistics from the API and notify all absorbers.
-    @objc private func fetchStats() {
+    @objc private func fetch() {
         print("Fetching new stats")
         statisicsClient.infoBy(currency: ApplicationRepository.default.currency) { info in
-            self.xvgInfo = info
+            self.rateInfo = info
 
-            print("Stats received, posting notification")
-            NotificationCenter.default.post(name: .didReceiveStats, object: self.xvgInfo)
+            print("Fiat ratings received, posting notification")
+            NotificationCenter.default.post(name: .didReceiveFiatRatings, object: self.rateInfo)
         }
     }
     
     @objc private func didChangeCurrency(_ notification: Notification) {
         DispatchQueue.main.async {
             print("Currency changed 💰")
-            self.fetchStats()
+            self.fetch()
         }
     }
 

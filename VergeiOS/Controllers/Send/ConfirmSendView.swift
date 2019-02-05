@@ -64,7 +64,7 @@ class ConfirmSendView: UIView {
         totalXvgAmountLabel.text = total.toXvgCurrency()
         recipientAddressLabel.text = txp.outputs.first?.toAddress
 
-        if let xvgInfo = PriceTicker.shared.xvgInfo {
+        if let xvgInfo = FiatRateTicker.shared.rateInfo {
             let totalFiat = total.doubleValue * xvgInfo.price
 
             totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toPairCurrency()

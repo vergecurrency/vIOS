@@ -23,7 +23,7 @@ class TransactionFactory {
     }
 
     func update(currency: String) {
-        if let xvgInfo = PriceTicker.shared.xvgInfo {
+        if let xvgInfo = FiatRateTicker.shared.rateInfo {
             if currency == "XVG" {
                 fiatAmount = NSNumber(value: amount.doubleValue * xvgInfo.price)
             } else {

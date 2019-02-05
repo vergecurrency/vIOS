@@ -38,7 +38,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didReceiveStats(notification:)),
-            name: .didReceiveStats,
+            name: .didReceiveFiatRatings,
             object: nil
         )
 
@@ -117,7 +117,7 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
             let walletAmount = ApplicationRepository.default.amount
             self.xvgBalanceLabel.text = ApplicationRepository.default.amount.toXvgCurrency()
 
-            if let xvgInfo = PriceTicker.shared.xvgInfo {
+            if let xvgInfo = FiatRateTicker.shared.rateInfo {
                 self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
                 self.pairSymbolBalanceLabel.text = "\(ApplicationRepository.default.currency) BALANCE"
                 

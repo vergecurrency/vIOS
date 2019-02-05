@@ -21,7 +21,7 @@
 		A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302D3082120374C00EA8091 /* CoreGraphics.framework */; };
 		A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */; };
 		A302D3152120F53D00EA8091 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3142120F53D00EA8091 /* AddressCell.swift */; };
-		A302D3412122053300EA8091 /* PriceTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3402122053300EA8091 /* PriceTicker.swift */; };
+		A302D3412122053300EA8091 /* FiatRateTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3402122053300EA8091 /* FiatRateTicker.swift */; };
 		A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34221220A1E00EA8091 /* Notification+Names.swift */; };
 		A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3482123448200EA8091 /* NSNumber+Currency.swift */; };
 		A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */; };
@@ -338,7 +338,7 @@
 		A302D3082120374C00EA8091 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTransparentHoleOnOverlayView.swift; sourceTree = "<group>"; };
 		A302D3142120F53D00EA8091 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
-		A302D3402122053300EA8091 /* PriceTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTicker.swift; sourceTree = "<group>"; };
+		A302D3402122053300EA8091 /* FiatRateTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatRateTicker.swift; sourceTree = "<group>"; };
 		A302D34221220A1E00EA8091 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		A302D3482123448200EA8091 /* NSNumber+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Currency.swift"; sourceTree = "<group>"; };
 		A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Pagination.swift"; sourceTree = "<group>"; };
@@ -1109,9 +1109,9 @@
 			isa = PBXGroup;
 			children = (
 				A316B0AE215454FB00FF5200 /* AddressValidator.swift */,
-				A302D3402122053300EA8091 /* PriceTicker.swift */,
-				B2BD780B0BE45F52AD3B526D /* TransactionFactory.swift */,
+				A302D3402122053300EA8091 /* FiatRateTicker.swift */,
 				B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */,
+				B2BD780B0BE45F52AD3B526D /* TransactionFactory.swift */,
 				B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */,
 				B2BD7365DCBB13FEA0B32516 /* TxAction.swift */,
 				B2BD7A3D8D516C3586332E99 /* TxTransponder.swift */,
@@ -1714,7 +1714,7 @@
 				A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
-				A302D3412122053300EA8091 /* PriceTicker.swift in Sources */,
+				A302D3412122053300EA8091 /* FiatRateTicker.swift in Sources */,
 				A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,

@@ -32,7 +32,7 @@ class DisconnectWalletViewController: UIViewController {
                     
                     // Reset wallet manager.
                     ApplicationRepository.default.reset()
-                    PriceTicker.shared.stop()
+                    FiatRateTicker.shared.stop()
                     WalletTicker.shared.stop()
                     TorClient.shared.resign()
                 } else {
