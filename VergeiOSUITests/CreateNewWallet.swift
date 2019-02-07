@@ -41,6 +41,9 @@ class CreateNewWallet: XCTestCase {
         
         XCTAssert(app.navigationBars["Set wallet PIN"].exists)
         app.navigationBars["Set wallet PIN"].buttons.element(boundBy: 1).tap()
+        
+        _ = app.wait(for: .runningForeground, timeout: 1)
+        
         app.sheets["Choose a PIN size"].buttons["4 Digits"].tap()
         
         _ = app.wait(for: .runningForeground, timeout: 1)
