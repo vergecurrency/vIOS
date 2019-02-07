@@ -63,11 +63,38 @@ class CreateNewWallet: XCTestCase {
         
         app.buttons["Proceed"].tap()
         app.buttons["Write down paper key"].tap()
+
+        _ = app.wait(for: .runningForeground, timeout: 1)
+
+        var words: [String] = []
+        for i in 1...12 {
+            words.append(app.staticTexts["word"].label)
+            
+            if i == 12 {
+                app.buttons["Done"].tap()
+            } else {
+                app.buttons["Next"].tap()
+            }
+        }
         
-        // Fill send address
-//        let textField = app.textFields["Enter the recipient address"]
-//        textField.tap()
-//        textField.typeText("my address")
+        // Words
+        let firstWordLabel: String = app.staticTexts["firstWord"].label.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
+        let secondWordLabel: String = app.staticTexts["secondWord"].label.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
+        
+        let firstTextField = app.textFields["firstWordTextfield"]
+        firstTextField.tap()
+        firstTextField.typeText(words[Int(firstWordLabel)! - 1])
+        firstTextField.typeText("\n")
+        
+        let secondTextField = app.textFields["secondWordTextfield"]
+        secondTextField.tap()
+        secondTextField.typeText(words[Int(secondWordLabel)! - 1])
+        secondTextField.typeText("\n")
+        
+        app.buttons["Submit"].tap()
+        
+        // Fill in a pass phrase
+        // ..
     }
     
 }

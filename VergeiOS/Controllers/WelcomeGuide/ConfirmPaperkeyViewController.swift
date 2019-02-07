@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
+class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstWordLabel: UILabel!
     @IBOutlet weak var secondWordLabel: UILabel!
@@ -22,12 +22,15 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(self.mnemonic)
+        print(mnemonic)
         
-        self.randomNumbers = self.selectRandomNumbers()
-        
-        self.firstWordLabel.text = "Word #\(randomNumbers.first!)"
-        self.secondWordLabel.text = "Word #\(randomNumbers.last!)"
+        randomNumbers = selectRandomNumbers()
+
+        firstWordTextfield.delegate = self
+        secondWordTextfield.delegate = self
+
+        firstWordLabel.text = "Word #\(randomNumbers.first!)"
+        secondWordLabel.text = "Word #\(randomNumbers.last!)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,16 +54,16 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
     }
     
     @IBAction func submitPaperkeyConfirmation(_ sender: Any) {
-        self.firstWordTextfield.backgroundColor = .white
+        firstWordTextfield.backgroundColor = .white
         
         // Add shake effect...
-        if (self.firstWordTextfield.text != self.mnemonic[self.randomNumbers.first! - 1]) {
-            self.firstWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
+        if (firstWordTextfield.text != mnemonic[randomNumbers.first! - 1]) {
+            firstWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
             return
         }
         
-        if (self.secondWordTextfield.text != self.mnemonic[self.randomNumbers.last! - 1]) {
-            self.secondWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
+        if (secondWordTextfield.text != mnemonic[randomNumbers.last! - 1]) {
+            secondWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
             return
         }
 
@@ -68,7 +71,17 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
         ApplicationRepository.default.mnemonic = mnemonic
 
         // Finish the welcome guide.
-        self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
+        performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == secondWordTextfield {
+            view.endEditing(textField == secondWordTextfield)
+        } else {
+            secondWordTextfield.becomeFirstResponder()
+        }
+
+        return false
     }
 
 }
