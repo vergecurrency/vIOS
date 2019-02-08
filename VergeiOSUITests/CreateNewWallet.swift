@@ -37,10 +37,16 @@ class CreateNewWallet: XCTestCase {
         XCTAssert(app.buttons["Create a new wallet"].exists)
         app.buttons["Create a new wallet"].tap()
         
+        _ = app.wait(for: .runningForeground, timeout: 1)
+        
         XCTAssert(app.navigationBars["Set wallet PIN"].exists)
         app.navigationBars["Set wallet PIN"].buttons.element(boundBy: 1).tap()
         
+        _ = app.wait(for: .runningForeground, timeout: 1)
+        
         app.sheets["Choose a PIN size"].buttons["4 Digits"].tap()
+        
+        _ = app.wait(for: .runningForeground, timeout: 1)
         
         // Fill in the app code
         app.buttons["0"].tap()
@@ -48,14 +54,20 @@ class CreateNewWallet: XCTestCase {
         app.buttons["0"].tap()
         app.buttons["0"].tap()
         
+        _ = app.wait(for: .runningForeground, timeout: 1)
+        
         // Confirm the app code
         app.buttons["0"].tap()
         app.buttons["0"].tap()
         app.buttons["0"].tap()
         app.buttons["0"].tap()
         
+        _ = app.wait(for: .runningForeground, timeout: 1)
+        
         app.buttons["Proceed"].tap()
         app.buttons["Write down paper key"].tap()
+
+        _ = app.wait(for: .runningForeground, timeout: 1)
 
         var words: [String] = []
         for i in 1...12 {
