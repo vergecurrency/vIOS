@@ -10,9 +10,12 @@ import UIKit
 
 extension NSNumber {
 
-    func toCurrency(currency: String = ApplicationRepository.default.currency, fractDigits: Int = 2) -> String {
+    func toCurrency(currency: String = ApplicationRepository.default.currency, fractDigits: Int = 2, floating: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        if floating == false {
+            formatter.minimumFractionDigits = fractDigits
+        }
         formatter.maximumFractionDigits = fractDigits
         
         var suffix = ""
@@ -53,9 +56,12 @@ extension NSNumber {
         return toCurrency(currency: "XVG", fractDigits: fractDigits!)
     }
 
-    func toBlankCurrency(fractDigits: Int = 2) -> String {
+    func toBlankCurrency(fractDigits: Int = 2, floating: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        if floating == false { // Freeze fractDigits number
+            formatter.minimumFractionDigits = fractDigits
+        }
         formatter.maximumFractionDigits = fractDigits
         formatter.currencyCode = ""
         formatter.currencySymbol = ""
