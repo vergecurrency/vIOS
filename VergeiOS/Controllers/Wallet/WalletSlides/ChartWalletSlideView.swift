@@ -95,7 +95,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         filterToolbar.select(filter: filter)
         
         let priceLabelHandler: ((CGFloat) -> String) = { value in
-            return NSNumber(value: Double(value)).toBlankCurrency(fractDigits: 4)
+            return NSNumber(value: Double(value)).toBlankCurrency(fractDigits: 4, floating: false)
         }
         
         highestPriceLabel.formatBlock = priceLabelHandler
