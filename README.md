@@ -31,8 +31,6 @@ If you want to help us out on the development use this guide:
 2. Install the following tools via [brew](https://brew.sh) 
 ```sh
 brew install carthage
-brew install automake
-brew install libtool
 ```
 
 3. In your cloned project folder run carthage update (this could take a while):
