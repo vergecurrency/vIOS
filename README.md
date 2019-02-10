@@ -2,7 +2,7 @@
 <p align="center">
   <a href="https://travis-ci.org/vergecurrency/vIOS" target="_blank"><img src="https://travis-ci.org/vergecurrency/vIOS.svg?branch=master"></a>
   <img src="https://img.shields.io/badge/status-beta-yellow.svg">
-  <img src="https://img.shields.io/badge/latest build-0.15-lightgrey.svg">
+  <img src="https://img.shields.io/badge/latest build-0.16-lightgrey.svg">
   <img src="https://img.shields.io/badge/iOS-^11.4-green.svg">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg">
 </p>
