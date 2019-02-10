@@ -33,17 +33,24 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="220"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 XVG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JLd-Rc-cv0">
-                                                        <rect key="frame" x="28" y="134.5" width="287" height="33"/>
+                                                        <rect key="frame" x="28" y="138" width="287" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="28"/>
                                                         <color key="textColor" name="BackgroundGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**** 1234" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNd-oW-MwN">
-                                                        <rect key="frame" x="28" y="167.5" width="287" height="24.5"/>
-                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
-                                                        <color key="textColor" name="BackgroundGrey"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈ € 0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNd-oW-MwN">
+                                                        <rect key="frame" x="28" y="171" width="287" height="21"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
+                                                        <color key="textColor" name="BackgroundBlue"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HDWallet" translatesAutoresizingMaskIntoConstraints="NO" id="KhP-h7-Wcv">
+                                                        <rect key="frame" x="275" y="28" width="40" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="26" id="hTc-SQ-xjA"/>
+                                                            <constraint firstAttribute="width" constant="40" id="iQ9-mH-8ni"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -53,6 +60,8 @@
                                                     <constraint firstAttribute="bottom" secondItem="5ud-Lk-l9g" secondAttribute="bottom" id="Dll-4T-kvr"/>
                                                     <constraint firstAttribute="trailing" secondItem="5ud-Lk-l9g" secondAttribute="trailing" id="Lwi-80-GvL"/>
                                                     <constraint firstItem="5ud-Lk-l9g" firstAttribute="leading" secondItem="dFl-JU-45f" secondAttribute="leading" id="MuN-gV-Jhp"/>
+                                                    <constraint firstItem="KhP-h7-Wcv" firstAttribute="top" secondItem="dFl-JU-45f" secondAttribute="top" constant="28" id="Q46-7f-AMa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="KhP-h7-Wcv" secondAttribute="trailing" constant="28" id="fgU-ir-zQ2"/>
                                                     <constraint firstAttribute="trailing" secondItem="nNd-oW-MwN" secondAttribute="trailing" constant="28" id="n0n-u1-QYF"/>
                                                     <constraint firstItem="nNd-oW-MwN" firstAttribute="leading" secondItem="dFl-JU-45f" secondAttribute="leading" constant="28" id="sJc-Jo-hXR"/>
                                                     <constraint firstAttribute="width" secondItem="dFl-JU-45f" secondAttribute="height" multiplier="359:230" id="tPN-Ms-PcU"/>
@@ -373,6 +382,7 @@ Please increase your balance.</string>
                         <outlet property="amountTextField" destination="xgY-8O-dQL" id="fwV-hY-xJ3"/>
                         <outlet property="confirmButton" destination="1qT-5j-Srg" id="oek-Wg-ded"/>
                         <outlet property="currencyLabel" destination="sIN-AK-ry6" id="mk4-2L-Ac8"/>
+                        <outlet property="fiatWalletAmountLabel" destination="nNd-oW-MwN" id="X4c-as-cG9"/>
                         <outlet property="memoTextField" destination="dpu-X4-OV3" id="LYr-J5-e1B"/>
                         <outlet property="noBalanceView" destination="9p4-gg-a9I" id="CO0-mv-FxX"/>
                         <outlet property="recipientTextField" destination="OF3-fl-QB1" id="9cc-xT-hSP"/>
@@ -557,11 +567,15 @@ Please increase your balance.</string>
         <image name="Checked" width="30" height="30"/>
         <image name="Currency" width="30" height="30"/>
         <image name="FlashOn" width="30" height="30"/>
+        <image name="HDWallet" width="93" height="55"/>
         <image name="Image" width="30" height="30"/>
         <image name="NoBalancePlaceholder" width="300" height="300"/>
         <image name="Payment" width="30" height="30"/>
         <image name="QRcode" width="30" height="30"/>
         <image name="SendCard" width="735" height="475"/>
+        <namedColor name="BackgroundBlue">
+            <color red="0.86274509803921573" green="0.93725490196078431" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

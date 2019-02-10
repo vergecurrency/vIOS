@@ -18,6 +18,7 @@ class SendViewController: UIViewController {
     @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var noBalanceView: UIView!
     @IBOutlet weak var walletAmountLabel: UILabel!
+    @IBOutlet weak var fiatWalletAmountLabel: UILabel!
     @IBOutlet weak var recipientTextField: UITextField!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var amountTextField: CurrencyInput!
@@ -117,16 +118,16 @@ class SendViewController: UIViewController {
     func updateWalletAmountLabel() {
         let sendAmount = txFactory.amount.doubleValue
         var amount = NSNumber(floatLiteral: walletAmount.doubleValue - sendAmount)
-        if currency == .FIAT {
-            amount = convertXvgToFiat(amount)
-        }
 
         if amount.decimalValue < 0.0 {
             amount = NSNumber(value: 0.0)
         }
+
+        let fiat = convertXvgToFiat(amount)
         
         DispatchQueue.main.async {
-            self.walletAmountLabel.text = (self.currency == .XVG) ? amount.toXvgCurrency() : amount.toCurrency()
+            self.walletAmountLabel.text = amount.toXvgCurrency()
+            self.fiatWalletAmountLabel.text = "≈ \(fiat.toCurrency())"
         }
     }
 
