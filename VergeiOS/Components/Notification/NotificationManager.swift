@@ -45,6 +45,9 @@ class NotificationManager: UIWindow {
     
     func showMessage(_ message: String, duration: Double = 0) {
         notificationViewController?.setMessage(message)
+        notificationViewController?.view.addTapGestureRecognizer(action: {
+            self.removeMessage()
+        })
 
         toggleView(show: true)
 
