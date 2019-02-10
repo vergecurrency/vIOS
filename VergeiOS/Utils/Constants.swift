@@ -29,6 +29,11 @@ public struct Constants {
      * Confirmations needed to change the UI.
      */
     public static let confirmationsNeeded: Int = 1
+    
+    /**
+     * The maximum of digits.
+     */
+    public static let maximumFractionDigits: Int = 6
 
 
     /**
