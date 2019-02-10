@@ -15,6 +15,7 @@ public class WalletClient {
         case invalidDeriver(value: String)
         case invalidMessageData(message: String)
         case invalidWidHex(id: String)
+        case invalidAddressReceived(address: AddressInfo?)
     }
 
     public static let shared = WalletClient(
@@ -184,16 +185,24 @@ public class WalletClient {
         completion: @escaping (_ error: Error?, _ address: AddressInfo?, _ createAddressErrorResponse: CreateAddressErrorResponse?) -> Void
     ) {
         postRequest(url: "/v3/addresses/", arguments: nil) { data, response, error in
-            if let data = data {
-                do {
-                    let addressInfo = try JSONDecoder().decode(AddressInfo.self, from: data)
-                    completion(error, addressInfo, nil)
-                } catch {
-                    completion(error, nil, try? JSONDecoder().decode(CreateAddressErrorResponse.self, from: data))
-                }
-            } else {
-                completion(error, nil, nil)
+            guard let data = data else {
+                return completion(error, nil, nil)
             }
+
+            let addressInfo = try? JSONDecoder().decode(AddressInfo.self, from: data)
+            let errorResponse = try? JSONDecoder().decode(CreateAddressErrorResponse.self, from: data)
+
+            // Make sure the received address is really your address.
+            let addressByPath = try? self.privateKeyBy(
+                path: addressInfo?.path ?? "",
+                privateKey: self.bip44PrivateKey
+            ).publicKey().toLegacy().description
+
+            if addressInfo?.address != addressByPath {
+                return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
+            }
+
+            completion(nil, addressInfo, errorResponse)
         }
     }
 
