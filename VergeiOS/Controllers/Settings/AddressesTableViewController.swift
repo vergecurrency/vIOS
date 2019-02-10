@@ -41,6 +41,11 @@ class AddressesTableViewController: EdgedTableViewController {
             cell.textLabel?.text = address.address
             cell.detailTextLabel?.text = "xpub\(address.path.replacingOccurrences(of: "m", with: "")) \(address.createdOnDate.string)"
             
+            cell.addTapGestureRecognizer(taps: 2) {
+                UIPasteboard.general.string = address.address
+                NotificationManager.shared.showMessage("Address copied!", duration: 3)
+            }
+            
             return cell
         }
         
@@ -52,11 +57,6 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let address = addresses[indexPath.row].address
-
-        UIPasteboard.general.string = address
-        NotificationManager.shared.showMessage("Address copied!", duration: 3)
-
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
