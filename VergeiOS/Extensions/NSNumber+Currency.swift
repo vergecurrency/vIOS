@@ -38,7 +38,7 @@ extension NSNumber {
         var fractDigits = fractDigits
 
         if fractDigits == nil {
-            fractDigits = 8
+            fractDigits = Constants.maximumFractionDigits
 
             if self.doubleValue > 99 {
                 fractDigits = 6
