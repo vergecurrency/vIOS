@@ -10,7 +10,7 @@ public struct TxHistory: Decodable {
     public let txid: String
     public let action: String
     public let amount: Int64
-    public let fees: Int64
+    public let fees: Int64?
     public let time: Int64
     public let confirmations: Int64
     public let blockheight: Int64?

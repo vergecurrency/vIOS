@@ -50,7 +50,11 @@ class CurrencyInput: UITextField {
             .replacingOccurrences(of: formatter.groupingSeparator, with: "")
             .replacingOccurrences(of: formatter.decimalSeparator, with: ".")
 
-        return NSNumber(value: Double(text) ?? 0.0)
+        let format = NumberFormatter()
+        format.locale = Locale(identifier: "en_US")
+        format.numberStyle = .decimal
+
+        return format.number(from: text) ?? NSNumber()
     }
 
     public func setAmount(_ amount: NSNumber) {
