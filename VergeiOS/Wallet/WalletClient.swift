@@ -19,7 +19,11 @@ public class WalletClient {
     }
 
     public static let shared = WalletClient(
-        baseUrl: ApplicationRepository.default.walletServiceUrl
+        baseUrl: ApplicationRepository.default.walletServiceUrl,
+        credentials: Credentials(
+            mnemonic: ApplicationRepository.default.mnemonic!,
+            passphrase: ApplicationRepository.default.passphrase!
+        )
     )
 
     private let sjcl = SJCL()
@@ -29,56 +33,15 @@ public class WalletClient {
         return TorClient.shared.session
     }
 
-    private let network = Network.mainnetXVG
-
-    private var privateKey: HDPrivateKey {
-        let seed = Mnemonic.seed(
-            mnemonic: ApplicationRepository.default.mnemonic!,
-            passphrase: ApplicationRepository.default.passphrase!
-        )
-        
-        // This should fail when no mnemonic is set.
-        return HDPrivateKey(seed: seed, network: network)
-    }
-
-    private var walletPrivateKey: HDPrivateKey {
-        return try! privateKey.derived(at: 0, hardened: true)
-    }
-
-    private var requestPrivateKey: HDPrivateKey {
-        return try! privateKey.derived(at: 1, hardened: true).derived(at: 0)
-    }
-
-    private var bip44PrivateKey: HDPrivateKey {
-        return try! privateKey
-            .derived(at: 44, hardened: true)
-            .derived(at: 0, hardened: true)
-            .derived(at: 0, hardened: true)
-    }
-
-    private var publicKey: HDPublicKey {
-        return bip44PrivateKey.extendedPublicKey()
-    }
-
-    private var personalEncryptingKey: String {
-        let data = Crypto.sha256(requestPrivateKey.privateKey().data)
-        let key = "personalKey".data(using: .utf8)!
-
-        var b2 = try! HMAC(key: key.bytes, variant: .sha256).authenticate(data.bytes)
-
-        return Data(b2[0..<16]).base64EncodedString()
-    }
-
-    private var sharedEncryptingKey: String {
-        var sha256Data = walletPrivateKey.privateKey().data.sha256()
-
-        return sha256Data[0..<16].base64EncodedString()
-    }
+    private let network: Network
+    private let credentials: Credentials
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
-    public init(baseUrl: String) {
+    public init(baseUrl: String, credentials: Credentials, network: Network = .mainnetXVG) {
         self.baseUrl = baseUrl
+        self.credentials = credentials
+        self.network = network
     }
     
     public func createWallet(
@@ -89,11 +52,11 @@ public class WalletClient {
         options: WalletOptions?,
         completion: @escaping (_ error: Error?, _ secret: String?) -> Void
     ) {
-        let encWalletName = encryptMessage(plaintext: walletName, encryptingKey: sharedEncryptingKey)
+        let encWalletName = encryptMessage(plaintext: walletName, encryptingKey: credentials.sharedEncryptingKey)
 
         var args = JSON()
         args["name"].stringValue = encWalletName
-        args["pubKey"].stringValue = walletPrivateKey.privateKey().publicKey().description
+        args["pubKey"].stringValue = credentials.walletPrivateKey.privateKey().publicKey().description
         args["m"].intValue = m
         args["n"].intValue = n
         args["coin"].stringValue = "xvg"
@@ -121,12 +84,12 @@ public class WalletClient {
     }
 
     public func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void) {
-        let xPubKey = publicKey.extended()
-        let requestPubKey = requestPrivateKey.extendedPublicKey().publicKey().description
+        let xPubKey = credentials.publicKey.extended()
+        let requestPubKey = credentials.requestPrivateKey.extendedPublicKey().publicKey().description
 
-        let encCopayerName = encryptMessage(plaintext: "ios-copayer", encryptingKey: sharedEncryptingKey)
+        let encCopayerName = encryptMessage(plaintext: "ios-copayer", encryptingKey: credentials.sharedEncryptingKey)
         let copayerSignatureHash = [encCopayerName, xPubKey, requestPubKey].joined(separator: "|")
-        let customData = "{\"walletPrivKey\": \"\(walletPrivateKey.privateKey().description)\"}"
+        let customData = "{\"walletPrivKey\": \"\(credentials.walletPrivateKey.privateKey().description)\"}"
 
         var arguments = JSON()
         arguments["walletId"].stringValue = walletIdentifier
@@ -134,10 +97,11 @@ public class WalletClient {
         arguments["name"].stringValue = encCopayerName
         arguments["xPubKey"].stringValue = xPubKey
         arguments["requestPubKey"].stringValue = requestPubKey
-        arguments["customData"].stringValue = encryptMessage(plaintext: customData, encryptingKey: personalEncryptingKey)
-        arguments["copayerSignature"].stringValue = try! signMessage(copayerSignatureHash, privateKey: walletPrivateKey)
+        arguments["customData"].stringValue = encryptMessage(plaintext: customData, encryptingKey: credentials.personalEncryptingKey)
+        arguments["copayerSignature"].stringValue = try! signMessage(copayerSignatureHash, privateKey: credentials.walletPrivateKey)
         
         postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, response, error in
+            // TODO: clean this up...
             guard let data = data else {
                 return print(error!)
             }
@@ -162,6 +126,7 @@ public class WalletClient {
     public func openWallet(completion: @escaping (_ error: Error?) -> Void) {
         // COPAYER_REGISTERED
         getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, response, error in
+            // TODO: Clean this up...
             guard let data = data else {
                 return print(error!)
             }
@@ -193,9 +158,9 @@ public class WalletClient {
             let errorResponse = try? JSONDecoder().decode(CreateAddressErrorResponse.self, from: data)
 
             // Make sure the received address is really your address.
-            let addressByPath = try? self.privateKeyBy(
+            let addressByPath = try? self.credentials.privateKeyBy(
                 path: addressInfo?.path ?? "",
-                privateKey: self.bip44PrivateKey
+                privateKey: self.credentials.bip44PrivateKey
             ).publicKey().toLegacy().description
 
             if addressInfo?.address != addressByPath {
@@ -271,7 +236,7 @@ public class WalletClient {
                         if let message = transaction.message {
                             transaction.message = self.decryptMessage(
                                 ciphertext: message,
-                                encryptingKey: self.sharedEncryptingKey
+                                encryptingKey: self.credentials.sharedEncryptingKey
                             )
                         }
 
@@ -326,7 +291,7 @@ public class WalletClient {
         if proposal.message.count > 0 {
             arguments["message"].stringValue = encryptMessage(
                 plaintext: proposal.message,
-                encryptingKey: sharedEncryptingKey
+                encryptingKey: credentials.sharedEncryptingKey
             )
         } else {
             arguments["message"].null = nil
@@ -355,7 +320,10 @@ public class WalletClient {
             let transactionHash = unsignedTx.tx.serialized().hex
 
             var arguments = JSON()
-            arguments["proposalSignature"].stringValue = try signMessage(transactionHash, privateKey: requestPrivateKey)
+            arguments["proposalSignature"].stringValue = try signMessage(
+                transactionHash,
+                privateKey: credentials.requestPrivateKey
+            )
 
             postRequest(
                 url: "/v1/txproposals/\(txp.id)/publish/",
@@ -384,7 +352,7 @@ public class WalletClient {
             let unsignedTx = try getUnsignedTx(txp: txp)
 
             let privateKeys: [PrivateKey] = try txp.inputs.map { output in
-                return try privateKeyBy(path: output.path, privateKey: bip44PrivateKey)
+                return try credentials.privateKeyBy(path: output.path, privateKey: credentials.bip44PrivateKey)
             }
 
             var arguments = JSON()
@@ -540,14 +508,17 @@ public class WalletClient {
     }
 
     private func getCopayerId() -> String {
-        let xPubKey = publicKey.extended()
+        let xPubKey = credentials.publicKey.extended()
         let hash = sjcl.sha256Hash(data: "xvg\(xPubKey)")
 
         return sjcl.hexFromBits(hash: hash)
     }
 
     private func getSignature(url: String, method: String, arguments: String = "{}") throws -> String {
-        return try signMessage([method, url, arguments].joined(separator: "|"), privateKey: requestPrivateKey)
+        return try signMessage(
+            [method, url, arguments].joined(separator: "|"),
+            privateKey: credentials.requestPrivateKey
+        )
     }
 
     private func signMessage(_ message: String, privateKey: HDPrivateKey) throws -> String {
@@ -581,9 +552,7 @@ public class WalletClient {
 
         let widBase58 = Base58.encode(widHex).padding(toLength: 22, withPad: "0", startingAt: 0)
 
-        // TODO: Replace T with L when not using testnet!
-        // TODO: Replace btc with verge when not using testnet!
-        return "\(widBase58)\(privateKey.privateKey().toWIF())Lxvg"
+        return "\(widBase58)\(credentials.privateKey.privateKey().toWIF())Lxvg"
     }
 
     private func addUrlReference(_ url: String) -> String {
@@ -675,18 +644,5 @@ public class WalletClient {
         }
 
         return hexes
-    }
-
-    private func privateKeyBy(path: String, privateKey: HDPrivateKey) throws -> PrivateKey {
-        var key = privateKey
-        for deriver in path.replacingOccurrences(of: "m/", with: "").split(separator: "/") {
-            guard let deriverInt32 = UInt32(deriver) else {
-                throw WalletClientError.invalidDeriver(value: String(deriver))
-            }
-
-            key = try key.derived(at: deriverInt32)
-        }
-
-        return key.privateKey()
     }
 }

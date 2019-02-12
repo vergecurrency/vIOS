@@ -35,7 +35,6 @@ public struct Constants {
      */
     public static let maximumFractionDigits: Int = 6
 
-
     /**
      * Verge Currency website.
      */
@@ -59,7 +58,7 @@ public struct Constants {
     /**
      * The fiat rate data service.
      */
-    public static let priceDataEndpoint: String = "https://usxvglw.vergecoreteam.com/price/api/v1/price/"
+    public static let priceDataEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/price/"
 
     /**
      * Chart data endpoint.
