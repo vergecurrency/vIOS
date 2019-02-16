@@ -171,6 +171,7 @@
 		B2BD741F2CC30614537FA183 /* TxProposalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C53911E392911DFA15D /* TxProposalResponse.swift */; };
 		B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */; };
 		B2BD74F4EC93C6025BE4DC28 /* VolumeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2EDECD1C4C0462D84A /* VolumeChartView.swift */; };
+		B2BD768DCD05B478AAC1AC69 /* TransactionProposalsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */; };
 		B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */; };
 		B2BD76C55CCA3241E93A1A2B /* WalletTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */; };
 		B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */; };
@@ -487,6 +488,7 @@
 		B2BD707901E103DAE1455E18 /* TxProposal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposal.swift; sourceTree = "<group>"; };
 		B2BD70B8E771173478E760E2 /* TransactionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		B2BD71B08FC506AC51C07E3B /* ChartFilterToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbar.swift; sourceTree = "<group>"; };
+		B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionProposalsTableViewController.swift; sourceTree = "<group>"; };
 		B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFCountingLabel.swift; sourceTree = "<group>"; };
 		B2BD733F9D032CB620B66904 /* TxOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxOutput.swift; sourceTree = "<group>"; };
@@ -953,17 +955,18 @@
 			isa = PBXGroup;
 			children = (
 				A398B209212B01E3004ACB73 /* Cells */,
-				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
-				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
-				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
-				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
-				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
-				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
-				B2BD70361646D756C13B826D /* DonateTableViewController.swift */,
-				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
-				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
 				A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */,
+				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
+				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
+				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
+				B2BD70361646D756C13B826D /* DonateTableViewController.swift */,
+				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
+				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
+				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
+				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
+				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
+				B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1818,6 +1821,7 @@
 				B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */,
 				B2BD7E8CD1552F1D8D549A20 /* TransactionRepository.swift in Sources */,
 				B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */,
+				B2BD768DCD05B478AAC1AC69 /* TransactionProposalsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
