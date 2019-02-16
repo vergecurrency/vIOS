@@ -11,6 +11,7 @@ import UIKit
 class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var placeholderView: UIView!
     
     var items: [String] = [
         "price",
@@ -116,6 +117,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     @objc func didReceiveStats(notification: Notification? = nil) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.placeholderView.isHidden = true
         }
     }
     

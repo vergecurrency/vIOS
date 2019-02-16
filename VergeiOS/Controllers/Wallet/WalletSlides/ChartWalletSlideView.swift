@@ -17,6 +17,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     @IBOutlet weak var panelView: PanelView!
     @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var placeholderView: UIView!
 
     let priceChartView: PriceChartView = PriceChartView()
     let volumeChartView: VolumeChartView = VolumeChartView()
@@ -129,33 +130,29 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             self.activityIndicator.startAnimating()
         }
 
+        // TODO: Over Tor.
         URLSession.shared.dataTask(with: chartUrl()) { (data, response, error) in
-            do {
-                if data == nil {
-                    return
-                }
+            DispatchQueue.main.async {
+                self.placeholderView.isHidden = data != nil
+            }
 
-                let data = try JSONDecoder().decode(ChartInfo.self, from: data!)
-                for entry in data.priceUsd {
-                    priceData.append(ChartDataEntry(x: entry[0], y: entry[1]))
-                }
+            guard let data = try? JSONDecoder().decode(ChartInfo.self, from: data ?? Data()) else {
+                return
+            }
 
-                for (index, entry) in data.volumeUsd.enumerated() {
-                    volumeData.append(BarChartDataEntry(x: Double(index), y: entry[1]))
-                }
+            for entry in data.priceUsd {
+                priceData.append(ChartDataEntry(x: entry[0], y: entry[1]))
+            }
 
-                DispatchQueue.main.async {
-                    self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
-                    self.volumeChartView.set(chartData: self.nth(entries: volumeData, step: self.nthFilter[self.filter]! + 5) as! [BarChartDataEntry])
-                    self.setPriceLabels(withData: data.priceUsd)
-                    self.activityIndicator.stopAnimating()
-                }
-            } catch {
-                print(error.localizedDescription, error)
+            for (index, entry) in data.volumeUsd.enumerated() {
+                volumeData.append(BarChartDataEntry(x: Double(index), y: entry[1]))
+            }
 
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                }
+            DispatchQueue.main.async {
+                self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
+                self.volumeChartView.set(chartData: self.nth(entries: volumeData, step: self.nthFilter[self.filter]! + 5) as! [BarChartDataEntry])
+                self.setPriceLabels(withData: data.priceUsd)
+                self.activityIndicator.stopAnimating()
             }
         }.resume()
     }
