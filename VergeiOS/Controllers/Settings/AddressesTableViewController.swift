@@ -30,6 +30,12 @@ class AddressesTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        refreshControl?.addTarget(
+            self,
+            action: #selector(AddressesTableViewController.loadAddress),
+            for: .valueChanged
+        )
+
         credentials = Credentials(
             mnemonic: ApplicationRepository.default.mnemonic!,
             passphrase: ApplicationRepository.default.passphrase!
@@ -38,7 +44,9 @@ class AddressesTableViewController: EdgedTableViewController {
         loadAddress()
     }
 
-    func loadAddress() {
+    @objc func loadAddress() {
+        refreshControl?.beginRefreshing()
+
         var options = WalletAddressesOptions()
         options.limit = 25
         options.reverse = true
@@ -63,6 +71,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }

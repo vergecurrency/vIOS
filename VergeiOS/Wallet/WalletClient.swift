@@ -402,26 +402,25 @@ public class WalletClient {
         postRequest(
             url: "/v1/txproposals/\(txp.id)/rejections/",
             arguments: nil
-        ) { data, response, error in
-            if let _ = data {
-                return completion(nil)
-            } else {
-                return completion(error)
-            }
+        ) { _, _, error in
+            completion(error)
         }
     }
 
-    public func pushNotificationsSubscribe(deviceToken: String) {
-        var arguments = JSON()
-        arguments["type"].stringValue = "ios"
-        arguments["token"].stringValue = deviceToken
+    public func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+        deleteRequest(url: "/v1/txproposals/\(txp.id)/") { _, _, error in
+            completion(error)
+        }
+    }
 
-        postRequest(url: "/v1/pushnotifications/subscriptions/", arguments: arguments) { data, response, error in
-            if let data = data {
-                print(try! JSON(data: data))
-            } else {
-                print(error!)
+    public func getTxProposals(completion: @escaping (_ txps: [TxProposalResponse], _ error: Error?) -> Void) {
+        getRequest(url: "/v2/txproposals/") { data, response, error in
+            guard let data = data else {
+                return completion([], nil)
             }
+
+            let txps = try? JSONDecoder().decode([TxProposalResponse].self, from: data)
+            completion(txps ?? [], error)
         }
     }
 
@@ -504,6 +503,42 @@ public class WalletClient {
             }
         } catch {
             return completion(nil, nil, error)
+        }
+    }
+
+    private func deleteRequest(url: String, completion: @escaping URLCompletion) {
+        let referencedUrl = addUrlReference(url)
+
+        guard let url = URL(string: "\(baseUrl)\(referencedUrl)".urlify()) else {
+            return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
+        }
+
+        let copayerId = getCopayerId()
+        var signature = ""
+        do {
+            signature = try getSignature(url: referencedUrl, method: "delete")
+        } catch {
+            return completion(nil, nil, error)
+        }
+
+        print("Get request to: \(url)")
+        print("With signature: \(signature)")
+        print("And Copayer id: \(copayerId)")
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue(copayerId, forHTTPHeaderField: "x-identity")
+        request.setValue(signature, forHTTPHeaderField: "x-signature")
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+
+        let task = urlSession.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.sync {
+                completion(data, response, error)
+            }
+        }
+
+        DispatchQueue.main.async {
+            task.resume()
         }
     }
 

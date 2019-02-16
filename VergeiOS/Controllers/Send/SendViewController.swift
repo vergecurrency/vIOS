@@ -216,14 +216,13 @@ class SendViewController: UIViewController {
 
                 confirmSendView.setup(txp)
 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
                 let sendAction = UIAlertAction(title: "Send XVG", style: .default) { alert in
                     self.send(txp: txp)
                 }
                 sendAction.setValue(UIImage(named: "Send"), forKey: "image")
 
                 alertController.addAction(sendAction)
-                alertController.addAction(cancelAction)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             }
         }
     }
@@ -311,9 +310,11 @@ class SendViewController: UIViewController {
         )
 
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .destructive) { action in
-            if let txp = txp {
-                WalletClient.shared.rejectTxProposal(txp: txp)
+            guard let txp = txp else {
+                return
             }
+
+            WalletClient.shared.deleteTxProposal(txp: txp)
         })
 
         if let popoverController = actionSheet.popoverPresentationController {
