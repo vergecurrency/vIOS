@@ -127,7 +127,7 @@ class SendViewController: UIViewController {
         
         DispatchQueue.main.async {
             self.walletAmountLabel.text = amount.toXvgCurrency()
-            self.fiatWalletAmountLabel.text = "≈ \(fiat.toCurrency())"
+            self.fiatWalletAmountLabel.text = (fiat != nil) ? "≈ \(fiat!.toCurrency())" : ""
         }
     }
 
@@ -151,12 +151,12 @@ class SendViewController: UIViewController {
         }
     }
 
-    func convertXvgToFiat(_ amount: NSNumber) -> NSNumber {
+    func convertXvgToFiat(_ amount: NSNumber) -> NSNumber? {
         if let xvgInfo = FiatRateTicker.shared.rateInfo {
             return NSNumber(value: amount.doubleValue * xvgInfo.price)
         }
 
-        return amount
+        return nil
     }
 
     // MARK: - Navigation
