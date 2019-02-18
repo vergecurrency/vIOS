@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.16</string>
+	<string>$(CF_BUNDLE_SHORT_VERSION_STRING)</string>
 	<key>CFBundleVersion</key>
-	<string>0.16</string>
+	<string>$(CF_BUNDLE_SHORT_VERSION_STRING)</string>
 	<key>CLKComplicationSupportedFamilies</key>
 	<array/>
 	<key>NSExtension</key>
