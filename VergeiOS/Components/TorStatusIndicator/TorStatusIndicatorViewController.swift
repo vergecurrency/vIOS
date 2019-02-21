@@ -31,6 +31,9 @@ class TorStatusIndicatorViewController: UIViewController {
         case .turnedOff:
             indicatorView.image = UIImage(named: "Public")
             indicatorView.tintColor = UIColor.vergeRed()
+        case .error:
+            indicatorView.image = UIImage(named: "ConnectionError")
+            indicatorView.tintColor = UIColor.vergeRed()
         }
         
         indicatorView.layoutIfNeeded()

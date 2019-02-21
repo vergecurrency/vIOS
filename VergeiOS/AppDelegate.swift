@@ -89,13 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        
-        // Start the tor client
-        TorClient.shared.start {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                self.torClientStarted()
-            }
-        }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -163,6 +156,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let vc = PinUnlockViewController.createFromStoryBoard()
             vc.fillPinFor = .wallet
+            vc.completion = { authenticated in
+                vc.dismiss(animated: true)
+                
+                // Start the tor client
+                TorClient.shared.start {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                        self.torClientStarted()
+                    }
+                }
+            }
             
             print("Show unlock view")
             topController.present(vc, animated: false, completion: nil)

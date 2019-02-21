@@ -15,6 +15,7 @@ class TorStatusIndicator: UIWindow {
         case connected
         case disconnected
         case turnedOff
+        case error
     }
     
     static var shared = TorStatusIndicator()

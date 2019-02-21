@@ -80,18 +80,6 @@ class TorClient {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // Connect Tor controller.
             self.connectController(completion: completion)
-
-            // Make sure the controller connects.
-            var interval: Timer!
-            interval = setInterval(4) {
-                if !self.controller.isConnected || !self.isOperational {
-                    print("Retry tor controller connection")
-                    self.connectController(completion: completion)
-                } else {
-                    print("Remove tor controller connection interval")
-                    interval.invalidate()
-                }
-            }
         }
     }
 
@@ -107,11 +95,6 @@ class TorClient {
             NotificationCenter.default.post(name: .didResignTorConnection, object: self)
 
             return
-        }
-
-        // Retry in a sec.
-        let _ = setTimeout(1) {
-            self.resign()
         }
     }
 
@@ -130,7 +113,8 @@ class TorClient {
                 completion()
             }
         } catch {
-            print(error.localizedDescription)
+            NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
+
             completion()
         }
     }
@@ -143,12 +127,15 @@ class TorClient {
 
         self.controller?.authenticate(with: cookie) { success, error in
             if let error = error {
+                NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
+
                 return print(error.localizedDescription)
             }
 
             var observer: Any? = nil
             observer = self.controller?.addObserver(forCircuitEstablished: { established in
                 guard established else {
+                    NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
                     return
                 }
 
