@@ -33,12 +33,12 @@ class TransactionTableViewCell: Cell<String>, CellType {
     fileprivate func setAccount(_ transaction: TxHistory, address: Contact?) {
         textLabel?.text = transaction.address.truncated(limit: 12, position: .tail, leader: "******")
 
-        if address != nil {
-            textLabel?.text = address?.name
-            textLabel?.textColor = UIColor.secondaryDark()
-        } else if transaction.memo != nil {
+        if transaction.memo != nil {
             textLabel?.text = transaction.memo!
             textLabel?.textColor = UIColor.primaryDark()
+        } else if address != nil {
+            textLabel?.text = address?.name
+            textLabel?.textColor = UIColor.secondaryDark()
         } else {
             textLabel?.textColor = UIColor.secondaryLight().withAlphaComponent(0.75)
         }
