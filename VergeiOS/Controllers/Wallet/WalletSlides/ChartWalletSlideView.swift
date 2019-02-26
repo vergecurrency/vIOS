@@ -172,7 +172,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         let fromInterval = timeInterval(byFilter: self.filter)
 
         if fromInterval == nil {
-            return URL(string: "\(Constants.chartDataEndpoint)verge")!
+            return URL(string: Constants.chartDataEndpoint)!
         }
 
         let now = Int(Date().timeIntervalSince1970)
@@ -180,7 +180,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
         let filter = "\(from)000/\(now)000/"
 
-        return URL(string: "\(Constants.chartDataEndpoint)verge/\(filter)")!
+        return URL(string: "\(Constants.chartDataEndpoint)\(filter)")!
     }
 
     func timeInterval(byFilter filter: ChartFilterToolbar.Filter) -> TimeInterval? {

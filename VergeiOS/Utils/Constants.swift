@@ -43,7 +43,7 @@ public struct Constants {
     /**
      * Verge Currency iOS wallet repository.
      */
-    public static let iOSRepo: String = "https://github.com/vergecurrency/vIOS"
+    public static let iOSRepo: String = "https://github.com/vergecurrency/vIOS/"
 
     /**
      * The blockchain explorer used.
@@ -62,15 +62,13 @@ public struct Constants {
 
     /**
      * Chart data endpoint.
-     * TODO use other endpoint.
      */
-    public static let chartDataEndpoint: String = "https://graphs2.coinmarketcap.com/currencies/"
+    public static let chartDataEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/chart/"
 
     /**
      * IP Address endpoint.
-     * TODO use other endpoint.
      */
-    public static let ipCheckEndpoint: String = "http://api.ipstack.com/check?access_key=a9e03264eab585d224212a5edcac8fcf&format=1"
+    public static let ipCheckEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/ip/"
 
 
     /**
