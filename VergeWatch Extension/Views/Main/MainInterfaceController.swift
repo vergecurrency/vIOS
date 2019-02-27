@@ -91,16 +91,16 @@ class MainInterfaceController: WKInterfaceController {
             var subtitle = ""
             
             if (amount != nil) {
-                title = "\(amount ?? 0)" + " XVG"
+                title = String.init(format: "%.2f XVG", (amount?.doubleValue ?? 0))
                 
                 if (lastStats != nil) {
                     let funds = (lastStats!.price * (amount?.doubleValue)!)
-                    subtitle = String.init(format: "%@%0.4f",
+                    subtitle = String.init(format: "%@%.2f",
                                            self.symbolForCurrency(currency: currency ?? "USD"), funds)
                 }
             }
             
-            self.walletRow?.titleLabel.setText(title)
+            self.updateLabelTrunc(label: (self.walletRow?.titleLabel)!, with: title)
             self.walletRow?.subtitleLabel.setText(subtitle)
         }
     }
@@ -110,8 +110,16 @@ class MainInterfaceController: WKInterfaceController {
         
         if self.qrCodeRow != nil {
             self.qrCodeRow?.titleLabel.setText((address != nil) ? "Receive" : "Need sync...")
-            self.qrCodeRow?.subtitleLabel.setText((address != nil) ? address : "")
+            self.updateLabelTrunc(label: (self.qrCodeRow?.subtitleLabel)!, with: address ?? "")
         }
+    }
+    
+    private func updateLabelTrunc(label :WKInterfaceLabel, with text: String) {
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byTruncatingMiddle
+        let addressAttString = NSAttributedString(string: text,
+                                                  attributes: [NSAttributedString.Key.paragraphStyle: paragraph])
+        label.setAttributedText(addressAttString)
     }
     
     private func symbolForCurrency(currency: String) -> String {

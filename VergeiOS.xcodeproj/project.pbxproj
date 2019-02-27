@@ -217,10 +217,8 @@
 		CA8FCF6E21F7D2420069D150 /* FiatRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* FiatRate.swift */; };
 		CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAF2107889200911B64 /* UIColor+Default.swift */; };
 		CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF1481221061FD00F92CBC /* UIView+Actions.swift */; };
-		CAD6F28D21FE143400AA3162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		CAD6F29721FE1C3900AA3162 /* MainRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29621FE1C3900AA3162 /* MainRowController.swift */; };
 		CAD6F29821FE29A600AA3162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
-		CAD6F29921FE29D400AA3162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
 		CAD6F29D21FE345500AA3162 /* QRCodeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29C21FE345500AA3162 /* QRCodeInterfaceController.swift */; };
 		CAD6F2A021FE3DE400AA3162 /* StatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29F21FE3DE400AA3162 /* StatisticsManager.swift */; };
 		CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F2A321FE4DDD00AA3162 /* WatchSyncManager.swift */; };
@@ -1572,7 +1570,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */,
-				CAD6F28D21FE143400AA3162 /* Assets.xcassets in Resources */,
 				CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1582,7 +1579,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAD6F29821FE29A600AA3162 /* Assets.xcassets in Resources */,
-				CAD6F29921FE29D400AA3162 /* Assets.xcassets in Resources */,
 				CA8FCF5F21F7C3A40069D150 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
