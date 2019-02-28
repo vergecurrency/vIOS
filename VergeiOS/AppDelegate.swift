@@ -112,7 +112,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !ApplicationRepository.default.setup {
             return
         }
-        
+
+        Credentials.shared.setSeed(
+            mnemonic: ApplicationRepository.default.mnemonic!,
+            passphrase: ApplicationRepository.default.passphrase!
+        )
+
         // Start the wallet ticker.
         WalletTicker.shared.start()
         

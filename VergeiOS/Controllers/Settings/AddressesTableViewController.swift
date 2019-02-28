@@ -36,10 +36,7 @@ class AddressesTableViewController: EdgedTableViewController {
             for: .valueChanged
         )
 
-        credentials = Credentials(
-            mnemonic: ApplicationRepository.default.mnemonic!,
-            passphrase: ApplicationRepository.default.passphrase!
-        )
+        credentials = Credentials.shared
 
         loadAddress()
     }

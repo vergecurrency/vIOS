@@ -28,6 +28,11 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         self.openWalletButton.alpha = 0
         self.openWalletButton.center.y += 30
 
+        Credentials.shared.setSeed(
+            mnemonic: ApplicationRepository.default.mnemonic!,
+            passphrase: ApplicationRepository.default.passphrase!
+        )
+
         WalletClient.shared.createWallet(
             walletName: "ioswallet",
             copayerName: "iosuser",
