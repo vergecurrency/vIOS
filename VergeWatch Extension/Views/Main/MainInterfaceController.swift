@@ -93,7 +93,7 @@ class MainInterfaceController: WKInterfaceController {
             
             WatchWalletClient.shared.getBalance { (error, balanceInfo) in
                 if balanceInfo != nil && error == nil {
-                    amount = NSNumber(value: balanceInfo?.availableAmount ?? 0);
+                    amount = balanceInfo?.availableAmountValue;
                 }
                 
                 if (amount != nil) {
