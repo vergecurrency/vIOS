@@ -42,6 +42,7 @@ class ConnectivityManager: NSObject, WCSessionDelegate {
         address = UserDefaults.standard.object(forKey: kWatchAddress) as? String
         qrCode = UserDefaults.standard.object(forKey: kWatchQrCode) as? Data
         
+        //TODO create single balance credentials property instead
         balanceUrl = UserDefaults.standard.object(forKey: kWatchBalanceUrl) as? String
         copayerId = UserDefaults.standard.object(forKey: kWatchCopayerId) as? String
         balanceSignature = UserDefaults.standard.object(forKey: kWatchBanalceSignature) as? String
@@ -70,11 +71,11 @@ class ConnectivityManager: NSObject, WCSessionDelegate {
     public func session(_ session: WCSession,
                         didReceiveMessage message: [String : Any]) {
         
-        if message["credentials"] != nil {
-            let credentials = message["credentials"] as? Dictionary<String, Any>
+        if message["balanceCredentials"] != nil {
+            let credentials = message["balanceCredentials"] as? Dictionary<String, Any>
             
-            if credentials!["balanceUrl"] != nil {
-                self.balanceUrl = credentials!["balanceUrl"] as? String
+            if credentials!["url"] != nil {
+                self.balanceUrl = credentials!["url"] as? String
                 UserDefaults.standard.set(self.balanceUrl, forKey: kWatchBalanceUrl)
             }
             
@@ -83,8 +84,8 @@ class ConnectivityManager: NSObject, WCSessionDelegate {
                 UserDefaults.standard.set(self.copayerId, forKey: kWatchCopayerId)
             }
             
-            if credentials!["balanceSignature"] != nil {
-                self.balanceSignature = credentials!["balanceSignature"] as? String
+            if credentials!["signature"] != nil {
+                self.balanceSignature = credentials!["signature"] as? String
                 UserDefaults.standard.set(self.balanceSignature, forKey: kWatchBanalceSignature)
             }
         }

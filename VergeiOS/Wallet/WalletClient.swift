@@ -25,8 +25,6 @@ public class WalletClient {
             passphrase: ApplicationRepository.default.passphrase!
         )
     )
-
-    internal var cachedBalanceCredentials = WatchBalanceCredentials()
     
     private let sjcl = SJCL()
 
@@ -429,6 +427,27 @@ public class WalletClient {
     public func resetServiceUrl(baseUrl: String) {
         self.baseUrl = baseUrl
     }
+    
+    public func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials {
+        var result = WatchRequestCredentials()
+        let referencedUrl = path.addUrlReference()
+        
+        let url = "\(baseUrl)\(referencedUrl)".urlify()
+        let copayerId = getCopayerId()
+        
+        if referencedUrl.contains("/v1/balance/") {
+            var signature = ""
+            do {
+                signature = try getSignature(url: referencedUrl, method: "get")
+            } catch {}
+            
+            result.url = url
+            result.copayerId = copayerId
+            result.signature = signature
+        }
+        
+        return result
+    }
 
     private func getRequest(url: String, completion: @escaping URLCompletion) {
         let referencedUrl = url.addUrlReference()
@@ -448,12 +467,6 @@ public class WalletClient {
         print("Get request to: \(url)")
         print("With signature: \(signature)")
         print("And Copayer id: \(copayerId)")
-        
-        if referencedUrl.contains("/v1/balance/") {
-            self.cachedBalanceCredentials.balanceUrl = url.absoluteString;
-            self.cachedBalanceCredentials.copayerId = copayerId;
-            self.cachedBalanceCredentials.balanceSignature = signature;
-        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

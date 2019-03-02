@@ -10,12 +10,6 @@ import UIKit
 import WatchConnectivity
 import QRCode
 
-struct WatchBalanceCredentials {
-    var balanceUrl: String?
-    var copayerId: String?
-    var balanceSignature: String?
-}
-
 class WatchSyncManager: NSObject, WCSessionDelegate {
     public static let shared = WatchSyncManager()
     
@@ -72,15 +66,15 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     }
     
     @objc private func syncAmount() {
-        let credentials = WalletClient.shared.cachedBalanceCredentials;
-        if credentials.balanceSignature != nil &&
-            credentials.balanceUrl != nil &&
-            credentials.copayerId != nil {
+        let balanceCredentials = WalletClient.shared.watchRequestCredentialsForMethodPath(path: "/v1/balance/")
+        if balanceCredentials.signature != nil &&
+            balanceCredentials.url != nil &&
+            balanceCredentials.copayerId != nil {
             
             self.transferMessage(message:
-                ["credentials" : ["balanceUrl" : credentials.balanceUrl,
-                                  "balanceSignature" : credentials.balanceSignature,
-                                  "copayerId" : credentials.copayerId ] as AnyObject]
+                ["balanceCredentials" : ["url" : balanceCredentials.url,
+                                         "signature" : balanceCredentials.signature,
+                                         "copayerId" : balanceCredentials.copayerId ] as AnyObject]
             )
         }
         
