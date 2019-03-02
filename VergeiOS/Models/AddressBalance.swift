@@ -8,11 +8,11 @@ import Foundation
 public struct AddressBalance: Decodable {
     public let address: String
     public let path: String?
-    public let amount: Int
+    public let amount: Double
 }
 
 extension AddressBalance {
     public var amountValue: NSNumber {
-        return NSNumber(value: Double(amount) / Constants.satoshiDivider)
+        return NSNumber(value: amount / Constants.satoshiDivider)
     }
 }

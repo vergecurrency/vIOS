@@ -202,13 +202,13 @@
 		B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */; };
 		B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */; };
 		CA51072722294B5200A7BB62 /* WatchWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51072622294B5200A7BB62 /* WatchWalletClient.swift */; };
-		CA51072822294BC500A7BB62 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		CA51072C222956B700A7BB62 /* AddressBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */; };
 		CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA522EA6220318B000331B0F /* IntentsUI.framework */; };
 		CA522EAA220318B000331B0F /* SiriReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */; };
 		CA522EAD220318B000331B0F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA522EAB220318B000331B0F /* MainInterface.storyboard */; };
 		CA522EB1220318B000331B0F /* VergeSiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA522EA5220318B000331B0F /* VergeSiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA522EB622032A5600331B0F /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
+		CA8323CB222A8B4F00D74D26 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		CA8FCF4B21F7C3A20069D150 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4921F7C3A20069D150 /* Interface.storyboard */; };
 		CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
 		CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -1845,8 +1845,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAD341C82229CBFA002B1774 /* StatsProvider.swift in Sources */,
+				CA8323CB222A8B4F00D74D26 /* WalletBalanceInfo.swift in Sources */,
 				A31A99282208FA8C00213F3E /* Constants.swift in Sources */,
-				CA51072822294BC500A7BB62 /* WalletBalanceInfo.swift in Sources */,
 				CA51072722294B5200A7BB62 /* WatchWalletClient.swift in Sources */,
 				CAD6F29721FE1C3900AA3162 /* MainRowController.swift in Sources */,
 				CAD6F29D21FE345500AA3162 /* QRCodeInterfaceController.swift in Sources */,

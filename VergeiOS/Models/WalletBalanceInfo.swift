@@ -7,39 +7,39 @@ import Foundation
 
 public struct WalletBalanceInfo: Decodable {
 
-    public let totalAmount: Int
-    public let lockedAmount: Int
-    public let totalConfirmedAmount: Int
-    public let lockedConfirmedAmount: Int
-    public let availableAmount: Int
-    public let availableConfirmedAmount: Int
+    public let totalAmount: Double
+    public let lockedAmount: Double
+    public let totalConfirmedAmount: Double
+    public let lockedConfirmedAmount: Double
+    public let availableAmount: Double
+    public let availableConfirmedAmount: Double
     public let byAddress: [AddressBalance]
 
 }
 
 extension WalletBalanceInfo {
     public var totalAmountValue: NSNumber {
-        return NSNumber(value: Double(totalAmount) / Constants.satoshiDivider)
+        return NSNumber(value: totalAmount / Constants.satoshiDivider)
     }
 
     public var lockedAmountValue: NSNumber {
-        return NSNumber(value: Double(lockedAmount) / Constants.satoshiDivider)
+        return NSNumber(value: lockedAmount / Constants.satoshiDivider)
     }
 
     public var totalConfirmedAmountValue: NSNumber {
-        return NSNumber(value: Double(totalConfirmedAmount) / Constants.satoshiDivider)
+        return NSNumber(value: totalConfirmedAmount / Constants.satoshiDivider)
     }
 
     public var lockedConfirmedAmountValue: NSNumber {
-        return NSNumber(value: Double(lockedConfirmedAmount) / Constants.satoshiDivider)
+        return NSNumber(value: lockedConfirmedAmount / Constants.satoshiDivider)
     }
 
     public var availableAmountValue: NSNumber {
-        return NSNumber(value: Double(availableAmount) / Constants.satoshiDivider)
+        return NSNumber(value: availableAmount / Constants.satoshiDivider)
     }
 
     public var availableConfirmedAmountValue: NSNumber {
-        return NSNumber(value: Double(availableConfirmedAmount) / Constants.satoshiDivider)
+        return NSNumber(value: availableConfirmedAmount / Constants.satoshiDivider)
     }
 
 }

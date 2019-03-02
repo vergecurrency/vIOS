@@ -29,6 +29,7 @@ class WatchWalletClient: NSObject {
         getBalanceRequest() { data, response, error in
             if let data = data {
                 do {
+//                    let dataString = String(data: data, encoding: String.Encoding.utf8)
                     let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
                     completion(error, balanceInfo)
                 } catch {
