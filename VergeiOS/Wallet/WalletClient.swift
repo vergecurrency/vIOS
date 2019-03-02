@@ -595,7 +595,7 @@ public class WalletClient {
 
     private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {
         let changeAddress: Address = try AddressFactory.create(txp.changeAddress.address)
-        let toAddress: Address = try AddressFactory.create(txp.outputs.first!.toAddress!)
+        let toAddress: Address = try AddressFactory.create(txp.outputs.first!.toAddress)
 
         let unspentOutputs = txp.inputs
         let unspentTransactions: [UnspentTransaction] = try unspentOutputs.map { output in
