@@ -21,7 +21,8 @@ class MainInterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         self.prepareTable()
         
-        StatisticsManager.shared.startUpdate()
+        ConnectivityManager.shared.startUpdate()
+        StatsProvider.shared.startUpdate()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateUI),
@@ -52,8 +53,8 @@ class MainInterfaceController: WKInterfaceController {
     }
     
     private func updatePrice() {
-        let lastStats = StatisticsManager.shared.lastStats
-        let currency = StatisticsManager.shared.currency
+        let lastStats = StatsProvider.shared.lastStats
+        let currency = ConnectivityManager.shared.currency
         
         if self.priceRow != nil {
             if lastStats != nil {
@@ -82,35 +83,41 @@ class MainInterfaceController: WKInterfaceController {
     }
     
     private func updateAmount() {
-        let lastStats = StatisticsManager.shared.lastStats
-        let currency = StatisticsManager.shared.currency
-        let amount = StatisticsManager.shared.amount
+        let lastStats = StatsProvider.shared.lastStats
+        let currency = ConnectivityManager.shared.currency
+        var amount = ConnectivityManager.shared.amount
         
         if self.walletRow != nil {
             var title = "Need sync"
             var subtitle = ""
             
-            if (amount != nil) {
-                title = "\(amount ?? 0)" + " XVG"
-                
-                if (lastStats != nil) {
-                    let funds = (lastStats!.price * (amount?.doubleValue)!)
-                    subtitle = String.init(format: "%@%0.4f",
-                                           self.symbolForCurrency(currency: currency ?? "USD"), funds)
+            WatchWalletClient.shared.getBalance { (error, balanceInfo) in
+                if balanceInfo != nil && error == nil {
+                    amount = balanceInfo?.availableAmountValue
                 }
+                
+                if (amount != nil) {
+                    title = String.init(format: "%.2f XVG", (amount?.doubleValue ?? 0))
+                    
+                    if (lastStats != nil) {
+                        let funds = (lastStats!.price * (amount?.doubleValue)!)
+                        subtitle = String.init(format: "%@%.2f",
+                                               self.symbolForCurrency(currency: currency ?? "USD"), funds)
+                    }
+                }
+                
+                self.walletRow?.titleLabel.setText(title)
+                self.walletRow?.subtitleLabel.setText(subtitle)
             }
-            
-            self.walletRow?.titleLabel.setText(title)
-            self.walletRow?.subtitleLabel.setText(subtitle)
         }
     }
     
     private func updateAddress() {
-        let address = StatisticsManager.shared.address
+        let address = ConnectivityManager.shared.address
         
         if self.qrCodeRow != nil {
             self.qrCodeRow?.titleLabel.setText((address != nil) ? "Receive" : "Need sync...")
-            self.qrCodeRow?.subtitleLabel.setText((address != nil) ? address : "")
+            self.qrCodeRow?.subtitleLabel.setText(address?.truncated(limit: 12, position: .middle, leader: "..."))
         }
     }
     

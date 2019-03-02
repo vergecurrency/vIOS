@@ -20,19 +20,19 @@
                                 <tableRow identifier="MainRowPrice" selectable="NO" id="tPK-Sl-0NX" customClass="MainRowController" customModule="VergeWatch_Extension">
                                     <group key="rootItem" width="1" height="50" alignment="left" radius="18" spacing="5" id="IGp-BK-9n4">
                                         <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="PriceTag" id="Mpv-6H-13O">
+                                            <imageView alignment="left" verticalAlignment="center" image="icon_price" id="Mpv-6H-13O">
                                                 <color key="tintColor" name="PrimaryLight"/>
                                             </imageView>
-                                            <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="tc6-yr-hoF">
+                                            <group width="0.84999999999999998" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="tc6-yr-hoF">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="center" text="Price" id="93Q-d9-5Hm">
                                                         <color key="textColor" name="PrimaryLight"/>
-                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="10"/>
+                                                        <fontDescription key="font" type="boldSystem" pointSize="10"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="center" text="$0.0065" id="w50-uP-wSg">
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="$0.0065" id="w50-uP-wSg">
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="center" text="+23.3%" id="bQ3-aM-qPB">
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="+23.3%" id="bQ3-aM-qPB">
                                                         <color key="textColor" name="VergeGreen"/>
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
                                                     </label>
@@ -48,19 +48,19 @@
                                 <tableRow identifier="MainRowWallet" selectable="NO" id="TEZ-Sj-KqO" customClass="MainRowController" customModule="VergeWatch_Extension">
                                     <group key="rootItem" width="1" height="50" alignment="left" radius="18" spacing="5" id="4Xv-sg-Vr2">
                                         <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="Wallet" id="AR4-dg-2bf">
+                                            <imageView alignment="left" verticalAlignment="center" image="icon_wallet" id="AR4-dg-2bf">
                                                 <color key="tintColor" name="PrimaryLight"/>
                                             </imageView>
-                                            <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="b8y-Rf-ryk">
+                                            <group width="0.84999999999999998" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="b8y-Rf-ryk">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="center" text="Wallet" id="Svq-BQ-itp">
                                                         <color key="textColor" name="PrimaryLight"/>
-                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="10"/>
+                                                        <fontDescription key="font" type="boldSystem" pointSize="10"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="center" text="Need sync..." id="7Ui-y0-Shc">
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="Need sync..." id="7Ui-y0-Shc">
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="center" id="rm7-vV-zOQ">
+                                                    <label width="1" alignment="left" verticalAlignment="center" id="rm7-vV-zOQ">
                                                         <color key="textColor" name="PrimaryLight"/>
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
                                                     </label>
@@ -76,16 +76,16 @@
                                 <tableRow identifier="MainRowQrCode" id="mzQ-vq-D1s" customClass="MainRowController" customModule="VergeWatch_Extension">
                                     <group key="rootItem" width="1" height="50" alignment="left" radius="18" spacing="5" id="YJG-Fd-vbT">
                                         <items>
-                                            <imageView alignment="left" verticalAlignment="center" image="QRcode" id="oMP-T0-W6P">
+                                            <imageView alignment="left" verticalAlignment="center" image="icon_qrcode" id="oMP-T0-W6P">
                                                 <color key="tintColor" name="PrimaryLight"/>
                                             </imageView>
-                                            <group alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="uoF-gW-PnW">
+                                            <group width="0.84999999999999998" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="uoF-gW-PnW">
                                                 <items>
                                                     <label alignment="left" verticalAlignment="center" text="QR-Code" id="TTd-6q-tZt">
                                                         <color key="textColor" name="PrimaryLight"/>
-                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="10"/>
+                                                        <fontDescription key="font" type="boldSystem" pointSize="10"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="center" text="Need sync..." id="YMq-5l-AVL">
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="Need sync..." id="YMq-5l-AVL">
                                                         <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
                                                     </label>
                                                     <label width="1" alignment="left" verticalAlignment="center" id="QRw-Va-cUX">
