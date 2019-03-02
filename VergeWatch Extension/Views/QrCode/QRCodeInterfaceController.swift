@@ -22,8 +22,8 @@ class QRCodeInterfaceController: WKInterfaceController {
     }
     
     @objc func updateQr() {
-        if StatisticsManager.shared.qrCode != nil {
-            image.setImage(UIImage.init(data: StatisticsManager.shared.qrCode))
+        if ConnectivityManager.shared.qrCode != nil {
+            image.setImage(UIImage.init(data: ConnectivityManager.shared.qrCode!))
         }
     }
 }

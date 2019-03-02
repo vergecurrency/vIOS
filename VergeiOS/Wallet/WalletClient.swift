@@ -26,6 +26,8 @@ public class WalletClient {
         )
     )
 
+    internal var cachedBalanceCredentials = WatchBalanceCredentials()
+    
     private let sjcl = SJCL()
 
     private var baseUrl: String = ""
@@ -429,7 +431,7 @@ public class WalletClient {
     }
 
     private func getRequest(url: String, completion: @escaping URLCompletion) {
-        let referencedUrl = addUrlReference(url)
+        let referencedUrl = url.addUrlReference()
 
         guard let url = URL(string: "\(baseUrl)\(referencedUrl)".urlify()) else {
             return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
@@ -446,6 +448,12 @@ public class WalletClient {
         print("Get request to: \(url)")
         print("With signature: \(signature)")
         print("And Copayer id: \(copayerId)")
+        
+        if referencedUrl.contains("/v1/balance/") {
+            self.cachedBalanceCredentials.balanceUrl = url.absoluteString;
+            self.cachedBalanceCredentials.copayerId = copayerId;
+            self.cachedBalanceCredentials.balanceSignature = signature;
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -507,7 +515,7 @@ public class WalletClient {
     }
 
     private func deleteRequest(url: String, completion: @escaping URLCompletion) {
-        let referencedUrl = addUrlReference(url)
+        let referencedUrl = url.addUrlReference()
 
         guard let url = URL(string: "\(baseUrl)\(referencedUrl)".urlify()) else {
             return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
@@ -588,12 +596,6 @@ public class WalletClient {
         let widBase58 = Base58.encode(widHex).padding(toLength: 22, withPad: "0", startingAt: 0)
 
         return "\(widBase58)\(credentials.privateKey.privateKey().toWIF())Lxvg"
-    }
-
-    private func addUrlReference(_ url: String) -> String {
-        let referenceUrl = url.contains("?") ? "\(url)&" : "\(url)?"
-
-        return "\(referenceUrl)r=\(Int.random(in: 10000 ... 99999))"
     }
 
     private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {

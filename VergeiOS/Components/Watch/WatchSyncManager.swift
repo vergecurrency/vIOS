@@ -10,8 +10,14 @@ import UIKit
 import WatchConnectivity
 import QRCode
 
+struct WatchBalanceCredentials {
+    var balanceUrl: String?
+    var copayerId: String?
+    var balanceSignature: String?
+}
+
 class WatchSyncManager: NSObject, WCSessionDelegate {
-    static let shared = WatchSyncManager()
+    public static let shared = WatchSyncManager()
     
     // MARK: Init
     
@@ -66,11 +72,23 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     }
     
     @objc private func syncAmount() {
+        let credentials = WalletClient.shared.cachedBalanceCredentials;
+        if credentials.balanceSignature != nil &&
+            credentials.balanceUrl != nil &&
+            credentials.copayerId != nil {
+            
+            self.transferMessage(message:
+                ["credentials" : ["balanceUrl" : credentials.balanceUrl,
+                                  "balanceSignature" : credentials.balanceSignature,
+                                  "copayerId" : credentials.copayerId ] as AnyObject]
+            )
+        }
+        
         let amount = ApplicationRepository.default.amount;
         let currency = ApplicationRepository.default.currency;
         
-        _ = self.transferMessage(message: ["amount" : amount])
-        _ = self.transferMessage(message: ["currency" : currency as AnyObject])
+        self.transferMessage(message: ["amount" : amount,
+                                           "currency" : currency as AnyObject])
     }
     
     @objc private func syncAddress(notification: Notification? = nil) {
@@ -84,13 +102,13 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
             let qrImg = qrCodeObject.image!
             let data = qrImg.pngData()
             
-            _ = self.transferMessage(message:
+            self.transferMessage(message:
                 ["address" : ["value" : address, "qr" : data! ] as AnyObject]
             )
         }
     }
     
-    private func transferMessage(message: [String : AnyObject]){
+    private func transferMessage(message: [String : AnyObject]) {
         validSession?.sendMessage(message,
                                   replyHandler: nil,
                                   errorHandler: nil)

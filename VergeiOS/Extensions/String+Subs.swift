@@ -80,4 +80,10 @@ extension String {
     func urlify() -> String {
         return self.replacingOccurrences(of: "//", with: "/").replacingOccurrences(of: "https:/", with: "https://")
     }
+    
+    func addUrlReference() -> String {
+        let referenceUrl = self.contains("?") ? "\(self)&" : "\(self)?"
+        
+        return "\(referenceUrl)r=\(Int.random(in: 10000 ... 99999))"
+    }
 }
