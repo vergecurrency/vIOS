@@ -729,30 +729,22 @@
 				B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */,
 				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
 				A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */,
+				A305DDAA21077FF800911B64 /* Buttons */,
+				A305DDAB2107801400911B64 /* Extensions */,
+				A305DDAC2107802E00911B64 /* Inputs */,
+				A305DDBB2107C7D200911B64 /* Keyboards */,
+				A305DDB52107A25F00911B64 /* Layout */,
+				A305DDA921077FE200911B64 /* NavigationBars */,
 				B2BD7713B76A4A8371FACC27 /* Notification */,
 				CAD929FE21E7E05900CD5EBA /* Siri */,
 				A302D3132120F52900EA8091 /* TableCellViews */,
 				B2BD71AB56AECF65519715DB /* Theme */,
 				A3AA21FA2163F64F00160576 /* TorStatusIndicator */,
-				A305DD9B21066AF100911B64 /* UI */,
+				A302D2F7211F3F4C00EA8091 /* Views */,
 				B2BD7DE012024B6499CAA5BE /* WalletChart */,
 				CAD6F2A221FE4D9E00AA3162 /* Watch */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		A305DD9B21066AF100911B64 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				A302D2F7211F3F4C00EA8091 /* Views */,
-				A305DDBB2107C7D200911B64 /* Keyboards */,
-				A305DDB52107A25F00911B64 /* Layout */,
-				A305DDAC2107802E00911B64 /* Inputs */,
-				A305DDAB2107801400911B64 /* Extensions */,
-				A305DDAA21077FF800911B64 /* Buttons */,
-				A305DDA921077FE200911B64 /* NavigationBars */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		A305DDA921077FE200911B64 /* NavigationBars */ = {
@@ -786,8 +778,8 @@
 		A305DDAC2107802E00911B64 /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
-				A305DDAD210782EB00911B64 /* PinTextField.swift */,
 				A33B75BF21A61A3500030CCF /* CurrencyInput.swift */,
+				A305DDAD210782EB00911B64 /* PinTextField.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
