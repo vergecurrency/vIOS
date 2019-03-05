@@ -84,9 +84,6 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
         
-        // Start video capture.
-        captureSession?.startRunning()
-        
         self.view.bringSubviewToFront(self.overlayView)
     }
     
@@ -98,6 +95,13 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         UIView.animate(withDuration: 0.25) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Start video capture.
+        captureSession?.startRunning()
     }
 
     override func didReceiveMemoryWarning() {

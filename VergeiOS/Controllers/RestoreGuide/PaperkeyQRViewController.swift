@@ -68,9 +68,6 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
         videoPreviewLayer?.frame = view.layer.bounds
         view.layer.addSublayer(videoPreviewLayer!)
 
-        // Start video capture.
-        captureSession?.startRunning()
-
         self.view.bringSubviewToFront(self.overlayView)
     }
 
@@ -82,6 +79,13 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
         UIView.animate(withDuration: 0.25) {
             self.setNeedsStatusBarAppearanceUpdate()
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // Start video capture.
+        captureSession?.startRunning()
     }
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {

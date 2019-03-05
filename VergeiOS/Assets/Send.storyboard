@@ -543,7 +543,7 @@ Please increase your balance.</string>
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="PrimaryDark"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="RCP-My-zdT" secondAttribute="trailing" id="8kh-Pj-zZO"/>
                             <constraint firstItem="RCP-My-zdT" firstAttribute="top" secondItem="juj-h3-aDA" secondAttribute="top" id="9ct-ds-e92"/>
@@ -578,6 +578,9 @@ Please increase your balance.</string>
         </namedColor>
         <namedColor name="BackgroundGrey">
             <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PrimaryDark">
+            <color red="0.066666666666666666" green="0.12549019607843137" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

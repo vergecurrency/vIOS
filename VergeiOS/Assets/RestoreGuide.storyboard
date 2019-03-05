@@ -400,7 +400,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="PrimaryDark"/>
                         <constraints>
                             <constraint firstItem="skZ-ch-7wk" firstAttribute="top" secondItem="Xe8-4i-WDO" secondAttribute="top" id="ABU-iE-jub"/>
                             <constraint firstAttribute="trailing" secondItem="skZ-ch-7wk" secondAttribute="trailing" id="TfA-ND-LmY"/>
