@@ -20,6 +20,8 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var closeButton: UIButton!
     
+    static var storyBoardView: PinUnlockViewController? = nil
+    
     var pin = ""
     var fillPinFor: UnlockState?
     var showLocalAuthentication = false
@@ -31,8 +33,12 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     }
 
     static func createFromStoryBoard() -> PinUnlockViewController {
-        return UIStoryboard(name: "Setup", bundle: nil)
-            .instantiateViewController(withIdentifier: "PinUnlockViewController") as! PinUnlockViewController
+        if PinUnlockViewController.storyBoardView == nil {
+            PinUnlockViewController.storyBoardView = UIStoryboard(name: "Setup", bundle: nil)
+                .instantiateViewController(withIdentifier: "PinUnlockViewController") as? PinUnlockViewController
+        }
+        
+        return PinUnlockViewController.storyBoardView!
     }
 
     override func viewDidLoad() {
