@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol KeyboardDelegate {
+protocol KeyboardDelegate: class {
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey)
 }

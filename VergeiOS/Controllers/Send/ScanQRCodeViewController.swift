@@ -13,7 +13,7 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
 
     @IBOutlet weak var flashButton: UIButton!
 
-    var sendTransactionDelegate: SendTransactionDelegate!
+    weak var sendTransactionDelegate: SendTransactionDelegate!
     var sendTransaction: TransactionFactory?
     
     var captureSession: AVCaptureSession?

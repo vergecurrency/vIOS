@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol RecipientDelegate {
+protocol RecipientDelegate: class {
     func didSelectRecipientAddress(_ address: String)
     func selectedRecipientAddress() -> String
 }

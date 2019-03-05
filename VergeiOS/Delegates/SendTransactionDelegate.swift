@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SendTransactionDelegate {
+protocol SendTransactionDelegate: class {
     func didChangeSendTransaction(_ transaction: TransactionFactory)
     func getSendTransaction() -> TransactionFactory
     func currentAmount() -> NSNumber

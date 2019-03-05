@@ -5,6 +5,6 @@
 
 import UIKit
 
-protocol ChartFilterToolbarDelegate: UIToolbarDelegate {
+protocol ChartFilterToolbarDelegate: class, UIToolbarDelegate {
     func didSelectChartFilter(filter: ChartFilterToolbar.Filter)
 }

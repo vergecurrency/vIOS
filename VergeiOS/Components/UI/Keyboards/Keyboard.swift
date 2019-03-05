@@ -15,7 +15,7 @@ class Keyboard: UIView {
     var buttons: [UIButton] = []
     var characters: [KeyboardKey] = []
     
-    var delegate: KeyboardDelegate?
+    weak var delegate: KeyboardDelegate?
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)

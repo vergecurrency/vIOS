@@ -10,7 +10,7 @@ import UIKit
 
 class SelectRecipientTableViewController: AbstractContactsTableViewController {
     
-    var sendTransactionDelegate: SendTransactionDelegate!
+    weak var sendTransactionDelegate: SendTransactionDelegate!
     var sendTransaction: TransactionFactory?
     
     override func viewDidLoad() {
