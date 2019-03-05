@@ -55,6 +55,9 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        pinTextField.reset()
+        pin = ""
+
         if LAContext.anyAvailable() {
             if fillPinFor == .wallet {
                 showLocalAuthentication = ApplicationRepository.default.localAuthForWalletUnlock
@@ -91,6 +94,9 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
             // When all pins are set.
             if self.validate() {
                 closeView()
+
+                pinTextField.reset()
+                pin = ""
             } else if pin.count == self.pinTextField.pinCharacterCount {
                 pinTextField.shake()
                 pinTextField.reset()

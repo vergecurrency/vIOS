@@ -29,7 +29,7 @@ class SendViewController: UIViewController {
     var txFactory = TransactionFactory()
     var txTransponder: TxTransponder!
     
-    var confirmButtonInterval: Timer?
+    weak var confirmButtonInterval: Timer?
 
     var walletAmount: NSNumber {
         return ApplicationRepository.default.amount
