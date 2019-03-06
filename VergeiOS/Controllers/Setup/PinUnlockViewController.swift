@@ -36,27 +36,21 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
         if PinUnlockViewController.storyBoardView == nil {
             PinUnlockViewController.storyBoardView = UIStoryboard(name: "Setup", bundle: nil)
                 .instantiateViewController(withIdentifier: "PinUnlockViewController") as? PinUnlockViewController
+        } else {
+            PinUnlockViewController.storyBoardView!.reset()
         }
-        
+
         return PinUnlockViewController.storyBoardView!
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if !cancelable {
-            closeButton.removeFromSuperview()
-            closeButton.removeConstraints(closeButton.constraints)
-        }
-
         pinKeyboard.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        pinTextField.reset()
-        pin = ""
 
         if LAContext.anyAvailable() {
             if fillPinFor == .wallet {
@@ -67,12 +61,15 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
         }
 
         if showLocalAuthentication {
-            pinKeyboard.setShowLocalAuthKey(true)
-
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 self.promptLocalAuthentication()
             }
         }
+
+        pinKeyboard.setShowLocalAuthKey(showLocalAuthentication)
+        closeButton.isHidden = !cancelable
+        pinTextField.reset()
+        pin = ""
     }
 
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
@@ -145,6 +142,16 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
 
     @IBAction func closeButtonPushed(_ sender: Any) {
         cancelView()
+    }
+
+    func reset() {
+        fillPinFor = nil
+        cancelable = false
+        showLocalAuthentication = false
+        completion = nil
+
+        pinTextField.reset()
+        pin = ""
     }
 
 }
