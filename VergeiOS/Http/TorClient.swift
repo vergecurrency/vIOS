@@ -84,18 +84,32 @@ class TorClient {
     }
 
     // Resign the tor client.
+    func restart() {
+        resign()
+        
+        while controller.isConnected {
+            print("Disconnecting Tor...")
+        }
+        
+        NotificationCenter.default.post(name: .didResignTorConnection, object: self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.start {
+                NotificationCenter.default.post(name: .didConnectTorController, object: self)
+            }
+        }
+    }
+    
     func resign() {
-        if isOperational {
-            sessionConfiguration = .default
-            controller.disconnect()
-
-            self.isOperational = false
-            self.thread = nil
-
-            NotificationCenter.default.post(name: .didResignTorConnection, object: self)
-
+        if !isOperational {
             return
         }
+        
+        self.controller.disconnect()
+        
+        self.isOperational = false
+        self.thread = nil
+        self.sessionConfiguration = .default
     }
 
     private func connectController(completion: @escaping () -> Void) {
