@@ -72,4 +72,19 @@ extension UIAlertController {
 
         return alert
     }
+
+    static func createStartTorActionSheet() -> UIAlertController {
+        let actionSheet = UIAlertController(
+            title: "Tor is not activated",
+            message: "Do you want to send this transaction without Tor obfuscating your IP? " +
+                "Or do you want to start Tor and hide your identity?",
+            preferredStyle: .actionSheet
+        )
+
+        actionSheet.addAction(UIAlertAction(title: "Start Tor", style: .default))
+        actionSheet.addAction(UIAlertAction(title: "Without Tor", style: .destructive))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        return actionSheet
+    }
 }

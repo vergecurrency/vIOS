@@ -610,7 +610,7 @@ public class WalletClient {
 
     private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {
         let changeAddress: Address = try AddressFactory.create(txp.changeAddress.address)
-        let toAddress: Address = try AddressFactory.create(txp.outputs.first!.toAddress)
+        let toAddress: Address = try getToAddress(address: txp.outputs.first!.toAddress)
 
         let unspentOutputs = txp.inputs
         let unspentTransactions: [UnspentTransaction] = try unspentOutputs.map { output in
@@ -691,5 +691,13 @@ public class WalletClient {
         }
 
         return hexes
+    }
+    
+    private func getToAddress(address: String) throws -> Address {
+        do {
+            return try AddressFactory.create(address)
+        } catch {
+            return try StealthAddress(address)
+        }
     }
 }

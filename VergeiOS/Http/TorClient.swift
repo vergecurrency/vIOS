@@ -141,15 +141,12 @@ class TorClient {
 
         self.controller?.authenticate(with: cookie) { success, error in
             if let error = error {
-                NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
-
                 return print(error.localizedDescription)
             }
 
             var observer: Any? = nil
             observer = self.controller?.addObserver(forCircuitEstablished: { established in
                 guard established else {
-                    NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
                     return
                 }
 
