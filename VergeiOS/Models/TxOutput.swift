@@ -11,6 +11,8 @@ public struct TxOutput: Decodable {
     public let message: String?
     public let encryptedMessage: String?
     public let toAddress: String
+    public let ephemeralPrivKey: String?
+    public let stealth: Bool?
 
 }
 

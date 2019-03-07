@@ -87,6 +87,10 @@ class TorClient {
     func restart() {
         resign()
         
+        if !isOperational {
+            return
+        }
+        
         while controller.isConnected {
             print("Disconnecting Tor...")
         }

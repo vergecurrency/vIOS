@@ -16,6 +16,7 @@ public class WalletClient {
         case invalidMessageData(message: String)
         case invalidWidHex(id: String)
         case invalidAddressReceived(address: AddressInfo?)
+        case noOutputFound()
     }
 
     public static let shared = WalletClient(
@@ -609,8 +610,12 @@ public class WalletClient {
     }
 
     private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {
+        guard let output = txp.outputs.first else {
+            throw WalletClientError.noOutputFound()
+        }
+        
         let changeAddress: Address = try AddressFactory.create(txp.changeAddress.address)
-        let toAddress: Address = try getToAddress(address: txp.outputs.first!.toAddress)
+        let toAddress: Address = try AddressFactory.create(output.toAddress)
 
         let unspentOutputs = txp.inputs
         let unspentTransactions: [UnspentTransaction] = try unspentOutputs.map { output in
@@ -637,11 +642,25 @@ public class WalletClient {
 
         var outputs = [toOutput]
         if change > 0 {
-            outputs = [toOutput, changeOutput]
-            if txp.outputOrder == [1, 0] {
-                outputs = [changeOutput, toOutput]
-            }
+            outputs.append(changeOutput)
         }
+        
+        if output.stealth == true {
+            let ephemeral = PrivateKey(
+                data: Data(hex: output.ephemeralPrivKey!),
+                network: .mainnetXVG,
+                isPublicKeyCompressed: true
+            )
+            
+            let opReturnMeta = try Script()
+                .append(.OP_RETURN)
+                .appendData(ephemeral.publicKey().data)
+            
+            let opReturnOutput = TransactionOutput(value: 0, lockingScript: opReturnMeta.data)
+            outputs.insert(opReturnOutput, at: 0)
+        }
+        
+        outputs = outputs.sortByIndices(indices: txp.outputOrder.map { Int($0) })
 
         let tx = Transaction(
             version: 1,
@@ -691,13 +710,5 @@ public class WalletClient {
         }
 
         return hexes
-    }
-    
-    private func getToAddress(address: String) throws -> Address {
-        do {
-            return try AddressFactory.create(address)
-        } catch {
-            return try StealthAddress(address)
-        }
     }
 }

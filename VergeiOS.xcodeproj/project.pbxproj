@@ -89,6 +89,7 @@
 		A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
 		A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B75BF21A61A3500030CCF /* CurrencyInput.swift */; };
 		A33B75C421A8917700030CCF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33B75C321A8917700030CCF /* Settings.storyboard */; };
+		A33DB6952231D2010070DBCE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33DB6942231D2010070DBCE /* Array+Extensions.swift */; };
 		A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A6F20EEE485001492C2 /* AppDelegate.swift */; };
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7520EEE485001492C2 /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7320EEE485001492C2 /* WelcomeGuide.storyboard */; };
@@ -417,6 +418,7 @@
 		A33B759D21A5CDD400030CCF /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = Carthage/Build/iOS/BitcoinKit.framework; sourceTree = "<group>"; };
 		A33B75BF21A61A3500030CCF /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
 		A33B75C321A8917700030CCF /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		A33DB6942231D2010070DBCE /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		A33F6A6C20EEE485001492C2 /* VergeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F6A6F20EEE485001492C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				B2BD7F498F12AE2C1C892E66 /* AppDelegate+NotificationCenter.swift */,
+				A33DB6942231D2010070DBCE /* Array+Extensions.swift */,
 				B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */,
 				B2BD7E6BDB05995D9DB9E0D0 /* Data+Extensions.swift */,
 				A3408E5721768AF4009F0C9D /* Date+Extensions.swift */,
@@ -689,8 +692,8 @@
 				A36F8A882146EE0F00304777 /* String+Subs.swift */,
 				B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */,
 				A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */,
-				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 				CABF1481221061FD00F92CBC /* UIView+Actions.swift */,
+				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1674,6 +1677,7 @@
 				A305DDB22107A1F100911B64 /* PinKeyboard.swift in Sources */,
 				A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */,
 				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
+				A33DB6952231D2010070DBCE /* Array+Extensions.swift in Sources */,
 				A338E6B72110D5D4000D44EE /* TransactionsWalletSlideView.swift in Sources */,
 				A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */,
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
@@ -1946,6 +1950,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CF_BUNDLE_SHORT_VERSION_STRING = 0.17.1;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
 				INFOPLIST_FILE = VergeiOSTests/Info.plist;
@@ -1966,6 +1971,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CF_BUNDLE_SHORT_VERSION_STRING = 0.17.1;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S7743EWR3C;
 				INFOPLIST_FILE = VergeiOSTests/Info.plist;
@@ -2024,7 +2030,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_SHORT_VERSION_STRING = 0.17;
+				CF_BUNDLE_SHORT_VERSION_STRING = 0.17.1;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2087,7 +2093,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_SHORT_VERSION_STRING = 0.17;
+				CF_BUNDLE_SHORT_VERSION_STRING = 0.17.1;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
