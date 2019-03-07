@@ -30,8 +30,6 @@ class TxTransponder {
 
     public func send(txp: TxProposalResponse, completion: @escaping completionType) {
         self.completion = completion
-        self.step = .publish
-        self.previousTxp = nil
 
         // Publish the tx proposal and start the sequence.
         walletClient.publishTxProposal(txp: txp, completion: completionHandler)
@@ -92,6 +90,8 @@ class TxTransponder {
 
         // Complete the sequence.
         DispatchQueue.main.async {
+            self.step = .publish
+            self.previousTxp = nil
             self.completion(txp, errorResponse, error)
         }
     }

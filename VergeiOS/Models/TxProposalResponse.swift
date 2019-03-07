@@ -7,7 +7,7 @@ import Foundation
 
 public struct TxProposalResponse: Decodable {
 
-    public let createdOn: UInt32
+    public let createdOn: UInt32?
     public let coin: String
     public let id: String
     public let network: String
