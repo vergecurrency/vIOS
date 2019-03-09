@@ -130,8 +130,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             self.activityIndicator.startAnimating()
         }
 
-        // TODO: Over Tor.
-        URLSession.shared.dataTask(with: chartUrl()) { (data, response, error) in
+        TorClient.shared.session.dataTask(with: chartUrl()) { (data, response, error) in
             DispatchQueue.main.async {
                 self.placeholderView.isHidden = data != nil
             }
