@@ -102,6 +102,35 @@
                                         <segue destination="V1C-1U-dGp" kind="push" id="Jj1-nu-oGB"/>
                                     </connections>
                                 </tableRow>
+                                <tableRow identifier="MainRowInfo" id="cQS-W7-lOw" customClass="MainRowController" customModule="VergeWatch_Extension">
+                                    <group key="rootItem" width="1" height="50" alignment="left" radius="18" spacing="5" id="buR-1i-M88">
+                                        <items>
+                                            <imageView alignment="left" verticalAlignment="center" image="icon_development" id="la1-M3-zK0">
+                                                <color key="tintColor" name="PrimaryLight"/>
+                                            </imageView>
+                                            <group width="0.84999999999999998" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="i2j-id-HLH">
+                                                <items>
+                                                    <label alignment="left" verticalAlignment="center" text="Info" id="1ni-on-0tf">
+                                                        <color key="textColor" name="PrimaryLight"/>
+                                                        <fontDescription key="font" type="boldSystem" pointSize="10"/>
+                                                    </label>
+                                                    <label width="1" alignment="left" verticalAlignment="center" text="About App" id="UFe-76-oHD">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                                    </label>
+                                                    <label width="1" alignment="left" verticalAlignment="center" id="Q6B-Ui-AAc">
+                                                        <color key="textColor" name="PrimaryLight"/>
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="subtitleLabel" destination="Q6B-Ui-AAc" id="KUh-8M-47C"/>
+                                        <outlet property="titleLabel" destination="UFe-76-oHD" id="fFG-Kg-SDy"/>
+                                        <segue destination="wdn-Vc-P5h" kind="push" id="Q7v-q0-xKc"/>
+                                    </connections>
+                                </tableRow>
                             </items>
                         </table>
                     </items>
@@ -124,7 +153,29 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="467" y="37"/>
+            <point key="canvasLocation" x="467" y="7"/>
+        </scene>
+        <!--About App-->
+        <scene sceneID="nkk-rI-PN5">
+            <objects>
+                <controller title="About App" alwaysBounce="YES" id="wdn-Vc-P5h">
+                    <items>
+                        <group width="1" alignment="left" layout="vertical" id="4oH-gb-khm">
+                            <items>
+                                <label width="1" alignment="left" text="Networking" id="Zgg-UT-D3h">
+                                    <color key="textColor" name="PrimaryLight"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                                <label width="1" alignment="left" numberOfLines="0" id="QKQ-6r-6YF">
+                                    <mutableString key="text">The Apple Watch Verge application can't do request over the Tor network making your requests visible to outsiders sniffing in.  This application only requests your balance and the current fiat ratings from the server.   Make sure not to use this application if you only want to connect through Tor.</mutableString>
+                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="400"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

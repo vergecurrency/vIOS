@@ -10,15 +10,43 @@ import WatchKit
 import Foundation
 
 class MainInterfaceController: WKInterfaceController {
-
+    
+    private let kWatchStartConfirmed = NSNotification.Name(rawValue: "kWatchStartConfirmed").rawValue
+    
     @IBOutlet var vergeTable: WKInterfaceTable!
     
     var priceRow: MainRowController?
     var walletRow: MainRowController?
     var qrCodeRow: MainRowController?
+    var infoRow: MainRowController?
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        let startConfirmed = UserDefaults.standard.object(forKey: kWatchStartConfirmed) as? NSNumber
+        if startConfirmed == nil {
+            proceedConfirmation()
+        } else {
+            proccedStart()
+        }
+    }
+    
+    func proceedConfirmation() {
+        let continueAction = WKAlertAction(title: "Confirm",
+                                           style: .default,
+                                           handler: {
+                self.proccedStart()
+                UserDefaults.standard.set(NSNumber.init(booleanLiteral: true),
+                                          forKey: self.kWatchStartConfirmed)
+        })
+        
+        presentAlert(withTitle: "Important",
+                     message: "The Apple Watch Verge application can't do request over the Tor network making your requests visible to outsiders sniffing in.\n\nThis application only requests your balance and the current fiat ratings from the server. Make sure not to use this application if you only want to connect through Tor.\n\nPress \"Confirm\" if you want to continue",
+                     preferredStyle: .actionSheet,
+                     actions: [continueAction])
+    }
+    
+    func proccedStart() {
         self.prepareTable()
         
         ConnectivityManager.shared.startUpdate()
@@ -36,14 +64,17 @@ class MainInterfaceController: WKInterfaceController {
         self.priceRow = nil
         self.walletRow = nil
         self.qrCodeRow = nil
+        self.infoRow = nil
         
         self.vergeTable.insertRows(at: IndexSet(integer: 0), withRowType: "MainRowPrice")
         self.vergeTable.insertRows(at: IndexSet(integer: 1), withRowType: "MainRowWallet")
         self.vergeTable.insertRows(at: IndexSet(integer: 2), withRowType: "MainRowQrCode")
+        self.vergeTable.insertRows(at: IndexSet(integer: 3), withRowType: "MainRowInfo")
         
         self.priceRow = vergeTable.rowController(at: 0) as? MainRowController;
         self.walletRow = vergeTable.rowController(at: 1) as? MainRowController;
         self.qrCodeRow = vergeTable.rowController(at: 2) as? MainRowController;
+        self.infoRow = vergeTable.rowController(at: 3) as? MainRowController;
     }
     
     @objc func updateUI() {
@@ -133,3 +164,4 @@ class MainInterfaceController: WKInterfaceController {
         }
     }
 }
+
