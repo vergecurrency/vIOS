@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/badge/status-beta-yellow.svg">
   <img src="https://img.shields.io/badge/latest build-0.17.1-lightgrey.svg">
   <img src="https://img.shields.io/badge/iOS-^11.4-green.svg">
+  <img src="https://img.shields.io/badge/watchOS-^4.0-brightgreen.svg">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg">
 </p>
 
@@ -21,6 +22,8 @@ This iOS wallet provides an easy and secure wallet on your iOS device. With **To
 * Private keys are yours
 * Possibility to choose your own wallet service
 * Touch ID & Face ID support
+* Apple Watch support
+* Siri integrated
 
 ## Local Development
 
