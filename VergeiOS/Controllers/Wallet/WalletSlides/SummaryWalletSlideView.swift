@@ -44,6 +44,10 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         tableView.layer.masksToBounds = true
     }
     
+    private var fiatRateInfo: FiatRate? {
+        return FiatRateTicker.shared.rateInfo
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -64,7 +68,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     
     func setupCell(_ cell: UITableViewCell, item: String) -> UITableViewCell {
         
-        if let info = FiatRateTicker.shared.rateInfo {
+        if let info = fiatRateInfo {
             switch item {
             case "price":
                 cell.textLabel?.text = "XVG/\(ApplicationRepository.default.currency)"
@@ -116,8 +120,10 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
     @objc func didReceiveStats(notification: Notification? = nil) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.placeholderView.isHidden = true
+            self.placeholderView.isHidden = self.fiatRateInfo != nil
+            if self.fiatRateInfo != nil {
+                self.tableView.reloadData()
+            }
         }
     }
     

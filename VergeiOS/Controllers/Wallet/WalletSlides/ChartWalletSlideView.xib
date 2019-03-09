@@ -189,10 +189,10 @@
                             </constraints>
                         </view>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEr-qk-0S0">
-                            <rect key="frame" x="0.0" y="45" width="335" height="614"/>
+                            <rect key="frame" x="0.0" y="37" width="335" height="622"/>
                             <subviews>
                                 <stackView opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-M9-keQ">
-                                    <rect key="frame" x="20" y="254" width="295" height="106.5"/>
+                                    <rect key="frame" x="20" y="258" width="295" height="106.5"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chart" translatesAutoresizingMaskIntoConstraints="NO" id="mLe-rh-90u">
                                             <rect key="frame" x="110" y="0.0" width="75" height="75"/>
@@ -224,7 +224,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="EqG-qw-loG" firstAttribute="trailing" secondItem="WuU-94-vn0" secondAttribute="trailing" id="69T-5o-YGU"/>
-                        <constraint firstItem="pEr-qk-0S0" firstAttribute="top" secondItem="iev-mp-uRP" secondAttribute="bottom" constant="8" id="CZ7-uK-Neu"/>
+                        <constraint firstItem="pEr-qk-0S0" firstAttribute="top" secondItem="iev-mp-uRP" secondAttribute="bottom" id="CZ7-uK-Neu"/>
                         <constraint firstItem="cPX-dP-eKs" firstAttribute="leading" secondItem="WuU-94-vn0" secondAttribute="leading" id="Gxc-F0-hso"/>
                         <constraint firstItem="EqG-qw-loG" firstAttribute="leading" secondItem="WuU-94-vn0" secondAttribute="leading" id="PAt-AP-SPI"/>
                         <constraint firstItem="WuU-94-vn0" firstAttribute="trailing" secondItem="cPX-dP-eKs" secondAttribute="trailing" id="QPx-6C-ySL"/>
