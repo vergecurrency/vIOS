@@ -15,9 +15,10 @@ class AddressValidator {
     typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
 
     static func validate(address: String) -> Bool {
-        let validAddress = try? LegacyAddress(address)
+        let legacyAddress = try? LegacyAddress(address)
+        let stealthAddress = try? StealthAddress(address)
 
-        return validAddress != nil
+        return legacyAddress != nil || stealthAddress != nil
     }
     
     func validate(
@@ -64,22 +65,6 @@ class AddressValidator {
         }
         
         completion(valid, address, amount)
-    }
-    
-    fileprivate static func regexMatches(for regex: String, in text: String) -> [String] {
-        do {
-            let regex = try NSRegularExpression(pattern: regex)
-            let results = regex.matches(
-                in: text,
-                range: NSRange(text.startIndex..., in: text)
-            )
-            return results.map {
-                String(text[Range($0.range, in: text)!])
-            }
-        } catch let error {
-            print("invalid regex: \(error.localizedDescription)")
-            return []
-        }
     }
     
     fileprivate func amountToNumber(stringAmount: String) -> NSNumber? {
