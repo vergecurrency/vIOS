@@ -640,10 +640,9 @@ public class WalletClient {
             return try output.asInputTransaction()
         }
 
-        var outputs = [toOutput]
-        if change > 0 {
-            outputs.append(changeOutput)
-        }
+        var outputs: [TransactionOutput] = []
+        
+        outputs.append(toOutput)
         
         if output.stealth == true {
             let ephemeral = PrivateKey(
@@ -657,7 +656,11 @@ public class WalletClient {
                 .appendData(ephemeral.publicKey().data)
             
             let opReturnOutput = TransactionOutput(value: 0, lockingScript: opReturnMeta.data)
-            outputs.insert(opReturnOutput, at: 0)
+            outputs.append(opReturnOutput)
+        }
+        
+        if change > 0 {
+            outputs.append(changeOutput)
         }
         
         outputs = outputs.sortByIndices(indices: txp.outputOrder.map { Int($0) })

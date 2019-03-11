@@ -59,10 +59,14 @@ class ConfirmSendView: UIView {
         let fee = NSNumber(floatLiteral: Double(txp.fee) / Constants.satoshiDivider)
         let total = NSNumber(floatLiteral: amount.doubleValue + fee.doubleValue)
 
+        let output = txp.outputs.first!
+        
         sendingAmountLabel.text = amount.toXvgCurrency()
         transactionFeeAmountLabel.text = fee.toXvgCurrency()
         totalXvgAmountLabel.text = total.toXvgCurrency()
-        recipientAddressLabel.text = txp.outputs.first?.toAddress
+        recipientAddressLabel.text = (output.stealth ?? false)
+            ? "Resolved stealth address 🕵️‍♀️"
+            : output.toAddress
 
         if let xvgInfo = FiatRateTicker.shared.rateInfo {
             let totalFiat = total.doubleValue * xvgInfo.price
