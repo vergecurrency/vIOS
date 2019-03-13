@@ -73,8 +73,8 @@ class SendViewController: UIViewController {
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(didReceiveTransaction),
-            name: .didReceiveTransaction,
+            selector: #selector(didChangeWalletAmount),
+            name: .didChangeWalletAmount,
             object: nil
         )
     }
@@ -97,13 +97,17 @@ class SendViewController: UIViewController {
     }
 
     @objc func didReceiveFiatRatings(_ notification: Notification) {
-        updateAmountLabel()
-        updateWalletAmountLabel()
+        self.updateAmountLabel()
+        self.updateWalletAmountLabel()
     }
     
-    @objc func didReceiveTransaction(notification: Notification) {
+    @objc func didChangeWalletAmount(notification: Notification) {
         DispatchQueue.main.async {
             self.noBalanceView.isHidden = (self.walletAmount.doubleValue > 0)
+        }
+        
+        if (self.walletAmount.doubleValue > 0) {
+            self.updateWalletAmountLabel()
         }
     }
 
@@ -350,7 +354,6 @@ class SendViewController: UIViewController {
 
     @objc func setMaximumAmount() {
         txFactory.setBy(currency: "XVG", amount: walletAmount)
-
         didChangeSendTransaction(txFactory)
     }
 
