@@ -48,11 +48,6 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             loadTransactions(transaction)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func setTransaction(_ transaction: TxHistory) {
         let dateFormatter = DateFormatter()
@@ -128,11 +123,12 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Transaction Details"
-        }
+        let titles = [
+            "Transaction Details",
+            "Transaction History"
+        ]
         
-        return "Transaction History"
+        return titles[section]
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -145,8 +141,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell")!
-            
+            var cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell")!
             let indexRow: Int = indexPath.row + (transaction?.category == .Moved ? 1 : 0)
             
             switch indexRow {
@@ -171,9 +166,9 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 addTapRecognizer(cell: cell, action: #selector(blockDoubleTapped(recognizer:)))
                 break
             case 3:
+                cell = tableView.dequeueReusableCell(withIdentifier: "transactionMemoCell")!
+                cell.textLabel?.text = transaction?.memo
                 cell.imageView?.image = UIImage(named: "Memo")
-                cell.textLabel?.text = "Memo"
-                cell.detailTextLabel?.text = transaction?.memo
                 cell.accessoryType = .none
                 break
             default:
