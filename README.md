@@ -22,7 +22,7 @@ This iOS wallet provides an easy and secure wallet on your iOS device. With **To
 * Private keys are yours
 * Possibility to choose your own wallet service
 * Touch ID & Face ID support
-* Apple Watch support
+* Apple Watch support (balance, fiat rate and receive address)
 * Siri integrated
 
 ## Local Development
