@@ -147,7 +147,7 @@ public class WalletClient {
     public func createAddress(
         completion: @escaping (_ error: Error?, _ address: AddressInfo?, _ createAddressErrorResponse: CreateAddressErrorResponse?) -> Void
     ) {
-        postRequest(url: "/v3/addresses/", arguments: nil) { data, response, error in
+        postRequest(url: "/v4/addresses/", arguments: nil) { data, response, error in
             guard let data = data else {
                 return completion(error, nil, nil)
             }
@@ -295,7 +295,7 @@ public class WalletClient {
             arguments["message"].null = nil
         }
 
-        postRequest(url: "/v2/txproposals/", arguments: arguments) { data, response, error in
+        postRequest(url: "/v3/txproposals/", arguments: arguments) { data, response, error in
             if let data = data {
                 do {
                     return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
@@ -324,7 +324,7 @@ public class WalletClient {
             )
 
             postRequest(
-                url: "/v1/txproposals/\(txp.id)/publish/",
+                url: "/v2/txproposals/\(txp.id)/publish/",
                 arguments: arguments
             ) { data, response, error in
                 if let data = data {
