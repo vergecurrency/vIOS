@@ -22,7 +22,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6p-6b-6p6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-M6-3Ka">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-M6-3Ka">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                     </imageView>
                                 </subviews>
@@ -120,7 +120,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fln-oq-Ave">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="7cj-CO-JJe">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="7cj-CO-JJe">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                     </imageView>
                                 </subviews>
@@ -208,7 +208,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="inU-H0-wOe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Wvy-QF-nxB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="Wvy-QF-nxB">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                     </imageView>
                                 </subviews>
@@ -420,7 +420,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="1542" height="721"/>
+        <image name="Background2" width="1542" height="721"/>
         <image name="ConfirmPaperkey" width="600" height="600"/>
         <image name="FinalizeRestore" width="600" height="600"/>
         <image name="PaperKey" width="600" height="600"/>

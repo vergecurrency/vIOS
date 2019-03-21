@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class WalletViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var backgroundView: WalletContainerView!
     @IBOutlet weak var xvgBalanceLabel: UILabel!
     @IBOutlet weak var pairBalanceLabel: UILabel!
     @IBOutlet weak var pairSymbolBalanceLabel: UILabel!

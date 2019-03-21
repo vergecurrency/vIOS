@@ -25,7 +25,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3W-PA-UHV">
-                                <rect key="frame" x="64" y="163" width="247.5" height="45"/>
+                                <rect key="frame" x="64" y="188" width="247.5" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="0zy-hk-i0w"/>
                                     <constraint firstAttribute="height" constant="45" id="xgd-zc-sR3"/>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="jdy-ZC-H6U">
-                                <rect key="frame" x="87.5" y="95" width="200" height="60"/>
+                                <rect key="frame" x="87.5" y="120" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="54g-Sv-x6u"/>
                                     <constraint firstAttribute="height" constant="60" id="d4k-qv-eMn"/>
@@ -57,7 +57,7 @@
                             <constraint firstItem="d3W-PA-UHV" firstAttribute="top" secondItem="jdy-ZC-H6U" secondAttribute="bottom" constant="8" id="O40-RI-MDP"/>
                             <constraint firstItem="Hyv-QW-gIp" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="TmF-aV-3Sz"/>
                             <constraint firstItem="gb6-qf-ykk" firstAttribute="bottom" secondItem="Hyv-QW-gIp" secondAttribute="bottom" constant="95" id="oMs-t2-dAL"/>
-                            <constraint firstItem="jdy-ZC-H6U" firstAttribute="top" secondItem="gb6-qf-ykk" secondAttribute="top" constant="75" id="q0x-eY-JOV"/>
+                            <constraint firstItem="jdy-ZC-H6U" firstAttribute="top" secondItem="gb6-qf-ykk" secondAttribute="top" constant="100" id="q0x-eY-JOV"/>
                             <constraint firstItem="jdy-ZC-H6U" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="wwG-cQ-ssE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gb6-qf-ykk"/>
@@ -266,8 +266,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-6d-6TD">
-                                <rect key="frame" x="63.5" y="163" width="248" height="45"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="FJT-Ap-9YN">
+                                <rect key="frame" x="87.5" y="120" width="200" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1IO-Np-P5a"/>
+                                    <constraint firstAttribute="width" constant="200" id="q3M-J5-xR1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-6d-6TD">
+                                <rect key="frame" x="63.5" y="188" width="248" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="hyv-ys-jt2"/>
                                 </constraints>
@@ -275,15 +282,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="FJT-Ap-9YN">
-                                <rect key="frame" x="87.5" y="95" width="200" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="1IO-Np-P5a"/>
-                                    <constraint firstAttribute="width" constant="200" id="q3M-J5-xR1"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure, anonymous and private iOS wallet for Verge. Send and Receive XVG." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-u1-A4L">
-                                <rect key="frame" x="85.5" y="216" width="204.5" height="62"/>
+                                <rect key="frame" x="85.5" y="241" width="204.5" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="vDz-1R-Irg"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="223" id="znS-gB-4H4"/>
@@ -353,7 +353,7 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qb9-iT-8WP" secondAttribute="trailing" constant="20" id="XRc-oL-i2K"/>
                             <constraint firstItem="LnW-6d-6TD" firstAttribute="centerX" secondItem="mgp-vw-fRC" secondAttribute="centerX" id="Y29-O2-y2r"/>
                             <constraint firstItem="b4G-u1-A4L" firstAttribute="top" secondItem="LnW-6d-6TD" secondAttribute="bottom" constant="8" id="e09-N0-I7T"/>
-                            <constraint firstItem="FJT-Ap-9YN" firstAttribute="top" secondItem="Vwx-N4-de5" secondAttribute="top" constant="75" id="jP7-S4-Jq5"/>
+                            <constraint firstItem="FJT-Ap-9YN" firstAttribute="top" secondItem="Vwx-N4-de5" secondAttribute="top" constant="100" id="jP7-S4-Jq5"/>
                             <constraint firstItem="jP0-AP-nMu" firstAttribute="top" secondItem="n9R-19-jxd" secondAttribute="bottom" constant="23" id="n3Y-6d-o3f"/>
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="bottom" secondItem="0xg-Lx-2Cf" secondAttribute="bottom" constant="27" id="nx7-R8-KHe"/>
                             <constraint firstItem="qb9-iT-8WP" firstAttribute="centerX" secondItem="mgp-vw-fRC" secondAttribute="centerX" priority="750" id="pNO-jt-lii"/>
@@ -395,7 +395,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-Yp-adD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background2" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-Yp-adD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYg-qk-M7J" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
@@ -981,6 +981,7 @@
     </scenes>
     <resources>
         <image name="Background" width="1542" height="721"/>
+        <image name="Background2" width="1542" height="721"/>
         <image name="Checked" width="30" height="30"/>
         <image name="ChecklistOneItem" width="600" height="600"/>
         <image name="Close" width="30" height="30"/>

@@ -142,6 +142,7 @@
 		A3AA2206216576BE00160576 /* IpAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2205216576BE00160576 /* IpAddress.swift */; };
 		A3AF9A5F21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */; };
 		A3AF9A6121D8F03900B5CDF6 /* NoContactsPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */; };
+		A3B186D522444DFC00B093C4 /* WalletContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B186D422444DFC00B093C4 /* WalletContainerView.swift */; };
 		A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
 		A3B2E2642148421300C31719 /* NoTransactionsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */; };
 		A3B2E2652148421300C31719 /* NoTransactionsPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */; };
@@ -477,6 +478,7 @@
 		A3AA220721657BBE00160576 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsPlaceholderView.swift; sourceTree = "<group>"; };
 		A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoContactsPlaceholderView.xib; sourceTree = "<group>"; };
+		A3B186D422444DFC00B093C4 /* WalletContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContainerView.swift; sourceTree = "<group>"; };
 		A3B2E25A214836B500C31719 /* HGPlaceholders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HGPlaceholders.framework; path = Carthage/Build/iOS/HGPlaceholders.framework; sourceTree = "<group>"; };
 		A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionsPlaceholderView.swift; sourceTree = "<group>"; };
 		A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTransactionsPlaceholderView.xib; sourceTree = "<group>"; };
@@ -662,8 +664,9 @@
 		A302D2F7211F3F4C00EA8091 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */,
 				A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */,
+				A3B186D422444DFC00B093C4 /* WalletContainerView.swift */,
+				A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1723,6 +1726,7 @@
 				A305DDB42107A1FB00911B64 /* Keyboard.swift in Sources */,
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
+				A3B186D522444DFC00B093C4 /* WalletContainerView.swift in Sources */,
 				A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */,
 				A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */,
 				A38D6F7A21BBFA9700280FFE /* TorSetup3View.swift in Sources */,
