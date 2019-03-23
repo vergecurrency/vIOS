@@ -106,6 +106,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
         FiatRateTicker.shared.start()
         WalletTicker.shared.start()
+        ShortcutsManager.shared.updateShortcuts()
     }
 
 }
