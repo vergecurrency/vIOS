@@ -52,7 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error.localizedDescription)
         }
         
-        return true
+        let shouldPerformAdditionalDelegateHandling =
+            ShortcutsManager.shared.proceedAppDidFinishLaunch(application, withOptions: launchOptions)
+        
+        return shouldPerformAdditionalDelegateHandling
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -92,6 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        ShortcutsManager.shared.proceedAppDidBecomeActive()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -156,5 +161,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Show unlock view")
             topController.present(vc, animated: false, completion: nil)
         }
+    }
+    
+    /*
+     Called when the user activates your application by selecting a shortcut on the home screen, except when
+     application(_:,willFinishLaunchingWithOptions:) or application(_:didFinishLaunchingWithOptions) returns `false`.
+     You should handle the shortcut in those callbacks and return `false` if possible. In that case, this
+     callback is used if your application is already launched in the background.
+     */
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        let handledShortCutItem = ShortcutsManager.shared.handleShortCutItem(shortcutItem)
+        completionHandler(handledShortCutItem)
     }
 }

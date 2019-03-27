@@ -10,12 +10,13 @@ import UIKit
 import SwiftyJSON
 
 class MainTabBarController: UITabBarController {
-
+    
     let sendViewIndex: Int = 2
-
+    let receiveViewIndex: Int = 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(demandSendView(notification:)),
@@ -23,7 +24,7 @@ class MainTabBarController: UITabBarController {
             object: nil
         )
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -34,7 +35,24 @@ class MainTabBarController: UITabBarController {
                 
                 // Remove the transaction from the delegate.
                 delegate.sendRequest = nil
+            } else if ShortcutsManager.shared.needHandleShortcut {
+                proceedShortcut()
+                ShortcutsManager.shared.needHandleShortcut = false
             }
+        }
+    }
+    
+    func proceedShortcut() {
+        let shortCutType = ShortcutsManager.shared.lastShortcutType
+        switch shortCutType {
+        case ShortcutsManager.ShortcutIdentifier.send.type:
+            selectedIndex = sendViewIndex
+            break
+        case ShortcutsManager.ShortcutIdentifier.receive.type:
+            selectedIndex = receiveViewIndex
+            break
+        default:
+            break
         }
     }
     
@@ -55,11 +73,11 @@ class MainTabBarController: UITabBarController {
             sendViewController.didChangeSendTransaction(transaction)
         }
     }
-
+    
     @objc func demandSendView(notification: Notification) {
         if let sendTransaction = notification.object as? TransactionFactory {
             prepareSendView(transaction: sendTransaction)
         }
     }
-
+    
 }
