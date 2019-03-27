@@ -53,22 +53,22 @@ public struct Constants {
     /**
      * The default Verge Wallet Service.
      */
-    public static let bwsEndpoint: String = "https://vws2.swenvanzanten.com/vws/api/"
+    public static let bwsEndpoint: String = "https://vws.vergecurrency.network/vws/api/"
 
     /**
      * The fiat rate data service.
      */
-    public static let priceDataEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/price/"
+    public static let priceDataEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/price/"
 
     /**
      * Chart data endpoint.
      */
-    public static let chartDataEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/chart/"
+    public static let chartDataEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/chart/"
 
     /**
      * IP Address endpoint.
      */
-    public static let ipCheckEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/ip/"
+    public static let ipCheckEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/ip/"
 
 
     /**
