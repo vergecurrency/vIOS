@@ -600,10 +600,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cws-fz-4I9">
-                                <rect key="frame" x="40" y="76.5" width="295" height="494.5"/>
+                                <rect key="frame" x="37.5" y="74" width="300" height="499.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your paper key" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-af-j8d">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="30.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30.5" id="FgV-ZH-LRv"/>
                                         </constraints>
@@ -612,28 +612,28 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taking a screenshot is not secure. Write down the paper key on a piece of paper with a pen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-hu-VkN">
-                                        <rect key="frame" x="1" y="46.5" width="293.5" height="38.5"/>
+                                        <rect key="frame" x="3.5" y="46.5" width="293.5" height="38.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="PrimaryLight"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down each word carefully without capital letters." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYr-IF-5ln">
-                                        <rect key="frame" x="19.5" y="101" width="256" height="38.5"/>
+                                        <rect key="frame" x="22" y="101" width="256" height="38.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ7-OT-VPE" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="155.5" width="295" height="295"/>
+                                        <rect key="frame" x="0.0" y="155.5" width="300" height="300"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkd-wH-xQK">
-                                                <rect key="frame" x="20" y="20" width="255" height="255"/>
+                                                <rect key="frame" x="20" y="20" width="260" height="260"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="22"/>
                                                 <color key="textColor" name="SecondaryDark"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-Wz-Yl6">
-                                                <rect key="frame" x="20" y="20" width="255" height="255"/>
+                                                <rect key="frame" x="20" y="20" width="260" height="260"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -650,10 +650,10 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hf7-Aj-Yyj">
-                                        <rect key="frame" x="0.0" y="466.5" width="295" height="28"/>
+                                        <rect key="frame" x="0.0" y="471.5" width="300" height="28"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="A0j-J9-1ot">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
                                                 <segments>
                                                     <segment title="Words"/>
                                                     <segment title="QR"/>
