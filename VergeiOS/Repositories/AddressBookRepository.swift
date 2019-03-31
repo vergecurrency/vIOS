@@ -12,7 +12,7 @@ import CoreStore
 class AddressBookRepository {
     
     func name(byAddress address: String) -> String? {
-        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.address == address)) else {
+        guard let entity = ((try? CoreStore.fetchOne(From<AddressType>().where(\.address == address))) as AddressType??) else {
             return nil
         }
 
@@ -20,7 +20,7 @@ class AddressBookRepository {
     }
 
     func get(byName name: String) -> Contact? {
-        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.name == name)) else {
+        guard let entity = ((try? CoreStore.fetchOne(From<AddressType>().where(\.name == name))) as AddressType??) else {
             return nil
         }
 
@@ -28,7 +28,7 @@ class AddressBookRepository {
     }
 
     func get(byAddress address: String) -> Contact? {
-        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.address == address)) else {
+        guard let entity = ((try? CoreStore.fetchOne(From<AddressType>().where(\.address == address))) as AddressType??) else {
             return nil
         }
 
@@ -48,7 +48,7 @@ class AddressBookRepository {
 
     func put(address: Contact) {
         var entity: AddressType? = nil
-        if let existingEntity = try? CoreStore.fetchOne(From<AddressType>().where(\.address == address.address)) {
+        if let existingEntity = ((try? CoreStore.fetchOne(From<AddressType>().where(\.address == address.address))) as AddressType??) {
             entity = existingEntity
         }
         
@@ -71,7 +71,7 @@ class AddressBookRepository {
     }
 
     func remove(address: Contact) {
-        guard let entity = try? CoreStore.fetchOne(From<AddressType>().where(\.name == address.name)) else {
+        guard let entity = ((try? CoreStore.fetchOne(From<AddressType>().where(\.name == address.name))) as AddressType??) else {
             return
         }
 

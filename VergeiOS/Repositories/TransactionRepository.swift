@@ -31,7 +31,7 @@ class TransactionRepository {
 
     func put(tx: TxHistory) {
         var entity: TransactionType? = nil
-        if let existingEntity = try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)) {
+        if let existingEntity = ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid))) as TransactionType??) {
             entity = existingEntity
         }
 
@@ -62,7 +62,7 @@ class TransactionRepository {
     }
 
     func remove(tx: TxHistory) {
-        guard let entity = try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)) else {
+        guard let entity = ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid))) as TransactionType??) else {
             return
         }
 

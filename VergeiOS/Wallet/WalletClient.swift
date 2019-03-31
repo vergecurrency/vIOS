@@ -16,7 +16,7 @@ public class WalletClient {
         case invalidMessageData(message: String)
         case invalidWidHex(id: String)
         case invalidAddressReceived(address: AddressInfo?)
-        case noOutputFound()
+        case noOutputFound
     }
 
     public static let shared = WalletClient(
@@ -611,7 +611,7 @@ public class WalletClient {
 
     private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {
         guard let output = txp.outputs.first else {
-            throw WalletClientError.noOutputFound()
+            throw WalletClientError.noOutputFound
         }
         
         let changeAddress: Address = try AddressFactory.create(txp.changeAddress.address)

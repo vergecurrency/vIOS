@@ -365,7 +365,7 @@ class SendViewController: UIViewController {
 extension SendViewController: UITextFieldDelegate {
     // MARK: - Recipient text field toolbar
 
-    fileprivate func setupRecipientTextFieldKeyboardToolbar() {
+    func setupRecipientTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
         keyboardToolbar.tintColor = UIColor.primaryLight()

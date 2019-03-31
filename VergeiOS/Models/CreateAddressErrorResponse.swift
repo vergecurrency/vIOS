@@ -18,7 +18,7 @@ public struct CreateAddressErrorResponse: Decodable {
 
 public extension CreateAddressErrorResponse {
 
-    public var error: CreateAddressErrorResponse.Error? {
+    var error: CreateAddressErrorResponse.Error? {
         return CreateAddressErrorResponse.Error.init(rawValue: code)
     }
 

@@ -18,7 +18,7 @@ public struct TxProposalErrorResponse: Decodable {
 
 public extension TxProposalErrorResponse {
 
-    public var error: TxProposalErrorResponse.Error? {
+    var error: TxProposalErrorResponse.Error? {
         return TxProposalErrorResponse.Error.init(rawValue: code)
     }
 

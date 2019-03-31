@@ -74,7 +74,7 @@ class CurrencyInput: UITextField {
 
         // Make sure the value is always displayed with two decimals after the separator.
         if let dotIndex = text?.index(of: formatter.decimalSeparator) {
-            let minimumLength = dotIndex.encodedOffset + 3
+            let minimumLength = dotIndex.utf16Offset(in: text!) + 3
             let wantedLength = text!.count >= minimumLength ? text!.count : minimumLength
 
             text = text?.padding(toLength: wantedLength, withPad: "0", startingAt: 0)
@@ -116,16 +116,16 @@ class CurrencyInput: UITextField {
 
         for number in String(text).reversed() {
             if includesDecimalSeparator && !newText.contains(formatter.decimalSeparator) {
-                newText.insert(number, at: String.Index.init(encodedOffset: 0))
+                newText.insert(number, at: String.Index(utf16Offset: 0, in: ""))
                 continue
             }
 
             if counted == formatter.groupingSize {
-                newText.insert(Character(formatter.groupingSeparator), at: String.Index.init(encodedOffset: 0))
+                newText.insert(Character(formatter.groupingSeparator), at: String.Index(utf16Offset: 0, in: ""))
                 counted = 0
             }
 
-            newText.insert(number, at: String.Index.init(encodedOffset: 0))
+            newText.insert(number, at: String.Index(utf16Offset: 0, in: ""))
             counted += 1
         }
 
