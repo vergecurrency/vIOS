@@ -7,14 +7,14 @@ import Foundation
 
 class WalletTicker {
 
-    public static let shared = WalletTicker()
-
     private var client: WalletClient!
+    private var applicationRepository: ApplicationRepository!
     private var started: Bool = false
     private var interval: Timer?
 
-    init(client: WalletClient = WalletClient.shared) {
+    init(client: WalletClient, applicationRepository: ApplicationRepository) {
         self.client = client
+        self.applicationRepository = applicationRepository
     }
 
     public func start() {
@@ -22,7 +22,7 @@ class WalletTicker {
             return
         }
 
-        if !ApplicationRepository.default.setup {
+        if !applicationRepository.setup {
             return
         }
 
@@ -50,9 +50,9 @@ class WalletTicker {
     private func fetchWalletAmount() {
         print("Fetching wallet amount")
 
-        WalletClient.shared.getBalance { error, info in
+        client.getBalance { error, info in
             if let info = info {
-                ApplicationRepository.default.amount = info.availableAmountValue
+                self.applicationRepository.amount = info.availableAmountValue
             }
         }
     }

@@ -11,8 +11,6 @@ import KeychainSwift
 
 class ApplicationRepository {
 
-    static let `default` = ApplicationRepository()
-
     private let keychain = KeychainSwift(keyPrefix: "verge_")
     private let userDefaults = UserDefaults.standard
 

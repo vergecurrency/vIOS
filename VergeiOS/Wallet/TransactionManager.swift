@@ -8,7 +8,7 @@ import Foundation
 class TransactionManager {
 
     public static let shared = TransactionManager(
-        walletClient: WalletClient.shared,
+        walletClient: Application.container.resolve(WalletClient.self)!,
         transactionRepository: TransactionRepository()
     )
 

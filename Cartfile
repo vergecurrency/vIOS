@@ -10,3 +10,4 @@ github "xmartlabs/Eureka" ~> 4.3
 github "krzyzanowskim/CryptoSwift"
 binary "https://vergecurrency.github.io/BitcoinKit/BitcoinKit.json" == 1.2.0
 github "Swinject/Swinject" ~> 2.6.0
+github "Swinject/SwinjectStoryboard"

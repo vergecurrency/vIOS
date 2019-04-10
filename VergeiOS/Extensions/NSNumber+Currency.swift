@@ -10,17 +10,23 @@ import UIKit
 
 extension NSNumber {
 
-    func toCurrency(currency: String = ApplicationRepository.default.currency, fractDigits: Int = 2, floating: Bool = true) -> String {
+    var defaultCurrency: String {
+        let appRepo = Application.container.resolve(ApplicationRepository.self)!
+
+        return appRepo.currency
+    }
+
+    func toCurrency(currency: String? = nil, fractDigits: Int = 2, floating: Bool = true) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if floating == false {
             formatter.minimumFractionDigits = fractDigits
         }
         formatter.maximumFractionDigits = fractDigits
-        
+
         var suffix = ""
         if currency != "XVG" {
-            formatter.currencyCode = currency
+            formatter.currencyCode = currency ?? defaultCurrency
         } else {
             formatter.currencySymbol = ""
             suffix = " XVG"
@@ -31,7 +37,7 @@ extension NSNumber {
     }
     
     func toPairCurrency(fractDigits: Int = 2) -> String {
-        return toCurrency(currency: ApplicationRepository.default.currency, fractDigits: fractDigits)
+        return toCurrency(currency: defaultCurrency, fractDigits: fractDigits)
     }
     
     func toXvgCurrency(fractDigits: Int? = nil) -> String {

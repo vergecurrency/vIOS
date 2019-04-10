@@ -12,7 +12,9 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var placeholderView: UIView!
-    
+
+    var applicationRepository: ApplicationRepository!
+    var fiatRateTicker: FiatRateTicker!
     var items: [String] = [
         "price",
         "marketCap",
@@ -26,6 +28,9 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
+        self.fiatRateTicker = Application.container.resolve(FiatRateTicker.self)!
 
         NotificationCenter.default.addObserver(
             self,
@@ -45,7 +50,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     }
     
     private var fiatRateInfo: FiatRate? {
-        return FiatRateTicker.shared.rateInfo
+        return self.fiatRateTicker.rateInfo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,7 +76,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         if let info = fiatRateInfo {
             switch item {
             case "price":
-                cell.textLabel?.text = "XVG/\(ApplicationRepository.default.currency)"
+                cell.textLabel?.text = "XVG/\(self.applicationRepository.currency)"
                 cell.detailTextLabel?.text = NSNumber(value: info.price).toPairCurrency(fractDigits: 6)
                 break
             case "marketCap":

@@ -9,31 +9,24 @@
 import UIKit
 import CoreData
 import CoreStore
-import IQKeyboardManagerSwift
+import Swinject
+import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
+    var application: Application?
     var window: UIWindow?
     var sendRequest: TransactionFactory?
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        TorStatusIndicator.shared.initialize()
-        NotificationManager.shared.initialize()
-        ThemeManager.shared.initialize(withWindow: window ?? UIWindow())
-        IQKeyboardManager.shared.enable = true
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
         
-        setupListeners()
-        
-        // Start the tor client
-        TorClient.shared.start {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                self.torClientStarted()
-            }
-        }
-        
-        WatchSyncManager.shared.startSession()
+        self.application = Application(container: SwinjectStoryboard.defaultContainer)
+        self.application?.boot()
         
         do {
             CoreStore.defaultStack = DataStack(
@@ -51,9 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error.localizedDescription)
         }
-        
+
+        let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!
         let shouldPerformAdditionalDelegateHandling =
-            ShortcutsManager.shared.proceedAppDidFinishLaunch(application, withOptions: launchOptions)
+            shortcutsManager.proceedAppDidFinishLaunch(application, withOptions: launchOptions)
         
         return shouldPerformAdditionalDelegateHandling
     }
@@ -82,21 +76,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        WalletTicker.shared.stop()
-        FiatRateTicker.shared.stop()
+
+        Application.container.resolve(WalletTicker.self)?.stop()
+        Application.container.resolve(FiatRateTicker.self)?.stop()
         
         showPinUnlockViewController(application)
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-        TorClient.shared.restart()
+        Application.container.resolve(TorClient.self)?.restart()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        ShortcutsManager.shared.proceedAppDidBecomeActive()
+
+        let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!
+        shortcutsManager.proceedAppDidBecomeActive()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -104,33 +100,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         
         // Stop price ticker.
-        WalletTicker.shared.stop()
-        FiatRateTicker.shared.stop()
-    }
-    
-    func torClientStarted() {
-        // Start the price ticker.
-        FiatRateTicker.shared.start()
-        
-        if !ApplicationRepository.default.setup {
-            return
-        }
+        let walletTicker = Application.container.resolve(WalletTicker.self)
+        walletTicker?.stop()
 
-        Credentials.shared.setSeed(
-            mnemonic: ApplicationRepository.default.mnemonic!,
-            passphrase: ApplicationRepository.default.passphrase!
-        )
-
-        // Start the wallet ticker.
-        WalletTicker.shared.start()
-        
-        if #available(iOS 12.0, *) {
-            IntentsManager.donateIntents()
-        }
+        Application.container.resolve(FiatRateTicker.self)?.stop()
     }
     
     func showPinUnlockViewController(_ application: UIApplication) {
-        if !ApplicationRepository.default.setup {
+        let appRepo = Application.container.resolve(ApplicationRepository.self)!
+        if !appRepo.setup {
             return
         }
         
@@ -162,6 +140,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             topController.present(vc, animated: false, completion: nil)
         }
     }
+
+    func torClientStarted() {
+        // Start the price ticker.
+        Application.container.resolve(FiatRateTicker.self)?.start()
+
+        let appRepo = Application.container.resolve(ApplicationRepository.self)
+        if !appRepo!.setup {
+            return
+        }
+
+        // Start the wallet ticker.
+        Application.container.resolve(WalletTicker.self)?.start()
+
+        if #available(iOS 12.0, *) {
+            IntentsManager.donateIntents()
+        }
+    }
     
     /*
      Called when the user activates your application by selecting a shortcut on the home screen, except when
@@ -169,8 +164,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      You should handle the shortcut in those callbacks and return `false` if possible. In that case, this
      callback is used if your application is already launched in the background.
      */
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        let handledShortCutItem = ShortcutsManager.shared.handleShortCutItem(shortcutItem)
+    func application(
+        _ application: UIApplication,
+        performActionFor shortcutItem: UIApplicationShortcutItem,
+        completionHandler: @escaping (Bool) -> Void
+    ) {
+        let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!
+        let handledShortCutItem = shortcutsManager.handleShortCutItem(shortcutItem)
+
         completionHandler(handledShortCutItem)
     }
 }

@@ -15,15 +15,18 @@ class TorSetup3View: UIView {
     @IBOutlet weak var proceedButton: UIButton!
 
     var viewController: TorViewController!
+    var applicationRepository: ApplicationRepository!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
         
         updateIPAddress()
     }
     
     @IBAction func changeTorUsage(_ sender: UISwitch) {
-        ApplicationRepository.default.useTor = sender.isOn
+        self.applicationRepository.useTor = sender.isOn
 
         proceedButton.setTitle(sender.isOn ? "Proceed with Tor" : "Proceed without Tor", for: .normal)
         

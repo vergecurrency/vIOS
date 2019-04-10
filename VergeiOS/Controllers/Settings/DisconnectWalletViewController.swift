@@ -10,6 +10,10 @@ import UIKit
 
 class DisconnectWalletViewController: UIViewController {
 
+    var applicationRepository: ApplicationRepository!
+    var walletTicker: WalletTicker!
+    var fiatRateTicker: FiatRateTicker!
+
     @IBAction func disconnectWallet(_ sender: Any) {
         let alert = UIAlertController(
             title: "Disconnect Wallet",
@@ -31,9 +35,9 @@ class DisconnectWalletViewController: UIViewController {
                     }
                     
                     // Reset wallet manager.
-                    ApplicationRepository.default.reset()
-                    FiatRateTicker.shared.stop()
-                    WalletTicker.shared.stop()
+                    self.applicationRepository.reset()
+                    self.fiatRateTicker.stop()
+                    self.walletTicker.stop()
                     TorClient.shared.resign()
                 } else {
                     pinUnlockView.dismiss(animated: true)

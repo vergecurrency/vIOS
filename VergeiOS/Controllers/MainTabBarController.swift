@@ -13,6 +13,8 @@ class MainTabBarController: UITabBarController {
     
     let sendViewIndex: Int = 2
     let receiveViewIndex: Int = 3
+
+    var shortcutsManager: ShortcutsManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +37,15 @@ class MainTabBarController: UITabBarController {
                 
                 // Remove the transaction from the delegate.
                 delegate.sendRequest = nil
-            } else if ShortcutsManager.shared.needHandleShortcut {
+            } else if self.shortcutsManager.needHandleShortcut {
                 proceedShortcut()
-                ShortcutsManager.shared.needHandleShortcut = false
+                self.shortcutsManager.needHandleShortcut = false
             }
         }
     }
     
     func proceedShortcut() {
-        let shortCutType = ShortcutsManager.shared.lastShortcutType
+        let shortCutType = self.shortcutsManager.lastShortcutType
         switch shortCutType {
         case ShortcutsManager.ShortcutIdentifier.send.type:
             selectedIndex = sendViewIndex

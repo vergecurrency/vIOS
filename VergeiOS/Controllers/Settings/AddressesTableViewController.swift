@@ -11,6 +11,7 @@ import UIKit
 class AddressesTableViewController: EdgedTableViewController {
 
     var credentials: Credentials!
+    var walletClient: WalletClient!
 
     var addresses: [AddressInfo] = []
     var balanceAddresses: [AddressBalance] = []
@@ -36,8 +37,6 @@ class AddressesTableViewController: EdgedTableViewController {
             for: .valueChanged
         )
 
-        credentials = Credentials.shared
-
         loadAddress()
     }
 
@@ -48,7 +47,7 @@ class AddressesTableViewController: EdgedTableViewController {
         options.limit = 25
         options.reverse = true
 
-        WalletClient.shared.getMainAddresses(options: options) { addresses in
+        self.walletClient.getMainAddresses(options: options) { addresses in
             self.addresses = addresses.filter { addressInfo in
                 return TransactionManager.shared.all(byAddress: addressInfo.address).count == 0
             }
@@ -58,7 +57,7 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     func loadBalances() {
-        WalletClient.shared.getBalance { error, balanceInfo in
+        self.walletClient.getBalance { error, balanceInfo in
             guard let balanceInfo = balanceInfo else {
                 self.balanceAddresses = []
                 return
@@ -200,7 +199,7 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     @IBAction func scanAddresses(_ sender: UIButton) {
-        WalletClient.shared.scanAddresses()
+        self.walletClient.scanAddresses()
 
         sender.isEnabled = false
         sender.backgroundColor = UIColor.vergeGrey()

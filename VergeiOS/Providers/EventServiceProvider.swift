@@ -1,14 +1,16 @@
 //
-// Created by Swen van Zanten on 16/11/2018.
-// Copyright (c) 2018 Verge Currency. All rights reserved.
+// Created by Swen van Zanten on 2019-04-11.
+// Copyright (c) 2019 Verge Currency. All rights reserved.
 //
 
 import Foundation
 
-extension AppDelegate {
-    func setupListeners() {
+class EventServiceProvider: ServiceProvider {
+
+    override func register() {
         setupTorListeners()
         setupWalletListeners()
+        setupFiatRatingListeners()
     }
 
     func setupTorListeners() {
@@ -48,6 +50,24 @@ extension AppDelegate {
         )
     }
 
+    func setupWalletListeners() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didBroadcastTx(notification:)),
+            name: .didBroadcastTx,
+            object: nil
+        )
+    }
+
+    func setupFiatRatingListeners() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didChangeCurrency),
+            name: .didChangeCurrency,
+            object: nil
+        )
+    }
+
     @objc func didStartTorThread(notification: Notification? = nil) {
         TorStatusIndicator.shared.setStatus(.disconnected)
     }
@@ -72,20 +92,23 @@ extension AppDelegate {
         }
     }
 
-    func setupWalletListeners() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didBroadcastTx(notification:)),
-            name: .didBroadcastTx,
-            object: nil
-        )
-    }
-
     @objc func didBroadcastTx(notification: Notification) {
-        WalletClient.shared.getBalance { error, info in
+        let walletClient = self.container.resolve(WalletClient.self)
+
+        walletClient?.getBalance { error, info in
+            let appRepo = self.container.resolve(ApplicationRepository.self)!
+
             if let info = info {
-                ApplicationRepository.default.amount = info.availableAmountValue
+                appRepo.amount = info.availableAmountValue
             }
         }
     }
+
+    @objc private func didChangeCurrency(_ notification: Notification) {
+        DispatchQueue.main.async {
+            print("Currency changed 💰")
+            self.container.resolve(FiatRateTicker.self)?.fetch()
+        }
+    }
+
 }

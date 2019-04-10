@@ -14,8 +14,10 @@ class PaperkeyShowViewController: UIViewController {
     @IBOutlet weak var wordsLabel: UILabel!
     @IBOutlet weak var qrImageView: UIImageView!
 
+    var applicationRepository: ApplicationRepository!
+
     var mnemonic: String {
-        return ApplicationRepository.default.mnemonic?.joined(separator: " ") ?? ""
+        return applicationRepository.mnemonic?.joined(separator: " ") ?? ""
     }
 
     override func viewDidLoad() {

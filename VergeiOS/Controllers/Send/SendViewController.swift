@@ -26,13 +26,16 @@ class SendViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
 
     var currency = CurrencySwitch.XVG
-    var txFactory = TransactionFactory()
+    var txFactory: TransactionFactory!
     var txTransponder: TxTransponder!
+    var applicationRepository: ApplicationRepository!
+    var walletClient: WalletClient!
+    var fiatRateTicker: FiatRateTicker!
     
     weak var confirmButtonInterval: Timer?
 
     var walletAmount: NSNumber {
-        return ApplicationRepository.default.amount
+        return applicationRepository.amount
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -45,12 +48,10 @@ class SendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         confirmButtonInterval = setInterval(1) {
             self.isSendable()
         }
-
-        txTransponder = TxTransponder(walletClient: WalletClient.shared)
 
         amountTextField.delegate = self
         amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
@@ -113,7 +114,7 @@ class SendViewController: UIViewController {
 
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
-        currencyLabel.text = currency == .XVG ? "XVG" : ApplicationRepository.default.currency
+        currencyLabel.text = currency == .XVG ? "XVG" : applicationRepository.currency
 
         updateWalletAmountLabel()
         updateAmountLabel()
@@ -156,7 +157,7 @@ class SendViewController: UIViewController {
     }
 
     func convertXvgToFiat(_ amount: NSNumber) -> NSNumber? {
-        if let xvgInfo = FiatRateTicker.shared.rateInfo {
+        if let xvgInfo = self.fiatRateTicker.rateInfo {
             return NSNumber(value: amount.doubleValue * xvgInfo.price)
         }
 
@@ -240,7 +241,7 @@ class SendViewController: UIViewController {
             ))
         }
 
-        WalletClient.shared.getSendMaxInfo { info in
+        self.walletClient.getSendMaxInfo { info in
             guard let info = info else {
                 return self.present(UIAlertController.createSendMaxInfoAlert(), animated: true)
             }
@@ -318,7 +319,7 @@ class SendViewController: UIViewController {
                 return
             }
 
-            WalletClient.shared.deleteTxProposal(txp: txp)
+            self.walletClient.deleteTxProposal(txp: txp)
         })
 
         if let popoverController = actionSheet.popoverPresentationController {
@@ -585,6 +586,6 @@ extension SendViewController: SendTransactionDelegate {
     }
 
     func currentCurrency() -> String {
-        return currency == .XVG ? "XVG" : ApplicationRepository.default.currency
+        return currency == .XVG ? "XVG" : applicationRepository.currency
     }
 }

@@ -11,12 +11,19 @@ import WatchConnectivity
 import QRCode
 
 class WatchSyncManager: NSObject, WCSessionDelegate {
-    public static let shared = WatchSyncManager()
-    
+
+    private var walletClient: WalletClient!
+
     // MARK: Init
     
     private override init() {
         super.init()
+    }
+    
+    init(walletClient: WalletClient) {
+        super.init()
+        
+        self.walletClient = walletClient
         
         NotificationCenter.default.addObserver(
             self,
@@ -48,6 +55,7 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
         if let session = session, session.isPaired && session.isWatchAppInstalled {
             return session
         }
+
         return nil
     }
     
@@ -61,28 +69,30 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     //MARK: Private methods
     
     @objc private func syncCurrency() {
-        let currency = ApplicationRepository.default.currency;
+        let currency = ApplicationRepository().currency
         _ = self.transferMessage(message: ["currency" : currency as AnyObject])
     }
     
     @objc private func syncAmount() {
-        let balanceCredentials = WalletClient.shared.watchRequestCredentialsForMethodPath(path: "/v1/balance/")
+        let balanceCredentials = self.walletClient.watchRequestCredentialsForMethodPath(path: "/v1/balance/")
+
         if balanceCredentials.signature != nil &&
             balanceCredentials.url != nil &&
             balanceCredentials.copayerId != nil {
             
-            self.transferMessage(message:
-                ["balanceCredentials" : ["url" : balanceCredentials.url,
-                                         "signature" : balanceCredentials.signature,
-                                         "copayerId" : balanceCredentials.copayerId ] as AnyObject]
-            )
+            self.transferMessage(message: [
+                "balanceCredentials": [
+                    "url": balanceCredentials.url,
+                    "signature": balanceCredentials.signature,
+                    "copayerId": balanceCredentials.copayerId
+                ] as AnyObject
+            ])
         }
         
-        let amount = ApplicationRepository.default.amount;
-        let currency = ApplicationRepository.default.currency;
+        let amount = ApplicationRepository().amount
+        let currency = ApplicationRepository().currency
         
-        self.transferMessage(message: ["amount" : amount,
-                                           "currency" : currency as AnyObject])
+        self.transferMessage(message: ["amount" : amount, "currency" : currency as AnyObject])
     }
     
     @objc private func syncAddress(notification: Notification? = nil) {
@@ -96,29 +106,22 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
             let qrImg = qrCodeObject.image!
             let data = qrImg.pngData()
             
-            self.transferMessage(message:
-                ["address" : ["value" : address, "qr" : data! ] as AnyObject]
-            )
+            self.transferMessage(message: ["address" : ["value" : address, "qr" : data! ] as AnyObject])
         }
     }
     
     private func transferMessage(message: [String : AnyObject]) {
-        validSession?.sendMessage(message,
-                                  replyHandler: nil,
-                                  errorHandler: nil)
+        validSession?.sendMessage(message, replyHandler: nil, errorHandler: nil)
     }
     
     //MARK: WCSessionDelegate
-    
-    func session(_ session: WCSession,
-                 activationDidCompleteWith activationState: WCSessionActivationState,
-                 error: Error?) {
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-    }
+
+    func session(
+        _ session: WCSession,
+        activationDidCompleteWith activationState: WCSessionActivationState,
+        error: Error?
+    ) {}
+    func sessionDidBecomeInactive(_ session: WCSession) {}
+    func sessionDidDeactivate(_ session: WCSession) {}
 }
 

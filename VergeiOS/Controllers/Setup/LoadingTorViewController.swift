@@ -9,7 +9,7 @@
 import UIKit
 
 class LoadingTorViewController: UIViewController {
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -17,7 +17,8 @@ class LoadingTorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let identifier = ApplicationRepository.default.setup ? "showWallet" : "showWelcomeView"
+        let applicationRepository = Application.container.resolve(ApplicationRepository.self)!
+        let identifier = applicationRepository.setup ? "showWallet" : "showWelcomeView"
 
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: identifier, sender: self)

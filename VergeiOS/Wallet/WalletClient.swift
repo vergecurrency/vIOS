@@ -18,14 +18,10 @@ public class WalletClient {
         case invalidAddressReceived(address: AddressInfo?)
         case noOutputFound
     }
-
-    public static let shared = WalletClient(
-        baseUrl: ApplicationRepository.default.walletServiceUrl,
-        credentials: Credentials.shared
-    )
     
     private let sjcl = SJCL()
 
+    private var applicationRepository: ApplicationRepository!
     private var baseUrl: String = ""
     private var urlSession: URLSession {
         return TorClient.shared.session
@@ -36,8 +32,9 @@ public class WalletClient {
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
-    public init(baseUrl: String, credentials: Credentials, network: Network = .mainnetXVG) {
-        self.baseUrl = baseUrl
+    init(appRepo: ApplicationRepository, credentials: Credentials, network: Network = .mainnetXVG) {
+        self.applicationRepository = appRepo
+        self.baseUrl = appRepo.walletServiceUrl
         self.credentials = credentials
         self.network = network
     }
@@ -65,9 +62,9 @@ public class WalletClient {
                 do {
                     let walletId = try JSONDecoder().decode(WalletID.self, from: data)
 
-                    ApplicationRepository.default.walletId = walletId.identifier
-                    ApplicationRepository.default.walletName = walletName
-                    ApplicationRepository.default.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
+                    self.applicationRepository.walletId = walletId.identifier
+                    self.applicationRepository.walletName = walletName
+                    self.applicationRepository.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
 
                     completion(nil, walletId.identifier)
                 } catch {

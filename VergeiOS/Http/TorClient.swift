@@ -12,8 +12,9 @@ import Tor
 class TorClient {
 
     // The shared tor client.
-    static let shared = TorClient()
+    static let shared = TorClient(applicationRepository: ApplicationRepository())
 
+    private var applicationRepository: ApplicationRepository!
     private var config: TorConfiguration = TorConfiguration()
     private var thread: TorThread!
     private var controller: TorController!
@@ -33,7 +34,9 @@ class TorClient {
         return URLSession(configuration: sessionConfiguration)
     }
 
-    private init() {}
+    public init(applicationRepository: ApplicationRepository) {
+        self.applicationRepository = applicationRepository
+    }
 
     private func setupThread() {
         config.options = [
@@ -193,6 +196,6 @@ class TorClient {
     }
     
     func turnedOff() -> Bool {
-        return !ApplicationRepository.default.useTor
+        return !self.applicationRepository.useTor
     }
 }

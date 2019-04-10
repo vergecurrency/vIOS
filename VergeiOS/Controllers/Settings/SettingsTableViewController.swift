@@ -15,11 +15,12 @@ class SettingsTableViewController: EdgedTableViewController {
     @IBOutlet weak var currencyLabel: UILabel!
 
     let localAuthIndexPath = IndexPath(row: 2, section: 1)
+    var applicationRepository: ApplicationRepository!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        currencyLabel.text = ApplicationRepository.default.currency
+        currencyLabel.text = applicationRepository.currency
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

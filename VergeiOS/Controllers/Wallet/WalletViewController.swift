@@ -19,7 +19,9 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var xvgPairSymbolLabel: UILabel!
     @IBOutlet weak var walletSlideScrollView: UIScrollView!
     @IBOutlet weak var walletSlidePageControl: UIPageControl!
-    
+
+    var applicationRepository: ApplicationRepository!
+    var fiatRateTicker: FiatRateTicker!
     var walletSlides: [WalletSlideView] = []
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -115,15 +117,15 @@ class WalletViewController: UIViewController, UIScrollViewDelegate {
     
     func setStats() {
         DispatchQueue.main.async {
-            let walletAmount = ApplicationRepository.default.amount
-            self.xvgBalanceLabel.text = ApplicationRepository.default.amount.toXvgCurrency()
+            let walletAmount = self.applicationRepository.amount
+            self.xvgBalanceLabel.text = self.applicationRepository.amount.toXvgCurrency()
 
-            if let xvgInfo = FiatRateTicker.shared.rateInfo {
+            if let xvgInfo = self.fiatRateTicker.rateInfo {
                 self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
-                self.pairSymbolBalanceLabel.text = "\(ApplicationRepository.default.currency) BALANCE"
+                self.pairSymbolBalanceLabel.text = "\(self.applicationRepository.currency) BALANCE"
                 
                 self.xvgPairBalanceLabel.text = NSNumber(value: xvgInfo.price).toPairCurrency(fractDigits: 6)
-                self.xvgPairSymbolLabel.text = "\(ApplicationRepository.default.currency)/XVG"
+                self.xvgPairSymbolLabel.text = "\(self.applicationRepository.currency)/XVG"
             }
         }
     }

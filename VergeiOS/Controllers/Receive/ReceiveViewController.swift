@@ -29,6 +29,11 @@ class ReceiveViewController: UIViewController {
     @IBOutlet weak var amountTextField: CurrencyInput!
     @IBOutlet weak var stealthSwitch: UISwitch!
 
+    var applicationRepository: ApplicationRepository!
+    var walletClient: WalletClient!
+    var transactionManager: TransactionManager!
+    var fiatRateTicker: FiatRateTicker!
+
     var address = ""
     var amount = 0.0
     var currency = CurrencySwitch.XVG
@@ -121,12 +126,12 @@ class ReceiveViewController: UIViewController {
             options.limit = 1
             options.reverse = true
 
-            WalletClient.shared.getMainAddresses(options: options) { addresses in
+            self.walletClient.getMainAddresses(options: options) { addresses in
                 guard let lastAddress = addresses.first else {
                     return self.getNewAddress()
                 }
 
-                if TransactionManager.shared.all(byAddress: lastAddress.address).count == 0 {
+                if self.transactionManager.all(byAddress: lastAddress.address).count == 0 {
                     return self.handleChangeAddress(lastAddress.address)
                 }
 
@@ -136,7 +141,7 @@ class ReceiveViewController: UIViewController {
     }
 
     func getNewAddress() {
-        WalletClient.shared.createAddress { error, addressInfo, errorResponse in
+        self.walletClient.createAddress { error, addressInfo, errorResponse in
             if errorResponse?.error == .MainAddressGapReached {
                 let alert = UIAlertController.createAddressGapReachedAlert()
 
@@ -208,12 +213,12 @@ class ReceiveViewController: UIViewController {
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
         var newAmount = ""
-        if let xvgInfo = FiatRateTicker.shared.rateInfo {
+        if let xvgInfo = self.fiatRateTicker.rateInfo {
             if currency == .XVG {
                 currencyLabel.text = "XVG"
                 newAmount = String(Int(amount * 100))
             } else {
-                currencyLabel.text = ApplicationRepository.default.currency
+                currencyLabel.text = applicationRepository.currency
                 newAmount = String(Int((amount * 100) * xvgInfo.price))
             }
         }
@@ -275,7 +280,7 @@ class ReceiveViewController: UIViewController {
         amount = textField.getNumber().doubleValue
 
         if currency == .FIAT {
-            if let xvgInfo = FiatRateTicker.shared.rateInfo {
+            if let xvgInfo = self.fiatRateTicker.rateInfo {
                 amount = amount / xvgInfo.price
             }
         }

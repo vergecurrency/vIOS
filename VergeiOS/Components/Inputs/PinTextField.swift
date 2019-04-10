@@ -10,7 +10,7 @@ import UIKit
 
 class PinTextField: UIView {
 
-    var pinCharacterCount: Int = ApplicationRepository.default.pinCount
+    var pinCharacterCount: Int!
     let pinHeight: CGFloat = 24.0
     let pinMargin: CGFloat = 36.0
     let pinRadius: CGFloat = 12.0
@@ -20,11 +20,13 @@ class PinTextField: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
+        self.pinCharacterCount = Application.container.resolve(ApplicationRepository.self)!.pinCount
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = .clear
+        self.pinCharacterCount = Application.container.resolve(ApplicationRepository.self)!.pinCount
     }
     
     // Draw the pin character circles.

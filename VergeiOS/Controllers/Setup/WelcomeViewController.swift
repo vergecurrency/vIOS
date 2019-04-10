@@ -9,7 +9,9 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-    
+
+    var applicationRepository: ApplicationRepository!
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -25,7 +27,7 @@ class WelcomeViewController: UIViewController {
             return
         }
 
-        ApplicationRepository.default.reset()
+        applicationRepository.reset()
 
         if let vc = navigationController.viewControllers.first as? SelectPinViewController {
             vc.segueIdentifier = segue.identifier

@@ -14,7 +14,8 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinConfirmedView: PanelView!
     @IBOutlet weak var pinFailedView: PanelView!
-    
+
+    var applicationRepository: ApplicationRepository!
     var previousPin: String = ""
     var pin: String = ""
     var pinCount: Int!
@@ -52,7 +53,7 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     
     func handlePinCreation() {
         if (self.pin == self.previousPin) {
-            ApplicationRepository.default.pinCount = pinCount
+            self.applicationRepository.pinCount = pinCount
 
             self.pinConfirmedView.alpha = 0.0
             self.pinConfirmedView.center.y -= 60.0
@@ -78,7 +79,7 @@ class ConfirmPinViewController: UIViewController, KeyboardDelegate {
     }
     
     @IBAction func confirmPin(_ sender: Any) {
-        ApplicationRepository.default.pin = self.pin
+        self.applicationRepository.pin = self.pin
 
         if let completion = completion {
             return completion(self.pin)

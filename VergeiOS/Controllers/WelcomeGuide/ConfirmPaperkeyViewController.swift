@@ -15,7 +15,8 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
     
     @IBOutlet weak var firstWordTextfield: UITextField!
     @IBOutlet weak var secondWordTextfield: UITextField!
-    
+
+    var applicationRepository: ApplicationRepository!
     var mnemonic: [String] = []
     var randomNumbers: [Int] = []
     
@@ -65,7 +66,7 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
         }
 
         // Save the mnemonic.
-        ApplicationRepository.default.mnemonic = mnemonic
+        applicationRepository.mnemonic = mnemonic
 
         // Finish the welcome guide.
         self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)

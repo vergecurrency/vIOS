@@ -67,8 +67,10 @@ class ConfirmSendView: UIView {
         recipientAddressLabel.text = (output.stealth ?? false)
             ? "Resolved stealth address 🕵️‍♀️"
             : output.toAddress
+        
+        let fiatRateTicker = Application.container.resolve(FiatRateTicker.self)
 
-        if let xvgInfo = FiatRateTicker.shared.rateInfo {
+        if let xvgInfo = fiatRateTicker?.rateInfo {
             let totalFiat = total.doubleValue * xvgInfo.price
 
             totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toPairCurrency()
