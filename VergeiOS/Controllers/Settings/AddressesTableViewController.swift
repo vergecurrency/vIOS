@@ -12,6 +12,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
     var credentials: Credentials!
     var walletClient: WalletClient!
+    var transactionManager: TransactionManager!
 
     var addresses: [AddressInfo] = []
     var balanceAddresses: [AddressBalance] = []
@@ -49,7 +50,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
         self.walletClient.getMainAddresses(options: options) { addresses in
             self.addresses = addresses.filter { addressInfo in
-                return TransactionManager.shared.all(byAddress: addressInfo.address).count == 0
+                return self.transactionManager.all(byAddress: addressInfo.address).count == 0
             }
 
             self.loadBalances()

@@ -11,6 +11,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
 
     var applicationRepository: ApplicationRepository!
+    var transactionManager: TransactionManager!
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -26,8 +27,9 @@ class WelcomeViewController: UIViewController {
         guard let navigationController = segue.destination as? UINavigationController else {
             return
         }
-
-        applicationRepository.reset()
+        
+        self.transactionManager.removeAll()
+        self.applicationRepository.reset()
 
         if let vc = navigationController.viewControllers.first as? SelectPinViewController {
             vc.segueIdentifier = segue.identifier

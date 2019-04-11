@@ -11,6 +11,7 @@ import UIKit
 class DisconnectWalletViewController: UIViewController {
 
     var applicationRepository: ApplicationRepository!
+    var transactionManager: TransactionManager!
     var walletTicker: WalletTicker!
     var fiatRateTicker: FiatRateTicker!
     var torClient: TorClient!
@@ -36,6 +37,8 @@ class DisconnectWalletViewController: UIViewController {
                     }
                     
                     // Reset wallet manager.
+                    // @TODO: Move to event.
+                    self.transactionManager.removeAll()
                     self.applicationRepository.reset()
                     self.fiatRateTicker.stop()
                     self.walletTicker.stop()

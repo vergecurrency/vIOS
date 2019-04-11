@@ -20,6 +20,7 @@ class WalletServiceProvider: ServiceProvider {
         registerTransactionManager()
         registerWalletTicker()
         registerFiatRateTicker()
+        registerAddressBookRepository()
     }
     
     func registerWalletCredentials() {
@@ -73,8 +74,13 @@ class WalletServiceProvider: ServiceProvider {
         container.register(WalletTicker.self) { r in
             let walletClient = r.resolve(WalletClient.self)!
             let appRepo = r.resolve(ApplicationRepository.self)!
+            let transactionManager = r.resolve(TransactionManager.self)!
 
-            return WalletTicker(client: walletClient, applicationRepository: appRepo)
+            return WalletTicker(
+                client: walletClient,
+                applicationRepository: appRepo,
+                transactionManager: transactionManager
+            )
         }.inObjectScope(.container)
     }
 
@@ -85,6 +91,12 @@ class WalletServiceProvider: ServiceProvider {
 
             return FiatRateTicker(applicationRepository: appRepo, statisicsClient: ratesClient)
         }.inObjectScope(.container)
+    }
+
+    func registerAddressBookRepository() {
+        container.register(AddressBookRepository.self) { r in
+            return AddressBookRepository()
+        }
     }
     
 }

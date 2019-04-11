@@ -10,6 +10,7 @@ class SetupViewServiceProvider: ServiceProvider {
     override func register() {
         container.storyboardInitCompleted (WelcomeViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.transactionManager = r.resolve(TransactionManager.self)
         }
 
         container.storyboardInitCompleted (PassphraseConfirmationViewController.self) { r, c in

@@ -204,7 +204,6 @@
 		B2BD7CB257BA213ABAE9958D /* DonateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD70361646D756C13B826D /* DonateTableViewController.swift */; };
 		B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7557B745B64D241A9CEB /* WalletInfo.swift */; };
 		B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */; };
-		B2BD7E5A3F3F8F5C0C732ED1 /* AddressesViewServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7435A03CEDAD1DEFC6D7 /* AddressesViewServiceProvider.swift */; };
 		B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD775F084C79E938322ACD /* Credentials.swift */; };
 		B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F271D86AF3260FFBF11 /* SendMaxInfo.swift */; };
 		B2BD7E83471050D83BF5709F /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74133C8DA2D5802055B3 /* Application.swift */; };
@@ -526,7 +525,6 @@
 		B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBalance.swift; sourceTree = "<group>"; };
 		B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDelegate.swift; sourceTree = "<group>"; };
 		B2BD74133C8DA2D5802055B3 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		B2BD7435A03CEDAD1DEFC6D7 /* AddressesViewServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressesViewServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD74A8CBD24955A0BE06BE /* SettingsViewServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposalErrorResponse.swift; sourceTree = "<group>"; };
 		B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
@@ -1139,7 +1137,6 @@
 		A3E32B1A225D56AE001A8B0E /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				B2BD7435A03CEDAD1DEFC6D7 /* AddressesViewServiceProvider.swift */,
 				B2BD707FF14AA2915590755F /* ApplicationServiceProvider.swift */,
 				B2BD7FCF43583EC06BE16725 /* EventServiceProvider.swift */,
 				B2BD7590ED6A53AAE29940A8 /* HttpServiceProvider.swift */,
@@ -1902,7 +1899,6 @@
 				B2BD7E8CD1552F1D8D549A20 /* TransactionRepository.swift in Sources */,
 				B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */,
 				B2BD768DCD05B478AAC1AC69 /* TransactionProposalsTableViewController.swift in Sources */,
-				B2BD7E5A3F3F8F5C0C732ED1 /* AddressesViewServiceProvider.swift in Sources */,
 				B2BD7C0AEF83DA4BEAE42483 /* ApplicationServiceProvider.swift in Sources */,
 				B2BD7925E4F0300891E42803 /* SettingsViewServiceProvider.swift in Sources */,
 				B2BD70FD18F932E7B2699B6E /* SetupViewServiceProvider.swift in Sources */,

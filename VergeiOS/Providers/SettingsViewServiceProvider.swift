@@ -33,6 +33,7 @@ class SettingsViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted (DisconnectWalletViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.transactionManager = r.resolve(TransactionManager.self)
             c.walletTicker = r.resolve(WalletTicker.self)
             c.fiatRateTicker = r.resolve(FiatRateTicker.self)
             c.torClient = r.resolve(TorClient.self)

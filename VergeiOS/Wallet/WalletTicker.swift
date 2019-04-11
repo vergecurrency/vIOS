@@ -9,12 +9,15 @@ class WalletTicker {
 
     private var client: WalletClient!
     private var applicationRepository: ApplicationRepository!
+    private var transactionManager: TransactionManager!
+    
     private var started: Bool = false
     private var interval: Timer?
 
-    init(client: WalletClient, applicationRepository: ApplicationRepository) {
+    init(client: WalletClient, applicationRepository: ApplicationRepository, transactionManager: TransactionManager) {
         self.client = client
         self.applicationRepository = applicationRepository
+        self.transactionManager = transactionManager
     }
 
     public func start() {
@@ -61,7 +64,7 @@ class WalletTicker {
     private func fetchTransactions() {
         print("Fetching new transactions")
 
-        TransactionManager.shared.sync(limit: 10) { transactions in
+        self.transactionManager.sync(limit: 10) { transactions in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
         }
     }

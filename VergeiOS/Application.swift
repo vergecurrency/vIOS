@@ -19,7 +19,6 @@ class Application {
         WalletServiceProvider.self,
         SetupViewServiceProvider.self,
         WalletViewServiceProvider.self,
-        AddressesViewServiceProvider.self,
         SendViewServiceProvider.self,
         ReceiveViewServiceProvider.self,
         SettingsViewServiceProvider.self,
@@ -35,6 +34,7 @@ class Application {
 
     // Boot the service providers.
     public func boot() {
+        // Initialize providers.
         for serviceProvider in self.serviceProviders {
             self.initializedServiceProviders.append(serviceProvider.init(container: Application.container))
         }
