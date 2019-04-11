@@ -20,6 +20,10 @@ class HttpServiceProvider: ServiceProvider {
         container.register(TorClient.self) { r in
             return TorClient(applicationRepository: r.resolve(ApplicationRepository.self)!)
         }.inObjectScope(.container)
+
+        container.register(RatesClient.self) { r in
+            return RatesClient(torClient: r.resolve(TorClient.self)!)
+        }.inObjectScope(.container)
     }
 
     private func torClientStarted() {

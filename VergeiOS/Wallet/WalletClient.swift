@@ -22,9 +22,10 @@ public class WalletClient {
     private let sjcl = SJCL()
 
     private var applicationRepository: ApplicationRepository!
+    private var torClient: TorClient!
     private var baseUrl: String = ""
     private var urlSession: URLSession {
-        return TorClient.shared.session
+        return self.torClient.session
     }
 
     private let network: Network
@@ -32,10 +33,11 @@ public class WalletClient {
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
-    init(appRepo: ApplicationRepository, credentials: Credentials, network: Network = .mainnetXVG) {
+    init(appRepo: ApplicationRepository, credentials: Credentials, torClient: TorClient, network: Network = .mainnetXVG) {
         self.applicationRepository = appRepo
         self.baseUrl = appRepo.walletServiceUrl
         self.credentials = credentials
+        self.torClient = torClient
         self.network = network
     }
     

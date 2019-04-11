@@ -14,6 +14,7 @@ class SettingsViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted (TorConnectionTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.torClient = r.resolve(TorClient.self)
         }
 
         container.storyboardInitCompleted (CurrencyTableViewController.self) { r, c in
@@ -34,6 +35,7 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.walletTicker = r.resolve(WalletTicker.self)
             c.fiatRateTicker = r.resolve(FiatRateTicker.self)
+            c.torClient = r.resolve(TorClient.self)
         }
 
         container.storyboardInitCompleted (TransactionProposalsTableViewController.self) { r, c in

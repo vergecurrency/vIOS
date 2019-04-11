@@ -34,8 +34,9 @@ class WalletServiceProvider: ServiceProvider {
         container.register(WalletClient.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
             let credentials = r.resolve(Credentials.self)!
+            let torClient = r.resolve(TorClient.self)!
 
-            return WalletClient(appRepo: appRepo, credentials: credentials)
+            return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient)
         }
     }
 
@@ -80,7 +81,7 @@ class WalletServiceProvider: ServiceProvider {
     func registerFiatRateTicker() {
         container.register(FiatRateTicker.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
-            let ratesClient = RatesClient()
+            let ratesClient = r.resolve(RatesClient.self)!
 
             return FiatRateTicker(applicationRepository: appRepo, statisicsClient: ratesClient)
         }.inObjectScope(.container)
