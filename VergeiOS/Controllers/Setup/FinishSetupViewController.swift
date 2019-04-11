@@ -18,9 +18,6 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClient!
-    var walletTicker: WalletTicker!
-    var shortcutsManager: ShortcutsManager!
-    var fiatRateTicker: FiatRateTicker!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -105,9 +102,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         // Pass the selected object to the new view controller.
         applicationRepository.setup = true
 
-        fiatRateTicker.start()
-        walletTicker.start()
-        shortcutsManager.updateShortcuts()
+        NotificationCenter.default.post(name: .didSetupWallet, object: nil)
     }
 
 }

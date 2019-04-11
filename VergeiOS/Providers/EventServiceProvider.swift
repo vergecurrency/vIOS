@@ -7,42 +7,46 @@ import Foundation
 
 class EventServiceProvider: ServiceProvider {
 
+    private var nc: NotificationCenter!
+
     override func register() {
+        self.nc = NotificationCenter.default
+
         setupTorListeners()
         setupWalletListeners()
         setupFiatRatingListeners()
     }
 
     func setupTorListeners() {
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
             self,
             selector: #selector(didStartTorThread(notification:)),
             name: .didStartTorThread,
             object: nil
         )
 
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
             self,
             selector: #selector(didEstablishTorConnection(notification:)),
             name: .didEstablishTorConnection,
             object: nil
         )
 
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
             self,
             selector: #selector(didResignTorConnection(notification:)),
             name: .didResignTorConnection,
             object: nil
         )
 
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
             self,
             selector: #selector(didTurnOffTor(notification:)),
             name: .didTurnOffTor,
             object: nil
         )
 
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
             self,
             selector: #selector(errorDuringTorConnection(notification:)),
             name: .errorDuringTorConnection,
@@ -51,7 +55,14 @@ class EventServiceProvider: ServiceProvider {
     }
 
     func setupWalletListeners() {
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
+            self,
+            selector: #selector(didSetupWallet(notification:)),
+            name: .didSetupWallet,
+            object: nil
+        )
+
+        self.nc.addObserver(
             self,
             selector: #selector(didBroadcastTx(notification:)),
             name: .didBroadcastTx,
@@ -60,7 +71,7 @@ class EventServiceProvider: ServiceProvider {
     }
 
     func setupFiatRatingListeners() {
-        NotificationCenter.default.addObserver(
+        self.nc.addObserver(
             self,
             selector: #selector(didChangeCurrency),
             name: .didChangeCurrency,
@@ -90,6 +101,12 @@ class EventServiceProvider: ServiceProvider {
         DispatchQueue.main.async {
             TorStatusIndicator.shared.setStatus(.error)
         }
+    }
+
+    @objc func didSetupWallet(notification: Notification) {
+        self.container.resolve(WalletTicker.self)?.start()
+        self.container.resolve(FiatRateTicker.self)?.start()
+        self.container.resolve(ShortcutsManager.self)?.updateShortcuts()
     }
 
     @objc func didBroadcastTx(notification: Notification) {

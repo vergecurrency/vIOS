@@ -14,6 +14,7 @@ class ApplicationServiceProvider: ServiceProvider {
 
         TorStatusIndicator.shared.initialize()
         NotificationManager.shared.initialize()
+
         IQKeyboardManager.shared.enable = true
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

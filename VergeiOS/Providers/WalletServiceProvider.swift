@@ -26,8 +26,10 @@ class WalletServiceProvider: ServiceProvider {
     func registerWalletCredentials() {
         container.register(Credentials.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
+            let mnemonic = appRepo.mnemonic ?? []
+            let passphrase = appRepo.passphrase ?? ""
 
-            return Credentials(mnemonic: appRepo.mnemonic!, passphrase: appRepo.passphrase!, network: .mainnetXVG)
+            return Credentials(mnemonic: mnemonic, passphrase: passphrase, network: .mainnetXVG)
         }
     }
     
@@ -67,7 +69,7 @@ class WalletServiceProvider: ServiceProvider {
             let transactionRepository = r.resolve(TransactionRepository.self)!
 
             return TransactionManager(walletClient: walletClient, transactionRepository: transactionRepository)
-        }.inObjectScope(.container)
+        }
     }
 
     func registerWalletTicker() {

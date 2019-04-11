@@ -20,9 +20,6 @@ class SetupViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (FinishSetupViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.walletClient = r.resolve(WalletClient.self)
-            c.walletTicker = r.resolve(WalletTicker.self)
-            c.shortcutsManager = r.resolve(ShortcutsManager.self)
-            c.fiatRateTicker = r.resolve(FiatRateTicker.self)
         }
 
         container.storyboardInitCompleted (PaperkeyShowViewController.self) { r, c in
