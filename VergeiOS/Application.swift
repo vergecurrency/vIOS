@@ -15,6 +15,7 @@ class Application {
     // Register all service providers.
     let serviceProviders: [ServiceProvider.Type] = [
         ApplicationServiceProvider.self,
+        CoreStoreServiceProvider.self,
         HttpServiceProvider.self,
         WalletServiceProvider.self,
         SetupViewServiceProvider.self,

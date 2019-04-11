@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import CoreData
-import CoreStore
 import Swinject
 import SwinjectStoryboard
 
@@ -27,32 +25,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.application = Application(container: SwinjectStoryboard.defaultContainer)
         self.application?.boot()
-        
-        do {
-            CoreStore.defaultStack = DataStack(
-                xcodeModelName: "CoreData",
-                bundle: Bundle.main,
-                migrationChain: [
-                    "VergeiOS",
-                    "VergeiOS 2"
-                ]
-            )
-            
-            try CoreStore.addStorageAndWait(
-                SQLiteStore(fileName: "VergeiOS.sqlite", localStorageOptions: .allowSynchronousLightweightMigration)
-            )
-        } catch {
-            print(error.localizedDescription)
-        }
 
         let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!
-        let shouldPerformAdditionalDelegateHandling =
-            shortcutsManager.proceedAppDidFinishLaunch(application, withOptions: launchOptions)
+        let shouldPerformAdditionalDelegateHandling = shortcutsManager.proceedAppDidFinishLaunch(
+            application,
+            withOptions: launchOptions
+        )
         
         return shouldPerformAdditionalDelegateHandling
     }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+    ) -> Bool {
         AddressValidator().validate(string: url.absoluteString) { (valid, address, amount) in
             if !valid {
                 return
@@ -77,7 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 
+        // Stop wallet ticker.
         Application.container.resolve(WalletTicker.self)?.stop()
+
+        // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
         
         showPinUnlockViewController(application)
@@ -90,19 +80,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-
-        let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!
-        shortcutsManager.proceedAppDidBecomeActive()
+        Application.container.resolve(ShortcutsManager.self)?.proceedAppDidBecomeActive()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         
-        // Stop price ticker.
-        let walletTicker = Application.container.resolve(WalletTicker.self)
-        walletTicker?.stop()
+        // Stop wallet ticker.
+        Application.container.resolve(WalletTicker.self)?.stop()
 
+        // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
     }
     

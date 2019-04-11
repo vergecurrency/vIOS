@@ -204,6 +204,7 @@
 		B2BD7CB257BA213ABAE9958D /* DonateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD70361646D756C13B826D /* DonateTableViewController.swift */; };
 		B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7557B745B64D241A9CEB /* WalletInfo.swift */; };
 		B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */; };
+		B2BD7DAE3B43E68C2FD123CC /* CoreStoreServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7359693BF4B930CAB5C0 /* CoreStoreServiceProvider.swift */; };
 		B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD775F084C79E938322ACD /* Credentials.swift */; };
 		B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F271D86AF3260FFBF11 /* SendMaxInfo.swift */; };
 		B2BD7E83471050D83BF5709F /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74133C8DA2D5802055B3 /* Application.swift */; };
@@ -520,6 +521,7 @@
 		B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFCountingLabel.swift; sourceTree = "<group>"; };
 		B2BD733F9D032CB620B66904 /* TxOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxOutput.swift; sourceTree = "<group>"; };
+		B2BD7359693BF4B930CAB5C0 /* CoreStoreServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStoreServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD7365DCBB13FEA0B32516 /* TxAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxAction.swift; sourceTree = "<group>"; };
 		B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxChangeAddress.swift; sourceTree = "<group>"; };
 		B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBalance.swift; sourceTree = "<group>"; };
@@ -1138,6 +1140,7 @@
 			isa = PBXGroup;
 			children = (
 				B2BD707FF14AA2915590755F /* ApplicationServiceProvider.swift */,
+				B2BD7359693BF4B930CAB5C0 /* CoreStoreServiceProvider.swift */,
 				B2BD7FCF43583EC06BE16725 /* EventServiceProvider.swift */,
 				B2BD7590ED6A53AAE29940A8 /* HttpServiceProvider.swift */,
 				B2BD751221B17301B9F435E5 /* ReceiveViewServiceProvider.swift */,
@@ -1907,6 +1910,7 @@
 				B2BD7C656B2431B5A693354F /* WalletViewServiceProvider.swift in Sources */,
 				B2BD7E83471050D83BF5709F /* Application.swift in Sources */,
 				B2BD7E88E838F993C74C3EA7 /* EventServiceProvider.swift in Sources */,
+				B2BD7DAE3B43E68C2FD123CC /* CoreStoreServiceProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
