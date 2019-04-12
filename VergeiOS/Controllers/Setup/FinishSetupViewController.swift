@@ -15,6 +15,9 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     @IBOutlet weak var openWalletButton: RoundedButton!
     
     weak var interval: Timer?
+
+    var applicationRepository: ApplicationRepository!
+    var walletClient: WalletClient!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -28,12 +31,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         self.openWalletButton.alpha = 0
         self.openWalletButton.center.y += 30
 
-        Credentials.shared.setSeed(
-            mnemonic: ApplicationRepository.default.mnemonic!,
-            passphrase: ApplicationRepository.default.passphrase!
-        )
-
-        WalletClient.shared.createWallet(
+        walletClient.createWallet(
             walletName: "ioswallet",
             copayerName: "iosuser",
             m: 1,
@@ -46,7 +44,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
                 return
             }
 
-            WalletClient.shared.joinWallet(walletIdentifier: ApplicationRepository.default.walletId!) { error in
+            self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
                 print(error ?? "")
 
                 DispatchQueue.main.async {
@@ -102,11 +100,9 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        ApplicationRepository.default.setup = true
+        applicationRepository.setup = true
 
-        FiatRateTicker.shared.start()
-        WalletTicker.shared.start()
-        ShortcutsManager.shared.updateShortcuts()
+        NotificationCenter.default.post(name: .didSetupWallet, object: nil)
     }
 
 }

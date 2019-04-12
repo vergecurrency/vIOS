@@ -9,8 +9,6 @@ import CryptoSwift
 
 public class Credentials {
 
-    static let shared = Credentials()
-
     enum CredentialsError: Error {
         case invalidDeriver(value: String)
     }
@@ -18,8 +16,9 @@ public class Credentials {
     var seed: Data = Data()
     var network: Network = .mainnetXVG
 
-    init() {
-        //
+    init(mnemonic: [String], passphrase: String, network: Network = .mainnetXVG) {
+        self.seed = Mnemonic.seed(mnemonic: mnemonic, passphrase: passphrase)
+        self.network = network
     }
 
     public var privateKey: HDPrivateKey {
@@ -58,14 +57,6 @@ public class Credentials {
         var sha256Data = walletPrivateKey.privateKey().data.sha256()
 
         return sha256Data[0..<16].base64EncodedString()
-    }
-
-    public func setSeed(mnemonic: [String], passphrase: String) {
-        self.seed = Mnemonic.seed(mnemonic: mnemonic, passphrase: passphrase)
-    }
-
-    public func setNetwork(network: Network) {
-        self.network = network
     }
 
     public func privateKeyBy(path: String, privateKey: HDPrivateKey) throws -> PrivateKey {

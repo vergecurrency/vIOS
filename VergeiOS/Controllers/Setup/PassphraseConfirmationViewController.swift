@@ -13,6 +13,7 @@ class PassphraseConfirmationViewController: UIViewController, UITextFieldDelegat
     @IBOutlet weak var passphraseTextfield: UITextField!
     @IBOutlet weak var proceedButton: UIButton!
 
+    var applicationRepository: ApplicationRepository!
     var previousPassphrase: String = ""
 
     override func viewDidLoad() {
@@ -53,7 +54,7 @@ class PassphraseConfirmationViewController: UIViewController, UITextFieldDelegat
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "proceed" {
-            ApplicationRepository.default.passphrase = previousPassphrase
+            applicationRepository.passphrase = previousPassphrase
         }
     }
 

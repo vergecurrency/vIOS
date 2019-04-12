@@ -7,6 +7,7 @@ import UIKit
 
 class TransactionProposalsTableViewController: UITableViewController {
 
+    var walletClient: WalletClient!
     var proposals: [TxProposalResponse] = []
 
     var hasProposals: Bool {
@@ -28,7 +29,7 @@ class TransactionProposalsTableViewController: UITableViewController {
     @objc func loadProposals() {
         refreshControl?.beginRefreshing()
 
-        WalletClient.shared.getTxProposals { proposals, error in
+        self.walletClient.getTxProposals { proposals, error in
             self.proposals = proposals
 
             self.tableView.reloadData()
@@ -87,7 +88,7 @@ class TransactionProposalsTableViewController: UITableViewController {
         sheet.addAction(UIAlertAction(title: "Remove", style: .destructive) { action in
             self.refreshControl?.beginRefreshing()
 
-            WalletClient.shared.deleteTxProposal(txp: proposal) { error in
+            self.walletClient.deleteTxProposal(txp: proposal) { error in
                 self.loadProposals()
             }
         })

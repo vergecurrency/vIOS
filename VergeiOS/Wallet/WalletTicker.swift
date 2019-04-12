@@ -7,14 +7,17 @@ import Foundation
 
 class WalletTicker {
 
-    public static let shared = WalletTicker()
-
     private var client: WalletClient!
+    private var applicationRepository: ApplicationRepository!
+    private var transactionManager: TransactionManager!
+    
     private var started: Bool = false
     private var interval: Timer?
 
-    init(client: WalletClient = WalletClient.shared) {
+    init(client: WalletClient, applicationRepository: ApplicationRepository, transactionManager: TransactionManager) {
         self.client = client
+        self.applicationRepository = applicationRepository
+        self.transactionManager = transactionManager
     }
 
     public func start() {
@@ -22,7 +25,7 @@ class WalletTicker {
             return
         }
 
-        if !ApplicationRepository.default.setup {
+        if !applicationRepository.setup {
             return
         }
 
@@ -50,9 +53,9 @@ class WalletTicker {
     private func fetchWalletAmount() {
         print("Fetching wallet amount")
 
-        WalletClient.shared.getBalance { error, info in
+        client.getBalance { error, info in
             if let info = info {
-                ApplicationRepository.default.amount = info.availableAmountValue
+                self.applicationRepository.amount = info.availableAmountValue
             }
         }
     }
@@ -61,7 +64,7 @@ class WalletTicker {
     private func fetchTransactions() {
         print("Fetching new transactions")
 
-        TransactionManager.shared.sync(limit: 10) { transactions in
+        self.transactionManager.sync(limit: 10) { transactions in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
         }
     }

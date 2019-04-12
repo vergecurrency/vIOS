@@ -12,8 +12,10 @@ import HGPlaceholders
 class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: TableView!
-    
-    let addressBookManager = AddressBookRepository()
+
+    var transactionManager: TransactionManager!
+    var addressBookManager: AddressBookRepository!
+
     var items: [TxHistory] = []
     
     lazy var refreshControl: UIRefreshControl = {
@@ -30,6 +32,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        self.transactionManager = Application.container.resolve(TransactionManager.self)!
+        self.addressBookManager = Application.container.resolve(AddressBookRepository.self)!
 
         NotificationCenter.default.addObserver(
             self,
@@ -66,7 +71,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
     
     @objc func getTransactions(notification: Notification? = nil) {
-        TransactionManager.shared.all { transactions in
+        self.transactionManager.all { transactions in
             self.items = transactions
 
             DispatchQueue.main.async {
@@ -109,7 +114,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        TransactionManager.shared.sync(limit: 10) { transactions in
+        self.transactionManager.sync(limit: 10) { transactions in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
             DispatchQueue.main.async {

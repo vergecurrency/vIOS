@@ -61,6 +61,7 @@ open VergeiOS.xcodeproj
 * [xmartlabs/Eureka](https://github.com/xmartlabs/Eureka) - Library for easily creating forms
 * [yenom/BitcoinKit](https://github.com/yenom/BitcoinKit) - The BitcoinKit library is a Swift implementation of the Bitcoin protocol
 * [krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) - Crypto related functions and helpers for Swift implemented in Swift.
+* [Swinject/Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework for Swift with iOS/macOS/Linux
 
 ### Community
 

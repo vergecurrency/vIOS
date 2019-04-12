@@ -12,12 +12,16 @@ class ServiceUrlTableViewController: UITableViewController {
 
     @IBOutlet weak var serviceUrlTextField: UITextField!
 
-    var previousServiceUrl: String = ApplicationRepository.default.walletServiceUrl
+    var applicationRepository: ApplicationRepository!
+    var walletTicker: WalletTicker!
+    var walletClient: WalletClient!
+    var previousServiceUrl: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        serviceUrlTextField.text = ApplicationRepository.default.walletServiceUrl
+        previousServiceUrl = applicationRepository.walletServiceUrl
+        serviceUrlTextField.text = applicationRepository.walletServiceUrl
     }
 
     @IBAction func setDefaultServiceUrl(_ sender: Any) {
@@ -33,13 +37,13 @@ class ServiceUrlTableViewController: UITableViewController {
 
         present(alert, animated: true)
 
-        previousServiceUrl = ApplicationRepository.default.walletServiceUrl
-        ApplicationRepository.default.walletServiceUrl = serviceUrlTextField.text!
+        previousServiceUrl = applicationRepository.walletServiceUrl
+        applicationRepository.walletServiceUrl = serviceUrlTextField.text!
 
-        WalletTicker.shared.stop()
-        WalletClient.shared.resetServiceUrl(baseUrl: ApplicationRepository.default.walletServiceUrl)
+        walletTicker.stop()
+        walletClient.resetServiceUrl(baseUrl: applicationRepository.walletServiceUrl)
 
-        WalletClient.shared.createWallet(
+        walletClient.createWallet(
             walletName: "ioswallet",
             copayerName: "iosuser",
             m: 1,
@@ -55,12 +59,11 @@ class ServiceUrlTableViewController: UITableViewController {
                 return
             }
 
-            WalletClient.shared.joinWallet(walletIdentifier: ApplicationRepository.default.walletId!) { error in
+            self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
                 print(error ?? "")
 
                 DispatchQueue.main.async {
-                    WalletTicker.shared.start()
-
+                    self.walletTicker.start()
                     self.urlChanged(alert: alert)
                 }
             }
@@ -83,9 +86,9 @@ class ServiceUrlTableViewController: UITableViewController {
     }
 
     func rollbackServiceUrl(serviceUrl: String) {
-        ApplicationRepository.default.walletServiceUrl = serviceUrl
+        applicationRepository.walletServiceUrl = serviceUrl
         serviceUrlTextField.text = serviceUrl
-        WalletClient.shared.resetServiceUrl(baseUrl: serviceUrl)
-        WalletTicker.shared.start()
+        walletClient.resetServiceUrl(baseUrl: serviceUrl)
+        walletTicker.start()
     }
 }

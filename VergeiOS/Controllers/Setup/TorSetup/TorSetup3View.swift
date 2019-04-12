@@ -15,24 +15,29 @@ class TorSetup3View: UIView {
     @IBOutlet weak var proceedButton: UIButton!
 
     var viewController: TorViewController!
+    var applicationRepository: ApplicationRepository!
+    var torClient: TorClient!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
+        self.torClient = Application.container.resolve(TorClient.self)!
         
         updateIPAddress()
     }
     
     @IBAction func changeTorUsage(_ sender: UISwitch) {
-        ApplicationRepository.default.useTor = sender.isOn
+        self.applicationRepository.useTor = sender.isOn
 
         proceedButton.setTitle(sender.isOn ? "Proceed with Tor" : "Proceed without Tor", for: .normal)
         
         if sender.isOn {
-            TorClient.shared.start {
+            self.torClient.start {
                 self.updateIPAddress()
             }
         } else {
-            TorClient.shared.resign()
+            self.torClient.resign()
             
             updateIPAddress()
             
@@ -43,7 +48,7 @@ class TorSetup3View: UIView {
     
     func updateIPAddress() {
         let url = URL(string: Constants.ipCheckEndpoint)
-        let task = TorClient.shared.session.dataTask(with: url!) { data, response, error in
+        let task = self.torClient.session.dataTask(with: url!) { data, response, error in
             do {
                 if data != nil {
                     let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)

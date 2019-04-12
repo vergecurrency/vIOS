@@ -21,7 +21,8 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     @IBOutlet weak var closeButton: UIButton!
     
     static var storyBoardView: PinUnlockViewController? = nil
-    
+
+    var applicationRepository: ApplicationRepository!
     var pin = ""
     var fillPinFor: UnlockState?
     var showLocalAuthentication = false
@@ -54,9 +55,9 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
 
         if LAContext.anyAvailable() {
             if fillPinFor == .wallet {
-                showLocalAuthentication = ApplicationRepository.default.localAuthForWalletUnlock
+                showLocalAuthentication = applicationRepository.localAuthForWalletUnlock
             } else if fillPinFor == .sending {
-                showLocalAuthentication = ApplicationRepository.default.localAuthForSendingXvg
+                showLocalAuthentication = applicationRepository.localAuthForSendingXvg
             }
         }
 
@@ -101,7 +102,7 @@ class PinUnlockViewController: UIViewController, KeyboardDelegate {
     
     // Validate the wallet pin.
     func validate() -> Bool {
-        return pin.count == self.pinTextField.pinCharacterCount && ApplicationRepository.default.pin == pin
+        return pin.count == self.pinTextField.pinCharacterCount && applicationRepository.pin == pin
     }
 
     func promptLocalAuthentication() {

@@ -9,11 +9,17 @@
 import Foundation
 
 class RatesClient {
-    
+
+    let torClient: TorClient!
+
+    init(torClient: TorClient) {
+        self.torClient = torClient
+    }
+
     func infoBy(currency: String, completion: @escaping (_ data: FiatRate?) -> Void) {
         let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
     
-        let task = TorClient.shared.session.dataTask(with: url!) { data, resonse, error in
+        let task = self.torClient.session.dataTask(with: url!) { data, resonse, error in
             guard let data = data else {
                 return completion(nil)
             }

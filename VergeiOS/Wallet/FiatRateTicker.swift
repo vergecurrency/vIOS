@@ -9,23 +9,17 @@
 import Foundation
 
 class FiatRateTicker {
-    
-    public static let shared = FiatRateTicker()
 
     private var started: Bool = false
     private var interval: Timer?
 
-    var statisicsClient: RatesClient = RatesClient()
+    var applicationRepository: ApplicationRepository!
+    var statisicsClient: RatesClient!
     var rateInfo: FiatRate?
 
-    init () {
-        // TODO: Move to event manager.
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didChangeCurrency),
-            name: .didChangeCurrency,
-            object: nil
-        )
+    init (applicationRepository: ApplicationRepository, statisicsClient: RatesClient) {
+        self.applicationRepository = applicationRepository
+        self.statisicsClient = statisicsClient
     }
     
     // Start the fiat rate ticker.
@@ -34,7 +28,7 @@ class FiatRateTicker {
             return
         }
 
-        if !ApplicationRepository.default.setup {
+        if !applicationRepository.setup {
             return
         }
         
@@ -57,20 +51,13 @@ class FiatRateTicker {
     }
     
     // Fetch statistics from the API and notify all absorbers.
-    @objc private func fetch() {
+    @objc func fetch() {
         print("Fetching new stats")
-        statisicsClient.infoBy(currency: ApplicationRepository.default.currency) { info in
+        statisicsClient.infoBy(currency: applicationRepository.currency) { info in
             self.rateInfo = info
 
             print("Fiat ratings received, posting notification")
             NotificationCenter.default.post(name: .didReceiveFiatRatings, object: self.rateInfo)
-        }
-    }
-    
-    @objc private func didChangeCurrency(_ notification: Notification) {
-        DispatchQueue.main.async {
-            print("Currency changed 💰")
-            self.fetch()
         }
     }
 

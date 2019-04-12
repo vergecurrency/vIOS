@@ -10,9 +10,7 @@ import Foundation
 import KeychainSwift
 
 class ApplicationRepository {
-
-    static let `default` = ApplicationRepository()
-
+    
     private let keychain = KeychainSwift(keyPrefix: "verge_")
     private let userDefaults = UserDefaults.standard
 
@@ -200,7 +198,6 @@ class ApplicationRepository {
     }
     
     func reset() {
-        TransactionManager.shared.removeAll()
         userDefaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         userDefaults.synchronize()
         keychain.clear()

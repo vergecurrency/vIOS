@@ -10,8 +10,10 @@ import UIKit
 
 class CurrencyTableViewController: EdgedTableViewController {
 
+    var applicationRepository: ApplicationRepository!
+
     var selectedCurrency: String {
-        return ApplicationRepository.default.currency
+        return applicationRepository.currency
     }
     
     var currencies = [
@@ -120,7 +122,7 @@ class CurrencyTableViewController: EdgedTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ApplicationRepository.default.currency = currencies[indexPath.row]["currency"]!
+        applicationRepository.currency = currencies[indexPath.row]["currency"]!
         
         NotificationCenter.default.post(name: .didChangeCurrency, object: currencies[indexPath.row])
         

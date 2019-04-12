@@ -10,7 +10,8 @@ import UIKit
 
 class TransactionsTableViewController: EdgedTableViewController {
 
-    let addressBookManager = AddressBookRepository()
+    var transactionManager: TransactionManager!
+    var addressBookManager: AddressBookRepository!
 
     var transactions: [[TxHistory]] = []
     var dates: [Date] = []
@@ -56,7 +57,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     func setupView() {
-        if !TransactionManager.shared.hasTransactions && tableView.backgroundView == nil {
+        if !self.transactionManager.hasTransactions && tableView.backgroundView == nil {
             if let placeholder = Bundle.main.loadNibNamed(
                 "NoTransactionsPlaceholderView",
                 owner: self,
@@ -71,7 +72,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             return
         }
 
-        if TransactionManager.shared.hasTransactions && navigationItem.searchController == nil {
+        if self.transactionManager.hasTransactions && navigationItem.searchController == nil {
             tableView.backgroundView = nil
             tableView.tableFooterView = nil
             // Setup the Search Controller
@@ -100,7 +101,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             "Received": TxAction.Received
         ]
 
-        TransactionManager.shared.all { transactions in
+        self.transactionManager.all { transactions in
             let ftransactions = transactions.filter { transaction in
                 let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
 

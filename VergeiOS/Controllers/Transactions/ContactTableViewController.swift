@@ -11,7 +11,9 @@ import Eureka
 
 class ContactTableViewController: FormViewController {
 
-    let addressBook: AddressBookRepository = AddressBookRepository()
+    var transactionManager: TransactionManager!
+    var addressBookManager: AddressBookRepository!
+
     var contact: Contact?
     var transactions: [TxHistory] = []
     var trashButtonItem: UIBarButtonItem!
@@ -65,7 +67,7 @@ class ContactTableViewController: FormViewController {
             return
         }
 
-        transactions = TransactionManager.shared.all(byAddress: contact.address)
+        transactions = self.transactionManager.all(byAddress: contact.address)
 
         if transactions.count == 0 {
             return
@@ -121,7 +123,7 @@ class ContactTableViewController: FormViewController {
         }
         // if valid - continue
         
-        addressBook.put(address: tempContact)
+        self.addressBookManager.put(address: tempContact)
         
         contact = tempContact
         
@@ -141,7 +143,7 @@ class ContactTableViewController: FormViewController {
                 return
             }
 
-            self.addressBook.remove(address: contact)
+            self.addressBookManager.remove(address: contact)
 
             self.navigationController?.popViewController(animated: true)
         }

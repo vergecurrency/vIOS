@@ -15,7 +15,8 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     @IBOutlet weak var progressionLabel: UILabel!
     @IBOutlet weak var previousButton: RoundedButton!
     @IBOutlet weak var nextButton: RoundedButton!
-    
+
+    var applicationRepository: ApplicationRepository!
     var mnemonic: [String] = []
     var selectedWord = 0
     
@@ -25,7 +26,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
         // Generate a new mnemonic.
         do {
             let newMnemonic = try Mnemonic.generate()
-            mnemonic = ApplicationRepository.default.mnemonic ?? newMnemonic
+            mnemonic = applicationRepository.mnemonic ?? newMnemonic
         } catch {
             // TODO: handle the error.
             print(error.localizedDescription)

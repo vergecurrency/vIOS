@@ -19,8 +19,9 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet var repeatTransactionBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var tableView: PlaceholderTableView!
-    
-    let addressBookManager = AddressBookRepository()
+
+    var transactionManager: TransactionManager!
+    var addressBookManager: AddressBookRepository!
     var scrollViewEdger: ScrollViewEdger!
     
     var transaction: TxHistory?
@@ -98,7 +99,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func loadTransactions(_ transaction: TxHistory) {
-        items = TransactionManager.shared.all(byAddress: transaction.address)
+        items = self.transactionManager.all(byAddress: transaction.address)
     }
 
     // MARK: - Table view data source
@@ -286,7 +287,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         }
 
         let confirmation = UIAlertController.createDeleteTransactionAlert { action in
-            TransactionManager.shared.remove(transaction: transaction)
+            self.transactionManager.remove(transaction: transaction)
 
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 

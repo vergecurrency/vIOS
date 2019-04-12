@@ -25,6 +25,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
     var initialized = false
 
+    var torClient: TorClient!
     var filter: ChartFilterToolbar.Filter = .oneDay
     var lastChangeFilter: TimeInterval?
     
@@ -39,6 +40,8 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.torClient = Application.container.resolve(TorClient.self)!
 
         chartView.addSubview(volumeChartView)
         chartView.addSubview(priceChartView)
@@ -130,7 +133,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             self.activityIndicator.startAnimating()
         }
 
-        TorClient.shared.session.dataTask(with: chartUrl()) { (data, response, error) in
+        self.torClient.session.dataTask(with: chartUrl()) { (data, response, error) in
             DispatchQueue.main.async {
                 self.placeholderView.isHidden = data != nil
             }

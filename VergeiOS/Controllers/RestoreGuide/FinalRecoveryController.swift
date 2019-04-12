@@ -12,6 +12,7 @@ class FinalRecoveryController: AbstractRestoreViewController {
 
     @IBOutlet weak var recoveryKeyView: UILabel!
 
+    var applicationRepository: ApplicationRepository!
     var keys: [String]?
 
     override func viewDidLoad() {
@@ -22,7 +23,7 @@ class FinalRecoveryController: AbstractRestoreViewController {
 
     @IBAction func restoreWallet(_ sender: Any) {
         // Save the mnemonic.
-        ApplicationRepository.default.mnemonic = keys
+        applicationRepository.mnemonic = keys
 
         DispatchQueue.main.async {
             // Finish the welcome guide.

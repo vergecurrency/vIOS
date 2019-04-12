@@ -14,11 +14,14 @@ class TorConnectionTableViewController: EdgedTableViewController {
     @IBOutlet weak var useTorSwitch: UISwitch!
     @IBOutlet weak var ipAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+
+    var applicationRepository: ApplicationRepository!
+    var torClient: TorClient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        useTorSwitch.setOn(ApplicationRepository.default.useTor, animated: false)
+        useTorSwitch.setOn(applicationRepository.useTor, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,16 +31,16 @@ class TorConnectionTableViewController: EdgedTableViewController {
     }
     
     @IBAction func changeTorUsage(_ sender: UISwitch) {
-        ApplicationRepository.default.useTor = sender.isOn
+        applicationRepository.useTor = sender.isOn
         
         if sender.isOn {
             setIpAddressLabel("Loading...")
             
-            TorClient.shared.start {
+            self.torClient.start {
                 self.updateIPAddress()
             }
         } else {
-            TorClient.shared.resign()
+            self.torClient.resign()
             
             self.updateIPAddress()
             
@@ -50,7 +53,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
         setIpAddressLabel("Loading...")
 
         let url = URL(string: Constants.ipCheckEndpoint)
-        let task = TorClient.shared.session.dataTask(with: url!) { data, response, error in
+        let task = self.torClient.session.dataTask(with: url!) { data, response, error in
             do {
                 if data != nil {
                     let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)

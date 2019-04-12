@@ -7,11 +7,6 @@ import Foundation
 
 class TransactionManager {
 
-    public static let shared = TransactionManager(
-        walletClient: WalletClient.shared,
-        transactionRepository: TransactionRepository()
-    )
-
     private var walletClient: WalletClient!
     private var transactionRepository: TransactionRepository!
 
