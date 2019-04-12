@@ -42,6 +42,8 @@
 		A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC02107C82A00911B64 /* ImageKey.swift */; };
 		A305DDC32107C83200911B64 /* NumberKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC22107C83200911B64 /* NumberKey.swift */; };
 		A305DDC52107C9E300911B64 /* BackKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDC42107C9E300911B64 /* BackKey.swift */; };
+		A30D27982260D165000377F8 /* TxTransponderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30D27972260D165000377F8 /* TxTransponderTest.swift */; };
+		A30D279B2260D2AD000377F8 /* WalletClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */; };
 		A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316B0AE215454FB00FF5200 /* AddressValidator.swift */; };
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
@@ -101,7 +103,7 @@
 		A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E55217687F9009F0C9D /* Charts.framework */; };
 		A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3408E5721768AF4009F0C9D /* Date+Extensions.swift */; };
 		A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */; };
-		A35F3D82211CE738006068A2 /* ApplicationManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* ApplicationManagerTest.swift */; };
+		A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */; };
 		A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364727D217C7787001B1B18 /* ContactTableViewController.swift */; };
 		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
 		A3647286217CF9A9001B1B18 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3647285217CF9A9001B1B18 /* Eureka.framework */; };
@@ -384,6 +386,8 @@
 		A305DDC02107C82A00911B64 /* ImageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageKey.swift; sourceTree = "<group>"; };
 		A305DDC22107C83200911B64 /* NumberKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKey.swift; sourceTree = "<group>"; };
 		A305DDC42107C9E300911B64 /* BackKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackKey.swift; sourceTree = "<group>"; };
+		A30D27972260D165000377F8 /* TxTransponderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderTest.swift; sourceTree = "<group>"; };
+		A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClientProtocol.swift; sourceTree = "<group>"; };
 		A316B0AE215454FB00FF5200 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
 		A32566402112588D006FB08A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A32566442113729C006FB08A /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
@@ -447,7 +451,7 @@
 		A3408E55217687F9009F0C9D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		A3408E5721768AF4009F0C9D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseConfirmationViewController.swift; sourceTree = "<group>"; };
-		A35F3D81211CE738006068A2 /* ApplicationManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManagerTest.swift; sourceTree = "<group>"; };
+		A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepositoryTest.swift; sourceTree = "<group>"; };
 		A364727D217C7787001B1B18 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A3647285217CF9A9001B1B18 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
@@ -858,6 +862,31 @@
 			path = Keyboards;
 			sourceTree = "<group>";
 		};
+		A30D27952260C8F4000377F8 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				A3D3A068215661C20018599A /* AddressValidatorTest.swift */,
+				A30D27972260D165000377F8 /* TxTransponderTest.swift */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		A30D27962260C938000377F8 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		A30D27992260D289000377F8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A31A99242208F3A800213F3E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,9 +925,9 @@
 		A3256679211CBA9A006FB08A /* VergeiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				A30D27962260C938000377F8 /* Repositories */,
+				A30D27952260C8F4000377F8 /* Wallet */,
 				A325667C211CBA9A006FB08A /* Info.plist */,
-				A35F3D81211CE738006068A2 /* ApplicationManagerTest.swift */,
-				A3D3A068215661C20018599A /* AddressValidatorTest.swift */,
 			);
 			path = VergeiOSTests;
 			sourceTree = "<group>";
@@ -1056,6 +1085,7 @@
 				A302D34B21260EE800EA8091 /* Extensions */,
 				A376411F2108FC0200E04521 /* Http */,
 				07B9F44B2107C69D00871990 /* Models */,
+				A30D27992260D289000377F8 /* Protocols */,
 				A3E32B1A225D56AE001A8B0E /* Providers */,
 				B2BD7EF5670C29839E5FC53D /* Repositories */,
 				A376412F210AE1CA00E04521 /* Utils */,
@@ -1727,8 +1757,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30D27982260D165000377F8 /* TxTransponderTest.swift in Sources */,
 				A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */,
-				A35F3D82211CE738006068A2 /* ApplicationManagerTest.swift in Sources */,
+				A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1839,6 +1870,7 @@
 				A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */,
 				A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */,
 				A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */,
+				A30D279B2260D2AD000377F8 /* WalletClientProtocol.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */,
 				A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */,

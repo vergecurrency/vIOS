@@ -9,7 +9,7 @@
 import XCTest
 @testable import VergeiOS
 
-class ApplicationManagerTest: XCTestCase {
+class ApplicationRepositoryTest: XCTestCase {
     
     func testSettingAndGettingAPin() {
         // This is an example of a functional test case.

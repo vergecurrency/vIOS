@@ -15,12 +15,12 @@ class TxTransponder {
 
     typealias completionType = (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
 
-    private var walletClient: WalletClient!
+    private var walletClient: WalletClientProtocol!
     private var completion: completionType!
     private var step: Step = .publish
     private var previousTxp: TxProposalResponse?
 
-    public init(walletClient: WalletClient) {
+    public init(walletClient: WalletClientProtocol) {
         self.walletClient = walletClient
     }
 
