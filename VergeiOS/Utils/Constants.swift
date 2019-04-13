@@ -73,7 +73,7 @@ public struct Constants {
     /**
      * IP Address endpoint.
      */
-    public static let ipCheckEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/ip/"
+    public static let ipCheckEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/ip/"
 
 
     /**
