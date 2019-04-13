@@ -8,7 +8,7 @@ import BitcoinKit
 import SwiftyJSON
 import CryptoSwift
 
-public class WalletClient {
+public class WalletClient: WalletClientProtocol {
 
     enum WalletClientError: Error {
         case addressToScriptError(address: Address)

@@ -15,35 +15,35 @@ class TxTransponder {
 
     typealias completionType = (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
 
-    private var walletClient: WalletClient!
+    private var walletClient: WalletClientProtocol!
     private var completion: completionType!
     private var step: Step = .publish
     private var previousTxp: TxProposalResponse?
 
-    public init(walletClient: WalletClient) {
+    public init(walletClient: WalletClientProtocol) {
         self.walletClient = walletClient
     }
 
     public func create(proposal: TxProposal, completion: @escaping completionType) {
-        walletClient.createTxProposal(proposal: proposal, completion: completion)
+        self.walletClient.createTxProposal(proposal: proposal, completion: completion)
     }
 
     public func send(txp: TxProposalResponse, completion: @escaping completionType) {
         self.completion = completion
 
         // Publish the tx proposal and start the sequence.
-        walletClient.publishTxProposal(txp: txp, completion: completionHandler)
+        self.walletClient.publishTxProposal(txp: txp, completion: self.completionHandler)
     }
 
     private func progress(txp: TxProposalResponse) {
         previousTxp = txp
         switch step {
         case .sign:
-            return walletClient.signTxProposal(txp: txp, completion: completionHandler)
+            return self.walletClient.signTxProposal(txp: txp, completion: self.completionHandler)
         case .broadcast:
-            return walletClient.broadcastTxProposal(txp: txp, completion: completionHandler)
+            return self.walletClient.broadcastTxProposal(txp: txp, completion: self.completionHandler)
         default:
-            completionHandler(nil, nil, NSError(domain: "Whoops", code: 500))
+            self.completionHandler(nil, nil, NSError(domain: "Whoops", code: 500))
         }
     }
 
@@ -65,34 +65,28 @@ class TxTransponder {
     ) -> Void {
         if let errorResponse = errorResponse {
             print(errorResponse)
-            DispatchQueue.main.async {
-                self.completion(self.previousTxp, errorResponse, error)
-            }
+            self.completion(self.previousTxp, errorResponse, error)
             return
         }
 
         if let error = error {
             print(error)
-            DispatchQueue.main.async {
-                self.completion(txp, errorResponse, error)
-            }
+            self.completion(txp, errorResponse, error)
             return
         }
 
         // Notify the system of the successfull step.
-        notifySystem()
+        self.notifySystem()
 
         // When there is a next step progress the sequence.
         if let step = Step(rawValue: step.rawValue + 1) {
             self.step = step
-            return progress(txp: txp!)
+            return self.progress(txp: txp!)
         }
 
         // Complete the sequence.
-        DispatchQueue.main.async {
-            self.step = .publish
-            self.previousTxp = nil
-            self.completion(txp, errorResponse, error)
-        }
+        self.step = .publish
+        self.previousTxp = nil
+        self.completion(txp, errorResponse, error)
     }
 }
