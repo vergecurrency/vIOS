@@ -23,6 +23,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClient!
+    var credentials: Credentials!
 
     var agreedWithTerms: Bool = false
     weak var interval: Timer?
@@ -64,6 +65,11 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     @IBAction func setupWallet(sender: Any) {
         termsView.isHidden = true
         walletCreationView.isHidden = false
+
+        let mnemonic = self.applicationRepository.mnemonic ?? []
+        let passphrase = self.applicationRepository.passphrase ?? ""
+
+        self.credentials.set(mnemonic: mnemonic, passphrase: passphrase)
 
         walletClient.createWallet(
             walletName: "ioswallet",

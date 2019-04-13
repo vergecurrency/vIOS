@@ -21,6 +21,11 @@ public class Credentials {
         self.network = network
     }
 
+    public func set(mnemonic: [String], passphrase: String, network: Network = .mainnetXVG) {
+        self.seed = Mnemonic.seed(mnemonic: mnemonic, passphrase: passphrase)
+        self.network = network
+    }
+
     public var privateKey: HDPrivateKey {
         return HDPrivateKey(seed: seed, network: network)
     }

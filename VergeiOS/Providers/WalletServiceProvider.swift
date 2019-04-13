@@ -30,7 +30,7 @@ class WalletServiceProvider: ServiceProvider {
             let passphrase = appRepo.passphrase ?? ""
 
             return Credentials(mnemonic: mnemonic, passphrase: passphrase, network: .mainnetXVG)
-        }
+        }.inObjectScope(.container)
     }
     
     func registerWalletClient() {
