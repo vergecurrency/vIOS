@@ -15,6 +15,7 @@ class ApplicationRepositoryTest: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let manager = ApplicationRepository()
+        let original = manager.pin
         
         manager.pin = ""
         
@@ -23,6 +24,8 @@ class ApplicationRepositoryTest: XCTestCase {
         manager.pin = "123456"
         
         XCTAssertTrue(manager.pin == "123456")
+        
+        manager.pin = original
     }
     
 }
