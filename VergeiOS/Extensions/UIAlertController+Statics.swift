@@ -87,4 +87,17 @@ extension UIAlertController {
 
         return actionSheet
     }
+
+    static func createShowTermsOfUseAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "View Wallet Terms of Use", message: nil, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Open", style: .default) { action in
+            if let path: URL = URL(string: Constants.termsOfUse) {
+                UIApplication.shared.open(path, options: [:])
+            }
+        })
+
+        return alert
+    }
 }

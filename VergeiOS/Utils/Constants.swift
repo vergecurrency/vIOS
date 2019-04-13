@@ -49,6 +49,11 @@ public struct Constants {
      * The blockchain explorer used.
      */
     public static let blockchainExlorer: String = "https://verge-blockchain.info/"
+    
+    /**
+     * The application terms of use link.
+     */
+    public static let termsOfUse: String = "https://vergecurrency.com/wallets/terms"
 
     /**
      * The default Verge Wallet Service.
