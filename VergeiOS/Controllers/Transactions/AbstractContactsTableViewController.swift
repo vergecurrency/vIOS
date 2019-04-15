@@ -41,7 +41,7 @@ class AbstractContactsTableViewController: UITableViewController {
             )?.first as? NoContactsPlaceholderView {
                 placeholder.frame = tableView.frame
                 tableView.backgroundView = placeholder
-                tableView.backgroundView?.backgroundColor = .backgroundGrey()
+                tableView.backgroundView?.backgroundColor = ThemeManager.shared.backgroundGrey()
                 tableView.tableFooterView = UIView()
                 navigationItem.searchController = nil
             }
@@ -49,7 +49,7 @@ class AbstractContactsTableViewController: UITableViewController {
         }
 
         tableView.backgroundView = nil
-        tableView.backgroundView?.backgroundColor = .backgroundGrey()
+        tableView.backgroundView?.backgroundColor = ThemeManager.shared.backgroundGrey()
         tableView.tableFooterView = nil
 
         // Setup the Search Controller

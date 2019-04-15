@@ -632,7 +632,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mvH-0a-8Ow">
                                         <rect key="frame" x="71.5" y="142" width="200" height="67"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter PIN to unlock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDl-bz-Vqv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter PIN to unlock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDl-bz-Vqv" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="29"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                                 <color key="textColor" name="SecondaryDark"/>
@@ -675,7 +675,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="D4M-l9-PHx" firstAttribute="trailing" secondItem="djw-dH-t9H" secondAttribute="trailing" priority="750" constant="40" id="CDR-rY-PKl"/>
                             <constraint firstItem="vuv-Fo-okt" firstAttribute="top" secondItem="D4M-l9-PHx" secondAttribute="top" id="EF5-3h-RmY"/>
@@ -1138,7 +1138,7 @@
         <image name="Settings" width="30" height="30"/>
         <image name="UnlockBackground" width="4125" height="2436"/>
         <namedColor name="BackgroundGrey">
-            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -25,7 +25,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             action: #selector(TransactionsWalletSlideView.handleRefresh(_:)),
             for: UIControl.Event.valueChanged
         )
-        refreshControl.tintColor = UIColor.primaryLight()
+        refreshControl.tintColor = ThemeManager.shared.primaryLight()
         
         return refreshControl
     }()

@@ -34,7 +34,7 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     private func setupTextFieldBar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let previousButton = UIBarButtonItem(
             image: UIImage(named: "ArrowLeft"),

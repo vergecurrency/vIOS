@@ -17,6 +17,12 @@ class Keyboard: UIView {
     
     weak var delegate: KeyboardDelegate?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
+    }
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
@@ -39,7 +45,7 @@ class Keyboard: UIView {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5.0).cgPath
-            shadowLayer.fillColor = backgroundColor?.cgColor
+            shadowLayer.fillColor = ThemeManager.shared.backgroundWhite().cgColor
 
             shadowLayer.shadowColor = UIColor.darkGray.cgColor
             shadowLayer.shadowPath = shadowLayer.path
@@ -86,13 +92,13 @@ class Keyboard: UIView {
         let button = KeyboardButton(type: .custom)
         button.frame = rect
         button.keyboardKey = key
-        button.tintColor = UIColor.secondaryDark()
-        button.setTitleColor(UIColor.secondaryDark(), for: .normal)
-        button.setTitleColor(UIColor.primaryDark(), for: .highlighted)
+        button.tintColor = ThemeManager.shared.secondaryDark()
+        button.setTitleColor(ThemeManager.shared.secondaryDark(), for: .normal)
+        button.setTitleColor(ThemeManager.shared.primaryDark(), for: .highlighted)
         
         if (!key.isKind(of: EmptyKey.self)) {
             button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)
-            button.setBackgroundColor(color: UIColor.backgroundBlue(), forState: UIControl.State.highlighted)
+            button.setBackgroundColor(color: ThemeManager.shared.backgroundBlue(), forState: UIControl.State.highlighted)
         }
         
         key.styleKey(button)
@@ -105,6 +111,14 @@ class Keyboard: UIView {
         if let delegate = self.delegate {
             delegate.didReceiveInput(self, input: "\(button.keyboardKey?.getValue() ?? "")", keyboardKey: button.keyboardKey!)
         }
+    }
+
+    @objc func themeChanged(notification: Notification) {
+        guard let shadowLayer = self.shadowLayer else {
+            return
+        }
+
+        shadowLayer.fillColor = ThemeManager.shared.backgroundWhite().cgColor
     }
 
 }

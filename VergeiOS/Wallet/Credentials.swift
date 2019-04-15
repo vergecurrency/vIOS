@@ -21,7 +21,7 @@ public class Credentials {
         self.network = network
     }
 
-    public func set(mnemonic: [String], passphrase: String, network: Network = .mainnetXVG) {
+    public func reset(mnemonic: [String], passphrase: String, network: Network = .mainnetXVG) {
         self.seed = Mnemonic.seed(mnemonic: mnemonic, passphrase: passphrase)
         self.network = network
     }

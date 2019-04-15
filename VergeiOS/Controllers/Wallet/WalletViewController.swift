@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class WalletViewController: UIViewController, UIScrollViewDelegate {
+class WalletViewController: VViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var backgroundView: WalletContainerView!
     @IBOutlet weak var xvgBalanceLabel: UILabel!

@@ -15,6 +15,7 @@ class EventServiceProvider: ServiceProvider {
         setupTorListeners()
         setupWalletListeners()
         setupFiatRatingListeners()
+        setupThemeListeners()
     }
 
     func setupTorListeners() {
@@ -79,6 +80,15 @@ class EventServiceProvider: ServiceProvider {
         )
     }
 
+    func setupThemeListeners() {
+        self.nc.addObserver(
+            self,
+            selector: #selector(themeChanged),
+            name: .themeChanged,
+            object: nil
+        )
+    }
+
     @objc func didStartTorThread(notification: Notification? = nil) {
         TorStatusIndicator.shared.setStatus(.disconnected)
     }
@@ -126,6 +136,10 @@ class EventServiceProvider: ServiceProvider {
             print("Currency changed 💰")
             self.container.resolve(FiatRateTicker.self)?.fetch()
         }
+    }
+
+    @objc private func themeChanged(_ notification: Notification) {
+        TorStatusIndicator.shared.refresh()
     }
 
 }

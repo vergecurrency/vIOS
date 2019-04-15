@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendViewController: UIViewController {
+class SendViewController: VViewController {
 
     enum CurrencySwitch {
         case XVG
@@ -147,11 +147,11 @@ class SendViewController: UIViewController {
             }
 
             if (self.currentAmount().doubleValue > self.walletAmount.doubleValue) {
-                self.amountTextField.textColor = UIColor.vergeRed()
+                self.amountTextField.textColor = ThemeManager.shared.vergeRed()
                 
                 self.notifySelectedToMuchAmount()
             } else {
-                self.amountTextField.textColor = UIColor.secondaryDark()
+                self.amountTextField.textColor = ThemeManager.shared.secondaryDark()
             }
         }
     }
@@ -192,7 +192,7 @@ class SendViewController: UIViewController {
             && txFactory.address != ""
 
         confirmButton.isEnabled = enabled
-        confirmButton.backgroundColor = (enabled ? UIColor.primaryLight() : UIColor.vergeGrey())
+        confirmButton.backgroundColor = (enabled ? ThemeManager.shared.primaryLight() : ThemeManager.shared.vergeGrey())
     }
 
     @IBAction func confirm(_ sender: Any) {
@@ -369,7 +369,7 @@ extension SendViewController: UITextFieldDelegate {
     func setupRecipientTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let fixedBarButton = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -419,7 +419,7 @@ extension SendViewController: UITextFieldDelegate {
     func setupAmountTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
@@ -448,7 +448,7 @@ extension SendViewController: UITextFieldDelegate {
     func setupMemoTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 

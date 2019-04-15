@@ -142,6 +142,16 @@
 		A3AA22022163F66B00160576 /* TorStatusIndicatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AA21FE2163F66A00160576 /* TorStatusIndicatorViewController.xib */; };
 		A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */; };
 		A3AA2206216576BE00160576 /* IpAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2205216576BE00160576 /* IpAddress.swift */; };
+		A3AA2B7722632F21000E4571 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B7622632F21000E4571 /* BackgroundView.swift */; };
+		A3AA2B7A226335C8000E4571 /* VViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B79226335C8000E4571 /* VViewController.swift */; };
+		A3AA2B7D2263CEC3000E4571 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B7C2263CEC3000E4571 /* TitleLabel.swift */; };
+		A3AA2B7F2263D207000E4571 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B7E2263D207000E4571 /* TextLabel.swift */; };
+		A3AA2B812263D212000E4571 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B802263D212000E4571 /* SubtitleLabel.swift */; };
+		A3AA2B852263D23D000E4571 /* MutedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B842263D23D000E4571 /* MutedLabel.swift */; };
+		A3AA2B872263D3B3000E4571 /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B862263D3B3000E4571 /* PrimaryLabel.swift */; };
+		A3AA2B892263D63C000E4571 /* VTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B882263D63C000E4571 /* VTableViewCell.swift */; };
+		A3AA2B8B2263DBFA000E4571 /* SubtitleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B8A2263DBFA000E4571 /* SubtitleImageView.swift */; };
+		A3AA2B8D2263EAC8000E4571 /* LightBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AA2B8C2263EAC8000E4571 /* LightBackgroundView.swift */; };
 		A3AF9A5F21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */; };
 		A3AF9A6121D8F03900B5CDF6 /* NoContactsPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */; };
 		A3B186D522444DFC00B093C4 /* WalletContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B186D422444DFC00B093C4 /* WalletContainerView.swift */; };
@@ -494,6 +504,16 @@
 		A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorConnectionTableViewController.swift; sourceTree = "<group>"; };
 		A3AA2205216576BE00160576 /* IpAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IpAddress.swift; sourceTree = "<group>"; };
 		A3AA220721657BBE00160576 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A3AA2B7622632F21000E4571 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		A3AA2B79226335C8000E4571 /* VViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VViewController.swift; sourceTree = "<group>"; };
+		A3AA2B7C2263CEC3000E4571 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		A3AA2B7E2263D207000E4571 /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		A3AA2B802263D212000E4571 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
+		A3AA2B842263D23D000E4571 /* MutedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutedLabel.swift; sourceTree = "<group>"; };
+		A3AA2B862263D3B3000E4571 /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
+		A3AA2B882263D63C000E4571 /* VTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTableViewCell.swift; sourceTree = "<group>"; };
+		A3AA2B8A2263DBFA000E4571 /* SubtitleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleImageView.swift; sourceTree = "<group>"; };
+		A3AA2B8C2263EAC8000E4571 /* LightBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightBackgroundView.swift; sourceTree = "<group>"; };
 		A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsPlaceholderView.swift; sourceTree = "<group>"; };
 		A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoContactsPlaceholderView.xib; sourceTree = "<group>"; };
 		A3B186D422444DFC00B093C4 /* WalletContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContainerView.swift; sourceTree = "<group>"; };
@@ -698,9 +718,13 @@
 		A302D2F7211F3F4C00EA8091 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */,
+				A305DDB62107A6CB00911B64 /* PanelView.swift */,
 				A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */,
 				A3B186D422444DFC00B093C4 /* WalletContainerView.swift */,
 				A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */,
+				A3AA2B7622632F21000E4571 /* BackgroundView.swift */,
+				A3AA2B8C2263EAC8000E4571 /* LightBackgroundView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -711,6 +735,7 @@
 				A302D3142120F53D00EA8091 /* AddressCell.swift */,
 				A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */,
 				A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */,
+				A3AA2B882263D63C000E4571 /* VTableViewCell.swift */,
 			);
 			path = TableCellViews;
 			sourceTree = "<group>";
@@ -768,17 +793,19 @@
 				B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */,
 				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
 				A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */,
+				B2BD788E0A10804387327127 /* ThemeManager.swift */,
+				A3AA2B8A2263DBFA000E4571 /* SubtitleImageView.swift */,
 				A305DDAA21077FF800911B64 /* Buttons */,
+				A3AA2B78226335AB000E4571 /* Controllers */,
 				A305DDAB2107801400911B64 /* Extensions */,
 				A305DDAC2107802E00911B64 /* Inputs */,
 				A305DDBB2107C7D200911B64 /* Keyboards */,
-				A305DDB52107A25F00911B64 /* Layout */,
+				A3AA2B7B2263CE44000E4571 /* Labels */,
 				A305DDA921077FE200911B64 /* NavigationBars */,
 				B2BD7713B76A4A8371FACC27 /* Notification */,
-				CAD929FE21E7E05900CD5EBA /* Siri */,
 				CA101BAC224629310058B84C /* Shortcuts */,
+				CAD929FE21E7E05900CD5EBA /* Siri */,
 				A302D3132120F52900EA8091 /* TableCellViews */,
-				B2BD71AB56AECF65519715DB /* Theme */,
 				A3AA21FA2163F64F00160576 /* TorStatusIndicator */,
 				A302D2F7211F3F4C00EA8091 /* Views */,
 				B2BD7DE012024B6499CAA5BE /* WalletChart */,
@@ -822,15 +849,6 @@
 				A305DDAD210782EB00911B64 /* PinTextField.swift */,
 			);
 			path = Inputs;
-			sourceTree = "<group>";
-		};
-		A305DDB52107A25F00911B64 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */,
-				A305DDB62107A6CB00911B64 /* PanelView.swift */,
-			);
-			path = Layout;
 			sourceTree = "<group>";
 		};
 		A305DDB82107BB7F00911B64 /* Delegates */ = {
@@ -1166,6 +1184,26 @@
 			path = TorStatusIndicator;
 			sourceTree = "<group>";
 		};
+		A3AA2B78226335AB000E4571 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A3AA2B79226335C8000E4571 /* VViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A3AA2B7B2263CE44000E4571 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				A3AA2B7C2263CEC3000E4571 /* TitleLabel.swift */,
+				A3AA2B7E2263D207000E4571 /* TextLabel.swift */,
+				A3AA2B802263D212000E4571 /* SubtitleLabel.swift */,
+				A3AA2B842263D23D000E4571 /* MutedLabel.swift */,
+				A3AA2B862263D3B3000E4571 /* PrimaryLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
 		A3E32B1A225D56AE001A8B0E /* Providers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1182,14 +1220,6 @@
 				B2BD76511482FCD3396C2D30 /* WalletViewServiceProvider.swift */,
 			);
 			path = Providers;
-			sourceTree = "<group>";
-		};
-		B2BD71AB56AECF65519715DB /* Theme */ = {
-			isa = PBXGroup;
-			children = (
-				B2BD788E0A10804387327127 /* ThemeManager.swift */,
-			);
-			path = Theme;
 			sourceTree = "<group>";
 		};
 		B2BD7713B76A4A8371FACC27 /* Notification */ = {
@@ -1778,6 +1808,7 @@
 				A305DDB22107A1F100911B64 /* PinKeyboard.swift in Sources */,
 				A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */,
 				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
+				A3AA2B7A226335C8000E4571 /* VViewController.swift in Sources */,
 				A33DB6952231D2010070DBCE /* Array+Extensions.swift in Sources */,
 				A3E32B1E225D56FB001A8B0E /* ServiceProvider.swift in Sources */,
 				A338E6B72110D5D4000D44EE /* TransactionsWalletSlideView.swift in Sources */,
@@ -1789,6 +1820,7 @@
 				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
+				A3AA2B7D2263CEC3000E4571 /* TitleLabel.swift in Sources */,
 				A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */,
 				A3256668211B8E1A006FB08A /* ApplicationRepository.swift in Sources */,
 				CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */,
@@ -1813,6 +1845,7 @@
 				A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */,
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
+				A3AA2B892263D63C000E4571 /* VTableViewCell.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
 				A3E8FF33217B7ED700CB50ED /* Constants.swift in Sources */,
 				A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */,
@@ -1862,6 +1895,7 @@
 				A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */,
 				A305DDAE210782EB00911B64 /* PinTextField.swift in Sources */,
 				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
+				A3AA2B812263D212000E4571 /* SubtitleLabel.swift in Sources */,
 				A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */,
 				A338E6A6210DE489000D44EE /* Timeout.swift in Sources */,
 				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
@@ -1881,6 +1915,7 @@
 				B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */,
 				B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */,
 				B2BD7F39EE96EB7B9E5A870A /* TransactionFactory.swift in Sources */,
+				A3AA2B7722632F21000E4571 /* BackgroundView.swift in Sources */,
 				B2BD7B44BD3879802B5A1FF2 /* NotificationManager.swift in Sources */,
 				B2BD717BC2C013EDDB11EB48 /* NotificationViewController.swift in Sources */,
 				B2BD7AC777EC6838A1322F0E /* ThemeManager.swift in Sources */,
@@ -1896,6 +1931,7 @@
 				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */,
 				CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */,
 				B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */,
+				A3AA2B872263D3B3000E4571 /* PrimaryLabel.swift in Sources */,
 				B2BD7CB257BA213ABAE9958D /* DonateTableViewController.swift in Sources */,
 				B2BD736A7A645161F7FF846D /* PaperkeyViewController.swift in Sources */,
 				B2BD7EADE85BFC16E792F913 /* WalletID.swift in Sources */,
@@ -1917,12 +1953,14 @@
 				CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */,
 				A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */,
 				B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */,
+				A3AA2B8B2263DBFA000E4571 /* SubtitleImageView.swift in Sources */,
 				B2BD7216E5E949A43C2B4FC4 /* TxOutput.swift in Sources */,
 				A3AF9A5F21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift in Sources */,
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
 				A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */,
 				A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */,
+				A3AA2B8D2263EAC8000E4571 /* LightBackgroundView.swift in Sources */,
 				A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */,
 				B2BD76C55CCA3241E93A1A2B /* WalletTicker.swift in Sources */,
 				B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */,
@@ -1939,10 +1977,12 @@
 				B2BD70FD18F932E7B2699B6E /* SetupViewServiceProvider.swift in Sources */,
 				B2BD7A6D183C729DC88C4E3B /* ReceiveViewServiceProvider.swift in Sources */,
 				B2BD72FBDC0135287D5E1587 /* HttpServiceProvider.swift in Sources */,
+				A3AA2B7F2263D207000E4571 /* TextLabel.swift in Sources */,
 				B2BD7C656B2431B5A693354F /* WalletViewServiceProvider.swift in Sources */,
 				B2BD7E83471050D83BF5709F /* Application.swift in Sources */,
 				B2BD7E88E838F993C74C3EA7 /* EventServiceProvider.swift in Sources */,
 				B2BD7DAE3B43E68C2FD123CC /* CoreStoreServiceProvider.swift in Sources */,
+				A3AA2B852263D23D000E4571 /* MutedLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,29 +14,28 @@ import UIKit
 
     var labelLabel: UILabel?
     var valueLabel: UILabel?
+    var border: CALayer?
     
-    @IBInspectable var borderWidth: Double = 0.5
-    @IBInspectable var borderColor: UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.9, alpha: 1)
+    var borderWidth: Double = 0.5
+    var borderColor: UIColor {
+        return ThemeManager.shared.separatorColor()
+    }
     
     @IBInspectable private var label: String = ""
     @IBInspectable private var value: String = ""
     
-    @IBInspectable var titleColor: UIColor {
-        get {
-            return UIColor.secondaryLight()
-        }
-        set {
-            self.labelLabel?.textColor = newValue
-        }
+    var titleColor: UIColor {
+        return ThemeManager.shared.secondaryLight()
     }
     
-    @IBInspectable var valueColor: UIColor {
-        get {
-            return UIColor.secondaryDark()
-        }
-        set {
-            self.labelLabel?.textColor = newValue
-        }
+    var valueColor: UIColor {
+        return ThemeManager.shared.secondaryDark()
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
     }
 
     // Only override draw() if you perform custom drawing.
@@ -63,11 +62,11 @@ import UIKit
             width: rect.width,
             height: CGFloat(borderWidth)
         )
-        let border: CALayer = CALayer(layer: self.layer)
-        border.frame = borderRect
-        border.backgroundColor = self.borderColor.cgColor
+        self.border = CALayer(layer: self.layer)
+        self.border?.frame = borderRect
+        self.border?.backgroundColor = self.borderColor.cgColor
 
-        self.layer.addSublayer(border)
+        self.layer.addSublayer(self.border!)
 
         // Max width needs to be more dynamic..
         let labelRect = CGRect(x: rect.minX, y: rect.minY, width: rect.width - 8.0, height: 14.0)
@@ -90,5 +89,11 @@ import UIKit
         self.valueLabel?.lineBreakMode = .byTruncatingMiddle
 
         self.addSubview(self.valueLabel!)
+    }
+
+    @objc func themeChanged(notification: Notification) {
+        self.border?.backgroundColor = self.borderColor.cgColor
+        self.labelLabel?.textColor = self.titleColor
+        self.valueLabel?.textColor = self.valueColor
     }
 }

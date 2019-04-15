@@ -9,7 +9,7 @@
 import UIKit
 import QRCode
 
-class PaperkeyShowViewController: UIViewController {
+class PaperkeyShowViewController: VViewController {
 
     @IBOutlet weak var wordsLabel: UILabel!
     @IBOutlet weak var qrImageView: UIImageView!
@@ -30,7 +30,8 @@ class PaperkeyShowViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 1:
             var qr = QRCode(mnemonic)
-            qr?.color = CIColor(cgColor: UIColor.primaryDark().cgColor)
+            qr?.color = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
+            qr?.backgroundColor = CIColor(cgColor: ThemeManager.shared.backgroundWhite().cgColor)
 
             if qr != nil {
                 qrImageView.image = qr!.image

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DisconnectWalletViewController: UIViewController {
+class DisconnectWalletViewController: VViewController {
 
     var applicationRepository: ApplicationRepository!
     var transactionManager: TransactionManager!

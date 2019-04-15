@@ -16,6 +16,8 @@ class BlendedNavigationBar: UINavigationBar {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
         
         DispatchQueue.main.async {
             self.setupLayout()
@@ -23,20 +25,28 @@ class BlendedNavigationBar: UINavigationBar {
     }
     
     func setupLayout() {
+        self.setColors()
+
+        self.setValue(true, forKey: "hidesShadow")
+    }
+
+    func setColors() {
         let font = UIFont.avenir(size: 19).medium()
         
-        shadowImage = UIImage()
-        tintColor = UIColor.primaryLight()
-        barTintColor = UIColor.backgroundGrey()
-        backgroundColor = UIColor.backgroundGrey()
-        barStyle = .default
-        isTranslucent = false
-        titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.secondaryDark(),
+        self.shadowImage = UIImage()
+        self.tintColor = ThemeManager.shared.primaryLight()
+        self.barTintColor = ThemeManager.shared.backgroundGrey()
+        self.backgroundColor = ThemeManager.shared.backgroundGrey()
+        self.barStyle = .default
+        self.isTranslucent = false
+        self.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: ThemeManager.shared.secondaryDark(),
             kCTFontAttributeName: font
         ] as? [NSAttributedString.Key : Any]
+    }
 
-        setValue(true, forKey: "hidesShadow")
+    @objc func themeChanged(notification: Notification) {
+        self.setColors()
     }
     
 }

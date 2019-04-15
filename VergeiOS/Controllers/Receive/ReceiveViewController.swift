@@ -10,7 +10,7 @@ import UIKit
 import QRCode
 
 @IBDesignable
-class ReceiveViewController: UIViewController {
+class ReceiveViewController: VViewController {
 
     enum CurrencySwitch {
         case XVG
@@ -183,8 +183,8 @@ class ReceiveViewController: UIViewController {
         var qrCode = QRCode(address)
 
         if stealthSwitch.isOn {
-            qrCode?.color = CIColor(cgColor: UIColor.backgroundBlue().cgColor)
-            qrCode?.backgroundColor = CIColor(cgColor: UIColor.primaryDark().cgColor)
+            qrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
+            qrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
         } else {
             qrCode?.color = CIColor(cgColor: UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor)
             qrCode?.backgroundColor = .white

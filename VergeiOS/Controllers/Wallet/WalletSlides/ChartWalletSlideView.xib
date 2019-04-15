@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -21,21 +21,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5X-wS-DJM" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
                     <rect key="frame" x="20" y="0.0" width="335" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chart" translatesAutoresizingMaskIntoConstraints="NO" id="iev-mp-uRP">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Chart" translatesAutoresizingMaskIntoConstraints="NO" id="iev-mp-uRP" customClass="SubtitleImageView" customModule="VergeiOS" customModuleProvider="target">
                             <rect key="frame" x="12" y="12" width="25" height="25"/>
-                            <color key="tintColor" name="SecondaryDark"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="11h-E2-Vzm"/>
                                 <constraint firstAttribute="height" constant="25" id="inN-DU-PaG"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History Chart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBC-fc-GO9">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History Chart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBC-fc-GO9" customClass="SubtitleLabel" customModule="VergeiOS" customModuleProvider="target">
                             <rect key="frame" x="45" y="12" width="277.5" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="nQh-2k-A8p"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                            <color key="textColor" name="SecondaryDark"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPX-dP-eKs">
@@ -47,7 +46,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="0A3-Kl-TSp">
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="32"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="High" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzD-wC-rCv">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="High" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzD-wC-rCv" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="7" width="185.5" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="eXn-aA-dJc"/>
@@ -56,7 +55,7 @@
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-fz-qYU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-fz-qYU" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="185.5" y="7" width="10.5" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="25" id="JTl-yQ-GW7"/>
@@ -65,7 +64,7 @@
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54x-ur-tgw" customClass="EFCountingLabel" customModule="VergeiOS" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54x-ur-tgw" customClass="TitleEFCountingLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="196" y="0.0" width="59" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="oyF-wK-qr3"/>
@@ -164,7 +163,7 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="UtY-e0-fqV" secondAttribute="trailing" constant="40" id="Ibk-e0-KHp"/>
                                 <constraint firstItem="UtY-e0-fqV" firstAttribute="centerY" secondItem="cPX-dP-eKs" secondAttribute="centerY" id="bsX-Cm-sje"/>
@@ -188,7 +187,7 @@
                                 <constraint firstAttribute="height" priority="751" constant="294" id="TUL-dr-wzb"/>
                             </constraints>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEr-qk-0S0">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEr-qk-0S0" customClass="LightBackgroundView" customModule="VergeiOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="37" width="335" height="622"/>
                             <subviews>
                                 <stackView opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-M9-keQ">
@@ -212,7 +211,6 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="1DJ-M9-keQ" secondAttribute="trailing" constant="20" id="5mg-sm-LsL"/>
                                 <constraint firstItem="1DJ-M9-keQ" firstAttribute="leading" secondItem="pEr-qk-0S0" secondAttribute="leading" constant="20" id="JsM-NM-bhz"/>

@@ -109,4 +109,31 @@ class SettingsTableViewController: EdgedTableViewController {
 
         return number
     }
+
+    @IBAction func themeSwitched(_ sender: UISwitch) {
+//        var theme: ThemeColorsProtocol
+//        if (sender.isOn) {
+//            theme = LightThemeColors()
+//            UserDefaults.standard.set("light", forKey: "ThemeColors")
+//        } else {
+//            theme = DarkThemeColors()
+//            UserDefaults.standard.set("dark", forKey: "ThemeColors")
+//        }
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        ThemeManager.shared.useDarkTheme = sender.isOn
+        ThemeManager.shared.initialize(withWindow: appDelegate.window!)
+
+        NotificationCenter.default.post(name: .themeChanged, object: nil)
+
+        let windows = UIApplication.shared.windows as [UIWindow]
+        for window in windows {
+            let subviews = window.subviews as [UIView]
+            for v in subviews {
+                v.removeFromSuperview()
+                window.addSubview(v)
+            }
+        }
+    }
 }

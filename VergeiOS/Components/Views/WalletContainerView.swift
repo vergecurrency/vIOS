@@ -16,7 +16,7 @@ class WalletContainerView: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         let colorTop = UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0).cgColor
-        let colorBottom = UIColor.primaryLight().cgColor
+        let colorBottom = ThemeManager.shared.primaryLight().cgColor
         
         gl.colors = [colorTop, colorBottom]
         gl.locations = [0.0, 1.0]

@@ -58,11 +58,11 @@ class PinTextField: UIView {
         shapeLayer.path = circlePath.cgPath
         
         // Change the fill color
-        shapeLayer.fillColor = UIColor.primaryLight().withAlphaComponent(0.4).cgColor
+        shapeLayer.fillColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.4).cgColor
         
         // Fill the pin when
         if (self.pinsFilled >= (index + 1)) {
-            shapeLayer.fillColor = UIColor.primaryLight().cgColor
+            shapeLayer.fillColor = ThemeManager.shared.primaryLight().cgColor
         }
         
         return shapeLayer

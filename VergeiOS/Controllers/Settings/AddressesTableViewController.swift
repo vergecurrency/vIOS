@@ -203,7 +203,7 @@ class AddressesTableViewController: EdgedTableViewController {
         self.walletClient.scanAddresses()
 
         sender.isEnabled = false
-        sender.backgroundColor = UIColor.vergeGrey()
+        sender.backgroundColor = ThemeManager.shared.vergeGrey()
 
         let alert = UIAlertController(
             title: "Scanning Addresses",

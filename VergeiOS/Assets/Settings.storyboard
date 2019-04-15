@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IMz-eD-ejn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IMz-eD-ejn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,12 +18,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="6tR-6E-Msz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="sectionIndexBackgroundColor" name="BackgroundGrey"/>
                         <sections>
                             <tableViewSection headerTitle="Wallet" footerTitle="Manage your wallet with the options given." id="ryU-i9-rY3">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="q5C-Ct-fTJ" imageView="S1Z-ec-xN5" style="IBUITableViewCellStyleDefault" id="D5l-ph-6jK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="q5C-Ct-fTJ" imageView="S1Z-ec-xN5" style="IBUITableViewCellStyleDefault" id="D5l-ph-6jK" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D5l-ph-6jK" id="ki7-aJ-sHb">
@@ -34,7 +34,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Disconnect" id="S1Z-ec-xN5">
@@ -48,7 +48,7 @@
                                             <segue destination="aSs-cW-UuY" kind="show" id="7q3-ur-lYW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="OKG-Zv-0ED" imageView="18U-dF-nJM" style="IBUITableViewCellStyleDefault" id="DQR-O5-IZC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="OKG-Zv-0ED" imageView="18U-dF-nJM" style="IBUITableViewCellStyleDefault" id="DQR-O5-IZC" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DQR-O5-IZC" id="wrh-WM-88A">
@@ -59,7 +59,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="PaperKeyAlt" id="18U-dF-nJM">
@@ -73,7 +73,7 @@
                                             <segue destination="Ife-oh-km1" kind="show" id="Jec-BT-kEb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="dvt-eb-6Z1" imageView="f4y-ao-KS7" style="IBUITableViewCellStyleDefault" id="Q6c-gB-lSa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="dvt-eb-6Z1" imageView="f4y-ao-KS7" style="IBUITableViewCellStyleDefault" id="Q6c-gB-lSa" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6c-gB-lSa" id="wbe-V0-go0">
@@ -84,7 +84,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="298" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="AddressBook" id="f4y-ao-KS7">
@@ -98,7 +98,7 @@
                                             <segue destination="ilu-uC-VmX" kind="show" id="PZN-21-e8t"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="QbK-l1-rvA" imageView="dMp-TW-P3r" style="IBUITableViewCellStyleDefault" id="DGQ-2L-Uo5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="QbK-l1-rvA" imageView="dMp-TW-P3r" style="IBUITableViewCellStyleDefault" id="DGQ-2L-Uo5" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="187.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DGQ-2L-Uo5" id="Iea-fu-MlG">
@@ -109,7 +109,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="298" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Quill" id="dMp-TW-P3r">
@@ -123,7 +123,7 @@
                                             <segue destination="PKv-Rs-pVD" kind="show" id="SVD-s6-oJp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="jHh-9I-46y" imageView="yvl-Q1-b50" style="IBUITableViewCellStyleDefault" id="wZV-LS-1Xq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="jHh-9I-46y" imageView="yvl-Q1-b50" style="IBUITableViewCellStyleDefault" id="wZV-LS-1Xq" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="231.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZV-LS-1Xq" id="p4O-bJ-u9w">
@@ -134,7 +134,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="298" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Server" id="yvl-Q1-b50">
@@ -152,7 +152,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Settings" id="KEI-H1-fSj">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="JtD-tB-51W" detailTextLabel="iVZ-qT-Ore" imageView="MID-ev-0S5" style="IBUITableViewCellStyleValue1" id="xtq-dn-Acd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="JtD-tB-51W" detailTextLabel="iVZ-qT-Ore" imageView="MID-ev-0S5" style="IBUITableViewCellStyleValue1" id="xtq-dn-Acd" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="343.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xtq-dn-Acd" id="Pie-Cf-JyY">
@@ -163,10 +163,10 @@
                                                     <rect key="frame" x="61" y="10" width="99" height="23.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="EUR" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iVZ-qT-Ore">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="EUR" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iVZ-qT-Ore" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="306.5" y="10" width="33.5" height="23.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
@@ -184,7 +184,7 @@
                                             <segue destination="Td7-Ul-2vV" kind="show" id="he6-Be-i5C"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3M5-Ul-Se5" imageView="uU2-DB-qXF" style="IBUITableViewCellStyleDefault" id="PAE-fh-qDf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3M5-Ul-Se5" imageView="uU2-DB-qXF" style="IBUITableViewCellStyleDefault" id="PAE-fh-qDf" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="387.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PAE-fh-qDf" id="zxW-KO-jc0">
@@ -195,7 +195,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Pin" id="uU2-DB-qXF">
@@ -209,7 +209,7 @@
                                             <segue destination="BK0-Ed-W6B" kind="show" identifier="SelectPinViewController" id="9iD-Q9-TwM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0c1-Ze-gFD" imageView="cDS-42-UWJ" style="IBUITableViewCellStyleDefault" id="zgh-qW-2zt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0c1-Ze-gFD" imageView="cDS-42-UWJ" style="IBUITableViewCellStyleDefault" id="zgh-qW-2zt" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="431.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgh-qW-2zt" id="iGW-aq-fMD">
@@ -220,7 +220,7 @@
                                                     <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="FaceID" id="cDS-42-UWJ">
@@ -234,7 +234,7 @@
                                             <segue destination="9dK-qh-T3Q" kind="show" identifier="LocalAuthTableViewController" id="iuz-iB-hAd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="R44-zz-HkA" imageView="MhQ-oW-4fU" style="IBUITableViewCellStyleDefault" id="bw1-h0-hnO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="R44-zz-HkA" imageView="MhQ-oW-4fU" style="IBUITableViewCellStyleDefault" id="bw1-h0-hnO" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="475.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bw1-h0-hnO" id="dU7-4M-pAD">
@@ -245,7 +245,7 @@
                                                     <rect key="frame" x="75" y="0.0" width="265" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Tor" id="MhQ-oW-4fU">
@@ -259,26 +259,59 @@
                                             <segue destination="rEY-Sf-xvm" kind="show" id="U2o-2C-sf9"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="qHC-97-Pzx" imageView="MBp-Sy-oSA" style="IBUITableViewCellStyleDefault" id="LsL-ZS-tN9" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="519.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LsL-ZS-tN9" id="EoL-Da-Ucd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Dark mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qHC-97-Pzx">
+                                                    <rect key="frame" x="61" y="0.0" width="298" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Rocket" id="MBp-Sy-oSA">
+                                                    <rect key="frame" x="16" y="6" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jvG-se-its">
+                                                    <rect key="frame" x="163" y="5.5" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="onTintColor" name="VergeGreen"/>
+                                                    <connections>
+                                                        <action selector="themeSwitched:" destination="IMz-eD-ejn" eventType="valueChanged" id="jv5-rl-foD"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" name="PrimaryLight"/>
+                                        <connections>
+                                            <outlet property="accessoryView" destination="jvG-se-its" id="ORW-ZY-wgD"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Other" id="851-dY-3HQ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GH3-fq-JmU" imageView="4Iw-QV-tpi" style="IBUITableViewCellStyleDefault" id="gI3-tG-yI1">
-                                        <rect key="frame" x="0.0" y="575.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GH3-fq-JmU" imageView="4Iw-QV-tpi" style="IBUITableViewCellStyleDefault" id="gI3-tG-yI1" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="619.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gI3-tG-yI1" id="kPn-8m-d5l">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Credits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GH3-fq-JmU">
-                                                    <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
+                                                    <rect key="frame" x="60" y="0.0" width="280" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Credits" id="4Iw-QV-tpi">
-                                                    <rect key="frame" x="16" y="6" width="30" height="30"/>
+                                                    <rect key="frame" x="15" y="6" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -288,8 +321,8 @@
                                             <segue destination="Rqn-br-tfQ" kind="show" id="j98-vV-Yge"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="aBc-3L-aKO" imageView="CHB-DB-Y0q" style="IBUITableViewCellStyleDefault" id="aGY-Wp-L0S">
-                                        <rect key="frame" x="0.0" y="619.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="aBc-3L-aKO" imageView="CHB-DB-Y0q" style="IBUITableViewCellStyleDefault" id="aGY-Wp-L0S" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="663.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aGY-Wp-L0S" id="HoP-5X-D7L">
                                             <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
@@ -299,7 +332,7 @@
                                                     <rect key="frame" x="60" y="0.0" width="280" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Donate" id="CHB-DB-Y0q">
@@ -313,8 +346,8 @@
                                             <segue destination="1cK-MP-G7O" kind="show" id="S72-c3-QMS"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="fgj-Qr-47L" imageView="e4M-oV-doz" style="IBUITableViewCellStyleDefault" id="utf-xQ-5Db">
-                                        <rect key="frame" x="0.0" y="663.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="fgj-Qr-47L" imageView="e4M-oV-doz" style="IBUITableViewCellStyleDefault" id="utf-xQ-5Db" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="707.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="rate-app" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="utf-xQ-5Db" id="VUL-8Q-op7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -324,7 +357,7 @@
                                                     <rect key="frame" x="60" y="0.0" width="300" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="RateApp" id="e4M-oV-doz">
@@ -335,8 +368,8 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="PrimaryLight"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="MTd-OH-Pk3" imageView="Evd-nQ-Tdg" style="IBUITableViewCellStyleDefault" id="KlG-qn-o8u">
-                                        <rect key="frame" x="0.0" y="707.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="MTd-OH-Pk3" imageView="Evd-nQ-Tdg" style="IBUITableViewCellStyleDefault" id="KlG-qn-o8u" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="751.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KlG-qn-o8u" id="bxO-vx-HfN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -346,7 +379,7 @@
                                                     <rect key="frame" x="60" y="0.0" width="300" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Website" id="Evd-nQ-Tdg">
@@ -357,8 +390,8 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="PrimaryLight"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="xDW-yi-Zdc" imageView="wSj-ma-mnW" style="IBUITableViewCellStyleDefault" id="Hvr-kn-Utc">
-                                        <rect key="frame" x="0.0" y="751.5" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="xDW-yi-Zdc" imageView="wSj-ma-mnW" style="IBUITableViewCellStyleDefault" id="Hvr-kn-Utc" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="795.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hvr-kn-Utc" id="LYc-J3-CSD">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -368,7 +401,7 @@
                                                     <rect key="frame" x="60" y="0.0" width="300" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="GitHub" id="wSj-ma-mnW">
@@ -406,7 +439,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IgJ-HN-I40">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceID" id="wGp-Eq-OJH">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -416,7 +449,7 @@
                             <tableViewSection headerTitle="Use for" id="vvU-1b-nGZ">
                                 <string key="footerTitle">Instead of having the need of filling in your wallet PIN a prompt will provide you with the alternative way of authenticating yourself.</string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="IS2-8P-mFv" style="IBUITableViewCellStyleDefault" id="e9W-Ob-cpX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="IS2-8P-mFv" style="IBUITableViewCellStyleDefault" id="e9W-Ob-cpX" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="175.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e9W-Ob-cpX" id="cbn-YP-Z25">
@@ -427,7 +460,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-42-mbz">
@@ -444,7 +477,7 @@
                                             <outlet property="accessoryView" destination="4P0-42-mbz" id="lFG-kQ-qSn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="XOT-jY-PyN" style="IBUITableViewCellStyleDefault" id="k8t-uB-UsW">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="XOT-jY-PyN" style="IBUITableViewCellStyleDefault" id="k8t-uB-UsW" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="219.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k8t-uB-UsW" id="df5-3C-aNR">
@@ -455,7 +488,7 @@
                                                     <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hQr-NI-AsY">
@@ -523,7 +556,7 @@
                                     <action selector="showPaperkey:" destination="Ife-oh-km1" eventType="touchUpInside" id="NqM-Z5-e8L"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your wallet paper key again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-qQ-8GG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down your wallet paper key again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8D-qQ-8GG" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="72" width="295" height="60.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" name="SecondaryDark"/>
@@ -536,7 +569,7 @@
                                     <constraint firstAttribute="height" constant="125" id="g9o-wb-AYz"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROh-3r-DCP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROh-3r-DCP" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="273.5" width="295" height="116.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="OGA-cr-81b"/>
@@ -547,7 +580,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q2E-iK-uHw" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" priority="750" constant="40" id="2om-hA-kZ4"/>
                             <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="o8D-qQ-8GG" secondAttribute="trailing" constant="40" id="AD6-wO-vl4"/>
@@ -602,7 +635,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cws-fz-4I9">
                                 <rect key="frame" x="37.5" y="74" width="300" height="499.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your paper key" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-af-j8d">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your paper key" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAR-af-j8d" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="30.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30.5" id="FgV-ZH-LRv"/>
@@ -611,13 +644,13 @@
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taking a screenshot is not secure. Write down the paper key on a piece of paper with a pen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-hu-VkN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taking a screenshot is not secure. Write down the paper key on a piece of paper with a pen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgg-hu-VkN" customClass="PrimaryLabel" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="3.5" y="46.5" width="293.5" height="38.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="PrimaryLight"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down each word carefully without capital letters." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYr-IF-5ln">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write down each word carefully without capital letters." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYr-IF-5ln" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="22" y="101" width="256" height="38.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                         <color key="textColor" name="SecondaryDark"/>
@@ -626,10 +659,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ7-OT-VPE" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="155.5" width="300" height="300"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkd-wH-xQK">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkd-wH-xQK" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="20" width="260" height="260"/>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="22"/>
-                                                <color key="textColor" name="SecondaryDark"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-Wz-Yl6">
@@ -677,7 +710,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cws-fz-4I9" firstAttribute="leading" secondItem="FiB-Pn-F5D" secondAttribute="leading" priority="750" constant="40" id="OPC-e8-oUn"/>
                             <constraint firstItem="cws-fz-4I9" firstAttribute="centerY" secondItem="8JF-dm-4Az" secondAttribute="centerY" constant="-10" id="e1k-a1-2Cj"/>
@@ -710,7 +743,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnect this device from your current wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-jN-Hhp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnect this device from your current wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-jN-Hhp" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="72" width="295" height="60.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" name="SecondaryDark"/>
@@ -723,7 +756,7 @@
                                     <constraint firstAttribute="height" constant="125" id="de1-Fz-JCZ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEF-8K-bNN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEF-8K-bNN" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="273.5" width="295" height="163"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="MHy-Dw-sv6"/>
@@ -750,7 +783,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7P9-rp-OVn" firstAttribute="centerX" secondItem="yWC-6F-4Ky" secondAttribute="centerX" id="1xF-lZ-CYz"/>
                             <constraint firstItem="JEF-8K-bNN" firstAttribute="top" secondItem="rrC-hP-YHx" secondAttribute="bottom" constant="8" id="2Ut-Ow-8Rq"/>
@@ -785,7 +818,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ga0-8b-K9x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="sectionIndexBackgroundColor" name="BackgroundGrey"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ServiceURL" id="IVq-wE-8SW">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
@@ -824,7 +857,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="mqL-IM-qeL" secondAttribute="bottom" id="B2U-0e-2hy"/>
                                 <constraint firstItem="AYF-h9-vjY" firstAttribute="centerX" secondItem="bru-c7-R94" secondAttribute="centerX" id="WJQ-So-Hwi"/>
@@ -838,7 +870,7 @@
                             <tableViewSection headerTitle="Wallet Service URL" id="aye-uN-tV6">
                                 <string key="footerTitle">This application depends on Verge Wallet Service (VWS) for blockchain information, networking and Copayer synchronization. The default configuration points to https://vws.vergecurrency.com/vws/api (Verge's public VWS instance)</string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VL3-dN-irb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VL3-dN-irb" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="131.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VL3-dN-irb" id="9Ws-Pf-0GK">
@@ -887,13 +919,13 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9xb-8T-aBQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="sectionIndexBackgroundColor" name="BackgroundGrey"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="jot-UN-1dk">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="186"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-mC-nFc">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-mC-nFc" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="8" width="295" height="96"/>
                                     <string key="text">Each verge wallet can generate billions of addresses from your 12-word recovery phrase. A new address is automatically generated and shown each time you receive a payment.</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
@@ -916,7 +948,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="bC8-Bt-gDA" secondAttribute="bottom" constant="16" id="Akk-vK-VQr"/>
                                 <constraint firstAttribute="trailing" secondItem="bC8-Bt-gDA" secondAttribute="trailing" constant="40" id="JKc-51-MKo"/>
@@ -928,7 +959,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addresses" textLabel="pMP-dy-8dC" detailTextLabel="gQV-l9-9Ag" style="IBUITableViewCellStyleSubtitle" id="DZg-HY-e1v">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addresses" textLabel="pMP-dy-8dC" detailTextLabel="gQV-l9-9Ag" style="IBUITableViewCellStyleSubtitle" id="DZg-HY-e1v" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="241.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DZg-HY-e1v" id="CPg-R4-ykt">
@@ -939,7 +970,7 @@
                                             <rect key="frame" x="16" y="2" width="54.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                            <color key="textColor" name="SecondaryDark"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gQV-l9-9Ag">
@@ -975,12 +1006,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="lnV-OV-5RK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="L0P-Jd-81t">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-Fw-4bk">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-Fw-4bk" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="8" width="295" height="99"/>
                                     <string key="text">All transaction proposals that failed during a transaction sequence are listed below. You need to delete them manually in order to release the funds. </string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
@@ -988,7 +1019,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstItem="g3P-Fw-4bk" firstAttribute="top" secondItem="L0P-Jd-81t" secondAttribute="top" constant="8" id="BMW-TP-MGk"/>
                                 <constraint firstAttribute="trailing" secondItem="g3P-Fw-4bk" secondAttribute="trailing" constant="40" id="PPe-t9-V97"/>
@@ -997,7 +1027,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="proposals" textLabel="gJn-ou-CSs" detailTextLabel="r3Q-uX-3MB" style="IBUITableViewCellStyleSubtitle" id="qYL-1E-4C9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="proposals" textLabel="gJn-ou-CSs" detailTextLabel="r3Q-uX-3MB" style="IBUITableViewCellStyleSubtitle" id="qYL-1E-4C9" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="170.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qYL-1E-4C9" id="3Lw-RE-7oo">
@@ -1008,7 +1038,7 @@
                                             <rect key="frame" x="16" y="2" width="29.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
-                                            <color key="textColor" name="SecondaryDark"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r3Q-uX-3MB">
@@ -1052,10 +1082,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ZiB-uC-yQF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="sectionIndexBackgroundColor" name="BackgroundGrey"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fiatCurrencyTableCell" textLabel="wVM-fC-3w2" detailTextLabel="j40-y1-mQs" style="IBUITableViewCellStyleSubtitle" id="kAI-48-q5e">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fiatCurrencyTableCell" textLabel="wVM-fC-3w2" detailTextLabel="j40-y1-mQs" style="IBUITableViewCellStyleSubtitle" id="kAI-48-q5e" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kAI-48-q5e" id="ptT-gJ-q20">
@@ -1099,7 +1129,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="E9r-8s-sQX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="e72-38-RHZ">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1108,14 +1138,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <color key="tintColor" name="BackgroundBlue"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This application was made possible by the following heroes:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-Ps-q5r">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This application was made possible by the following heroes:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLk-Ps-q5r" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="8" y="8" width="359" height="84"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                     <color key="textColor" name="SecondaryDark"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="XMN-YD-hAH" secondAttribute="bottom" id="5Vc-IA-S8x"/>
                                 <constraint firstAttribute="bottom" secondItem="TLk-Ps-q5r" secondAttribute="bottom" constant="8" id="7b7-8W-n62"/>
@@ -1128,7 +1157,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="creditTableViewCell" textLabel="AQc-ez-wJC" detailTextLabel="uL8-fU-VOg" style="IBUITableViewCellStyleSubtitle" id="3cY-da-3ab">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="creditTableViewCell" textLabel="AQc-ez-wJC" detailTextLabel="uL8-fU-VOg" style="IBUITableViewCellStyleSubtitle" id="3cY-da-3ab" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3cY-da-3ab" id="P2k-jg-dls">
@@ -1139,7 +1168,7 @@
                                             <rect key="frame" x="16" y="1" width="34.5" height="23.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                            <color key="textColor" name="SecondaryDark"/>
+                                            <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uL8-fU-VOg">
@@ -1171,12 +1200,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="1l7-2Q-Gi2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="lsZ-Un-5re">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donate to Support Development" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-gx-uWM">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donate to Support Development" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-gx-uWM" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="8" width="295" height="60.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                     <color key="textColor" name="SecondaryDark"/>
@@ -1189,14 +1218,14 @@
                                         <constraint firstAttribute="height" constant="125" id="UGb-dR-wF9"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iIu-gm-aGo">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iIu-gm-aGo" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="209.5" width="295" height="93"/>
                                     <string key="text">At Verge we are always striving to achieve new heights and deliver products or software implementations that are requested by the community.</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                     <color key="textColor" name="SecondaryLight"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GTP-c8-qvq">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GTP-c8-qvq" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="310.5" width="295" height="76.5"/>
                                     <string key="text">Listening to our community members and taking in feedback is not only one of the core founding principles of Verge, but it is inherent in our open-source nature.</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
@@ -1204,7 +1233,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="lww-6p-tAI" secondAttribute="trailing" constant="40" id="0MW-us-1uI"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GTP-c8-qvq" secondAttribute="bottom" constant="8" id="0md-Ly-SYM"/>
@@ -1242,7 +1270,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstItem="1Q3-eU-Fg1" firstAttribute="top" secondItem="Jku-GS-PST" secondAttribute="top" id="7PS-TZ-sLT"/>
                                 <constraint firstAttribute="bottom" secondItem="1Q3-eU-Fg1" secondAttribute="bottom" id="7ST-2w-NMk"/>
@@ -1254,7 +1281,7 @@
                         <sections>
                             <tableViewSection id="Rzr-sD-gFb">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="JI7-HA-8J9" detailTextLabel="bEN-SP-5pA" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="MW8-Gt-kXU">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="JI7-HA-8J9" detailTextLabel="bEN-SP-5pA" rowHeight="66" style="IBUITableViewCellStyleSubtitle" id="MW8-Gt-kXU" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="400" width="375" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MW8-Gt-kXU" id="Mou-Op-qk9">
@@ -1265,7 +1292,7 @@
                                                     <rect key="frame" x="16" y="13" width="127.5" height="16.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bEN-SP-5pA">
@@ -1301,12 +1328,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="37v-Nh-wlL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="GWw-o4-DL5">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="365"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tor is here for your privacy and hides your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yc2-Gk-2PC">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tor is here for your privacy and hides your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yc2-Gk-2PC" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="8" width="295" height="60.5"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                     <color key="textColor" name="SecondaryDark"/>
@@ -1319,7 +1346,7 @@
                                         <constraint firstAttribute="height" constant="125" id="eWD-aH-LRi"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="K28-mC-NAt">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="K28-mC-NAt" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="209.5" width="295" height="139.5"/>
                                     <string key="text">Your IP address is fully obfuscated and transactions are completely untraceable when you're using a Tor connection.
 
@@ -1329,7 +1356,6 @@ But you can always turn Tor off.</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundGrey"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="yc2-Gk-2PC" secondAttribute="trailing" constant="40" id="4f7-yO-Gez"/>
                                 <constraint firstItem="K28-mC-NAt" firstAttribute="top" secondItem="U9l-Av-2eM" secondAttribute="bottom" constant="8" id="Iy7-uS-ibI"/>
@@ -1346,7 +1372,7 @@ But you can always turn Tor off.</string>
                         <sections>
                             <tableViewSection footerTitle="" id="1VV-ab-kxp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="Oe0-TR-xk5" style="IBUITableViewCellStyleDefault" id="Aiv-1b-PBM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="Oe0-TR-xk5" style="IBUITableViewCellStyleDefault" id="Aiv-1b-PBM" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="365" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Aiv-1b-PBM" id="OMb-HE-XuA">
@@ -1357,7 +1383,7 @@ But you can always turn Tor off.</string>
                                                     <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-0n-KyV">
@@ -1374,7 +1400,7 @@ But you can always turn Tor off.</string>
                                             <outlet property="accessoryView" destination="Dxh-0n-KyV" id="14N-LU-eth"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="aGd-fD-VUK" detailTextLabel="Tg0-BR-yrS" style="IBUITableViewCellStyleValue1" id="n1m-lM-nKa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="aGd-fD-VUK" detailTextLabel="Tg0-BR-yrS" style="IBUITableViewCellStyleValue1" id="n1m-lM-nKa" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="409" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n1m-lM-nKa" id="3r1-aX-lu7">
@@ -1385,10 +1411,10 @@ But you can always turn Tor off.</string>
                                                     <rect key="frame" x="16" y="10" width="122" height="23.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <color key="textColor" name="SecondaryDark"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tg0-BR-yrS">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tg0-BR-yrS" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="281.5" y="10" width="77.5" height="23.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
@@ -1453,6 +1479,7 @@ But you can always turn Tor off.</string>
         <image name="Pin" width="30" height="30"/>
         <image name="Quill" width="30" height="30"/>
         <image name="RateApp" width="30" height="30"/>
+        <image name="Rocket" width="30" height="30"/>
         <image name="Server" width="30" height="30"/>
         <image name="ServiceURL" width="842" height="171"/>
         <image name="Settings" width="30" height="30"/>
@@ -1463,7 +1490,7 @@ But you can always turn Tor off.</string>
             <color red="0.86274509803921573" green="0.93725490196078431" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BackgroundGrey">
-            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97254901960784312" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

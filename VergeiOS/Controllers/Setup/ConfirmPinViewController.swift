@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfirmPinViewController: UIViewController, KeyboardDelegate {
+class ConfirmPinViewController: VViewController, KeyboardDelegate {
     
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var pinKeyboard: PinKeyboard!
