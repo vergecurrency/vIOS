@@ -92,7 +92,7 @@ class ReceiveViewController: UIViewController {
             let imageData = image!.pngData()
             
             if imageData != nil {
-                let defaults = UserDefaults(suiteName: "group.org.verge.ioswallet")
+                let defaults = UserDefaults(suiteName: "group.org.verge.wallet")
                 defaults?.setData(imageData!, forKey: "wallet.receive.image.shared")
             }
         })
