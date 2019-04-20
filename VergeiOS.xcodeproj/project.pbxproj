@@ -226,6 +226,7 @@
 		CA2B4A27226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
 		CA2B4A28226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
 		CA2B4A29226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
+		CA2B4A3B226B3D9700115B2D /* UIView+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */; };
 		CA51072722294B5200A7BB62 /* WatchWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51072622294B5200A7BB62 /* WatchWalletClient.swift */; };
 		CA51072C222956B700A7BB62 /* AddressBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */; };
 		CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA522EA6220318B000331B0F /* IntentsUI.framework */; };
@@ -580,6 +581,7 @@
 		CA2B4A1C226B354800115B2D /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		CA2B4A2A226B398A00115B2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA2B4A2C226B398E00115B2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Localization.swift"; sourceTree = "<group>"; };
 		CA51072622294B5200A7BB62 /* WatchWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWalletClient.swift; sourceTree = "<group>"; };
 		CA522EA5220318B000331B0F /* VergeSiriUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiriUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA522EA6220318B000331B0F /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -737,6 +739,7 @@
 				A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */,
 				CABF1481221061FD00F92CBC /* UIView+Actions.swift */,
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
+				CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1889,6 +1892,7 @@
 				0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */,
 				A305DDBD2107C7F600911B64 /* KeyboardKey.swift in Sources */,
 				A338E6CA2110FC2D000D44EE /* ReceiveViewController.swift in Sources */,
+				CA2B4A3B226B3D9700115B2D /* UIView+Localization.swift in Sources */,
 				A305DDAE210782EB00911B64 /* PinTextField.swift in Sources */,
 				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
 				A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */,

@@ -5,3 +5,41 @@
   Created by Ivan Manov on 20/04/2019.
   Copyright © 2019 Verge Currency. All rights reserved.
 */
+
+// ----------------------------------------
+// Setup.storyboard
+// ----------------------------------------
+
+// Defaults
+
+"setup.walletName"                          = "Verge iOS wallet";
+
+// Loading Tor
+
+"setup.loadingTor.subtitle"                 = "Privacy is our standard.";
+
+// Welcome
+
+"setup.welcome.message"                     = "Secure, anonymous and private iOS wallet for Verge. Send and Receive XVG.";
+"setup.welcome.createButton"                = "Create a new wallet";
+"setup.welcome.createDescription"           = "Create a new XVG wallet on your iOS device.";
+"setup.welcome.restoreButton"               = "Restore your wallet";
+"setup.welcome.restoreDescription"          = "Lost your iOS wallet? Restore it here.";
+
+// Loading Pin-code
+
+"setup.pinCode.title"                       = "Enter PIN to unlock";
+
+// ----------------------------------------
+// WelcomeGuide.storyboard
+// ----------------------------------------
+
+// Paper key scene 1
+
+"welcomeGuide.paperKey.title"               = "Paper key";
+"welcomeGuide.paperKey.message"             = "On the next screen, you'll be shown a list of words to write down on a piece of paper, which you should keep very safe!";
+"welcomeGuide.paperKey.description"         = "Your paper key is part of your private key which is the only thing you need to access your funds.";
+"welcomeGuide.paperKey.actionButton"        = "Write down paper key";
+
+// ----------------------------------------
+

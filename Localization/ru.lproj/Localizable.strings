@@ -1,7 +1,44 @@
-/* 
-  Localizable.strings
-  VergeiOS
+/*
+ Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ */
 
-  Created by Ivan Manov on 20/04/2019.
-  Copyright © 2019 Verge Currency. All rights reserved.
-*/
+// ----------------------------------------
+// Setup.storyboard
+// ----------------------------------------
+
+// Defaults
+
+"setup.walletName"                          = "Кошелек Verge для iOS";
+
+// Loading Tor
+
+"setup.loadingTor.subtitle"                 = "Конфиденциальность - наш стандарт.";
+
+// Welcome
+
+"setup.welcome.message"                     = "Безопасный, анонимный и конфиденциальный кошелек Verge для iOS. Отправляйте и получайте XVG.";
+"setup.welcome.createButton"                = "Создать новый кошелек";
+"setup.welcome.createDescription"           = "Создайте новый XVG кошелек для Вашего iOS устройства.";
+"setup.welcome.restoreButton"               = "Восстановить Ваш кошелек";
+"setup.welcome.restoreDescription"          = "Потеряли Ваш iOS кошелек? Восстановите его здесь.";
+
+// Loading Pin-code
+
+"setup.pinCode.title"                       = "Введите PIN-код";
+
+// ----------------------------------------
+// WelcomeGuide.storyboard
+// ----------------------------------------
+
+// Paper key scene 1
+
+"welcomeGuide.paperKey.title"               = "Бумажный ключ";
+"welcomeGuide.paperKey.message"             = "На следующем экране Вам будет показан набор слов, которые необходимо записать на листе бумаги. Храните их очень аккуратно!";
+"welcomeGuide.paperKey.description"         = "Бумажный ключ является частью Вашего приватного ключа, единственного средства доступа к Вашим денежным средствам";
+"welcomeGuide.paperKey.actionButton"        = "Записать бумажный ключ";
+
+// ----------------------------------------
