@@ -12,10 +12,34 @@ class EventServiceProvider: ServiceProvider {
     override func register() {
         self.nc = NotificationCenter.default
 
+        setupWatchListeners()
         setupTorListeners()
         setupWalletListeners()
         setupFiatRatingListeners()
         setupThemeListeners()
+    }
+
+    func setupWatchListeners() {
+        self.nc.addObserver(
+            self,
+            selector: #selector(syncWatchCurrency),
+            name: .didChangeCurrency,
+            object: nil
+        )
+
+        self.nc.addObserver(
+            self,
+            selector: #selector(syncWatchAmount),
+            name: .didChangeWalletAmount,
+            object: nil
+        )
+
+        self.nc.addObserver(
+            self,
+            selector: #selector(syncWatchAddress(notification:)),
+            name: .didChangeReceiveAddress,
+            object: nil
+        )
     }
 
     func setupTorListeners() {
@@ -87,6 +111,18 @@ class EventServiceProvider: ServiceProvider {
             name: .themeChanged,
             object: nil
         )
+    }
+
+    @objc func syncWatchCurrency() {
+        container.resolve(WatchSyncManager.self)?.syncCurrency()
+    }
+
+    @objc func syncWatchAmount() {
+        container.resolve(WatchSyncManager.self)?.syncAmount()
+    }
+
+    @objc func syncWatchAddress(notification: Notification? = nil) {
+        container.resolve(WatchSyncManager.self)?.syncAddress(notification: notification)
     }
 
     @objc func didStartTorThread(notification: Notification? = nil) {

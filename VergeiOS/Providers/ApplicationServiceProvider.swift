@@ -10,8 +10,6 @@ import IQKeyboardManagerSwift
 class ApplicationServiceProvider: ServiceProvider {
 
     override func boot() {
-        self.bootWatchSyncManager()
-
         TorStatusIndicator.shared.initialize()
         NotificationManager.shared.initialize()
 
@@ -19,6 +17,8 @@ class ApplicationServiceProvider: ServiceProvider {
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         ThemeManager.shared.initialize(withWindow: appDelegate.window ?? UIWindow())
+
+        self.bootWatchSyncManager()
     }
 
     override func register() {
@@ -29,18 +29,22 @@ class ApplicationServiceProvider: ServiceProvider {
         container.register(ShortcutsManager.self) { r in
             let applicationRepository = r.resolve(ApplicationRepository.self)!
 
-            return ShortcutsManager(hasWallet: applicationRepository.setup)
+            return ShortcutsManager(applicationRepository: applicationRepository)
         }.inObjectScope(.container)
 
         container.storyboardInitCompleted (MainTabBarController.self) { r, c in
             c.shortcutsManager = r.resolve(ShortcutsManager.self)
         }
+
+        container.register(WatchSyncManager.self) { r in
+            let walletClient = r.resolve(WalletClient.self)!
+
+            return WatchSyncManager(walletClient: walletClient)
+        }.inObjectScope(.container)
     }
 
     private func bootWatchSyncManager() {
-        let walletClient = container.resolve(WalletClient.self)!
-
-        WatchSyncManager(walletClient: walletClient).startSession()
+        container.resolve(WatchSyncManager.self)?.startSession()
     }
 
 }

@@ -24,32 +24,11 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
         super.init()
         
         self.walletClient = walletClient
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(syncCurrency),
-            name: .didChangeCurrency,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(syncAmount),
-            name: .didChangeWalletAmount,
-            object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(syncAddress(notification:)),
-            name: .didChangeReceiveAddress,
-            object: nil
-        )
     }
     
     // MARK: Private properties
     
-    private let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
+    let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     private var validSession: WCSession? {
         if let session = session, session.isPaired && session.isWatchAppInstalled {
@@ -68,12 +47,12 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     
     //MARK: Private methods
     
-    @objc private func syncCurrency() {
+    @objc public func syncCurrency() {
         let currency = ApplicationRepository().currency
         _ = self.transferMessage(message: ["currency" : currency as AnyObject])
     }
     
-    @objc private func syncAmount() {
+    @objc public func syncAmount() {
         let balanceCredentials = self.walletClient.watchRequestCredentialsForMethodPath(path: "/v1/balance/")
 
         if balanceCredentials.signature != nil &&
@@ -91,11 +70,11 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
         
         let amount = ApplicationRepository().amount
         let currency = ApplicationRepository().currency
-        
+
         self.transferMessage(message: ["amount" : amount, "currency" : currency as AnyObject])
     }
     
-    @objc private func syncAddress(notification: Notification? = nil) {
+    @objc public func syncAddress(notification: Notification? = nil) {
         let address = notification?.object as! String;
         
         if var qrCodeObject = QRCode(address) {

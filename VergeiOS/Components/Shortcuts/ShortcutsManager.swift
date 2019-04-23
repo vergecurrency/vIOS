@@ -11,14 +11,14 @@ import UIKit
 
 class ShortcutsManager: NSObject {
 
-    private var hasWallet: Bool = false
+    private var applicationRepository: ApplicationRepository!
 
     // MARK: Init
 
     private override init() {}
 
-    init(hasWallet: Bool) {
-        self.hasWallet = hasWallet
+    init(applicationRepository: ApplicationRepository) {
+        self.applicationRepository = applicationRepository
     }
     
     // MARK: - Types
@@ -131,7 +131,7 @@ class ShortcutsManager: NSObject {
         // Install initial versions of dynamic shortcuts.
         if application!.shortcutItems != nil {
             // Check wallet setup
-            let hasWallet = self.hasWallet
+            let hasWallet = self.applicationRepository.setup
             
             // Construct dynamic short item #3
             let websiteShortcutUserInfo = [ShortcutsManager.applicationShortcutUserInfoIconKey: "Website"]
