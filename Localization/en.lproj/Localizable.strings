@@ -15,7 +15,7 @@
 "setup.walletName"                          = "Verge iOS wallet";
 
 // Loading Tor
-
+``
 "setup.loadingTor.subtitle"                 = "Privacy is our standard.";
 
 // Welcome
@@ -26,9 +26,28 @@
 "setup.welcome.restoreButton"               = "Restore your wallet";
 "setup.welcome.restoreDescription"          = "Lost your iOS wallet? Restore it here.";
 
-// Loading Pin-code
+// Pin unlock
 
 "setup.pinCode.title"                       = "Enter PIN to unlock";
+
+// Set wallet pin
+
+"setup.pinCode.setPinTitle"                 = "Set wallet PIN";
+"setup.pinCode.setPinDesc"                  = "Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet.";
+
+// Re enter wallet pin
+
+"setup.pinCode.reenterPinTitle"             = "Re-enter the PIN";
+
+"setup.pinCode.reenterPinSucceedTitle"      = "Awesome!";
+"setup.pinCode.reenterPinSucceedDesc"       = "Your PIN has now been set.";
+"setup.pinCode.reenterPinSucceedDesc2"      = "Please don't forget it!";
+"setup.pinCode.reenterPinSucceedButton"     = "Proceed";
+
+"setup.pinCode.reenterPinErrorTitle"        = "Pin incorrect!";
+"setup.pinCode.reenterPinErrorDesc"         = "Your Pin couldn't be validated!";
+"setup.pinCode.reenterPinErrorDesc2"        = "Please try again.";
+"setup.pinCode.reenterPinErrorButton"       = "Try again";
 
 // ----------------------------------------
 // WelcomeGuide.storyboard
@@ -42,4 +61,3 @@
 "welcomeGuide.paperKey.actionButton"        = "Write down paper key";
 
 // ----------------------------------------
-

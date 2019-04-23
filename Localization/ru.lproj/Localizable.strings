@@ -26,9 +26,28 @@
 "setup.welcome.restoreButton"               = "Восстановить Ваш кошелек";
 "setup.welcome.restoreDescription"          = "Потеряли Ваш iOS кошелек? Восстановите его здесь.";
 
-// Loading Pin-code
+// Pin unlock
 
-"setup.pinCode.title"                       = "Введите PIN-код";
+"setup.pinCode.title"                       = "Введите Пин-код";
+
+// Set wallet pin
+
+"setup.pinCode.setPinTitle"                 = "Установите Пин-код";
+"setup.pinCode.setPinDesc"                  = "Пин-код Вашего кошелька будет использоваться при открытии приложения и при отправке Ваших XVG. Если Вы забудете Пин-код, то не сможете получить доступ к кошельку.";
+
+// Re enter wallet pin
+
+"setup.pinCode.reenterPinTitle"             = "Повторите Пин-код";
+
+"setup.pinCode.reenterPinSucceedTitle"      = "Прекрасно!";
+"setup.pinCode.reenterPinSucceedDesc"       = "Ваш Пин-код установлен.";
+"setup.pinCode.reenterPinSucceedDesc2"      = "Не забывайте его!";
+"setup.pinCode.reenterPinSucceedButton"     = "Продолжить";
+
+"setup.pinCode.reenterPinErrorTitle"        = "Неверный Пин-код!";
+"setup.pinCode.reenterPinErrorDesc"         = "Пин-коды не совпадают!";
+"setup.pinCode.reenterPinErrorDesc2"        = "Попробуйте снова.";
+"setup.pinCode.reenterPinErrorButton"       = "Повторить";
 
 // ----------------------------------------
 // WelcomeGuide.storyboard

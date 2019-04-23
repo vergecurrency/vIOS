@@ -1,5 +1,5 @@
 //
-//  UILabel+Localization.swift
+//  UIView+Localization.swift
 //  VergeiOS
 //
 //  Created by Ivan Manov on 20/04/2019.
@@ -58,6 +58,19 @@ extension UINavigationItem {
     @IBInspectable var localizationBackButtonId: String {
         set(value) {
             self.backBarButtonItem?.title = NSLocalizedString(value, comment: "")
+        }
+        get {
+            return ""
+        }
+    }
+    
+}
+
+extension UITextField {
+    
+    @IBInspectable var localizationPlaceholderId: String {
+        set(value) {
+            self.placeholder = NSLocalizedString(value, comment: "")
         }
         get {
             return ""
