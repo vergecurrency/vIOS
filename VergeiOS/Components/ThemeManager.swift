@@ -98,6 +98,14 @@ class ThemeManager {
     func placeholderColor() -> UIColor {
         return self.chooseColor(lightColor: UIColor(rgb: 0x000000).withAlphaComponent(0.3), darkColor: UIColor(rgb: 0x384350))
     }
+    
+    func backgroundTopColor() -> UIColor {
+        return self.chooseColor(lightColor: UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0), darkColor: UIColor(rgb: 0x5A004F))
+    }
+    
+    func backgroundBottomColor() -> UIColor {
+        return self.chooseColor(lightColor: self.primaryLight(), darkColor: self.backgroundGrey())
+    }
 
 }
 

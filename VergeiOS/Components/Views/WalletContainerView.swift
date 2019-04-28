@@ -15,14 +15,19 @@ class WalletContainerView: UIView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        let colorTop = UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0).cgColor
-        let colorBottom = ThemeManager.shared.primaryLight().cgColor
+        self.setColor()
         
-        gl.colors = [colorTop, colorBottom]
-        gl.locations = [0.0, 1.0]
-        gl.frame = rect
+        self.gl.locations = [0.0, 1.0]
+        self.gl.frame = rect
         
-        self.layer.insertSublayer(gl, at: 0)
+        self.layer.insertSublayer(self.gl, at: 0)
+    }
+    
+    func setColor() {
+        let colorTop = ThemeManager.shared.backgroundTopColor().cgColor
+        let colorBottom = ThemeManager.shared.backgroundBottomColor().cgColor
+        
+        self.gl.colors = [colorTop, colorBottom]
     }
 
 }

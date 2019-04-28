@@ -27,25 +27,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFl-JU-45f">
-                                                <rect key="frame" x="92" y="0.0" width="191" height="122.5"/>
+                                                <rect key="frame" x="16" y="0.0" width="343" height="220"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SendCard" translatesAutoresizingMaskIntoConstraints="NO" id="5ud-Lk-l9g" customClass="XVGCardImageView" customModule="VergeiOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="191" height="122.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343.00000000000011" height="220"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 XVG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JLd-Rc-cv0">
-                                                        <rect key="frame" x="28" y="40.5" width="135" height="33"/>
+                                                        <rect key="frame" x="28" y="138" width="287" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="28"/>
                                                         <color key="textColor" name="BackgroundGrey"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈ € 0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNd-oW-MwN">
-                                                        <rect key="frame" x="28" y="73.5" width="135" height="21"/>
+                                                        <rect key="frame" x="28" y="171" width="287" height="21"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
                                                         <color key="textColor" name="BackgroundBlue"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HDWallet" translatesAutoresizingMaskIntoConstraints="NO" id="KhP-h7-Wcv">
-                                                        <rect key="frame" x="123" y="28" width="40" height="26"/>
+                                                        <rect key="frame" x="275" y="28" width="40" height="26"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="26" id="hTc-SQ-xjA"/>
                                                             <constraint firstAttribute="width" constant="40" id="iQ9-mH-8ni"/>
@@ -321,14 +321,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9p4-gg-a9I">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9p4-gg-a9I" customClass="BackgroundView" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NZZ-HO-kir">
-                                        <rect key="frame" x="82" y="218" width="211" height="98"/>
+                                        <rect key="frame" x="37.5" y="76" width="300" height="382"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoBalancePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="hgi-lO-m42">
-                                                <rect key="frame" x="97.5" y="0.0" width="16" height="16"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                 <color key="tintColor" name="SecondaryLight"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hgi-lO-m42" secondAttribute="height" multiplier="1:1" priority="750" id="FKs-aa-FKS"/>
@@ -336,13 +336,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNT-lP-myK">
-                                                <rect key="frame" x="52.5" y="24" width="106" height="27.5"/>
+                                                <rect key="frame" x="97" y="308" width="106" height="27.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                 <color key="textColor" red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="0.65427011989999995" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXu-Y6-FRG">
-                                                <rect key="frame" x="0.0" y="59.5" width="211" height="38.5"/>
+                                                <rect key="frame" x="44.5" y="343.5" width="211" height="38.5"/>
                                                 <string key="text">You don't have any XVG to send.
 Please increase your balance.</string>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>

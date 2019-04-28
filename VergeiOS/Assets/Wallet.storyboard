@@ -108,9 +108,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-bs-t2i">
                                 <rect key="frame" x="0.0" y="178.5" width="375" height="456.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Jb-Mxw">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Jb-Mxw" customClass="BackgroundView" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                        <color key="backgroundColor" name="PrimaryLight"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6Sv-aq-dnj"/>
                                         </constraints>
