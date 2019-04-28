@@ -58,6 +58,10 @@ class CurrencyTableViewController: EdgedTableViewController {
             "name": "Indonesian Rupiah",
         ],
         [
+            "currency": "NZD",
+            "name": "New Zealand Dollar",
+        ],
+        [
             "currency": "RUB",
             "name": "Russian Ruble",
         ],
