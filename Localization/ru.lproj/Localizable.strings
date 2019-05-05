@@ -85,3 +85,14 @@
 "welcomeGuide.paperKey.actionButton"        = "Записать бумажный ключ";
 
 // ----------------------------------------
+// Receive.storyboard
+// ----------------------------------------
+
+// Receive
+
+"receive.title"                             = "Получить";
+"receive.addressButtonLabel"                = "Адрес";
+"receive.amountButtonLabel"                 = "Сумма";
+"receive.amountPlaceholder"                 = "Получаемая сумма";
+"receive.stealthAddressLabel"               = "Стелс адрес";
+"receive.shareButton"                       = "Отправить адрес";

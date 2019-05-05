@@ -85,3 +85,14 @@
 "welcomeGuide.paperKey.actionButton"        = "Write down paper key";
 
 // ----------------------------------------
+// Receive.storyboard
+// ----------------------------------------
+
+// Receive
+
+"receive.title"                             = "Receive";
+"receive.addressButtonLabel"                = "Address";
+"receive.amountButtonLabel"                 = "Amount";
+"receive.amountPlaceholder"                 = "Amount to receive";
+"receive.stealthAddressLabel"               = "Stealth Address";
+"receive.shareButton"                       = "Share";

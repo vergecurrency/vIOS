@@ -78,3 +78,16 @@ extension UITextField {
     }
     
 }
+
+extension SelectorButton {
+    
+    @IBInspectable var localizationLabelId: String {
+        set(value) {
+            self.label = NSLocalizedString(value, comment: "")
+        }
+        get {
+            return ""
+        }
+    }
+    
+}
