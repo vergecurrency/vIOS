@@ -148,3 +148,10 @@
 "transactions.title"                        = "Transactions";
 "transactions.transaction.title"            = "Who?";
 "transactions.contacts.title"               = "Contacts";
+
+// ----------------------------------------
+// Wallet.storyboard
+// ----------------------------------------
+
+"wallet.xvgBalanceTitle"                    = "XVG BALANCE";
+"wallet.balanceTitle"                       = "BALANCE";
