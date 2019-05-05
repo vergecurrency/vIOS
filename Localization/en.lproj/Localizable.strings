@@ -96,3 +96,22 @@
 "receive.amountPlaceholder"                 = "Amount to receive";
 "receive.stealthAddressLabel"               = "Stealth Address";
 "receive.shareButton"                       = "Share";
+
+// ----------------------------------------
+// RestoreGuide.storyboard
+// ----------------------------------------
+
+// Restore wallet
+
+"restoreGuide.restore.title"                = "Restore Wallet";
+"restoreGuide.restore.desc"                 = "On the next screen, you'll need to fill in the paper key of your wallet in the exact same order as requested.";
+"restoreGuide.restore.notice"               = "Please make sure no one is watching you during this process.";
+"restoreGuide.restore.restoreButton"        = "Start Restoring";
+"restoreGuide.restore.paperKeyTitle"        = "Your paper key:";
+"restoreGuide.restore.paperKeyWarning"      = "Are you sure your paper key is correct?";
+"restoreGuide.restore.paperKeyProceedButton"= "Proceed";
+
+// Paperkey QR
+
+"restoreGuide.qrcode.title"                 = "Scan a paper key QR code";
+"restoreGuide.qrcode.closeButton"           = "Close";

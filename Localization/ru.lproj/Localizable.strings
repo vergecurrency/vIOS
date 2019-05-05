@@ -96,3 +96,22 @@
 "receive.amountPlaceholder"                 = "Получаемая сумма";
 "receive.stealthAddressLabel"               = "Стелс адрес";
 "receive.shareButton"                       = "Отправить адрес";
+
+// ----------------------------------------
+// RestoreGuide.storyboard
+// ----------------------------------------
+
+// Restore wallet
+
+"restoreGuide.restore.title"                = "Восстановление кошелька";
+"restoreGuide.restore.desc"                 = "На следующем экране Вам необходимо заполнить поле бумажного кошелька в заданном первоначальном порядке.";
+"restoreGuide.restore.notice"               = "Пожалуйста, убедитесь что никто не смотрит за Вами";
+"restoreGuide.restore.restoreButton"        = "Начать восстановление";
+"restoreGuide.restore.paperKeyTitle"        = "Ваш бумажный ключ:";
+"restoreGuide.restore.paperKeyWarning"      = "Перепроверьте введеный бумажный ключ";
+"restoreGuide.restore.paperKeyProceedButton"= "Восстановить";
+
+// Paperkey QR
+
+"restoreGuide.qrcode.title"                 = "Отсканировать QR-код бумажного ключа";
+"restoreGuide.qrcode.closeButton"           = "Закрыть";
