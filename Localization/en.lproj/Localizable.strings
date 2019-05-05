@@ -49,6 +49,30 @@
 "setup.pinCode.reenterPinErrorDesc2"        = "Please try again.";
 "setup.pinCode.reenterPinErrorButton"       = "Try again";
 
+// Passphrase
+
+"setup.passphrase.title"                    = "Derive your paper key with a passphrase";
+"setup.passphrase.desc"                     = "Encrypting your paper key is an important safety measure. Make sure when restoring a wallet to use your previous passphrase.";
+"setup.passphrase.req1"                     = "Min. 8 characters";
+"setup.passphrase.req2"                     = "Uppercase and lowercase";
+"setup.passphrase.req3"                     = "Special character (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder"          = "Enter your passphrase";
+"setup.passphrase.confirmButton"            = "Confirm";
+
+"setup.passphrase.confirmTitle"             = "Confirm your passphrase";
+"setup.passphrase.proceedButton"            = "Proceed";
+
+// Finish
+
+"setup.finish.title"                        = "Almost ready!";
+"setup.finish.switch1"                      = "I understand that my funds are held securely on this device.";
+"setup.finish.switch2"                      = "I understand that if this app is moved to another device or deleted, my verge can only be recovered with the paper key and the pass phrase.";
+"setup.finish.switch3"                      = "I have read, understood, and agree to the Terms of Use.";
+"setup.finish.termsButton"                  = "Terms of Use";
+"setup.finish.createButton"                 = "Create Wallet";
+"setup.finish.openButton"                   = "Open your wallet";
+"setup.finish.desc"                         = "Finishing up your wallet...";
+
 // ----------------------------------------
 // WelcomeGuide.storyboard
 // ----------------------------------------

@@ -49,6 +49,30 @@
 "setup.pinCode.reenterPinErrorDesc2"        = "Попробуйте снова.";
 "setup.pinCode.reenterPinErrorButton"       = "Повторить";
 
+// Passphrase
+
+"setup.passphrase.title"                    = "Защитите Ваш бумажный ключ с помощью пароля";
+"setup.passphrase.desc"                     = "С точки зрения повышения безопасности очень важно зашифровать Ваш бумажный ключ. При восстановлении кошелька убедитесь, что Вы используете тот же самый пароль.";
+"setup.passphrase.req1"                     = "Мин. 8 символов";
+"setup.passphrase.req2"                     = "Строчные и прописные";
+"setup.passphrase.req3"                     = "Специальные символы (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder"          = "Введите Ваш пароль";
+"setup.passphrase.confirmButton"            = "Подтвердить";
+
+"setup.passphrase.confirmTitle"             = "Подтвердите Ваш пароль";
+"setup.passphrase.proceedButton"            = "Далее";
+
+// Finish
+
+"setup.finish.title"                        = "Почти готово!";
+"setup.finish.switch1"                      = "Я понимаю, что мои средства надежно защищены на этом устройстве.";
+"setup.finish.switch2"                      = "Я понимаю, что если данное приложение будет перемещено на другое устройство или удалено, мой Verge кошелек может быть восстановлен только с помощью бумажного ключа и пароля.";
+"setup.finish.switch3"                      = "Я прочел, понял и согласен с Правилами использования.";
+"setup.finish.termsButton"                  = "Правила использования";
+"setup.finish.createButton"                 = "Создать кошелек";
+"setup.finish.openButton"                   = "Открыть Ваш кошелек";
+"setup.finish.desc"                         = "Последние штрихи...";
+
 // ----------------------------------------
 // WelcomeGuide.storyboard
 // ----------------------------------------
