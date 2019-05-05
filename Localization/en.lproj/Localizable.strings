@@ -140,3 +140,11 @@
 // Select recipient
 
 "send.selectRecipient.title"                = "Select recipient";
+
+// ----------------------------------------
+// Transactions.storyboard
+// ----------------------------------------
+
+"transactions.title"                        = "Transactions";
+"transactions.transaction.title"            = "Who?";
+"transactions.contacts.title"               = "Contacts";

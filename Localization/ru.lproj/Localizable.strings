@@ -140,3 +140,11 @@
 // Select recipient
 
 "send.selectRecipient.title"                = "Выбрать получателя";
+
+// ----------------------------------------
+// Transactions.storyboard
+// ----------------------------------------
+
+"transactions.title"                        = "Транзакции";
+"transactions.transaction.title"            = "Информация";
+"transactions.contacts.title"               = "Контакты";
