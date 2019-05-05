@@ -115,3 +115,28 @@
 
 "restoreGuide.qrcode.title"                 = "Scan a paper key QR code";
 "restoreGuide.qrcode.closeButton"           = "Close";
+
+// ----------------------------------------
+// Send.storyboard
+// ----------------------------------------
+
+// Send
+
+"send.title"                                = "Send";
+"send.addressButtonLabel"                   = "Recipient address";
+"send.addressPlaceholder"                   = "Enter the recipient address";
+"send.amountButtonLabel"                    = "Amount";
+"send.memoButtonLabel"                      = "Internal Memo (optional)";
+"send.memoPlaceholder"                      = "Gift to Swen";
+"send.confirmButton"                        = "Confirm";
+"send.noBalanceTitle"                       = "No balance";
+"send.noBalanceDesc"                        = "You don't have any XVG to send.\nPlease increase your balance.";
+
+// QR-code
+
+"send.qrcode.title"                         = "Scan a XVG QR code";
+"send.qrcode.closeButton"                   = "Close";
+
+// Select recipient
+
+"send.selectRecipient.title"                = "Select recipient";

@@ -91,3 +91,16 @@ extension SelectorButton {
     }
     
 }
+
+extension UITabBarItem {
+    
+    @IBInspectable var localizationTitleId: String {
+        set(value) {
+            self.title = NSLocalizedString(value, comment: "")
+        }
+        get {
+            return ""
+        }
+    }
+    
+}

@@ -115,3 +115,28 @@
 
 "restoreGuide.qrcode.title"                 = "Отсканировать QR-код бумажного ключа";
 "restoreGuide.qrcode.closeButton"           = "Закрыть";
+
+// ----------------------------------------
+// Send.storyboard
+// ----------------------------------------
+
+// Send
+
+"send.title"                                = "Отправить";
+"send.addressButtonLabel"                   = "Адрес получателя";
+"send.addressPlaceholder"                   = "Введите адрес получателя";
+"send.amountButtonLabel"                    = "Сумма";
+"send.memoButtonLabel"                      = "Сообщение (необязательно)";
+"send.memoPlaceholder"                      = "На подарок Свену";
+"send.confirmButton"                        = "Подтвердить";
+"send.noBalanceTitle"                       = "Недостаточно средств";
+"send.noBalanceDesc"                        = "У вас нет XVG для отправки.\nПожалуйста, пополните свой баланс.";
+
+// QR-code
+
+"send.qrcode.title"                         = "Отсканируйте XVG QR-код";
+"send.qrcode.closeButton"                   = "Закрыть";
+
+// Select recipient
+
+"send.selectRecipient.title"                = "Выбрать получателя";
