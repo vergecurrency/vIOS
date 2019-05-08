@@ -170,7 +170,7 @@
 "settings.wallet.cell.paperKeyLabel"        = "Бумажный ключ";
 "settings.wallet.cell.addressesLabel"       = "Адреса";
 "settings.wallet.cell.transactionsLabel"    = "Заявленные транзакции";
-"settings.wallet.cell.serviceUrlLabel"      = "URL сервера";
+"settings.wallet.cell.serviceUrlLabel"      = "URL сервиса";
 
 "settings.settings.cell.fiatCurrencyLabel"  = "Фиатная валюта";
 "settings.settings.cell.changePinLabel"     = "Сменить Пин-код";
@@ -211,3 +211,11 @@
 
 "settings.transactions.title"               = "Заявленные транзакции";
 "settings.transactions.descLabel"           = "Все заявленные транзакции, с которыми произошли ошибки в процессе их выполнения представлены в списке ниже. Вам необходимо удалить их вручную, чтобы освободить Ваши средства.";
+
+// Service URL
+
+"settings.serviceUrl.title"                 = "URL сервиса";
+"settings.serviceUrl.header.title"          = "URL сервиса Кошелька";
+"settings.serviceUrl.footer.title"          = "Это приложение зависит от Сервиса Кошелька Verge (VWS). Он предоставляет информацию о блокчейне, сети и Copayer синхронизации. По умолчанию выбран https://vws.vergecurrency.network/vws/api (публичный VWS)";
+"settings.serviceUrl.defaultUrlButton"      = "Использовать URL по умолчанию";
+"settings.serviceUrl.saveButton"            = "Сохранить";

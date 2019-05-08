@@ -865,7 +865,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <view key="tableFooterView" contentMode="scaleToFill" id="bru-c7-R94">
-                            <rect key="frame" x="0.0" y="269.5" width="375" height="90"/>
+                            <rect key="frame" x="0.0" y="205.5" width="375" height="90"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqL-IM-qeL" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
@@ -879,6 +879,9 @@
                                     <state key="normal" title="Save">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.serviceUrl.saveButton"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="saveServiceUrl:" destination="xMb-Ry-0mn" eventType="touchUpInside" id="oX2-vJ-mlg"/>
                                     </connections>
@@ -892,6 +895,9 @@
                                     <state key="normal" title="Use default url">
                                         <color key="titleColor" name="PrimaryLight"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.serviceUrl.defaultUrlButton"/>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="setDefaultServiceUrl:" destination="xMb-Ry-0mn" eventType="touchUpInside" id="7tK-uI-ewS"/>
                                     </connections>
@@ -908,8 +914,7 @@
                             </constraints>
                         </view>
                         <sections>
-                            <tableViewSection headerTitle="Wallet Service URL" id="aye-uN-tV6">
-                                <string key="footerTitle">This application depends on Verge Wallet Service (VWS) for blockchain information, networking and Copayer synchronization. The default configuration points to https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)</string>
+                            <tableViewSection headerTitle="settings.serviceUrl.header.title" footerTitle="settings.serviceUrl.footer.title" id="aye-uN-tV6">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="VL3-dN-irb">
                                         <rect key="frame" x="0.0" y="131.5" width="375" height="44"/>
@@ -944,7 +949,11 @@
                             <outlet property="delegate" destination="xMb-Ry-0mn" id="NVN-g6-kfG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Service URL" id="zC5-Cx-9J0"/>
+                    <navigationItem key="navigationItem" title="Service URL" id="zC5-Cx-9J0">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="settings.serviceUrl.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                     <connections>
                         <outlet property="serviceUrlTextField" destination="EZ8-va-kPW" id="qe7-xA-PP3"/>
                     </connections>
