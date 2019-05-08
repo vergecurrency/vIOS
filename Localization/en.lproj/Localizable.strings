@@ -194,3 +194,9 @@
 "settings.paperKey.preview.descLabel"       = "Write down each word carefully without capital letters.";
 "settings.paperKey.preview.wordsSegment"    = "Words";
 "settings.paperKey.preview.qrSegment"       = "QR";
+
+// Disconnect wallet
+
+"settings.disconnect.titleLabel"            = "Disconnect this device from your current wallet";
+"settings.disconnect.descLabel"             = "You're about to disconnect this device from your current wallet. Please make absolutely sure you've written down your paper key and know your pass phrase. Remember that your paper key + pass phrase is the only way to restore your current wallet.";
+"settings.disconnect.disconnectButton"      = "Disconnect";
