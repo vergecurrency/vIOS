@@ -160,6 +160,8 @@
 // Settings.storyboard
 // ----------------------------------------
 
+// Settings
+
 "settings.title"                            = "Настройки";
 
 "settings.wallet.header.title"              = "Кошелек";
@@ -181,3 +183,14 @@
 "settings.other.cell.rateAppLabel"          = "Оценить приложение";
 "settings.other.cell.websiteLabel"          = "Web-сайт проекта";
 "settings.other.cell.contributeLabel"       = "Помочь разработке";
+
+// Paper key
+
+"settings.paperKey.titleLabel"              = "Записать Ваш бумажный ключ";
+"settings.paperKey.descLabel"               = "Хотите снова увидеть Ваш бумажный ключ? На следующем экране Вам будет показан набор слов, которые нужно записать на листке бумаги. Храните их очень осторожно!";
+"settings.paperKey.showButton"              = "Показать бумажный ключ";
+"settings.paperKey.preview.titleLabel"      = "Ваш бумажный ключ";
+"settings.paperKey.preview.noticeLabel"     = "Не стоит делать скриншот - это небезопасно. Лучше запишите Ваш бумажный ключ ручкой на листе бумаги.";
+"settings.paperKey.preview.descLabel"       = "Аккуратно запишите каждое слово в нижнем регистре.";
+"settings.paperKey.preview.wordsSegment"    = "Слова";
+"settings.paperKey.preview.qrSegment"       = "QR-код";

@@ -160,6 +160,8 @@
 // Settings.storyboard
 // ----------------------------------------
 
+// Settings
+
 "settings.title"                            = "Settings";
 
 "settings.wallet.header.title"              = "Wallet";
@@ -181,3 +183,14 @@
 "settings.other.cell.rateAppLabel"          = "Rate app";
 "settings.other.cell.websiteLabel"          = "Website";
 "settings.other.cell.contributeLabel"       = "Contribute";
+
+// Paper key
+
+"settings.paperKey.titleLabel"              = "Write down your wallet paper key again";
+"settings.paperKey.descLabel"               = "You want to see your paper key again? On the next screen, you'll be shown a list of words to write down on a piece of paper, which you should keep very safe!";
+"settings.paperKey.showButton"              = "Show paper key";
+"settings.paperKey.preview.titleLabel"      = "Your paper key";
+"settings.paperKey.preview.noticeLabel"     = "Taking a screenshot is not secure. Write down the paper key on a piece of paper with a pen.";
+"settings.paperKey.preview.descLabel"       = "Write down each word carefully without capital letters.";
+"settings.paperKey.preview.wordsSegment"    = "Words";
+"settings.paperKey.preview.qrSegment"       = "QR";
