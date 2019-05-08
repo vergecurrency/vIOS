@@ -232,6 +232,7 @@
 		CA522EAA220318B000331B0F /* SiriReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */; };
 		CA522EB1220318B000331B0F /* VergeSiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA522EA5220318B000331B0F /* VergeSiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA522EB622032A5600331B0F /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
+		CA63BA722282CE7400E2023A /* LocalizableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */; };
 		CA8323CB222A8B4F00D74D26 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
 		CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -587,6 +588,7 @@
 		CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriReceiveViewController.swift; sourceTree = "<group>"; };
 		CA522EAE220318B000331B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA522EB72203323A00331B0F /* VergeSiriUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiriUI.entitlements; sourceTree = "<group>"; };
+		CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTableViewController.swift; sourceTree = "<group>"; };
 		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA8FCF4E21F7C3A30069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -774,9 +776,7 @@
 		A305DD9A21066AE600911B64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */,
 				B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */,
-				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
 				A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */,
 				A305DDAA21077FF800911B64 /* Buttons */,
 				A305DDAB2107801400911B64 /* Extensions */,
@@ -787,6 +787,7 @@
 				B2BD7713B76A4A8371FACC27 /* Notification */,
 				CAD929FE21E7E05900CD5EBA /* Siri */,
 				CA101BAC224629310058B84C /* Shortcuts */,
+				CA63BA702282CE3000E2023A /* TableViews */,
 				A302D3132120F52900EA8091 /* TableCellViews */,
 				B2BD71AB56AECF65519715DB /* Theme */,
 				A3AA21FA2163F64F00160576 /* TorStatusIndicator */,
@@ -1286,6 +1287,16 @@
 				CA522EAE220318B000331B0F /* Info.plist */,
 			);
 			path = VergeSiriUI;
+			sourceTree = "<group>";
+		};
+		CA63BA702282CE3000E2023A /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */,
+				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
+				A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */,
+			);
+			path = TableViews;
 			sourceTree = "<group>";
 		};
 		CA8FCF4821F7C3A20069D150 /* VergeWatch */ = {
@@ -1904,6 +1915,7 @@
 				A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */,
 				A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */,
 				A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */,
+				CA63BA722282CE7400E2023A /* LocalizableTableViewController.swift in Sources */,
 				A30D279B2260D2AD000377F8 /* WalletClientProtocol.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */,

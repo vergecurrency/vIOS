@@ -148,3 +148,36 @@
 "transactions.title"                        = "Транзакции";
 "transactions.transaction.title"            = "Информация";
 "transactions.contacts.title"               = "Контакты";
+
+// ----------------------------------------
+// Wallet.storyboard
+// ----------------------------------------
+
+"wallet.xvgBalanceTitle"                    = "БАЛАНС XVG";
+"wallet.balanceTitle"                       = "БАЛАНС";
+
+// ----------------------------------------
+// Settings.storyboard
+// ----------------------------------------
+
+"settings.title"                            = "Настройки";
+
+"settings.wallet.header.title"              = "Кошелек";
+"settings.wallet.footer.title"              = "Настройте свой кошелек данными опциями.";
+"settings.wallet.cell.removeLabel"          = "Удалить кошелек";
+"settings.wallet.cell.paperKeyLabel"        = "Бумажный ключ";
+"settings.wallet.cell.addressesLabel"       = "Адреса";
+"settings.wallet.cell.transactionsLabel"    = "Заявленные транзакции";
+"settings.wallet.cell.serviceUrlLabel"      = "URL сервера";
+
+"settings.settings.cell.fiatCurrencyLabel"  = "Фиатная валюта";
+"settings.settings.cell.changePinLabel"     = "Сменить Пин-код";
+"settings.settings.cell.useFaceIdLabel"     = "Использование Face ID";
+"settings.settings.cell.torConnectionLabel" = "Tor-соединение";
+
+"settings.other.header.title"               = "Другое";
+"settings.other.cell.creditsLabel"          = "О приложении";
+"settings.other.cell.donateLabel"           = "Поддержать проект";
+"settings.other.cell.rateAppLabel"          = "Оценить приложение";
+"settings.other.cell.websiteLabel"          = "Web-сайт проекта";
+"settings.other.cell.contributeLabel"       = "Помочь разработке";

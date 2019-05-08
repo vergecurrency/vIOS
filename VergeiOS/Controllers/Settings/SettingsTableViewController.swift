@@ -110,3 +110,4 @@ class SettingsTableViewController: EdgedTableViewController {
         return number
     }
 }
+
