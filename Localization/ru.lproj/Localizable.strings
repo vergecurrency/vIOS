@@ -219,3 +219,23 @@
 "settings.serviceUrl.footer.title"          = "Это приложение зависит от Сервиса Кошелька Verge (VWS). Он предоставляет информацию о блокчейне, сети и Copayer синхронизации. По умолчанию выбран https://vws.vergecurrency.network/vws/api (публичный VWS)";
 "settings.serviceUrl.defaultUrlButton"      = "Использовать URL по умолчанию";
 "settings.serviceUrl.saveButton"            = "Сохранить";
+
+// Fiat currency
+
+"settings.fiatCurrency.title"               = "Фиатная валюта";
+
+// Use Face ID
+
+"settings.useFaceID.title"                  = "Использование Face ID";
+"settings.useFaceID.header.title"           = "Использовать для";
+"settings.useFaceID.footer.title"           = "Вместо того, чтобы вводить PIN-код Вашего кошелька, Вам будет предложен альтернативный способ аутентификации.";
+"settings.useFaceID.unlockLabel"            = "Разблокировки Вашего кошелька";
+"settings.useFaceID.sendingLabel"           = "При отправке XVG";
+
+// Tor connection
+
+"settings.torConnection.titleLabel"         = "Tor используется для Вашей конфиденциальности и скрывает Ваше местоположение";
+"settings.torConnection.descLabel"          = "При использовании Tor-соединенияя Ваш IP-адрес полностью скрыт, а транзакции не отслеживаются.\n\nНо Вы всегда можно отключить Tor.";
+"settings.torConnection.obfuscateIpLabel"   = "Скрыть IP";
+"settings.torConnection.yourIpLabel"        = "Ваш IP адрес";
+"settings.torConnection.loadingLabel"       = "Загрузка...";

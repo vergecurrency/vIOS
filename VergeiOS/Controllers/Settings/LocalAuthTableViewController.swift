@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class LocalAuthTableViewController: UITableViewController {
+class LocalAuthTableViewController: LocalizableTableViewController {
 
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var unlockWalletSwitch: UISwitch!

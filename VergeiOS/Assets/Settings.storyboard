@@ -459,8 +459,7 @@
                             <color key="tintColor" name="PrimaryLight"/>
                         </imageView>
                         <sections>
-                            <tableViewSection headerTitle="Use for" id="vvU-1b-nGZ">
-                                <string key="footerTitle">Instead of having the need of filling in your wallet PIN a prompt will provide you with the alternative way of authenticating yourself.</string>
+                            <tableViewSection headerTitle="settings.useFaceID.header.title" footerTitle="settings.useFaceID.footer.title" id="vvU-1b-nGZ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="IS2-8P-mFv" style="IBUITableViewCellStyleDefault" id="e9W-Ob-cpX">
                                         <rect key="frame" x="0.0" y="175.5" width="375" height="44"/>
@@ -475,6 +474,9 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.useFaceID.unlockLabel"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4P0-42-mbz">
                                                     <rect key="frame" x="163" y="6" width="49" height="31"/>
@@ -503,6 +505,9 @@
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.useFaceID.sendingLabel"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hQr-NI-AsY">
                                                     <rect key="frame" x="163" y="6" width="49" height="31"/>
@@ -526,7 +531,11 @@
                             <outlet property="delegate" destination="9dK-qh-T3Q" id="D6M-Y2-Nam"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Use Face ID" id="zL1-s1-8ZF"/>
+                    <navigationItem key="navigationItem" title="Use Face ID" id="zL1-s1-8ZF">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="settings.useFaceID.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                     <connections>
                         <outlet property="headerImage" destination="wGp-Eq-OJH" id="yfL-Ms-rxa"/>
                         <outlet property="sendXvgSwitch" destination="hQr-NI-AsY" id="XOU-S3-xBO"/>
@@ -1185,7 +1194,11 @@
                             <outlet property="delegate" destination="Td7-Ul-2vV" id="bu9-Hg-WPK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Fiat currency" id="vBS-dX-cr5"/>
+                    <navigationItem key="navigationItem" title="Fiat currency" id="vBS-dX-cr5">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="settings.fiatCurrency.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lR0-7J-UuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1410,6 +1423,9 @@
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                     <color key="textColor" name="SecondaryDark"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.torConnection.titleLabel"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TorPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="U9l-Av-2eM">
                                     <rect key="frame" x="40" y="76.5" width="295" height="125"/>
@@ -1426,6 +1442,9 @@ But you can always turn Tor off.</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                     <color key="textColor" name="SecondaryLight"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.torConnection.descLabel"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" name="BackgroundGrey"/>
@@ -1458,6 +1477,9 @@ But you can always turn Tor off.</string>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.torConnection.obfuscateIpLabel"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dxh-0n-KyV">
                                                     <rect key="frame" x="163" y="6" width="49" height="31"/>
@@ -1486,6 +1508,9 @@ But you can always turn Tor off.</string>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.torConnection.yourIpLabel"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Loading..." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tg0-BR-yrS">
                                                     <rect key="frame" x="281.5" y="10" width="77.5" height="23.5"/>
@@ -1493,6 +1518,9 @@ But you can always turn Tor off.</string>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" name="SecondaryDark"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.torConnection.loadingLabel"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>

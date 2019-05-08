@@ -219,3 +219,23 @@
 "settings.serviceUrl.footer.title"          = "This application depends on Verge Wallet Service (VWS) for blockchain information, networking and Copayer synchronization. The default configuration points to https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)";
 "settings.serviceUrl.defaultUrlButton"      = "Use default url";
 "settings.serviceUrl.saveButton"            = "Save";
+
+// Fiat currency
+
+"settings.fiatCurrency.title"               = "Fiat currency";
+
+// Use Face ID
+
+"settings.useFaceID.title"                  = "Use Face ID";
+"settings.useFaceID.header.title"           = "Use for";
+"settings.useFaceID.footer.title"           = "Instead of having the need of filling in your wallet PIN a prompt will provide you with the alternative way of authenticating yourself.";
+"settings.useFaceID.unlockLabel"            = "Unlocking your wallet";
+"settings.useFaceID.sendingLabel"           = "Sending XVG";
+
+// Tor connection
+
+"settings.torConnection.titleLabel"         = "Tor is here for your privacy and hides your location";
+"settings.torConnection.descLabel"          = "Your IP address is fully obfuscated and transactions are completely untraceable when you're using a Tor connection.\n\nBut you can always turn Tor off.";
+"settings.torConnection.obfuscateIpLabel"   = "Obfuscate IP";
+"settings.torConnection.yourIpLabel"        = "Your IP Address";
+"settings.torConnection.loadingLabel"       = "Loading...";
