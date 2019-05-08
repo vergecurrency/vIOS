@@ -206,3 +206,8 @@
 "settings.addresses.title"                  = "Addresses";
 "settings.addresses.descLabel"              = "Each verge wallet can generate billions of addresses from your 12-word recovery phrase. A new address is automatically generated and shown each time you receive a payment.";
 "settings.addresses.scanButton"             = "Scan addresses for balance";
+
+// Transaction Proposals
+
+"settings.transactions.title"               = "Transaction Proposals";
+"settings.transactions.descLabel"           = "All transaction proposals that failed during a transaction sequence are listed below. You need to delete them manually in order to release the funds.";
