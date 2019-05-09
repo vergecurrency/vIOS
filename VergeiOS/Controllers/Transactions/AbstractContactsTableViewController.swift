@@ -55,7 +55,7 @@ class AbstractContactsTableViewController: UITableViewController {
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Contacts"
+        searchController.searchBar.placeholder = "transactions.contacts.search".localized
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true

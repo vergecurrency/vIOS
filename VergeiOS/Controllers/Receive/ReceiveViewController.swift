@@ -249,7 +249,7 @@ class ReceiveViewController: UIViewController {
 
     @objc func copyAddress(recognizer: UIGestureRecognizer) {
         UIPasteboard.general.string = address
-        NotificationManager.shared.showMessage("receive.addressCopied".localized, duration: 3)
+        NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
     }
 
     func openShareSheet(shareText text: String?, shareImage: UIImage?) {
