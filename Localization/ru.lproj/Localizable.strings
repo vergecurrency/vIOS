@@ -341,3 +341,15 @@
 "send.sendMax"                              = "Отправить максимум";
 "send.wrongAddress"                         = "Неверный адрес";
 "send.enterValidAddress"                    = "Введеный невалидный адрес. Пожалуйста, введите валидный Verge адрес.";
+
+// ----------------------------------------
+// ConfirmSendView.swift + .xib
+// ----------------------------------------
+
+"send.confirm.resolvedStealth"              = "Обработанный стелс адрес";
+"send.confirm.confirmTitleLabel"            = "Подтвердить транзакцию";
+"send.confirm.recipientLabel"               = "Получатель";
+"send.confirm.doubleCheckDescLabel"         = "Дважды проверьте адрес кошелька. Валюта Verge не может нести ответственность за потерю XVG, отправленные на неправильные кошельки.";
+"send.confirm.sendingLabel"                 = "Отправляется";
+"send.confirm.transactionFeeLabel"          = "Комиссия на перевод";
+"send.confirm.totalLabel"                   = "Итого";

@@ -341,3 +341,15 @@
 "send.sendMax"                              = "Send Max";
 "send.wrongAddress"                         = "Wrong Address";
 "send.enterValidAddress"                    = "The entered address is an invalid Verge address. Please enter a valid verge address.";
+
+// ----------------------------------------
+// ConfirmSendView.swift + .xib
+// ----------------------------------------
+
+"send.confirm.resolvedStealth"              = "Resolved stealth address";
+"send.confirm.confirmTitleLabel"            = "Confirm Transaction";
+"send.confirm.recipientLabel"               = "Recipient";
+"send.confirm.doubleCheckDescLabel"         = "Double check that the wallet address is correct. Verge Currency cannot be held accountable for loss of XVG sent to wrong wallets.";
+"send.confirm.sendingLabel"                 = "Sending";
+"send.confirm.transactionFeeLabel"          = "Transaction fee";
+"send.confirm.totalLabel"                   = "Total";
