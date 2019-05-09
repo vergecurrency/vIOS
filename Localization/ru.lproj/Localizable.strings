@@ -271,3 +271,11 @@
 "shortcuts.action.sourceCode.title"         = "Исходники";
 "shortcuts.action.send.title"               = "Отправить";
 "shortcuts.action.receive.title"            = "Получить";
+
+// ----------------------------------------
+// TransactionTableViewCell.swift
+// ----------------------------------------
+
+"transaction.state.moved"                   = "Перемещены";
+"transaction.state.received"                = "Получены";
+"transaction.state.pending"                 = "В ожидании";

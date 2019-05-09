@@ -271,3 +271,12 @@
 "shortcuts.action.sourceCode.title"         = "Source code";
 "shortcuts.action.send.title"               = "Send";
 "shortcuts.action.receive.title"            = "Receive";
+
+// ----------------------------------------
+// TransactionTableViewCell.swift
+// ----------------------------------------
+
+"transaction.state.moved"                   = "Moved";
+"transaction.state.received"                = "Received";
+"transaction.state.pending"                 = "Pending";
+
