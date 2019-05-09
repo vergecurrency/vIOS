@@ -17,6 +17,7 @@
 "defaults.back"                             = "Back";
 "defaults.address"                          = "Address";
 "defaults.next"                             = "Next";
+"defaults.previous"                         = "Previous";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -103,12 +104,12 @@
 // WelcomeGuide.storyboard
 // ----------------------------------------
 
-// Paper key scene 1
-
 "welcomeGuide.paperKey.title"               = "Paper key";
 "welcomeGuide.paperKey.message"             = "On the next screen, you'll be shown a list of words to write down on a piece of paper, which you should keep very safe!";
 "welcomeGuide.paperKey.description"         = "Your paper key is part of your private key which is the only thing you need to access your funds.";
 "welcomeGuide.paperKey.actionButton"        = "Write down paper key";
+"welcomeGuide.paperKey.makeSureLabel"       = "To make sure everything was written down correctly, please enter the following words from your paper.";
+"welcomeGuide.paperKey.submitButton"        = "Submit";
 
 // ----------------------------------------
 // Receive.storyboard

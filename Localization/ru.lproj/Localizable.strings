@@ -17,6 +17,7 @@
 "defaults.back"                             = "Назад";
 "defaults.address"                          = "Адрес";
 "defaults.next"                             = "Далее";
+"defaults.previous"                         = "Предыдущее";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -103,12 +104,12 @@
 // WelcomeGuide.storyboard
 // ----------------------------------------
 
-// Paper key scene 1
-
 "welcomeGuide.paperKey.title"               = "Бумажный ключ";
 "welcomeGuide.paperKey.message"             = "На следующем экране Вам будет показан набор слов, которые необходимо записать на листе бумаги. Храните их очень аккуратно!";
 "welcomeGuide.paperKey.description"         = "Бумажный ключ является частью Вашего приватного ключа, единственного средства доступа к Вашим денежным средствам";
 "welcomeGuide.paperKey.actionButton"        = "Записать бумажный ключ";
+"welcomeGuide.paperKey.makeSureLabel"       = "Чтобы убедиться что всё записано правильно, пожалуйста заполните следующие слова с листа бумаги.";
+"welcomeGuide.paperKey.submitButton"        = "Продолжить";
 
 // ----------------------------------------
 // Receive.storyboard
