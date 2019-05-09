@@ -16,6 +16,7 @@
 "defaults.remove"                           = "Удалить";
 "defaults.back"                             = "Назад";
 "defaults.address"                          = "Адрес";
+"defaults.next"                             = "Далее";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -325,6 +326,7 @@
 "paperKey.outOf"                            = "из";
 "paperKey.egCat"                            = "(например Cat)";
 "paperKey.key"                              = "Ключ";
+"paperKey.word"                             = "Слово";
 
 // ----------------------------------------
 // SendViewController.swift
@@ -485,3 +487,37 @@
 
 "transactions.noContacts.titleLabel"        = "Пока нет контактов";
 "transactions.noContacts.descLabel"         = "Добавьте контакт для упрощения отправки XVG";
+
+// ----------------------------------------
+// Wallet Slides
+// ----------------------------------------
+
+// TransactionsWalletSlideView.xib
+
+"wallet.slides.recentTransactions"          = "Недавние транзакции";
+
+// SummaryWalletSlideView.xib
+
+"wallet.slides.summary.statistics"          = "Статистика";
+"wallet.slides.summary.dataNotFound"        = "Данные статистики не могут быть найдены.";
+
+// SummaryWalletSlideView.swift
+
+"wallet.slides.summary.marketCap"           = "Капитализация";
+"wallet.slides.summary.24hHigh"             = "Макс. за 24ч";
+"wallet.slides.summary.24hLow"              = "Мин. за 24ч";
+"wallet.slides.summary.24hChange"           = "Изм. за 24ч";
+"wallet.slides.summary.24hVolume"           = "Объемы за 24ч";
+
+// ChartWalletSlideView.xib
+
+"wallet.slides.chart.history"               = "Исторические графики";
+"wallet.slides.chart.high"                  = "Максимум";
+"wallet.slides.chart.average"               = "Среднее";
+"wallet.slides.chart.low"                   = "Минимум";
+"wallet.slides.chart.availability"          = "данные графика доступны только в USD";
+"wallet.slides.chart.noData"                = "Данные графика не могут быть найдены.";
+
+// NoWalletTransactionsPlaceholderTableViewCell.xib
+
+"wallet.slides.noTransactions.titleLabel"   = "Пока не было транзакций.";

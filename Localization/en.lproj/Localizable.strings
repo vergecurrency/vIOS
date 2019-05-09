@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  VergeiOS
-
-  Created by Ivan Manov on 20/04/2019.
-  Copyright © 2019 Verge Currency. All rights reserved.
-*/
+/*
+ Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ */
 
 // ----------------------------------------
 // Global defaults
@@ -16,6 +16,7 @@
 "defaults.remove"                           = "Remove";
 "defaults.back"                             = "Back";
 "defaults.address"                          = "Address";
+"defaults.next"                             = "Next";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -325,6 +326,7 @@
 "paperKey.outOf"                            = "out of";
 "paperKey.egCat"                            = "(e.g. Cat)";
 "paperKey.key"                              = "Key";
+"paperKey.word"                             = "Word";
 
 // ----------------------------------------
 // SendViewController.swift
@@ -485,3 +487,37 @@
 
 "transactions.noContacts.titleLabel"        = "No contacts created yet";
 "transactions.noContacts.descLabel"         = "Add a contact to easily send XVG to";
+
+// ----------------------------------------
+// Wallet Slides
+// ----------------------------------------
+
+// TransactionsWalletSlideView.xib
+
+"wallet.slides.recentTransactions"          = "Recent transactions";
+
+// SummaryWalletSlideView.xib
+
+"wallet.slides.summary.statistics"          = "Statistics";
+"wallet.slides.summary.dataNotFound"        = "Statistics data can't be found.";
+
+// SummaryWalletSlideView.swift
+
+"wallet.slides.summary.marketCap"           = "Market Cap";
+"wallet.slides.summary.24hHigh"             = "24h High";
+"wallet.slides.summary.24hLow"              = "24h Low";
+"wallet.slides.summary.24hChange"           = "24h Change";
+"wallet.slides.summary.24hVolume"           = "24h Volume";
+
+// ChartWalletSlideView.xib
+
+"wallet.slides.chart.history"               = "History Chart";
+"wallet.slides.chart.high"                  = "High";
+"wallet.slides.chart.average"               = "Average";
+"wallet.slides.chart.low"                   = "Low";
+"wallet.slides.chart.availability"          = "chart data only available in USD";
+"wallet.slides.chart.noData"                = "History chart data can't be found.";
+
+// NoWalletTransactionsPlaceholderTableViewCell.xib
+
+"wallet.slides.noTransactions.titleLabel"   = "No transactions received yet.";
