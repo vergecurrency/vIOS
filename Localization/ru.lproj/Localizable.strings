@@ -353,3 +353,12 @@
 "send.confirm.sendingLabel"                 = "Отправляется";
 "send.confirm.transactionFeeLabel"          = "Комиссия на перевод";
 "send.confirm.totalLabel"                   = "Итого";
+
+// ----------------------------------------
+// SendingView.swift + .xib
+// ----------------------------------------
+
+"send.sending.signingTransaction"           = "Подписываем транзакцию";
+"send.sending.broadcastingTransaction"      = "Броадкастим транзакцию";
+"send.sending.transactionSent"              = "Транзакция отправлена!";
+"send.sending.publishingTransaction"        = "Публикация транзакции";

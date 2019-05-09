@@ -353,3 +353,12 @@
 "send.confirm.sendingLabel"                 = "Sending";
 "send.confirm.transactionFeeLabel"          = "Transaction fee";
 "send.confirm.totalLabel"                   = "Total";
+
+// ----------------------------------------
+// SendingView.swift + .xib
+// ----------------------------------------
+
+"send.sending.signingTransaction"           = "Signing Transaction";
+"send.sending.broadcastingTransaction"      = "Broadcasting Transaction";
+"send.sending.transactionSent"              = "Transaction Sent!";
+"send.sending.publishingTransaction"        = "Publishing Transaction";
