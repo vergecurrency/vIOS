@@ -387,3 +387,11 @@
 "addresses.privateKeyCopied"                = "Приватный ключ скопирован!";
 "addresses.scanningAddresses"               = "Сканирование адресов";
 "addresses.scanningAddressesMessage"        = "Сканирование баланса адресов. Это может занять некоторое время.";
+
+// ----------------------------------------
+// CreditsTableViewController.swift
+// ----------------------------------------
+
+"credits.header.development"                = "Разработка";
+"credits.header.design"                     = "Дизайн";
+"credits.header.translation"                = "Перевод";
