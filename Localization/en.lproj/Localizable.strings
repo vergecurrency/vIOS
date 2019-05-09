@@ -309,3 +309,12 @@
 
 "receive.myAddressTitle"                    = "My XVG address";
 "receive.addressCopied"                     = "Address copied!";
+
+// ----------------------------------------
+// EnterRecoveryKeyController.swift
+// ----------------------------------------
+
+"paperKey.enterWord"                        = "Enter word";
+"paperKey.outOf"                            = "out of";
+"paperKey.egCat"                            = "(e.g. Cat)";
+"paperKey.key"                              = "Key";

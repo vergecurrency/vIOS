@@ -60,15 +60,15 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
     
     private func createLabelText(index: Int) -> String {
-        return "Enter word #\(index + 1)"
+        return "paperKey.enterWord".localized + " #\(index + 1)"
     }
     
     private func createProgressText(index: Int) -> String {
-        return "\(index + 1) out of \(numberOfWords)"
+        return "\(index + 1) " + "paperKey.outOf".localized + " \(numberOfWords)"
     }
     
     private func createPlaceholderText(index: Int) -> String {
-        return "Key #\(index + 1) (e.g. Cat)"
+        return "paperKey.key".localized + " #\(index + 1) " + "paperKey.egCat".localized
     }
     
     private func updateView(index: Int) {
