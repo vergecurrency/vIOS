@@ -93,7 +93,7 @@ class SettingsTableViewController: EdgedTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
 
         if indexPath == localAuthIndexPath && LAContext.available(type: .touchID) {
-            cell.textLabel?.text = "Use Touch ID"
+            cell.textLabel?.text = "settings.localAuth.useTouchId".localized
             cell.imageView?.image = UIImage(named: "TouchID")
         }
 

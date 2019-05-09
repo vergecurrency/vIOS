@@ -13,6 +13,7 @@
 "defaults.ok"                               = "Ок";
 "defaults.cancel"                           = "Отмена";
 "defaults.done"                             = "Готово";
+"defaults.remove"                           = "Удалить";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -257,6 +258,7 @@
 "settings.torConnection.obfuscateIpLabel"   = "Скрыть IP";
 "settings.torConnection.yourIpLabel"        = "Ваш IP адрес";
 "settings.torConnection.loadingLabel"       = "Загрузка...";
+"settings.torConnection.notAvailable"       = "Сервис недоступен";
 
 // Credits
 
@@ -416,3 +418,11 @@
 "settings.serviceUrl.alert.errorChanging2"  = "Произошла ошибка при изменении URL сервиса. Пожалуйста, попробуйте снова или используйте другой сервисный URL.";
 "settings.serviceUrl.alert.title2"          = "Сервис изменен";
 "settings.serviceUrl.alert.message2"        = "URL сервиса успешно изменен";
+
+// ----------------------------------------
+// TransactionProposalsTableViewController.swift
+// ----------------------------------------
+
+"settings.transactions.removeProposal"      = "Удалить заявку";
+"settings.transactions.noProposals"         = "Нет заявок";
+"settings.transactions.releaseXvg"          = "Освободить XVG этой заявки на перевод";

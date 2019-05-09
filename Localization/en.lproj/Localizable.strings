@@ -13,6 +13,7 @@
 "defaults.ok"                               = "Ok";
 "defaults.cancel"                           = "Cancel";
 "defaults.done"                             = "Done";
+"defaults.remove"                           = "Remove";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -257,6 +258,7 @@
 "settings.torConnection.obfuscateIpLabel"   = "Obfuscate IP";
 "settings.torConnection.yourIpLabel"        = "Your IP Address";
 "settings.torConnection.loadingLabel"       = "Loading...";
+"settings.torConnection.notAvailable"       = "Service not available";
 
 // Credits
 
@@ -416,3 +418,11 @@
 "settings.serviceUrl.alert.errorChanging2"  = "An error was raised during the service URL change. Please try again or use another service URL.";
 "settings.serviceUrl.alert.title2"          = "Changed Service";
 "settings.serviceUrl.alert.message2"        = "Successfully changed the service URL.";
+
+// ----------------------------------------
+// TransactionProposalsTableViewController.swift
+// ----------------------------------------
+
+"settings.transactions.removeProposal"      = "Remove a proposal";
+"settings.transactions.noProposals"         = "No proposals";
+"settings.transactions.releaseXvg"          = "Release the XVG of this transaction proposal.";

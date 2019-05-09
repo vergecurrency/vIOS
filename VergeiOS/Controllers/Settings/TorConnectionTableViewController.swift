@@ -34,7 +34,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
         applicationRepository.useTor = sender.isOn
         
         if sender.isOn {
-            setIpAddressLabel("Loading...")
+            setIpAddressLabel("settings.torConnection.loadingLabel".localized)
             
             self.torClient.start {
                 self.updateIPAddress()
@@ -50,7 +50,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
     }
     
     func updateIPAddress() {
-        setIpAddressLabel("Loading...")
+        setIpAddressLabel("settings.torConnection.loadingLabel".localized)
 
         let url = URL(string: Constants.ipCheckEndpoint)
         let task = self.torClient.session.dataTask(with: url!) { data, response, error in
@@ -62,7 +62,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
                     self.centerMapView(withIpLocation: ipAddress)
                 }
             } catch {
-                self.setIpAddressLabel("Service not available")
+                self.setIpAddressLabel("settings.torConnection.notAvailable".localized)
 
                 print(error)
             }
