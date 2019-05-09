@@ -7,6 +7,13 @@
  */
 
 // ----------------------------------------
+// Global defaults
+// ----------------------------------------
+
+"defaults.ok"                               = "Ок";
+"defaults.cancel"                           = "Отмена";
+
+// ----------------------------------------
 // MainTabbarNavigation.storyboard
 // ----------------------------------------
 
@@ -318,3 +325,19 @@
 "paperKey.outOf"                            = "из";
 "paperKey.egCat"                            = "(например Cat)";
 "paperKey.key"                              = "Ключ";
+
+// ----------------------------------------
+// SendViewController.swift
+// ----------------------------------------
+
+"send.sendXVG"                              = "Отправить XVG";
+"send.noConnection"                         = "Нет сети";
+"send.transactionFailed"                    = "Ошибка транзакции";
+"send.transactionFailedMessage"             = "Произошла ошибка транзакции. Причина";
+
+"send.notEnoughBalance"                     = "Недостаточно средств";
+"send.notEnoughBalanceMessage1"             = "У Вас недостаточно средств на балансе для отправки";
+"send.notEnoughBalanceMessage2"             = "Измените сумму отправки чтобы продолжить.";
+"send.sendMax"                              = "Отправить максимум";
+"send.wrongAddress"                         = "Неверный адрес";
+"send.enterValidAddress"                    = "Введеный невалидный адрес. Пожалуйста, введите валидный Verge адрес.";

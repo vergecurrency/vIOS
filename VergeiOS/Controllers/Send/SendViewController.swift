@@ -221,13 +221,13 @@ class SendViewController: UIViewController {
 
                 confirmSendView.setup(txp)
 
-                let sendAction = UIAlertAction(title: "Send XVG", style: .default) { alert in
+                let sendAction = UIAlertAction(title: "send.sendXVG".localized, style: .default) { alert in
                     self.send(txp: txp)
                 }
                 sendAction.setValue(UIImage(named: "Send"), forKey: "image")
 
                 alertController.addAction(sendAction)
-                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
             }
         }
     }
@@ -306,15 +306,15 @@ class SendViewController: UIViewController {
     }
 
     func showTransactionError(_ errorResponse: TxProposalErrorResponse?, txp: TxProposalResponse?) {
-        let error: String = errorResponse != nil ? errorResponse!.message : "No connection"
+        let error: String = errorResponse != nil ? errorResponse!.message : "send.noConnection".localized
 
         let actionSheet = UIAlertController(
-            title: "Transaction Failed",
-            message: "Your transaction has failed with the following error: \(error)",
+            title: "send.transactionFailed".localized,
+            message: "send.transactionFailedMessage".localized + ": \(error)",
             preferredStyle: .actionSheet
         )
 
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .destructive) { action in
+        actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .destructive) { action in
             guard let txp = txp else {
                 return
             }
@@ -334,12 +334,12 @@ class SendViewController: UIViewController {
     func notifySelectedToMuchAmount() {
         let amount = amountTextField.text ?? "..."
         let alert = UIAlertController(
-            title: "Not enough balance ⚖️🤔",
-            message: "You do not have enough balance to send \(amount). Change the amount to send in order to proceed.",
+            title: "send.notEnoughBalance".localized + " ⚖️🤔",
+            message: "send.notEnoughBalanceMessage1".localized + " \(amount). " + "send.notEnoughBalanceMessage2".localized,
             preferredStyle: .alert
         )
         
-        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okButton = UIAlertAction(title: "defaults.ok".localized, style: .default, handler: nil)
         
         alert.addAction(okButton)
         
@@ -424,7 +424,7 @@ extension SendViewController: UITextFieldDelegate {
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         let maximumButton = UIBarButtonItem(
-            title: "Send Max",
+            title: "send.sendMax".localized,
             style: .plain,
             target: self,
             action: #selector(SendViewController.setMaximumAmount)
@@ -520,12 +520,12 @@ extension SendViewController: UITextFieldDelegate {
 
     func showInvalidAddressAlert() {
         let alert = UIAlertController(
-            title: "Wrong Address 🤷‍♀️",
-            message: "The entered address is an invalid Verge address. Please enter a valid verge address.",
+            title: "send.wrongAddress".localized + " 🤷‍♀️",
+            message: "send.enterValidAddress".localized,
             preferredStyle: .alert
         )
 
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
 
         present(alert, animated: true)
     }

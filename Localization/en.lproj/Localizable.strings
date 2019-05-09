@@ -7,6 +7,13 @@
 */
 
 // ----------------------------------------
+// Global defaults
+// ----------------------------------------
+
+"defaults.ok"                               = "Ok";
+"defaults.cancel"                           = "Cancel";
+
+// ----------------------------------------
 // MainTabbarNavigation.storyboard
 // ----------------------------------------
 
@@ -318,3 +325,19 @@
 "paperKey.outOf"                            = "out of";
 "paperKey.egCat"                            = "(e.g. Cat)";
 "paperKey.key"                              = "Key";
+
+// ----------------------------------------
+// SendViewController.swift
+// ----------------------------------------
+
+"send.sendXVG"                              = "Send XVG";
+"send.noConnection"                         = "No connection";
+"send.transactionFailed"                    = "Transaction Failed";
+"send.transactionFailedMessage"             = "Your transaction has failed with the following error";
+
+"send.notEnoughBalance"                     = "Not enough balance";
+"send.notEnoughBalanceMessage1"             = "You do not have enough balance to send";
+"send.notEnoughBalanceMessage2"             = "Change the amount to send in order to proceed.";
+"send.sendMax"                              = "Send Max";
+"send.wrongAddress"                         = "Wrong Address";
+"send.enterValidAddress"                    = "The entered address is an invalid Verge address. Please enter a valid verge address.";
