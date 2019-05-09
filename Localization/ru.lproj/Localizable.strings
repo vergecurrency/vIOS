@@ -290,3 +290,15 @@
 "chart.filter.threeMonths"                  = "3М";
 "chart.filter.oneYear"                      = "1Г";
 "chart.filter.all"                          = "Весь";
+
+// ----------------------------------------
+// PriceChartView.swift
+// ----------------------------------------
+
+"chart.price.historyTitle"                  = "История цены";
+
+// ----------------------------------------
+// VolumeChartView.swift
+// ----------------------------------------
+
+"chart.volume.historyTitle"                 = "История объемов";

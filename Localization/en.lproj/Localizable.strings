@@ -284,10 +284,21 @@
 // ChartFilterToolbar.swift
 // ----------------------------------------
 
-"chart.filet.oneDay"                        = "1D";
-"chart.filet.oneWeek"                       = "1W";
-"chart.filet.oneMonth"                      = "1M";
-"chart.filet.threeMonths"                   = "3M";
-"chart.filet.oneYear"                       = "1Y";
-"chart.filet.all"                           = "All";
+"chart.filter.oneDay"                       = "1D";
+"chart.filter.oneWeek"                      = "1W";
+"chart.filter.oneMonth"                     = "1M";
+"chart.filter.threeMonths"                  = "3M";
+"chart.filter.oneYear"                      = "1Y";
+"chart.filter.all"                          = "All";
 
+// ----------------------------------------
+// PriceChartView.swift
+// ----------------------------------------
+
+"chart.price.historyTitle"                  = "Price History";
+
+// ----------------------------------------
+// VolumeChartView.swift
+// ----------------------------------------
+
+"chart.volume.historyTitle"                 = "Volume History";
