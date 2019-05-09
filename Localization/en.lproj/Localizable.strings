@@ -280,3 +280,14 @@
 "transaction.state.received"                = "Received";
 "transaction.state.pending"                 = "Pending";
 
+// ----------------------------------------
+// ChartFilterToolbar.swift
+// ----------------------------------------
+
+"chart.filet.oneDay"                        = "1D";
+"chart.filet.oneWeek"                       = "1W";
+"chart.filet.oneMonth"                      = "1M";
+"chart.filet.threeMonths"                   = "3M";
+"chart.filet.oneYear"                       = "1Y";
+"chart.filet.all"                           = "All";
+

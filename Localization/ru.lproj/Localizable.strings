@@ -279,3 +279,14 @@
 "transaction.state.moved"                   = "Перемещены";
 "transaction.state.received"                = "Получены";
 "transaction.state.pending"                 = "В ожидании";
+
+// ----------------------------------------
+// ChartFilterToolbar.swift
+// ----------------------------------------
+
+"chart.filter.oneDay"                       = "1Д";
+"chart.filter.oneWeek"                      = "1Н";
+"chart.filter.oneMonth"                     = "1М";
+"chart.filter.threeMonths"                  = "3М";
+"chart.filter.oneYear"                      = "1Г";
+"chart.filter.all"                          = "Весь";
