@@ -239,3 +239,16 @@
 "settings.torConnection.obfuscateIpLabel"   = "Obfuscate IP";
 "settings.torConnection.yourIpLabel"        = "Your IP Address";
 "settings.torConnection.loadingLabel"       = "Loading...";
+
+// Credits
+
+"settings.credits.title"                    = "Credits";
+"settings.credits.descLabel"                = "This application was made possible by the following heroes:";
+
+// Donate
+
+"settings.donate.titleLabel"               = "Donate to Support Development";
+"settings.donate.descLabel"                = "At Verge we are always striving to achieve new heights and deliver products or software implementations that are requested by the community.";
+"settings.donate.desc2Label"               = "Listening to our community members and taking in feedback is not only one of the core founding principles of Verge, but it is inherent in our open-source nature.";
+"settings.donate.addressLabel"             = "Donation XVG Address";
+"settings.donate.donateButton"             = "Donate XVG";
