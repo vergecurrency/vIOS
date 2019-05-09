@@ -136,7 +136,7 @@ class ShortcutsManager: NSObject {
             // Construct dynamic short item #3
             let websiteShortcutUserInfo = [ShortcutsManager.applicationShortcutUserInfoIconKey: "Website"]
             let websiteShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.website.type,
-                                                                   localizedTitle: "Website",
+                                                                   localizedTitle: "shortcuts.action.website.title".localized,
                                                                    localizedSubtitle: nil,
                                                                    icon: UIApplicationShortcutIcon(templateImageName: "Development"),
                                                                    userInfo: websiteShortcutUserInfo as [String : NSSecureCoding])
@@ -144,7 +144,7 @@ class ShortcutsManager: NSObject {
             // Construct dynamic short #4
             let repositoryShortcutUserInfo = [ShortcutsManager.applicationShortcutUserInfoIconKey:"Receive"]
             let repositoryShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.repository.type,
-                                                                      localizedTitle: "Source code",
+                                                                      localizedTitle: "shortcuts.action.sourceCode.title".localized,
                                                                       localizedSubtitle: nil,
                                                                       icon: UIApplicationShortcutIcon(templateImageName: "GitHub"),
                                                                       userInfo: repositoryShortcutUserInfo as [String : NSSecureCoding])
@@ -153,7 +153,7 @@ class ShortcutsManager: NSObject {
                 // Construct dynamic short item #1
                 let sendShortcutUserInfo = [ShortcutsManager.applicationShortcutUserInfoIconKey: "Send"]
                 let sendShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.send.type,
-                                                                    localizedTitle: "Send",
+                                                                    localizedTitle: "shortcuts.action.send.title".localized,
                                                                     localizedSubtitle: nil,
                                                                     icon: UIApplicationShortcutIcon(templateImageName: "Send"),
                                                                     userInfo: sendShortcutUserInfo as [String : NSSecureCoding])
@@ -161,7 +161,7 @@ class ShortcutsManager: NSObject {
                 // Construct dynamic short #2
                 let receiveShortcutUserInfo = [ShortcutsManager.applicationShortcutUserInfoIconKey:"Receive"]
                 let receiveShortcut = UIMutableApplicationShortcutItem(type: ShortcutIdentifier.receive.type,
-                                                                       localizedTitle: "Receive",
+                                                                       localizedTitle: "shortcuts.action.receive.title".localized,
                                                                        localizedSubtitle: nil,
                                                                        icon: UIApplicationShortcutIcon(templateImageName: "Receive"),
                                                                        userInfo: receiveShortcutUserInfo as [String : NSSecureCoding])

@@ -257,8 +257,17 @@
 
 // Donate
 
-"settings.donate.titleLabel"               = "Поддержать разработку";
-"settings.donate.descLabel"                = "Verge всегда стремится достичь новых высот! Мы поставляем продукты и разрабатываем программное обеспечение востребованое сообществом.";
-"settings.donate.desc2Label"               = "Мы слушаем Наше сообщество и получаем обратную связь - это не только один из основополагающих принципов Verge, но и неотъемлемая часть Нашего отношения к разработке открытого исходного кода.";
-"settings.donate.addressLabel"             = "XVG адрес для поддержки";
-"settings.donate.donateButton"             = "Поддержать Verge";
+"settings.donate.titleLabel"                = "Поддержать разработку";
+"settings.donate.descLabel"                 = "Verge всегда стремится достичь новых высот! Мы поставляем продукты и разрабатываем программное обеспечение востребованое сообществом.";
+"settings.donate.desc2Label"                = "Мы слушаем Наше сообщество и получаем обратную связь - это не только один из основополагающих принципов Verge, но и неотъемлемая часть Нашего отношения к разработке открытого исходного кода.";
+"settings.donate.addressLabel"              = "XVG адрес для поддержки";
+"settings.donate.donateButton"              = "Поддержать Verge";
+
+// ----------------------------------------
+// Shortcuts
+// ----------------------------------------
+
+"shortcuts.action.website.title"            = "Web-сайт";
+"shortcuts.action.sourceCode.title"         = "Исходники";
+"shortcuts.action.send.title"               = "Отправить";
+"shortcuts.action.receive.title"            = "Получить";

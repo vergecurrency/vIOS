@@ -232,6 +232,7 @@
 		CA522EAA220318B000331B0F /* SiriReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */; };
 		CA522EB1220318B000331B0F /* VergeSiriUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA522EA5220318B000331B0F /* VergeSiriUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CA522EB622032A5600331B0F /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
+		CA5FCC7E22842BD1002340A1 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FCC7D22842BD1002340A1 /* String+Localization.swift */; };
 		CA63BA722282CE7400E2023A /* LocalizableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */; };
 		CA63BA752282DC1C00E2023A /* LocalizableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BA742282DC1C00E2023A /* LocalizableSegmentedControl.swift */; };
 		CA8323CB222A8B4F00D74D26 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
@@ -589,6 +590,7 @@
 		CA522EA9220318B000331B0F /* SiriReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SiriReceiveViewController.swift; sourceTree = "<group>"; };
 		CA522EAE220318B000331B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA522EB72203323A00331B0F /* VergeSiriUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiriUI.entitlements; sourceTree = "<group>"; };
+		CA5FCC7D22842BD1002340A1 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTableViewController.swift; sourceTree = "<group>"; };
 		CA63BA742282DC1C00E2023A /* LocalizableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableSegmentedControl.swift; sourceTree = "<group>"; };
 		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -744,6 +746,7 @@
 				CABF1481221061FD00F92CBC /* UIView+Actions.swift */,
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 				CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */,
+				CA5FCC7D22842BD1002340A1 /* String+Localization.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1893,6 +1896,7 @@
 				A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
 				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,
+				CA5FCC7E22842BD1002340A1 /* String+Localization.swift in Sources */,
 				CAD92A0021E7E07100CD5EBA /* Intents.intentdefinition in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
 				A38D6F8221C17EFB00280FFE /* AddressesTableViewController.swift in Sources */,
