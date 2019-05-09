@@ -12,6 +12,7 @@
 
 "defaults.ok"                               = "Ok";
 "defaults.cancel"                           = "Cancel";
+"defaults.done"                             = "Done";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -403,3 +404,15 @@
 "settings.disconnect.alert.title"           = "Disconnect Wallet";
 "settings.disconnect.alert.message"         = "Your about to disconnect this device from your current wallet. Please make absolutely sure you have written down your paperkey. Remember that your paperkey is the only way to restore your current wallet.";
 "settings.disconnect.alert.disconnect"      = "Disconnect";
+
+// ----------------------------------------
+// ServiceUrlTableViewController.swift
+// ----------------------------------------
+
+"settings.serviceUrl.alert.title"           = "Changing Service";
+"settings.serviceUrl.alert.message"         = "Changing the service URL, please wait a moment...";
+"settings.serviceUrl.alert.usePrevUrl"      = "Use previous service URL";
+"settings.serviceUrl.alert.errorChanging"   = "Error Changing";
+"settings.serviceUrl.alert.errorChanging2"  = "An error was raised during the service URL change. Please try again or use another service URL.";
+"settings.serviceUrl.alert.title2"          = "Changed Service";
+"settings.serviceUrl.alert.message2"        = "Successfully changed the service URL.";

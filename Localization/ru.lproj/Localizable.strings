@@ -12,6 +12,7 @@
 
 "defaults.ok"                               = "Ок";
 "defaults.cancel"                           = "Отмена";
+"defaults.done"                             = "Готово";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -404,3 +405,14 @@
 "settings.disconnect.alert.message"         = "Вы отвязываете данное устройство от Вашего текущего кошелька. Пожалуйста удостоверьтесь, что Вы записали Ваш бумажный ключ и помните свой пароль. Вы должны помнить, что Ваш бумажный ключ и пароль - единственный способ восстановить Ваш текущий кошелек.";
 "settings.disconnect.alert.disconnect"      = "Отвязать";
 
+// ----------------------------------------
+// ServiceUrlTableViewController.swift
+// ----------------------------------------
+
+"settings.serviceUrl.alert.title"           = "Изменение сервиса";
+"settings.serviceUrl.alert.message"         = "Изменение URL сервиса. Один момент...";
+"settings.serviceUrl.alert.usePrevUrl"      = "Использовать предыдущий URL";
+"settings.serviceUrl.alert.errorChanging"   = "Ошибка изменения";
+"settings.serviceUrl.alert.errorChanging2"  = "Произошла ошибка при изменении URL сервиса. Пожалуйста, попробуйте снова или используйте другой сервисный URL.";
+"settings.serviceUrl.alert.title2"          = "Сервис изменен";
+"settings.serviceUrl.alert.message2"        = "URL сервиса успешно изменен";
