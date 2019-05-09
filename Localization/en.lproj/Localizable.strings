@@ -302,3 +302,10 @@
 // ----------------------------------------
 
 "chart.volume.historyTitle"                 = "Volume History";
+
+// ----------------------------------------
+// ReceiveViewController.swift
+// ----------------------------------------
+
+"receive.myAddressTitle"                    = "My XVG address";
+"receive.addressCopied"                     = "Address copied!";

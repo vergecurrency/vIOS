@@ -302,6 +302,9 @@
                                                         <state key="normal" title="Share" image="Share">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="receive.shareButton"/>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="shareAddress:" destination="0dW-f5-Hat" eventType="touchUpInside" id="Qei-is-P0O"/>
                                                         </connections>
