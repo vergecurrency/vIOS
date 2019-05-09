@@ -395,3 +395,11 @@
 "credits.header.development"                = "Development";
 "credits.header.design"                     = "Design";
 "credits.header.translation"                = "Translation";
+
+// ----------------------------------------
+// DisconnectWalletViewController.swift
+// ----------------------------------------
+
+"settings.disconnect.alert.title"           = "Disconnect Wallet";
+"settings.disconnect.alert.message"         = "Your about to disconnect this device from your current wallet. Please make absolutely sure you have written down your paperkey. Remember that your paperkey is the only way to restore your current wallet.";
+"settings.disconnect.alert.disconnect"      = "Disconnect";

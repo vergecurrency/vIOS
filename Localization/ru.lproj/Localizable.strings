@@ -183,7 +183,7 @@
 
 "settings.wallet.header.title"              = "Кошелек";
 "settings.wallet.footer.title"              = "Настройте свой кошелек данными опциями.";
-"settings.wallet.cell.removeLabel"          = "Удалить кошелек";
+"settings.wallet.cell.removeLabel"          = "Отвязать кошелек";
 "settings.wallet.cell.paperKeyLabel"        = "Бумажный ключ";
 "settings.wallet.cell.addressesLabel"       = "Адреса";
 "settings.wallet.cell.transactionsLabel"    = "Заявленные транзакции";
@@ -215,7 +215,7 @@
 // Disconnect wallet
 
 "settings.disconnect.titleLabel"            = "Отвязать данное устройство от Вашего текущего кошелька";
-"settings.disconnect.descLabel"             = "Вы можете отвязать данное устройство от Вашего текущего кошелька. Пожалуйства удостоверьтесь, что Вы записали Ваш бумажный ключ и помните свой пароль. Вы должны помнить, что Ваш бумажный ключ и пароль - единственный способ восстановить Ваш текущий кошелек.";
+"settings.disconnect.descLabel"             = "Вы можете отвязать данное устройство от Вашего текущего кошелька. Пожалуйста удостоверьтесь, что Вы записали Ваш бумажный ключ и помните свой пароль. Вы должны помнить, что Ваш бумажный ключ и пароль - единственный способ восстановить Ваш текущий кошелек.";
 "settings.disconnect.disconnectButton"      = "Отвязать";
 
 // Addresses
@@ -395,3 +395,12 @@
 "credits.header.development"                = "Разработка";
 "credits.header.design"                     = "Дизайн";
 "credits.header.translation"                = "Перевод";
+
+// ----------------------------------------
+// DisconnectWalletViewController.swift
+// ----------------------------------------
+
+"settings.disconnect.alert.title"           = "Отвязать кошелек";
+"settings.disconnect.alert.message"         = "Вы отвязываете данное устройство от Вашего текущего кошелька. Пожалуйста удостоверьтесь, что Вы записали Ваш бумажный ключ и помните свой пароль. Вы должны помнить, что Ваш бумажный ключ и пароль - единственный способ восстановить Ваш текущий кошелек.";
+"settings.disconnect.alert.disconnect"      = "Отвязать";
+
