@@ -16,7 +16,7 @@ class LocalAuthTableViewCell: UITableViewCell {
         // Initialization code
         
         if LAContext.available(type: .touchID) {
-            textLabel?.text = "Use Touch ID"
+            textLabel?.text = "settings.localAuth.useTouchId".localized
             imageView?.image = UIImage(named: "TouchID")
         }
     }

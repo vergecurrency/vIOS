@@ -362,3 +362,28 @@
 "send.sending.broadcastingTransaction"      = "Броадкастим транзакцию";
 "send.sending.transactionSent"              = "Транзакция отправлена!";
 "send.sending.publishingTransaction"        = "Публикация транзакции";
+
+// ----------------------------------------
+// LocalAuthTableViewCell.swift
+// ----------------------------------------
+
+"settings.localAuth.useTouchId"             = "Использование Touch ID";
+
+// ----------------------------------------
+// AddressesTableViewController.swift
+// ----------------------------------------
+
+"addresses.addressCopied"                   = "Адрес скопирован!";
+"addresses.addressesWithBalance"            = "Адреса с балансами";
+"addresses.unusedAddresses"                 = "Неиспользованные адреса";
+"addresses.addressOptions"                  = "Опции адреса";
+"addresses.informationTypeMessage"          = "Какой тип информации Вы хотите скопировать?";
+"addresses.address"                         = "Адрес";
+"addresses.balance"                         = "Баланс";
+"addresses.balanceCopied"                   = "Баланс скопирован!";
+"addresses.publicKey"                       = "Публичный ключ";
+"addresses.publicKeyCopied"                 = "Публичный ключ скопирован!";
+"addresses.privateKey"                      = "Приватный ключ";
+"addresses.privateKeyCopied"                = "Приватный ключ скопирован!";
+"addresses.scanningAddresses"               = "Сканирование адресов";
+"addresses.scanningAddressesMessage"        = "Сканирование баланса адресов. Это может занять некоторое время.";

@@ -362,3 +362,28 @@
 "send.sending.broadcastingTransaction"      = "Broadcasting Transaction";
 "send.sending.transactionSent"              = "Transaction Sent!";
 "send.sending.publishingTransaction"        = "Publishing Transaction";
+
+// ----------------------------------------
+// LocalAuthTableViewCell.swift
+// ----------------------------------------
+
+"settings.localAuth.useTouchId"             = "Use Touch ID";
+
+// ----------------------------------------
+// AddressesTableViewController.swift
+// ----------------------------------------
+
+"addresses.addressCopied"                   = "Address copied!";
+"addresses.addressesWithBalance"            = "Addresses with balance";
+"addresses.unusedAddresses"                 = "Unused addresses";
+"addresses.addressOptions"                  = "Address options";
+"addresses.informationTypeMessage"          = "What information would you like to copy to the clipboard?";
+"addresses.address"                         = "Address";
+"addresses.balance"                         = "Balance";
+"addresses.balanceCopied"                   = "Balance copied!";
+"addresses.publicKey"                       = "Public key";
+"addresses.publicKeyCopied"                 = "Public key copied!";
+"addresses.privateKey"                      = "Private key";
+"addresses.privateKeyCopied"                = "Private key copied!";
+"addresses.scanningAddresses"               = "Scanning Addresses";
+"addresses.scanningAddressesMessage"        = "Scanning addresses for balance. This might take some time to complete.";
