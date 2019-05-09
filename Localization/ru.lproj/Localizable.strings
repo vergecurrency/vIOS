@@ -14,6 +14,7 @@
 "defaults.cancel"                           = "Отмена";
 "defaults.done"                             = "Готово";
 "defaults.remove"                           = "Удалить";
+"defaults.back"                             = "Назад";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -68,6 +69,9 @@
 "setup.pinCode.reenterPinErrorDesc2"        = "Попробуйте снова.";
 "setup.pinCode.reenterPinErrorButton"       = "Повторить";
 
+"setup.pinCode.alert.chooseSize"            = "Выберите размер Pin-кода";
+"setup.pinCode.alert.digits"                = "циф.";
+
 // Passphrase
 
 "setup.passphrase.title"                    = "Защитите Ваш бумажный ключ с помощью пароля";
@@ -91,6 +95,7 @@
 "setup.finish.createButton"                 = "Создать кошелек";
 "setup.finish.openButton"                   = "Открыть Ваш кошелек";
 "setup.finish.desc"                         = "Последние штрихи...";
+"setup.finish.congrats"                     = "Ваш кошелек готов. Поздравляем!";
 
 // ----------------------------------------
 // WelcomeGuide.storyboard
@@ -426,3 +431,22 @@
 "settings.transactions.removeProposal"      = "Удалить заявку";
 "settings.transactions.noProposals"         = "Нет заявок";
 "settings.transactions.releaseXvg"          = "Освободить XVG этой заявки на перевод";
+
+// ----------------------------------------
+// Tor Setup
+// ----------------------------------------
+
+"setup.tor.slide1.titleLabel"               = "Валюта Verge\nскрывает Ваше местоположение";
+"setup.tor.slide1.descLabel"                = "Verge использует Tor-сеть для того, чтобы скрывать\nВаше местоположение и IP-адрес.";
+
+"setup.tor.slide2.titleLabel"               = "Статус индикатора Tor означает следующее...";
+"setup.tor.slide2.descLabel1"               = "Tor выключен и Ваше местоположение и IP-адрес видимы для всех.";
+"setup.tor.slide2.descLabel2"               = "Соединение с сетью Tor. В данный момент никакого подключения к интернет сети не происходит.";
+"setup.tor.slide2.descLabel3"               = "Tor включен и Ваше местоположение и IP-адрес скрыты.";
+"setup.tor.slide2.descLabel4"               = "Не удалось подключиться к сети Tor или что-то пошло не так. Единственным решением тут будет перезагрузка приложения.";
+
+"setup.tor.slide3.titleLabel"               = "Давайте подключимся к Tor";
+"setup.tor.slide3.titleLabel2"              = "Подключиться к Tor";
+"setup.tor.slide3.descLabel"                = "Убедитесь, что использование Tor легально в Вашей стране. К сожалению не все страны хотят Вашей конфиденциальности.";
+"setup.tor.slide3.negativeButton"           = "Продолжить без Tor";
+"setup.tor.slide3.positiveButton"           = "Продолжить с Tor";

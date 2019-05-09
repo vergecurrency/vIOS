@@ -109,7 +109,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             if selectedImage == images.count {
                 self.interval?.invalidate()
 
-                self.checklistDescription.text = "Your wallet is ready! Congratulations!"
+                self.checklistDescription.text = "setup.finish.congrats".localized
                 self.showWalletButton(button: self.openWalletButton)
             }
         }
