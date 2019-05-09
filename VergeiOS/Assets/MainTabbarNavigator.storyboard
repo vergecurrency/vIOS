@@ -14,7 +14,11 @@
         <scene sceneID="14s-BQ-JpC">
             <objects>
                 <navigationController id="ird-yp-7xw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Transactions" image="Transactions" selectedImage="Transactions" id="9XW-JQ-VCS"/>
+                    <tabBarItem key="tabBarItem" title="Transactions" image="Transactions" selectedImage="Transactions" id="9XW-JQ-VCS">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.transactions.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gsp-5Y-xqC" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -45,7 +49,11 @@
         <scene sceneID="9Uc-9y-kPl">
             <objects>
                 <navigationController id="PTF-pt-Hb5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="uZh-Om-rYg"/>
+                    <tabBarItem key="tabBarItem" title="Send" image="Payment" selectedImage="Payment" id="uZh-Om-rYg">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.send.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Fj-Ie-PFO" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -76,7 +84,11 @@
         <scene sceneID="UZJ-bq-eU7">
             <objects>
                 <navigationController id="gFZ-fC-7zT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Receive" image="Receive" selectedImage="Receive" id="tFX-JX-8D2"/>
+                    <tabBarItem key="tabBarItem" title="Receive" image="Receive" selectedImage="Receive" id="tFX-JX-8D2">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.receive.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LlX-N7-1Q9" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -107,7 +119,11 @@
         <scene sceneID="303-k3-TQb">
             <objects>
                 <navigationController id="sv8-iY-acX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="Xsi-O3-bRQ"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings" id="Xsi-O3-bRQ">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.settings.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aPi-uw-RI1" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -138,7 +154,11 @@
         <scene sceneID="2Ac-mh-tjd">
             <objects>
                 <navigationController navigationBarHidden="YES" id="vcp-up-FDi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Wallet" image="Wallet" selectedImage="Wallet" id="Zei-2w-zue"/>
+                    <tabBarItem key="tabBarItem" title="Wallet" image="Wallet" selectedImage="Wallet" id="Zei-2w-zue">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.wallet.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="edB-Ld-Dbd" customClass="TransparantNavigationBar" customModule="VergeiOS" customModuleProvider="target">
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">

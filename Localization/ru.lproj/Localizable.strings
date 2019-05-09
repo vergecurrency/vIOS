@@ -7,6 +7,16 @@
  */
 
 // ----------------------------------------
+// MainTabbarNavigation.storyboard
+// ----------------------------------------
+
+"mainTabBar.barItem.wallet.title"           = "Кошелек";
+"mainTabBar.barItem.transactions.title"     = "Транзакции";
+"mainTabBar.barItem.send.title"             = "Отправить";
+"mainTabBar.barItem.receive.title"          = "Получить";
+"mainTabBar.barItem.settings.title"         = "Настройки";
+
+// ----------------------------------------
 // Setup.storyboard
 // ----------------------------------------
 

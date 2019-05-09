@@ -7,6 +7,16 @@
 */
 
 // ----------------------------------------
+// MainTabbarNavigation.storyboard
+// ----------------------------------------
+
+"mainTabBar.barItem.wallet.title"           = "Wallet";
+"mainTabBar.barItem.transactions.title"     = "Transactions";
+"mainTabBar.barItem.send.title"             = "Send";
+"mainTabBar.barItem.receive.title"          = "Receive";
+"mainTabBar.barItem.settings.title"         = "Settings";
+
+// ----------------------------------------
 // Setup.storyboard
 // ----------------------------------------
 
