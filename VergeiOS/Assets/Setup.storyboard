@@ -24,15 +24,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3W-PA-UHV">
-                                <rect key="frame" x="64" y="188" width="247.5" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="0zy-hk-i0w"/>
-                                    <constraint firstAttribute="height" constant="45" id="xgd-zc-sR3"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3W-PA-UHV">
+                                <rect key="frame" x="40" y="188" width="295" height="44"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.walletName"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="jdy-ZC-H6U">
                                 <rect key="frame" x="87.5" y="120" width="200" height="60"/>
@@ -41,21 +40,25 @@
                                     <constraint firstAttribute="height" constant="60" id="d4k-qv-eMn"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy is our standard." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-QW-gIp">
-                                <rect key="frame" x="61.5" y="522" width="252" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Rdz-IH-Hsa"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy is our standard." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-QW-gIp">
+                                <rect key="frame" x="40" y="539" width="295" height="33"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.loadingTor.subtitle"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="d3W-PA-UHV" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="6UK-8Y-y1Y"/>
+                            <constraint firstItem="gb6-qf-ykk" firstAttribute="trailing" secondItem="d3W-PA-UHV" secondAttribute="trailing" constant="40" id="6bL-EJ-dd8"/>
                             <constraint firstItem="d3W-PA-UHV" firstAttribute="top" secondItem="jdy-ZC-H6U" secondAttribute="bottom" constant="8" id="O40-RI-MDP"/>
+                            <constraint firstItem="gb6-qf-ykk" firstAttribute="trailing" secondItem="Hyv-QW-gIp" secondAttribute="trailing" constant="40" id="TlU-UL-e7f"/>
                             <constraint firstItem="Hyv-QW-gIp" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="TmF-aV-3Sz"/>
+                            <constraint firstItem="Hyv-QW-gIp" firstAttribute="leading" secondItem="gb6-qf-ykk" secondAttribute="leading" constant="40" id="bGI-AW-NJz"/>
+                            <constraint firstItem="d3W-PA-UHV" firstAttribute="leading" secondItem="gb6-qf-ykk" secondAttribute="leading" constant="40" id="gJi-ms-YOW"/>
                             <constraint firstItem="gb6-qf-ykk" firstAttribute="bottom" secondItem="Hyv-QW-gIp" secondAttribute="bottom" constant="95" id="oMs-t2-dAL"/>
                             <constraint firstItem="jdy-ZC-H6U" firstAttribute="top" secondItem="gb6-qf-ykk" secondAttribute="top" constant="100" id="q0x-eY-JOV"/>
                             <constraint firstItem="jdy-ZC-H6U" firstAttribute="centerX" secondItem="ItV-RH-Znn" secondAttribute="centerX" id="wwG-cQ-ssE"/>
@@ -99,6 +102,9 @@
                                 <state key="normal" title="Confirm" image="Pin">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.confirmButton"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="aMo-To-C2f" kind="show" identifier="proceed" id="hYa-yH-zG7"/>
                                 </connections>
@@ -112,19 +118,24 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" name="SecondaryDark"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.title"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encrypting your paper key is an important safety measure. Make sure when restoring a wallet to use your previous passphrase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-Ey-oui">
-                                <rect key="frame" x="40" y="298.5" width="295" height="65"/>
+                                <rect key="frame" x="40" y="298.5" width="295" height="57.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="JLP-H5-iXk"/>
-                                    <constraint firstAttribute="height" constant="65" id="LQs-vv-S5H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" name="SecondaryLight"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.desc"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Vh-N4-7X2">
-                                <rect key="frame" x="40" y="387.5" width="295" height="92"/>
+                                <rect key="frame" x="40" y="380" width="295" height="92"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-R7-Yns">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="24"/>
@@ -142,6 +153,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" name="SecondaryLight"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.req1"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                     </stackView>
@@ -161,6 +175,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" name="SecondaryLight"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.req2"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                     </stackView>
@@ -180,6 +197,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                 <color key="textColor" name="SecondaryLight"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.req3"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                     </stackView>
@@ -189,7 +209,7 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your passphrase" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Gi-4f-XxR">
-                                <rect key="frame" x="40" y="503.5" width="295" height="30"/>
+                                <rect key="frame" x="40" y="496" width="295" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="JGW-IS-Xjf"/>
                                     <constraint firstAttribute="height" constant="30" id="irl-v8-KxQ"/>
@@ -197,6 +217,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationPlaceholderId" value="setup.passphrase.passPlaceholder"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PassphrassePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="1UT-ng-F17">
                                 <rect key="frame" x="40" y="140.5" width="295" height="150"/>
@@ -273,24 +296,23 @@
                                     <constraint firstAttribute="width" constant="200" id="q3M-J5-xR1"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-6d-6TD">
-                                <rect key="frame" x="63.5" y="188" width="248" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="hyv-ys-jt2"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-6d-6TD">
+                                <rect key="frame" x="40" y="188" width="295" height="44"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.walletName"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure, anonymous and private iOS wallet for Verge. Send and Receive XVG." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-u1-A4L">
-                                <rect key="frame" x="85.5" y="241" width="204.5" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="vDz-1R-Irg"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="223" id="znS-gB-4H4"/>
-                                </constraints>
+                                <rect key="frame" x="40" y="240" width="295" height="38.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" white="0.90456814240000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.message"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jP0-AP-nMu" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="597" width="335" height="50"/>
@@ -304,6 +326,9 @@
                                 <state key="normal" title="Restore your wallet">
                                     <color key="titleColor" red="0.066666666669999999" green="0.12941176469999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.restoreButton"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="rZo-DU-OJR" kind="presentation" identifier="restore" modalPresentationStyle="formSheet" id="G4m-E0-zTa"/>
                                 </connections>
@@ -318,11 +343,14 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-12" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Create a new wallet"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.createButton"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="9e4-GJ-wDF" kind="presentation" identifier="create" modalPresentationStyle="formSheet" id="pYY-yw-8Tf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new XVG wallet on your iOS device." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9R-19-jxd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new XVG wallet on your iOS device." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9R-19-jxd">
                                 <rect key="frame" x="85.5" y="560" width="204" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="aEM-gl-uXE"/>
@@ -330,6 +358,9 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.createDescription"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lost your iOS wallet? Restore it here." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0xg-Lx-2Cf">
                                 <rect key="frame" x="104.5" y="626" width="166" height="14"/>
@@ -339,19 +370,26 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="10"/>
                                 <color key="textColor" red="0.066666666669999999" green="0.12941176469999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.restoreDescription"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LnW-6d-6TD" firstAttribute="top" secondItem="FJT-Ap-9YN" secondAttribute="bottom" constant="8" id="0MQ-D4-SB2"/>
+                            <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" secondItem="b4G-u1-A4L" secondAttribute="trailing" constant="40" id="2Zr-Lh-jPI"/>
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jP0-AP-nMu" secondAttribute="trailing" constant="20" id="3fQ-65-IPq"/>
+                            <constraint firstItem="b4G-u1-A4L" firstAttribute="leading" secondItem="Vwx-N4-de5" secondAttribute="leading" constant="40" id="8Oa-Ja-I1z"/>
                             <constraint firstItem="jP0-AP-nMu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vwx-N4-de5" secondAttribute="leading" constant="20" id="Dbd-59-hqj"/>
                             <constraint firstItem="qb9-iT-8WP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mgp-vw-fRC" secondAttribute="leading" constant="20" id="JgG-OT-YAj"/>
+                            <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" secondItem="LnW-6d-6TD" secondAttribute="trailing" constant="40" id="Joy-iM-QiD"/>
                             <constraint firstItem="jP0-AP-nMu" firstAttribute="top" secondItem="qb9-iT-8WP" secondAttribute="bottom" constant="16" id="M6r-I7-sBl"/>
                             <constraint firstItem="b4G-u1-A4L" firstAttribute="centerX" secondItem="mgp-vw-fRC" secondAttribute="centerX" id="N43-HT-LdN"/>
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="bottom" secondItem="jP0-AP-nMu" secondAttribute="bottom" constant="20" id="Nxa-Gp-1Ed"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qb9-iT-8WP" secondAttribute="trailing" constant="20" id="XRc-oL-i2K"/>
                             <constraint firstItem="LnW-6d-6TD" firstAttribute="centerX" secondItem="mgp-vw-fRC" secondAttribute="centerX" id="Y29-O2-y2r"/>
+                            <constraint firstItem="LnW-6d-6TD" firstAttribute="leading" secondItem="Vwx-N4-de5" secondAttribute="leading" constant="40" id="doz-4y-NbZ"/>
                             <constraint firstItem="b4G-u1-A4L" firstAttribute="top" secondItem="LnW-6d-6TD" secondAttribute="bottom" constant="8" id="e09-N0-I7T"/>
                             <constraint firstItem="FJT-Ap-9YN" firstAttribute="top" secondItem="Vwx-N4-de5" secondAttribute="top" constant="100" id="jP7-S4-Jq5"/>
                             <constraint firstItem="jP0-AP-nMu" firstAttribute="top" secondItem="n9R-19-jxd" secondAttribute="bottom" constant="23" id="n3Y-6d-o3f"/>
@@ -369,7 +407,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1B-ip-Zv4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="897" y="177"/>
+            <point key="canvasLocation" x="896.79999999999995" y="176.76161919040482"/>
         </scene>
         <!--WelcomeGuide-->
         <scene sceneID="zYZ-o8-kSp">
@@ -409,6 +447,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="23"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.title"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8Zs-f5-hLS">
                                                 <rect key="frame" x="0.0" y="71.5" width="300" height="41"/>
@@ -429,6 +470,9 @@
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.switch1"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
                                             </stackView>
@@ -452,6 +496,9 @@
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.switch2"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
                                             </stackView>
@@ -474,6 +521,9 @@
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.switch3"/>
+                                                        </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
                                             </stackView>
@@ -482,6 +532,9 @@
                                                 <state key="normal" title="Terms of Use">
                                                     <color key="titleColor" name="PrimaryLight"/>
                                                 </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.termsButton"/>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="showTermsOfUseWithSender:" destination="ILY-ih-CDV" eventType="touchUpInside" id="ln5-Ne-j1V"/>
                                                 </connections>
@@ -502,6 +555,9 @@
                                         <state key="normal" title="Create Wallet" image="Checked">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.createButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="setupWalletWithSender:" destination="ILY-ih-CDV" eventType="touchUpInside" id="4es-Up-P9F"/>
                                         </connections>
@@ -533,6 +589,9 @@
                                         <state key="normal" title="Open your wallet" image="Rocket">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.openButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="x0t-AS-OOO" kind="presentation" modalTransitionStyle="flipHorizontal" id="SMp-wa-NpP"/>
                                         </connections>
@@ -552,6 +611,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.desc"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <constraints>
@@ -637,6 +699,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                                 <color key="textColor" name="SecondaryDark"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.title"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7r-aU-BE9" customClass="PinTextField" customModule="VergeiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="37" width="200" height="30"/>
@@ -713,14 +778,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwu-qd-xG0">
-                                <rect key="frame" x="60" y="80" width="255.5" height="53.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="Dd9-UB-u40"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwu-qd-xG0">
+                                <rect key="frame" x="40" y="80" width="295" height="53.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                 <color key="textColor" name="SecondaryLight"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.setPinDesc"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hT-E2-uoK" customClass="PinTextField" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="87.5" y="193.5" width="200" height="30"/>
@@ -741,9 +806,11 @@
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>
                         <constraints>
+                            <constraint firstItem="WUE-NU-rHf" firstAttribute="trailing" secondItem="Kwu-qd-xG0" secondAttribute="trailing" constant="40" id="9jB-gT-Xgx"/>
                             <constraint firstItem="Kwu-qd-xG0" firstAttribute="top" secondItem="WUE-NU-rHf" secondAttribute="top" constant="16" id="9mH-B7-tQu"/>
                             <constraint firstItem="Kwu-qd-xG0" firstAttribute="centerX" secondItem="jPZ-TT-ZpY" secondAttribute="centerX" id="F4b-Jh-cyK"/>
                             <constraint firstItem="bwU-Gc-zq6" firstAttribute="leading" secondItem="WUE-NU-rHf" secondAttribute="leading" priority="750" constant="40" id="GpZ-nb-i9u"/>
+                            <constraint firstItem="Kwu-qd-xG0" firstAttribute="leading" secondItem="WUE-NU-rHf" secondAttribute="leading" constant="40" id="NSm-Io-LV9"/>
                             <constraint firstItem="bwU-Gc-zq6" firstAttribute="centerX" secondItem="jPZ-TT-ZpY" secondAttribute="centerX" id="O10-iJ-6TO"/>
                             <constraint firstItem="0hT-E2-uoK" firstAttribute="centerX" secondItem="jPZ-TT-ZpY" secondAttribute="centerX" id="PdW-0E-W68"/>
                             <constraint firstItem="0hT-E2-uoK" firstAttribute="top" secondItem="Kwu-qd-xG0" secondAttribute="bottom" constant="60" id="Pwd-Cp-zH9"/>
@@ -765,6 +832,9 @@
                                 <action selector="showSettings:" destination="MkY-zg-pVQ" id="a9d-s8-Qmd"/>
                             </connections>
                         </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="setup.pinCode.setPinTitle"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -787,14 +857,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-1E-mP3">
-                                <rect key="frame" x="60" y="80" width="255.5" height="53.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="260" id="nxR-1c-met"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-1E-mP3">
+                                <rect key="frame" x="40" y="80" width="295" height="53.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                 <color key="textColor" name="SecondaryLight"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.setPinDesc"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-uN-bl5" customClass="PinTextField" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="87.5" y="193.5" width="200" height="30"/>
@@ -827,18 +897,27 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinSucceedTitle"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your PIN has now been set." textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ck8-Dw-Gmk">
                                         <rect key="frame" x="8" y="181.5" width="279" height="18"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinSucceedDesc"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please don't forget it!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfm-5L-K8B">
                                         <rect key="frame" x="8" y="199.5" width="279" height="18"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinSucceedDesc2"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELJ-4T-mui" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="245.5" width="295" height="49.5"/>
@@ -847,6 +926,9 @@
                                         <state key="normal" title="Proceed">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinSucceedButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="confirmPin:" destination="vK3-Cs-LCr" eventType="touchUpInside" id="AFg-ms-a6j"/>
                                         </connections>
@@ -882,18 +964,27 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                         <color key="textColor" name="SecondaryDark"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinErrorTitle"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Pin couldn't be validated!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-bN-Hd8">
                                         <rect key="frame" x="8" y="181.5" width="279" height="18"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinErrorDesc"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJg-b5-Esd">
                                         <rect key="frame" x="8" y="199.5" width="279" height="18"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" name="SecondaryLight"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinErrorDesc2"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31x-XL-UMv" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="245.5" width="295" height="49.5"/>
@@ -905,6 +996,9 @@
                                         <state key="normal" title="Try again">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinErrorButton"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="scT-N6-Rxa" kind="unwind" identifier="unwindAfterWrongPin" unwindAction="unwindToSelectionWithSegue:" id="fcv-no-kDU"/>
                                         </connections>
@@ -943,6 +1037,7 @@
                         <constraints>
                             <constraint firstItem="jGR-Rv-m9r" firstAttribute="bottom" secondItem="tct-zh-ODE" secondAttribute="bottom" constant="40" id="06s-jK-OoX"/>
                             <constraint firstItem="nzs-ko-GVo" firstAttribute="leading" secondItem="jGR-Rv-m9r" secondAttribute="leading" priority="750" constant="40" id="6y9-Go-aeE"/>
+                            <constraint firstItem="jGR-Rv-m9r" firstAttribute="trailing" secondItem="YFf-1E-mP3" secondAttribute="trailing" constant="40" id="Bka-sY-jiA"/>
                             <constraint firstItem="asU-sg-4JA" firstAttribute="centerX" secondItem="9jg-RQ-Vjg" secondAttribute="centerX" id="CJa-MO-K3k"/>
                             <constraint firstItem="tct-zh-ODE" firstAttribute="leading" secondItem="jGR-Rv-m9r" secondAttribute="leading" priority="750" constant="40" id="DzB-hT-luc"/>
                             <constraint firstItem="9GH-uN-bl5" firstAttribute="centerX" secondItem="9jg-RQ-Vjg" secondAttribute="centerX" id="EqB-hf-WNG"/>
@@ -956,11 +1051,16 @@
                             <constraint firstItem="jGR-Rv-m9r" firstAttribute="bottom" secondItem="asU-sg-4JA" secondAttribute="bottom" constant="40" id="jX0-Y7-NBD"/>
                             <constraint firstItem="asU-sg-4JA" firstAttribute="leading" secondItem="jGR-Rv-m9r" secondAttribute="leading" priority="750" constant="40" id="kR1-hK-5fV"/>
                             <constraint firstItem="YFf-1E-mP3" firstAttribute="centerX" secondItem="9jg-RQ-Vjg" secondAttribute="centerX" id="rsr-T7-C8Z"/>
+                            <constraint firstItem="YFf-1E-mP3" firstAttribute="leading" secondItem="jGR-Rv-m9r" secondAttribute="leading" constant="40" id="wiP-ps-Rxz"/>
                             <constraint firstItem="tct-zh-ODE" firstAttribute="centerX" secondItem="9jg-RQ-Vjg" secondAttribute="centerX" id="y4Q-2n-sAA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jGR-Rv-m9r"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Re-enter the PIN" id="Cpg-BE-SXH"/>
+                    <navigationItem key="navigationItem" title="Re-enter the PIN" id="Cpg-BE-SXH">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="setup.pinCode.reenterPinTitle"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
                     <connections>
                         <outlet property="pinConfirmedView" destination="nzs-ko-GVo" id="OF4-Ob-ajZ"/>
                         <outlet property="pinFailedView" destination="asU-sg-4JA" id="Qlu-4V-99g"/>
@@ -1012,6 +1112,9 @@
                                 <state key="normal" title="Proceed" image="Rocket">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.proceedButton"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="8M8-ZL-B6R" kind="show" identifier="proceed" id="EO6-0G-gZw"/>
                                 </connections>
@@ -1025,19 +1128,24 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" name="SecondaryDark"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.confirmTitle"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encrypting your paper key is an important safety measure. Make sure when restoring a wallet to use your previous passphrase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mK8-sf-BgZ">
-                                <rect key="frame" x="40" y="110" width="295" height="65"/>
+                                <rect key="frame" x="40" y="110" width="295" height="57.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="DKI-VF-n4H"/>
-                                    <constraint firstAttribute="height" constant="65" id="aI8-JB-bD6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" name="SecondaryLight"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.passphrase.desc"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm your passphrase" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSX-bm-9cT">
-                                <rect key="frame" x="40" y="199" width="295" height="30"/>
+                                <rect key="frame" x="40" y="191.5" width="295" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="EG8-tg-epC"/>
                                     <constraint firstAttribute="height" constant="30" id="HPP-QQ-JFf"/>
@@ -1045,6 +1153,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationPlaceholderId" value="setup.passphrase.confirmTitle"/>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>

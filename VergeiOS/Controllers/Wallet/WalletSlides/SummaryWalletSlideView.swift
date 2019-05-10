@@ -80,34 +80,34 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
                 cell.detailTextLabel?.text = NSNumber(value: info.price).toPairCurrency(fractDigits: 6)
                 break
             case "marketCap":
-                cell.textLabel?.text = "Market Cap"
+                cell.textLabel?.text = "wallet.slides.summary.marketCap".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.mktcap).toPairCurrency(fractDigits: 0)
                 break
             case "dayHigh":
-                cell.textLabel?.text = "24h High"
+                cell.textLabel?.text = "wallet.slides.summary.24hHigh".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.high24Hour).toPairCurrency(fractDigits: 6)
                 cell.detailTextLabel?.textColor = .vergeGreen()
                 break
             case "dayLow":
-                cell.textLabel?.text = "24h Low"
+                cell.textLabel?.text = "wallet.slides.summary.24hLow".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.low24Hour).toPairCurrency(fractDigits: 6)
                 cell.detailTextLabel?.textColor = .vergeRed()
                 break
             case "dayChangePercentage":
-                cell.textLabel?.text = "24h Change"
+                cell.textLabel?.text = "wallet.slides.summary.24hChange".localized
                 cell.detailTextLabel?.text = "\(String(format: "%.2f", info.changepct24Hour))%"
                 stylePercentageLabel(cell.detailTextLabel!, value: info.change24Hour)
                 break
             case "dayChangeValue":
-                cell.textLabel?.text = "24h Change"
+                cell.textLabel?.text = "wallet.slides.summary.24hChange".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.change24Hour).toPairCurrency(fractDigits: 6)
                 break
             case "dayTotalvolume":
-                cell.textLabel?.text = "24h Volume"
+                cell.textLabel?.text = "wallet.slides.summary.24hVolume".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.totalvolume24H).toXvgCurrency(fractDigits: 0)
                 break
             case "dayTotalvolumePair":
-                cell.textLabel?.text = "24h Volume"
+                cell.textLabel?.text = "wallet.slides.summary.24hVolume".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.totalvolume24Hto).toPairCurrency(fractDigits: 0)
                 break
             default:

@@ -1,0 +1,524 @@
+/*
+ Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ */
+
+// ----------------------------------------
+// Global defaults
+// ----------------------------------------
+
+"defaults.ok"                               = "Ок";
+"defaults.cancel"                           = "Отмена";
+"defaults.done"                             = "Готово";
+"defaults.remove"                           = "Удалить";
+"defaults.back"                             = "Назад";
+"defaults.address"                          = "Адрес";
+"defaults.next"                             = "Далее";
+"defaults.previous"                         = "Предыдущее";
+
+// ----------------------------------------
+// MainTabbarNavigation.storyboard
+// ----------------------------------------
+
+"mainTabBar.barItem.wallet.title"           = "Кошелек";
+"mainTabBar.barItem.transactions.title"     = "Транзакции";
+"mainTabBar.barItem.send.title"             = "Отправить";
+"mainTabBar.barItem.receive.title"          = "Получить";
+"mainTabBar.barItem.settings.title"         = "Настройки";
+
+// ----------------------------------------
+// Setup.storyboard
+// ----------------------------------------
+
+// Defaults
+
+"setup.walletName"                          = "Кошелек Verge для iOS";
+
+// Loading Tor
+
+"setup.loadingTor.subtitle"                 = "Конфиденциальность - наш стандарт.";
+
+// Welcome
+
+"setup.welcome.message"                     = "Безопасный, анонимный и конфиденциальный кошелек Verge для iOS. Отправляйте и получайте XVG.";
+"setup.welcome.createButton"                = "Создать новый кошелек";
+"setup.welcome.createDescription"           = "Создайте новый XVG кошелек для Вашего iOS устройства.";
+"setup.welcome.restoreButton"               = "Восстановить Ваш кошелек";
+"setup.welcome.restoreDescription"          = "Потеряли Ваш iOS кошелек? Восстановите его здесь.";
+
+// Pin unlock
+
+"setup.pinCode.title"                       = "Введите Пин-код";
+
+// Set wallet pin
+
+"setup.pinCode.setPinTitle"                 = "Установите Пин-код";
+"setup.pinCode.setPinDesc"                  = "Пин-код Вашего кошелька будет использоваться при открытии приложения и при отправке Ваших XVG. Если Вы забудете Пин-код, то не сможете получить доступ к кошельку.";
+
+// Re enter wallet pin
+
+"setup.pinCode.reenterPinTitle"             = "Повторите Пин-код";
+
+"setup.pinCode.reenterPinSucceedTitle"      = "Прекрасно!";
+"setup.pinCode.reenterPinSucceedDesc"       = "Ваш Пин-код установлен.";
+"setup.pinCode.reenterPinSucceedDesc2"      = "Не забывайте его!";
+"setup.pinCode.reenterPinSucceedButton"     = "Продолжить";
+
+"setup.pinCode.reenterPinErrorTitle"        = "Неверный Пин-код!";
+"setup.pinCode.reenterPinErrorDesc"         = "Пин-коды не совпадают!";
+"setup.pinCode.reenterPinErrorDesc2"        = "Попробуйте снова.";
+"setup.pinCode.reenterPinErrorButton"       = "Повторить";
+
+"setup.pinCode.alert.chooseSize"            = "Выберите размер Pin-кода";
+"setup.pinCode.alert.digits"                = "циф.";
+
+// Passphrase
+
+"setup.passphrase.title"                    = "Защитите Ваш бумажный ключ с помощью пароля";
+"setup.passphrase.desc"                     = "С точки зрения повышения безопасности очень важно зашифровать Ваш бумажный ключ. При восстановлении кошелька убедитесь, что Вы используете тот же самый пароль.";
+"setup.passphrase.req1"                     = "Мин. 8 символов";
+"setup.passphrase.req2"                     = "Строчные и прописные";
+"setup.passphrase.req3"                     = "Специальные символы (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder"          = "Введите Ваш пароль";
+"setup.passphrase.confirmButton"            = "Подтвердить";
+
+"setup.passphrase.confirmTitle"             = "Подтвердите Ваш пароль";
+"setup.passphrase.proceedButton"            = "Далее";
+
+// Finish
+
+"setup.finish.title"                        = "Почти готово!";
+"setup.finish.switch1"                      = "Я понимаю, что мои средства надежно защищены на этом устройстве.";
+"setup.finish.switch2"                      = "Я понимаю, что если данное приложение будет перемещено на другое устройство или удалено, мой Verge кошелек может быть восстановлен только с помощью бумажного ключа и пароля.";
+"setup.finish.switch3"                      = "Я прочел, понял и согласен с Правилами использования.";
+"setup.finish.termsButton"                  = "Правила использования";
+"setup.finish.createButton"                 = "Создать кошелек";
+"setup.finish.openButton"                   = "Открыть Ваш кошелек";
+"setup.finish.desc"                         = "Последние штрихи...";
+"setup.finish.congrats"                     = "Ваш кошелек готов. Поздравляем!";
+
+// ----------------------------------------
+// WelcomeGuide.storyboard
+// ----------------------------------------
+
+"welcomeGuide.paperKey.title"               = "Бумажный ключ";
+"welcomeGuide.paperKey.message"             = "На следующем экране Вам будет показан набор слов, которые необходимо записать на листе бумаги. Храните их очень аккуратно!";
+"welcomeGuide.paperKey.description"         = "Бумажный ключ является частью Вашего приватного ключа, единственного средства доступа к Вашим денежным средствам";
+"welcomeGuide.paperKey.actionButton"        = "Записать бумажный ключ";
+"welcomeGuide.paperKey.makeSureLabel"       = "Чтобы убедиться что всё записано правильно, пожалуйста заполните следующие слова с листа бумаги.";
+"welcomeGuide.paperKey.submitButton"        = "Продолжить";
+
+// ----------------------------------------
+// Receive.storyboard
+// ----------------------------------------
+
+// Receive
+
+"receive.title"                             = "Получить";
+"receive.addressButtonLabel"                = "Адрес";
+"receive.amountButtonLabel"                 = "Сумма";
+"receive.amountPlaceholder"                 = "Получаемая сумма";
+"receive.stealthAddressLabel"               = "Стелс адрес";
+"receive.shareButton"                       = "Отправить адрес";
+
+// ----------------------------------------
+// RestoreGuide.storyboard
+// ----------------------------------------
+
+// Restore wallet
+
+"restoreGuide.restore.title"                = "Восстановление кошелька";
+"restoreGuide.restore.desc"                 = "На следующем экране Вам необходимо заполнить поле бумажного кошелька в заданном первоначальном порядке.";
+"restoreGuide.restore.notice"               = "Пожалуйста, убедитесь что никто не смотрит за Вами";
+"restoreGuide.restore.restoreButton"        = "Начать восстановление";
+"restoreGuide.restore.paperKeyTitle"        = "Ваш бумажный ключ:";
+"restoreGuide.restore.paperKeyWarning"      = "Перепроверьте введеный бумажный ключ";
+"restoreGuide.restore.paperKeyProceedButton"= "Восстановить";
+
+// Paperkey QR
+
+"restoreGuide.qrcode.title"                 = "Отсканировать QR-код бумажного ключа";
+"restoreGuide.qrcode.closeButton"           = "Закрыть";
+
+// ----------------------------------------
+// Send.storyboard
+// ----------------------------------------
+
+// Send
+
+"send.title"                                = "Отправить";
+"send.addressButtonLabel"                   = "Адрес получателя";
+"send.addressPlaceholder"                   = "Введите адрес получателя";
+"send.amountButtonLabel"                    = "Сумма";
+"send.memoButtonLabel"                      = "Сообщение (необязательно)";
+"send.memoPlaceholder"                      = "На подарок Свену";
+"send.confirmButton"                        = "Подтвердить";
+"send.noBalanceTitle"                       = "Недостаточно средств";
+"send.noBalanceDesc"                        = "У вас нет XVG для отправки.\nПожалуйста, пополните свой баланс.";
+
+// QR-code
+
+"send.qrcode.title"                         = "Отсканируйте XVG QR-код";
+"send.qrcode.closeButton"                   = "Закрыть";
+
+// Select recipient
+
+"send.selectRecipient.title"                = "Выбрать получателя";
+
+// ----------------------------------------
+// Wallet.storyboard
+// ----------------------------------------
+
+"wallet.xvgBalanceTitle"                    = "БАЛАНС XVG";
+"wallet.balanceTitle"                       = "БАЛАНС";
+
+// ----------------------------------------
+// Settings.storyboard
+// ----------------------------------------
+
+// Settings
+
+"settings.title"                            = "Настройки";
+
+"settings.wallet.header.title"              = "Кошелек";
+"settings.wallet.footer.title"              = "Настройте свой кошелек данными опциями.";
+"settings.wallet.cell.removeLabel"          = "Отвязать кошелек";
+"settings.wallet.cell.paperKeyLabel"        = "Бумажный ключ";
+"settings.wallet.cell.addressesLabel"       = "Адреса";
+"settings.wallet.cell.transactionsLabel"    = "Заявленные транзакции";
+"settings.wallet.cell.serviceUrlLabel"      = "URL сервиса";
+
+"settings.settings.cell.fiatCurrencyLabel"  = "Фиатная валюта";
+"settings.settings.cell.changePinLabel"     = "Сменить Пин-код";
+"settings.settings.cell.useFaceIdLabel"     = "Использование Face ID";
+"settings.settings.cell.torConnectionLabel" = "Tor-соединение";
+
+"settings.other.header.title"               = "Другое";
+"settings.other.cell.creditsLabel"          = "О приложении";
+"settings.other.cell.donateLabel"           = "Поддержать проект";
+"settings.other.cell.rateAppLabel"          = "Оценить приложение";
+"settings.other.cell.websiteLabel"          = "Web-сайт проекта";
+"settings.other.cell.contributeLabel"       = "Помочь разработке";
+
+// Paper key
+
+"settings.paperKey.titleLabel"              = "Записать Ваш бумажный ключ";
+"settings.paperKey.descLabel"               = "Хотите снова увидеть Ваш бумажный ключ? На следующем экране Вам будет показан набор слов, которые нужно записать на листке бумаги. Храните их очень осторожно!";
+"settings.paperKey.showButton"              = "Показать бумажный ключ";
+"settings.paperKey.preview.titleLabel"      = "Ваш бумажный ключ";
+"settings.paperKey.preview.noticeLabel"     = "Не стоит делать скриншот - это небезопасно. Лучше запишите Ваш бумажный ключ ручкой на листе бумаги.";
+"settings.paperKey.preview.descLabel"       = "Аккуратно запишите каждое слово в нижнем регистре.";
+"settings.paperKey.preview.wordsSegment"    = "Слова";
+"settings.paperKey.preview.qrSegment"       = "QR-код";
+
+// Disconnect wallet
+
+"settings.disconnect.titleLabel"            = "Отвязать данное устройство от Вашего текущего кошелька";
+"settings.disconnect.descLabel"             = "Вы можете отвязать данное устройство от Вашего текущего кошелька. Пожалуйста удостоверьтесь, что Вы записали Ваш бумажный ключ и помните свой пароль. Вы должны помнить, что Ваш бумажный ключ и пароль - единственный способ восстановить Ваш текущий кошелек.";
+"settings.disconnect.disconnectButton"      = "Отвязать";
+
+// Addresses
+
+"settings.addresses.title"                  = "Адреса";
+"settings.addresses.descLabel"              = "Каждый кошелек Verge может генерировать миллиарды адресов используя Ваш бумажный ключ. Новый адрес будет генерироваться каждый раз когда Вы получаете средства на Ваш кошелек.";
+"settings.addresses.scanButton"             = "Сканировать баланс адресов";
+
+// Transaction Proposals
+
+"settings.transactions.title"               = "Заявленные транзакции";
+"settings.transactions.descLabel"           = "Все заявленные транзакции, с которыми произошли ошибки в процессе их выполнения представлены в списке ниже. Вам необходимо удалить их вручную, чтобы освободить Ваши средства.";
+
+// Service URL
+
+"settings.serviceUrl.title"                 = "URL сервиса";
+"settings.serviceUrl.header.title"          = "URL сервиса Кошелька";
+"settings.serviceUrl.footer.title"          = "Это приложение зависит от Сервиса Кошелька Verge (VWS). Он предоставляет информацию о блокчейне, сети и Copayer синхронизации. По умолчанию выбран https://vws.vergecurrency.network/vws/api (публичный VWS)";
+"settings.serviceUrl.defaultUrlButton"      = "Использовать URL по умолчанию";
+"settings.serviceUrl.saveButton"            = "Сохранить";
+
+// Fiat currency
+
+"settings.fiatCurrency.title"               = "Фиатная валюта";
+
+// Use Face ID
+
+"settings.useFaceID.title"                  = "Использование Face ID";
+"settings.useFaceID.header.title"           = "Использовать для";
+"settings.useFaceID.footer.title"           = "Вместо того, чтобы вводить PIN-код Вашего кошелька, Вам будет предложен альтернативный способ аутентификации.";
+"settings.useFaceID.unlockLabel"            = "Разблокировки Вашего кошелька";
+"settings.useFaceID.sendingLabel"           = "При отправке XVG";
+
+// Tor connection
+
+"settings.torConnection.titleLabel"         = "Tor используется для Вашей конфиденциальности и скрывает Ваше местоположение";
+"settings.torConnection.descLabel"          = "При использовании Tor-соединенияя Ваш IP-адрес полностью скрыт, а транзакции не отслеживаются.\n\nНо Вы всегда можно отключить Tor.";
+"settings.torConnection.obfuscateIpLabel"   = "Скрыть IP";
+"settings.torConnection.yourIpLabel"        = "Ваш IP адрес";
+"settings.torConnection.loadingLabel"       = "Загрузка...";
+"settings.torConnection.notAvailable"       = "Сервис недоступен";
+
+// Credits
+
+"settings.credits.title"                    = "О приложении";
+"settings.credits.descLabel"                = "Герои, сделавшие это приложение:";
+
+// Donate
+
+"settings.donate.titleLabel"                = "Поддержать разработку";
+"settings.donate.descLabel"                 = "Verge всегда стремится достичь новых высот! Мы поставляем продукты и разрабатываем программное обеспечение востребованое сообществом.";
+"settings.donate.desc2Label"                = "Мы слушаем Наше сообщество и получаем обратную связь - это не только один из основополагающих принципов Verge, но и неотъемлемая часть Нашего отношения к разработке открытого исходного кода.";
+"settings.donate.addressLabel"              = "XVG адрес для поддержки";
+"settings.donate.donateButton"              = "Поддержать Verge";
+
+// ----------------------------------------
+// Shortcuts
+// ----------------------------------------
+
+"shortcuts.action.website.title"            = "Web-сайт";
+"shortcuts.action.sourceCode.title"         = "Исходники";
+"shortcuts.action.send.title"               = "Отправить";
+"shortcuts.action.receive.title"            = "Получить";
+
+// ----------------------------------------
+// TransactionTableViewCell.swift
+// ----------------------------------------
+
+"transaction.state.moved"                   = "Перемещены";
+"transaction.state.received"                = "Получены";
+"transaction.state.pending"                 = "В ожидании";
+
+// ----------------------------------------
+// ChartFilterToolbar.swift
+// ----------------------------------------
+
+"chart.filter.oneDay"                       = "1Д";
+"chart.filter.oneWeek"                      = "1Н";
+"chart.filter.oneMonth"                     = "1М";
+"chart.filter.threeMonths"                  = "3М";
+"chart.filter.oneYear"                      = "1Г";
+"chart.filter.all"                          = "Весь";
+
+// ----------------------------------------
+// PriceChartView.swift
+// ----------------------------------------
+
+"chart.price.historyTitle"                  = "История цены";
+
+// ----------------------------------------
+// VolumeChartView.swift
+// ----------------------------------------
+
+"chart.volume.historyTitle"                 = "История объемов";
+
+// ----------------------------------------
+// ReceiveViewController.swift
+// ----------------------------------------
+
+"receive.myAddressTitle"                    = "Мой XVG адрес";
+
+// ----------------------------------------
+// EnterRecoveryKeyController.swift
+// ----------------------------------------
+
+"paperKey.enterWord"                        = "Введите слово";
+"paperKey.outOf"                            = "из";
+"paperKey.egCat"                            = "(например Cat)";
+"paperKey.key"                              = "Ключ";
+"paperKey.word"                             = "Слово";
+
+// ----------------------------------------
+// SendViewController.swift
+// ----------------------------------------
+
+"send.sendXVG"                              = "Отправить XVG";
+"send.noConnection"                         = "Нет сети";
+"send.transactionFailed"                    = "Ошибка транзакции";
+"send.transactionFailedMessage"             = "Произошла ошибка транзакции. Причина";
+
+"send.notEnoughBalance"                     = "Недостаточно средств";
+"send.notEnoughBalanceMessage1"             = "У Вас недостаточно средств на балансе для отправки";
+"send.notEnoughBalanceMessage2"             = "Измените сумму отправки чтобы продолжить.";
+"send.sendMax"                              = "Отправить максимум";
+"send.wrongAddress"                         = "Неверный адрес";
+"send.enterValidAddress"                    = "Введеный невалидный адрес. Пожалуйста, введите валидный Verge адрес.";
+
+// ----------------------------------------
+// ConfirmSendView.swift + .xib
+// ----------------------------------------
+
+"send.confirm.resolvedStealth"              = "Обработанный стелс адрес";
+"send.confirm.confirmTitleLabel"            = "Подтвердить транзакцию";
+"send.confirm.recipientLabel"               = "Получатель";
+"send.confirm.doubleCheckDescLabel"         = "Дважды проверьте адрес кошелька. Валюта Verge не может нести ответственность за потерю XVG, отправленные на неправильные кошельки.";
+"send.confirm.sendingLabel"                 = "Отправляется";
+"send.confirm.transactionFeeLabel"          = "Комиссия на перевод";
+"send.confirm.totalLabel"                   = "Итого";
+
+// ----------------------------------------
+// SendingView.swift + .xib
+// ----------------------------------------
+
+"send.sending.signingTransaction"           = "Подписываем транзакцию";
+"send.sending.broadcastingTransaction"      = "Броадкастим транзакцию";
+"send.sending.transactionSent"              = "Транзакция отправлена!";
+"send.sending.publishingTransaction"        = "Публикация транзакции";
+
+// ----------------------------------------
+// LocalAuthTableViewCell.swift
+// ----------------------------------------
+
+"settings.localAuth.useTouchId"             = "Использование Touch ID";
+
+// ----------------------------------------
+// AddressesTableViewController.swift
+// ----------------------------------------
+
+"addresses.addressCopied"                   = "Адрес скопирован!";
+"addresses.addressesWithBalance"            = "Адреса с балансами";
+"addresses.unusedAddresses"                 = "Неиспользованные адреса";
+"addresses.addressOptions"                  = "Опции адреса";
+"addresses.informationTypeMessage"          = "Какой тип информации Вы хотите скопировать?";
+"addresses.address"                         = "Адрес";
+"addresses.balance"                         = "Баланс";
+"addresses.balanceCopied"                   = "Баланс скопирован!";
+"addresses.publicKey"                       = "Публичный ключ";
+"addresses.publicKeyCopied"                 = "Публичный ключ скопирован!";
+"addresses.privateKey"                      = "Приватный ключ";
+"addresses.privateKeyCopied"                = "Приватный ключ скопирован!";
+"addresses.scanningAddresses"               = "Сканирование адресов";
+"addresses.scanningAddressesMessage"        = "Сканирование баланса адресов. Это может занять некоторое время.";
+
+// ----------------------------------------
+// CreditsTableViewController.swift
+// ----------------------------------------
+
+"credits.header.development"                = "Разработка";
+"credits.header.design"                     = "Дизайн";
+"credits.header.translation"                = "Перевод";
+
+// ----------------------------------------
+// DisconnectWalletViewController.swift
+// ----------------------------------------
+
+"settings.disconnect.alert.title"           = "Отвязать кошелек";
+"settings.disconnect.alert.message"         = "Вы отвязываете данное устройство от Вашего текущего кошелька. Пожалуйста удостоверьтесь, что Вы записали Ваш бумажный ключ и помните свой пароль. Вы должны помнить, что Ваш бумажный ключ и пароль - единственный способ восстановить Ваш текущий кошелек.";
+"settings.disconnect.alert.disconnect"      = "Отвязать";
+
+// ----------------------------------------
+// ServiceUrlTableViewController.swift
+// ----------------------------------------
+
+"settings.serviceUrl.alert.title"           = "Изменение сервиса";
+"settings.serviceUrl.alert.message"         = "Изменение URL сервиса. Один момент...";
+"settings.serviceUrl.alert.usePrevUrl"      = "Использовать предыдущий URL";
+"settings.serviceUrl.alert.errorChanging"   = "Ошибка изменения";
+"settings.serviceUrl.alert.errorChanging2"  = "Произошла ошибка при изменении URL сервиса. Пожалуйста, попробуйте снова или используйте другой сервисный URL.";
+"settings.serviceUrl.alert.title2"          = "Сервис изменен";
+"settings.serviceUrl.alert.message2"        = "URL сервиса успешно изменен";
+
+// ----------------------------------------
+// TransactionProposalsTableViewController.swift
+// ----------------------------------------
+
+"settings.transactions.removeProposal"      = "Удалить заявку";
+"settings.transactions.noProposals"         = "Нет заявок";
+"settings.transactions.releaseXvg"          = "Освободить XVG этой заявки на перевод";
+
+// ----------------------------------------
+// Tor Setup
+// ----------------------------------------
+
+"setup.tor.slide1.titleLabel"               = "Валюта Verge\nскрывает Ваше местоположение";
+"setup.tor.slide1.descLabel"                = "Verge использует Tor-сеть для того, чтобы скрывать\nВаше местоположение и IP-адрес.";
+
+"setup.tor.slide2.titleLabel"               = "Статус индикатора Tor означает следующее...";
+"setup.tor.slide2.descLabel1"               = "Tor выключен и Ваше местоположение и IP-адрес видимы для всех.";
+"setup.tor.slide2.descLabel2"               = "Соединение с сетью Tor. В данный момент никакого подключения к интернет сети не происходит.";
+"setup.tor.slide2.descLabel3"               = "Tor включен и Ваше местоположение и IP-адрес скрыты.";
+"setup.tor.slide2.descLabel4"               = "Не удалось подключиться к сети Tor или что-то пошло не так. Единственным решением тут будет перезагрузка приложения.";
+
+"setup.tor.slide3.titleLabel"               = "Давайте подключимся к Tor";
+"setup.tor.slide3.titleLabel2"              = "Подключиться к Tor";
+"setup.tor.slide3.descLabel"                = "Убедитесь, что использование Tor легально в Вашей стране. К сожалению не все страны хотят Вашей конфиденциальности.";
+"setup.tor.slide3.negativeButton"           = "Продолжить без Tor";
+"setup.tor.slide3.positiveButton"           = "Продолжить с Tor";
+
+// ----------------------------------------
+// Transactions.storyboard + .swift + .xib
+// ----------------------------------------
+
+"transactions.title"                        = "Транзакции";
+"transactions.transaction.title"            = "Информация";
+"transactions.contacts.title"               = "Контакты";
+
+// TransactionsTableViewController.swift
+
+"transactions.search.placeholder"           = "Поиск транзакций";
+"transactions.search.all"                   = "Все";
+"transactions.search.sent"                  = "Отправленные";
+"transactions.search.received"              = "Полученные";
+
+// TransactionTableViewController.swift
+
+"transactions.transaction.details"          = "Детали транзакции";
+"transactions.transaction.history"          = "История транзакции";
+"transactions.transaction.confirmations"    = "Подтверждений";
+"transactions.transaction.txidCopied"       = "Txid скопирован!";
+
+// NoTransactionsPlaceholderView.xib
+
+"transactions.noTransaction.titleLabel"     = "Пока нет полученных транзакций";
+"transactions.noTransaction.descLabel"      = "Полученные транзакции могут быть найдены здесь";
+
+// ContactTableViewController.swift
+
+"transactions.contact.section.details"      = "Детали контакта";
+"transactions.contact.name"                 = "Имя";
+"transactions.contact.section.history"      = "История транзакций";
+"transactions.contact.saved"                = "Контакт сохранен!";
+
+// AbstractContactsTableViewController.swift
+
+"transactions.contacts.search"              = "Поиск контактов";
+
+// NoContactsPlaceholderView.xib
+
+"transactions.noContacts.titleLabel"        = "Пока нет контактов";
+"transactions.noContacts.descLabel"         = "Добавьте контакт для упрощения отправки XVG";
+
+// ----------------------------------------
+// Wallet Slides
+// ----------------------------------------
+
+// TransactionsWalletSlideView.xib
+
+"wallet.slides.recentTransactions"          = "Недавние транзакции";
+
+// SummaryWalletSlideView.xib
+
+"wallet.slides.summary.statistics"          = "Статистика";
+"wallet.slides.summary.dataNotFound"        = "Данные статистики не могут быть найдены.";
+
+// SummaryWalletSlideView.swift
+
+"wallet.slides.summary.marketCap"           = "Капитализация";
+"wallet.slides.summary.24hHigh"             = "Макс. за 24ч";
+"wallet.slides.summary.24hLow"              = "Мин. за 24ч";
+"wallet.slides.summary.24hChange"           = "Изм. за 24ч";
+"wallet.slides.summary.24hVolume"           = "Объемы за 24ч";
+
+// ChartWalletSlideView.xib
+
+"wallet.slides.chart.history"               = "Исторические графики";
+"wallet.slides.chart.high"                  = "Максимум";
+"wallet.slides.chart.average"               = "Среднее";
+"wallet.slides.chart.low"                   = "Минимум";
+"wallet.slides.chart.availability"          = "данные графика доступны только в USD";
+"wallet.slides.chart.noData"                = "Данные графика не могут быть найдены.";
+
+// NoWalletTransactionsPlaceholderTableViewCell.xib
+
+"wallet.slides.noTransactions.titleLabel"   = "Пока не было транзакций.";

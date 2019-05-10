@@ -18,15 +18,13 @@ class DisconnectWalletViewController: UIViewController {
 
     @IBAction func disconnectWallet(_ sender: Any) {
         let alert = UIAlertController(
-            title: "Disconnect Wallet",
-            message: "Your about to disconnect this device from your current wallet. " +
-                "Please make absolutely sure you have written down your paperkey. " +
-                "Remember that your paperkey is the only way to restore your current wallet.",
+            title: "settings.disconnect.alert.title".localized,
+            message: "settings.disconnect.alert.message".localized,
             preferredStyle: .alert
         )
 
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let confirm = UIAlertAction(title: "Disconnect", style: .destructive) { action in
+        let cancel = UIAlertAction(title: "defaults.cancel".localized, style: .cancel)
+        let confirm = UIAlertAction(title: "settings.disconnect.alert.disconnect".localized, style: .destructive) { action in
             // Show unlock view.
             let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
             pinUnlockView.cancelable = true

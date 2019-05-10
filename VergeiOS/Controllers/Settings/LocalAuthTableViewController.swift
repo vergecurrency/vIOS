@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class LocalAuthTableViewController: UITableViewController {
+class LocalAuthTableViewController: LocalizableTableViewController {
 
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var unlockWalletSwitch: UISwitch!
@@ -22,7 +22,7 @@ class LocalAuthTableViewController: UITableViewController {
 
         if LAContext.available(type: .touchID) {
             headerImage.image = UIImage(named: "TouchID")
-            navigationItem.title = "Use Touch ID"
+            navigationItem.title = "settings.localAuth.useTouchId".localized
         }
 
         unlockWalletSwitch.setOn(applicationRepository.localAuthForWalletUnlock, animated: false)

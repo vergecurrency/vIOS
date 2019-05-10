@@ -53,6 +53,10 @@ class CreditsTableViewController: EdgedTableViewController {
             "name": "Swen",
             "twitter": "SwenVanZanten"
         ],
+        [
+            "name": "Ivan",
+            "twitter": "ihellc"
+        ],
     ]
     
     override func viewDidLoad() {
@@ -103,11 +107,11 @@ class CreditsTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Development"
+            return "credits.header.development".localized
         case 1:
-            return "Design"
+            return "credits.header.design".localized
         case 2:
-            return "Translation"
+            return "credits.header.translation".localized
         default:
             return ""
         }

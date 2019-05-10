@@ -65,7 +65,7 @@ class ConfirmSendView: UIView {
         transactionFeeAmountLabel.text = fee.toXvgCurrency()
         totalXvgAmountLabel.text = total.toXvgCurrency()
         recipientAddressLabel.text = (output.stealth ?? false)
-            ? "Resolved stealth address 🕵️‍♀️"
+            ? "send.confirm.resolvedStealth".localized + " 🕵️‍♀️"
             : output.toAddress
         
         let fiatRateTicker = Application.container.resolve(FiatRateTicker.self)

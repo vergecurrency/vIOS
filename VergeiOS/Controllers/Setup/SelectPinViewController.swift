@@ -56,11 +56,11 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     }
     
     @IBAction func showSettings(_ sender: Any) {
-        let settings = UIAlertController(title: "Choose a PIN size", message: nil, preferredStyle: .actionSheet)
+        let settings = UIAlertController(title: "setup.pinCode.alert.chooseSize".localized, message: nil, preferredStyle: .actionSheet)
 
         let digitCounts = [4, 5, 6, 7, 8]
         for count in digitCounts {
-            let action = UIAlertAction(title: "\(count) Digits", style: .default) { action in
+            let action = UIAlertAction(title: "\(count) " + "setup.pinCode.alert.digits".localized, style: .default) { action in
                 self.pinTextField.pinCharacterCount = count
                 self.pinTextField.reset()
                 self.pin = ""
@@ -69,7 +69,7 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
             settings.addAction(action)
         }
 
-        settings.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        settings.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
 
         present(settings, animated: true)
     }
@@ -88,7 +88,7 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
         if (segue.identifier == "confirmPin") {
             if let vc = segue.destination as? ConfirmPinViewController {
                 let backItem = UIBarButtonItem()
-                backItem.title = "Back"
+                backItem.title = "defaults.back".localized
                 navigationItem.backBarButtonItem = backItem
                 
                 vc.previousPin = pin

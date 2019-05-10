@@ -125,8 +125,8 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let titles = [
-            "Transaction Details",
-            "Transaction History"
+            "transactions.transaction.details".localized,
+            "transactions.transaction.history".localized
         ]
         
         return titles[section]
@@ -148,14 +148,14 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             switch indexRow {
             case 0:
                 cell.imageView?.image = UIImage(named: "Address")
-                cell.textLabel?.text = "Address"
+                cell.textLabel?.text = "defaults.address".localized
                 cell.detailTextLabel?.text = transaction?.address
                 cell.accessoryType = .detailButton
                 addTapRecognizer(cell: cell, action: #selector(addressDoubleTapped(recognizer:)))
                 break
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
-                cell.textLabel?.text = "Confirmations"
+                cell.textLabel?.text = "transactions.transaction.confirmations".localized
                 cell.detailTextLabel?.text = transaction?.confirmationsCount
                 cell.accessoryType = .none
                 break
@@ -273,12 +273,12 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
 
     @objc func addressDoubleTapped(recognizer: UIGestureRecognizer) {
         UIPasteboard.general.string = transaction!.address
-        NotificationManager.shared.showMessage("Address copied!", duration: 3)
+        NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
     }
 
     @objc func blockDoubleTapped(recognizer: UITapGestureRecognizer) {
         UIPasteboard.general.string = transaction!.txid
-        NotificationManager.shared.showMessage("Txid copied!", duration: 3)
+        NotificationManager.shared.showMessage("transactions.transaction.txidCopied".localized, duration: 3)
     }
     
     @IBAction func deleteTransactionPushed(_ sender: Any) {

@@ -107,7 +107,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
         cell.addTapGestureRecognizer(taps: 2) {
             UIPasteboard.general.string = address.address
-            NotificationManager.shared.showMessage("Address copied!", duration: 3)
+            NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
         }
 
         return cell
@@ -128,7 +128,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
         cell.addTapGestureRecognizer(taps: 2) {
             UIPasteboard.general.string = balanceAddress.address
-            NotificationManager.shared.showMessage("Address copied!", duration: 3)
+            NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
         }
 
         return cell
@@ -137,9 +137,9 @@ class AddressesTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case balanceAddressesSection:
-            return hasBalances ? "Addresses with balance" : ""
+            return hasBalances ? "addresses.addressesWithBalance".localized : ""
         default:
-            return hasAddresses ? "Unused addresses" : ""
+            return hasAddresses ? "addresses.unusedAddresses".localized : ""
         }
     }
 
@@ -156,24 +156,24 @@ class AddressesTableViewController: EdgedTableViewController {
         let publicKey = privateKey?.publicKey()
 
         let sheet = UIAlertController(
-            title: "Address options",
-            message: "What information would you like to copy to the clipboard?",
+            title: "addresses.addressOptions".localized,
+            message: "addresses.informationTypeMessage".localized,
             preferredStyle: .actionSheet
         )
 
-        sheet.addAction(UIAlertAction(title: "Address", style: .default) { action in
-            self.toPasteboard(message: "Address copied!", value: balanceAddress.address)
+        sheet.addAction(UIAlertAction(title: "addresses.address".localized, style: .default) { action in
+            self.toPasteboard(message: "addresses.addressCopied".localized, value: balanceAddress.address)
         })
 
-        sheet.addAction(UIAlertAction(title: "Balance", style: .default) { action in
-            self.toPasteboard(message: "Balance copied!", value: "\(Double(balanceAddress.amount) / Constants.satoshiDivider)")
+        sheet.addAction(UIAlertAction(title: "addresses.balance".localized, style: .default) { action in
+            self.toPasteboard(message: "addresses.balanceCopied".localized, value: "\(Double(balanceAddress.amount) / Constants.satoshiDivider)")
         })
 
-        sheet.addAction(UIAlertAction(title: "Public key", style: .default) { action in
-            self.toPasteboard(message: "Public key copied!", value: publicKey?.description)
+        sheet.addAction(UIAlertAction(title: "addresses.publicKey".localized, style: .default) { action in
+            self.toPasteboard(message: "addresses.publicKeyCopied".localized, value: publicKey?.description)
         })
 
-        sheet.addAction(UIAlertAction(title: "Private key", style: .destructive) { action in
+        sheet.addAction(UIAlertAction(title: "addresses.privateKey".localized, style: .destructive) { action in
             let unlockView = PinUnlockViewController.createFromStoryBoard()
             unlockView.cancelable = true
             unlockView.completion = { aunthenticated in
@@ -183,13 +183,13 @@ class AddressesTableViewController: EdgedTableViewController {
                     return
                 }
 
-                self.toPasteboard(message: "Private key copied!", value: privateKey?.toWIF())
+                self.toPasteboard(message: "addresses.privateKeyCopied".localized, value: privateKey?.toWIF())
             }
 
             self.present(unlockView, animated: true)
         })
 
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        sheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
 
         present(sheet, animated: true)
     }
@@ -206,12 +206,12 @@ class AddressesTableViewController: EdgedTableViewController {
         sender.backgroundColor = UIColor.vergeGrey()
 
         let alert = UIAlertController(
-            title: "Scanning Addresses",
-            message: "Scanning addresses for balance. This might take some time to complete.",
+            title: "addresses.scanningAddresses".localized,
+            message: "addresses.scanningAddressesMessage".localized,
             preferredStyle: .alert
         )
 
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
 
         present(alert, animated: true)
     }
