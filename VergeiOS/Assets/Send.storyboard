@@ -468,6 +468,9 @@ Please increase your balance.</string>
                                 <action selector="closeViewController:" destination="O5k-R1-zas" id="0vQ-Pd-7qZ"/>
                             </connections>
                         </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="send.selectRecipient.title"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WCh-eR-O4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
