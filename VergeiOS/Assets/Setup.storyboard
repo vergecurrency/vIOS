@@ -692,10 +692,10 @@
                                 <rect key="frame" x="16" y="20" width="343" height="351"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mvH-0a-8Ow">
-                                        <rect key="frame" x="71.5" y="142" width="200" height="67"/>
+                                        <rect key="frame" x="0.0" y="142" width="343" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter PIN to unlock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDl-bz-Vqv">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
                                                 <color key="textColor" name="SecondaryDark"/>
                                                 <nil key="highlightedColor"/>
@@ -704,7 +704,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X7r-aU-BE9" customClass="PinTextField" customModule="VergeiOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="37" width="200" height="30"/>
+                                                <rect key="frame" x="0.0" y="37" width="343" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="Avn-k3-5Ql"/>
@@ -716,8 +716,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="mvH-0a-8Ow" secondAttribute="trailing" id="Lax-5i-LRx"/>
                                     <constraint firstItem="mvH-0a-8Ow" firstAttribute="centerY" secondItem="dM1-lb-6ae" secondAttribute="centerY" id="Nip-oh-B5y"/>
                                     <constraint firstItem="mvH-0a-8Ow" firstAttribute="centerX" secondItem="dM1-lb-6ae" secondAttribute="centerX" id="gY3-7x-Yyw"/>
+                                    <constraint firstItem="mvH-0a-8Ow" firstAttribute="leading" secondItem="dM1-lb-6ae" secondAttribute="leading" id="nvq-U0-acD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djw-dH-t9H" customClass="PinKeyboard" customModule="VergeiOS" customModuleProvider="target">

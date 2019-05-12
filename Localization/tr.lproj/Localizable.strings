@@ -1,0 +1,449 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "Tamam";
+"defaults.cancel" = "İptal";
+"defaults.done" = "Tamam";
+"defaults.remove" = "Sil";
+"defaults.back" = "Geri";
+"defaults.address" = "Adres";
+"defaults.next" = "Sonraki";
+"defaults.previous" = "Önceki";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "Cüzdan";
+"mainTabBar.barItem.transactions.title" = "İşlem";
+"mainTabBar.barItem.send.title" = "Gönder";
+"mainTabBar.barItem.receive.title" = "Teslim al";
+"mainTabBar.barItem.settings.title" = "Ayarlar";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Verge iOS wallet";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "Gizlilik bizim standardımızdır.";
+
+/*Welcome*/
+"setup.welcome.message" = "Verge için güvenli, anonim ve özel iOS cüzdan. XVG gönder ve al.";
+"setup.welcome.createButton" = "Yeni bir cüzdan oluştur";
+"setup.welcome.createDescription" = "iOS cihazında yeni bir XVG cüzdan oluştur.";
+"setup.welcome.restoreButton" = "Cüzdanını geri yükle.";
+"setup.welcome.restoreDescription" = "iOS cüzdanını kaybettin mi? Buradan geri yükle.";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "Kilidi açmak için PIN gir";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "Cüdan için PIN ayarla";
+"setup.pinCode.setPinDesc" = "Cüzdan PIN’in uygulamayı açmak için kullanılır ve bununla XVG gönderilebilir. Eğer PIN’i kaybedersen cüzdanına erişemezsin.";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "PIN'i yeniden girin";
+"setup.pinCode.reenterPinSucceedTitle" = "Müthiş!";
+"setup.pinCode.reenterPinSucceedDesc" = "PIN’in ayarlandı.";
+"setup.pinCode.reenterPinSucceedDesc2" = "Unutma lütfen!";
+"setup.pinCode.reenterPinSucceedButton" = "İleri";
+"setup.pinCode.reenterPinErrorTitle" = "PIN yanlış!";
+"setup.pinCode.reenterPinErrorDesc" = "PIN geçerli değil!";
+"setup.pinCode.reenterPinErrorDesc2" = "Lütfen yeniden dene.";
+"setup.pinCode.reenterPinErrorButton" = "Yeniden dene";
+"setup.pinCode.alert.chooseSize" = "PIN boyutunu seç";
+"setup.pinCode.alert.digits" = "Basamaklar";
+
+/*Passphrase*/
+"setup.passphrase.title" = "Parolanızla kağıt cüzdan anahtarı üretin.";
+"setup.passphrase.desc" = "Kağıt anahtarınızı şifrelemek önemli bir güvenlik önlemidir. Bir cüzdanı geri yüklerken önceki parolanızı kullandığınızdan emin olun.";
+"setup.passphrase.req1" = "Min. 8 karakter";
+"setup.passphrase.req2" = "Büyük harf ve küçük harf";
+"setup.passphrase.req3" = "Özel karakterler (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder" = "Parolanızı girin";
+"setup.passphrase.confirmButton" = "Onayla";
+"setup.passphrase.confirmTitle" = "Parolanı onayla";
+"setup.passphrase.proceedButton" = "İleri";
+
+/*Finish*/
+"setup.finish.title" = "Neredeyse hazır!";
+"setup.finish.switch1" = "Paralarımın bu cihazda güvenli bir şekilde tutulduğunu anladım.";
+"setup.finish.switch2" = "Eğer uygulama farklı bir cihaza taşınır veya silinirse Verge varlıklarımın sadece kağıt cüzdan ve anahtar kelimelerle kurtarılabileceğini anladım.";
+"setup.finish.switch3" = "Kullanım Şartlarını okudum, anladım ve kabul ediyorum.";
+"setup.finish.termsButton" = "Kullanım Şartları";
+"setup.finish.createButton" = "Cüzdan Oluştur";
+"setup.finish.openButton" = "Cüzdanını aç";
+"setup.finish.desc" = "Cüzdanını tamamla...";
+"setup.finish.congrats" = "Cüdanın hazır! Tebrikler!";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "Kağıt cüzdan anahtarı";
+"welcomeGuide.paperKey.message" = "Bir sonraki ekranda, çok güvende tutmanız gereken ve bir kağıda yazılması gereken kelimelerin bir listesi gösterilecek!";
+"welcomeGuide.paperKey.description" = "Kağıt anahtarınız, fonunuza erişmeniz için gereken tek şey olan özel anahtarınızın bir parçasıdır.";
+"welcomeGuide.paperKey.actionButton" = "Kağıt cüzdan anahtarınızı yazın";
+"welcomeGuide.paperKey.makeSureLabel" = "Her şeyin doğru yazıldığından emin olmak için lütfen aşağıdaki kelimeleri girin.";
+"welcomeGuide.paperKey.submitButton" = "Gönder";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "Teslim al";
+"receive.addressButtonLabel" = "Adres";
+"receive.amountButtonLabel" = "Miktar";
+"receive.amountPlaceholder" = "Alınacak miktar";
+"receive.stealthAddressLabel" = "Gizli Adres";
+"receive.shareButton" = "Paylaş";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "Cüzdanı Geri Yükle";
+"restoreGuide.restore.desc" = "Bir sonraki ekranda, cüzdanınızın kağıt anahtarını istenen şekilde doldurmanız gerekiyor.";
+"restoreGuide.restore.notice" = "Lütfen bu işlemi yaparken kimsenin sizi izlemediğinden emin olun.";
+"restoreGuide.restore.restoreButton" = "Geri Yüklemeyi Başlat";
+"restoreGuide.restore.paperKeyTitle" = "Kağıt cüzdan anahtarınız:";
+"restoreGuide.restore.paperKeyWarning" = "Kağıt anahtarınızın doğru olduğundan emin misiniz?";
+"restoreGuide.restore.paperKeyProceedButton" = "İlerliyor";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "Kağıt cüzdan anahtarının QR kodunu okutun";
+"restoreGuide.qrcode.closeButton" = "Kapat";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "Gönder";
+"send.addressButtonLabel" = "Alıcı adresi";
+"send.addressPlaceholder" = "Alıcı adresini girin";
+"send.amountButtonLabel" = "Miktar";
+"send.memoButtonLabel" = "İç Yazışma (isteğe bağlı)";
+"send.memoPlaceholder" = "Swen'e armağan";
+"send.confirmButton" = "Onayla";
+"send.noBalanceTitle" = "Bakiye yok";
+"send.noBalanceDesc" = "Gönderilecek XVG'niz yok.\nLütfen bakiyenizi artırın.";
+
+/*QR-code*/
+"send.qrcode.title" = "XVG QR kodunu okutun";
+"send.qrcode.closeButton" = "Kapat";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "Alıcı seçin";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "XVG bakiyesi";
+"wallet.balanceTitle" = "Bakiye";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "Ayarlar";
+"settings.wallet.header.title" = "Cüzdan";
+"settings.wallet.footer.title" = "Cüzdanınızı verilen seçeneklerle yönetin.";
+"settings.wallet.cell.removeLabel" = "Cüzdanı sil";
+"settings.wallet.cell.paperKeyLabel" = "Kağıt cüzdan anahtarı";
+"settings.wallet.cell.addressesLabel" = "Adres";
+"settings.wallet.cell.transactionsLabel" = "İşlem Çizelgeleri";
+"settings.wallet.cell.serviceUrlLabel" = "Servis URL";
+"settings.settings.cell.fiatCurrencyLabel" = "Kağıt para birimi";
+"settings.settings.cell.changePinLabel" = "Cüzdan PIN'ini değiştir";
+"settings.settings.cell.useFaceIdLabel" = "Face ID kullan";
+"settings.settings.cell.torConnectionLabel" = "Tor bağlantısı";
+"settings.other.header.title" = "Diğerleri";
+"settings.other.cell.creditsLabel" = "Emeği Geçenler";
+"settings.other.cell.donateLabel" = "Bağış";
+"settings.other.cell.rateAppLabel" = "Uygulamayı Oyla";
+"settings.other.cell.websiteLabel" = "Web Sitesi";
+"settings.other.cell.contributeLabel" = "Katkıda Bulunanlar";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "Cüzdan kağıt anahtarınızı tekrar yazın";
+"settings.paperKey.descLabel" = "Kağıt anahtarını tekrar görmek ister misin? Bir sonraki ekranda, çok güvende tutmanız gereken ve bir kağıda yazılması gereken kelimelerin bir listesi gösterilir!";
+"settings.paperKey.showButton" = "Kağıt cüzdan anahtarını göster";
+"settings.paperKey.preview.titleLabel" = "Kağıt cüzdan anahtarınız";
+"settings.paperKey.preview.noticeLabel" = "Ekran görüntüsü almak güvenli değil. Kağıt anahtarını bir kağıda kalemle yazın.";
+"settings.paperKey.preview.descLabel" = "Her sözcüğü büyük harf olmadan dikkatlice yazın.";
+"settings.paperKey.preview.wordsSegment" = "Kelimeler";
+"settings.paperKey.preview.qrSegment" = "QR";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "Cüzdanınızın bu cihazla bağlantısını kesin";
+"settings.disconnect.descLabel" = "Bu cihazın mevcut cüzdanınızla bağlantısını kesmek üzeresiniz. Lütfen kağıt anahtarınızı bir yere yazdığınızdan ve şifrenizi tam olarak bildiğinizden emin olun. Kağıt anahtarınız ve parolanızın geçerli cüzdanınızı geri yüklemenin tek yolu olduğunu unutmayın.";
+"settings.disconnect.disconnectButton" = "Bağlantıyı kes";
+
+/*Addresses*/
+"settings.addresses.title" = "Adresler";
+"settings.addresses.descLabel" = "Her Verge cüzdanı, 12 kelimelik kurtarma ifadenizden milyarlarca adres oluşturabilir. Her ödeme aldığınızda otomatik olarak yeni bir adres oluşturulur ve gösterilir.";
+"settings.addresses.scanButton" = "Bakiye için adresleri tara";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "İşlem Çizelgeleri";
+"settings.transactions.descLabel" = "Bir işlem sırası başarısız olan tüm işlem çizelgeleri aşağıda listelenmiştir. Miktarı serbest bırakmak için el ile silmeniz gerekir.";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "Servis URL'si";
+"settings.serviceUrl.header.title" = "Cüzdan Servis URL'si";
+"settings.serviceUrl.footer.title" = "Bu uygulama blockchain bilgileri, ağ iletişimi ve Copayer senkronizasyonu için Verge Cüzdan Hizmeti'ne (VWS) bağlıdır. Varsayılan yapılandırma noktası https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)";
+"settings.serviceUrl.defaultUrlButton" = "Varsayılan URL kullan";
+"settings.serviceUrl.saveButton" = "Kaydet";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "Para birimi";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Face ID kullan";
+"settings.useFaceID.header.title" = "Şunun için kullan";
+"settings.useFaceID.footer.title" = "Cüzdan PIN'inizi doldurma ihtiyacı duymak yerine, doğrulama için alternatif bir yol sunar.";
+"settings.useFaceID.unlockLabel" = "Cüzdanınızın kilidini açın";
+"settings.useFaceID.sendingLabel" = "XVG Gönderiliyor";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Tor gizliliğiniz için burada, ve bulunduğunuz yeri gizliyor!";
+"settings.torConnection.descLabel" = "Bir Tor bağlantısı kullanırken IP adresiniz tamamen farklı ve işlemler tamamen izlenemez durumda.\n\nAma istersen Tor'u her zaman kapalı tutabilirsin.";
+"settings.torConnection.obfuscateIpLabel" = "IP adresini karmaşıklaştır";
+"settings.torConnection.yourIpLabel" = "IP Adresiniz";
+"settings.torConnection.loadingLabel" = "Bekleyiniz...";
+"settings.torConnection.notAvailable" = "Servis kullanılamıyor";
+
+/*Credits*/
+"settings.credits.title" = "Emeği Geçenler";
+"settings.credits.descLabel" = "Bu uygulama aşağıdaki kahramanlar tarafından yaratıldı:";
+
+/*Donate*/
+"settings.donate.titleLabel" = "Kalkınmaya Destek için Bağış Yapın";
+"settings.donate.descLabel" = "Verge'de, her zaman yeni zirvelere ulaşmak ve toplum tarafından talep edilen ürünleri veya yazılım uygulamalarını sunmak için çabalıyoruz.";
+"settings.donate.desc2Label" = "Topluluk üyelerimizi dinlemek ve geri bildirim almak, Verge'nin temel kurucu ilkelerinden biri olmakla birlikte, aynı zamanda açık kaynak niteliğimizin esasıdır.";
+"settings.donate.addressLabel" = "Bağış XVG Adresi";
+"settings.donate.donateButton" = "XVG Bağışı Yap";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "Web Sitesi";
+"shortcuts.action.sourceCode.title" = "Kaynak kod";
+"shortcuts.action.send.title" = "Gönder";
+"shortcuts.action.receive.title" = "Teslim Al";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "Gönderildi";
+"transaction.state.received" = "Kabul edildi";
+"transaction.state.pending" = "Eli kulağında";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1G";
+"chart.filter.oneWeek" = "1H";
+"chart.filter.oneMonth" = "1A";
+"chart.filter.threeMonths" = "3A";
+"chart.filter.oneYear" = "1Y";
+"chart.filter.all" = "Hepsi";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "Fiyat Geçmişi";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "Volume Geçmişi";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "Benim XVG adresim";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "Kelime girin";
+"paperKey.outOf" = "şunun dışında";
+"paperKey.egCat" = "(örn. Kedi)";
+"paperKey.key" = "Anahtar";
+"paperKey.word" = "Kelime";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "XVG Gönder";
+"send.noConnection" = "Bağlantı yok";
+"send.transactionFailed" = "İşlem Başarısız";
+"send.transactionFailedMessage" = "İşleminiz aşağıdaki hatayla başarısız oldu;";
+"send.notEnoughBalance" = "Yeterli bakiye yok";
+"send.notEnoughBalanceMessage1" = "Göndermek için bakiyeniz yok";
+"send.notEnoughBalanceMessage2" = "Devam etmek için gönderilecek tutarı değiştirin.";
+"send.sendMax" = "Hepsini Gönder";
+"send.wrongAddress" = "Geçersiz Adres";
+"send.enterValidAddress" = "Girilen adres geçersiz bir Verge adresi. Lütfen geçerli bir eş adres girin.";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "Çözülen gizli adres";
+"send.confirm.confirmTitleLabel" = "İşlemi Onayla";
+"send.confirm.recipientLabel" = "Alıcı";
+"send.confirm.doubleCheckDescLabel" = "Cüzdan adresinin doğruluğundan emin olun. Yanlış cüzdanlara gönderilen XVG kaybından Verge Currency sorumlu tutulamaz.";
+"send.confirm.sendingLabel" = "Gönderiliyor";
+"send.confirm.transactionFeeLabel" = "İşlem ücreti";
+"send.confirm.totalLabel" = "Toplam";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "İşlem İmzalanıyor";
+"send.sending.broadcastingTransaction" = "İşlem Yayını";
+"send.sending.transactionSent" = "Transfer Gönderildi";
+"send.sending.publishingTransaction" = "İşlem Yayınlanıyor";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "Touch ID kullan";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "Adres kopyalandı!";
+"addresses.addressesWithBalance" = "Bakiyeler ve adresler.";
+"addresses.unusedAddresses" = "Kullanılmayan adresler";
+"addresses.addressOptions" = "Adres ayarları";
+"addresses.informationTypeMessage" = "Hangi bilgileri hafızaya kopyalamak istersiniz?";
+"addresses.address" = "Adres";
+"addresses.balance" = "Bakiye";
+"addresses.balanceCopied" = "Bakiye kopyalandı";
+"addresses.publicKey" = "Genel anahtar";
+"addresses.publicKeyCopied" = "Genel anahtar kopyalandı!";
+"addresses.privateKey" = "Özel anahtar";
+"addresses.privateKeyCopied" = "Özel anahtar kopyalandı!";
+"addresses.scanningAddresses" = "Adresler Taranıyor";
+"addresses.scanningAddressesMessage" = "Bakiye için adresler taranıyor. Bu işlemin tamamlanması biraz zaman alabilir.";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "Geliştiriciler";
+"credits.header.design" = "Dizayn";
+"credits.header.translation" = "Çeviri";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "Cüzdanın Bağlantısını Kes";
+"settings.disconnect.alert.message" = "Bu cihazın mevcut cüzdanınızla bağlantısını kesmek üzeresiniz. Lütfen kağıt cüzdan anahtarınızı yazdığınızdan emin olun. Kağıt cüzdan anahtarınızın mevcut cüzdanınızı geri kazanmanın tek yolu olduğunu unutmayın.";
+"settings.disconnect.alert.disconnect" = "Bağlantıyı Kes";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "Servis Değiştiriliyor";
+"settings.serviceUrl.alert.message" = "Servis URL'si değiştiriliyor, lütfen biraz bekleyin...";
+"settings.serviceUrl.alert.usePrevUrl" = "Önceki servis URL'sini kullan";
+"settings.serviceUrl.alert.errorChanging" = "Değiştirme Başarısız";
+"settings.serviceUrl.alert.errorChanging2" = "Servis URL’si değişikliği sırasında bir hata oluştu. Lütfen tekrar deneyin veya başka bir servis URL’si kullanın.";
+"settings.serviceUrl.alert.title2" = "Servis Değiştirildi";
+"settings.serviceUrl.alert.message2" = "Servis URL'si başarıyla değiştirildi.";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "İşlem çizelgesini sil";
+"settings.transactions.noProposals" = "İşlem çizelgesi yok";
+"settings.transactions.releaseXvg" = "Bu işlem çizelgesinin XVG'sini serbest bırakın.";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Verge Currency\nKonumunuzu gizler";
+"setup.tor.slide1.descLabel" = "Verge, konumuzunu ve IP adresinizi karmaşıklaştırmak için Tor ağını kullanır.";
+"setup.tor.slide2.titleLabel" = "Tor durum göstergesi aşağıdakileri söyler...";
+"setup.tor.slide2.descLabel1" = "Tor kapatıldı ve konumun ile IP adresin artık gizli değil.";
+"setup.tor.slide2.descLabel2" = "Tor bağlanıyor. İnternet bağlantısı bu noktada yapılmamaktadır.";
+"setup.tor.slide2.descLabel3" = "Tor açıldı ve konumun ile IP adresin karmaşıklaştırıldı.";
+"setup.tor.slide2.descLabel4" = "Tor bağlanamıyor. Birşeyler ters gitti. Uygulamayı yeniden başlatmayı deneyin.";
+"setup.tor.slide3.titleLabel" = "Hadi Tor'u açalım";
+"setup.tor.slide3.titleLabel2" = "Tor'u aç";
+"setup.tor.slide3.descLabel" = "Tor'un ülkenizde yasal olduğundan emin olun. Maalesef bazı ülkeler gizli olmanızı istemiyor.";
+"setup.tor.slide3.negativeButton" = "Tor olmadan ilerle";
+"setup.tor.slide3.positiveButton" = "Tor ile ilerle";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "İşlemler";
+"transactions.transaction.title" = "Kim?";
+"transactions.contacts.title" = "Kişiler";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "İşlemlerde Ara";
+"transactions.search.all" = "Hepsi";
+"transactions.search.sent" = "Gönderilmiş";
+"transactions.search.received" = "Teslim Alınmış";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "İşlem Detayları";
+"transactions.transaction.history" = "İşlem Geçmişi";
+"transactions.transaction.confirmations" = "Onaylar";
+"transactions.transaction.txidCopied" = "Işlem tanımı (Txid) kopyalandı!";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "Henüz bir işlem alınmadı";
+"transactions.noTransaction.descLabel" = "Alınan işlemler burada görüntülenebilir";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Kişi Detayları";
+"transactions.contact.name" = "İsim";
+"transactions.contact.section.history" = "İşlem Geçmişi";
+"transactions.contact.saved" = "Kişi kaydedildi!";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Kişilerde Ara";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Henüz oluşturulmuş kişi yok";
+"transactions.noContacts.descLabel" = "Kolayca XVG göndermek için bir kişi ekleyin.";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "Son İşlemler";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "İstatistikler";
+"wallet.slides.summary.dataNotFound" = "İstatistiki veriler bulunamadı.";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "Market Kap.";
+"wallet.slides.summary.24hHigh" = "24S Yüksek";
+"wallet.slides.summary.24hLow" = "24S Düşük";
+"wallet.slides.summary.24hChange" = "24S Değişim";
+"wallet.slides.summary.24hVolume" = "24S Volume";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "Tarih Çizelgesi";
+"wallet.slides.chart.high" = "Yüksek";
+"wallet.slides.chart.average" = "Ortalama";
+"wallet.slides.chart.low" = "Düşük";
+"wallet.slides.chart.availability" = "Çizelgeler yalnızca USD için geçerli";
+"wallet.slides.chart.noData" = "Geçmiş çizelgeleri bulunamadı";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "Henüz bir işlem alınmadı.";
