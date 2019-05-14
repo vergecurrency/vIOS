@@ -623,6 +623,9 @@
 		CADA0BE92203B15E00FE74C1 /* VergeSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiri.entitlements; sourceTree = "<group>"; };
 		CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsManager.swift; sourceTree = "<group>"; };
 		CAF4F6DD222AD0DA00096B71 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
+		CAFB2004228AC7040096623D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CAFB2006228AC8BD0096623D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CAFB2007228AC9170096623D /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1656,6 +1659,9 @@
 				tr,
 				hr,
 				es,
+				de,
+				"pt-BR",
+				"sv-SE",
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -2108,6 +2114,9 @@
 				A32BFC4422880839007A8F90 /* tr */,
 				A32BFC4522880885007A8F90 /* hr */,
 				A32BFC4622880891007A8F90 /* es */,
+				CAFB2004228AC7040096623D /* de */,
+				CAFB2006228AC8BD0096623D /* pt-BR */,
+				CAFB2007228AC9170096623D /* sv-SE */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -33,21 +33,21 @@
 "setup.walletName" = "Verge iOS wallet";
 
 /*Loading Tor*/
-"setup.loadingTor.subtitle" = "Gizlilik bizim standardımızdır.";
+"setup.loadingTor.subtitle" = "Gizlilik bizim standardımız.";
 
 /*Welcome*/
 "setup.welcome.message" = "Verge için güvenli, anonim ve özel iOS cüzdan. XVG gönder ve al.";
 "setup.welcome.createButton" = "Yeni bir cüzdan oluştur";
 "setup.welcome.createDescription" = "iOS cihazında yeni bir XVG cüzdan oluştur.";
 "setup.welcome.restoreButton" = "Cüzdanını geri yükle.";
-"setup.welcome.restoreDescription" = "iOS cüzdanını kaybettin mi? Buradan geri yükle.";
+"setup.welcome.restoreDescription" = "iOS cüzdanını mı kaybettin?Buradan geri yükle.";
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Kilidi açmak için PIN gir";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Cüdan için PIN ayarla";
-"setup.pinCode.setPinDesc" = "Cüzdan PIN’in uygulamayı açmak için kullanılır ve bununla XVG gönderilebilir. Eğer PIN’i kaybedersen cüzdanına erişemezsin.";
+"setup.pinCode.setPinTitle" = "Cüzdanın için PIN belirle";
+"setup.pinCode.setPinDesc" = "Cüzdan PIN’in uygulamayı açmak için kullanılır ve bununla XVG gönderilebilirsin.Eğer PIN’i kaybedersen cüzdanına erişemezsin.";
 
 /*Re enter wallet pin*/
 "setup.pinCode.reenterPinTitle" = "PIN'i yeniden girin";
@@ -60,10 +60,10 @@
 "setup.pinCode.reenterPinErrorDesc2" = "Lütfen yeniden dene.";
 "setup.pinCode.reenterPinErrorButton" = "Yeniden dene";
 "setup.pinCode.alert.chooseSize" = "PIN boyutunu seç";
-"setup.pinCode.alert.digits" = "Basamaklar";
+"setup.pinCode.alert.digits" = "Dijital Rakamlar";
 
 /*Passphrase*/
-"setup.passphrase.title" = "Parolanızla kağıt cüzdan anahtarı üretin.";
+"setup.passphrase.title" = "Parolanızla kağıt anahtar üretin.";
 "setup.passphrase.desc" = "Kağıt anahtarınızı şifrelemek önemli bir güvenlik önlemidir. Bir cüzdanı geri yüklerken önceki parolanızı kullandığınızdan emin olun.";
 "setup.passphrase.req1" = "Min. 8 karakter";
 "setup.passphrase.req2" = "Büyük harf ve küçük harf";
@@ -76,7 +76,7 @@
 /*Finish*/
 "setup.finish.title" = "Neredeyse hazır!";
 "setup.finish.switch1" = "Paralarımın bu cihazda güvenli bir şekilde tutulduğunu anladım.";
-"setup.finish.switch2" = "Eğer uygulama farklı bir cihaza taşınır veya silinirse Verge varlıklarımın sadece kağıt cüzdan ve anahtar kelimelerle kurtarılabileceğini anladım.";
+"setup.finish.switch2" = "Eğer uygulama farklı bir cihaza taşınır veya silinirse Verge varlıklarımın sadece kağıt anahtar ve anahtar kelimelerle kurtarılabileceğini anladım.";
 "setup.finish.switch3" = "Kullanım Şartlarını okudum, anladım ve kabul ediyorum.";
 "setup.finish.termsButton" = "Kullanım Şartları";
 "setup.finish.createButton" = "Cüzdan Oluştur";
@@ -87,10 +87,10 @@
 /*----------------------------------------
  WelcomeGuide.storyboard
  ----------------------------------------*/
-"welcomeGuide.paperKey.title" = "Kağıt cüzdan anahtarı";
+"welcomeGuide.paperKey.title" = "Kağıt Anahtar";
 "welcomeGuide.paperKey.message" = "Bir sonraki ekranda, çok güvende tutmanız gereken ve bir kağıda yazılması gereken kelimelerin bir listesi gösterilecek!";
 "welcomeGuide.paperKey.description" = "Kağıt anahtarınız, fonunuza erişmeniz için gereken tek şey olan özel anahtarınızın bir parçasıdır.";
-"welcomeGuide.paperKey.actionButton" = "Kağıt cüzdan anahtarınızı yazın";
+"welcomeGuide.paperKey.actionButton" = "Kağıt anahtarınızı yazın";
 "welcomeGuide.paperKey.makeSureLabel" = "Her şeyin doğru yazıldığından emin olmak için lütfen aşağıdaki kelimeleri girin.";
 "welcomeGuide.paperKey.submitButton" = "Gönder";
 
@@ -113,12 +113,12 @@
 "restoreGuide.restore.desc" = "Bir sonraki ekranda, cüzdanınızın kağıt anahtarını istenen şekilde doldurmanız gerekiyor.";
 "restoreGuide.restore.notice" = "Lütfen bu işlemi yaparken kimsenin sizi izlemediğinden emin olun.";
 "restoreGuide.restore.restoreButton" = "Geri Yüklemeyi Başlat";
-"restoreGuide.restore.paperKeyTitle" = "Kağıt cüzdan anahtarınız:";
+"restoreGuide.restore.paperKeyTitle" = "Kağıt anahtarınız:";
 "restoreGuide.restore.paperKeyWarning" = "Kağıt anahtarınızın doğru olduğundan emin misiniz?";
 "restoreGuide.restore.paperKeyProceedButton" = "İlerliyor";
 
 /*Paperkey QR*/
-"restoreGuide.qrcode.title" = "Kağıt cüzdan anahtarının QR kodunu okutun";
+"restoreGuide.qrcode.title" = "Kağıt anahtarının QR kodunu okutun";
 "restoreGuide.qrcode.closeButton" = "Kapat";
 
 /*----------------------------------------
@@ -154,16 +154,16 @@
  Settings*/
 "settings.title" = "Ayarlar";
 "settings.wallet.header.title" = "Cüzdan";
-"settings.wallet.footer.title" = "Cüzdanınızı verilen seçeneklerle yönetin.";
-"settings.wallet.cell.removeLabel" = "Cüzdanı sil";
-"settings.wallet.cell.paperKeyLabel" = "Kağıt cüzdan anahtarı";
+"settings.wallet.footer.title" = "Cüzdanınızı bu ayarlarla yönetin.";
+"settings.wallet.cell.removeLabel" = "Cüzdanı Sil";
+"settings.wallet.cell.paperKeyLabel" = "Kağıt Anahtar";
 "settings.wallet.cell.addressesLabel" = "Adres";
-"settings.wallet.cell.transactionsLabel" = "İşlem Çizelgeleri";
+"settings.wallet.cell.transactionsLabel" = "İşlem Taslakları";
 "settings.wallet.cell.serviceUrlLabel" = "Servis URL";
-"settings.settings.cell.fiatCurrencyLabel" = "Kağıt para birimi";
+"settings.settings.cell.fiatCurrencyLabel" = "Para Birimi";
 "settings.settings.cell.changePinLabel" = "Cüzdan PIN'ini değiştir";
 "settings.settings.cell.useFaceIdLabel" = "Face ID kullan";
-"settings.settings.cell.torConnectionLabel" = "Tor bağlantısı";
+"settings.settings.cell.torConnectionLabel" = "Tor Bağlantısı";
 "settings.other.header.title" = "Diğerleri";
 "settings.other.cell.creditsLabel" = "Emeği Geçenler";
 "settings.other.cell.donateLabel" = "Bağış";
@@ -174,8 +174,8 @@
 /*Paper key*/
 "settings.paperKey.titleLabel" = "Cüzdan kağıt anahtarınızı tekrar yazın";
 "settings.paperKey.descLabel" = "Kağıt anahtarını tekrar görmek ister misin? Bir sonraki ekranda, çok güvende tutmanız gereken ve bir kağıda yazılması gereken kelimelerin bir listesi gösterilir!";
-"settings.paperKey.showButton" = "Kağıt cüzdan anahtarını göster";
-"settings.paperKey.preview.titleLabel" = "Kağıt cüzdan anahtarınız";
+"settings.paperKey.showButton" = "Kağıt anahtarını göster";
+"settings.paperKey.preview.titleLabel" = "Kağıt anahtarınız";
 "settings.paperKey.preview.noticeLabel" = "Ekran görüntüsü almak güvenli değil. Kağıt anahtarını bir kağıda kalemle yazın.";
 "settings.paperKey.preview.descLabel" = "Her sözcüğü büyük harf olmadan dikkatlice yazın.";
 "settings.paperKey.preview.wordsSegment" = "Kelimeler";
@@ -192,8 +192,8 @@
 "settings.addresses.scanButton" = "Bakiye için adresleri tara";
 
 /*Transaction Proposals*/
-"settings.transactions.title" = "İşlem Çizelgeleri";
-"settings.transactions.descLabel" = "Bir işlem sırası başarısız olan tüm işlem çizelgeleri aşağıda listelenmiştir. Miktarı serbest bırakmak için el ile silmeniz gerekir.";
+"settings.transactions.title" = "İşlem Taslakları";
+"settings.transactions.descLabel" = "Bir işlem sırası başarısız olan tüm işlem taslakları aşağıda listelenmiştir. Miktarı serbest bırakmak için el ile silmeniz gerekir.";
 
 /*Service URL*/
 "settings.serviceUrl.title" = "Servis URL'si";
@@ -213,7 +213,7 @@
 "settings.useFaceID.sendingLabel" = "XVG Gönderiliyor";
 
 /*Tor connection*/
-"settings.torConnection.titleLabel" = "Tor gizliliğiniz için burada, ve bulunduğunuz yeri gizliyor!";
+"settings.torConnection.titleLabel" = "Tor, gizliliğiniz için burada ve lokasyonunuzu gizliyor!";
 "settings.torConnection.descLabel" = "Bir Tor bağlantısı kullanırken IP adresiniz tamamen farklı ve işlemler tamamen izlenemez durumda.\n\nAma istersen Tor'u her zaman kapalı tutabilirsin.";
 "settings.torConnection.obfuscateIpLabel" = "IP adresini karmaşıklaştır";
 "settings.torConnection.yourIpLabel" = "IP Adresiniz";
@@ -364,9 +364,9 @@
 /*----------------------------------------
  TransactionProposalsTableViewController.swift
  ----------------------------------------*/
-"settings.transactions.removeProposal" = "İşlem çizelgesini sil";
-"settings.transactions.noProposals" = "İşlem çizelgesi yok";
-"settings.transactions.releaseXvg" = "Bu işlem çizelgesinin XVG'sini serbest bırakın.";
+"settings.transactions.removeProposal" = "İşlem taslağını sil";
+"settings.transactions.noProposals" = "İşlem taslağı yok";
+"settings.transactions.releaseXvg" = "Bu işlem taslağının XVG'sini serbest bırakın.";
 
 /*----------------------------------------
  Tor Setup

@@ -1,0 +1,449 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "Ok";
+"defaults.cancel" = "Avbryt";
+"defaults.done" = "Klar";
+"defaults.remove" = "Radera";
+"defaults.back" = "Tillbaka";
+"defaults.address" = "Adress";
+"defaults.next" = "Nästa";
+"defaults.previous" = "Föregående";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "Plånbok";
+"mainTabBar.barItem.transactions.title" = "Transaktioner";
+"mainTabBar.barItem.send.title" = "Skicka";
+"mainTabBar.barItem.receive.title" = "Ta emot";
+"mainTabBar.barItem.settings.title" = "Inställningar";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Verge iOS plånbok";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "Integritet är våran standard";
+
+/*Welcome*/
+"setup.welcome.message" = "Säker, anonym och privat iOS plånbok för Verge.\nSkicka och ta emot XVG.";
+"setup.welcome.createButton" = "Skapa en ny plånbok";
+"setup.welcome.createDescription" = "Skapa en ny XVG plånbok på din enhet.";
+"setup.welcome.restoreButton" = "Återställ din plånbok";
+"setup.welcome.restoreDescription" = "Tappat bort din iOS plånbok? Återställ den här.";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "Slå in pinkod för att låsa upp";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "Ställ in pinkod för plånboken";
+"setup.pinCode.setPinDesc" = "Din pinkod kommer användas för att öppna appen och skicka XVG. Om du glömmer den kommer du inte komma åt din plånbok.";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "Upprepa pinkoden";
+"setup.pinCode.reenterPinSucceedTitle" = "Grymt!";
+"setup.pinCode.reenterPinSucceedDesc" = "Din pinkod är nu inställd";
+"setup.pinCode.reenterPinSucceedDesc2" = "Vänligen glöm inte av den!";
+"setup.pinCode.reenterPinSucceedButton" = "Fortsätt";
+"setup.pinCode.reenterPinErrorTitle" = "Fel pinkod!";
+"setup.pinCode.reenterPinErrorDesc" = "Din pinkod kunde ej valideras!";
+"setup.pinCode.reenterPinErrorDesc2" = "Vänligen försök igen.";
+"setup.pinCode.reenterPinErrorButton" = "Försök igen";
+"setup.pinCode.alert.chooseSize" = "Välj längd för pinkod";
+"setup.pinCode.alert.digits" = "Siffror";
+
+/*Passphrase*/
+"setup.passphrase.title" = "Härled din pappersnyckel med en lösenfras";
+"setup.passphrase.desc" = "Kryptering av din pappersnyckel är en viktig säkerhets åtgärd. Se till när du återställer en plånbok att tidigare lösenfras används.";
+"setup.passphrase.req1" = "Minimum 8 karaktärer";
+"setup.passphrase.req2" = "Versaler och små bokstäver";
+"setup.passphrase.req3" = "Specialtecken (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder" = "Slå in din lösenfras";
+"setup.passphrase.confirmButton" = "Bekräfta";
+"setup.passphrase.confirmTitle" = "Bekräfta din lösenfras";
+"setup.passphrase.proceedButton" = "Fortsätt";
+
+/*Finish*/
+"setup.finish.title" = "Nästan klart!";
+"setup.finish.switch1" = "Jag förstår att mina medel hålls säkra på denna enhet.";
+"setup.finish.switch2" = "Jag förstår att om denna app tas bort eller flyttas till en annan enhet kan mina verge endast återställas med pappersnyckeln och lösenfras.";
+"setup.finish.switch3" = "Jag har läst, förstått och accepterat användarvillkoren.";
+"setup.finish.termsButton" = "Användarvillkor";
+"setup.finish.createButton" = "Skapa plånbok";
+"setup.finish.openButton" = "Öppna din plånbok";
+"setup.finish.desc" = "Färdigställer din plånbok";
+"setup.finish.congrats" = "Din plånbok är klar! Gratulerar!";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "Pappersnyckel";
+"welcomeGuide.paperKey.message" = "På nästa sida visas en lista med ord som du skall skriva ner på ett papper. Förvara dessa på ett säkert ställe!";
+"welcomeGuide.paperKey.description" = "Din pappersnyckel är en del av din privata nyckel som är det enda som behövs för att komma åt dina medel";
+"welcomeGuide.paperKey.actionButton" = "Skriv ner pappersnyckeln";
+"welcomeGuide.paperKey.makeSureLabel" = "För att säkerställa att allt skrevs ner korrekt, vänligen upprepa följande ord från ditt papper. ";
+"welcomeGuide.paperKey.submitButton" = "Lämna in";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "Ta emot";
+"receive.addressButtonLabel" = "Adress";
+"receive.amountButtonLabel" = "Belopp";
+"receive.amountPlaceholder" = "Belopp att ta emot";
+"receive.stealthAddressLabel" = "Dold adress";
+"receive.shareButton" = "Dela";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "Återställ plånbok";
+"restoreGuide.restore.desc" = "På nästa sida behöver du fylla i din pappersnyckel för din plånbok i exakt rätt ordning som efterfrågas.";
+"restoreGuide.restore.notice" = "Vänligen se till att ingen ser dig under denna process.";
+"restoreGuide.restore.restoreButton" = "Starta återställningd";
+"restoreGuide.restore.paperKeyTitle" = "Din pappersnyckel: ";
+"restoreGuide.restore.paperKeyWarning" = "Är du säker att din pappersnyckel är korrekt?";
+"restoreGuide.restore.paperKeyProceedButton" = "Fortsätt";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "Scanna in pappersnyckelns QR kod";
+"restoreGuide.qrcode.closeButton" = "Stäng";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "Skicka";
+"send.addressButtonLabel" = "Mottagarens adress";
+"send.addressPlaceholder" = "Fyll i mottagarens adress";
+"send.amountButtonLabel" = "Belopp";
+"send.memoButtonLabel" = "Internt PM (valfritt)";
+"send.memoPlaceholder" = "Gåva till Swen";
+"send.confirmButton" = "Bekräfta";
+"send.noBalanceTitle" = "Inget saldo";
+"send.noBalanceDesc" = "Du har inga XVG att skicka.\nVänligen fyll på ditt saldo.";
+
+/*QR-code*/
+"send.qrcode.title" = "Scanna en XVG QR kod";
+"send.qrcode.closeButton" = "Stäng";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "Välj mottagare";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "XVG SALDO";
+"wallet.balanceTitle" = "SALDO";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "Inställningar";
+"settings.wallet.header.title" = "Plånbok";
+"settings.wallet.footer.title" = "Hantera din plånbok enligt givna val.";
+"settings.wallet.cell.removeLabel" = "Ta bort plånbok";
+"settings.wallet.cell.paperKeyLabel" = "Pappersnyckel";
+"settings.wallet.cell.addressesLabel" = "Adresser";
+"settings.wallet.cell.transactionsLabel" = "Transaktions förslag";
+"settings.wallet.cell.serviceUrlLabel" = "URL service";
+"settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
+"settings.settings.cell.changePinLabel" = "Ändra plånbokens pinkod";
+"settings.settings.cell.useFaceIdLabel" = "Använd ansiktsigenkänning";
+"settings.settings.cell.torConnectionLabel" = "Tor anslutning";
+"settings.other.header.title" = "Andra";
+"settings.other.cell.creditsLabel" = "Förtjänst";
+"settings.other.cell.donateLabel" = "Donera";
+"settings.other.cell.rateAppLabel" = "Betygsätt app";
+"settings.other.cell.websiteLabel" = "Hemsida";
+"settings.other.cell.contributeLabel" = "Bidra";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "Skriv ner din pappersnyckel igen";
+"settings.paperKey.descLabel" = "Vill du se din pappersnyckel igen? På nästa sida blir du visad en lista med ord att skriva ner på ett papper som du skall förvara säkert!";
+"settings.paperKey.showButton" = "Visa pappersnyckel";
+"settings.paperKey.preview.titleLabel" = "Din pappersnyckel";
+"settings.paperKey.preview.noticeLabel" = "Att ta en skärmdump är inte säkert! Skriv ner pappersnyckeln med en penna på ett papper.";
+"settings.paperKey.preview.descLabel" = "Skriv ner varje ord noggrant utan versaler.";
+"settings.paperKey.preview.wordsSegment" = "Ord";
+"settings.paperKey.preview.qrSegment" = "QR";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "Frånkoppla denna enhet från din nuvarande plånbok. ";
+"settings.disconnect.descLabel" = "Du är påväg att frånkoppla din enhet från din nuvarande plånbok. Vänlige var absolut säker att du skrivit ner din pappersnyckel och kan din lösenfras. Kom ihåg att din pappersnyckel + lösenfras är det enda sättet att återställa din plånbok.";
+"settings.disconnect.disconnectButton" = "Frånkoppla";
+
+/*Addresses*/
+"settings.addresses.title" = "Adresser";
+"settings.addresses.descLabel" = "Varje verge plånbok kan generera miljarder av adresser från din 12-ords återställnings fras. En ny adress genereras automatiskt och visas varje gång du tar emot en betalning. ";
+"settings.addresses.scanButton" = "Scanna adress för saldo";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "Transaktions förslag";
+"settings.transactions.descLabel" = "Alla transaktions förslag som misslyckats under transaktion visas nedan. Du måste radera dom manuellt för att släppa dina medel. ";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "URL service";
+"settings.serviceUrl.header.title" = "Plånbok URL service";
+"settings.serviceUrl.footer.title" = "Denna applikation beror på Verge Wallet Service (VWS) för blockchain information, nätverk och Copayer synkronisering. Standard inställningens poäng för https://vws.vergecurrency.network/vws/api(Verge’s publikka VWS instans)";
+"settings.serviceUrl.defaultUrlButton" = "Använd standard url";
+"settings.serviceUrl.saveButton" = "Spara";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "Fiat valuta";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Använd ansiktsigenkänning";
+"settings.useFaceID.header.title" = "Använd för";
+"settings.useFaceID.footer.title" = "Istället för att fylla i plånbokens pinkod i en prompt erbjuds alternativa sätt att identifiera dig själv.";
+"settings.useFaceID.unlockLabel" = "Låser upp din plånbok";
+"settings.useFaceID.sendingLabel" = "Skickar XVG";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Tor finns här för din integritet och döljer din platsposition";
+"settings.torConnection.descLabel" = "Din IP adress obfuskeras och transaktionerna är helt ospårbara när du använder en Tor anslutning.";
+"settings.torConnection.obfuscateIpLabel" = "Obfuskera IP";
+"settings.torConnection.yourIpLabel" = "Din IP Adress";
+"settings.torConnection.loadingLabel" = "Laddar...";
+"settings.torConnection.notAvailable" = "Tjänst ej tillgänglig";
+
+/*Credits*/
+"settings.credits.title" = "Förtjänst";
+"settings.credits.descLabel" = "Denna applikation var gjord möjlig av följande hjältar:";
+
+/*Donate*/
+"settings.donate.titleLabel" = "Donera för att stödja utveckling";
+"settings.donate.descLabel" = "På Verge strävar vi alltid för att uppnå nya höjder och leverera produkter eller mjukvara implementeringar som efterfrågas av användarna.";
+"settings.donate.desc2Label" = "Att lyssna på våra användare och ta in feedback är inte bara en av Verge’s kärngrundande principer, utan är ingående i vår öppna källkods natur.";
+"settings.donate.addressLabel" = "Donerings XVG adress";
+"settings.donate.donateButton" = "Donera XVG";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "Hemsida";
+"shortcuts.action.sourceCode.title" = "Källkod";
+"shortcuts.action.send.title" = "Skicka";
+"shortcuts.action.receive.title" = "Ta emot";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "Flyttad";
+"transaction.state.received" = "Mottagen";
+"transaction.state.pending" = "Avvaktande";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1D";
+"chart.filter.oneWeek" = "1V";
+"chart.filter.oneMonth" = "1M";
+"chart.filter.threeMonths" = "3M";
+"chart.filter.oneYear" = "1Å";
+"chart.filter.all" = "Allt";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "Pris historik";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "Volym historik";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "Min XVG adress";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "Fyll i ord";
+"paperKey.outOf" = "Ut av";
+"paperKey.egCat" = "(e.g Cat)";
+"paperKey.key" = "Nyckel";
+"paperKey.word" = "Ord";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "Skicka XVG";
+"send.noConnection" = "Ingen anslutning";
+"send.transactionFailed" = "Transaktion misslyckad";
+"send.transactionFailedMessage" = "Din transaktion har misslyckats med följande felmeddelande";
+"send.notEnoughBalance" = "Inte tillräckligt saldo";
+"send.notEnoughBalanceMessage1" = "Du har inte tillräckligt saldo för att skicka";
+"send.notEnoughBalanceMessage2" = "Ändra belopp att skicka för att fortsätta.";
+"send.sendMax" = "Skicka Max";
+"send.wrongAddress" = "Fel adress";
+"send.enterValidAddress" = "Den ifyllda adressen är en felaktig Verge adress. Vänligen fyll i en giltig Verge adress.";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "Löst dold adress";
+"send.confirm.confirmTitleLabel" = "Bekräfta transaktion";
+"send.confirm.recipientLabel" = "Mottagare";
+"send.confirm.doubleCheckDescLabel" = "Dubbelkolla att plånbokens adress är korrekt. Verge Currency ansvarar ej för förlust av XVG som skickats till fel plånböcker.";
+"send.confirm.sendingLabel" = "Skickar";
+"send.confirm.transactionFeeLabel" = "Transaktionsavgift";
+"send.confirm.totalLabel" = "Totalt";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "Signerar transaktion";
+"send.sending.broadcastingTransaction" = "Utsänder transaktion";
+"send.sending.transactionSent" = "Transaktion Skickad!";
+"send.sending.publishingTransaction" = "Publicerar Transaktion";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "Använd Touch ID";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "Adress kopierad!";
+"addresses.addressesWithBalance" = "Adresser med saldo";
+"addresses.unusedAddresses" = "Oanvända adresser";
+"addresses.addressOptions" = "Adress alternativ";
+"addresses.informationTypeMessage" = "Vilken information vill du kopiera till urklipp?";
+"addresses.address" = "Adress";
+"addresses.balance" = "Saldo";
+"addresses.balanceCopied" = "Saldo kopierat!";
+"addresses.publicKey" = "Publik nyckel";
+"addresses.publicKeyCopied" = "Publik nyckel kopierad!";
+"addresses.privateKey" = "Privat nyckel";
+"addresses.privateKeyCopied" = "Privat nyckel kopierad!";
+"addresses.scanningAddresses" = "Scannar Adresser";
+"addresses.scanningAddressesMessage" = "Scannar adresser för saldo. Det här kan ta en stund att avsluta.";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "Utveckling";
+"credits.header.design" = "Design";
+"credits.header.translation" = "Översättning";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "Frånkoppla Plånbok";
+"settings.disconnect.alert.message" = "Du är på väg att frånkoppla plånbok från din nuvarande enhet. Vänligen var säker att du har skrivit ner din pappersnyckel. Kom ihåg att din papperskod är det enda sättet att återställa din nuvarande plånbok.";
+"settings.disconnect.alert.disconnect" = "Frånkoppla";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "Ändrar service";
+"settings.serviceUrl.alert.message" = "Ändrar URL service, vänligen vänta...";
+"settings.serviceUrl.alert.usePrevUrl" = "Använd tidigare URL service";
+"settings.serviceUrl.alert.errorChanging" = "Felaktig ändring";
+"settings.serviceUrl.alert.errorChanging2" = "Ett fel uppstod vid ändring av URL. Vänligen försök igen eller använd annan URL service.";
+"settings.serviceUrl.alert.title2" = "Ändrat service";
+"settings.serviceUrl.alert.message2" = "Lyckad ändring av URL service.";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "Ta bort ett förslag";
+"settings.transactions.noProposals" = "Inga förslag";
+"settings.transactions.releaseXvg" = "Frisläpp XVG från detta transaktions förslag";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Verge Currency\nDöljer din platsposition";
+"setup.tor.slide1.descLabel" = "Verge använder Tor närverket för att obfuskera din platsposition och IP adress.";
+"setup.tor.slide2.titleLabel" = "Tor status indikering visar följande...";
+"setup.tor.slide2.descLabel1" = "Tor är frånkopplat och din platsposition samt IP visas offentligt. ";
+"setup.tor.slide2.descLabel2" = "Tor ansluter. Ingen internetanslutning kan hittas i nuläget.";
+"setup.tor.slide2.descLabel3" = "Tor är aktiverad och din platsposition samt IP är obfuskerade. ";
+"setup.tor.slide2.descLabel4" = "Tor kan inte ansluta, något gick fel. Enda lösningeni nuläget är att starta om applikationen.";
+"setup.tor.slide3.titleLabel" = "Nu aktiverar vi Tor";
+"setup.tor.slide3.titleLabel2" = "Aktivera Tor";
+"setup.tor.slide3.descLabel" = "Se till att Tor är laglig i ditt land. Tyvärr tar inte vissa länder hänsyn till din integritet.";
+"setup.tor.slide3.negativeButton" = "Fortsätt utan Tor";
+"setup.tor.slide3.positiveButton" = "Fortsätt med Tor";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "Transaktioner";
+"transactions.transaction.title" = "Vem?";
+"transactions.contacts.title" = "Kontakter";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "Sök Transaktioner";
+"transactions.search.all" = "Alla";
+"transactions.search.sent" = "Skickade";
+"transactions.search.received" = "Mottagna";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "Transaktions Detaljer";
+"transactions.transaction.history" = "Transaktionshistorik";
+"transactions.transaction.confirmations" = "Bekräftelser";
+"transactions.transaction.txidCopied" = "Txid kopierad!";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "Inga transaktioner mottagna ännu";
+"transactions.noTransaction.descLabel" = "Mottagna transaktioner hittas här";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Kontaktinformation";
+"transactions.contact.name" = "Namn";
+"transactions.contact.section.history" = "Transaktionshistorik";
+"transactions.contact.saved" = "Kontakt sparad!";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Sök kontakter";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Inga kontakter skapade";
+"transactions.noContacts.descLabel" = "Lägg till kontakt för att enkelt skicka XVG till";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "Senaste transaktioner";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "Statistik";
+"wallet.slides.summary.dataNotFound" = "Datastatistik kan ej hittas";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "Börsvärde";
+"wallet.slides.summary.24hHigh" = "24h Hög";
+"wallet.slides.summary.24hLow" = "24h Låg";
+"wallet.slides.summary.24hChange" = "24h Ändring";
+"wallet.slides.summary.24hVolume" = "24h Volym";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "Tabellhistorik";
+"wallet.slides.chart.high" = "Hög";
+"wallet.slides.chart.average" = "Genomsnittlig";
+"wallet.slides.chart.low" = "Låg";
+"wallet.slides.chart.availability" = "Tabelldata visas endast i USD";
+"wallet.slides.chart.noData" = "Tabellhistorik data kan ej hittas.";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "Inga transaktioner mottagna ännu.";
