@@ -109,7 +109,7 @@
                                                     <color key="textColor" name="PrimaryLight"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dl-nh-26T" customClass="EFCountingLabel" customModule="VergeiOS" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dl-nh-26T" customClass="EFCountingLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="196" y="0.0" width="59" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="xUc-VQ-qtA"/>
@@ -147,7 +147,7 @@
                                                     <color key="textColor" name="VergeGrey"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jE7-mR-SCu" customClass="EFCountingLabel" customModule="VergeiOS" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jE7-mR-SCu" customClass="EFCountingLabel" customModule="VergeiOS" customModuleProvider="target">
                                                     <rect key="frame" x="196" y="0.0" width="59" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="2cU-yV-Nv5"/>
