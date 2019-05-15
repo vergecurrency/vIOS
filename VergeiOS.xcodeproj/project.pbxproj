@@ -626,6 +626,8 @@
 		CAFB2004228AC7040096623D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAFB2006228AC8BD0096623D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CAFB2007228AC9170096623D /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CAFC45E6228C169700D4F287 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CAFC45E7228C189100D4F287 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1662,6 +1664,8 @@
 				de,
 				"pt-BR",
 				"sv-SE",
+				it,
+				"pt-PT",
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -2117,6 +2121,8 @@
 				CAFB2004228AC7040096623D /* de */,
 				CAFB2006228AC8BD0096623D /* pt-BR */,
 				CAFB2007228AC9170096623D /* sv-SE */,
+				CAFC45E6228C169700D4F287 /* it */,
+				CAFC45E7228C189100D4F287 /* pt-PT */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -435,7 +435,7 @@
 "setup.tor.slide1.descLabel"                = "Verge uses the Tor network to obfuscate\nyour location and IP address.";
 
 "setup.tor.slide2.titleLabel"               = "The Tor status indicator tells the following...";
-"setup.tor.slide2.descLabel1"               = "Tor is turned off and your location and IP is publicily available.";
+"setup.tor.slide2.descLabel1"               = "Tor is turned off and your location and IP is publicly available.";
 "setup.tor.slide2.descLabel2"               = "Tor is connecting. No connections to the internet are made at this point.";
 "setup.tor.slide2.descLabel3"               = "Tor is turned on and your location and IP is obfuscated.";
 "setup.tor.slide2.descLabel4"               = "Tor can't connect and something went wrong. The only solution for now is a restart of the application.";
