@@ -21,14 +21,24 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTextFieldBar()
-        updateView(index: index)
+        self.setupTextFieldBar()
+        self.updateView(index: self.index)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        keyTextField.becomeFirstResponder()
+        self.keyTextField.becomeFirstResponder()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if self.keys.count == self.numberOfWords {
+            self.keys = []
+            self.index = 0
+            self.updateView(index: self.index)
+        }
     }
 
     private func setupTextFieldBar() {
@@ -55,8 +65,8 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             nextButton
         ]
 
-        keyTextField.inputAccessoryView = keyboardToolbar
-        keyTextField.delegate = self
+        self.keyTextField.inputAccessoryView = keyboardToolbar
+        self.keyTextField.delegate = self
     }
     
     private func createLabelText(index: Int) -> String {
@@ -72,13 +82,12 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
     
     private func updateView(index: Int) {
-        print(keys)
-        keyLabel.text = createLabelText(index: index)
-        keyTextField.text = keys.indices.contains(index) ? keys[index] : ""
-        keyTextField.placeholder = createPlaceholderText(index: index)
-        keyProgressLabel.text = createProgressText(index: index)
+        self.keyLabel.text = self.createLabelText(index: index)
+        self.keyTextField.text = self.keys.indices.contains(index) ? keys[index] : ""
+        self.keyTextField.placeholder = self.createPlaceholderText(index: index)
+        self.keyProgressLabel.text = self.createProgressText(index: index)
 
-        guard let toolbar = keyTextField.inputAccessoryView as? UIToolbar else {
+        guard let toolbar = self.keyTextField.inputAccessoryView as? UIToolbar else {
             return
         }
 
@@ -91,38 +100,41 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         if text == nil || text!.count == 0 {
             return false
         }
-        
-        keys.insert(text!, at: index)
+
+        self.keys.insert(text!, at: index)
         return true
     }
 
     @objc func previousClick() {
-        keys.removeLast()
-        index = index - 1
-        updateView(index: index)
+        self.keys.removeLast()
+        self.index = self.index - 1
+        updateView(index: self.index)
     }
     
     @objc func nextClick() {
-        let isAdded: Bool = addKeyToList(text: keyTextField.text)
+        let isAdded: Bool = self.addKeyToList(text: self.keyTextField.text)
         
-        if index < numberOfWords - 1 {
-            if isAdded {
-                index = index + 1
-                updateView(index: index)
-            } else {
-                keyTextField.shake()
-                return
-            }
-        } else {
-            performSegue(withIdentifier: "showFinalRecovery", sender: self)
+        if !isAdded {
+            self.keyTextField.shake()
+            
+            return
         }
         
+        if self.index < self.numberOfWords - 1 {
+            self.index = self.index + 1
+            self.updateView(index: self.index)
+        }
+        
+        if self.keys.count == self.numberOfWords {
+            print(self.keys)
+            self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
+        }
     }
 
     func setMnemonicAndProceed(_ mnemonic: [String]) {
-        keys = mnemonic
+        self.keys = mnemonic
 
-        performSegue(withIdentifier: "showFinalRecovery", sender: self)
+        self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -142,7 +154,7 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
 
 extension EnterRecoveryKeyController: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nextClick()
+        self.nextClick()
 
         return true
     }

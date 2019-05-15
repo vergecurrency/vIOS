@@ -13,9 +13,9 @@ extension UIAlertController {
             preferredStyle: .alert
         )
 
-        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: handler)
+        let delete = UIAlertAction(title: "defaults.delete".localized, style: .destructive, handler: handler)
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
         alert.addAction(delete)
 
         return alert
@@ -28,7 +28,7 @@ extension UIAlertController {
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
         
         return alert
     }
@@ -40,9 +40,9 @@ extension UIAlertController {
             preferredStyle: .alert
         )
 
-        let delete = UIAlertAction(title: "Delete", style: .destructive, handler: handler)
+        let delete = UIAlertAction(title: "defaults.delete".localized, style: .destructive, handler: handler)
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
         alert.addAction(delete)
 
         return alert
@@ -56,7 +56,7 @@ extension UIAlertController {
             preferredStyle: .alert
         )
 
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
 
         return alert
     }
@@ -68,7 +68,7 @@ extension UIAlertController {
             preferredStyle: .alert
         )
 
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
 
         return alert
     }
@@ -83,7 +83,7 @@ extension UIAlertController {
 
         actionSheet.addAction(UIAlertAction(title: "Start Tor", style: .default))
         actionSheet.addAction(UIAlertAction(title: "Without Tor", style: .destructive))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
 
         return actionSheet
     }
@@ -91,8 +91,8 @@ extension UIAlertController {
     static func createShowTermsOfUseAlert() -> UIAlertController {
         let alert = UIAlertController(title: "View Wallet Terms of Use", message: nil, preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Open", style: .default) { action in
+        alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.open".localized, style: .default) { action in
             if let path: URL = URL(string: Constants.termsOfUse) {
                 UIApplication.shared.open(path, options: [:])
             }

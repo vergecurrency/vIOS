@@ -18,6 +18,8 @@
 "defaults.address"                          = "Address";
 "defaults.next"                             = "Next";
 "defaults.previous"                         = "Previous";
+"defaults.delete"                           = "Delete";
+"defaults.open"                             = "Open";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -56,7 +58,7 @@
 // Set wallet pin
 
 "setup.pinCode.setPinTitle"                 = "Set wallet PIN";
-"setup.pinCode.setPinDesc"                  = "Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet.";
+"setup.pinCode.setPinDesc"                  = "Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you won't be able to access your wallet.";
 
 // Re enter wallet pin
 
