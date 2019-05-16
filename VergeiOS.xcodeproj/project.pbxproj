@@ -596,6 +596,7 @@
 		CA522EAE220318B000331B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA522EB72203323A00331B0F /* VergeSiriUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiriUI.entitlements; sourceTree = "<group>"; };
 		CA5FCC7D22842BD1002340A1 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		CA60D193228D53300029FED0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTableViewController.swift; sourceTree = "<group>"; };
 		CA63BA742282DC1C00E2023A /* LocalizableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableSegmentedControl.swift; sourceTree = "<group>"; };
 		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1666,6 +1667,7 @@
 				"sv-SE",
 				it,
 				"pt-PT",
+				vi,
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -2123,6 +2125,7 @@
 				CAFB2007228AC9170096623D /* sv-SE */,
 				CAFC45E6228C169700D4F287 /* it */,
 				CAFC45E7228C189100D4F287 /* pt-PT */,
+				CA60D193228D53300029FED0 /* vi */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

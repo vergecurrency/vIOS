@@ -47,12 +47,12 @@
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Defina o PIN da carteira";
-"setup.pinCode.setPinDesc" = "O seu PIN da carteira será usado para abrir a app e para enviar XVG. Se o esquecer, não poderá aceder à sua carteira. ";
+"setup.pinCode.setPinDesc" = "O seu PIN da carteira será usado para abrir a app e para enviar XVG. Se o esquecer, não poderá aceder à sua carteira.";
 
 /*Re enter wallet pin*/
 "setup.pinCode.reenterPinTitle" = "Insira o PIN novamente";
 "setup.pinCode.reenterPinSucceedTitle" = "Excelente!";
-"setup.pinCode.reenterPinSucceedDesc" = "O seu PIN foi agora definido. ";
+"setup.pinCode.reenterPinSucceedDesc" = "O seu PIN foi agora definido.";
 "setup.pinCode.reenterPinSucceedDesc2" = "Por favor não o esqueça!";
 "setup.pinCode.reenterPinSucceedButton" = "Avançar";
 "setup.pinCode.reenterPinErrorTitle" = "Pin incorreto!";
@@ -118,7 +118,7 @@
 "restoreGuide.restore.paperKeyProceedButton" = "Avançar";
 
 /*Paperkey QR*/
-"restoreGuide.qrcode.title" = "Digitalize um código QR da chave de papel";
+"restoreGuide.qrcode.title" = "Faça scan de um código QR da chave de papel";
 "restoreGuide.qrcode.closeButton" = "Fechar";
 
 /*----------------------------------------
@@ -135,10 +135,10 @@
 "send.memoPlaceholder" = "Prenda para o Swen";
 "send.confirmButton" = "Confirmar";
 "send.noBalanceTitle" = "Sem saldo";
-"send.noBalanceDesc" = "Você não tem nenhum XVG para enviar.\nPor favor aumente o seu saldo.";
+"send.noBalanceDesc" = "Você não tem nenhum XVG para enviar.\nPor favor recarregue o seu saldo.";
 
 /*QR-code*/
-"send.qrcode.title" = "Digitalize um código QR XVG";
+"send.qrcode.title" = "Faça scan de um código QR XVG";
 "send.qrcode.closeButton" = "Fechar";
 
 /*Select recipient*/
@@ -191,7 +191,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Endereços";
 "settings.addresses.descLabel" = "Cada carteira de verge pode gerar milhares de milhão de endereços a partir da sua frase de recuperação de 12 palavras. Um novo endereço é gerado automaticamente e exibido sempre que recebe um pagamento.";
-"settings.addresses.scanButton" = "Verificar saldo nos endereços";
+"settings.addresses.scanButton" = "Verificando endereços para encontrar saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Propostas de transação";
@@ -436,16 +436,16 @@
 
 /*SummaryWalletSlideView.swift*/
 "wallet.slides.summary.marketCap" = "Valor de mercado";
-"wallet.slides.summary.24hHigh" = "24h Alto";
-"wallet.slides.summary.24hLow" = "24h Baixo";
-"wallet.slides.summary.24hChange" = "24h Mudança";
+"wallet.slides.summary.24hHigh" = "24h Alta";
+"wallet.slides.summary.24hLow" = "24h Baixa";
+"wallet.slides.summary.24hChange" = "24h Diferença";
 "wallet.slides.summary.24hVolume" = "24h Volume";
 
 /*ChartWalletSlideView.xib*/
 "wallet.slides.chart.history" = "Gráfico do historial";
-"wallet.slides.chart.high" = "Alto";
+"wallet.slides.chart.high" = "Alta";
 "wallet.slides.chart.average" = "Média";
-"wallet.slides.chart.low" = "Baixo";
+"wallet.slides.chart.low" = "Baixa";
 "wallet.slides.chart.availability" = "dados do gráfico apenas disponíveis em USD";
 "wallet.slides.chart.noData" = "Dados do gráfico do historial não encontrados.";
 
