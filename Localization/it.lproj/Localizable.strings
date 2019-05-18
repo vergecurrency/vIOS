@@ -69,8 +69,6 @@
 "setup.passphrase.req2" = "Maiuscola e minuscola";
 "setup.passphrase.req3" = "Carattere speciale (!.,#€%&+#)";
 "setup.passphrase.passPlaceholder" = "Inserisci la tua passphrase";
-
-/*setup.passphrase.confirmButton*/
 "setup.passphrase.confirmButton" = "Conferma";
 "setup.passphrase.confirmTitle" = "Conferma la tua passphrase";
 "setup.passphrase.proceedButton" = "Procedi";

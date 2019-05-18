@@ -67,8 +67,6 @@
 "setup.passphrase.desc" = "Encriptar su clave de seguridad en papel es una medida de seguridad importante. Al momento de restaurar un monedero asegurese de utilizar su frase de contraseña anterior.";
 "setup.passphrase.req1" = "Mínimo 8 caracteres";
 "setup.passphrase.req2" = "Mayúsculas y minúsculas";
-
-/*# duplicated*/
 "setup.passphrase.req3" = "Caracter especial (!.,-#€%&+)";
 "setup.passphrase.passPlaceholder" = "Ingrese su frase de contraseña.";
 "setup.passphrase.confirmButton" = "Confirmar";

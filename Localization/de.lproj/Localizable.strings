@@ -47,8 +47,6 @@
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Wallet PIN einstellen";
-
-/*Fuzzy*/
 "setup.pinCode.setPinDesc" = "Dein Wallet PIN wird dazu verwendet, um die App zu öffnen und XVG mit ihr zu senden. Wenn du den PIN vergisst, kannst du nicht mehr auf dein Wallet zugreifen.";
 
 /*Re enter wallet pin*/

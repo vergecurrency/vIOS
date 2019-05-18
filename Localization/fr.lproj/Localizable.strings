@@ -373,7 +373,7 @@
  ----------------------------------------*/
 "setup.tor.slide1.titleLabel" = "Monnaie Verge\nCache votre emplacement";
 "setup.tor.slide1.descLabel" = "Verge utilise le réseau Tor pour obscurcir\nvotre emplacement et votre adresse IP.";
-"setup.tor.slide2.titleLabel" = "L'indicateur d'état Tor indique ce qui suit ...";
+"setup.tor.slide2.titleLabel" = "L'indicateur d'état Tor indique ce qui suit...";
 "setup.tor.slide2.descLabel1" = "Tor est désactivé et votre emplacement et votre adresse IP sont accessibles au public.";
 "setup.tor.slide2.descLabel2" = "Tor se connecte. Aucune connexion à Internet n'est établie à ce stade.";
 "setup.tor.slide2.descLabel3" = "Tor est activé et votre emplacement et votre adresse IP sont obscurcis.";

@@ -22,8 +22,6 @@
  ----------------------------------------*/
 "mainTabBar.barItem.wallet.title" = "Wallet";
 "mainTabBar.barItem.transactions.title" = "Transacties";
-
-/*Verstuur*/
 "mainTabBar.barItem.send.title" = "Verstuur";
 "mainTabBar.barItem.receive.title" = "Ontvang";
 "mainTabBar.barItem.settings.title" = "Instellingen";
@@ -94,8 +92,6 @@
 "welcomeGuide.paperKey.description" = "Uw paper key is onderdeel van uw privésleutel en dat is het enige dat u nodig hebt om toegang te krijgen tot uw XVG.";
 "welcomeGuide.paperKey.actionButton" = "Schrijf uw paper key op";
 "welcomeGuide.paperKey.makeSureLabel" = "Om ervoor te zorgen dat alles correct is geschreven, voert u de volgende woorden die u heeft genoteerd in.";
-
-/*Bevestig*/
 "welcomeGuide.paperKey.submitButton" = "Verzend";
 
 /*----------------------------------------
@@ -422,7 +418,7 @@
 
 /*NoContactsPlaceholderView.xib*/
 "transactions.noContacts.titleLabel" = "Nog geen contacten aangemaakt";
-"transactions.noContacts.descLabel" = "Voeg een contact toe om gemakkelijk XVG te verzenden";
+"transactions.noContacts.descLabel" = "Voeg een contact toe om gemakkelijk XVG te verzenden naar";
 
 /*----------------------------------------
  Wallet Slides

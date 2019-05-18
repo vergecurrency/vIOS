@@ -276,8 +276,6 @@
  ----------------------------------------*/
 "paperKey.enterWord" = "Digite a palavra";
 "paperKey.outOf" = "Fora de";
-
-/*Please I need the context of these words*/
 "paperKey.egCat" = "(e.g. Cat)";
 "paperKey.key" = "Chave";
 "paperKey.word" = "Palavra";

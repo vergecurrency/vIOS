@@ -130,8 +130,6 @@
 "send.addressPlaceholder" = "Insira o endereço do destinatário";
 "send.amountButtonLabel" = "Montante";
 "send.memoButtonLabel" = "Nota interna (opcional)";
-
-/*It would be cool to use a typical national Name here. In English for example: John ; in portuguese for example: Pedro*/
 "send.memoPlaceholder" = "Prenda para o Swen";
 "send.confirmButton" = "Confirmar";
 "send.noBalanceTitle" = "Sem saldo";
@@ -376,8 +374,6 @@
 "setup.tor.slide1.titleLabel" = "Verge Currency\nEsconde a sua localização";
 "setup.tor.slide1.descLabel" = "Verge usa a rede Tor para ofuscar\na sua localização e endereço IP.";
 "setup.tor.slide2.titleLabel" = "O indicador de estado Tor indica o seguinte...";
-
-/*Please correct the original sentence in english, where it reads "publicily" should read "publicly".*/
 "setup.tor.slide2.descLabel1" = "O Tor está desligado e sua localização e IP estão disponíveis publicamente.";
 "setup.tor.slide2.descLabel2" = "O Tor está a conectar. Nenhuma conexão com a Internet é feita neste momento.";
 "setup.tor.slide2.descLabel3" = "O Tor está ligado e a sua localização e IP estão ofuscados.";

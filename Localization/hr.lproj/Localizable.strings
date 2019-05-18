@@ -334,8 +334,6 @@
 "addresses.privateKey" = "Privatni ključ";
 "addresses.privateKeyCopied" = "Privatni ključ kopiran!";
 "addresses.scanningAddresses" = "Skeniranje adresa";
-
-/*Fuzzy*/
 "addresses.scanningAddressesMessage" = "Skeniranje stanja po adresama. Ovo može potrajati neko vrijeme.";
 
 /*----------------------------------------
