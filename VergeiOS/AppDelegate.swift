@@ -55,6 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func restart(from controller : UIViewController) {
+        let alert = UIAlertController.restartAlert()
+        controller.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            alert.dismiss(animated: true, completion: {
+                self.window?.rootViewController = UIStoryboard.init(name: "Setup", bundle: nil).instantiateInitialViewController()
+                self.window?.makeKeyAndVisible()
+            })
+        })
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
