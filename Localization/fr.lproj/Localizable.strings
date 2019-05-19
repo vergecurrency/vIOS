@@ -38,15 +38,15 @@
 /*Welcome*/
 "setup.welcome.message" = "Porte-monnaie sécuritaire, anonyme et confidentiel pour Verge. Envoyer et recevoir des XVG.";
 "setup.welcome.createButton" = "Créer un nouveau porte-monnaie";
-"setup.welcome.createDescription" = "Créer une nouveau porte-monnaie XVG sur votre périphérique iOS";
+"setup.welcome.createDescription" = "Créer nouveau porte-monnaie XVG sur votre périphérique";
 "setup.welcome.restoreButton" = "Récupérer votre porte-monnaie";
 "setup.welcome.restoreDescription" = "Perdu votre porte-monnais iOS? Récupérez-le ici.";
 
 /*Pin unlock*/
-"setup.pinCode.title" = "Entrez votre PIN pour déverrouiller";
+"setup.pinCode.title" = "Entrez votre PIN";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Configurez le PIN de votre porte-monnaie";
+"setup.pinCode.setPinTitle" = "Configurez le PIN";
 "setup.pinCode.setPinDesc" = "Le PIN de votre porte-monnaie sera utilisé pour ouvrir cette application et envoyer des XVG. Si vous l'oubliez, vous n'aurez plus accès à votre porte-monnaie.";
 
 /*Re enter wallet pin*/
@@ -80,7 +80,7 @@
 "setup.finish.switch3" = "J'ai lu, compris et accepté les conditions d'utilisation.";
 "setup.finish.termsButton" = "Conditions d'utilisation";
 "setup.finish.createButton" = "Créer un porte-monnaie";
-"setup.finish.openButton" = "Ouvrir votre porte-monnaie";
+"setup.finish.openButton" = "Ouvrir porte-monnaie";
 "setup.finish.desc" = "Compléter votre porte-monnaie...";
 "setup.finish.congrats" = "Votre porte-monnaie est prêt! Félicitation!";
 
@@ -172,8 +172,8 @@
 "settings.other.cell.contributeLabel" = "Contribuer";
 
 /*Paper key*/
-"settings.paperKey.titleLabel" = "Écrire ";
-"settings.paperKey.descLabel" = "Ecrivez à nouveau votre clé de portefeuille";
+"settings.paperKey.titleLabel" = "Ecrivez à nouveau votre clé de portefeuille";
+"settings.paperKey.descLabel" = "Vous voulez revoir votre clé papier? Sur l'écran suivant, vous verrez une liste de mots à écrire sur un morceau de papier, que vous devriez garder très en sécurité!";
 "settings.paperKey.showButton" = "Montrez la clé papier";
 "settings.paperKey.preview.titleLabel" = "Votre clé papier";
 "settings.paperKey.preview.noticeLabel" = "Prendre une capture d'écran n'est pas sécuritaire. Écrivez votre clé papier sur une feuille à l'aide d'un crayon.";
@@ -189,7 +189,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Adresses";
 "settings.addresses.descLabel" = "Chaque porte-monnaie Verge peut générer des milliards d'adresses à partir de votre phrase de récupération de 12 mots. Une nouvelle adresse est automatiquement générée et affichée chaque fois que vous recevez un paiement.";
-"settings.addresses.scanButton" = "Scanner les adresses pour le solde";
+"settings.addresses.scanButton" = "Vérifier adresses pour solde";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Propositions de transaction";
