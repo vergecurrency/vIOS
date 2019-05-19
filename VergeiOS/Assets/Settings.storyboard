@@ -999,7 +999,7 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.addresses.descLabel"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-Bt-gDA" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-Bt-gDA" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="120" width="295" height="50"/>
                                     <color key="backgroundColor" name="PrimaryLight"/>
                                     <constraints>
