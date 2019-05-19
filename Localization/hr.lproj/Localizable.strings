@@ -90,7 +90,7 @@
 "welcomeGuide.paperKey.title" = "Papirnati ključ";
 "welcomeGuide.paperKey.message" = "Na sljedećem zaslonu prikazat će vam se popis riječi koje možete zapisati na komad papira, i koje bi trebali pohraniti na sigurno mjesto!";
 "welcomeGuide.paperKey.description" = "Vaš papirnati ključ je dio vašeg privatnog ključa koji je jedino što vam je potrebno za pristup vašim sredstvima.";
-"welcomeGuide.paperKey.actionButton" = "Zapiši svoj papirnati ključ na papir";
+"welcomeGuide.paperKey.actionButton" = "Svoj papirnati ključ";
 "welcomeGuide.paperKey.makeSureLabel" = "Da budemo sigurni kako su sve riječi točno prepisane, molim te unesi slijedeće riječi sa svojeg papira.";
 "welcomeGuide.paperKey.submitButton" = "Unesi";
 
