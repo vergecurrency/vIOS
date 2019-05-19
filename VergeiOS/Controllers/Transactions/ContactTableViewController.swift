@@ -41,9 +41,9 @@ class ContactTableViewController: FormViewController {
 
         tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
 
-        form +++ Section("Contact Details")
+        form +++ Section("transactions.contact.section.details".localized)
             <<< TextRow("name") { row in
-            row.title = "Name"
+            row.title = "transactions.contact.name".localized
             row.placeholder = "Swen van Zanten"
             row.value = contact?.name ?? ""
             row.add(rule: RuleRequired())
@@ -51,7 +51,7 @@ class ContactTableViewController: FormViewController {
             styleCell(cell)
         }
             <<< TextRow("address") { row in
-            row.title = "Address"
+            row.title = "defaults.address".localized
             row.placeholder = "ErBhGNN9x8G513q3h5wdEgkoi2KbysUblJ8Jk7cjpG"
             row.value = contact?.address ?? ""
             row.add(rule: RuleRequired())
@@ -73,7 +73,7 @@ class ContactTableViewController: FormViewController {
             return
         }
 
-        let transactionsSection = Section("Transaction History")
+        let transactionsSection = Section("transactions.contact.section.history".localized)
         form +++ transactionsSection
         
         for transaction in transactions {
@@ -131,7 +131,7 @@ class ContactTableViewController: FormViewController {
             addTransactions()
         }
 
-        NotificationManager.shared.showMessage("Contact saved!", duration: 1)
+        NotificationManager.shared.showMessage("transactions.contact.saved".localized, duration: 1)
 
         // Pop screen on completion
         navigationController?.popViewController(animated: true)

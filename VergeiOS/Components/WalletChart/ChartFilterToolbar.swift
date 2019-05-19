@@ -17,12 +17,12 @@ class ChartFilterToolbar: UIToolbar {
     }
 
     private let names: [Filter: String] = [
-        Filter.oneDay: "1D",
-        Filter.oneWeek: "1W",
-        Filter.oneMonth: "1M",
-        Filter.threeMonths: "3M",
-        Filter.oneYear: "1Y",
-        Filter.all: "All",
+        Filter.oneDay: "chart.filter.oneDay".localized,
+        Filter.oneWeek: "chart.filter.oneWeek".localized,
+        Filter.oneMonth: "chart.filter.oneMonth".localized,
+        Filter.threeMonths: "chart.filter.threeMonths".localized,
+        Filter.oneYear: "chart.filter.oneYear".localized,
+        Filter.all: "chart.filter.all".localized,
     ]
 
     private let buttons: [Filter] = [

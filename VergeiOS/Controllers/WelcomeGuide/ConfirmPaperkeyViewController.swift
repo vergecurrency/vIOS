@@ -27,8 +27,8 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
         
         self.randomNumbers = self.selectRandomNumbers()
         
-        self.firstWordLabel.text = "Word #\(randomNumbers.first!)"
-        self.secondWordLabel.text = "Word #\(randomNumbers.last!)"
+        self.firstWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.first!)"
+        self.secondWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.last!)"
     }
 
     override func didReceiveMemoryWarning() {

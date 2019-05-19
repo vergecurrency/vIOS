@@ -78,7 +78,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             // Setup the Search Controller
             searchController.searchResultsUpdater = self
             searchController.obscuresBackgroundDuringPresentation = false
-            searchController.searchBar.placeholder = "Search Transactions"
+            searchController.searchBar.placeholder = "transactions.search.placeholder".localized
             navigationItem.searchController = searchController
             navigationItem.hidesSearchBarWhenScrolling = false
             definesPresentationContext = true
@@ -86,24 +86,24 @@ class TransactionsTableViewController: EdgedTableViewController {
             extendedLayoutIncludesOpaqueBars = true
 
             // Setup the Scope Bar
-            searchController.searchBar.scopeButtonTitles = ["All", "Sent", "Received"]
+            searchController.searchBar.scopeButtonTitles = ["transactions.search.all".localized, "transactions.search.sent".localized, "transactions.search.received".localized]
             searchController.searchBar.delegate = self
             searchController.delegate = self
         }
     }
 
-    func getTransactions(_ searchText: String = "", scope: String = "All") {
+    func getTransactions(_ searchText: String = "", scope: String = "transactions.search.all".localized) {
         transactions.removeAll()
         dates.removeAll()
 
         let categories = [
-            "Sent": TxAction.Sent,
-            "Received": TxAction.Received
+            "transactions.search.sent".localized : TxAction.Sent,
+            "transactions.search.received".localized : TxAction.Received
         ]
 
         self.transactionManager.all { transactions in
             let ftransactions = transactions.filter { transaction in
-                let doesCategoryMatch = (scope == "All") || (transaction.category == categories[scope])
+                let doesCategoryMatch = (scope == "transactions.search.all".localized) || (transaction.category == categories[scope])
 
                 if searchText == "" {
                     return doesCategoryMatch
@@ -169,7 +169,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             recipient?.address = item.address
             recipient?.name = name
         }
-
+        
         cell.setTransaction(item, address: recipient)
         cell.backgroundColor = ThemeManager.shared.backgroundGrey()
         
@@ -219,7 +219,7 @@ class TransactionsTableViewController: EdgedTableViewController {
 
             let searchText = self.searchController.searchBar.text ?? ""
             let scopeIndex = self.searchController.searchBar.selectedScopeButtonIndex
-            let scope = self.searchController.searchBar.scopeButtonTitles?[scopeIndex] ?? "All"
+            let scope = self.searchController.searchBar.scopeButtonTitles?[scopeIndex] ?? "transactions.search.all".localized
 
             self.getTransactions(searchText, scope: scope)
 

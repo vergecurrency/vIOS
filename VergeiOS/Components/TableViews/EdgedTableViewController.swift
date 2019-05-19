@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EdgedTableViewController: UITableViewController {
+class EdgedTableViewController: LocalizableTableViewController {
     
     var scrollViewEdger: ScrollViewEdger!
     
@@ -27,4 +27,5 @@ class EdgedTableViewController: UITableViewController {
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewEdger.updateView()
     }
+    
 }

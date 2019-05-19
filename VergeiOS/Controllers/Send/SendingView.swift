@@ -82,13 +82,13 @@ class SendingView: UIView {
         DispatchQueue.main.async {
             switch notification.name {
             case Notification.Name.didPublishTx:
-                self.statusLabel.text = "Signing Transaction"
+                self.statusLabel.text = "send.sending.signingTransaction".localized
                 break
             case Notification.Name.didSignTx:
-                self.statusLabel.text = "Broadcasting Transaction"
+                self.statusLabel.text = "send.sending.broadcastingTransaction".localized
                 break
             case Notification.Name.didBroadcastTx:
-                self.statusLabel.text = "Transaction Sent!"
+                self.statusLabel.text = "send.sending.transactionSent".localized
                 break
             default:
                 break

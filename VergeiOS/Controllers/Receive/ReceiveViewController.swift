@@ -227,7 +227,7 @@ class ReceiveViewController: VViewController {
     }
 
     @IBAction func shareAddress(_ sender: UIButton) {
-        openShareSheet(shareText: "My XVG address: \(address)", shareImage: self.imageCard())
+        openShareSheet(shareText: "receive.myAddressTitle".localized + ": \(address)", shareImage: self.imageCard())
     }
 
     @IBAction func switchStealth(_ sender: UISwitch) {
@@ -249,7 +249,7 @@ class ReceiveViewController: VViewController {
 
     @objc func copyAddress(recognizer: UIGestureRecognizer) {
         UIPasteboard.general.string = address
-        NotificationManager.shared.showMessage("Address copied!", duration: 3)
+        NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
     }
 
     func openShareSheet(shareText text: String?, shareImage: UIImage?) {

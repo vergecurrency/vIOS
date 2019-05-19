@@ -122,7 +122,7 @@ class WalletViewController: VViewController, UIScrollViewDelegate {
 
             if let xvgInfo = self.fiatRateTicker.rateInfo {
                 self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
-                self.pairSymbolBalanceLabel.text = "\(self.applicationRepository.currency) BALANCE"
+                self.pairSymbolBalanceLabel.text = "\(self.applicationRepository.currency) " + "wallet.balanceTitle".localized
                 
                 self.xvgPairBalanceLabel.text = NSNumber(value: xvgInfo.price).toPairCurrency(fractDigits: 6)
                 self.xvgPairSymbolLabel.text = "\(self.applicationRepository.currency)/XVG"

@@ -46,13 +46,13 @@ class TransactionProposalsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return hasProposals ? "Remove a proposal" : ""
+        return hasProposals ? "settings.transactions.removeProposal".localized : ""
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if !hasProposals {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            cell.textLabel?.text = "No proposals"
+            cell.textLabel?.text = "settings.transactions.noProposals".localized
             cell.textLabel?.textColor = ThemeManager.shared.vergeGrey()
             cell.selectionStyle = .none
 
@@ -80,12 +80,12 @@ class TransactionProposalsTableViewController: UITableViewController {
         let proposal = proposals[indexPath.row]
         
         let sheet = UIAlertController(
-            title: "Remove Proposal",
-            message: "Release the XVG of this transaction proposal.",
+            title: "settings.transactions.removeProposal".localized,
+            message: "settings.transactions.releaseXvg".localized,
             preferredStyle: .alert
         )
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        sheet.addAction(UIAlertAction(title: "Remove", style: .destructive) { action in
+        sheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+        sheet.addAction(UIAlertAction(title: "defaults.remove".localized, style: .destructive) { action in
             self.refreshControl?.beginRefreshing()
 
             self.walletClient.deleteTxProposal(txp: proposal) { error in

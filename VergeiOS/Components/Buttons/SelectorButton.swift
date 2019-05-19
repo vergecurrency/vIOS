@@ -21,8 +21,8 @@ import UIKit
         return ThemeManager.shared.separatorColor()
     }
     
-    @IBInspectable private var label: String = ""
-    @IBInspectable private var value: String = ""
+    @IBInspectable var label: String = ""
+    @IBInspectable var value: String = ""
     
     var titleColor: UIColor {
         return ThemeManager.shared.secondaryLight()

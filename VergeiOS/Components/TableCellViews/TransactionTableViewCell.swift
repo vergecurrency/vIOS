@@ -44,11 +44,11 @@ class TransactionTableViewCell: Cell<String>, CellType {
         }
         
         if transaction.category == .Moved {
-            textLabel?.text = "Moved"
+            textLabel?.text = "transaction.state.moved".localized
         }
         
         if transaction.category == .Received {
-            textLabel?.text = transaction.confirmed ? "Received" : "Pending"
+            textLabel?.text = transaction.confirmed ? "transaction.state.received".localized : "transaction.state.pending".localized
         }
     }
     

@@ -47,6 +47,9 @@
                                 <segue destination="Xsh-Qv-qas" kind="presentation" modalPresentationStyle="formSheet" id="CUs-uY-I6J"/>
                             </connections>
                         </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="transactions.title"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -112,6 +115,9 @@
                                 <segue destination="Bnx-KG-5UX" kind="show" id="eCP-jO-xqX"/>
                             </connections>
                         </barButtonItem>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="transactions.contacts.title"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S7A-MZ-VTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -194,6 +200,9 @@
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                 <color key="textColor" name="SecondaryDark"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="transactions.transaction.title"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                     </stackView>

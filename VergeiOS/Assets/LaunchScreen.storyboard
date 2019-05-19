@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,34 +29,31 @@
                                     <constraint firstAttribute="width" constant="200" id="jLw-5B-o45"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r1V-XC-Z9b">
-                                <rect key="frame" x="64" y="188" width="247" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="IW6-L8-grp"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="q87-dT-6mi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy is our standard." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uk-JM-OVG">
+                                <rect key="frame" x="40" y="539" width="295" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy is our standard." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzs-yh-fq6">
-                                <rect key="frame" x="61.5" y="522" width="252" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="8MV-Fl-6lX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTO-g1-bMO">
+                                <rect key="frame" x="40" y="188" width="295" height="44"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Tzs-yh-fq6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JQN-Iu-9Rn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Tzs-yh-fq6" secondAttribute="bottom" constant="95" id="d1Y-Mb-OWg"/>
-                            <constraint firstItem="r1V-XC-Z9b" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hLO-hU-uzS"/>
+                            <constraint firstItem="lTO-g1-bMO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="43R-gE-Sz6"/>
+                            <constraint firstItem="lTO-g1-bMO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="FRC-g1-Vns"/>
+                            <constraint firstItem="lTO-g1-bMO" firstAttribute="top" secondItem="f4d-ym-bsP" secondAttribute="bottom" constant="8" id="PqO-Rf-2ke"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1uk-JM-OVG" secondAttribute="bottom" constant="95" id="WV9-2L-C1e"/>
+                            <constraint firstItem="1uk-JM-OVG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Xtu-gZ-zAR"/>
+                            <constraint firstItem="1uk-JM-OVG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="YUJ-24-Sky"/>
                             <constraint firstItem="f4d-ym-bsP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="hN7-lN-lqY"/>
-                            <constraint firstItem="r1V-XC-Z9b" firstAttribute="top" secondItem="f4d-ym-bsP" secondAttribute="bottom" constant="8" id="qau-oZ-YQ5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1uk-JM-OVG" secondAttribute="trailing" constant="40" id="tZV-wd-ke3"/>
                             <constraint firstItem="f4d-ym-bsP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wn3-Pp-vWy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lTO-g1-bMO" secondAttribute="trailing" constant="40" id="xwl-WQ-IDr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

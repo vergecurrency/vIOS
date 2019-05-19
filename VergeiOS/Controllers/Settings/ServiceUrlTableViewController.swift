@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceUrlTableViewController: UITableViewController {
+class ServiceUrlTableViewController: LocalizableTableViewController {
 
     @IBOutlet weak var serviceUrlTextField: UITextField!
 
@@ -30,8 +30,8 @@ class ServiceUrlTableViewController: UITableViewController {
 
     @IBAction func saveServiceUrl(_ sender: Any) {
         let alert = UIAlertController(
-            title: "Changing Service",
-            message: "Changing the service URL, please wait a moment...",
+            title: "settings.serviceUrl.alert.title".localized,
+            message: "settings.serviceUrl.alert.message".localized,
             preferredStyle: .alert
         )
 
@@ -71,18 +71,18 @@ class ServiceUrlTableViewController: UITableViewController {
     }
 
     func errorDuringChange(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Use previous service URL", style: .default) { action in
+        alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "settings.serviceUrl.alert.usePrevUrl".localized, style: .default) { action in
             self.rollbackServiceUrl(serviceUrl: self.previousServiceUrl)
         })
-        alert.title = "Error Changing"
-        alert.message = "An error was raised during the service URL change. Please try again or use another service URL."
+        alert.title = "settings.serviceUrl.alert.errorChanging".localized
+        alert.message = "settings.serviceUrl.alert.errorChanging2".localized
     }
 
     func urlChanged(alert: UIAlertController) {
-        alert.addAction(UIAlertAction(title: "Done", style: .default))
-        alert.title = "Changed Service"
-        alert.message = "Successfully changed the service URL."
+        alert.addAction(UIAlertAction(title: "defaults.done".localized, style: .default))
+        alert.title = "settings.serviceUrl.alert.title2".localized
+        alert.message = "settings.serviceUrl.alert.message2".localized
     }
 
     func rollbackServiceUrl(serviceUrl: String) {

@@ -30,7 +30,7 @@ class TorSetup3View: UIView {
     @IBAction func changeTorUsage(_ sender: UISwitch) {
         self.applicationRepository.useTor = sender.isOn
 
-        proceedButton.setTitle(sender.isOn ? "Proceed with Tor" : "Proceed without Tor", for: .normal)
+        proceedButton.setTitle(sender.isOn ? "setup.tor.slide3.positiveButton".localized : "setup.tor.slide3.negativeButton".localized, for: .normal)
         
         if sender.isOn {
             self.torClient.start {

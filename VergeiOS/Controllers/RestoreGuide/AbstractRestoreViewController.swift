@@ -34,7 +34,7 @@ class AbstractRestoreViewController: VViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = "defaults.back".localized
         navigationItem.backBarButtonItem = backItem
     }
 

@@ -68,17 +68,17 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     }
     
     func showDoneButton() {
-        self.nextButton.setTitle("Done", for: .normal)
+        self.nextButton.setTitle("defaults.done".localized, for: .normal)
         self.nextButton.setImage(UIImage(named: "ClipboardCheck"), for: .normal)
     }
     
     func showNextButton() {
-        self.nextButton.setTitle("Next", for: .normal)
+        self.nextButton.setTitle("defaults.next".localized, for: .normal)
         self.nextButton.setImage(UIImage(named: "ArrowRight"), for: .normal)
     }
     
     func updateView() {
-        self.progressionLabel.text = "\(self.selectedWord + 1) out of \(self.mnemonic.count)"
+        self.progressionLabel.text = "\(self.selectedWord + 1) " + "paperKey.outOf".localized + " \(self.mnemonic.count)"
         
         if (self.selectedWord == 0) {
             self.hideButton(self.previousButton)
