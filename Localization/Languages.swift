@@ -9,7 +9,7 @@
 import Foundation
 
 public class Languages {
-    static var supported = [
+    var supported = [
         [
             "name": "settings.language.default".localized,
             "localizedName": "settings.language.systemBased".localized,
@@ -87,4 +87,5 @@ public class Languages {
         ]
     ]
 }
+
 

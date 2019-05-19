@@ -17,7 +17,7 @@ class LanguageTableViewController: EdgedTableViewController {
     }
     
     var languages: Array<Dictionary<String, String?>> {
-        return Languages.supported
+        return Languages().supported
     }
     
     override func viewDidLoad() {
