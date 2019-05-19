@@ -46,7 +46,7 @@
 "setup.pinCode.title" = "Insira o PIN";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Defina o PIN da carteira";
+"setup.pinCode.setPinTitle" = "Defina o PIN";
 "setup.pinCode.setPinDesc" = "O seu PIN da carteira será usado para abrir a app e para enviar XVG. Se o esquecer, não poderá aceder à sua carteira.";
 
 /*Re enter wallet pin*/
@@ -189,7 +189,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Endereços";
 "settings.addresses.descLabel" = "Cada carteira de verge pode gerar milhares de milhão de endereços a partir da sua frase de recuperação de 12 palavras. Um novo endereço é gerado automaticamente e exibido sempre que recebe um pagamento.";
-"settings.addresses.scanButton" = "Verificando endereços para encontrar saldo";
+"settings.addresses.scanButton" = "Verificando endereços para saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Propostas de transação";

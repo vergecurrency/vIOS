@@ -46,7 +46,7 @@
 "setup.pinCode.title" = "Kilidi açmak için PIN gir";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Cüzdanın için PIN belirle";
+"setup.pinCode.setPinTitle" = "Cüzdanın PIN belirle";
 "setup.pinCode.setPinDesc" = "Cüzdan PIN’in uygulamayı açmak için kullanılır ve bununla XVG gönderilebilirsin.Eğer PIN’i kaybedersen cüzdanına erişemezsin.";
 
 /*Re enter wallet pin*/

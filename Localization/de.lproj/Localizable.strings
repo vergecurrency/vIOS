@@ -22,8 +22,8 @@
  ----------------------------------------*/
 "mainTabBar.barItem.wallet.title" = "Wallet";
 "mainTabBar.barItem.transactions.title" = "Transaktionen";
-"mainTabBar.barItem.send.title" = "senden";
-"mainTabBar.barItem.receive.title" = "erhalten";
+"mainTabBar.barItem.send.title" = "Senden";
+"mainTabBar.barItem.receive.title" = "Erhalten";
 "mainTabBar.barItem.settings.title" = "Einstellungen";
 
 /*----------------------------------------
@@ -40,17 +40,17 @@
 "setup.welcome.createButton" = "Erstellen Sie eine neue Wallet";
 "setup.welcome.createDescription" = "Erstellen Sie eine neue Wallet auf Ihrem iOS-Gerät.";
 "setup.welcome.restoreButton" = "Stellen Sie Ihre Wallet wieder her";
-"setup.welcome.restoreDescription" = "Hast du deine iOS-Walletverloren? Stellen Sie es hier wieder her.";
+"setup.welcome.restoreDescription" = "iOS-wallet verloren? Stellen Sie es hier wieder her.";
 
 /*Pin unlock*/
-"setup.pinCode.title" = "PIN zum Entsperren eingeben";
+"setup.pinCode.title" = "PIN eingeben";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Wallet PIN einstellen";
 "setup.pinCode.setPinDesc" = "Dein Wallet PIN wird dazu verwendet, um die App zu öffnen und XVG mit ihr zu senden. Wenn du den PIN vergisst, kannst du nicht mehr auf dein Wallet zugreifen.";
 
 /*Re enter wallet pin*/
-"setup.pinCode.reenterPinTitle" = "Geben Sie die PIN erneut ein";
+"setup.pinCode.reenterPinTitle" = "Geben Sie die PIN erneut";
 "setup.pinCode.reenterPinSucceedTitle" = "Genial!";
 "setup.pinCode.reenterPinSucceedDesc" = "Ihre PIN wurde nun festgelegt.";
 "setup.pinCode.reenterPinSucceedDesc2" = "Bitte vergiss es nicht!";
@@ -90,7 +90,7 @@
 "welcomeGuide.paperKey.title" = "Papierschlüssel";
 "welcomeGuide.paperKey.message" = "Auf dem nächsten Bildschirm wird Dir eine Liste von Wörtern angezeigt, die du dir auf ein Blatt Papier schreiben sollst";
 "welcomeGuide.paperKey.description" = "Dein Papierschlüssel ist Teil deines privaten Schlüssels, der das Einzige ist, was du benötigst, um auf dein Geld zuzugreifen.";
-"welcomeGuide.paperKey.actionButton" = "Notiere deinen Papierschlüssel";
+"welcomeGuide.paperKey.actionButton" = "Notiere papier schlüssel";
 "welcomeGuide.paperKey.makeSureLabel" = "Um sicherzustellen, dass alles korrekt aufgeschrieben wurde, geben Sie bitte die folgenden Wörter von Ihrem Zettel ein.";
 "welcomeGuide.paperKey.submitButton" = "absenden";
 
@@ -98,12 +98,12 @@
  Receive.storyboard
  ----------------------------------------
  Receive*/
-"receive.title" = "erhalten";
+"receive.title" = "Erhalten";
 "receive.addressButtonLabel" = "Addresse";
 "receive.amountButtonLabel" = "Menge";
 "receive.amountPlaceholder" = "Zu empfangender Betrag";
 "receive.stealthAddressLabel" = "Verschwiegenheitsadresse";
-"receive.shareButton" = "teilen";
+"receive.shareButton" = "Teilen";
 
 /*----------------------------------------
  RestoreGuide.storyboard
@@ -112,7 +112,7 @@
 "restoreGuide.restore.title" = "Wallet wiederherstellen";
 "restoreGuide.restore.desc" = "Auf dem nächsten Bildschirm müssen Sie den Seed Phrase Ihres Wallets in genau der gleichen Reihenfolge wie gewünscht ausfüllen.";
 "restoreGuide.restore.notice" = "Bitte stellen Sie sicher, dass Sie während dieses Vorgangs nicht beobachtet werden.";
-"restoreGuide.restore.restoreButton" = "Starten der Wiederherstellung";
+"restoreGuide.restore.restoreButton" = "Wiederherstellung";
 "restoreGuide.restore.paperKeyTitle" = "Dein Papierschlüssel:";
 "restoreGuide.restore.paperKeyWarning" = "Bist du sicher, dass dein Papierschlüssel richtig ist?";
 "restoreGuide.restore.paperKeyProceedButton" = "weiter";
@@ -125,19 +125,19 @@
  Send.storyboard
  ----------------------------------------
  Send*/
-"send.title" = "senden";
+"send.title" = "Senden";
 "send.addressButtonLabel" = "Empfängeradresse";
 "send.addressPlaceholder" = "Geben Sie die Empfängeradresse ein";
 "send.amountButtonLabel" = "Menge";
 "send.memoButtonLabel" = "Interner Vermerk (optional)";
 "send.memoPlaceholder" = "Geschenk an Swen";
-"send.confirmButton" = "bestätigen";
+"send.confirmButton" = "Bestätigen";
 "send.noBalanceTitle" = "Kein Guthaben";
 "send.noBalanceDesc" = "Du hast keine XVG zu versenden. Bitte erhöhe dein Guthaben.";
 
 /*QR-code*/
 "send.qrcode.title" = "Scanne einen XVG QR Code";
-"send.qrcode.closeButton" = "schließen";
+"send.qrcode.closeButton" = "Schließen";
 
 /*Select recipient*/
 "send.selectRecipient.title" = "Wähle den Empfänger";
@@ -166,10 +166,10 @@
 "settings.settings.cell.torConnectionLabel" = "Tor Verbindung";
 "settings.other.header.title" = "andere";
 "settings.other.cell.creditsLabel" = "Credits";
-"settings.other.cell.donateLabel" = "spenden";
+"settings.other.cell.donateLabel" = "Spenden";
 "settings.other.cell.rateAppLabel" = "App bewerten";
 "settings.other.cell.websiteLabel" = "Webseite";
-"settings.other.cell.contributeLabel" = "beitragen";
+"settings.other.cell.contributeLabel" = "Beitragen";
 
 /*Paper key*/
 "settings.paperKey.titleLabel" = "Notiere Dir den Papierschlüssel deines Wallets erneut.";
@@ -184,12 +184,12 @@
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Trennen Sie dieses Gerät von Ihrem aktuellen Wallet.";
 "settings.disconnect.descLabel" = "Sie sind dabei, dieses Gerät von Ihrer aktuellen Brieftasche zu trennen.  Bitte stellen Sie absolut sicher, dass Sie Ihren Papierschlüssel aufgeschrieben haben und Ihr Seed Phrase kennen.  Denken Sie daran, dass Ihr Papierschlüssel + Seed Phrase die einzige Möglichkeit ist, Ihr aktuelles Wallet wiederherzustellen.";
-"settings.disconnect.disconnectButton" = "trennen";
+"settings.disconnect.disconnectButton" = "Trennen";
 
 /*Addresses*/
 "settings.addresses.title" = "Adressen";
 "settings.addresses.descLabel" = "Jedes Verge Wallet kann Milliarden von Adressen aus deiner 12-Wort-Wiederherstellungsphrase generieren.  Eine neue Adresse wird automatisch generiert und bei jedem Zahlungseingang angezeigt.";
-"settings.addresses.scanButton" = "Adresse scannen um den Kontostand anzuzeigen";
+"settings.addresses.scanButton" = "Adressen scannen um balance";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Transaktion Vorschläge";
@@ -207,10 +207,10 @@
 
 /*Use Face ID*/
 "settings.useFaceID.title" = "Face ID verwenden";
-"settings.useFaceID.header.title" = "verwenden für";
+"settings.useFaceID.header.title" = "Verwenden für";
 "settings.useFaceID.footer.title" = "Anstatt Ihren Wallet PIN eingeben zu müssen, erhalten Sie über eine Eingabeaufforderung die Möglichkeit, sich alternativ zu authentifizieren.";
 "settings.useFaceID.unlockLabel" = "Dein Wallet entsperren";
-"settings.useFaceID.sendingLabel" = "senden XVG";
+"settings.useFaceID.sendingLabel" = "Senden XVG";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor ist für deine Privatsphäre zuständig und versteckt deinen Standort.";
@@ -229,14 +229,14 @@
 "settings.donate.descLabel" = "Bei Verge sind wir stets bestrebt, neue Höhen zu erreichen und Produkte oder Softwareimplementierungen zu liefern, die von der Community nachgefragt werden.";
 "settings.donate.desc2Label" = "Den Mitgliedern unserer Community zuzuhören und Feedback zu erhalten, ist nicht nur eines der Grundprinzipien von Verge, sondern auch unserer Open-Source-Natur wegen.";
 "settings.donate.addressLabel" = "Spenden XVG Adresse";
-"settings.donate.donateButton" = "spenden XVG";
+"settings.donate.donateButton" = "Spenden XVG";
 
 /*----------------------------------------
  Shortcuts
  ----------------------------------------*/
 "shortcuts.action.website.title" = "Webseite";
 "shortcuts.action.sourceCode.title" = "Quellcode";
-"shortcuts.action.send.title" = "senden";
+"shortcuts.action.send.title" = "Senden";
 "shortcuts.action.receive.title" = "Erhalte";
 
 /*----------------------------------------

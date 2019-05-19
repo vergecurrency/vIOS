@@ -51,7 +51,7 @@
 
 /*Re enter wallet pin*/
 "setup.pinCode.reenterPinTitle" = "Reescreva o seu PIN";
-"setup.pinCode.reenterPinSucceedTitle" = "Bom demais da conta!";
+"setup.pinCode.reenterPinSucceedTitle" = "Impressionante!";
 "setup.pinCode.reenterPinSucceedDesc" = "Seu PIN foi está pronto.";
 "setup.pinCode.reenterPinSucceedDesc2" = "Por favor não o esqueça.";
 "setup.pinCode.reenterPinSucceedButton" = "Prosseguir";
@@ -90,7 +90,7 @@
 "welcomeGuide.paperKey.title" = "Palavras passe";
 "welcomeGuide.paperKey.message" = "Na próxima tela, exibiremos uma lista de palavras para anotar em um pedaço de papel e armazenar de forma segura!";
 "welcomeGuide.paperKey.description" = "Suas palavras passe fazem parte de sua senha privada e é o único modo de acessar seus fundos.";
-"welcomeGuide.paperKey.actionButton" = "Escreva abaixo suas palavras passe";
+"welcomeGuide.paperKey.actionButton" = "Suas chave de papel";
 "welcomeGuide.paperKey.makeSureLabel" = "Para ter certeza que está tudo correto, por favor coloque as seguintes palavras do seu papel.";
 "welcomeGuide.paperKey.submitButton" = "Enviar";
 
@@ -113,7 +113,7 @@
 "restoreGuide.restore.desc" = "Na próxima tela, você deverá preencher as palavras passes, na ordem exata, em que solicitada.";
 "restoreGuide.restore.notice" = "Por favor tenha certeza que você não está sendo observado.";
 "restoreGuide.restore.restoreButton" = "Iniciar a restauração";
-"restoreGuide.restore.paperKeyTitle" = "Suas palavras passe:";
+"restoreGuide.restore.paperKeyTitle" = "Palavras passe:";
 "restoreGuide.restore.paperKeyWarning" = "Você tem certeza que suas palavras passes estão corretas?";
 "restoreGuide.restore.paperKeyProceedButton" = "Prosseguir";
 

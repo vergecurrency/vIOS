@@ -244,7 +244,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="200" id="z9n-rI-UF1"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your paper key:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yb-KI-9LW">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your paper key:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2yb-KI-9LW">
                                 <rect key="frame" x="40" y="336" width="295" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="iIT-KG-d0U"/>
