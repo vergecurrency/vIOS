@@ -43,10 +43,10 @@
 "setup.welcome.restoreDescription" = "¿Ha perdido su monedero iOS? Restáurelo aquí.";
 
 /*Pin unlock*/
-"setup.pinCode.title" = "Ingrese PIN para desbloquear";
+"setup.pinCode.title" = "Ingrese PIN";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Establezca un PIN para el monedero";
+"setup.pinCode.setPinTitle" = "Establezca un PIN";
 "setup.pinCode.setPinDesc" = "El PIN del monedero se utilizará para abrir esta aplicación y enviar XVG. Si lo olvida no podrá acceder a su monedero.";
 
 /*Re enter wallet pin*/
@@ -189,7 +189,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Direcciones";
 "settings.addresses.descLabel" = "Cada monedero de Verge puede generar billones de direcciónes desde su frase de contraseña de 12 palabras. Una nueva dirección es automáticamente generada y mostrada cada vez que recibe un pago.";
-"settings.addresses.scanButton" = "Escanear direcciones para el saldo";
+"settings.addresses.scanButton" = "Escanear para saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Propuestas de transacción";
