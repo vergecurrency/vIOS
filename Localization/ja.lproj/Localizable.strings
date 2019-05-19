@@ -249,11 +249,11 @@
 /*----------------------------------------
  ChartFilterToolbar.swift
  ----------------------------------------*/
-"chart.filter.oneDay" = "1日単位";
-"chart.filter.oneWeek" = "1週間単位";
-"chart.filter.oneMonth" = "1ヶ月単位";
-"chart.filter.threeMonths" = "3ヶ月単位";
-"chart.filter.oneYear" = "1年単位";
+"chart.filter.oneDay" = "1D";
+"chart.filter.oneWeek" = "1W";
+"chart.filter.oneMonth" = "1M";
+"chart.filter.threeMonths" = "3M";
+"chart.filter.oneYear" = "1Y";
 "chart.filter.all" = "すべて";
 
 /*----------------------------------------
