@@ -189,7 +189,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Indirizzi";
 "settings.addresses.descLabel" = "Ogni portafogli Verge può generare milliardi di indirizzi dalla tua chiave privata. Un nuovo indirizzo è generato e mostrato automaticamente ogni volta che ricevi un pagamento";
-"settings.addresses.scanButton" = "Scansiona gli indirizzi per il saldo";
+"settings.addresses.scanButton" = "Scansiona indirizzi per saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Proposte di transazione";
