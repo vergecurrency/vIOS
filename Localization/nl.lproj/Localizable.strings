@@ -1,0 +1,449 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "Oke";
+"defaults.cancel" = "Annuleer";
+"defaults.done" = "Gereed";
+"defaults.remove" = "Verwijder";
+"defaults.back" = "Terug";
+"defaults.address" = "Adres";
+"defaults.next" = "Volgende";
+"defaults.previous" = "Vorige";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "Wallet";
+"mainTabBar.barItem.transactions.title" = "Transacties";
+"mainTabBar.barItem.send.title" = "Verstuur";
+"mainTabBar.barItem.receive.title" = "Ontvang";
+"mainTabBar.barItem.settings.title" = "Instellingen";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Verge IOS Wallet";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "Privacy is onze standaard.";
+
+/*Welcome*/
+"setup.welcome.message" = "Veilige, anonieme en persoonlijke wallet voor Verge. Verstuur en ontvang XVG.";
+"setup.welcome.createButton" = "Creëer een nieuwe Wallet";
+"setup.welcome.createDescription" = "Creëer een nieuwe XVG wallet op jouw iOS toestel.";
+"setup.welcome.restoreButton" = "Herstel je wallet";
+"setup.welcome.restoreDescription" = "Wallet kwijt? Herstel het hier.";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "Ontgrendel met PIN";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "Stel je wallet PIN in";
+"setup.pinCode.setPinDesc" = "Jouw persoonlijke wallet Pincode wordt gebruikt om de app te openen en om XVG te versturen. Raak je pincode niet kwijt. Zonder pincode geen toegang tot de app.";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "Voer PIN nogmaals in";
+"setup.pinCode.reenterPinSucceedTitle" = "Super!";
+"setup.pinCode.reenterPinSucceedDesc" = "Je pincode is nu ingesteld.";
+"setup.pinCode.reenterPinSucceedDesc2" = "Raak de pincode niet kwijt!";
+"setup.pinCode.reenterPinSucceedButton" = "Doorgaan";
+"setup.pinCode.reenterPinErrorTitle" = "Pin onjuist!";
+"setup.pinCode.reenterPinErrorDesc" = "Uw Pin kan niet worden gevalideerd!";
+"setup.pinCode.reenterPinErrorDesc2" = "Probeer opnieuw alstublieft.";
+"setup.pinCode.reenterPinErrorButton" = "Probeer opnieuw";
+"setup.pinCode.alert.chooseSize" = "Kies een PIN formaat";
+"setup.pinCode.alert.digits" = "Cijfers";
+
+/*Passphrase*/
+"setup.passphrase.title" = "Leid uw paper key af met een wachtwoordzin";
+"setup.passphrase.desc" = "Het versleutelen van uw paper key is een belangrijke veiligheidsmaatregel. Zorg ervoor dat u bij het terugzetten van een wallet uw vorige wachtwoordzin hergebruikt.";
+"setup.passphrase.req1" = "Min. 8 tekens";
+"setup.passphrase.req2" = "Hoofdletters en kleine letters";
+"setup.passphrase.req3" = "Speciale karakters (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder" = "Vul een wachtwoordzin in";
+"setup.passphrase.confirmButton" = "Bevestig";
+"setup.passphrase.confirmTitle" = "Bevestig uw wachtwoord";
+"setup.passphrase.proceedButton" = "Doorgaan";
+
+/*Finish*/
+"setup.finish.title" = "Bijna Klaar!";
+"setup.finish.switch1" = "Ik begrijp dat mijn XVG veilig op dit apparaat wordt bewaard.";
+"setup.finish.switch2" = "Ik begrijp dat als deze app wordt verplaatst naar een ander apparaat of wordt verwijderd, mijn XVG alleen kan worden hersteld met de paper key en de bijbehorende wachtwoordzin.";
+"setup.finish.switch3" = "Ik heb de gebruiksvoorwaarden gelezen, begrepen en ga ermee akkoord.";
+"setup.finish.termsButton" = "Gebruikersvoorwaarden";
+"setup.finish.createButton" = "Creëer wallet";
+"setup.finish.openButton" = "Open uw wallet";
+"setup.finish.desc" = "Wallet gereed maken...";
+"setup.finish.congrats" = "Uw wallet is aangemaakt! Gefeliciteerd!";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "Paper key";
+"welcomeGuide.paperKey.message" = "Op het volgende scherm krijg je een lijst met woorden te zien die je op een stuk papier moet schrijven, en je heel veilig moet bewaren!";
+"welcomeGuide.paperKey.description" = "Uw paper key is onderdeel van uw privésleutel en dat is het enige dat u nodig hebt om toegang te krijgen tot uw XVG.";
+"welcomeGuide.paperKey.actionButton" = "Schrijf uw paper key op";
+"welcomeGuide.paperKey.makeSureLabel" = "Om ervoor te zorgen dat alles correct is geschreven, voert u de volgende woorden die u heeft genoteerd in.";
+"welcomeGuide.paperKey.submitButton" = "Verzend";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "Ontvang";
+"receive.addressButtonLabel" = "Adres";
+"receive.amountButtonLabel" = "Aantal";
+"receive.amountPlaceholder" = "Aantal te ontvangen";
+"receive.stealthAddressLabel" = "Stealth adres";
+"receive.shareButton" = "Deel";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "Herstel wallet";
+"restoreGuide.restore.desc" = "Op het volgende scherm moet u de paper key van je wallet invullen in exact dezelfde volgorde als gevraagd wordt.";
+"restoreGuide.restore.notice" = "Let op dat er niemand met u meekijkt tijdens dit proces.";
+"restoreGuide.restore.restoreButton" = "Start herstellen";
+"restoreGuide.restore.paperKeyTitle" = "Uw paper key:";
+"restoreGuide.restore.paperKeyWarning" = "Bent u er zeker van dat uw paper key correct is?";
+"restoreGuide.restore.paperKeyProceedButton" = "Doorgaan";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "Scan een paper key QR code";
+"restoreGuide.qrcode.closeButton" = "Sluiten";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "Verstuur";
+"send.addressButtonLabel" = "Ontvangst adres";
+"send.addressPlaceholder" = "Voer het ontvangst adres in";
+"send.amountButtonLabel" = "Aantal";
+"send.memoButtonLabel" = "Interne memo (optioneel)";
+"send.memoPlaceholder" = "Cadeautje voor Swen";
+"send.confirmButton" = "Bevestig";
+"send.noBalanceTitle" = "Geen tegoed";
+"send.noBalanceDesc" = "Je hebt geen XVG om te verzenden.\nVerhoog uw saldo.";
+
+/*QR-code*/
+"send.qrcode.title" = "Scan een XVG QR code";
+"send.qrcode.closeButton" = "Sluiten";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "Selecteer ontvanger";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "XVG SALDO";
+"wallet.balanceTitle" = "SALDO";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "Instellingen";
+"settings.wallet.header.title" = "Wallet";
+"settings.wallet.footer.title" = "Beheer uw wallet met de beschikbare opties.";
+"settings.wallet.cell.removeLabel" = "Verwijder wallet";
+"settings.wallet.cell.paperKeyLabel" = "Paper key";
+"settings.wallet.cell.addressesLabel" = "Adressen";
+"settings.wallet.cell.transactionsLabel" = "Transactie-voorstellen";
+"settings.wallet.cell.serviceUrlLabel" = "Service URL";
+"settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
+"settings.settings.cell.changePinLabel" = "Verander wallet PIN";
+"settings.settings.cell.useFaceIdLabel" = "Gebruik Face ID";
+"settings.settings.cell.torConnectionLabel" = "Tor connectie";
+"settings.other.header.title" = "Anders";
+"settings.other.cell.creditsLabel" = "Credits";
+"settings.other.cell.donateLabel" = "Doneer";
+"settings.other.cell.rateAppLabel" = "Beoordeel app";
+"settings.other.cell.websiteLabel" = "Website";
+"settings.other.cell.contributeLabel" = "Draag bij";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "Schrijf uw paper key nogmaals op";
+"settings.paperKey.descLabel" = "Uw wilt uw paper key nogmaals bekijken? Op het volgende scherm verschijnen een aantal woorden. Schrijf deze op met pen en papier en bewaar deze op een veilige plek!";
+"settings.paperKey.showButton" = "Laat paper key zien";
+"settings.paperKey.preview.titleLabel" = "Uw paper key";
+"settings.paperKey.preview.noticeLabel" = "Een schermafbeelding maken is niet veilig. Schrijf uw paper key op met pen en papier.";
+"settings.paperKey.preview.descLabel" = "Schrijf elk woord zonder hoofdletters op.";
+"settings.paperKey.preview.wordsSegment" = "Woorden";
+"settings.paperKey.preview.qrSegment" = "QR";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "Verwijder dit toestel van uw huidige wallet";
+"settings.disconnect.descLabel" = "U staat op het punt dit apparaat los te koppelen van uw huidige wallet. Zorg ervoor dat u uw paper key hebt genoteerd en weet wat uw wachtwoordzin is. Onthoud dat uw paper key + wachtwoordzin de enige manier is om je huidige wallet te herstellen.";
+"settings.disconnect.disconnectButton" = "Koppel los";
+
+/*Addresses*/
+"settings.addresses.title" = "Adressen";
+"settings.addresses.descLabel" = "Iedere verge wallet kan biljoenen adressen genereren middels jouw 12-woorden herstel sleutel. Een nieuw adres wordt automatisch gegenereerd wanneer u een betaling ontvangt.";
+"settings.addresses.scanButton" = "Scan adressen voor saldo";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "Transactie voorstellen";
+"settings.transactions.descLabel" = "Alle transactievoorstellen die mislukt zijn  tijdens een transactie, worden hieronder weergegeven. U moet ze handmatig verwijderen om het saldo vrij te geven.";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "Service URL";
+"settings.serviceUrl.header.title" = "Wallet service URL";
+"settings.serviceUrl.footer.title" = "Deze applicatie is afhankelijk van Verge Wallet Service (VWS) voor blockchain-informatie, netwerken en Copayer-synchronisatie. De standaardconfiguratie verwijst naar https://vws.vergecurrency.network/vws/api (openbare VWS-instantie van Verge)";
+"settings.serviceUrl.defaultUrlButton" = "Gebruik standaard url";
+"settings.serviceUrl.saveButton" = "Bewaar";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "Fiat valuta";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Gebruik Face ID";
+"settings.useFaceID.header.title" = "Gebruik voor";
+"settings.useFaceID.footer.title" = "In plaats van de portemonnee PIN in te vullen, biedt een prompt u een alternatieve manier om uzelf te authenticeren.";
+"settings.useFaceID.unlockLabel" = "Het openen van uw wallet";
+"settings.useFaceID.sendingLabel" = "Verzenden van XVG";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Tor is er voor uw privacy en beschermd uw locatie";
+"settings.torConnection.descLabel" = "Uw IP-adres is volledig versluierd en transacties zijn volledig onvindbaar wanneer u een Tor-verbinding gebruikt.\n\nMaar je kan altijd Tor uitschakelen.";
+"settings.torConnection.obfuscateIpLabel" = "Versluier IP";
+"settings.torConnection.yourIpLabel" = "Jouw IP adres";
+"settings.torConnection.loadingLabel" = "Laden...";
+"settings.torConnection.notAvailable" = "Service niet beschikbaar";
+
+/*Credits*/
+"settings.credits.title" = "Credits";
+"settings.credits.descLabel" = "Deze applicatie is mede mogelijk gemaakt door de volgende helden:";
+
+/*Donate*/
+"settings.donate.titleLabel" = "Doneer om de ontwikkeling te steunen";
+"settings.donate.descLabel" = "Bij Verge streven we er altijd naar nieuwe hoogten te bereiken en producten of software-implementaties te leveren waar de gemeenschap om vraagt.";
+"settings.donate.desc2Label" = "Luisteren naar feedback van onze community members is niet alleen een principe van Verge. Het is inherent aan het gebruik van open-source code.";
+"settings.donate.addressLabel" = "Donatie XVG adres";
+"settings.donate.donateButton" = "Doneer XVG";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "Website";
+"shortcuts.action.sourceCode.title" = "Bron code";
+"shortcuts.action.send.title" = "Verzend";
+"shortcuts.action.receive.title" = "Ontvang";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "Verplaatst";
+"transaction.state.received" = "Ontvangen";
+"transaction.state.pending" = "In afwachting";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1D";
+"chart.filter.oneWeek" = "1W";
+"chart.filter.oneMonth" = "1M";
+"chart.filter.threeMonths" = "3M";
+"chart.filter.oneYear" = "1J";
+"chart.filter.all" = "Alles";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "Prijs geschiedenis";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "Volume geschiedenis";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "Mijn XVG adres";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "Voer woord in";
+"paperKey.outOf" = "Uit";
+"paperKey.egCat" = "(Bijvoorbeeld Kat)";
+"paperKey.key" = "Sleutel";
+"paperKey.word" = "Woord";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "Verzend XVG";
+"send.noConnection" = "Geen verbinding";
+"send.transactionFailed" = "Transactie mislukt";
+"send.transactionFailedMessage" = "Uw transactie is mislukt met de volgende foutmelding";
+"send.notEnoughBalance" = "Niet genoeg saldo";
+"send.notEnoughBalanceMessage1" = "U heeft niet genoeg saldo om XVG te sturen";
+"send.notEnoughBalanceMessage2" = "Verander het aantal om door te kunnen gaan";
+"send.sendMax" = "Verzend Max";
+"send.wrongAddress" = "Verkeerd Adres";
+"send.enterValidAddress" = "Het door u gebruikte adres is een foutief Verge adres. Gebruik alstublieft een geldig verge adres.";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "Opgelost stealth adres";
+"send.confirm.confirmTitleLabel" = "Bevestig transactie";
+"send.confirm.recipientLabel" = "Ontvanger";
+"send.confirm.doubleCheckDescLabel" = "Controleer het wallet adres nogmaals. Verge Currency kan niet verantwoordelijk gehouden worden voor het verlies van XVG door foutief gebruikte wallet adressen.";
+"send.confirm.sendingLabel" = "Bezig met verzenden";
+"send.confirm.transactionFeeLabel" = "Transactiekosten";
+"send.confirm.totalLabel" = "Totaal";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "Transactie ondertekenen";
+"send.sending.broadcastingTransaction" = "Verzenden van transactie";
+"send.sending.transactionSent" = "Transactie verzonden!";
+"send.sending.publishingTransaction" = "Transactie publiceren";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "Gebruik Touch ID";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "Adres gekopieerd!";
+"addresses.addressesWithBalance" = "Adressen met saldo";
+"addresses.unusedAddresses" = "Ongebruikte adressen";
+"addresses.addressOptions" = "Adres opties";
+"addresses.informationTypeMessage" = "Welke informatie wilt u naar uw clipboard kopiëren?";
+"addresses.address" = "Adres";
+"addresses.balance" = "Saldo";
+"addresses.balanceCopied" = "Saldo gekopieerd!";
+"addresses.publicKey" = "Public key";
+"addresses.publicKeyCopied" = "Public key gekopieerd!";
+"addresses.privateKey" = "Private key";
+"addresses.privateKeyCopied" = "Private key gekopieerd!";
+"addresses.scanningAddresses" = "Scant adressen";
+"addresses.scanningAddressesMessage" = "Adressen scannen voor saldo. Dit kan enige tijd duren om te voltooien.";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "Ontwikkeling";
+"credits.header.design" = "Ontwerp";
+"credits.header.translation" = "Vertaling";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "Koppel wallet los";
+"settings.disconnect.alert.message" = "U staat op het punt dit apparaat los te koppelen van uw huidige wallet. Zorg ervoor dat u uw papieren sleutel hebt genoteerd en weet wat uw wachtwoord is. Onthoud dat je papieren sleutel + uw wachtwoordzin de enige manier is om je huidige wallet te herstellen.";
+"settings.disconnect.alert.disconnect" = "Koppel los";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "Service wijzigen";
+"settings.serviceUrl.alert.message" = "Alstublieft een moment geduld, de service URL wordt gewijzigd...";
+"settings.serviceUrl.alert.usePrevUrl" = "Gebruik vorige service URL";
+"settings.serviceUrl.alert.errorChanging" = "Veranderen ging fout";
+"settings.serviceUrl.alert.errorChanging2" = "Er is een fout opgetreden tijdens de wijziging van de service-URL. Probeer het opnieuw of gebruik een andere service-URL.";
+"settings.serviceUrl.alert.title2" = "Service gewijzigd";
+"settings.serviceUrl.alert.message2" = "De service-URL is succesvol gewijzigd.";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "Een voorstel verwijderen";
+"settings.transactions.noProposals" = "Geen voorstellen";
+"settings.transactions.releaseXvg" = "Geef de XVG van dit transactievoorstel vrij.";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Verge Currency verbergt jou locatie";
+"setup.tor.slide1.descLabel" = "Verge gebruikt het Tor netwerk om uw IP adres en locatie te verbergen";
+"setup.tor.slide2.titleLabel" = "De Tor status indicator geeft het volgende aan...";
+"setup.tor.slide2.descLabel1" = "Tor is uitgeschakeld. Uw locatie en ip zijn voor iedereen zichtbaar.";
+"setup.tor.slide2.descLabel2" = "Tor is aan het verbinden. Er worden op dit moment geen internet verbindingen gemaakt.";
+"setup.tor.slide2.descLabel3" = "Tor is ingeschakeld. Uw locatie en ip zijn voor iedereen versluierd.";
+"setup.tor.slide2.descLabel4" = "Tor kan niet verbinden. Er is iets misgegaan. De enige oplossing op dit moment is de app opnieuw opstarten.";
+"setup.tor.slide3.titleLabel" = "Laten we Tor inschakelen";
+"setup.tor.slide3.titleLabel2" = "Schakel Tor in";
+"setup.tor.slide3.descLabel" = "Controleer of het gebruik van Tor in uw land legaal is. Helaas is het gebruik van Tor niet in alle landen toegestaan.";
+"setup.tor.slide3.negativeButton" = "Doorgaan zonder Tor";
+"setup.tor.slide3.positiveButton" = "Doorgaan met Tor";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "Transacties";
+"transactions.transaction.title" = "Wie?";
+"transactions.contacts.title" = "Contacten";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "Zoek transacties";
+"transactions.search.all" = "Alles";
+"transactions.search.sent" = "Verzonden";
+"transactions.search.received" = "Ontvangen";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "Transactie details";
+"transactions.transaction.history" = "Transactie geschiedenis";
+"transactions.transaction.confirmations" = "Bevestigingen";
+"transactions.transaction.txidCopied" = "Txid gekopieerd!";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "Nog geen transacties ontvangen";
+"transactions.noTransaction.descLabel" = "Ontvangen transacties zijn hier te vinden";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Contact details";
+"transactions.contact.name" = "Naam";
+"transactions.contact.section.history" = "Transactie geschiedenis";
+"transactions.contact.saved" = "Contact bewaard!";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Zoek Contacten";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Nog geen contacten aangemaakt";
+"transactions.noContacts.descLabel" = "Voeg een contact toe om gemakkelijk XVG te verzenden naar";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "Recente transacties";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "Statistieken";
+"wallet.slides.summary.dataNotFound" = "Statistieken data kan niet gevonden worden.";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "Market Cap";
+"wallet.slides.summary.24hHigh" = "24h Hoog";
+"wallet.slides.summary.24hLow" = "24h Laag";
+"wallet.slides.summary.24hChange" = "24h Gewijzigd";
+"wallet.slides.summary.24hVolume" = "24h Volume";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "Historische grafiek";
+"wallet.slides.chart.high" = "Hoog";
+"wallet.slides.chart.average" = "Gemiddeld";
+"wallet.slides.chart.low" = "Laag";
+"wallet.slides.chart.availability" = "grafiek alleen beschikbaar in USD";
+"wallet.slides.chart.noData" = "Geschiedenis grafiek data kan momenteel niet gevonden worden.";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "Nog geen transacties ontvangen.";

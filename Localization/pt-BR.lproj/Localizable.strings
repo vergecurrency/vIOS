@@ -1,0 +1,449 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "Certo";
+"defaults.cancel" = "Cancelar";
+"defaults.done" = "Completado";
+"defaults.remove" = "Remover";
+"defaults.back" = "Voltar";
+"defaults.address" = "Endereço";
+"defaults.next" = "Próximo";
+"defaults.previous" = "Anterior";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "Carteira";
+"mainTabBar.barItem.transactions.title" = "Transações";
+"mainTabBar.barItem.send.title" = "Enviar";
+"mainTabBar.barItem.receive.title" = "Receber";
+"mainTabBar.barItem.settings.title" = "Configurações";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Carteira Verge iOS";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "Privacidade é nosso lema.";
+
+/*Welcome*/
+"setup.welcome.message" = "A Carteira iOS para Verge é segura, anônima e privada. Enviar e receber XVG.";
+"setup.welcome.createButton" = "Criar uma nova carteira";
+"setup.welcome.createDescription" = "Criar uma nova carteira XVG no seu dispositivo iOS.";
+"setup.welcome.restoreButton" = "Restaurar sua carteira";
+"setup.welcome.restoreDescription" = "Perdeu sua carteira iOS? Restaure aqui.";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "Digite o PIN para destravar";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "Crie um PIN para a carteira";
+"setup.pinCode.setPinDesc" = "O seu PIN será usado para abrir o aplicativo e para enviar XVG. Se você o perder, ficará impossibilitado de acessar sua carteira.";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "Reescreva o seu PIN";
+"setup.pinCode.reenterPinSucceedTitle" = "Impressionante!";
+"setup.pinCode.reenterPinSucceedDesc" = "Seu PIN foi está pronto.";
+"setup.pinCode.reenterPinSucceedDesc2" = "Por favor não o esqueça.";
+"setup.pinCode.reenterPinSucceedButton" = "Prosseguir";
+"setup.pinCode.reenterPinErrorTitle" = "PIN incorreto";
+"setup.pinCode.reenterPinErrorDesc" = "Não podemos validar o seu PIN";
+"setup.pinCode.reenterPinErrorDesc2" = "Por favor tente outra vez";
+"setup.pinCode.reenterPinErrorButton" = "Tente outra vez";
+"setup.pinCode.alert.chooseSize" = "Escolha o tamanho do PIN";
+"setup.pinCode.alert.digits" = "Digítos";
+
+/*Passphrase*/
+"setup.passphrase.title" = "Obter suas palavras passecom sua chave de segurança";
+"setup.passphrase.desc" = "A encriptação do suas palavras passe é uma medida importante. Use sempre sua chave de segurança  antiga para restaurar a carteira.";
+"setup.passphrase.req1" = "Min. 8 caracteres";
+"setup.passphrase.req2" = "Maiúsculas e minúsculas";
+"setup.passphrase.req3" = "Caracteres especiais (!.,-#€%+#)";
+"setup.passphrase.passPlaceholder" = "Entre com sua chave de segurança";
+"setup.passphrase.confirmButton" = "Confirmar";
+"setup.passphrase.confirmTitle" = "Confirme sua chave de segurança";
+"setup.passphrase.proceedButton" = "Prosseguir";
+
+/*Finish*/
+"setup.finish.title" = "Quase pronto!";
+"setup.finish.switch1" = "Eu entendo que meus fundos estão seguros e salvos nesse aparelho.";
+"setup.finish.switch2" = "Eu entendo que se o aplicativo for movido para outro dispositivo ou deletado, minhas moedas só poderão ser recuperadas através das palavras passe e chave de segurança.";
+"setup.finish.switch3" = "Eu li, entendi e concordo com os termos de uso.";
+"setup.finish.termsButton" = "Termos de uso";
+"setup.finish.createButton" = "Criar uma carteira";
+"setup.finish.openButton" = "Abrir uma carteira";
+"setup.finish.desc" = "Terminando sua carteira...";
+"setup.finish.congrats" = "Sua carteira está completa! Parabéns!";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "Palavras passe";
+"welcomeGuide.paperKey.message" = "Na próxima tela, exibiremos uma lista de palavras para anotar em um pedaço de papel e armazenar de forma segura!";
+"welcomeGuide.paperKey.description" = "Suas palavras passe fazem parte de sua senha privada e é o único modo de acessar seus fundos.";
+"welcomeGuide.paperKey.actionButton" = "Suas chave de papel";
+"welcomeGuide.paperKey.makeSureLabel" = "Para ter certeza que está tudo correto, por favor coloque as seguintes palavras do seu papel.";
+"welcomeGuide.paperKey.submitButton" = "Enviar";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "Receber";
+"receive.addressButtonLabel" = "Endereço";
+"receive.amountButtonLabel" = "Quantidade";
+"receive.amountPlaceholder" = "Valor a receber";
+"receive.stealthAddressLabel" = "Endereço oculto";
+"receive.shareButton" = "Compartilhar";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "Restaurar carteira";
+"restoreGuide.restore.desc" = "Na próxima tela, você deverá preencher as palavras passes, na ordem exata, em que solicitada.";
+"restoreGuide.restore.notice" = "Por favor tenha certeza que você não está sendo observado.";
+"restoreGuide.restore.restoreButton" = "Iniciar a restauração";
+"restoreGuide.restore.paperKeyTitle" = "Palavras passe:";
+"restoreGuide.restore.paperKeyWarning" = "Você tem certeza que suas palavras passes estão corretas?";
+"restoreGuide.restore.paperKeyProceedButton" = "Prosseguir";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "Escanear o Código QR das palavras passes ";
+"restoreGuide.qrcode.closeButton" = "Fechar";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "Enviar";
+"send.addressButtonLabel" = "Endereço para enviar";
+"send.addressPlaceholder" = "Informe o endereço de envio";
+"send.amountButtonLabel" = "Quantidade";
+"send.memoButtonLabel" = "Memorando interno";
+"send.memoPlaceholder" = "Doação para Swen";
+"send.confirmButton" = "Confirmar";
+"send.noBalanceTitle" = "Sem saldo";
+"send.noBalanceDesc" = "Você não tem moedas para enviar. Aumente seu saldo.";
+
+/*QR-code*/
+"send.qrcode.title" = "Escanear o código QR XVG";
+"send.qrcode.closeButton" = "Fechar";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "Selecionar destinatário";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "Saldo de XVG";
+"wallet.balanceTitle" = "Saldo";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "Configurações";
+"settings.wallet.header.title" = "Carteira";
+"settings.wallet.footer.title" = "Configure sua carteira com as opções fornecidas.";
+"settings.wallet.cell.removeLabel" = "Remover carteira";
+"settings.wallet.cell.paperKeyLabel" = "Palavras passe";
+"settings.wallet.cell.addressesLabel" = "Endereço";
+"settings.wallet.cell.transactionsLabel" = "Transações sugeridas";
+"settings.wallet.cell.serviceUrlLabel" = "URL de serviço";
+"settings.settings.cell.fiatCurrencyLabel" = "Moedas FIAT";
+"settings.settings.cell.changePinLabel" = "Trocar o PIN da carteira";
+"settings.settings.cell.useFaceIdLabel" = "Usar Desbloqueio de Face";
+"settings.settings.cell.torConnectionLabel" = "Conexão Tor";
+"settings.other.header.title" = "Outros";
+"settings.other.cell.creditsLabel" = "Créditos";
+"settings.other.cell.donateLabel" = "Doação";
+"settings.other.cell.rateAppLabel" = "Classifique o aplicativo";
+"settings.other.cell.websiteLabel" = "Endereço eletrônico";
+"settings.other.cell.contributeLabel" = "Contribuir";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "Digite suas palavras passe de novo";
+"settings.paperKey.descLabel" = "Você deseja ver suas palavras passe de novo? Na próxima tela, mostraremos a lista de palavras, um dica é anota-las em algum papel e armazenar em um local seguro.";
+"settings.paperKey.showButton" = "Mostrar palavras passe";
+"settings.paperKey.preview.titleLabel" = "Suas palavras passe";
+"settings.paperKey.preview.noticeLabel" = "Tirar foto de tela não é seguro. Anote em uma folha de papel.";
+"settings.paperKey.preview.descLabel" = "Anote as palavras conforme solicitado, sem letras maiúsculas.";
+"settings.paperKey.preview.wordsSegment" = "Palavras";
+"settings.paperKey.preview.qrSegment" = "QR";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "Desconecte este dispositivo da carteira atual";
+"settings.disconnect.descLabel" = "Você está prestes a desconectar este dispositivo da sua carteira atual. Por favor, certifique-se de ter escrito a suas palavras passe e saber sua chave de segurança. Lembre-se de que suas palavras passe + chave de segurança é a única maneira de restaurar sua carteira atual.";
+"settings.disconnect.disconnectButton" = "Desconectar";
+
+/*Addresses*/
+"settings.addresses.title" = "Endereços";
+"settings.addresses.descLabel" = "Cada carteira de Verge pode gerar bilhões de endereços de sua frase de recuperação de 12 palavras. Um novo endereço é gerado automaticamente e exibido toda vez que você recebe um pagamento.";
+"settings.addresses.scanButton" = "Escanear endereços para saldo";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "Transações propostas";
+"settings.transactions.descLabel" = "Todas as propostas de transação que falharam, durante uma sequência de transação, estão listadas abaixo. Você precisa excluí-las manualmente para liberar os fundos.";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "URL de serviço";
+"settings.serviceUrl.header.title" = "URL do serviço de carteira";
+"settings.serviceUrl.footer.title" = "Este aplicativo depende do Verge Wallet Service (VWS) para informações de blockchain, rede e sincronização do Copayer. A configuração padrão aponta para https://vws.vergecurrency.network/vws/api (instância VWS pública da Verge)";
+"settings.serviceUrl.defaultUrlButton" = "Use o URL padrão";
+"settings.serviceUrl.saveButton" = "Salvar";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "Moedas Fiat";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Usar o desbloqueio facial";
+"settings.useFaceID.header.title" = "Use para";
+"settings.useFaceID.footer.title" = "Em vez de preencher o PIN da carteira, um aviso fornecerá a você a maneira alternativa de se autenticar.";
+"settings.useFaceID.unlockLabel" = "Desbloquear sua carteira";
+"settings.useFaceID.sendingLabel" = "Enviando XVG";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Tor está aqui para sua privacidade e esconde sua localização";
+"settings.torConnection.descLabel" = "Seu endereço IP é totalmente ocultado e as transações não são rastreáveis ​​quando você está usando uma conexão Tor.\n\nMas você sempre pode desligar o Tor.";
+"settings.torConnection.obfuscateIpLabel" = "Ocultar IP";
+"settings.torConnection.yourIpLabel" = "Seu endereço IP";
+"settings.torConnection.loadingLabel" = "Carregando...";
+"settings.torConnection.notAvailable" = "Serviço não disponível";
+
+/*Credits*/
+"settings.credits.title" = "Créditos";
+"settings.credits.descLabel" = "Esta aplicação foi possível graças aos seguintes heróis:";
+
+/*Donate*/
+"settings.donate.titleLabel" = "Doar para os desenvolvedores";
+"settings.donate.descLabel" = "Na Verge, estamos sempre nos esforçando para criar novidades e entregar produtos ou implementações de software que são solicitadas pela comunidade.";
+"settings.donate.desc2Label" = "Ouvir os membros da nossa comunidade e receber feedback não é apenas um dos princípios fundamentais da Verge, mas é inerente à nossa natureza de código aberto.";
+"settings.donate.addressLabel" = "Endereço XVG para doação";
+"settings.donate.donateButton" = "Doar XVG";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "Endereço eletrônico";
+"shortcuts.action.sourceCode.title" = "Código fonte";
+"shortcuts.action.send.title" = "Enviar";
+"shortcuts.action.receive.title" = "Receber";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "Movido";
+"transaction.state.received" = "Recebido";
+"transaction.state.pending" = "Pendente";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1D";
+"chart.filter.oneWeek" = "1S";
+"chart.filter.oneMonth" = "1M";
+"chart.filter.threeMonths" = "3M";
+"chart.filter.oneYear" = "1A";
+"chart.filter.all" = "Todo";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "Histórico de preços";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "Histórico do volume";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "Meu endereço XVG";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "Digite a palavra";
+"paperKey.outOf" = "Fora de";
+"paperKey.egCat" = "(e.g. Cat)";
+"paperKey.key" = "Chave";
+"paperKey.word" = "Palavra";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "Enviar XVG";
+"send.noConnection" = "Sem conexão";
+"send.transactionFailed" = "Falha na transação";
+"send.transactionFailedMessage" = "Sua transação falhou com o seguinte erro";
+"send.notEnoughBalance" = "Saldo insuficiente";
+"send.notEnoughBalanceMessage1" = "Você não tem saldo suficiente para enviar";
+"send.notEnoughBalanceMessage2" = "Altere a quantidade para prosseguir.";
+"send.sendMax" = "Enviar total";
+"send.wrongAddress" = "Endereço errado";
+"send.enterValidAddress" = "O endereço XVG inserido é inválido. Por favor, insira um endereço XVG válido.";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "Endereço invisível resolvido";
+"send.confirm.confirmTitleLabel" = "Confirmar transação";
+"send.confirm.recipientLabel" = "Destinatário";
+"send.confirm.doubleCheckDescLabel" = "Verifique novamente se o endereço da carteira está correto. Verge Currency não pode ser responsabilizado pela perda das XVG enviadas para carteiras erradas.";
+"send.confirm.sendingLabel" = "Enviando";
+"send.confirm.transactionFeeLabel" = "taxa de transação";
+"send.confirm.totalLabel" = "Total";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "Assinando da transição";
+"send.sending.broadcastingTransaction" = "Transmitindo a transação";
+"send.sending.transactionSent" = "Transação enviada!";
+"send.sending.publishingTransaction" = "Publicando a transação";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "Usar o desbloqueio por digital";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "Endereço copiado!";
+"addresses.addressesWithBalance" = "Endereços com saldos";
+"addresses.unusedAddresses" = "Endereços não utilizados";
+"addresses.addressOptions" = "Opções de endereços";
+"addresses.informationTypeMessage" = "Quais informações você gostaria de copiar para a área de transferência?";
+"addresses.address" = "Endereço";
+"addresses.balance" = "Saldo";
+"addresses.balanceCopied" = "Saldo copiado!";
+"addresses.publicKey" = "Chave pública";
+"addresses.publicKeyCopied" = "Chave pública copiada!";
+"addresses.privateKey" = "Chave de segurança";
+"addresses.privateKeyCopied" = "Chave de segurança copiada!";
+"addresses.scanningAddresses" = "Escaneando endereço";
+"addresses.scanningAddressesMessage" = "Escaneando endereços para saldo. Isso pode levar algum tempo para ser concluído.";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "Desenvolvimento";
+"credits.header.design" = "Design";
+"credits.header.translation" = "Tradução";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "Desconectar carteira";
+"settings.disconnect.alert.message" = "Você está prestes a desconectar este dispositivo da sua carteira atual. Por favor, certifique-se de ter escrito suas palavras passe. Lembre-se de que suas palavras passe são a única maneira de restaurar sua carteira atual.";
+"settings.disconnect.alert.disconnect" = "Desconectado";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "Mudando servidor";
+"settings.serviceUrl.alert.message" = "Mudando o URL de serviço, por favor aguarde um momento...";
+"settings.serviceUrl.alert.usePrevUrl" = "Usar o URL de serviço prévio";
+"settings.serviceUrl.alert.errorChanging" = "Erro ao alterar";
+"settings.serviceUrl.alert.errorChanging2" = "Um erro foi levantado durante o serviço de alteração de URL. Por favor, tente novamente ou use outro URL.";
+"settings.serviceUrl.alert.title2" = "Mudando servidor";
+"settings.serviceUrl.alert.message2" = "URL do serviço alterado com sucesso.";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "Remover proposta";
+"settings.transactions.noProposals" = "Nenhuma proposta";
+"settings.transactions.releaseXvg" = "Liberar o XVG desta proposta de transação.";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Moeda Verge\nEsconde sua localização";
+"setup.tor.slide1.descLabel" = "Verge usa a rede Tor para ofuscar\nsua localização e endereço IP.";
+"setup.tor.slide2.titleLabel" = "O indicador de status Tor indica o seguinte ...";
+"setup.tor.slide2.descLabel1" = "Tor está desligado e sua localização e IP estão disponíveis publicamente.";
+"setup.tor.slide2.descLabel2" = "Tor está se conectando. Nenhuma conexão com a Internet é feita neste momento.";
+"setup.tor.slide2.descLabel3" = "Tor está ligado e sua localização e IP são ofuscados.";
+"setup.tor.slide2.descLabel4" = "Tor não pode se conectar e algo deu errado. A única solução, por enquanto, é a reinicialização do aplicativo.";
+"setup.tor.slide3.titleLabel" = "Vamos ligar o Tor.";
+"setup.tor.slide3.titleLabel2" = "Ligar Tor";
+"setup.tor.slide3.descLabel" = "Certifique-se de que o Tor é legal no seu país. Infelizmente, alguns países não querem que você seja privado.";
+"setup.tor.slide3.negativeButton" = "Prosseguir sem o Tor";
+"setup.tor.slide3.positiveButton" = "Prosseguir com o Tor";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "Transações";
+"transactions.transaction.title" = "Quem?";
+"transactions.contacts.title" = "Contatos";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "Procurar transações";
+"transactions.search.all" = "Todos";
+"transactions.search.sent" = "Enviado";
+"transactions.search.received" = "Recebido";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "Detalhes da transação";
+"transactions.transaction.history" = "Histórico da transação";
+"transactions.transaction.confirmations" = "Confirmações";
+"transactions.transaction.txidCopied" = "Txid copiado!";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "Sem transações recebidas";
+"transactions.noTransaction.descLabel" = "Não achadas transações recebidas";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Detalhe do contato";
+"transactions.contact.name" = "Nome";
+"transactions.contact.section.history" = "Histórico de transação";
+"transactions.contact.saved" = "Contato salvado!";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Procurar contatos";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Sem contatos criados";
+"transactions.noContacts.descLabel" = "Adicione um contato para facilmente enviar XVG para";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "Transações recentes";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "Estatísticas";
+"wallet.slides.summary.dataNotFound" = "Dados das estatísticas não foram encontrados.";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "Valor do mercado";
+"wallet.slides.summary.24hHigh" = "Alta 24hs";
+"wallet.slides.summary.24hLow" = "Baixa 24 hs";
+"wallet.slides.summary.24hChange" = "Variação 24hs";
+"wallet.slides.summary.24hVolume" = "Volume 24 hs";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "Histórico de gráfico";
+"wallet.slides.chart.high" = "Alta";
+"wallet.slides.chart.average" = "Média";
+"wallet.slides.chart.low" = "Baixa";
+"wallet.slides.chart.availability" = "Dados do gráfico somente disponíveis em USD";
+"wallet.slides.chart.noData" = "Os dados históricos do gráfico não podem ser encontrados.";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "Nenhuma transação foi recebida ainda.";

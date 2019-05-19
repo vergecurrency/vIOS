@@ -65,6 +65,15 @@ class ApplicationRepository {
         }
     }
     
+    var language: String? {
+        get {
+            return userDefaults.string(forKey: "wallet.language")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "wallet.language")
+        }
+    }
+    
     var amount: NSNumber {
         get {
             return NSNumber(value: userDefaults.double(forKey: "wallet.amount"))

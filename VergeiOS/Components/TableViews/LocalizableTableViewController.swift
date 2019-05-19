@@ -13,12 +13,12 @@ class LocalizableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let title = super.tableView(tableView, titleForHeaderInSection: section) ?? nil
         
-        return (title != nil) ? NSLocalizedString(title!, comment: "") : nil
+        return (title != nil) ? title!.localized : nil
     }
     
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let title = super.tableView(tableView, titleForFooterInSection: section) ?? nil
         
-        return (title != nil) ? NSLocalizedString(title!, comment: "") : nil
+        return (title != nil) ? title!.localized : nil
     }
 }

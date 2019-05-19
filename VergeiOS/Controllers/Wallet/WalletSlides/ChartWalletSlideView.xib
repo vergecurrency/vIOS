@@ -161,7 +161,7 @@
                                                 <constraint firstAttribute="height" constant="32" id="dzq-PI-AG9"/>
                                             </constraints>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chart data only available in USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayF-nP-DFm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chart data only available in USD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ayF-nP-DFm">
                                             <rect key="frame" x="0.0" y="96" width="255" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="Ycs-cn-xw7"/>

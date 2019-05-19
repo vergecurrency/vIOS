@@ -9,9 +9,25 @@
 import Foundation
 
 extension String {
-    
     var localized : String {
-        return NSLocalizedString(self, comment: "")
+        let currentLang = UserDefaults.standard.string(forKey: "wallet.language")
+        let bundle = self.bundleForLanguage(language: currentLang) ?? Bundle.main
+        let result = bundle.localizedString(forKey: self, value: "_", table: nil)
+        
+        return (result == "_") ?  localizedDefault : result
     }
     
+    private var localizedDefault : String {
+        let bundle = self.bundleForLanguage(language: "en")
+        return bundle?.localizedString(forKey: self, value: nil, table: nil) ?? self
+    }
+    
+    private func bundleForLanguage(language code : String!) -> Bundle? {
+        if (code == nil) {
+            return nil
+        }
+        
+        let path = Bundle.main.path(forResource: code, ofType: "lproj")
+        return Bundle(path: path!)
+    }
 }
