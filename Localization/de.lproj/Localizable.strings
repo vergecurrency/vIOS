@@ -16,8 +16,6 @@
 "defaults.address" = "Adresse";
 "defaults.next" = "Nächster";
 "defaults.previous" = "Bisherige";
-"defaults.delete" = "löschen";
-"defaults.open" = "öffnen";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -42,30 +40,30 @@
 "setup.welcome.createButton" = "Erstellen Sie eine neue Wallet";
 "setup.welcome.createDescription" = "Erstellen Sie eine neue Wallet auf Ihrem iOS-Gerät.";
 "setup.welcome.restoreButton" = "Stellen Sie Ihre Wallet wieder her";
-"setup.welcome.restoreDescription" = "Haben Sie Ihre iOS-Wallet verloren? Stellen Sie Ihre Wallet hier wieder her.";
+"setup.welcome.restoreDescription" = "iOS-wallet verloren? Stellen Sie es hier wieder her.";
 
 /*Pin unlock*/
-"setup.pinCode.title" = "PIN zum Entsperren eingeben";
+"setup.pinCode.title" = "PIN eingeben";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Wallet PIN festlegen";
-"setup.pinCode.setPinDesc" = "Ihre Wallet PIN benötigen Sie um auf Ihre Wallet zuzugreifen und um XVG von Ihrer Wallet zu versenden. Falls Sie Ihre Wallet PIN vergessen wird es Ihnen nicht mehr möglich sein auf Ihre Wallet zuzugreiffen.";
+"setup.pinCode.setPinTitle" = "Wallet PIN einstellen";
+"setup.pinCode.setPinDesc" = "Dein Wallet PIN wird dazu verwendet, um die App zu öffnen und XVG mit ihr zu senden. Wenn du den PIN vergisst, kannst du nicht mehr auf dein Wallet zugreifen.";
 
 /*Re enter wallet pin*/
-"setup.pinCode.reenterPinTitle" = "Geben Sie die PIN erneut ein";
+"setup.pinCode.reenterPinTitle" = "Geben Sie die PIN erneut";
 "setup.pinCode.reenterPinSucceedTitle" = "Genial!";
 "setup.pinCode.reenterPinSucceedDesc" = "Ihre PIN wurde nun festgelegt.";
-"setup.pinCode.reenterPinSucceedDesc2" = "Bitte vergessen Sie die PIN nicht!";
+"setup.pinCode.reenterPinSucceedDesc2" = "Bitte vergiss es nicht!";
 "setup.pinCode.reenterPinSucceedButton" = "Vorgehen";
 "setup.pinCode.reenterPinErrorTitle" = "PIN falsch!";
 "setup.pinCode.reenterPinErrorDesc" = "Ihre PIN konnte nicht bestätigt werden!";
 "setup.pinCode.reenterPinErrorDesc2" = "Bitte versuche es erneut";
-"setup.pinCode.reenterPinErrorButton" = "versuchen Sie es erneut";
+"setup.pinCode.reenterPinErrorButton" = "versuchen Sie es nochmal";
 "setup.pinCode.alert.chooseSize" = "Wählen Sie eine PIN-Größe";
 "setup.pinCode.alert.digits" = "Ziffern";
 
 /*Passphrase*/
-"setup.passphrase.title" = "Leiten Sie Ihren Papierschlüssel von der Seed Phrase ab";
+"setup.passphrase.title" = "Leite dein Papierschlüssel von der Seed Phrase ab";
 "setup.passphrase.desc" = "Die Verschlüsselung Ihres Papierschlüssels ist eine wichtige Sicherheitsmaßnahme.  Stellen Sie sicher, dass Sie bei der Wiederherstellung eines Wallets Ihre bisherige Passphrase verwenden.";
 "setup.passphrase.req1" = "Mindest. 8 Charaktere";
 "setup.passphrase.req2" = "Groß- und Kleinschreibung";
@@ -82,17 +80,17 @@
 "setup.finish.switch3" = "Ich habe die Nutzungsbedingungen gelesen, verstanden und bin damit einverstanden.";
 "setup.finish.termsButton" = "Nutzungsbedingungen";
 "setup.finish.createButton" = "Wallet erstellen";
-"setup.finish.openButton" = "Öffnen Sie Ihre Wallet";
-"setup.finish.desc" = "Vervollständigung deiner Wallet...";
-"setup.finish.congrats" = "Deine Wallet ist bereit! Glückwunsch!";
+"setup.finish.openButton" = "öffne dein wallet";
+"setup.finish.desc" = "Vervollständigung deines Wallets...";
+"setup.finish.congrats" = "Dein Wallet ist bereit! Glückwunsch!";
 
 /*----------------------------------------
  WelcomeGuide.storyboard
  ----------------------------------------*/
 "welcomeGuide.paperKey.title" = "Papierschlüssel";
-"welcomeGuide.paperKey.message" = "Auf dem nächsten Bildschirm wird Ihnen eine Liste von Wörtern angezeigt, die Sie sich auf ein Blatt Papier schreiben sollen. Bewahren Sie die aufgeschriebenen Wörter sicher auf!";
-"welcomeGuide.paperKey.description" = "Ihr Papierschlüssel ist Teil Ihres privaten Schlüssels, der das Einzige ist, was Sie benötigen, um auf Ihr Geld zuzugreifen.";
-"welcomeGuide.paperKey.actionButton" = "Notieren Sie Ihren Papierschlüssel";
+"welcomeGuide.paperKey.message" = "Auf dem nächsten Bildschirm wird Dir eine Liste von Wörtern angezeigt, die du dir auf ein Blatt Papier schreiben sollst";
+"welcomeGuide.paperKey.description" = "Dein Papierschlüssel ist Teil deines privaten Schlüssels, der das Einzige ist, was du benötigst, um auf dein Geld zuzugreifen.";
+"welcomeGuide.paperKey.actionButton" = "Notiere papier schlüssel";
 "welcomeGuide.paperKey.makeSureLabel" = "Um sicherzustellen, dass alles korrekt aufgeschrieben wurde, geben Sie bitte die folgenden Wörter von Ihrem Zettel ein.";
 "welcomeGuide.paperKey.submitButton" = "absenden";
 
@@ -102,10 +100,10 @@
  Receive*/
 "receive.title" = "Erhalten";
 "receive.addressButtonLabel" = "Addresse";
-"receive.amountButtonLabel" = "Betrag";
+"receive.amountButtonLabel" = "Menge";
 "receive.amountPlaceholder" = "Zu empfangender Betrag";
 "receive.stealthAddressLabel" = "Verschwiegenheitsadresse";
-"receive.shareButton" = "teilen";
+"receive.shareButton" = "Teilen";
 
 /*----------------------------------------
  RestoreGuide.storyboard
@@ -114,9 +112,9 @@
 "restoreGuide.restore.title" = "Wallet wiederherstellen";
 "restoreGuide.restore.desc" = "Auf dem nächsten Bildschirm müssen Sie den Seed Phrase Ihres Wallets in genau der gleichen Reihenfolge wie gewünscht ausfüllen.";
 "restoreGuide.restore.notice" = "Bitte stellen Sie sicher, dass Sie während dieses Vorgangs nicht beobachtet werden.";
-"restoreGuide.restore.restoreButton" = "Starten der Wiederherstellung";
+"restoreGuide.restore.restoreButton" = "Wiederherstellung";
 "restoreGuide.restore.paperKeyTitle" = "Dein Papierschlüssel:";
-"restoreGuide.restore.paperKeyWarning" = "Sind Sie sicher, dass Ihr Papierschlüssel richtig ist?";
+"restoreGuide.restore.paperKeyWarning" = "Bist du sicher, dass dein Papierschlüssel richtig ist?";
 "restoreGuide.restore.paperKeyProceedButton" = "weiter";
 
 /*Paperkey QR*/
@@ -135,14 +133,14 @@
 "send.memoPlaceholder" = "Geschenk an Swen";
 "send.confirmButton" = "Bestätigen";
 "send.noBalanceTitle" = "Kein Guthaben";
-"send.noBalanceDesc" = "Sie haben keine XVG zum Versenden. Bitte erhöhen Sie Ihr Guthaben.";
+"send.noBalanceDesc" = "Du hast keine XVG zu versenden. Bitte erhöhe dein Guthaben.";
 
 /*QR-code*/
-"send.qrcode.title" = "XVG QR Code scannen";
+"send.qrcode.title" = "Scanne einen XVG QR Code";
 "send.qrcode.closeButton" = "Schließen";
 
 /*Select recipient*/
-"send.selectRecipient.title" = "Wählen Sie einen Empfänger aus";
+"send.selectRecipient.title" = "Wähle den Empfänger";
 
 /*----------------------------------------
  Wallet.storyboard
@@ -156,7 +154,7 @@
  Settings*/
 "settings.title" = "Einstellungen";
 "settings.wallet.header.title" = "Wallet";
-"settings.wallet.footer.title" = "Verwalten Sie Ihr Wallet mit den angegebenen Optionen.";
+"settings.wallet.footer.title" = "Verwalte dein Wallet mit den angegebenen Optionen.";
 "settings.wallet.cell.removeLabel" = "Wallet entfernen";
 "settings.wallet.cell.paperKeyLabel" = "Papierschlüssel";
 "settings.wallet.cell.addressesLabel" = "Adressen";
@@ -174,12 +172,12 @@
 "settings.other.cell.contributeLabel" = "Beitragen";
 
 /*Paper key*/
-"settings.paperKey.titleLabel" = "Notieren Sie sich den Papierschlüssel Ihres Wallets erneut.";
-"settings.paperKey.descLabel" = "Sie wollen Ihren Papierschlüssel noch einmal sehen?  Auf dem nächsten Bildschirm wird Ihnen eine Liste von Wörtern angezeigt, die Sie auf ein Blatt Papier schreiben, um es anschließend sehr sicher aufzubewahren!";
+"settings.paperKey.titleLabel" = "Notiere Dir den Papierschlüssel deines Wallets erneut.";
+"settings.paperKey.descLabel" = "Du willst deinen Papierschlüssel noch einmal sehen?  Auf dem nächsten Bildschirm wird Dir eine Liste von Wörtern angezeigt, die du auf ein Blatt Papier schreibst, um es anschließend sehr sicher aufzubewahren!";
 "settings.paperKey.showButton" = "Papierschlüssel anzeigen";
-"settings.paperKey.preview.titleLabel" = "Ihr Papierschlüssel";
-"settings.paperKey.preview.noticeLabel" = "Die Erstellung eines Screenshot ist nicht sicher.  Notieren Sie sich den Papierschlüssel mit einem Stift auf einem Blatt Papier.";
-"settings.paperKey.preview.descLabel" = "Schreiben Sie jedes Wort sorgfältig und ohne Großbuchstaben auf.";
+"settings.paperKey.preview.titleLabel" = "Dein Papierschlüssel";
+"settings.paperKey.preview.noticeLabel" = "Die Erstellung eines Screenshot ist nicht sicher.  Notiere dir den Papierschlüssel mit einem Stift auf einem Blatt Papier.";
+"settings.paperKey.preview.descLabel" = "Schreibe jedes Wort sorgfältig und ohne Großbuchstaben auf.";
 "settings.paperKey.preview.wordsSegment" = "Wörter";
 "settings.paperKey.preview.qrSegment" = "QR";
 
@@ -191,11 +189,11 @@
 /*Addresses*/
 "settings.addresses.title" = "Adressen";
 "settings.addresses.descLabel" = "Jedes Verge Wallet kann Milliarden von Adressen aus deiner 12-Wort-Wiederherstellungsphrase generieren.  Eine neue Adresse wird automatisch generiert und bei jedem Zahlungseingang angezeigt.";
-"settings.addresses.scanButton" = "Adresse scannen um den Kontostand anzuzeigen";
+"settings.addresses.scanButton" = "Adressen scannen um balance";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Transaktion Vorschläge";
-"settings.transactions.descLabel" = "Nachfolgend sind alle Transaktionsvorschläge aufgeführt, die während einer Transaktionssequenz fehlgeschlagen sind. Sie müssen diese manuell löschen, um die Gelder freizugeben.";
+"settings.transactions.descLabel" = "Nachfolgend sind alle Transaktionsvorschläge aufgeführt, die während einer Transaktionssequenz fehlgeschlagen sind. Du musst sie manuell löschen, um die Gelder freizugeben.";
 
 /*Service URL*/
 "settings.serviceUrl.title" = "Service URL";
@@ -210,12 +208,12 @@
 /*Use Face ID*/
 "settings.useFaceID.title" = "Face ID verwenden";
 "settings.useFaceID.header.title" = "Verwenden für";
-"settings.useFaceID.footer.title" = "Anstatt Ihre Wallet PIN eingeben zu müssen, erhalten Sie über eine Eingabeaufforderung die Möglichkeit, sich alternativ zu authentifizieren.";
-"settings.useFaceID.unlockLabel" = "Wallet entsperren";
-"settings.useFaceID.sendingLabel" = "XVG senden";
+"settings.useFaceID.footer.title" = "Anstatt Ihren Wallet PIN eingeben zu müssen, erhalten Sie über eine Eingabeaufforderung die Möglichkeit, sich alternativ zu authentifizieren.";
+"settings.useFaceID.unlockLabel" = "Dein Wallet entsperren";
+"settings.useFaceID.sendingLabel" = "Senden XVG";
 
 /*Tor connection*/
-"settings.torConnection.titleLabel" = "Tor ist für Ihre Privatsphäre zuständig und versteckt Ihren Standort.";
+"settings.torConnection.titleLabel" = "Tor ist für deine Privatsphäre zuständig und versteckt deinen Standort.";
 "settings.torConnection.descLabel" = "Ihre IP-Adresse ist vollkommen verborgen und Transaktionen sind völlig unauffindbar, wenn Sie eine Tor-Verbindung benutzen.\n\nSie können Tor allerdings jederzeit ausschalten.";
 "settings.torConnection.obfuscateIpLabel" = "IP verschleiern";
 "settings.torConnection.yourIpLabel" = "Ihre IP-Adresse";
@@ -227,16 +225,11 @@
 "settings.credits.descLabel" = "Diese Anwendung wurde durch die folgenden Helden ermöglicht:";
 
 /*Donate*/
-"settings.donate.titleLabel" = "Spenden Sie um die Entwicklung zu unterstützen";
+"settings.donate.titleLabel" = "Spende um die Entwicklung zu unterstützen";
 "settings.donate.descLabel" = "Bei Verge sind wir stets bestrebt, neue Höhen zu erreichen und Produkte oder Softwareimplementierungen zu liefern, die von der Community nachgefragt werden.";
 "settings.donate.desc2Label" = "Den Mitgliedern unserer Community zuzuhören und Feedback zu erhalten, ist nicht nur eines der Grundprinzipien von Verge, sondern auch unserer Open-Source-Natur wegen.";
 "settings.donate.addressLabel" = "Spenden XVG Adresse";
 "settings.donate.donateButton" = "Spenden XVG";
-
-/*Language*/
-"settings.language.title" = "Sprache";
-"settings.language.default" = "Standard";
-"settings.language.systemBased" = "Systemsprache";
 
 /*----------------------------------------
  Shortcuts
@@ -293,11 +286,11 @@
 "send.sendXVG" = "Sende XVG";
 "send.noConnection" = "keine Verbindung";
 "send.transactionFailed" = "Transaktion fehlgeschlagen";
-"send.transactionFailedMessage" = "Ihre Transaktion ist mit folgendem Fehler fehlgeschlagen";
+"send.transactionFailedMessage" = "Deine Transaktion ist mit folgendem Fehler fehlgeschlagen";
 "send.notEnoughBalance" = "Nicht genügend Guthaben";
-"send.notEnoughBalanceMessage1" = "Sie verfügen über nicht genügend Guthaben, um diesen Betrag zu senden";
-"send.notEnoughBalanceMessage2" = "Ändern Sie bitte den endenden Betrag, um fortzufahren.";
-"send.sendMax" = "Maximum senden";
+"send.notEnoughBalanceMessage1" = "Du hast nicht genug Guthaben, um es zu senden.";
+"send.notEnoughBalanceMessage2" = "Änder den zu sendenden Betrag, um fortzufahren.";
+"send.sendMax" = "Sende an Max";
 "send.wrongAddress" = "Falsche Adresse";
 "send.enterValidAddress" = "Die eingegebene Adresse ist eine ungültige Verge Adresse.  Bitte geben Sie eine gültige Verge Adresse ein.";
 
@@ -332,7 +325,7 @@
 "addresses.addressesWithBalance" = "Adressen mit Saldo";
 "addresses.unusedAddresses" = "nicht verwendete Adressen";
 "addresses.addressOptions" = "Adressoptionen";
-"addresses.informationTypeMessage" = "Welche Informationen möchten Sie in die Zwischenablage kopieren?";
+"addresses.informationTypeMessage" = "Welche Informationen möchtest du in die Zwischenablage kopieren?";
 "addresses.address" = "Adresse";
 "addresses.balance" = "Saldo";
 "addresses.balanceCopied" = "Saldo kopiert!";
@@ -454,23 +447,3 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Keine Transaktion bisher empfangen.";
-
-/*----------------------------------------
- Alerts
- ----------------------------------------*/
-"alerts.removeContact.title" = "Kontakt entfernen";
-"alerts.removeContact.message" = "Wollen Sie den Kontakt wirklich löschen?";
-"alerts.invalidContact.title" = "Falsche Kontaktangaben";
-"alerts.invalidContact.message" = "Geben Sie bitte einen gültigen Namen und eine gültige XVG Adresse an";
-"alerts.removeTransaction.title" = "Transaktion entfernen";
-"alerts.removeTransaction.message" = "Wollen Sie diese Transaktion wirklich löschen?";
-"alerts.createAddress.title" = "Fehler beim Erstellen der Adresse";
-"alerts.createAddress.message" = "Das Maximum inaktiver Adressen wurde erreicht. Nutzen Sie die bereits generierten Adressen um eine neue Adresse zu erstellen.";
-"alerts.sendMaxInfo.title" = "Fehler beim Abfragen der Daten";
-"alerts.sendMaxInfo.message" = "Fehler bei der Abfrage des Sendemaximums vom Server. Bitte versuchen Sie es erneut.";
-"alerts.startTor.title" = "Tor ist nicht aktiviert";
-"alerts.startTor.message" = "Möchten Sie diese Transaktion ohne Verschleierung Ihrer IP senden? Oder möchten Sie Tor starten um Ihre Identität zu verbergen?";
-"alerts.startTor.button1" = "Tor starten";
-"alerts.startTor.button2" = "Ohne Tor";
-"alerts.termsOfUse.title" = "Nutzungsbedingungen für diese Wallet anzeigen";
-"alerts.restart.title" = "Neustart...";

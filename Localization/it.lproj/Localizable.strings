@@ -16,8 +16,6 @@
 "defaults.address" = "Indirizzo";
 "defaults.next" = "Avanti";
 "defaults.previous" = "Indietro";
-"defaults.delete" = "Cancella";
-"defaults.open" = "Apri";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -175,7 +173,7 @@
 
 /*Paper key*/
 "settings.paperKey.titleLabel" = "Annota di nuovo la tua chiave cartacea";
-"settings.paperKey.descLabel" = "Vuoi vedere di nuovo la tua chiave cartacea? Nella schermata successiva, ti verrà mostrata una lista di parole che dovrai trascrivere su un pezzo di carta, che dovresti conservare in maniera estremamente sicura.";
+"settings.paperKey.descLabel" = "Vuoi vedere di nuovo la tua chiave cartacea? Nella schermata successiva, ";
 "settings.paperKey.showButton" = "Mostra la chiave cartacea";
 "settings.paperKey.preview.titleLabel" = "La tua chiave cartacea";
 "settings.paperKey.preview.noticeLabel" = "Fare uno screenshot non è sicuro. Annota la chiave cartacea su un foglio con una penna.";
@@ -191,7 +189,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Indirizzi";
 "settings.addresses.descLabel" = "Ogni portafogli Verge può generare milliardi di indirizzi dalla tua chiave privata. Un nuovo indirizzo è generato e mostrato automaticamente ogni volta che ricevi un pagamento";
-"settings.addresses.scanButton" = "Scansiona gli indirizzi per il saldo";
+"settings.addresses.scanButton" = "Scansiona indirizzi per saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Proposte di transazione";
@@ -216,7 +214,7 @@
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor è qui per la tua privacy e nasconde la tua localizzazione";
-"settings.torConnection.descLabel" = "Il tuo indirizzo IP è completamente offuscato e le transazioni sono completamente intracciabili quando si sta usando Tor.\n\nMa puoi sempre disattivarlo.";
+"settings.torConnection.descLabel" = "Il tuo indirizzo IP è completamente offuscato e le transazioni sono completamente intracciabili quando si sta usando Tor.\n\nMa puoi sempre spegnerlo.";
 "settings.torConnection.obfuscateIpLabel" = "Offusca l'IP";
 "settings.torConnection.yourIpLabel" = "Il tuo indirizzo IP";
 "settings.torConnection.loadingLabel" = "Caricamento...";
@@ -232,11 +230,6 @@
 "settings.donate.desc2Label" = "Ascoltare la nostra comunità e prendere in considerazione feedback non è solo uno dei principi vitali di Verge, ma è inerente alla nostra natura open-source.";
 "settings.donate.addressLabel" = "Indirizzo XVG di donazione";
 "settings.donate.donateButton" = "Dona XVG";
-
-/*Language*/
-"settings.language.title" = "Lingua";
-"settings.language.default" = "Default";
-"settings.language.systemBased" = "In base al sistema";
 
 /*----------------------------------------
  Shortcuts
@@ -454,25 +447,3 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nessuna transazione ricevuta (ancora...)";
-
-/*----------------------------------------
- Alerts
- ----------------------------------------*/
-"alerts.removeContact.title" = "Rimuovi il contatto";
-"alerts.removeContact.message" = "Sei sicuro/a di voler rimuovere il contatto?";
-"alerts.invalidContact.title" = "I dati del contatto non sono validi";
-"alerts.invalidContact.message" = "Per favore, fornisci un nome ed un indirizzo XVG validi";
-"alerts.removeTransaction.title" = "Rimuovi la transazione";
-"alerts.removeTransaction.message" = "Sei sicuro/a di voler rimuovere questa transazione?";
-"alerts.createAddress.title" = "Impossibile creare l'indirizzo";
-"alerts.createAddress.message" = "Il numero massimo di indirizzi inattivi è stato raggiunto. Usa uno di quelli già creati per generarne uno nuovo.";
-"alerts.sendMaxInfo.title" = "Recupero dei dati non riuscito";
-
-/*I'm not sure what they mean by "send maximum info". Please, review this translation.*/
-"alerts.sendMaxInfo.message" = "Recupero dal server delle informazioni di massimo invio non riuscito. Per favore riprova. ";
-"alerts.startTor.title" = "Tor non è attivo";
-"alerts.startTor.message" = "Vuoi inviare questa transazione senza che Tor offuschi il tuo IP? O vuoi attivare Tor e nascondere la tua identità?";
-"alerts.startTor.button1" = "Attiva Tor";
-"alerts.startTor.button2" = "Senza Tor";
-"alerts.termsOfUse.title" = "Visualizza i termini d'uso del portafogli";
-"alerts.restart.title" = "Riavviando...";

@@ -16,8 +16,6 @@
 "defaults.address" = "アドレス";
 "defaults.next" = "次へ";
 "defaults.previous" = "戻る";
-"defaults.delete" = "削除する";
-"defaults.open" = "開く";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -232,11 +230,6 @@
 "settings.donate.desc2Label" = "コミュニティメンバーの意見に耳を傾け、フィードバックを取り入れることは、Vergeの基本原則の一つであるだけではなく、オープンソースの本質における固有のものです。";
 "settings.donate.addressLabel" = "XVGの寄付先アドレス";
 "settings.donate.donateButton" = "XVGを寄付する";
-
-/*Language*/
-"settings.language.title" = "言語";
-"settings.language.default" = "ディフォルト";
-"settings.language.systemBased" = "システム利用中の言語";
 
 /*----------------------------------------
  Shortcuts
@@ -454,23 +447,3 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "トランザクションは未受領";
-
-/*----------------------------------------
- Alerts
- ----------------------------------------*/
-"alerts.removeContact.title" = "接続を解除する";
-"alerts.removeContact.message" = "接続を解除してよろしいですか？";
-"alerts.invalidContact.title" = "接続誤り";
-"alerts.invalidContact.message" = "正しい名前とXVGアドレスを入力してください";
-"alerts.removeTransaction.title" = "トランザクションを解除する";
-"alerts.removeTransaction.message" = "このトランザクションを解除してよろしいですか？";
-"alerts.createAddress.title" = "アドレスを生成できません";
-"alerts.createAddress.message" = "非アクティブアドレスの最大数に達しました。\n新しいアドレスを作成するには、既に生成されたアドレスの1つを使用してください。";
-"alerts.sendMaxInfo.title" = "データ取り込みに失敗しました";
-"alerts.sendMaxInfo.message" = "サーバーから送信最大情報を取得できませんでした。もう一度実行してください。";
-"alerts.startTor.title" = "Torは起動していません";
-"alerts.startTor.message" = "あなたのIPアドレスについて、Torによる難読化を行うことなく、このトランザクションによる送信を実行してよろしいでしょうか？それともTorを起動して難読化を行いますか？";
-"alerts.startTor.button1" = "Torを起動する";
-"alerts.startTor.button2" = "Torを利用しない";
-"alerts.termsOfUse.title" = "ウォレットの利用規約を確認する";
-"alerts.restart.title" = "再起動中...";

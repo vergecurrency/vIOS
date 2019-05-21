@@ -16,8 +16,6 @@
 "defaults.address" = "Dirección";
 "defaults.next" = "Siguiente";
 "defaults.previous" = "Anterior";
-"defaults.delete" = "Eliminar";
-"defaults.open" = "Abrir";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -45,10 +43,10 @@
 "setup.welcome.restoreDescription" = "¿Ha perdido su monedero iOS? Restáurelo aquí.";
 
 /*Pin unlock*/
-"setup.pinCode.title" = "Ingrese PIN para desbloquear";
+"setup.pinCode.title" = "Ingrese PIN";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Establezca un PIN para el monedero";
+"setup.pinCode.setPinTitle" = "Establezca un PIN";
 "setup.pinCode.setPinDesc" = "El PIN del monedero se utilizará para abrir esta aplicación y enviar XVG. Si lo olvida no podrá acceder a su monedero.";
 
 /*Re enter wallet pin*/
@@ -191,7 +189,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Direcciones";
 "settings.addresses.descLabel" = "Cada monedero de Verge puede generar billones de direcciónes desde su frase de contraseña de 12 palabras. Una nueva dirección es automáticamente generada y mostrada cada vez que recibe un pago.";
-"settings.addresses.scanButton" = "Escanear direcciones para el saldo";
+"settings.addresses.scanButton" = "Escanear para saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Propuestas de transacción";
@@ -232,11 +230,6 @@
 "settings.donate.desc2Label" = "Escuchar a los miembros de nuestra comunidad y recibir valoraciones no solo es uno de los principios principales de Verge, sino que también es inherente a nuestra naturaleza open-source.";
 "settings.donate.addressLabel" = "Dirección de donación XVG";
 "settings.donate.donateButton" = "Donar XVG";
-
-/*Language*/
-"settings.language.title" = "Idioma";
-"settings.language.default" = "Por defecto";
-"settings.language.systemBased" = "Basado en el sistema";
 
 /*----------------------------------------
  Shortcuts
@@ -454,23 +447,3 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Aún no se han recibido transacciones.";
-
-/*----------------------------------------
- Alerts
- ----------------------------------------*/
-"alerts.removeContact.title" = "Contacto eliminado";
-"alerts.removeContact.message" = "¿Está seguro de querer eliminar el contacto?";
-"alerts.invalidContact.title" = "Datos de contacto inválidos";
-"alerts.invalidContact.message" = "Por favor, ingrese un nombre y una dirección de XVG válidos";
-"alerts.removeTransaction.title" = "Eliminar transacción";
-"alerts.removeTransaction.message" = "¿Esta seguro de querer eliminar esta transacción?";
-"alerts.createAddress.title" = "No se puede crear la dirección";
-"alerts.createAddress.message" = "Se ha alcanzado el máximo de direcciones inactivas.\nUtilice una ya generada para crear una nueva.";
-"alerts.sendMaxInfo.title" = "Obtención de datos fallida";
-"alerts.sendMaxInfo.message" = "Fallo al obtener la información del máximo de envios desde el servidor. Por favor, inténtelo nuevamente.";
-"alerts.startTor.title" = "Tor no está activado";
-"alerts.startTor.message" = "¿Quiere realizar esta transacción sin que Tor ofusque su IP? ó\n¿Quisiera activar Tor y ocultar su identidad?";
-"alerts.startTor.button1" = "Activar Tor";
-"alerts.startTor.button2" = "Sin Tor";
-"alerts.termsOfUse.title" = "Ver los Términos de Uso del monedero";
-"alerts.restart.title" = "Reiniciando...";

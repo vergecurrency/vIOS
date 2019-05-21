@@ -16,8 +16,6 @@
 "defaults.address" = "Adres";
 "defaults.next" = "Sonraki";
 "defaults.previous" = "Önceki";
-"defaults.delete" = "Sil";
-"defaults.open" = "Aç";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -48,11 +46,11 @@
 "setup.pinCode.title" = "Kilidi açmak için PIN gir";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Cüzdanın için PIN belirle";
-"setup.pinCode.setPinDesc" = "Cüzdan PIN’in uygulamayı açmak için kullanılır ve bununla XVG gönderilebilirsin. Eğer PIN’i kaybedersen cüzdanına erişemezsin.";
+"setup.pinCode.setPinTitle" = "Cüzdanın PIN belirle";
+"setup.pinCode.setPinDesc" = "Cüzdan PIN’in uygulamayı açmak için kullanılır ve bununla XVG gönderilebilirsin.Eğer PIN’i kaybedersen cüzdanına erişemezsin.";
 
 /*Re enter wallet pin*/
-"setup.pinCode.reenterPinTitle" = "PIN'i yeniden gir";
+"setup.pinCode.reenterPinTitle" = "PIN'i yeniden girin";
 "setup.pinCode.reenterPinSucceedTitle" = "Müthiş!";
 "setup.pinCode.reenterPinSucceedDesc" = "PIN’in ayarlandı.";
 "setup.pinCode.reenterPinSucceedDesc2" = "Unutma lütfen!";
@@ -65,7 +63,7 @@
 "setup.pinCode.alert.digits" = "Dijital Rakamlar";
 
 /*Passphrase*/
-"setup.passphrase.title" = "Parolanı kullanıp kağıt anahtarını üret";
+"setup.passphrase.title" = "Parolanızla kağıt anahtar üretin.";
 "setup.passphrase.desc" = "Kağıt anahtarınızı şifrelemek önemli bir güvenlik önlemidir. Bir cüzdanı geri yüklerken önceki parolanızı kullandığınızdan emin olun.";
 "setup.passphrase.req1" = "Min. 8 karakter";
 "setup.passphrase.req2" = "Büyük harf ve küçük harf";
@@ -83,7 +81,7 @@
 "setup.finish.termsButton" = "Kullanım Şartları";
 "setup.finish.createButton" = "Cüzdan Oluştur";
 "setup.finish.openButton" = "Cüzdanını aç";
-"setup.finish.desc" = "Cüzdanın tamamlanıyor...";
+"setup.finish.desc" = "Cüzdanını tamamla...";
 "setup.finish.congrats" = "Cüdanın hazır! Tebrikler!";
 
 /*----------------------------------------
@@ -166,7 +164,7 @@
 "settings.settings.cell.changePinLabel" = "Cüzdan PIN'ini değiştir";
 "settings.settings.cell.useFaceIdLabel" = "Face ID kullan";
 "settings.settings.cell.torConnectionLabel" = "Tor Bağlantısı";
-"settings.other.header.title" = "Diğer";
+"settings.other.header.title" = "Diğerleri";
 "settings.other.cell.creditsLabel" = "Emeği Geçenler";
 "settings.other.cell.donateLabel" = "Bağış";
 "settings.other.cell.rateAppLabel" = "Uygulamayı Oyla";
@@ -176,7 +174,7 @@
 /*Paper key*/
 "settings.paperKey.titleLabel" = "Cüzdan kağıt anahtarınızı tekrar yazın";
 "settings.paperKey.descLabel" = "Kağıt anahtarını tekrar görmek ister misin? Bir sonraki ekranda, çok güvende tutmanız gereken ve bir kağıda yazılması gereken kelimelerin bir listesi gösterilir!";
-"settings.paperKey.showButton" = "Kağıt anahtarı göster";
+"settings.paperKey.showButton" = "Kağıt anahtarını göster";
 "settings.paperKey.preview.titleLabel" = "Kağıt anahtarınız";
 "settings.paperKey.preview.noticeLabel" = "Ekran görüntüsü almak güvenli değil. Kağıt anahtarını bir kağıda kalemle yazın.";
 "settings.paperKey.preview.descLabel" = "Her sözcüğü büyük harf olmadan dikkatlice yazın.";
@@ -232,11 +230,6 @@
 "settings.donate.desc2Label" = "Topluluk üyelerimizi dinlemek ve geri bildirim almak, Verge'nin temel kurucu ilkelerinden biri olmakla birlikte, aynı zamanda açık kaynak niteliğimizin esasıdır.";
 "settings.donate.addressLabel" = "Bağış XVG Adresi";
 "settings.donate.donateButton" = "XVG Bağışı Yap";
-
-/*Language*/
-"settings.language.title" = "Dil";
-"settings.language.default" = "Varsayılan";
-"settings.language.systemBased" = "Sistem bazlı";
 
 /*----------------------------------------
  Shortcuts
@@ -454,23 +447,3 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Henüz bir işlem alınmadı.";
-
-/*----------------------------------------
- Alerts
- ----------------------------------------*/
-"alerts.removeContact.title" = "Kişi sil";
-"alerts.removeContact.message" = "Kişiyi silmek istediğinden emin misin?";
-"alerts.invalidContact.title" = "Geçersiz kişi verisi";
-"alerts.invalidContact.message" = "Lütfen geçerli bir isim ve XVG adresi girin";
-"alerts.removeTransaction.title" = "İşlem sil";
-"alerts.removeTransaction.message" = "Bu işlemi silmek istediğinden emin misin?";
-"alerts.createAddress.title" = "Adres oluşturulamıyor";
-"alerts.createAddress.message" = "Çok fazla inaktif adres var.\nYenisini oluşturmak için eski adreslerden birini kullan.";
-"alerts.sendMaxInfo.title" = "Veri alınamadı";
-"alerts.sendMaxInfo.message" = "Sunucudan maksimum gönderim bilgisi alınamadı, lütfen tekrar deneyin.";
-"alerts.startTor.title" = "Tor aktif değil";
-"alerts.startTor.message" = "Tor senin IP'ni gizlemeden bu işlemi göndermek ister misin?\nYoksa Tor'u başlatmak ve kimliğini gizlemek mi istiyorsun?";
-"alerts.startTor.button1" = "Tor ile devam";
-"alerts.startTor.button2" = "Tor olmadan devam";
-"alerts.termsOfUse.title" = "Cüzdan Kullanım Koşullarını görüntüle";
-"alerts.restart.title" = "Yeniden başlıyor...";
