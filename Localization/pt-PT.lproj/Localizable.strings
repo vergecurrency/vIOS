@@ -11,11 +11,13 @@
 "defaults.ok" = "Ok";
 "defaults.cancel" = "Cancelar";
 "defaults.done" = "Feito";
-"defaults.remove" = "Remover";
+"defaults.remove" = "Eliminar";
 "defaults.back" = "Retroceder";
 "defaults.address" = "Endereço";
 "defaults.next" = "Próximo";
 "defaults.previous" = "Anterior";
+"defaults.delete" = "Eliminar";
+"defaults.open" = "Abrir";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -46,7 +48,7 @@
 "setup.pinCode.title" = "Insira o PIN";
 
 /*Set wallet pin*/
-"setup.pinCode.setPinTitle" = "Defina o PIN";
+"setup.pinCode.setPinTitle" = "Defina o PIN da carteira";
 "setup.pinCode.setPinDesc" = "O seu PIN da carteira será usado para abrir a app e para enviar XVG. Se o esquecer, não poderá aceder à sua carteira.";
 
 /*Re enter wallet pin*/
@@ -155,7 +157,7 @@
 "settings.title" = "Configurações";
 "settings.wallet.header.title" = "Carteira";
 "settings.wallet.footer.title" = "Gerir a carteira com as opções fornecidas.";
-"settings.wallet.cell.removeLabel" = "Remover carteira";
+"settings.wallet.cell.removeLabel" = "Eliminar carteira";
 "settings.wallet.cell.paperKeyLabel" = "Chave de papel";
 "settings.wallet.cell.addressesLabel" = "Endereços";
 "settings.wallet.cell.transactionsLabel" = "Propostas de transação";
@@ -189,7 +191,7 @@
 /*Addresses*/
 "settings.addresses.title" = "Endereços";
 "settings.addresses.descLabel" = "Cada carteira de verge pode gerar milhares de milhão de endereços a partir da sua frase de recuperação de 12 palavras. Um novo endereço é gerado automaticamente e exibido sempre que recebe um pagamento.";
-"settings.addresses.scanButton" = "Verificando endereços para saldo";
+"settings.addresses.scanButton" = "Verificando endereços para encontrar saldo";
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Propostas de transação";
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Ouvir os membros da nossa comunidade e receber feedback não é apenas um dos princípios fundamentais da Verge, mas é inerente à nossa natureza de código aberto.";
 "settings.donate.addressLabel" = "Endereço de doação XVG";
 "settings.donate.donateButton" = "Doar XVG";
+
+/*Language*/
+"settings.language.title" = "Idioma";
+"settings.language.default" = "Padrão";
+"settings.language.systemBased" = "Baseado no sistema";
 
 /*----------------------------------------
  Shortcuts
@@ -364,7 +371,7 @@
 /*----------------------------------------
  TransactionProposalsTableViewController.swift
  ----------------------------------------*/
-"settings.transactions.removeProposal" = "Remover uma proposta";
+"settings.transactions.removeProposal" = "Eliminar uma proposta";
 "settings.transactions.noProposals" = "Nenhuma proposta";
 "settings.transactions.releaseXvg" = "Liberte o XVG desta proposta de transação.";
 
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nenhuma transação recebida ainda.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Eliminar contacto";
+"alerts.removeContact.message" = "Tem a certeza que deseja eliminar o contacto?";
+"alerts.invalidContact.title" = "Dados de contacto inválidos";
+"alerts.invalidContact.message" = "Por favor forneça um nome e endereço XVG válidos";
+"alerts.removeTransaction.title" = "Eliminar transação";
+"alerts.removeTransaction.message" = "Tem a certeza que deseja eliminar esta transação?";
+"alerts.createAddress.title" = "Não é possível criar endereço";
+"alerts.createAddress.message" = "O máximo de endereços inativos foi atingido.\nUse um dos endereços já gerados para criar um novo.";
+"alerts.sendMaxInfo.title" = "Falha ao buscar dados";
+"alerts.sendMaxInfo.message" = "Falha ao buscar informações de envio máximo do servidor, tente novamente.";
+"alerts.startTor.title" = "O Tor não está ativo";
+"alerts.startTor.message" = "Quer enviar esta transação sem ofuscar o seu IP?\nOu quer iniciar o Tor e esconder a sua identidade?";
+"alerts.startTor.button1" = "Iniciar o Tor";
+"alerts.startTor.button2" = "Sem o Tor";
+"alerts.termsOfUse.title" = "Ver os Termos e Condições da Carteira";
+"alerts.restart.title" = "Reiniciando...";

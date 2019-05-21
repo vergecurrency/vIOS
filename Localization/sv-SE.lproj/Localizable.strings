@@ -16,6 +16,8 @@
 "defaults.address" = "Adress";
 "defaults.next" = "Nästa";
 "defaults.previous" = "Föregående";
+"defaults.delete" = "Radera";
+"defaults.open" = "Öppna";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Att lyssna på våra användare och ta in feedback är inte bara en av Verge’s kärngrundande principer, utan är ingående i vår öppna källkods natur.";
 "settings.donate.addressLabel" = "Donerings XVG adress";
 "settings.donate.donateButton" = "Donera XVG";
+
+/*Language*/
+"settings.language.title" = "Språk";
+"settings.language.default" = "Standard";
+"settings.language.systemBased" = "Systembaserad";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Inga transaktioner mottagna ännu.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Ta bort kontakt";
+"alerts.removeContact.message" = "Är du säker på att du vill ta bort kontakt?";
+"alerts.invalidContact.title" = "Ogiltlig kontaktinformation";
+"alerts.invalidContact.message" = "Vänligen fyll i giltligt namn och XVG adress";
+"alerts.removeTransaction.title" = "Ta bort transaktion";
+"alerts.removeTransaction.message" = "Är du säker på att du vill ta bort denna transaktion?";
+"alerts.createAddress.title" = "Kan ej skapa adress";
+"alerts.createAddress.message" = "Max antal inaktiva adresser har uppnåtts.\nAnvänd en redan befintlig genererad adress för att skapa en ny.";
+"alerts.sendMaxInfo.title" = "Datahämtning misslyckad";
+"alerts.sendMaxInfo.message" = "Misslyckad hämtning av skicka maximal information från server, vänligen försök igen.";
+"alerts.startTor.title" = "Tor är ej aktiverad";
+"alerts.startTor.message" = "Vill du skicka denna transaktion utan obfuskering av IP med Tor?\nEller vill du starta Tor och skydda din identitet?";
+"alerts.startTor.button1" = "Starta Tor";
+"alerts.startTor.button2" = "Utan Tor";
+"alerts.termsOfUse.title" = "Se användarvillkor för plånbok";
+"alerts.restart.title" = "Omstartar...";
