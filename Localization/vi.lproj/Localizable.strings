@@ -1,0 +1,449 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "Ok";
+"defaults.cancel" = "Hủy";
+"defaults.done" = "Xong";
+"defaults.remove" = "Xoá";
+"defaults.back" = "Trở lui";
+"defaults.address" = "Địa chỉ";
+"defaults.next" = "Tiếp theo";
+"defaults.previous" = "Trước";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "Ví";
+"mainTabBar.barItem.transactions.title" = "Giao dịch";
+"mainTabBar.barItem.send.title" = "Gửi";
+"mainTabBar.barItem.receive.title" = "Nhận";
+"mainTabBar.barItem.settings.title" = "Cài đặt";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Ví Verge iOS";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "Quyền riêng tư là tiêu chuẩn hàng đầu";
+
+/*Welcome*/
+"setup.welcome.message" = "Ví iOS của Verge an toàn , ẩn danh và riêng tư.\nGửi và nhận XVG.";
+"setup.welcome.createButton" = "Tạo ví mới";
+"setup.welcome.createDescription" = "Tạo ví XVG mới trên máy iOS của bạn.";
+"setup.welcome.restoreButton" = "Phục hồi lại ví";
+"setup.welcome.restoreDescription" = "Mất ví iOS? Phục hồi lại ở đây.";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "Nhập mã PIN để mở khoá";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "Đặt mã PIN cho ví";
+"setup.pinCode.setPinDesc" = "Mã PIN sẽ được dùng để mở khóa ứng dụng này, và để gửi XVG. Nếu bạn quên, bạn không thể nào truy cập vào ví của bạn.";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "Nhập lại mã PIN";
+"setup.pinCode.reenterPinSucceedTitle" = "Tuyệt vời ông Mặt trời";
+"setup.pinCode.reenterPinSucceedDesc" = "Mã PIN của bạn đã được lập";
+"setup.pinCode.reenterPinSucceedDesc2" = "Làm ơn đừng bao giờ quên nó";
+"setup.pinCode.reenterPinSucceedButton" = "Đã tiến hành";
+"setup.pinCode.reenterPinErrorTitle" = "Mã Pin không đúng!";
+"setup.pinCode.reenterPinErrorDesc" = "Mã Pin bạn không thể kiểm tra";
+"setup.pinCode.reenterPinErrorDesc2" = "Làm ơn thử lại.";
+"setup.pinCode.reenterPinErrorButton" = "Thử lại";
+"setup.pinCode.alert.chooseSize" = "Chọn kích thước mã PIN";
+"setup.pinCode.alert.digits" = "Số";
+
+/*Passphrase*/
+"setup.passphrase.title" = "Lấy khóa riêng trên  giấy của bạn với cụm mật khẩu";
+"setup.passphrase.desc" = "Mã hoá khoá riêng tư trên giấy là cách làm an toàn quan trọng. Hãy chắc rằng khi khôi phục một ví sử dụng mật khẩu trước của bạn.";
+"setup.passphrase.req1" = "Ít nhất 8 ký tự";
+"setup.passphrase.req2" = "Chữ thường và chữ hoa";
+"setup.passphrase.req3" = "Ký tự đặc biệt (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder" = "Nhập mật khẩu của bạn";
+"setup.passphrase.confirmButton" = "Xác nhận";
+"setup.passphrase.confirmTitle" = "Xác nhận mật khẩu";
+"setup.passphrase.proceedButton" = "Đã tiến hành";
+
+/*Finish*/
+"setup.finish.title" = "Phần lớn đã sẵn sàng!";
+"setup.finish.switch1" = "Tôi hiểu rằng tiền quỹ của tôi được giữ an toàn trên thiết bị này.";
+"setup.finish.switch2" = "Tôi hiểu rằng nếu ứng dụng này chuyển sang thiết bị khác hoặc bị xóa, số lượng XVG của tôi có thể khôi phục với khóa riêng tư trên giấy và mật khẩu.";
+"setup.finish.switch3" = "Tôi đã đọc, hiểu và đồng ý với Điều khoản sử dụng(Terms of Use). ";
+"setup.finish.termsButton" = "Điều khoản sử dụng";
+"setup.finish.createButton" = "Tạo ví";
+"setup.finish.openButton" = "Mở ví của bạn";
+"setup.finish.desc" = "Hoàn thành xong ví của bạn....";
+"setup.finish.congrats" = "Ví bạn đã sẵn sàn!Chúc mừng!";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "Khóa riêng tư trên giấy";
+"welcomeGuide.paperKey.message" = "Trong màn hình tiếp, bạn sẽ thấy danh sách các từ để viết xuống miếng giấy, miếng giấy này phải nên được giữ an toàn!";
+"welcomeGuide.paperKey.description" = "Ví khóa riêng tư trên giấy là một phần của khóa riêng tư mà có nó bạn mới có thể  truy cập vào tiền quỹ của bạn.";
+"welcomeGuide.paperKey.actionButton" = "Viết xuống giấy khóa riêng tư";
+"welcomeGuide.paperKey.makeSureLabel" = "Để chắc rằng việc ghi chép là đúng, làm ơn nhập những từ sau từ ví giấy của bạn";
+"welcomeGuide.paperKey.submitButton" = "Gửi đi";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "Nhận";
+"receive.addressButtonLabel" = "Địa chỉ";
+"receive.amountButtonLabel" = "Số tiền";
+"receive.amountPlaceholder" = "Số tiền nhận";
+"receive.stealthAddressLabel" = "Địa chỉ tàng hình(Stealth Address)";
+"receive.shareButton" = "Chia sẻ";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "Khôi phục ví";
+"restoreGuide.restore.desc" = "Trong màn hình tiếp, bạn sẽ cần phải điền khóa trên giấy chính xác vị trí từng chữ , đó là một yêu cầu.";
+"restoreGuide.restore.notice" = "Làm ơn chắc rằng không ai nhìn thấy bạn làm trong xuất tiến trình này.";
+"restoreGuide.restore.restoreButton" = "Bắt đầu khôi phục";
+"restoreGuide.restore.paperKeyTitle" = "Khóa riêng tư trên giấy ( ví giấy) của bạn :";
+"restoreGuide.restore.paperKeyWarning" = "Bạn có chắc là khóa trên ví giấy là chính xác không?";
+"restoreGuide.restore.paperKeyProceedButton" = "Đã tiến hành.";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "Quét mã QR của ví giấy";
+"restoreGuide.qrcode.closeButton" = "Đóng";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "Gửi";
+"send.addressButtonLabel" = "Địa chỉ nhận";
+"send.addressPlaceholder" = "Nhập địa chỉ nhận";
+"send.amountButtonLabel" = "Số lượng";
+"send.memoButtonLabel" = "Memo nội bộ( tùy biến)";
+"send.memoPlaceholder" = "Quà cho Swen";
+"send.confirmButton" = "Xác nhận";
+"send.noBalanceTitle" = "Không có số dư";
+"send.noBalanceDesc" = "Bạn không có xíu XVG nào để gửi. Làm ơn tăng số dư của bạn.";
+
+/*QR-code*/
+"send.qrcode.title" = "Quét một mã QR XVG";
+"send.qrcode.closeButton" = "Đóng";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "Chọn một người nhận";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "SỐ DƯ XVG";
+"wallet.balanceTitle" = "SỐ DƯ";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "Cài đặt";
+"settings.wallet.header.title" = "Ví";
+"settings.wallet.footer.title" = "Quản lý vì của bạn với các tùy chọn.";
+"settings.wallet.cell.removeLabel" = "Loại bỏ ví.";
+"settings.wallet.cell.paperKeyLabel" = "Ví giấy";
+"settings.wallet.cell.addressesLabel" = "Địa chỉ";
+"settings.wallet.cell.transactionsLabel" = "Các đề xuất giao dịch.";
+"settings.wallet.cell.serviceUrlLabel" = "URL dịch vụ";
+"settings.settings.cell.fiatCurrencyLabel" = "Tiền pháp định";
+"settings.settings.cell.changePinLabel" = "Thay số PIN ví";
+"settings.settings.cell.useFaceIdLabel" = "Sử dụng nhận diện khuôn mặt";
+"settings.settings.cell.torConnectionLabel" = "Kết nối qua mạng Tor";
+"settings.other.header.title" = "Khác";
+"settings.other.cell.creditsLabel" = "Tín dụng";
+"settings.other.cell.donateLabel" = "Ủng hộ";
+"settings.other.cell.rateAppLabel" = "Xếp hạng ứng dụng";
+"settings.other.cell.websiteLabel" = "Trang quép";
+"settings.other.cell.contributeLabel" = "Góp phần";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "Viết xuống khóa giấy ví giấy lại một lần";
+"settings.paperKey.descLabel" = "Bạn muốn xem khóa ví giấy lần nữa không?Trong màn hình tiếp, bạn sẽ thấy danh sách các từ để viết xuống giấy, miểng giấy này phải được cất giữ an toàn!";
+"settings.paperKey.showButton" = "Xem khóa riêng tư ví giấy";
+"settings.paperKey.preview.titleLabel" = "Khóa riêng tư ví giấy";
+"settings.paperKey.preview.noticeLabel" = "Chụp hình màn hình là không an toàn. Viết xuống giấy với bút và miếng giấy.";
+"settings.paperKey.preview.descLabel" = "Viết xuống cẩn thận từng từ không in Hoa";
+"settings.paperKey.preview.wordsSegment" = "Từ";
+"settings.paperKey.preview.qrSegment" = "Mã QR";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "Ngắt kết nối thiết bị này với ví hiện tại";
+"settings.disconnect.descLabel" = "Bạn đã ngắt kết nối của thiết bị này và ví hiện tại.Làm ơn chắc chắn bạn đã ghi chép các từ khóa riêng tư xuống giấy và nhớ mật khẩu. Nhớ rằng với khóa riêng tư trên giấy và mật khẩu chỉ là cách duy nhất để khôi phục ví hiện tại của bạn.";
+"settings.disconnect.disconnectButton" = "Ngắt kết nối";
+
+/*Addresses*/
+"settings.addresses.title" = "Địa chỉ";
+"settings.addresses.descLabel" = "Mỗi vì Verge có thể tạo ra hàng tỷ địa chỉ từ 12 chữ khôi phục. Một địa chỉ mới được tạo tự động và trưng ra mỗi lần bạn nhận thanh toán.";
+"settings.addresses.scanButton" = "Quét địa chỉ để biết số dư";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "Các đề xuất giao dịch";
+"settings.transactions.descLabel" = "Các đề xuất giao dịch bị lỗi trong xuất quá trình giao dịch được ghi ra bên dưới. Bạn cần xóa chúng bằng tay để giải phóng tiền quỹ.";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "URL dịch vụ";
+"settings.serviceUrl.header.title" = "URL ví dịch vụ";
+"settings.serviceUrl.footer.title" = "Ứng dụng này thuộc Verge Wallet Service(VWS) để thông tin chuỗi khối,mạng và đồng bộ Copayer.\nĐiểm cài đặt mặt định tới https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)";
+"settings.serviceUrl.defaultUrlButton" = "Sử dụng url mặc định";
+"settings.serviceUrl.saveButton" = "Lưu";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "Tiền pháp định";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Sử dụng nhận dạng khuôn mặt";
+"settings.useFaceID.header.title" = "Sử dụng cho";
+"settings.useFaceID.footer.title" = "Thay vì phải nhận số PIN , bạn sẽ được cung cấp cách thay thể để xác thực chính bạn";
+"settings.useFaceID.unlockLabel" = "Mở khóa ví bạn";
+"settings.useFaceID.sendingLabel" = "Đang gửi XVG";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Tor ở đầy để có sự riêng tư và che giấu vị trí của bạn";
+"settings.torConnection.descLabel" = "Địa chỉ IP của bạn bị che khuất hoàn toàn và các giao dịch hoàn toàn không thể truy vết được khi bạn đang sử dụng kết nối Tor.";
+"settings.torConnection.obfuscateIpLabel" = "Che dấu địa chỉ IP";
+"settings.torConnection.yourIpLabel" = "Địa chỉ IP của bạn";
+"settings.torConnection.loadingLabel" = "Đang tải...";
+"settings.torConnection.notAvailable" = "Dịch vụ chưa sẵn sàng";
+
+/*Credits*/
+"settings.credits.title" = "Tín dụng";
+"settings.credits.descLabel" = "Ứng dụng này được sinh ra được bởi các anh hùng cái thế sau:";
+
+/*Donate*/
+"settings.donate.titleLabel" = "Ủng hộ để trợ giúp phát triển";
+"settings.donate.descLabel" = "ở Verge chúng tôi luôn luôn phấn đấu để đạt được những tầm cao mới và cung cấp các sản phẩm hoặc triển khai phần mềm được cộng đồng yêu cầu.";
+"settings.donate.desc2Label" = "Lắng nghe các thành viên cộng đồng của chúng tôi và tham gia phản hồi không chỉ là một trong những nguyên tắc sáng lập cốt lõi của Verge, mà nó vốn có trong bản chất phần mềm nguồn mở.";
+"settings.donate.addressLabel" = "Địa chỉ ủng hộ XVG";
+"settings.donate.donateButton" = "Ủng hộ XVG";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "Trang quép";
+"shortcuts.action.sourceCode.title" = "Mã nguồn";
+"shortcuts.action.send.title" = "Gửi";
+"shortcuts.action.receive.title" = "Nhận";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "Đã chuyển";
+"transaction.state.received" = "Đã nhận";
+"transaction.state.pending" = "Đang treo";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1 Ngày";
+"chart.filter.oneWeek" = "1 Tuần";
+"chart.filter.oneMonth" = "1 Tháng";
+"chart.filter.threeMonths" = "3 Tháng";
+"chart.filter.oneYear" = "1 Năm";
+"chart.filter.all" = "Tất cả";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "Lịch sử giá";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "Lịch sử khối lượng giao dịch";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "Địa chỉ XVG của tôi";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "Nhập từ";
+"paperKey.outOf" = "ra của";
+"paperKey.egCat" = "( ví dụ Cat)";
+"paperKey.key" = "Khóa";
+"paperKey.word" = "Từ";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "Gửi XVG";
+"send.noConnection" = "Không kết nối";
+"send.transactionFailed" = "Giao dịch không được";
+"send.transactionFailedMessage" = "Giao dịch của bạn bị thất bại do lỗi sau:";
+"send.notEnoughBalance" = "Không đủ số dư";
+"send.notEnoughBalanceMessage1" = "Bạn không có đủ số dư để gửi";
+"send.notEnoughBalanceMessage2" = "Thay đổi số dư cần gửi để tiến hành";
+"send.sendMax" = "Gửi hết";
+"send.wrongAddress" = "Sai địa chỉ";
+"send.enterValidAddress" = "Địa chỉ đã nhập không phải là địa chỉ Verge. Làm ơn nhập địa chỉ Verge đúng";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "Đã giải quyết địa chi tàng hình(stealth address)";
+"send.confirm.confirmTitleLabel" = "Xác nhận giao dịch";
+"send.confirm.recipientLabel" = "Người nhận";
+"send.confirm.doubleCheckDescLabel" = "Kiểm tra lai rằng địa chỉ ví là đúng. Verge Currency không thể kiểm soát mất mác số XVG bạn gửi sai địa chỉ.";
+"send.confirm.sendingLabel" = "Đang gửi";
+"send.confirm.transactionFeeLabel" = "Phí giao dịch";
+"send.confirm.totalLabel" = "Tổng";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "Đang ký giao dịch";
+"send.sending.broadcastingTransaction" = "Đang phát đi giao dịch";
+"send.sending.transactionSent" = "Giao dịch đã gửi!";
+"send.sending.publishingTransaction" = "Đang xuất bản giao dịch";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "Sử dụng xác thực vân tay";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "Địa chỉ đã sao chép!";
+"addresses.addressesWithBalance" = "Địa chỉ với số dư";
+"addresses.unusedAddresses" = "Địa chỉ không sử dụng";
+"addresses.addressOptions" = "Tùy chọn địa chỉ";
+"addresses.informationTypeMessage" = "Thông tin gì bạn muốn sao chép vào bảng ghi?";
+"addresses.address" = "Địa chỉ";
+"addresses.balance" = "Số dư";
+"addresses.balanceCopied" = "Số dư đã sao chép!";
+"addresses.publicKey" = "Khóa công khai";
+"addresses.publicKeyCopied" = "Khóa công khai đã sao chép!";
+"addresses.privateKey" = "Khóa riêng tư";
+"addresses.privateKeyCopied" = "Khóa riêng tư đã sao chép!";
+"addresses.scanningAddresses" = "Đang quét địa chỉ";
+"addresses.scanningAddressesMessage" = "Đang quét địa chỉ để biết số dư. Có thể tốn chút thời gian để hoàn thành.";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "Phát triển";
+"credits.header.design" = "Thiết kế";
+"credits.header.translation" = "Giao dịch";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "Ngắt kết nối ví";
+"settings.disconnect.alert.message" = "Bạn ngắt kết nối thiết bị cho ví hiện tại. Làm ơn chắc chắn như bê tông chôn đất rằng bạn đã ghi xuống các khóa riêng tư xuống giấy. Và nên nhớ rằng khóa riêng tư giấy chỉ là cách bạn khôi phục ví hiện tại của bạn.";
+"settings.disconnect.alert.disconnect" = "Ngắt kết nối";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "Đang thay đổi dịch vụ";
+"settings.serviceUrl.alert.message" = "Đang thay đổi URL dịch vụ, làm ơn đợi chút xí...";
+"settings.serviceUrl.alert.usePrevUrl" = "Sử dụng URL dịch vụ lần trước";
+"settings.serviceUrl.alert.errorChanging" = "Lỗi khi thay đổi";
+"settings.serviceUrl.alert.errorChanging2" = "Một lỗi nổi lên trong quá trình chuyển URL dịch vụ. Làm ơn thử lại hoặc sử dụng URL dịch vụ khác";
+"settings.serviceUrl.alert.title2" = "Đã thay đổi dịch vụ";
+"settings.serviceUrl.alert.message2" = "Đã thay đổi URL dịch vụ thành công.";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "Xóa đề xuất";
+"settings.transactions.noProposals" = "Không đề xuất";
+"settings.transactions.releaseXvg" = "Giải phóng XVG trong đề xuất giao dịch này";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Verge Currency\nCho dấu vị trí bạn";
+"setup.tor.slide1.descLabel" = "Verge dùng mạng Tor để che vị trí IP của bạn";
+"setup.tor.slide2.titleLabel" = "Chỉ báo trạng thái của Tor cho biết như sau ...\n";
+"setup.tor.slide2.descLabel1" = "Tor được tắt và vị trí địa IP bạn sẽ công khai cho dân Trái Đất biết.";
+"setup.tor.slide2.descLabel2" = "Tor đang nối. Không có kết nối internet được thực hiện vào lúc này.";
+"setup.tor.slide2.descLabel3" = "Tor được mở và vị trí IP bạn bị che";
+"setup.tor.slide2.descLabel4" = "Tor không thể kết nối và có cái gì đó sai sai. Giải pháp là khởi động lại trứng rụng ngày.";
+"setup.tor.slide3.titleLabel" = "Hãy bật Tor lên";
+"setup.tor.slide3.titleLabel2" = "Bật Tor lên";
+"setup.tor.slide3.descLabel" = "Chắc rằng Tor là hợp pháp ở đất nước bạn. Thật không may, một số nước không muốn bạn có riêng tư.";
+"setup.tor.slide3.negativeButton" = "Đã tiến hành không có Tor";
+"setup.tor.slide3.positiveButton" = "Đã tiến hành có Tor";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "Các giao dịch";
+"transactions.transaction.title" = "Ai đây?";
+"transactions.contacts.title" = "Danh bạ";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "Tìm giao dịch";
+"transactions.search.all" = "Tất cả";
+"transactions.search.sent" = "Đã gửi";
+"transactions.search.received" = "Đã nhận";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "Chi tiết giao dịch";
+"transactions.transaction.history" = "Lịch sử giao dịch";
+"transactions.transaction.confirmations" = "Các xác nhận";
+"transactions.transaction.txidCopied" = "Đã sao chép Txid!";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "Không có nhận giao dịch nào hết";
+"transactions.noTransaction.descLabel" = "Các giao dịch đã nhận có thể tìm thấy ở đây";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Chi tiết liên lạc";
+"transactions.contact.name" = "Tên";
+"transactions.contact.section.history" = "Lịch sử giao dịch";
+"transactions.contact.saved" = "Liên lạc đã lưu!";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Tìm kiếm người liên lạc";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Người liên lạc chưa tạo nơi";
+"transactions.noContacts.descLabel" = "Thêm người liên lạc để dễ dàng gửi XVG";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "Các giao dịch gần đây";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "Thống kê";
+"wallet.slides.summary.dataNotFound" = "Số liệu thông kê không tìm thấy";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "Tổng vốn thị trường";
+"wallet.slides.summary.24hHigh" = "Cao nhất trong 24 giờ";
+"wallet.slides.summary.24hLow" = "Thấp nhất trong 24 giờ";
+"wallet.slides.summary.24hChange" = "Thay đổi trong 24 giờ";
+"wallet.slides.summary.24hVolume" = "Lượng giao dịch trong 24 giờ";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "Biểu đồ";
+"wallet.slides.chart.high" = "Cao";
+"wallet.slides.chart.average" = "Trung bình";
+"wallet.slides.chart.low" = "Thấp";
+"wallet.slides.chart.availability" = "dữ liệu biểu đồ chỉ sẵn sàng cho USD";
+"wallet.slides.chart.noData" = "Biểu đồ không thấy";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "Không có giao dịch nhận tiền nào.";

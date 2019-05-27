@@ -263,6 +263,8 @@
 		CAD6F29D21FE345500AA3162 /* QRCodeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29C21FE345500AA3162 /* QRCodeInterfaceController.swift */; };
 		CAD6F2A021FE3DE400AA3162 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29F21FE3DE400AA3162 /* ConnectivityManager.swift */; };
 		CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F2A321FE4DDD00AA3162 /* WatchSyncManager.swift */; };
+		CAD85A5B2291A7D20063BF25 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD85A5A2291A7D20063BF25 /* LanguageTableViewController.swift */; };
+		CAD85A5D2291B6B80063BF25 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD85A5C2291B6B80063BF25 /* Languages.swift */; };
 		CAD929F521E7DFA300CD5EBA /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */; };
 		CAD929F921E7DFA300CD5EBA /* VergeSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAD92A0021E7E07100CD5EBA /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAD929FF21E7E07100CD5EBA /* Intents.intentdefinition */; };
@@ -427,6 +429,11 @@
 		A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3256696211CBBE2006FB08A /* VergeiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VergeiOSUITests.swift; sourceTree = "<group>"; };
 		A3256698211CBBE2006FB08A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A32BFC422286D177007A8F90 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A32BFC4322880831007A8F90 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A32BFC4422880839007A8F90 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A32BFC4522880885007A8F90 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A32BFC4622880891007A8F90 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
 		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
 		A338E69B210D456D000D44EE /* ConfirmPaperkeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaperkeyViewController.swift; sourceTree = "<group>"; };
@@ -597,6 +604,7 @@
 		B2BD7FCF43583EC06BE16725 /* EventServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD7FE6CE69F7288EADDB6F /* CreateAddressErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressErrorResponse.swift; sourceTree = "<group>"; };
 		CA101BAD224629590058B84C /* ShortcutsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsManager.swift; sourceTree = "<group>"; };
+		CA15CE54228FE3970053FDC5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeGuide.storyboard; sourceTree = "<group>"; };
 		CA2B4A1A226B34C300115B2D /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
@@ -611,6 +619,7 @@
 		CA522EAE220318B000331B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA522EB72203323A00331B0F /* VergeSiriUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiriUI.entitlements; sourceTree = "<group>"; };
 		CA5FCC7D22842BD1002340A1 /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		CA60D193228D53300029FED0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTableViewController.swift; sourceTree = "<group>"; };
 		CA63BA742282DC1C00E2023A /* LocalizableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableSegmentedControl.swift; sourceTree = "<group>"; };
 		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -630,6 +639,8 @@
 		CAD6F29C21FE345500AA3162 /* QRCodeInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeInterfaceController.swift; sourceTree = "<group>"; };
 		CAD6F29F21FE3DE400AA3162 /* ConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		CAD6F2A321FE4DDD00AA3162 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
+		CAD85A5A2291A7D20063BF25 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewController.swift; sourceTree = "<group>"; };
+		CAD85A5C2291B6B80063BF25 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		CAD929F221E7DFA200CD5EBA /* VergeSiri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD929F421E7DFA300CD5EBA /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		CAD929F621E7DFA300CD5EBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -638,6 +649,11 @@
 		CADA0BE92203B15E00FE74C1 /* VergeSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiri.entitlements; sourceTree = "<group>"; };
 		CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsManager.swift; sourceTree = "<group>"; };
 		CAF4F6DD222AD0DA00096B71 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
+		CAFB2004228AC7040096623D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CAFB2006228AC8BD0096623D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CAFB2007228AC9170096623D /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		CAFC45E6228C169700D4F287 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CAFC45E7228C189100D4F287 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1068,6 +1084,7 @@
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 				B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */,
+				CAD85A5A2291A7D20063BF25 /* LanguageTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1309,6 +1326,7 @@
 		CA2B4A1E226B393300115B2D /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				CAD85A5C2291B6B80063BF25 /* Languages.swift */,
 				CA2B4A2B226B398A00115B2D /* Localizable.strings */,
 			);
 			path = Localization;
@@ -1676,6 +1694,18 @@
 				en,
 				ru,
 				Base,
+				nl,
+				fr,
+				tr,
+				hr,
+				es,
+				de,
+				"pt-BR",
+				"sv-SE",
+				it,
+				"pt-PT",
+				vi,
+				ja,
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -1890,6 +1920,7 @@
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */,
 				A3B2E2642148421300C31719 /* NoTransactionsPlaceholderView.swift in Sources */,
+				CAD85A5B2291A7D20063BF25 /* LanguageTableViewController.swift in Sources */,
 				A305DDBF2107C82200911B64 /* EmptyKey.swift in Sources */,
 				A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */,
 				A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */,
@@ -1912,6 +1943,7 @@
 				A3AA22012163F66B00160576 /* TorStatusIndicatorViewController.swift in Sources */,
 				A339393621B877750010CC4A /* PassphraseViewController.swift in Sources */,
 				CA63BA752282DC1C00E2023A /* LocalizableSegmentedControl.swift in Sources */,
+				CAD85A5D2291B6B80063BF25 /* Languages.swift in Sources */,
 				A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */,
 				A338E6B0210FD558000D44EE /* TransactionsTableViewController.swift in Sources */,
 				A3E32B20225D5983001A8B0E /* SendViewServiceProvider.swift in Sources */,
@@ -2133,6 +2165,18 @@
 			children = (
 				CA2B4A2A226B398A00115B2D /* en */,
 				CA2B4A2C226B398E00115B2D /* ru */,
+				A32BFC422286D177007A8F90 /* nl */,
+				A32BFC4322880831007A8F90 /* fr */,
+				A32BFC4422880839007A8F90 /* tr */,
+				A32BFC4522880885007A8F90 /* hr */,
+				A32BFC4622880891007A8F90 /* es */,
+				CAFB2004228AC7040096623D /* de */,
+				CAFB2006228AC8BD0096623D /* pt-BR */,
+				CAFB2007228AC9170096623D /* sv-SE */,
+				CAFC45E6228C169700D4F287 /* it */,
+				CAFC45E7228C189100D4F287 /* pt-PT */,
+				CA60D193228D53300029FED0 /* vi */,
+				CA15CE54228FE3970053FDC5 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

@@ -275,6 +275,12 @@
 "settings.donate.addressLabel"              = "Donation XVG Address";
 "settings.donate.donateButton"              = "Donate XVG";
 
+// Language
+
+"settings.language.title"                   = "Language";
+"settings.language.default"                 = "Default";
+"settings.language.systemBased"             = "System based";
+
 // ----------------------------------------
 // Shortcuts
 // ----------------------------------------
@@ -437,7 +443,7 @@
 "setup.tor.slide1.descLabel"                = "Verge uses the Tor network to obfuscate\nyour location and IP address.";
 
 "setup.tor.slide2.titleLabel"               = "The Tor status indicator tells the following...";
-"setup.tor.slide2.descLabel1"               = "Tor is turned off and your location and IP is publicily available.";
+"setup.tor.slide2.descLabel1"               = "Tor is turned off and your location and IP is publicly available.";
 "setup.tor.slide2.descLabel2"               = "Tor is connecting. No connections to the internet are made at this point.";
 "setup.tor.slide2.descLabel3"               = "Tor is turned on and your location and IP is obfuscated.";
 "setup.tor.slide2.descLabel4"               = "Tor can't connect and something went wrong. The only solution for now is a restart of the application.";
@@ -524,3 +530,24 @@
 // NoWalletTransactionsPlaceholderTableViewCell.xib
 
 "wallet.slides.noTransactions.titleLabel"   = "No transactions received yet.";
+
+// ----------------------------------------
+// Alerts
+// ----------------------------------------
+
+"alerts.removeContact.title"                = "Remove contact";
+"alerts.removeContact.message"              = "Are you sure you want to remove the contact?";
+"alerts.invalidContact.title"               = "Invalid contact data";
+"alerts.invalidContact.message"             = "Please provide a valid name and XVG address";
+"alerts.removeTransaction.title"            = "Remove transaction";
+"alerts.removeTransaction.message"          = "Are you sure you want to remove this transaction?";
+"alerts.createAddress.title"                = "Cannot create address";
+"alerts.createAddress.message"              = "The maximum of inactive addresses have been reached.\nUse one of the already generated addresses to create a new one.";
+"alerts.sendMaxInfo.title"                  = "Failed fetching data";
+"alerts.sendMaxInfo.message"                = "Failed to fetch the send maximum info from the server, please try again.";
+"alerts.startTor.title"                     = "Tor is not activated";
+"alerts.startTor.message"                   = "Do you want to send this transaction without Tor obfuscating your IP?\nOr do you want to start Tor and hide your identity?";
+"alerts.startTor.button1"                   = "Start Tor";
+"alerts.startTor.button2"                   = "Without Tor";
+"alerts.termsOfUse.title"                   = "View Wallet Terms of Use";
+"alerts.restart.title"                      = "Restarting...";

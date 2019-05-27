@@ -8,8 +8,8 @@ import UIKit
 extension UIAlertController {
     static func createDeleteContactAlert(handler: ((UIAlertAction) -> Void)?) -> UIAlertController{
         let alert = UIAlertController(
-            title: "Remove contact",
-            message: "Are you sure you want to remove the contact?",
+            title: "alerts.removeContact.title".localized,
+            message: "alerts.removeContact.message".localized,
             preferredStyle: .alert
         )
 
@@ -23,8 +23,8 @@ extension UIAlertController {
     
     static func createInvalidContactAlert() -> UIAlertController {
         let alert = UIAlertController(
-            title: "Invalid contact data",
-            message: "Please provide a valid name and XVG address",
+            title: "alerts.invalidContact.title".localized,
+            message: "alerts.invalidContact.message".localized,
             preferredStyle: .alert
         )
         
@@ -35,8 +35,8 @@ extension UIAlertController {
 
     static func createDeleteTransactionAlert(handler: ((UIAlertAction) -> Void)?) -> UIAlertController {
         let alert = UIAlertController(
-            title: "Remove transaction",
-            message: "Are you sure you want to remove this transaction?",
+            title: "alerts.removeTransaction.title".localized,
+            message: "alerts.removeTransaction.message".localized,
             preferredStyle: .alert
         )
 
@@ -50,9 +50,8 @@ extension UIAlertController {
 
     static func createAddressGapReachedAlert() -> UIAlertController {
         let alert = UIAlertController(
-            title: "Cannot create address",
-            message: "The maximum of inactive addresses have been reached. " +
-                "Use one of the already generated addresses to create a new one.",
+            title: "alerts.createAddress.title".localized,
+            message: "alerts.createAddress.message".localized,
             preferredStyle: .alert
         )
 
@@ -63,8 +62,8 @@ extension UIAlertController {
 
     static func createSendMaxInfoAlert() -> UIAlertController {
         let alert = UIAlertController(
-            title: "Failed fetching data",
-            message: "Failed to fetch the send maximum info from the server, please try again.",
+            title: "alerts.sendMaxInfo.title".localized,
+            message: "alerts.sendMaxInfo.message".localized,
             preferredStyle: .alert
         )
 
@@ -75,21 +74,20 @@ extension UIAlertController {
 
     static func createStartTorActionSheet() -> UIAlertController {
         let actionSheet = UIAlertController(
-            title: "Tor is not activated",
-            message: "Do you want to send this transaction without Tor obfuscating your IP? " +
-                "Or do you want to start Tor and hide your identity?",
+            title: "alerts.startTor.title".localized,
+            message: "alerts.startTor.message".localized,
             preferredStyle: .actionSheet
         )
 
-        actionSheet.addAction(UIAlertAction(title: "Start Tor", style: .default))
-        actionSheet.addAction(UIAlertAction(title: "Without Tor", style: .destructive))
+        actionSheet.addAction(UIAlertAction(title: "alerts.startTor.button1".localized, style: .default))
+        actionSheet.addAction(UIAlertAction(title: "alerts.startTor.button2".localized, style: .destructive))
         actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
 
         return actionSheet
     }
 
     static func createShowTermsOfUseAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "View Wallet Terms of Use", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "alerts.termsOfUse.title".localized, message: nil, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
         alert.addAction(UIAlertAction(title: "defaults.open".localized, style: .default) { action in
@@ -98,6 +96,12 @@ extension UIAlertController {
             }
         })
 
+        return alert
+    }
+    
+    static func restartAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "alerts.restart.title".localized, message: nil, preferredStyle: .alert)
+        
         return alert
     }
 }

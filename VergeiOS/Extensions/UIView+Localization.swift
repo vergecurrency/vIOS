@@ -13,7 +13,7 @@ extension UILabel {
     
     @IBInspectable var localizationId: String {
         set(value) {
-            self.text = NSLocalizedString(value, comment: "")
+            self.text = value.localized
         }
         get {
             return ""
@@ -26,7 +26,7 @@ extension UIButton {
     
     @IBInspectable var localizationId: String {
         set(value) {
-            self.setTitle(NSLocalizedString(value, comment: ""), for: .normal)
+            self.setTitle(value.localized, for: .normal)
         }
         get {
             return ""
@@ -39,7 +39,7 @@ extension UINavigationItem {
     
     @IBInspectable var localizationTitleId: String {
         set(value) {
-            self.title = NSLocalizedString(value, comment: "")
+            self.title = value.localized
         }
         get {
             return ""
@@ -48,7 +48,7 @@ extension UINavigationItem {
     
     @IBInspectable var localizationPromptId: String {
         set(value) {
-            self.prompt = NSLocalizedString(value, comment: "")
+            self.prompt = value.localized
         }
         get {
             return ""
@@ -57,7 +57,7 @@ extension UINavigationItem {
     
     @IBInspectable var localizationBackButtonId: String {
         set(value) {
-            self.backBarButtonItem?.title = NSLocalizedString(value, comment: "")
+            self.backBarButtonItem?.title = value.localized
         }
         get {
             return ""
@@ -70,7 +70,7 @@ extension UITextField {
     
     @IBInspectable var localizationPlaceholderId: String {
         set(value) {
-            self.placeholder = NSLocalizedString(value, comment: "")
+            self.placeholder = value.localized
         }
         get {
             return ""
@@ -83,7 +83,7 @@ extension SelectorButton {
     
     @IBInspectable var localizationLabelId: String {
         set(value) {
-            self.label = NSLocalizedString(value, comment: "")
+            self.label = value.localized
         }
         get {
             return ""
@@ -96,7 +96,7 @@ extension UITabBarItem {
     
     @IBInspectable var localizationTitleId: String {
         set(value) {
-            self.title = NSLocalizedString(value, comment: "")
+            self.title = value.localized
         }
         get {
             return ""

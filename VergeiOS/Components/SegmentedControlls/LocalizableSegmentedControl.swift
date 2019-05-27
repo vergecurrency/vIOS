@@ -18,7 +18,7 @@ class LocalizableSegmentedControl: UISegmentedControl {
                 if subSubview.isKind(of: UILabel.self) {
                     let label = subSubview as! UILabel
                     if (label.text != nil) {
-                        label.text = NSLocalizedString(label.text!, comment: "")
+                        label.text = label.text!.localized
                     }
                 }
             }

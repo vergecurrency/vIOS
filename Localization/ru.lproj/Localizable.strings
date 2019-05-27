@@ -18,6 +18,8 @@
 "defaults.address"                          = "Адрес";
 "defaults.next"                             = "Далее";
 "defaults.previous"                         = "Предыдущее";
+"defaults.delete"                           = "Удалить";
+"defaults.open"                             = "Открыть";
 
 // ----------------------------------------
 // MainTabbarNavigation.storyboard
@@ -273,6 +275,12 @@
 "settings.donate.addressLabel"              = "XVG адрес для поддержки";
 "settings.donate.donateButton"              = "Поддержать Verge";
 
+// Language
+
+"settings.language.title"                   = "Язык";
+"settings.language.default"                 = "По умолчанию";
+"settings.language.systemBased"             = "Определяется системой";
+
 // ----------------------------------------
 // Shortcuts
 // ----------------------------------------
@@ -522,3 +530,24 @@
 // NoWalletTransactionsPlaceholderTableViewCell.xib
 
 "wallet.slides.noTransactions.titleLabel"   = "Пока не было транзакций.";
+
+// ----------------------------------------
+// Alerts
+// ----------------------------------------
+
+"alerts.removeContact.title"                = "Удалить контакт";
+"alerts.removeContact.message"              = "Вы уверены, что хотите удалить контакт?";
+"alerts.invalidContact.title"               = "Неверный формат данных";
+"alerts.invalidContact.message"             = "Пожалуйста, укажите валидное имя пользователя и адрес XVG кошелька";
+"alerts.removeTransaction.title"            = "Удалить транзакцию";
+"alerts.removeTransaction.message"          = "Вы уверены, что хотите удалить данную транзакцию?";
+"alerts.createAddress.title"                = "Невозможно создать адрес";
+"alerts.createAddress.message"              = "Достигнуто максимальное количество неиспользуемых адресов.\nИспользуйте один из сгенерированных адресов, чтобы создать еще один новый";
+"alerts.sendMaxInfo.title"                  = "Не удалось загрузить данные";
+"alerts.sendMaxInfo.message"                = "Ошибка загрузки информации по максимальному количеству с сервера. Попробуйте еще раз.";
+"alerts.startTor.title"                     = "Tor-соединение неактивно";
+"alerts.startTor.message"                   = "Вы хотите отправить данную транзакцию без Tor-соединения, не скрывая Ваш IP-адрес?\nИли Вы хотите запустить Tor и скрыть Вашу личность?";
+"alerts.startTor.button1"                   = "Запустить Tor";
+"alerts.startTor.button2"                   = "Без Tor";
+"alerts.termsOfUse.title"                   = "Просмотр Правил использования";
+"alerts.restart.title"                      = "Перезагрузка...";

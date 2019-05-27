@@ -1,0 +1,449 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "OK";
+"defaults.cancel" = "キャンセル";
+"defaults.done" = "完了";
+"defaults.remove" = "削除";
+"defaults.back" = "戻る";
+"defaults.address" = "アドレス";
+"defaults.next" = "次へ";
+"defaults.previous" = "戻る";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "ウォレット";
+"mainTabBar.barItem.transactions.title" = "トランザクション";
+"mainTabBar.barItem.send.title" = "送る";
+"mainTabBar.barItem.receive.title" = "受け取る";
+"mainTabBar.barItem.settings.title" = "設定";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Verge iOS ウォレット";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "プライバシーは我々の基本です。";
+
+/*Welcome*/
+"setup.welcome.message" = "セキュア、匿名かつプライベートなVergeのiOSウォレットです。\nXVGを送受信する。";
+"setup.welcome.createButton" = "ウォレットの新規作成";
+"setup.welcome.createDescription" = "iOS上にXVGウォレットを新規作成";
+"setup.welcome.restoreButton" = "ウォレットを復元する";
+"setup.welcome.restoreDescription" = "iOSウォレットを復元したい場合はこちら";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "PINコードを入力";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "ウォレットPINをセットする";
+"setup.pinCode.setPinDesc" = "ウォレットPINはアプリの起動時およびXVGの送信時に必要となります。もしPINを失念した場合、ウォレットへアクセス出来なくなります。";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "PINの再入力";
+"setup.pinCode.reenterPinSucceedTitle" = "成功";
+"setup.pinCode.reenterPinSucceedDesc" = "PINがセットされました";
+"setup.pinCode.reenterPinSucceedDesc2" = "必ず忘れないようにしてください";
+"setup.pinCode.reenterPinSucceedButton" = "進む";
+"setup.pinCode.reenterPinErrorTitle" = "PINが正しくありません";
+"setup.pinCode.reenterPinErrorDesc" = "あなたのPINは有効になっていません";
+"setup.pinCode.reenterPinErrorDesc2" = "再入力ください";
+"setup.pinCode.reenterPinErrorButton" = "再入力";
+"setup.pinCode.alert.chooseSize" = "PINサイズを選ぶ";
+"setup.pinCode.alert.digits" = "数字";
+
+/*Passphrase*/
+"setup.passphrase.title" = "パスフレーズのついたペーパーキーを抽出する";
+"setup.passphrase.desc" = "ペーパーキーを暗号化させることはセキュリティ対策上重要です。ウォレットを復元するときは、以前のパスフレーズを使用してください。";
+"setup.passphrase.req1" = "最低文字数は8文字";
+"setup.passphrase.req2" = "大文字と小文字";
+"setup.passphrase.req3" = "記号 (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder" = "パスフレーズを入力";
+"setup.passphrase.confirmButton" = "確認";
+"setup.passphrase.confirmTitle" = "パスフレーズを確認";
+"setup.passphrase.proceedButton" = "進む";
+
+/*Finish*/
+"setup.finish.title" = "準備が完了しました";
+"setup.finish.switch1" = "この端末でセキュアに資産が展開されることを確認しました";
+"setup.finish.switch2" = "アプリを削除したり他のデバイスでアプリをインストールした場合、ペーパーキーとパスフレーズがある場合に限り復元できることを確認しました";
+"setup.finish.switch3" = "利用規約の内容を確認、理解、同意します";
+"setup.finish.termsButton" = "利用規約";
+"setup.finish.createButton" = "ウォレットを作成";
+"setup.finish.openButton" = "ウォレットを開く";
+"setup.finish.desc" = "ウォレットの設定を完了させる";
+"setup.finish.congrats" = "ウォレットの設定が完了しました！おめでとうございます！";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "ペーパーキー";
+"welcomeGuide.paperKey.message" = "次の画面で表示された単語は、紙に書き取るなどしていただき、他の人が確認できないよう十分に注意して保管してください";
+"welcomeGuide.paperKey.description" = "ペーパーキーはあなたのウォレットへアクセスするために必要なプライベートキーの一部です";
+"welcomeGuide.paperKey.actionButton" = "ペーパーキーを書き取る";
+"welcomeGuide.paperKey.makeSureLabel" = "正確に入力されているか確認するために、記入した紙から単語を入力してください";
+"welcomeGuide.paperKey.submitButton" = "送信";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "受信";
+"receive.addressButtonLabel" = "アドレス";
+"receive.amountButtonLabel" = "総額";
+"receive.amountPlaceholder" = "受信した総額";
+"receive.stealthAddressLabel" = "ステルスアドレス";
+"receive.shareButton" = "共有";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "ウォレットを復元する";
+"restoreGuide.restore.desc" = "次の画面で、指定された順番のペーパーキーを入力する必要があります";
+"restoreGuide.restore.notice" = "この手順の間、誰にも見られていないことを確認してください";
+"restoreGuide.restore.restoreButton" = "復元を開始する";
+"restoreGuide.restore.paperKeyTitle" = "ペーパーキー";
+"restoreGuide.restore.paperKeyWarning" = "ペーパーキーは正しいですか";
+"restoreGuide.restore.paperKeyProceedButton" = "進む";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "ペーパーキーのQRコードをスキャンする";
+"restoreGuide.qrcode.closeButton" = "閉じる";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "送信する";
+"send.addressButtonLabel" = "受信先のアドレス";
+"send.addressPlaceholder" = "受信先のアドレスを入力してください";
+"send.amountButtonLabel" = "総額";
+"send.memoButtonLabel" = "個別メモ（任意入力）";
+"send.memoPlaceholder" = "Swenへ寄付する";
+"send.confirmButton" = "確認する";
+"send.noBalanceTitle" = "残高0";
+"send.noBalanceDesc" = "送信手数料に相当するXVGがありません。残高を増やしてください。";
+
+/*QR-code*/
+"send.qrcode.title" = "XVGのQRコードを読み取る";
+"send.qrcode.closeButton" = "閉じる";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "受取人を指定する";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "XVG残高";
+"wallet.balanceTitle" = "残高";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "設定";
+"settings.wallet.header.title" = "ウォレット";
+"settings.wallet.footer.title" = "設定舌内容でウォレットを管理してください";
+"settings.wallet.cell.removeLabel" = "ウォレットを取り出す";
+"settings.wallet.cell.paperKeyLabel" = "ペーパーキー";
+"settings.wallet.cell.addressesLabel" = "アドレス";
+"settings.wallet.cell.transactionsLabel" = "トランザクションの提案";
+"settings.wallet.cell.serviceUrlLabel" = "サービスURL";
+"settings.settings.cell.fiatCurrencyLabel" = "法定通貨";
+"settings.settings.cell.changePinLabel" = "ウォレットPINを変更する";
+"settings.settings.cell.useFaceIdLabel" = "Face IDを使用する";
+"settings.settings.cell.torConnectionLabel" = "Tor接続";
+"settings.other.header.title" = "その他";
+"settings.other.cell.creditsLabel" = "クレジット";
+"settings.other.cell.donateLabel" = "寄付";
+"settings.other.cell.rateAppLabel" = "このアプリを評価する";
+"settings.other.cell.websiteLabel" = "ウェブサイト";
+"settings.other.cell.contributeLabel" = "寄付する";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "ウォレットのペーパーキーを再度記載する";
+"settings.paperKey.descLabel" = "再度ペーパーキーを確認したいですか？次の画面で、単語が再表示されますので、注意しながら確認してください。";
+"settings.paperKey.showButton" = "ペーパーキーを表示する";
+"settings.paperKey.preview.titleLabel" = "ペーパーキー";
+"settings.paperKey.preview.noticeLabel" = "スクリーンショットを利用することは安全ではありません。ペンを利用して紙に書き留めるべきです。";
+"settings.paperKey.preview.descLabel" = "各単語を注意しながら記入してください（大文字はありません）";
+"settings.paperKey.preview.wordsSegment" = "単語";
+"settings.paperKey.preview.qrSegment" = "QRコード";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "直近のウォレットと接続を停止する";
+"settings.disconnect.descLabel" = "直近のウォレットと接続を停止します。ペーパーキーとパスフレーズを絶対に忘れないようにしてください。ウォレットを復元する時にペーパーキーとパスフレーズの両方が必要です。";
+"settings.disconnect.disconnectButton" = "接続を停止";
+
+/*Addresses*/
+"settings.addresses.title" = "アドレス";
+"settings.addresses.descLabel" = "12の単語に基づきウォレットから沢山のアドレスが生成されます。XVGを受け取るごとに自動的に新しいアドレスが生成されます。";
+"settings.addresses.scanButton" = "残高を確認するためアドレスを読み込む";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "トランザクションを提案する";
+"settings.transactions.descLabel" = "トランザクションシーケンス中に失敗したすべてのトランザクションは以下のとおりです。送信したXVGを回収するためには、これらを手動で削除する必要があります。";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "サービスURL";
+"settings.serviceUrl.header.title" = "ウォレットのサービスURL";
+"settings.serviceUrl.footer.title" = "このアプリケーションは、ブロックチェーン情報や同時に送信したネットワークを同期するために、Verge Wallet Service (VWS) に依存しています。";
+"settings.serviceUrl.defaultUrlButton" = "ディフォルトのURLを使用する";
+"settings.serviceUrl.saveButton" = "保存";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "法定通貨";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Face IDを使用する";
+"settings.useFaceID.header.title" = "使用目的";
+"settings.useFaceID.footer.title" = "ウォレットのPINを入力する代わりに、一時的に認証する方法を提供します";
+"settings.useFaceID.unlockLabel" = "ウォレットをアンロックする";
+"settings.useFaceID.sendingLabel" = "XVGの送信中";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Torはプライバシーのために使用し、現在地も匿名化されます";
+"settings.torConnection.descLabel" = "Tor接続を使用している場合、あなたのIPアドレスは完全に暗号化されており、トランザクションは完全に追跡不能です。";
+"settings.torConnection.obfuscateIpLabel" = "IPアドレスの暗号化";
+"settings.torConnection.yourIpLabel" = "あなたのIPアドレス";
+"settings.torConnection.loadingLabel" = "読み込み中・・・";
+"settings.torConnection.notAvailable" = "サービスは現在利用できません";
+
+/*Credits*/
+"settings.credits.title" = "クレジット";
+"settings.credits.descLabel" = "このアプリケーションは次の英雄（開発者）によって開発されました";
+
+/*Donate*/
+"settings.donate.titleLabel" = "サポート部門へ寄付する";
+"settings.donate.descLabel" = "Vergeでは、常に新しい高みを目指して取り組んでおり、コミュニティのリクエストに基づき、製品やソフトウェアの改善を続けています。";
+"settings.donate.desc2Label" = "コミュニティメンバーの意見に耳を傾け、フィードバックを取り入れることは、Vergeの基本原則の一つであるだけではなく、オープンソースの本質における固有のものです。";
+"settings.donate.addressLabel" = "XVGの寄付先アドレス";
+"settings.donate.donateButton" = "XVGを寄付する";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "ウェブサイト";
+"shortcuts.action.sourceCode.title" = "ソースコード";
+"shortcuts.action.send.title" = "送信";
+"shortcuts.action.receive.title" = "受信";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "移動";
+"transaction.state.received" = "受け取り";
+"transaction.state.pending" = "ペンディング";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1D";
+"chart.filter.oneWeek" = "1W";
+"chart.filter.oneMonth" = "1M";
+"chart.filter.threeMonths" = "3M";
+"chart.filter.oneYear" = "1Y";
+"chart.filter.all" = "すべて";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "価格の履歴";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "取引量履歴";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "自身のXVGアドレス";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "単語を入力";
+"paperKey.outOf" = "のうち";
+"paperKey.egCat" = "（例：Cat）";
+"paperKey.key" = "キー";
+"paperKey.word" = "単語";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "XVGを送信する";
+"send.noConnection" = "接続なし";
+"send.transactionFailed" = "トランザクションの失敗";
+"send.transactionFailedMessage" = "あなたのトランザクションは以下理由により失敗しました";
+"send.notEnoughBalance" = "資産が不足しています";
+"send.notEnoughBalanceMessage1" = "送信に必要な資産が不足しています";
+"send.notEnoughBalanceMessage2" = "送信を進めるには総額を見直してください";
+"send.sendMax" = "送信の上限";
+"send.wrongAddress" = "アドレス誤り";
+"send.enterValidAddress" = "入力されたアドレスはVergeのアドレスではありません。正しいアドレスを入力してください。";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "解決済のステルスアドレス";
+"send.confirm.confirmTitleLabel" = "トランザクションを確認する";
+"send.confirm.recipientLabel" = "受取人";
+"send.confirm.doubleCheckDescLabel" = "ウォレットアドレスが正しいかをダブルチェックしてください。Vergeは誤った送信先への損失に対する責任を一切負いません。";
+"send.confirm.sendingLabel" = "送信中";
+"send.confirm.transactionFeeLabel" = "トランザクション手数料";
+"send.confirm.totalLabel" = "合計";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "トランザクションへ書き込み中";
+"send.sending.broadcastingTransaction" = "トランザクションの配布中";
+"send.sending.transactionSent" = "トランザクションは送信されました";
+"send.sending.publishingTransaction" = "配布されたトランザクション";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "TouchIDを使用する";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "アドレスをコピーしました";
+"addresses.addressesWithBalance" = "アドレスごとの資産";
+"addresses.unusedAddresses" = "使用されていないアドレス";
+"addresses.addressOptions" = "アドレス設定";
+"addresses.informationTypeMessage" = "どの情報をコピーしたいですか";
+"addresses.address" = "アドレス";
+"addresses.balance" = "資産";
+"addresses.balanceCopied" = "資産をコピーしました";
+"addresses.publicKey" = "パブリックキー";
+"addresses.publicKeyCopied" = "パブリックキーをコピーしました";
+"addresses.privateKey" = "プライベートキー";
+"addresses.privateKeyCopied" = "プライベートキーをコピーしました";
+"addresses.scanningAddresses" = "アドレスのスキャニング中";
+"addresses.scanningAddressesMessage" = "資産を確認するためにアドレスをスキャンします。完了には少々時間がかかります。";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "開発";
+"credits.header.design" = "デザイン";
+"credits.header.translation" = "翻訳";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "ウォレットに接続されていません";
+"settings.disconnect.alert.message" = "この端末を、現在のウォレットから切断しようとしています。\nこのウォレットのペーパーキーを書き留めたことを必ず確認してください。このペーパーキーがウォレットを復元する唯一の方法です。";
+"settings.disconnect.alert.disconnect" = "接続されていません";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "サービスの変更";
+"settings.serviceUrl.alert.message" = "サービスURLを変更中。少々お待ちください。";
+"settings.serviceUrl.alert.usePrevUrl" = "以前のサービスURLを利用する";
+"settings.serviceUrl.alert.errorChanging" = "変更エラー";
+"settings.serviceUrl.alert.errorChanging2" = "サービスURLの変更中にエラーが生じました。再度変更を試みるか、別のサービスURLを使用してください。";
+"settings.serviceUrl.alert.title2" = "変更されたサービス";
+"settings.serviceUrl.alert.message2" = "サービスURLの変更が完了しました";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "提案を取り除く";
+"settings.transactions.noProposals" = "提案はありません";
+"settings.transactions.releaseXvg" = "この取引提案のXVGを解放する";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Verge Currency\nあなたの地域を特定できないようにする";
+"setup.tor.slide1.descLabel" = "Vergeはあなたの地域とIPアドレスを難読化するためにTorネットワークを使っています";
+"setup.tor.slide2.titleLabel" = "Torの状況は以下で確認できます";
+"setup.tor.slide2.descLabel1" = "Torが無効となり、あなたの地域とIPアドレスは公開されています";
+"setup.tor.slide2.descLabel2" = "Torと接続してます。この時点ではインターネットの接続は確立されていません。";
+"setup.tor.slide2.descLabel3" = "Torが有効となり、あなたの地域とIPアドレスは難読化されています";
+"setup.tor.slide2.descLabel4" = "Torは接続できず何か問題が生じています。この問題を解決するためにはアプリケーションを再起動してください。";
+"setup.tor.slide3.titleLabel" = "Torを有効にしましょう";
+"setup.tor.slide3.titleLabel2" = "Torを有効にする";
+"setup.tor.slide3.descLabel" = "あなたの国でTorの使用が適法であることを確認してください。残念ながら、利用が望ましくない国がいくつかあります。";
+"setup.tor.slide3.negativeButton" = "Torなしで進める";
+"setup.tor.slide3.positiveButton" = "Torありですすめる";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "トランザクション";
+"transactions.transaction.title" = "誰？";
+"transactions.contacts.title" = "連絡";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "トランザクションを検索する";
+"transactions.search.all" = "すべて";
+"transactions.search.sent" = "送信";
+"transactions.search.received" = "受取";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "トランザクションの詳細";
+"transactions.transaction.history" = "トランザクション履歴";
+"transactions.transaction.confirmations" = "確認";
+"transactions.transaction.txidCopied" = "Txidをコピーしました";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "トランザクションは未受領";
+"transactions.noTransaction.descLabel" = "受領したトランザクションはこちらで確認できます";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Contactの詳細";
+"transactions.contact.name" = "名前";
+"transactions.contact.section.history" = "トランザクション履歴";
+"transactions.contact.saved" = "Contactを保存しました";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Contactを検索する";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Contactが作成されていません";
+"transactions.noContacts.descLabel" = "XVGを簡単に送信できるようContactを追加する";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "直近のトランザクション";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "統計";
+"wallet.slides.summary.dataNotFound" = "統計データが見つかりませんでした";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "時価総額";
+"wallet.slides.summary.24hHigh" = "最高値（24時間）";
+"wallet.slides.summary.24hLow" = "最低値（24時間）";
+"wallet.slides.summary.24hChange" = "増減率（24時間）";
+"wallet.slides.summary.24hVolume" = "取引量（24時間）";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "チャート履歴";
+"wallet.slides.chart.high" = "高値";
+"wallet.slides.chart.average" = "平均";
+"wallet.slides.chart.low" = "低値";
+"wallet.slides.chart.availability" = "チャートデータはUSドルのみ表示できます";
+"wallet.slides.chart.noData" = "チャート履歴が見つかりませんでした";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "トランザクションは未受領";
