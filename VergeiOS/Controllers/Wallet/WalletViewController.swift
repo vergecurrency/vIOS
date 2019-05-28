@@ -28,10 +28,6 @@ class WalletViewController: VViewController, UIScrollViewDelegate {
         return .lightContent
     }
 
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .fade
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

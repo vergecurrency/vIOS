@@ -37,7 +37,7 @@ class BlendedNavigationBar: UINavigationBar {
         self.tintColor = ThemeManager.shared.primaryLight()
         self.barTintColor = ThemeManager.shared.backgroundGrey()
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
-        self.barStyle = .default
+        self.barStyle = ThemeManager.shared.barStyle()
         self.isTranslucent = false
         self.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: ThemeManager.shared.secondaryDark(),

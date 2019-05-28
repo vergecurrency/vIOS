@@ -10,13 +10,18 @@ import UIKit
 
 class VViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return ThemeManager.shared.useDarkTheme ? .lightContent : .default
+        return ThemeManager.shared.statusBarStyle()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
 
         self.setColors()
     }

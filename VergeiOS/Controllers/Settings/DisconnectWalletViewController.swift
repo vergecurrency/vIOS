@@ -30,9 +30,6 @@ class DisconnectWalletViewController: VViewController {
             pinUnlockView.cancelable = true
             pinUnlockView.completion = { authenticated in
                 if authenticated {
-                    pinUnlockView.dismiss(animated: true) {
-                        self.performSegue(withIdentifier: "disconnectWallet", sender: self)
-                    }
                     
                     // Reset wallet manager.
                     // @TODO: Move to event.
@@ -41,6 +38,11 @@ class DisconnectWalletViewController: VViewController {
                     self.fiatRateTicker.stop()
                     self.walletTicker.stop()
                     self.torClient.resign()
+                    ThemeManager.shared.switchMode(isOn: false, appRepo: self.applicationRepository)
+
+                    pinUnlockView.dismiss(animated: true) {
+                        self.performSegue(withIdentifier: "disconnectWallet", sender: self)
+                    }
                 } else {
                     pinUnlockView.dismiss(animated: true)
                 }

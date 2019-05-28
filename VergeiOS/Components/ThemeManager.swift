@@ -9,7 +9,7 @@ class ThemeManager {
 
     static let shared = ThemeManager()
 
-    var useDarkTheme = false
+    var useMoonMode = false
 
     func initialize(withWindow window: UIWindow) {
         UITabBar.appearance().layer.borderWidth = 0
@@ -19,18 +19,18 @@ class ThemeManager {
         UITabBar.appearance().tintColor = self.primaryLight()
         UITabBar.appearance().barTintColor = self.backgroundGrey()
         UITabBar.appearance().backgroundColor = self.backgroundGrey()
-        UITabBar.appearance().barStyle = self.useDarkTheme ? .black : .default
-        UITabBar.appearance().isTranslucent = !self.useDarkTheme
+        UITabBar.appearance().barStyle = self.useMoonMode ? .black : .default
+        UITabBar.appearance().isTranslucent = !self.useMoonMode
 
         UIToolbar.appearance().tintColor = self.primaryLight()
         UIToolbar.appearance().barTintColor = self.backgroundWhite()
         UIToolbar.appearance().backgroundColor = self.backgroundWhite()
-        UIToolbar.appearance().barStyle = self.useDarkTheme ? .black : .default
-        UIToolbar.appearance().isTranslucent = !self.useDarkTheme
+        UIToolbar.appearance().barStyle = self.useMoonMode ? .black : .default
+        UIToolbar.appearance().isTranslucent = !self.useMoonMode
 
         UITableView.appearance().backgroundColor = self.backgroundGrey()
         UITableView.appearance().tintColor = self.primaryLight()
-        UITableView.appearance().separatorColor = self.useDarkTheme ? self.vergeGrey() : UIColor(rgb: 0xC8C7CC)
+        UITableView.appearance().separatorColor = self.useMoonMode ? self.vergeGrey() : UIColor(rgb: 0xC8C7CC)
 
         let colorView = UIView()
         colorView.backgroundColor = self.backgroundBlue()
@@ -39,18 +39,18 @@ class ThemeManager {
         UITableViewCell.appearance().backgroundColor = self.backgroundWhite()
 
         UITextField.appearance().textColor = self.secondaryDark()
-        UITextField.appearance().keyboardAppearance = self.useDarkTheme ? .dark : .default
-        UISearchBar.appearance().keyboardAppearance = self.useDarkTheme ? .dark : .default
+        UITextField.appearance().keyboardAppearance = self.useMoonMode ? .dark : .default
+        UISearchBar.appearance().keyboardAppearance = self.useMoonMode ? .dark : .default
 
         window.tintColor = self.primaryLight()
     }
 
     func chooseColor(lightColor: UIColor, darkColor: UIColor) -> UIColor {
-        return self.useDarkTheme ? darkColor : lightColor
+        return self.useMoonMode ? darkColor : lightColor
     }
 
     func separatorColor() -> UIColor {
-        return self.useDarkTheme ?
+        return self.useMoonMode ?
             self.vergeGrey() :
             UIColor(red: 0.85, green: 0.85, blue: 0.9, alpha: 1)
     }
@@ -100,13 +100,45 @@ class ThemeManager {
     }
     
     func backgroundTopColor() -> UIColor {
-        return self.chooseColor(lightColor: UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0), darkColor: UIColor(rgb: 0x5A004F))
+        let lightColor = UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0)
+
+        // return self.chooseColor(lightColor: lightColor, darkColor: UIColor(rgb: 0x397CC0))
+        return lightColor
     }
     
     func backgroundBottomColor() -> UIColor {
-        return self.chooseColor(lightColor: self.primaryLight(), darkColor: self.backgroundGrey())
+        let lightColor = self.primaryLight()
+
+        // return self.chooseColor(lightColor: self.primaryLight(), darkColor: self.backgroundGrey())
+        return lightColor
     }
 
+    func barStyle() -> UIBarStyle {
+        return self.useMoonMode ? .black : .default
+    }
+
+    func statusBarStyle() -> UIStatusBarStyle {
+        return self.useMoonMode ? .lightContent : .default
+    }
+
+    func switchMode(isOn: Bool, appRepo: ApplicationRepository) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+        appRepo.useMoonMode = isOn
+        ThemeManager.shared.useMoonMode = isOn
+        ThemeManager.shared.initialize(withWindow: appDelegate.window!)
+
+        NotificationCenter.default.post(name: .themeChanged, object: nil)
+
+        let windows = UIApplication.shared.windows as [UIWindow]
+        for window in windows {
+            let subviews = window.subviews as [UIView]
+            for v in subviews {
+                v.removeFromSuperview()
+                window.addSubview(v)
+            }
+        }
+    }
 }
 
 extension UITextField {

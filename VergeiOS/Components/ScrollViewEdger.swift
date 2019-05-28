@@ -21,6 +21,10 @@ class ScrollViewEdger {
     let shadowHeight: CGFloat = 20.0
     let shadowAlpha: CGFloat = 0.1
     let animationDuration: Double = 0.2
+
+    let shadowColor: UIColor = {
+        return UIColor.black.withAlphaComponent(0.6)
+    }()
     
     var verticalOffsetForBottom: CGFloat {
         let scrollViewHeight = scrollView.bounds.height
@@ -40,7 +44,7 @@ class ScrollViewEdger {
             topShadow = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: shadowHeight))
             
             let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = [UIColor.gray.cgColor, UIColor.clear.cgColor]
+            gradientLayer.colors = [shadowColor.cgColor, UIColor.clear.cgColor]
             gradientLayer.frame = topShadow.frame
             
             topShadow.layer.insertSublayer(gradientLayer, at: 0)
@@ -58,7 +62,7 @@ class ScrollViewEdger {
             ))
             
             let gradientBottomLayer = CAGradientLayer()
-            gradientBottomLayer.colors = [UIColor.gray.withAlphaComponent(0.0).cgColor, UIColor.gray.cgColor]
+            gradientBottomLayer.colors = [UIColor.clear.cgColor, shadowColor.cgColor]
             gradientBottomLayer.frame = bottomShadow.frame
             
             bottomShadow.layer.insertSublayer(gradientBottomLayer, at: 0)
