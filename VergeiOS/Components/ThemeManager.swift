@@ -42,6 +42,9 @@ class ThemeManager {
         UITextField.appearance().keyboardAppearance = self.useMoonMode ? .dark : .default
         UISearchBar.appearance().keyboardAppearance = self.useMoonMode ? .dark : .default
 
+        CloseButton.appearance().titleLabel?.textColor = self.secondaryDark()
+        CloseButton.appearance().tintColor = self.secondaryDark()
+
         window.tintColor = self.primaryLight()
     }
 
@@ -102,15 +105,13 @@ class ThemeManager {
     func backgroundTopColor() -> UIColor {
         let lightColor = UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0)
 
-        // return self.chooseColor(lightColor: lightColor, darkColor: UIColor(rgb: 0x397CC0))
-        return lightColor
+        return self.chooseColor(lightColor: lightColor, darkColor: UIColor(rgb: 0x09131e))
     }
     
     func backgroundBottomColor() -> UIColor {
         let lightColor = self.primaryLight()
 
-        // return self.chooseColor(lightColor: self.primaryLight(), darkColor: self.backgroundGrey())
-        return lightColor
+        return self.chooseColor(lightColor: lightColor, darkColor: UIColor(rgb: 0x0C1928))
     }
 
     func barStyle() -> UIBarStyle {
@@ -145,7 +146,12 @@ extension UITextField {
     open override func awakeFromNib() {
         super.awakeFromNib()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
 
         self.setPlaceholderColor()
     }

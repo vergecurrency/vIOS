@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-language.pdf"
+      "filename" : "icons8-transaction-list-2.pdf"
     }
   ],
   "info" : {
@@ -10,7 +10,7 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template",
+    "template-rendering-intent" : "original",
     "preserves-vector-representation" : true
   }
 }

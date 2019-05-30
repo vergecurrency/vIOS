@@ -11,7 +11,7 @@ import HGPlaceholders
 
 class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView: TableView!
+    @IBOutlet weak var tableView: PlaceholderTableView!
 
     var transactionManager: TransactionManager!
     var addressBookManager: AddressBookRepository!
@@ -81,8 +81,6 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.tableFooterView?.isHidden = items.count < 7
-        
         return items.count
     }
     
