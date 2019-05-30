@@ -13,7 +13,12 @@ class VTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
 
         self.setColors()
     }
