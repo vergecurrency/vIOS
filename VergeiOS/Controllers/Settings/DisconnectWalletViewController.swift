@@ -38,10 +38,10 @@ class DisconnectWalletViewController: VViewController {
                     self.fiatRateTicker.stop()
                     self.walletTicker.stop()
                     self.torClient.resign()
-                    ThemeManager.shared.switchMode(isOn: false, appRepo: self.applicationRepository)
 
                     pinUnlockView.dismiss(animated: true) {
                         self.performSegue(withIdentifier: "disconnectWallet", sender: self)
+                        ThemeManager.shared.switchMode(isOn: false, appRepo: self.applicationRepository)
                     }
                 } else {
                     pinUnlockView.dismiss(animated: true)
