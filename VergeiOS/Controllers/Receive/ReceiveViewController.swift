@@ -42,7 +42,7 @@ class ReceiveViewController: VViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        xvgCardContainer.alpha = 0.0
+        self.xvgCardContainer.alpha = 0.0
 
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
@@ -50,15 +50,22 @@ class ReceiveViewController: VViewController {
             self.xvgCardContainer.center.y += 20.0
         }
 
-        setAddress()
+        self.setAddress()
 
-        qrCodeContainerView.layer.cornerRadius = 10.0
-        qrCodeContainerView.clipsToBounds = true
+        self.qrCodeContainerView.layer.cornerRadius = 10.0
+        self.qrCodeContainerView.clipsToBounds = true
 
-        addTapRecognizer(target: addressTextField, action: #selector(copyAddress(recognizer:)))
-        addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
+        self.addTapRecognizer(target: addressTextField, action: #selector(copyAddress(recognizer:)))
+        self.addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
         
-        amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingDidEnd)
+        self.amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingDidEnd)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(createQRCode),
+            name: .themeChanged,
+            object: nil
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -178,7 +185,7 @@ class ReceiveViewController: VViewController {
         }
     }
 
-    func createQRCode() {
+    @objc func createQRCode() {
         let address = amount > 0.0 ? "verge:\(self.address)?amount=\(amount)" : self.address
         var qrCode = QRCode(address)
 
@@ -186,7 +193,10 @@ class ReceiveViewController: VViewController {
             qrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
             qrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
         } else {
-            qrCode?.color = CIColor(cgColor: UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor)
+            qrCode?.color = CIColor(cgColor: ThemeManager.shared.useMoonMode
+                ? ThemeManager.shared.backgroundGrey().cgColor
+                : UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor
+            )
             qrCode?.backgroundColor = .white
         }
 

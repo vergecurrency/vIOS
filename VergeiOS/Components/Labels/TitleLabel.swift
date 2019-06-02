@@ -13,7 +13,12 @@ class TitleLabel: UILabel {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
 
         self.setColors()
     }

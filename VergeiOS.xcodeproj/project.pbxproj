@@ -15,7 +15,7 @@
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
-		A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */; };
+		A302D2F9211F3F5700EA8091 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2F8211F3F5700EA8091 /* CardImageView.swift */; };
 		A302D2FB211F64FB00EA8091 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2FA211F64FB00EA8091 /* Contact.swift */; };
 		A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */; };
 		A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302D3082120374C00EA8091 /* CoreGraphics.framework */; };
@@ -52,6 +52,8 @@
 		A324DAEA229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE9229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift */; };
 		A324DAEC229F65A700EF12D7 /* UnlockBackgroundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAEB229F65A700EF12D7 /* UnlockBackgroundImageView.swift */; };
 		A324DAEE22A0323900EF12D7 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAED22A0323900EF12D7 /* CloseButton.swift */; };
+		A324DAF022A43A9B00EF12D7 /* SendCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAEF22A43A9B00EF12D7 /* SendCardImageView.swift */; };
+		A324DAF222A43AE800EF12D7 /* ReceiveCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */; };
 		A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566402112588D006FB08A /* SettingsTableViewController.swift */; };
 		A32566452113729C006FB08A /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32566442113729C006FB08A /* Receive.storyboard */; };
 		A3256647211372A7006FB08A /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3256646211372A7006FB08A /* Send.storyboard */; };
@@ -385,7 +387,7 @@
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
 		A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableViewController.swift; sourceTree = "<group>"; };
-		A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XVGCardImageView.swift; sourceTree = "<group>"; };
+		A302D2F8211F3F5700EA8091 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		A302D2FA211F64FB00EA8091 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		A302D306212036B400EA8091 /* ScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeViewController.swift; sourceTree = "<group>"; };
 		A302D3082120374C00EA8091 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -421,6 +423,8 @@
 		A324DAE9229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPlaceholderImageView.swift; sourceTree = "<group>"; };
 		A324DAEB229F65A700EF12D7 /* UnlockBackgroundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockBackgroundImageView.swift; sourceTree = "<group>"; };
 		A324DAED22A0323900EF12D7 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		A324DAEF22A43A9B00EF12D7 /* SendCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCardImageView.swift; sourceTree = "<group>"; };
+		A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCardImageView.swift; sourceTree = "<group>"; };
 		A32566402112588D006FB08A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A32566442113729C006FB08A /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
 		A3256646211372A7006FB08A /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
@@ -761,13 +765,15 @@
 		A302D2F7211F3F4C00EA8091 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */,
-				A305DDB62107A6CB00911B64 /* PanelView.swift */,
-				A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */,
-				A3B186D422444DFC00B093C4 /* WalletContainerView.swift */,
-				A302D2F8211F3F5700EA8091 /* XVGCardImageView.swift */,
 				A3AA2B7622632F21000E4571 /* BackgroundView.swift */,
+				A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */,
+				A302D2F8211F3F5700EA8091 /* CardImageView.swift */,
 				A3AA2B8C2263EAC8000E4571 /* LightBackgroundView.swift */,
+				A302D30B2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift */,
+				A305DDB62107A6CB00911B64 /* PanelView.swift */,
+				A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */,
+				A324DAEF22A43A9B00EF12D7 /* SendCardImageView.swift */,
+				A3B186D422444DFC00B093C4 /* WalletContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1969,6 +1975,7 @@
 				A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */,
 				A338E6B52110D075000D44EE /* WalletSlideView.swift in Sources */,
 				A3AA22012163F66B00160576 /* TorStatusIndicatorViewController.swift in Sources */,
+				A324DAF022A43A9B00EF12D7 /* SendCardImageView.swift in Sources */,
 				A339393621B877750010CC4A /* PassphraseViewController.swift in Sources */,
 				CA63BA752282DC1C00E2023A /* LocalizableSegmentedControl.swift in Sources */,
 				CAD85A5D2291B6B80063BF25 /* Languages.swift in Sources */,
@@ -2030,12 +2037,13 @@
 				A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */,
 				CA63BA722282CE7400E2023A /* LocalizableTableViewController.swift in Sources */,
 				A30D279B2260D2AD000377F8 /* WalletClientProtocol.swift in Sources */,
+				A324DAF222A43AE800EF12D7 /* ReceiveCardImageView.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */,
 				A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */,
 				A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
-				A302D2F9211F3F5700EA8091 /* XVGCardImageView.swift in Sources */,
+				A302D2F9211F3F5700EA8091 /* CardImageView.swift in Sources */,
 				A3AA21FF2163F66B00160576 /* TorStatusIndicator.swift in Sources */,
 				B2BD72F8A7F67D4C11416F74 /* RecipientDelegate.swift in Sources */,
 				B2BD76A67D70DB341C28F00B /* AmountDelegate.swift in Sources */,

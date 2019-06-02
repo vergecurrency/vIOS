@@ -23,7 +23,7 @@ class TransparantNavigationBar: UINavigationBar {
     }
 
     func setupLayout() {
-        self.barStyle = .black
+        self.barStyle = ThemeManager.shared.barStyle()
     }
 
     // Only override draw() if you perform custom drawing.
