@@ -37,6 +37,7 @@ class ContactTableViewController: FormViewController {
             cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
             cell.textField?.font = UIFont.avenir(size: 17).demiBold()
             cell.textField?.textColor = ThemeManager.shared.secondaryDark()
+            cell.textField.setPlaceholderColor()
         }
 
         tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
