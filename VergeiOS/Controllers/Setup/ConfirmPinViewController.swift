@@ -23,6 +23,8 @@ class ConfirmPinViewController: VViewController, KeyboardDelegate {
     var completion: ((_ pin: String) -> Void)?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         pinKeyboard.delegate = self
         pinConfirmedView.isHidden = true
         pinFailedView.isHidden = true
