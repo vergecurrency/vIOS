@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransactionTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TransactionTableViewController: VViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -73,7 +73,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
         var prefix = ""
         if transaction.category == .Sent {
             navigationItem.setRightBarButton(repeatTransactionBarButtonItem, animated: true)
-            amountLabel.textColor = UIColor.vergeRed()
+            amountLabel.textColor = ThemeManager.shared.vergeRed()
             iconImageView.image = UIImage(named: "Payment")
             
             prefix = "-"
@@ -81,7 +81,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
             navigationItem.rightBarButtonItems?.removeAll { item in
                 return item == repeatTransactionBarButtonItem
             }
-            amountLabel.textColor = UIColor.vergeGreen()
+            amountLabel.textColor = ThemeManager.shared.vergeGreen()
             iconImageView.image = UIImage(named: "Receive")
             
             prefix = "+"
@@ -134,7 +134,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.textColor = UIColor.secondaryDark()
+        header.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         header.textLabel?.font = UIFont.avenir(size: 17).demiBold()
         header.textLabel?.frame = header.frame
         header.textLabel?.text = header.textLabel?.text?.capitalized
@@ -176,7 +176,7 @@ class TransactionTableViewController: UIViewController, UITableViewDelegate, UIT
                 break
             }
             
-            cell.imageView?.tintColor = UIColor.secondaryLight()
+            cell.imageView?.tintColor = ThemeManager.shared.secondaryLight()
             
             return cell
         }

@@ -53,7 +53,7 @@ class TransactionProposalsTableViewController: UITableViewController {
         if !hasProposals {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             cell.textLabel?.text = "settings.transactions.noProposals".localized
-            cell.textLabel?.textColor = .vergeGrey()
+            cell.textLabel?.textColor = ThemeManager.shared.vergeGrey()
             cell.selectionStyle = .none
 
             return cell

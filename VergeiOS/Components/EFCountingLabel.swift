@@ -216,3 +216,25 @@ open class EFCountingLabel: UILabel {
         }
     }
 }
+
+class TitleEFCountingLabel: EFCountingLabel {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.setColors()
+    }
+
+    func setColors() {
+        self.textColor = ThemeManager.shared.secondaryDark()
+    }
+
+    @objc func themeChanged(notification: Notification) {
+        self.setColors()
+    }
+}

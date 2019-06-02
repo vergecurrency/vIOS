@@ -20,7 +20,7 @@ class VolumeChartView: AbstractChartView {
             height: rect.size.height + 20
         )
 
-        chart.noDataTextColor = UIColor.secondaryDark()
+        chart.noDataTextColor = ThemeManager.shared.secondaryDark()
         chart.dragEnabled = false
         chart.setScaleEnabled(false)
         chart.pinchZoomEnabled = false
@@ -50,8 +50,8 @@ class VolumeChartView: AbstractChartView {
 
     fileprivate func style(priceSet: BarChartDataSet) {
         priceSet.drawValuesEnabled = false
-        priceSet.colors = [UIColor.backgroundBlue()]
+        priceSet.colors = [ThemeManager.shared.backgroundBlue()]
         priceSet.barBorderWidth = 2.0
-        priceSet.barBorderColor = UIColor.backgroundBlue()
+        priceSet.barBorderColor = ThemeManager.shared.backgroundBlue()
     }
 }

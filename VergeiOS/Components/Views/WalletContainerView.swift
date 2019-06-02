@@ -11,18 +11,75 @@ import UIKit
 class WalletContainerView: UIView {
 
     let gl = CAGradientLayer()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
+    }
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        let colorTop = UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0).cgColor
-        let colorBottom = UIColor.primaryLight().cgColor
+        self.setColor()
         
-        gl.colors = [colorTop, colorBottom]
-        gl.locations = [0.0, 1.0]
-        gl.frame = rect
+        self.gl.locations = [0.0, 1.0]
+        self.gl.frame = rect
         
-        self.layer.insertSublayer(gl, at: 0)
+        self.layer.insertSublayer(self.gl, at: 0)
+    }
+
+    @objc func themeChanged(notification: Notification) {
+        self.setColor()
+    }
+    
+    func setColor() {
+        let colorTop = ThemeManager.shared.backgroundTopColor().cgColor
+        let colorBottom = ThemeManager.shared.backgroundBottomColor().cgColor
+        
+        self.gl.colors = [colorTop, colorBottom]
+    }
+
+}
+
+class WalletContainerBottomView: UIView {
+
+    let gl = CALayer()
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
+    }
+
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        self.setColor()
+
+        self.gl.frame = rect
+
+        self.layer.insertSublayer(self.gl, at: 0)
+    }
+
+    @objc func themeChanged(notification: Notification) {
+        self.setColor()
+    }
+
+    func setColor() {
+        let colorBottom = ThemeManager.shared.backgroundBottomColor().cgColor
+
+        self.gl.backgroundColor = colorBottom
     }
 
 }

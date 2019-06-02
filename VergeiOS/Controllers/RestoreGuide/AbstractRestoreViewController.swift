@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AbstractRestoreViewController: UIViewController {
+class AbstractRestoreViewController: VViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

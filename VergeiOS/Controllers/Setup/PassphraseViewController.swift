@@ -27,8 +27,8 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.primaryLight()]
-        navigationController?.navigationBar.tintColor = .primaryLight()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeManager.shared.primaryLight()]
+        navigationController?.navigationBar.tintColor = ThemeManager.shared.primaryLight()
         navigationController?.navigationBar.barStyle = .default
 
         passphraseTextfield.addTarget(self, action: #selector(validatePassphrase(_:)), for: .editingChanged)
@@ -37,11 +37,11 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
 
     @objc func validatePassphrase(_ textField: UITextField) {
         proceedButton.isEnabled = false
-        proceedButton.backgroundColor = UIColor.vergeGrey()
+        proceedButton.backgroundColor = ThemeManager.shared.vergeGrey()
 
-        charactersImage.tintColor = UIColor.secondaryLight()
-        caseImage.tintColor = UIColor.secondaryLight()
-        specialsImage.tintColor = UIColor.secondaryLight()
+        charactersImage.tintColor = ThemeManager.shared.secondaryLight()
+        caseImage.tintColor = ThemeManager.shared.secondaryLight()
+        specialsImage.tintColor = ThemeManager.shared.secondaryLight()
 
         guard let passphrase = textField.text else {
             return
@@ -52,20 +52,20 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
         let specials = checkSpecials(passphrase)
 
         if length {
-            charactersImage.tintColor = UIColor.vergeGreen()
+            charactersImage.tintColor = ThemeManager.shared.vergeGreen()
         }
 
         if cases {
-            caseImage.tintColor = UIColor.vergeGreen()
+            caseImage.tintColor = ThemeManager.shared.vergeGreen()
         }
 
         if specials {
-            specialsImage.tintColor = UIColor.vergeGreen()
+            specialsImage.tintColor = ThemeManager.shared.vergeGreen()
         }
 
         if (length && cases && specials) {
             proceedButton.isEnabled = true
-            proceedButton.backgroundColor = UIColor.primaryLight()
+            proceedButton.backgroundColor = ThemeManager.shared.primaryLight()
         }
     }
 

@@ -69,7 +69,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         let mnemonic = self.applicationRepository.mnemonic ?? []
         let passphrase = self.applicationRepository.passphrase ?? ""
 
-        self.credentials.set(mnemonic: mnemonic, passphrase: passphrase)
+        self.credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
 
         walletClient.createWallet(
             walletName: "ioswallet",

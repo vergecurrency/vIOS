@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DisconnectWalletViewController: UIViewController {
+class DisconnectWalletViewController: VViewController {
 
     var applicationRepository: ApplicationRepository!
     var transactionManager: TransactionManager!
@@ -30,9 +30,6 @@ class DisconnectWalletViewController: UIViewController {
             pinUnlockView.cancelable = true
             pinUnlockView.completion = { authenticated in
                 if authenticated {
-                    pinUnlockView.dismiss(animated: true) {
-                        self.performSegue(withIdentifier: "disconnectWallet", sender: self)
-                    }
                     
                     // Reset wallet manager.
                     // @TODO: Move to event.
@@ -41,6 +38,11 @@ class DisconnectWalletViewController: UIViewController {
                     self.fiatRateTicker.stop()
                     self.walletTicker.stop()
                     self.torClient.resign()
+
+                    pinUnlockView.dismiss(animated: true) {
+                        self.performSegue(withIdentifier: "disconnectWallet", sender: self)
+                        ThemeManager.shared.switchMode(isOn: false, appRepo: self.applicationRepository)
+                    }
                 } else {
                     pinUnlockView.dismiss(animated: true)
                 }

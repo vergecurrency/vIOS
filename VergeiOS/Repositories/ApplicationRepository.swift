@@ -197,12 +197,12 @@ class ApplicationRepository {
         }
     }
 
-    var deviceToken: String? {
+    var useMoonMode: Bool {
         get {
-            return userDefaults.string(forKey: "deviceToken")
+            return userDefaults.bool(forKey: "useMoonMode")
         }
         set {
-            userDefaults.set(newValue, forKey: "deviceToken")
+            userDefaults.set(newValue, forKey: "useMoonMode")
         }
     }
     

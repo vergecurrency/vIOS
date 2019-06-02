@@ -12,6 +12,8 @@ class TorStatusIndicatorViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var indicatorView: UIImageView!
+
+    var status: TorStatusIndicator.status = .turnedOff
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +23,20 @@ class TorStatusIndicatorViewController: UIViewController {
     }
     
     func setStatus(_ status: TorStatusIndicator.status) {
+        self.status = status
         switch status {
         case .connected:
             indicatorView.image = UIImage(named: "Locked")
-            indicatorView.tintColor = UIColor.secondaryDark()
+            indicatorView.tintColor = ThemeManager.shared.secondaryDark()
         case .disconnected:
             indicatorView.image = UIImage(named: "Unlocked")
             indicatorView.tintColor = UIColor.orange
         case .turnedOff:
             indicatorView.image = UIImage(named: "Public")
-            indicatorView.tintColor = UIColor.vergeRed()
+            indicatorView.tintColor = ThemeManager.shared.vergeRed()
         case .error:
             indicatorView.image = UIImage(named: "ConnectionError")
-            indicatorView.tintColor = UIColor.vergeRed()
+            indicatorView.tintColor = ThemeManager.shared.vergeRed()
         }
         
         indicatorView.layoutIfNeeded()

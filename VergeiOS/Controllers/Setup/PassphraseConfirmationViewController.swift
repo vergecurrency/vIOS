@@ -26,11 +26,11 @@ class PassphraseConfirmationViewController: UIViewController, UITextFieldDelegat
 
     @objc func validatePassphrase(_ textField: UITextField) {
         proceedButton.isEnabled = false
-        proceedButton.backgroundColor = UIColor.vergeGrey()
+        proceedButton.backgroundColor = ThemeManager.shared.vergeGrey()
 
         if previousPassphrase == textField.text {
             proceedButton.isEnabled = true
-            proceedButton.backgroundColor = UIColor.primaryLight()
+            proceedButton.backgroundColor = ThemeManager.shared.primaryLight()
         }
     }
 

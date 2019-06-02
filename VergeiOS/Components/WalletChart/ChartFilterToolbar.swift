@@ -46,7 +46,7 @@ class ChartFilterToolbar: UIToolbar {
                 action: #selector(didSelectFilter(sender:))
             )
 
-            button.tintColor = UIColor.vergeGrey()
+            button.tintColor = ThemeManager.shared.vergeGrey()
 
             items?.append(button)
 
@@ -69,7 +69,7 @@ class ChartFilterToolbar: UIToolbar {
 
         for item in items {
             if item.title == names[filter] {
-                item.tintColor = UIColor.primaryLight()
+                item.tintColor = ThemeManager.shared.primaryLight()
             }
         }
     }
@@ -89,7 +89,7 @@ class ChartFilterToolbar: UIToolbar {
 
             UISelectionFeedbackGenerator().selectionChanged()
 
-            sender.tintColor = UIColor.primaryLight()
+            sender.tintColor = ThemeManager.shared.primaryLight()
         }
     }
 
@@ -99,7 +99,7 @@ class ChartFilterToolbar: UIToolbar {
         }
         
         for button in items {
-            button.tintColor = UIColor.vergeGrey()
+            button.tintColor = ThemeManager.shared.vergeGrey()
         }
     }
 }

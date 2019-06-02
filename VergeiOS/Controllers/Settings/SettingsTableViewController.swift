@@ -13,6 +13,7 @@ import LocalAuthentication
 class SettingsTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var moonModeSwitch: UISwitch!
 
     let localAuthIndexPath = IndexPath(row: 2, section: 1)
     var applicationRepository: ApplicationRepository!
@@ -20,7 +21,8 @@ class SettingsTableViewController: EdgedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        currencyLabel.text = applicationRepository.currency
+        self.currencyLabel.text = self.applicationRepository.currency
+        self.moonModeSwitch.setOn(self.applicationRepository.useMoonMode, animated: false)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -108,6 +110,10 @@ class SettingsTableViewController: EdgedTableViewController {
         }
 
         return number
+    }
+
+    @IBAction func themeSwitched(_ sender: UISwitch) {
+        ThemeManager.shared.switchMode(isOn: sender.isOn, appRepo: applicationRepository)
     }
 }
 

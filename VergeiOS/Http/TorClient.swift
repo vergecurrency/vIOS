@@ -114,6 +114,8 @@ class TorClient {
         self.isOperational = false
         self.thread = nil
         self.sessionConfiguration = .default
+
+        NotificationCenter.default.post(name: .didTurnOffTor, object: self)
     }
 
     private func connectController(completion: @escaping () -> Void) {

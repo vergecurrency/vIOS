@@ -31,23 +31,23 @@
                                                 <color key="color" name="SecondaryDark"/>
                                             </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIy-dK-o4n">
-                                                <rect key="frame" x="25.5" y="0.0" width="324" height="207.5"/>
+                                                <rect key="frame" x="16" y="0.0" width="343" height="220"/>
                                                 <subviews>
-                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReceiveCard" translatesAutoresizingMaskIntoConstraints="NO" id="r0L-Xt-lq2" customClass="XVGCardImageView" customModule="VergeiOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="324" height="207.5"/>
+                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReceiveCard" translatesAutoresizingMaskIntoConstraints="NO" id="r0L-Xt-lq2" customClass="ReceiveCardImageView" customModule="VergeiOS" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343.00000000000011" height="220"/>
                                                         <gestureRecognizers/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1NMcHbiZuUYU9su1BDKTRtJvxnq14Z8YiT" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8To-PP-rsq">
-                                                        <rect key="frame" x="14" y="141" width="108.5" height="52.5"/>
+                                                        <rect key="frame" x="14" y="153.5" width="115.5" height="52.5"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbF-m7-GU7">
-                                                        <rect key="frame" x="130.5" y="14" width="179.5" height="179.5"/>
+                                                        <rect key="frame" x="137.5" y="14" width="191.5" height="192"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0uN-ln-KKw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="179.5" height="179.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="191.5" height="192"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -177,7 +177,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="INo-iP-LTr"/>
                                                                         </constraints>
-                                                                        <color key="textColor" name="SecondaryDark"/>
+                                                                        <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -324,7 +324,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bLV-tn-xvb" firstAttribute="bottom" secondItem="oDa-gW-jms" secondAttribute="bottom" id="ERq-Ig-Lwb"/>
                             <constraint firstItem="oDa-gW-jms" firstAttribute="top" secondItem="bLV-tn-xvb" secondAttribute="top" id="ETq-VC-4G1"/>
@@ -363,9 +363,6 @@
         <image name="Refresh" width="30" height="30"/>
         <image name="Share" width="30" height="30"/>
         <image name="Stealth" width="30" height="30"/>
-        <namedColor name="BackgroundGrey">
-            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

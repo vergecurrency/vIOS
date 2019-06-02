@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendViewController: UIViewController {
+class SendViewController: VViewController {
 
     enum CurrencySwitch {
         case XVG
@@ -48,17 +48,18 @@ class SendViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        confirmButtonInterval = setInterval(1) {
+
+        self.confirmButton.backgroundColor = ThemeManager.shared.vergeGrey()
+        self.confirmButtonInterval = setInterval(1) {
             self.isSendable()
         }
 
-        amountTextField.delegate = self
-        amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
+        self.amountTextField.delegate = self
+        self.amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
 
-        setupRecipientTextFieldKeyboardToolbar()
-        setupAmountTextFieldKeyboardToolbar()
-        setupMemoTextFieldKeyboardToolbar()
+        self.setupRecipientTextFieldKeyboardToolbar()
+        self.setupAmountTextFieldKeyboardToolbar()
+        self.setupMemoTextFieldKeyboardToolbar()
 
         DispatchQueue.main.async {
             self.updateAmountLabel()
@@ -83,18 +84,18 @@ class SendViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        noBalanceView.isHidden = (walletAmount.doubleValue > 0)
+        self.noBalanceView.isHidden = (walletAmount.doubleValue > 0)
 
-        xvgCardContainer.alpha = 0.0
-        xvgCardContainer.center.y += 20.0
+        self.xvgCardContainer.alpha = 0.0
+        self.xvgCardContainer.center.y += 20.0
 
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
             self.xvgCardContainer.alpha = 1.0
             self.xvgCardContainer.center.y -= 20.0
         }, completion: nil)
 
-        updateWalletAmountLabel()
-        updateAmountLabel()
+        self.updateWalletAmountLabel()
+        self.updateAmountLabel()
     }
 
     @objc func didReceiveFiatRatings(_ notification: Notification) {
@@ -147,11 +148,11 @@ class SendViewController: UIViewController {
             }
 
             if (self.currentAmount().doubleValue > self.walletAmount.doubleValue) {
-                self.amountTextField.textColor = UIColor.vergeRed()
+                self.amountTextField.textColor = ThemeManager.shared.vergeRed()
                 
                 self.notifySelectedToMuchAmount()
             } else {
-                self.amountTextField.textColor = UIColor.secondaryDark()
+                self.amountTextField.textColor = ThemeManager.shared.secondaryDark()
             }
         }
     }
@@ -187,12 +188,14 @@ class SendViewController: UIViewController {
         // Selected amount is higher then nothing.
         // Selected amount is lower then wallet amount.
         // Address is set.
-        let enabled = txFactory.amount.doubleValue > 0.0
-            && txFactory.amount.doubleValue <= walletAmount.doubleValue
-            && txFactory.address != ""
+        let enabled = self.txFactory.amount.doubleValue > 0.0
+            && self.txFactory.amount.doubleValue <= self.walletAmount.doubleValue
+            && self.txFactory.address != ""
 
-        confirmButton.isEnabled = enabled
-        confirmButton.backgroundColor = (enabled ? UIColor.primaryLight() : UIColor.vergeGrey())
+        self.confirmButton.isEnabled = enabled
+        self.confirmButton.backgroundColor = (
+            enabled ? ThemeManager.shared.primaryLight() : ThemeManager.shared.vergeGrey()
+        )
     }
 
     @IBAction func confirm(_ sender: Any) {
@@ -369,7 +372,7 @@ extension SendViewController: UITextFieldDelegate {
     func setupRecipientTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let fixedBarButton = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
@@ -419,7 +422,7 @@ extension SendViewController: UITextFieldDelegate {
     func setupAmountTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
@@ -448,7 +451,7 @@ extension SendViewController: UITextFieldDelegate {
     func setupMemoTextFieldKeyboardToolbar() {
         let keyboardToolbar = UIToolbar()
         keyboardToolbar.sizeToFit()
-        keyboardToolbar.tintColor = UIColor.primaryLight()
+        keyboardToolbar.tintColor = ThemeManager.shared.primaryLight()
 
         let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 

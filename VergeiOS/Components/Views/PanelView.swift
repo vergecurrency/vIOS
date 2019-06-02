@@ -16,9 +16,22 @@ import UIKit
 
     var shadowLayer: CAShapeLayer!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        backgroundColor = ThemeManager.shared.backgroundWhite()
+        
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
@@ -35,5 +48,13 @@ import UIKit
 
         layer.cornerRadius = cornerRadius
         backgroundColor = .clear
+    }
+
+    @objc func themeChanged(notification: Notification) {
+        guard let shadowLayer = self.shadowLayer else {
+            return
+        }
+
+        shadowLayer.fillColor = ThemeManager.shared.backgroundWhite().cgColor
     }
 }

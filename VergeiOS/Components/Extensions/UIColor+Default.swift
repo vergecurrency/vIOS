@@ -7,41 +7,34 @@
 //
 
 import UIKit
+import Foundation
 
 extension UIColor {
-    static func primaryDark() -> UIColor {
-        return UIColor(named: "PrimaryDark") ?? .blue
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
     
-    static func primaryLight() -> UIColor {
-        return UIColor(named: "PrimaryLight") ?? .blue
+    convenience init(rgb: Int) {
+        self.init(
+            red: (rgb >> 16) & 0xFF,
+            green: (rgb >> 8) & 0xFF,
+            blue: rgb & 0xFF
+        )
     }
-    
-    static func secondaryDark() -> UIColor {
-        return UIColor(named: "SecondaryDark") ?? .blue
-    }
-    
-    static func secondaryLight() -> UIColor {
-        return UIColor(named: "SecondaryLight") ?? .blue
-    }
-    
-    static func backgroundBlue() -> UIColor {
-        return UIColor(named: "BackgroundBlue") ?? .blue
-    }
-    
-    static func backgroundGrey() -> UIColor {
-        return UIColor(named: "BackgroundGrey") ?? .blue
-    }
-    
+
     static func vergeGrey() -> UIColor {
-        return UIColor(named: "VergeGrey") ?? .gray
+        return UIColor(rgb: 0x9B9B9B)
     }
-    
+
     static func vergeGreen() -> UIColor {
-        return UIColor(named: "VergeGreen") ?? .green
+        return UIColor(rgb: 0x008570)
     }
-    
+
     static func vergeRed() -> UIColor {
-        return UIColor(named: "VergeRed") ?? .red
+        return UIColor(rgb: 0xFF5252)
     }
 }

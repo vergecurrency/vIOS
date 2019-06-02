@@ -17,6 +17,14 @@ class TransactionsTableViewController: EdgedTableViewController {
     var dates: [Date] = []
     let searchController = UISearchController(searchResultsController: nil)
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,7 +73,7 @@ class TransactionsTableViewController: EdgedTableViewController {
             )?.first as? NoTransactionsPlaceholderView {
                 placeholder.frame = tableView.frame
                 tableView.backgroundView = placeholder
-                tableView.backgroundView?.backgroundColor = .backgroundGrey()
+                tableView.backgroundView?.backgroundColor = ThemeManager.shared.backgroundGrey()
                 tableView.tableFooterView = UIView()
                 navigationItem.searchController = nil
             }
@@ -171,7 +179,7 @@ class TransactionsTableViewController: EdgedTableViewController {
         }
         
         cell.setTransaction(item, address: recipient)
-        cell.backgroundColor = .backgroundGrey()
+        cell.backgroundColor = ThemeManager.shared.backgroundGrey()
         
         return cell
     }
@@ -190,8 +198,8 @@ class TransactionsTableViewController: EdgedTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.backgroundView?.backgroundColor = .backgroundGrey()
-        header.textLabel?.textColor = UIColor.secondaryDark()
+        header.backgroundView?.backgroundColor = ThemeManager.shared.backgroundGrey()
+        header.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         header.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         header.textLabel?.frame = header.frame
         header.textLabel?.text = header.textLabel?.text?.capitalized

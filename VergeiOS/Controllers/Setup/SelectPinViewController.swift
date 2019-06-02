@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectPinViewController: UIViewController, KeyboardDelegate {
+class SelectPinViewController: VViewController, KeyboardDelegate {
     
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var pinKeyboard: PinKeyboard!
@@ -26,6 +26,8 @@ class SelectPinViewController: UIViewController, KeyboardDelegate {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         pinKeyboard.delegate = self
     }
     

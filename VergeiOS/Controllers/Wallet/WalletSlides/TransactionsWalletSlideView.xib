@@ -20,21 +20,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XRh-Bu-78i" customClass="PanelView" customModule="VergeiOS" customModuleProvider="target">
                     <rect key="frame" x="20" y="0.0" width="335" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-vB-MfD">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Transactions" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-vB-MfD" customClass="SubtitleImageView" customModule="VergeiOS" customModuleProvider="target">
                             <rect key="frame" x="12" y="12" width="25" height="25"/>
-                            <color key="tintColor" name="SecondaryDark"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="JmQ-un-luY"/>
                                 <constraint firstAttribute="width" constant="25" id="X9m-8U-2Nk"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huF-N5-Kaa">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huF-N5-Kaa" customClass="SubtitleLabel" customModule="VergeiOS" customModuleProvider="target">
                             <rect key="frame" x="45" y="12" width="277.5" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="PFm-Sc-Ks6"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                            <color key="textColor" name="SecondaryDark"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="wallet.slides.recentTransactions"/>

@@ -26,7 +26,7 @@ class ContactTableViewController: FormViewController {
             target: self,
             action: #selector(deleteContact)
         )
-        trashButtonItem.tintColor = UIColor.vergeRed()
+        trashButtonItem.tintColor = ThemeManager.shared.vergeRed()
 
         if contact != nil && contact!.name != "" {
             navigationItem.rightBarButtonItems?.append(trashButtonItem)
@@ -34,12 +34,13 @@ class ContactTableViewController: FormViewController {
 
         let styleCell = { (cell: TextCell) in
             cell.textLabel?.font = UIFont.avenir(size: 17)
-            cell.textLabel?.textColor = UIColor.secondaryDark()
+            cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
             cell.textField?.font = UIFont.avenir(size: 17).demiBold()
-            cell.textField?.textColor = UIColor.secondaryDark()
+            cell.textField?.textColor = ThemeManager.shared.secondaryDark()
+            cell.textField.setPlaceholderColor()
         }
 
-        tableView.backgroundColor = UIColor.backgroundGrey()
+        tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
 
         form +++ Section("transactions.contact.section.details".localized)
             <<< TextRow("name") { row in
@@ -86,7 +87,7 @@ class ContactTableViewController: FormViewController {
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.textColor = UIColor.secondaryDark()
+        header.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         header.textLabel?.font = UIFont.avenir(size: 17).demiBold()
         header.textLabel?.frame = header.frame
         header.textLabel?.text = header.textLabel?.text?.capitalized

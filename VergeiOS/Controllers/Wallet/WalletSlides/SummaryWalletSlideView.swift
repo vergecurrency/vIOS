@@ -38,6 +38,13 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
             name: .didReceiveFiatRatings,
             object: nil
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(themeChanged(notification:)),
+            name: .themeChanged,
+            object: nil
+        )
     }
 
     override func layoutSubviews() {
@@ -65,8 +72,8 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         cell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         cell.detailTextLabel?.font = UIFont.avenir(size: 15).demiBold()
         
-        cell.textLabel?.textColor = UIColor.secondaryDark()
-        cell.detailTextLabel?.textColor = UIColor.secondaryDark()
+        cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
+        cell.detailTextLabel?.textColor = ThemeManager.shared.secondaryDark()
 
         return setupCell(cell, item: item)
     }
@@ -86,12 +93,12 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
             case "dayHigh":
                 cell.textLabel?.text = "wallet.slides.summary.24hHigh".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.high24Hour).toPairCurrency(fractDigits: 6)
-                cell.detailTextLabel?.textColor = .vergeGreen()
+                cell.detailTextLabel?.textColor = ThemeManager.shared.vergeGreen()
                 break
             case "dayLow":
                 cell.textLabel?.text = "wallet.slides.summary.24hLow".localized
                 cell.detailTextLabel?.text = NSNumber(value: info.low24Hour).toPairCurrency(fractDigits: 6)
-                cell.detailTextLabel?.textColor = .vergeRed()
+                cell.detailTextLabel?.textColor = ThemeManager.shared.vergeRed()
                 break
             case "dayChangePercentage":
                 cell.textLabel?.text = "wallet.slides.summary.24hChange".localized
@@ -120,7 +127,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     }
 
     func stylePercentageLabel(_ label: UILabel, value: Double) {
-        label.textColor = value > 0.0 ? UIColor.vergeGreen() : UIColor.vergeRed()
+        label.textColor = value > 0.0 ? ThemeManager.shared.vergeGreen() : ThemeManager.shared.vergeRed()
     }
 
     @objc func didReceiveStats(notification: Notification? = nil) {
@@ -130,6 +137,10 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
                 self.tableView.reloadData()
             }
         }
+    }
+
+    @objc func themeChanged(notification: Notification? = nil) {
+        self.tableView.reloadData()
     }
     
 }

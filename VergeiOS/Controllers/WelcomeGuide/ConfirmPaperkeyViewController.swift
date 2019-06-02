@@ -56,12 +56,12 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
         
         // Add shake effect...
         if (self.firstWordTextfield.text != self.mnemonic[self.randomNumbers.first! - 1]) {
-            self.firstWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
+            self.firstWordTextfield.backgroundColor = ThemeManager.shared.vergeRed().withAlphaComponent(0.15)
             return
         }
         
         if (self.secondWordTextfield.text != self.mnemonic[self.randomNumbers.last! - 1]) {
-            self.secondWordTextfield.backgroundColor = UIColor.vergeRed().withAlphaComponent(0.15)
+            self.secondWordTextfield.backgroundColor = ThemeManager.shared.vergeRed().withAlphaComponent(0.15)
             return
         }
 

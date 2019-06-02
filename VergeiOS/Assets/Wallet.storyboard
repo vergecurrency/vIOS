@@ -114,7 +114,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1Y-bs-t2i">
                                 <rect key="frame" x="0.0" y="178.5" width="375" height="456.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Jb-Mxw">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-Jb-Mxw" customClass="WalletContainerBottomView" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <color key="backgroundColor" name="PrimaryLight"/>
                                         <constraints>
@@ -144,7 +144,7 @@
                                 <color key="currentPageIndicatorTintColor" name="PrimaryLight"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundGrey"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ca9-gE-evq" firstAttribute="bottom" secondItem="API-tf-Czt" secondAttribute="bottom" id="2mj-hM-tQr"/>
                             <constraint firstItem="uDU-zZ-lf9" firstAttribute="leading" secondItem="ca9-gE-evq" secondAttribute="leading" id="3M9-KY-1lu"/>
@@ -204,9 +204,6 @@
     </scenes>
     <resources>
         <image name="Wallet" width="30" height="30"/>
-        <namedColor name="BackgroundGrey">
-            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="PrimaryLight">
             <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

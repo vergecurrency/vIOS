@@ -65,6 +65,10 @@ class TorStatusIndicator: UIWindow {
         torStatusIndicatorViewController?.setStatus(status)
     }
 
+    func refresh() {
+        torStatusIndicatorViewController?.setStatus(torStatusIndicatorViewController!.status)
+    }
+
     func hide() {
         toggleView(show: false)
     }

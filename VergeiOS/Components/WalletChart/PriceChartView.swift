@@ -20,7 +20,7 @@ class PriceChartView: AbstractChartView {
             height: rect.size.height
         )
 
-        chart.noDataTextColor = UIColor.secondaryDark()
+        chart.noDataTextColor = ThemeManager.shared.secondaryDark()
         chart.dragEnabled = false
         chart.setScaleEnabled(false)
         chart.pinchZoomEnabled = false
@@ -51,8 +51,10 @@ class PriceChartView: AbstractChartView {
 
     fileprivate func style(priceSet: LineChartDataSet) {
         let gradientColors = [
-            UIColor.white.withAlphaComponent(0).cgColor,
-            UIColor.primaryLight().withAlphaComponent(0.5).cgColor
+            ThemeManager.shared.useMoonMode ?
+                ThemeManager.shared.backgroundWhite().withAlphaComponent(0).cgColor :
+                UIColor.white.withAlphaComponent(0).cgColor,
+            ThemeManager.shared.primaryLight().withAlphaComponent(0.5).cgColor
         ]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
 
@@ -63,8 +65,8 @@ class PriceChartView: AbstractChartView {
         priceSet.lineWidth = 1.5
         priceSet.highlightLineWidth = 1.0
         priceSet.fillAlpha = 1
-        priceSet.highlightColor = UIColor.primaryLight().withAlphaComponent(0.9)
+        priceSet.highlightColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.9)
         priceSet.fill = Fill(linearGradient: gradient, angle: 90)
-        priceSet.setColor(UIColor.primaryLight())
+        priceSet.setColor(ThemeManager.shared.primaryLight())
     }
 }

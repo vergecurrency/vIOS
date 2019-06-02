@@ -25,7 +25,7 @@ class NumberKey: AbstractKey {
             let subtitle = UILabel(frame: CGRect(x: 0, y: (button.frame.size.height / 2) + 13, width: button.frame.size.width, height: 10))
             subtitle.font = UIFont.avenir(size: 10)
             subtitle.textAlignment = .center
-            subtitle.textColor = UIColor.secondaryDark()
+            subtitle.textColor = ThemeManager.shared.secondaryDark()
             subtitle.backgroundColor = UIColor.clear
             subtitle.text = self.subtitle
             

@@ -1,5 +1,5 @@
 //
-//  XVGCardImageView.swift
+//  CardImageView.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 11-08-18.
@@ -8,20 +8,14 @@
 
 import UIKit
 
-class XVGCardImageView: UIImageView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.createView()
-    }
-    
+class CardImageView: ThemedImageView {
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         self.createView()
     }
-    
+
     func createView() {
         self.layer.cornerRadius = 15
         
