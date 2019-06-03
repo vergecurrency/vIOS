@@ -551,3 +551,7 @@
 "alerts.startTor.button2"                   = "Without Tor";
 "alerts.termsOfUse.title"                   = "View Wallet Terms of Use";
 "alerts.restart.title"                      = "Restarting...";
+"alerts.torManager.title"                   = "Tor Management";
+"alerts.torManager.message"                 = "Manage your Tor connection.";
+"alerts.torManager.restartTor"              = "Restart Tor";
+"alerts.torManager.disableTor"              = "Disable Tor";

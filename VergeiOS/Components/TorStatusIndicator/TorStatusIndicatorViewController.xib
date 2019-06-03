@@ -21,15 +21,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PT-JF-SIi">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PT-JF-SIi">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="34"/>
                     <subviews>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TorDisconnected" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-G3-j66">
-                            <rect key="frame" x="179.5" y="18" width="16" height="16"/>
+                        <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TorDisconnected" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-G3-j66">
+                            <rect key="frame" x="170" y="18" width="35" height="16"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="16" id="FvP-h1-a9m"/>
-                                <constraint firstAttribute="width" constant="16" id="qQa-M7-3bb"/>
+                                <constraint firstAttribute="width" constant="35" id="qQa-M7-3bb"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="2qq-gV-Zs9" appends="YES" id="ElQ-GN-be6"/>
+                            </connections>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,6 +54,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="92" y="50.374812593703155"/>
         </view>
+        <tapGestureRecognizer id="2qq-gV-Zs9">
+            <connections>
+                <action selector="iconTappedWithTapGesture:" destination="-1" id="ydu-N8-yu0"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="TorDisconnected" width="30" height="30"/>

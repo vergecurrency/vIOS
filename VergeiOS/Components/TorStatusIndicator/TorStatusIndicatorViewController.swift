@@ -64,6 +64,29 @@ class TorStatusIndicatorViewController: UIViewController {
         
         containerView.layoutIfNeeded()
     }
+
+    @IBAction func iconTapped(tapGesture: UITapGestureRecognizer) {
+        let alert = UIAlertController(
+            title: "alerts.torManager.title".localized,
+            message: "alerts.torManager.message".localized,
+            preferredStyle: .actionSheet
+        )
+
+        let torClient = Application.container.resolve(TorClient.self)!
+
+        alert.addAction(UIAlertAction(title: "alerts.torManager.restartTor".localized, style: .default) { action in
+            torClient.restart()
+        })
+
+        alert.addAction(UIAlertAction(title: "alerts.torManager.disableTor".localized, style: .destructive) { action in
+            torClient.resign()
+        })
+
+        alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.visibleViewController()?.present(alert, animated: true)
+    }
     
 }
 
