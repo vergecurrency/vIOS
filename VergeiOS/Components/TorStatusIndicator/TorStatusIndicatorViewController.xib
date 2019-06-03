@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,14 +21,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PT-JF-SIi">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0PT-JF-SIi">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="34"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Public" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-G3-j66">
-                            <rect key="frame" x="180" y="19" width="15" height="15"/>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TorDisconnected" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-G3-j66">
+                            <rect key="frame" x="179.5" y="18" width="16" height="16"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="15" id="FvP-h1-a9m"/>
-                                <constraint firstAttribute="width" constant="15" id="qQa-M7-3bb"/>
+                                <constraint firstAttribute="height" constant="16" id="FvP-h1-a9m"/>
+                                <constraint firstAttribute="width" constant="16" id="qQa-M7-3bb"/>
                             </constraints>
                         </imageView>
                     </subviews>
@@ -52,6 +52,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Public" width="30" height="30"/>
+        <image name="TorDisconnected" width="30" height="30"/>
     </resources>
 </document>

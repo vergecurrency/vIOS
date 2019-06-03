@@ -73,7 +73,7 @@ class SendingView: UIView {
             imgListArray.append(image!)
         }
 
-        imageView.animationImages = imgListArray;
+        imageView.animationImages = imgListArray
         imageView.animationDuration = 4.5
         imageView.startAnimating()
     }

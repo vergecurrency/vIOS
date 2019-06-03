@@ -58,7 +58,7 @@ class TorStatusIndicator: UIWindow {
     }
 
     func frameHeight() -> CGFloat {
-        return hasNotch() ? 54 : 32
+        return hasNotch() ? 54 : 33
     }
     
     func setStatus(_ status: TorStatusIndicator.status) {
