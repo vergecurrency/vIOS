@@ -16,6 +16,8 @@
 "defaults.address" = "Adresse";
 "defaults.next" = "Nächster";
 "defaults.previous" = "Bisherige";
+"defaults.delete" = "löschen";
+"defaults.open" = "öffnen";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Den Mitgliedern unserer Community zuzuhören und Feedback zu erhalten, ist nicht nur eines der Grundprinzipien von Verge, sondern auch unserer Open-Source-Natur wegen.";
 "settings.donate.addressLabel" = "Spenden XVG Adresse";
 "settings.donate.donateButton" = "Spenden XVG";
+
+/*Language*/
+"settings.language.title" = "Sprache";
+"settings.language.default" = "Standard";
+"settings.language.systemBased" = "Systemsprache";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Keine Transaktion bisher empfangen.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Kontakt entfernen";
+"alerts.removeContact.message" = "Wollen Sie den Kontakt wirklich löschen?";
+"alerts.invalidContact.title" = "Falsche Kontaktangaben";
+"alerts.invalidContact.message" = "Geben Sie bitte einen gültigen Namen und eine gültige XVG Adresse an";
+"alerts.removeTransaction.title" = "Transaktion entfernen";
+"alerts.removeTransaction.message" = "Wollen Sie diese Transaktion wirklich löschen?";
+"alerts.createAddress.title" = "Fehler beim Erstellen der Adresse";
+"alerts.createAddress.message" = "Das Maximum inaktiver Adressen wurde erreicht. Nutzen Sie die bereits generierten Adressen um eine neue Adresse zu erstellen.";
+"alerts.sendMaxInfo.title" = "Fehler beim Abfragen der Daten";
+"alerts.sendMaxInfo.message" = "Fehler bei der Abfrage des Sendemaximums vom Server. Bitte versuchen Sie es erneut.";
+"alerts.startTor.title" = "Tor ist nicht aktiviert";
+"alerts.startTor.message" = "Möchten Sie diese Transaktion ohne Verschleierung Ihrer IP senden? Oder möchten Sie Tor starten um Ihre Identität zu verbergen?";
+"alerts.startTor.button1" = "Tor starten";
+"alerts.startTor.button2" = "Ohne Tor";
+"alerts.termsOfUse.title" = "Nutzungsbedingungen für diese Wallet anzeigen";
+"alerts.restart.title" = "Neustart...";

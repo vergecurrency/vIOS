@@ -16,6 +16,8 @@
 "defaults.address" = "Adres";
 "defaults.next" = "Sonraki";
 "defaults.previous" = "Önceki";
+"defaults.delete" = "Sil";
+"defaults.open" = "Aç";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Topluluk üyelerimizi dinlemek ve geri bildirim almak, Verge'nin temel kurucu ilkelerinden biri olmakla birlikte, aynı zamanda açık kaynak niteliğimizin esasıdır.";
 "settings.donate.addressLabel" = "Bağış XVG Adresi";
 "settings.donate.donateButton" = "XVG Bağışı Yap";
+
+/*Language*/
+"settings.language.title" = "Dil";
+"settings.language.default" = "Varsayılan";
+"settings.language.systemBased" = "Sistem bazlı";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Henüz bir işlem alınmadı.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Kişi sil";
+"alerts.removeContact.message" = "Kişiyi silmek istediğinden emin misin?";
+"alerts.invalidContact.title" = "Geçersiz kişi verisi";
+"alerts.invalidContact.message" = "Lütfen geçerli bir isim ve XVG adresi girin";
+"alerts.removeTransaction.title" = "İşlem sil";
+"alerts.removeTransaction.message" = "Bu işlemi silmek istediğinden emin misin?";
+"alerts.createAddress.title" = "Adres oluşturulamıyor";
+"alerts.createAddress.message" = "Çok fazla inaktif adres var.\nYenisini oluşturmak için eski adreslerden birini kullan.";
+"alerts.sendMaxInfo.title" = "Veri alınamadı";
+"alerts.sendMaxInfo.message" = "Sunucudan maksimum gönderim bilgisi alınamadı, lütfen tekrar deneyin.";
+"alerts.startTor.title" = "Tor aktif değil";
+"alerts.startTor.message" = "Tor senin IP'ni gizlemeden bu işlemi göndermek ister misin?\nYoksa Tor'u başlatmak ve kimliğini gizlemek mi istiyorsun?";
+"alerts.startTor.button1" = "Tor ile devam";
+"alerts.startTor.button2" = "Tor olmadan devam";
+"alerts.termsOfUse.title" = "Cüzdan Kullanım Koşullarını görüntüle";
+"alerts.restart.title" = "Yeniden başlıyor...";

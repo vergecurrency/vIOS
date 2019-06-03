@@ -16,6 +16,8 @@
 "defaults.address" = "Indirizzo";
 "defaults.next" = "Avanti";
 "defaults.previous" = "Indietro";
+"defaults.delete" = "Cancella";
+"defaults.open" = "Apri";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Ascoltare la nostra comunità e prendere in considerazione feedback non è solo uno dei principi vitali di Verge, ma è inerente alla nostra natura open-source.";
 "settings.donate.addressLabel" = "Indirizzo XVG di donazione";
 "settings.donate.donateButton" = "Dona XVG";
+
+/*Language*/
+"settings.language.title" = "Lingua";
+"settings.language.default" = "Default";
+"settings.language.systemBased" = "In base al sistema";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nessuna transazione ricevuta (ancora...)";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Rimuovi il contatto";
+"alerts.removeContact.message" = "Sei sicuro/a di voler rimuovere il contatto?";
+"alerts.invalidContact.title" = "I dati del contatto non sono validi";
+"alerts.invalidContact.message" = "Per favore, fornisci un nome ed un indirizzo XVG validi";
+"alerts.removeTransaction.title" = "Rimuovi la transazione";
+"alerts.removeTransaction.message" = "Sei sicuro/a di voler rimuovere questa transazione?";
+"alerts.createAddress.title" = "Impossibile creare l'indirizzo";
+"alerts.createAddress.message" = "Il numero massimo di indirizzi inattivi è stato raggiunto. Usa uno di quelli già creati per generarne uno nuovo.";
+"alerts.sendMaxInfo.title" = "Recupero dei dati non riuscito";
+"alerts.sendMaxInfo.message" = "Recupero dal server delle informazioni di massimo invio non riuscito. Per favore riprova. ";
+"alerts.startTor.title" = "Tor non è attivo";
+"alerts.startTor.message" = "Vuoi inviare questa transazione senza che Tor offuschi il tuo IP? O vuoi attivare Tor e nascondere la tua identità?";
+"alerts.startTor.button1" = "Attiva Tor";
+"alerts.startTor.button2" = "Senza Tor";
+"alerts.termsOfUse.title" = "Visualizza i termini d'uso del portafogli";
+"alerts.restart.title" = "Riavviando...";

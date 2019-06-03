@@ -16,6 +16,8 @@
 "defaults.address" = "Địa chỉ";
 "defaults.next" = "Tiếp theo";
 "defaults.previous" = "Trước";
+"defaults.delete" = "Xoá";
+"defaults.open" = "Mở";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Lắng nghe các thành viên cộng đồng của chúng tôi và tham gia phản hồi không chỉ là một trong những nguyên tắc sáng lập cốt lõi của Verge, mà nó vốn có trong bản chất phần mềm nguồn mở.";
 "settings.donate.addressLabel" = "Địa chỉ ủng hộ XVG";
 "settings.donate.donateButton" = "Ủng hộ XVG";
+
+/*Language*/
+"settings.language.title" = "Ngôn ngữ";
+"settings.language.default" = "Mặc định";
+"settings.language.systemBased" = "Hệ thống dựa trên";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Không có giao dịch nhận tiền nào.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Loại bỏ người liên lạc";
+"alerts.removeContact.message" = "Bạn có chắc muốn xoá người liên lạc này không?";
+"alerts.invalidContact.title" = "Dữ liệu người liên lạc không phù hợp";
+"alerts.invalidContact.message" = "Làm ơn cung cấp một tên phù hợp và địa chỉ XVG";
+"alerts.removeTransaction.title" = "Loại bỏ giao dịch";
+"alerts.removeTransaction.message" = "Bạn có chắc là muốn loại bỏ giao dịch này không?";
+"alerts.createAddress.title" = "Không thể tạo địa chỉ";
+"alerts.createAddress.message" = "Số lượng địa chỉ không hoạt động nhiều nhất đã đạt tới.\nHãy sử dụng một địa chỉ đã tạo để tạo cái mới";
+"alerts.sendMaxInfo.title" = "Lấy dữ liệu không được";
+"alerts.sendMaxInfo.message" = "Lỗi khi lấy dữ liệu khi gửi số lượng thông tin lớn nhất từ máy chủ, làm ơn thử lại";
+"alerts.startTor.title" = "Tor không được kích hoạt";
+"alerts.startTor.message" = "Bạn có muốn giao dịch khi không có Tor che dấu địa chỉ IP của bạn?";
+"alerts.startTor.button1" = "Bắt đầu Tor";
+"alerts.startTor.button2" = "Không dùng Tor";
+"alerts.termsOfUse.title" = "Xem điều khoảng sử dụng ví";
+"alerts.restart.title" = "Đang khởi động lại...";
