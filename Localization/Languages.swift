@@ -84,6 +84,11 @@ public class Languages {
             "name": "Japanese",
             "localizedName": "日本語",
             "code": "ja",
+        ],
+        [
+            "name": "Slovenian",
+            "localizedName": "Slovenski",
+            "code": "sl",
         ]
     ]
 }

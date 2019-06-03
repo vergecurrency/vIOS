@@ -628,6 +628,7 @@
 		CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfo.swift; sourceTree = "<group>"; };
 		CADA0BE92203B15E00FE74C1 /* VergeSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiri.entitlements; sourceTree = "<group>"; };
 		CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsManager.swift; sourceTree = "<group>"; };
+		CAF3F47322A5B80100F584A3 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAF4F6DD222AD0DA00096B71 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		CAFB2004228AC7040096623D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAFB2006228AC8BD0096623D /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1676,6 +1677,7 @@
 				"pt-PT",
 				vi,
 				ja,
+				sl,
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -2137,6 +2139,7 @@
 				CAFC45E7228C189100D4F287 /* pt-PT */,
 				CA60D193228D53300029FED0 /* vi */,
 				CA15CE54228FE3970053FDC5 /* ja */,
+				CAF3F47322A5B80100F584A3 /* sl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
