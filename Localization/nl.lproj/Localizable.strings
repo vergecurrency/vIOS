@@ -163,7 +163,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Verander wallet PIN";
 "settings.settings.cell.useFaceIdLabel" = "Gebruik Face ID";
-"settings.settings.cell.torConnectionLabel" = "Tor connectie";
+"settings.settings.cell.torConnectionLabel" = "Tor verbinding";
 "settings.other.header.title" = "Anders";
 "settings.other.cell.creditsLabel" = "Credits";
 "settings.other.cell.donateLabel" = "Doneer";
