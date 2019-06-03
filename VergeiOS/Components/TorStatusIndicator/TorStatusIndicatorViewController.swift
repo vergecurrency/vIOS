@@ -23,19 +23,32 @@ class TorStatusIndicatorViewController: UIViewController {
     }
     
     func setStatus(_ status: TorStatusIndicator.status) {
+        indicatorView.stopAnimating()
+        indicatorView.animationImages = nil
+
         self.status = status
         switch status {
         case .connected:
-            indicatorView.image = UIImage(named: "Locked")
-            indicatorView.tintColor = ThemeManager.shared.secondaryDark()
+            indicatorView.image = UIImage(named: "TorConnected")
+            indicatorView.tintColor = UIColor(rgb: 0x764b92)
         case .disconnected:
-            indicatorView.image = UIImage(named: "Unlocked")
+            var imgListArray: [UIImage] = []
+            for countValue in 1...4 {
+                let strImageName: String = "TorConnecting-\(countValue)"
+                let image = UIImage(named: strImageName)
+
+                imgListArray.append(image!)
+            }
+
+            indicatorView.animationImages = imgListArray
+            indicatorView.animationDuration = 1.5
+            indicatorView.startAnimating()
             indicatorView.tintColor = UIColor.orange
         case .turnedOff:
-            indicatorView.image = UIImage(named: "Public")
+            indicatorView.image = UIImage(named: "TorDisconnected")
             indicatorView.tintColor = ThemeManager.shared.vergeRed()
         case .error:
-            indicatorView.image = UIImage(named: "ConnectionError")
+            indicatorView.image = UIImage(named: "TorConnectionError")
             indicatorView.tintColor = ThemeManager.shared.vergeRed()
         }
         
@@ -45,7 +58,7 @@ class TorStatusIndicatorViewController: UIViewController {
     func setHasNotch(_ hasNotch: Bool) {
         for contraint in containerView.constraints {
             if contraint.identifier == "containerViewHeight" {
-                contraint.constant = hasNotch ? 54.0 : 32.0
+                contraint.constant = hasNotch ? 54.0 : 33.0
             }
         }
         
