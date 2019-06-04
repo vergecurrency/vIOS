@@ -60,6 +60,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         tableView.layer.cornerRadius = 5.0
         tableView.clipsToBounds = true
         tableView.addSubview(refreshControl)
+        tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
     }
     
     func installTableViewPlaceholder() {
