@@ -281,6 +281,12 @@
 "settings.language.default"                 = "Default";
 "settings.language.systemBased"             = "System based";
 
+// Themes
+
+"settings.themes.title"                     = "Themes";
+"settings.themes.featherMode"               = "Feather Mode";
+"settings.themes.moonMode"                  = "Moon Mode";
+
 // ----------------------------------------
 // Shortcuts
 // ----------------------------------------

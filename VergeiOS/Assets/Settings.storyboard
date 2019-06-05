@@ -230,8 +230,36 @@
                                             <segue destination="4Mh-ul-3bV" kind="show" id="ilO-bo-CBY"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3M5-Ul-Se5" imageView="uU2-DB-qXF" style="IBUITableViewCellStyleDefault" id="PAE-fh-qDf" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qHC-97-Pzx" imageView="MBp-Sy-oSA" style="IBUITableViewCellStyleDefault" id="LsL-ZS-tN9" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="431.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LsL-ZS-tN9" id="EoL-Da-Ucd">
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Themes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qHC-97-Pzx">
+                                                    <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.themes.title"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Theme" id="MBp-Sy-oSA">
+                                                    <rect key="frame" x="16" y="6" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" name="PrimaryLight"/>
+                                        <connections>
+                                            <segue destination="Gft-Wt-Lpc" kind="show" id="D0q-6A-fZq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3M5-Ul-Se5" imageView="uU2-DB-qXF" style="IBUITableViewCellStyleDefault" id="PAE-fh-qDf" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="475.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PAE-fh-qDf" id="zxW-KO-jc0">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -259,7 +287,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0c1-Ze-gFD" imageView="cDS-42-UWJ" style="IBUITableViewCellStyleDefault" id="zgh-qW-2zt" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="475.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="519.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgh-qW-2zt" id="iGW-aq-fMD">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -287,7 +315,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="R44-zz-HkA" imageView="MhQ-oW-4fU" style="IBUITableViewCellStyleDefault" id="bw1-h0-hnO" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="519.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="563.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bw1-h0-hnO" id="dU7-4M-pAD">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -312,39 +340,6 @@
                                         <color key="tintColor" name="PrimaryLight"/>
                                         <connections>
                                             <segue destination="rEY-Sf-xvm" kind="show" id="U2o-2C-sf9"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="qHC-97-Pzx" imageView="MBp-Sy-oSA" style="IBUITableViewCellStyleDefault" id="LsL-ZS-tN9" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="563.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LsL-ZS-tN9" id="EoL-Da-Ucd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Moon mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qHC-97-Pzx">
-                                                    <rect key="frame" x="61" y="0.0" width="298" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Moon" id="MBp-Sy-oSA">
-                                                    <rect key="frame" x="16" y="6" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jvG-se-its">
-                                                    <rect key="frame" x="163" y="5.5" width="49" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="onTintColor" name="VergeGreen"/>
-                                                    <connections>
-                                                        <action selector="themeSwitched:" destination="IMz-eD-ejn" eventType="valueChanged" id="jv5-rl-foD"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="tintColor" name="PrimaryLight"/>
-                                        <connections>
-                                            <outlet property="accessoryView" destination="jvG-se-its" id="ORW-ZY-wgD"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -500,7 +495,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currencyLabel" destination="iVZ-qT-Ore" id="opO-bC-bOD"/>
-                        <outlet property="moonModeSwitch" destination="jvG-se-its" id="2Xi-k9-hMV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VoE-JW-zbt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1271,6 +1265,52 @@
             </objects>
             <point key="canvasLocation" x="2591" y="1737"/>
         </scene>
+        <!--Themes-->
+        <scene sceneID="n5D-i5-nYX">
+            <objects>
+                <tableViewController id="Gft-Wt-Lpc" customClass="ThemeTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="12z-4A-Gch">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeCell" textLabel="aIn-UU-bPM" imageView="eWg-da-Is3" style="IBUITableViewCellStyleDefault" id="Nha-rm-Gdf" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nha-rm-Gdf" id="Saa-Lq-Chq" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aIn-UU-bPM">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eWg-da-Is3">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="Gft-Wt-Lpc" id="OpM-nP-SK1"/>
+                            <outlet property="delegate" destination="Gft-Wt-Lpc" id="dU8-Qx-XJS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Themes" id="dmh-05-ccS">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="settings.themes.title"/>
+                        </userDefinedRuntimeAttributes>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTE-na-Pe1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1622" y="2525"/>
+        </scene>
         <!--Credits-->
         <scene sceneID="8ou-kB-NRZ">
             <objects>
@@ -1712,7 +1752,6 @@ But you can always turn Tor off.</string>
         <image name="GitHub" width="30" height="30"/>
         <image name="Hero" width="30" height="30"/>
         <image name="Languages" width="30" height="30"/>
-        <image name="Moon" width="30" height="30"/>
         <image name="PaperKeyAlt" width="30" height="30"/>
         <image name="PaperkeyPlaceholder" width="842" height="596"/>
         <image name="Pin" width="30" height="30"/>
@@ -1721,6 +1760,7 @@ But you can always turn Tor off.</string>
         <image name="Server" width="30" height="30"/>
         <image name="ServiceURL" width="842" height="171"/>
         <image name="Settings" width="30" height="30"/>
+        <image name="Theme" width="30" height="30"/>
         <image name="Tor" width="90" height="90"/>
         <image name="TorPlaceholder" width="842" height="596"/>
         <image name="Website" width="30" height="30"/>

@@ -54,6 +54,7 @@
 		A324DAEE22A0323900EF12D7 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAED22A0323900EF12D7 /* CloseButton.swift */; };
 		A324DAF022A43A9B00EF12D7 /* SendCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAEF22A43A9B00EF12D7 /* SendCardImageView.swift */; };
 		A324DAF222A43AE800EF12D7 /* ReceiveCardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */; };
+		A324DAF422A83C6000EF12D7 /* ThemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */; };
 		A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32566402112588D006FB08A /* SettingsTableViewController.swift */; };
 		A32566452113729C006FB08A /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32566442113729C006FB08A /* Receive.storyboard */; };
 		A3256647211372A7006FB08A /* Send.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3256646211372A7006FB08A /* Send.storyboard */; };
@@ -425,6 +426,7 @@
 		A324DAED22A0323900EF12D7 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		A324DAEF22A43A9B00EF12D7 /* SendCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCardImageView.swift; sourceTree = "<group>"; };
 		A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCardImageView.swift; sourceTree = "<group>"; };
+		A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		A32566402112588D006FB08A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		A32566442113729C006FB08A /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
 		A3256646211372A7006FB08A /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
@@ -1110,14 +1112,15 @@
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
 				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
 				B2BD70361646D756C13B826D /* DonateTableViewController.swift */,
+				CAD85A5A2291A7D20063BF25 /* LanguageTableViewController.swift */,
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
+				A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 				B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */,
-				CAD85A5A2291A7D20063BF25 /* LanguageTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1932,6 +1935,7 @@
 				A305DDBA2107BB8B00911B64 /* KeyboardDelegate.swift in Sources */,
 				A3AA2B7A226335C8000E4571 /* VViewController.swift in Sources */,
 				A33DB6952231D2010070DBCE /* Array+Extensions.swift in Sources */,
+				A324DAF422A83C6000EF12D7 /* ThemeTableViewController.swift in Sources */,
 				A3E32B1E225D56FB001A8B0E /* ServiceProvider.swift in Sources */,
 				A338E6B72110D5D4000D44EE /* TransactionsWalletSlideView.swift in Sources */,
 				A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */,

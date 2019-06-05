@@ -46,6 +46,10 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (TransactionProposalsTableViewController.self) { r, c in
             c.walletClient = r.resolve(WalletClient.self)
         }
+
+        container.storyboardInitCompleted (ThemeTableViewController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
+        }
     }
 
 }
