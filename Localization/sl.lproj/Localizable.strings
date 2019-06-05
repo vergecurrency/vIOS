@@ -1,0 +1,476 @@
+
+/*Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 03/05/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ 
+ ----------------------------------------
+ Global defaults
+ ----------------------------------------*/
+"defaults.ok" = "V redu";
+"defaults.cancel" = "Prekliči";
+"defaults.done" = "Potrdi";
+"defaults.remove" = "Odstrani";
+"defaults.back" = "Nazaj";
+"defaults.address" = "Naslov";
+"defaults.next" = "Naprej";
+"defaults.previous" = "Nazaj";
+"defaults.delete" = "Izbriši";
+"defaults.open" = "Odpri";
+
+/*----------------------------------------
+ MainTabbarNavigation.storyboard
+ ----------------------------------------*/
+"mainTabBar.barItem.wallet.title" = "Denarnica";
+"mainTabBar.barItem.transactions.title" = "Transakcije";
+"mainTabBar.barItem.send.title" = "Pošlji";
+"mainTabBar.barItem.receive.title" = "Prejmi";
+"mainTabBar.barItem.settings.title" = "Nastavitve";
+
+/*----------------------------------------
+ Setup.storyboard
+ ----------------------------------------
+ Defaults*/
+"setup.walletName" = "Verge iOS denarnica";
+
+/*Loading Tor*/
+"setup.loadingTor.subtitle" = "Zasebnost je naš standard.";
+
+/*Welcome*/
+"setup.welcome.message" = "Varna, anonimna in zasebna iOS denarnica za Verge. Pošlji in Prejmi XVG.";
+"setup.welcome.createButton" = "Ustvari novo denarnico";
+"setup.welcome.createDescription" = "Ustvari novo XVG denarnico na svoji iOS napravi.";
+"setup.welcome.restoreButton" = "Obnovi svojo denarnico";
+"setup.welcome.restoreDescription" = "Ste izgubili iOS denarnico? Obnovite jo tukaj.";
+
+/*Pin unlock*/
+"setup.pinCode.title" = "Za odklepanje vnesite PIN";
+
+/*Set wallet pin*/
+"setup.pinCode.setPinTitle" = "Nastavite PIN denarnice";
+"setup.pinCode.setPinDesc" = "Vaš PIN denarnice bo uporabljen za odpiranje te aplikacije in pošiljanje XVG. Če PIN pozabite, ne boste mogli dostopati do denarnice.";
+
+/*Re enter wallet pin*/
+"setup.pinCode.reenterPinTitle" = "Ponovno vnesite PIN.";
+"setup.pinCode.reenterPinSucceedTitle" = "Zakon!";
+"setup.pinCode.reenterPinSucceedDesc" = "Vaš PIN je uspešno nastavljen.";
+"setup.pinCode.reenterPinSucceedDesc2" = "Prosimo, ne pozabite!";
+"setup.pinCode.reenterPinSucceedButton" = "Nadaljuj";
+"setup.pinCode.reenterPinErrorTitle" = "PIN nepravilen!";
+"setup.pinCode.reenterPinErrorDesc" = "Vaš PIN ni bilo mogoče preveriti!";
+"setup.pinCode.reenterPinErrorDesc2" = "Prosimo, poskusite ponovno.";
+"setup.pinCode.reenterPinErrorButton" = "Poskusi ponovno";
+"setup.pinCode.alert.chooseSize" = "Izberite velikost PIN-a";
+"setup.pinCode.alert.digits" = "Številke";
+
+/*Passphrase*/
+"setup.passphrase.title" = "Izpišite vaš papirni ključ z geslom";
+"setup.passphrase.desc" = "Šifriranje vašega papirnega ključa je pomemben varnostni ukrep. Pri ponovni vzpostavitvi denarnice poskrbite, da uporabite prejšnje geslo.";
+"setup.passphrase.req1" = "Vsaj. 8 znakov";
+"setup.passphrase.req2" = "Velike in male začetnice";
+"setup.passphrase.req3" = "Posebni znaki (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder" = "Vnesite geslo";
+"setup.passphrase.confirmButton" = "Potrdi";
+"setup.passphrase.confirmTitle" = "Potrdite vaše geslo";
+"setup.passphrase.proceedButton" = "Nadaljuj";
+
+/*Finish*/
+"setup.finish.title" = "Samo še malo!";
+"setup.finish.switch1" = "Razumem, da so moja sredstva na tej napravi varno zadržana.";
+"setup.finish.switch2" = "Razumem, da v kolikor je aplikacija premaknjena na drugo napravo ali izbrisana, lahko moja sredstva Verge povrnem le z uporabo papirnega ključa in gesla.";
+"setup.finish.switch3" = "Sem prebral, razumem in se strinjam s Pogoji uporabe.";
+"setup.finish.termsButton" = "Pogoji uporabe";
+"setup.finish.createButton" = "Ustvari Denarnico";
+"setup.finish.openButton" = "Odpri denarnico";
+"setup.finish.desc" = "Zaključevanje vaše denarnice...";
+"setup.finish.congrats" = "Vaša denarnica je pripravljena! Čestitamo!";
+
+/*----------------------------------------
+ WelcomeGuide.storyboard
+ ----------------------------------------*/
+"welcomeGuide.paperKey.title" = "Papirni ključ";
+"welcomeGuide.paperKey.message" = "Na naslednjem zaslonu vam bo prikazan seznam besed, ki jih boste prepisali na list papirja in jih hranili zelo skrbno!";
+"welcomeGuide.paperKey.description" = "Vaš papirni ključ je del vašega zasebnega ključa in je edina stvar, ki jo potrebujete za dostop do sredstev.";
+"welcomeGuide.paperKey.actionButton" = "Prepišite papirni ključ";
+"welcomeGuide.paperKey.makeSureLabel" = "Da se prepričate, da je vse pravilno zapisano, prosimo vnesite besede iz vašega papirja.";
+"welcomeGuide.paperKey.submitButton" = "Potrdi";
+
+/*----------------------------------------
+ Receive.storyboard
+ ----------------------------------------
+ Receive*/
+"receive.title" = "Prejmi";
+"receive.addressButtonLabel" = "Naslov";
+"receive.amountButtonLabel" = "Znesek";
+"receive.amountPlaceholder" = "Prejeti znesek";
+"receive.stealthAddressLabel" = "Prikriti naslov";
+"receive.shareButton" = "Deli";
+
+/*----------------------------------------
+ RestoreGuide.storyboard
+ ----------------------------------------
+ Restore wallet*/
+"restoreGuide.restore.title" = "Povrni Denarnico";
+"restoreGuide.restore.desc" = "Na naslednjem zaslonu boste morali izpolniti papirni ključ vaše denarnice v istem vrstnem redu, kot je zahtevano.";
+"restoreGuide.restore.notice" = "Prosimo, prepričajte se, da vas nihče ne opazuje med postopkom.";
+"restoreGuide.restore.restoreButton" = "Zaženi Povrnitev";
+"restoreGuide.restore.paperKeyTitle" = "Vaš papirni ključ:";
+"restoreGuide.restore.paperKeyWarning" = "Ali ste prepričani, da je vaš papirni ključ pravilen?";
+"restoreGuide.restore.paperKeyProceedButton" = "Nadaljuj";
+
+/*Paperkey QR*/
+"restoreGuide.qrcode.title" = "Skenirajte QR črtno kodo papirnega ključa";
+"restoreGuide.qrcode.closeButton" = "Zapri";
+
+/*----------------------------------------
+ Send.storyboard
+ ----------------------------------------
+ Send*/
+"send.title" = "Pošlji";
+"send.addressButtonLabel" = "Naslov prejemnika";
+"send.addressPlaceholder" = "Vnesite naslov prejemnika";
+"send.amountButtonLabel" = "Znesek";
+"send.memoButtonLabel" = "Interni zaznamek (opcijsko)";
+"send.memoPlaceholder" = "Darilo Swenu";
+"send.confirmButton" = "Potrdi";
+"send.noBalanceTitle" = "Ni stanja";
+"send.noBalanceDesc" = "Ste brez XVG za pošiljanje.\nProsimo, povečajte svoje stanje.";
+
+/*QR-code*/
+"send.qrcode.title" = "Skenirajte XVG QR črtno kodo";
+"send.qrcode.closeButton" = "Zapri";
+
+/*Select recipient*/
+"send.selectRecipient.title" = "Izberite prejemnika";
+
+/*----------------------------------------
+ Wallet.storyboard
+ ----------------------------------------*/
+"wallet.xvgBalanceTitle" = "XVG STANJE";
+"wallet.balanceTitle" = "STANJE";
+
+/*----------------------------------------
+ Settings.storyboard
+ ----------------------------------------
+ Settings*/
+"settings.title" = "Nastavitve";
+"settings.wallet.header.title" = "Denarnica";
+"settings.wallet.footer.title" = "Upravljajte svojo denarnico z danimi možnostmi.";
+"settings.wallet.cell.removeLabel" = "Odstrani denarnico";
+"settings.wallet.cell.paperKeyLabel" = "Papirni ključ";
+"settings.wallet.cell.addressesLabel" = "Naslovi";
+"settings.wallet.cell.transactionsLabel" = "Predlogi transakcij";
+"settings.wallet.cell.serviceUrlLabel" = "URL storitve";
+"settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
+"settings.settings.cell.changePinLabel" = "Spremeni PIN denarnice";
+"settings.settings.cell.useFaceIdLabel" = "Uporabi Face ID";
+"settings.settings.cell.torConnectionLabel" = "Tor povezava";
+"settings.other.header.title" = "Ostalo";
+"settings.other.cell.creditsLabel" = "Zasluge";
+"settings.other.cell.donateLabel" = "Donirajte";
+"settings.other.cell.rateAppLabel" = "Ocenite aplikacijo";
+"settings.other.cell.websiteLabel" = "Spletna stran";
+"settings.other.cell.contributeLabel" = "Prispevajte";
+
+/*Paper key*/
+"settings.paperKey.titleLabel" = "Ponovno zapišite papirni ključ vaše denarnice";
+"settings.paperKey.descLabel" = "Želite ponovno videti vaš papirni ključ? Na naslednjem zaslonu vam bo prikazan seznam besed, ki jih boste prepisali na list papirja in jih hranili zelo skrbno!";
+"settings.paperKey.showButton" = "Prikaži papirni ključ";
+"settings.paperKey.preview.titleLabel" = "Vaš papirni ključ";
+"settings.paperKey.preview.noticeLabel" = "Uporaba posnetka zaslona ni varna. Zapišite ključ papirja na list papirja s svinčnikom.";
+"settings.paperKey.preview.descLabel" = "Vsako besedo zapišite previdno, brez velikih črk.";
+"settings.paperKey.preview.wordsSegment" = "Besede";
+"settings.paperKey.preview.qrSegment" = "QR";
+
+/*Disconnect wallet*/
+"settings.disconnect.titleLabel" = "Prekinite povezavo naprave z vašo trenutno denarnico.";
+"settings.disconnect.descLabel" = "Ste pred tem, da napravo prekinete s trenutno denarnico. Prepričajte se, da ste pravilno zapisali papirni ključ in poznate svojo geslo. Ne pozabite, da je vaš papirni ključ + geslo edini način obnovitve vaše trenutne denarnice.";
+"settings.disconnect.disconnectButton" = "Prekini povezavo";
+
+/*Addresses*/
+"settings.addresses.title" = "Naslovi";
+"settings.addresses.descLabel" = "Vsaka verge denarnica lahko ustvari milijarde naslovov iz vaše 12-besedne povrnitvene fraze. Nov naslov se samodejno ustvari in prikaže vsakič, ko prejmete plačilo.";
+"settings.addresses.scanButton" = "Poskenirajte naslove za stanje";
+
+/*Transaction Proposals*/
+"settings.transactions.title" = "Predlogi transakcij";
+"settings.transactions.descLabel" = "V nadaljevanju so navedeni vsi predlogi transakcij, ki niso uspeli med obdelavo transakcij. Za sprostitev sredstev jih morate izbrisati ročno.";
+
+/*Service URL*/
+"settings.serviceUrl.title" = "URL storitev";
+"settings.serviceUrl.header.title" = "URL storitev denarnice";
+"settings.serviceUrl.footer.title" = "Ta aplikacija je odvisna od storitve Verge Wallet Service (VWS) za informacijo o veriženju blokov, omrežju in Copayer sinhronizaciji. Privzeta konfiguracija kaže na https://vws.vergecurrency.network/vws/api (Verge javna VWS instanca)";
+"settings.serviceUrl.defaultUrlButton" = "Uporabi privzeti url";
+"settings.serviceUrl.saveButton" = "Shrani";
+
+/*Fiat currency*/
+"settings.fiatCurrency.title" = "Fiat valuta";
+
+/*Use Face ID*/
+"settings.useFaceID.title" = "Uporabite Face ID";
+"settings.useFaceID.header.title" = "Uporabite tor";
+"settings.useFaceID.footer.title" = "Namesto, da bi morali vnašati vašo PIN kodo, vam bodo ponujeni alternativni načini avtentikacije.";
+"settings.useFaceID.unlockLabel" = "Odklepanje vaše denarnice";
+"settings.useFaceID.sendingLabel" = "Pošiljanje XVG";
+
+/*Tor connection*/
+"settings.torConnection.titleLabel" = "Tor je tu zaradi vaše zasebnosti in skrije vašo trenutno lokacijo";
+"settings.torConnection.descLabel" = "Vaš IP naslov je v celoti zamaskiran in transakcije popolnoma neizsledljive, ko uporabljate povezavo Tor.\n\nVendar pa lahko vedno izklopite Tor.";
+"settings.torConnection.obfuscateIpLabel" = "Zamaskiraj IP";
+"settings.torConnection.yourIpLabel" = "Vaš IP naslov";
+"settings.torConnection.loadingLabel" = "Nalaganje...";
+"settings.torConnection.notAvailable" = "Storitev ni na voljo";
+
+/*Credits*/
+"settings.credits.title" = "Zasluge";
+"settings.credits.descLabel" = "To aplikacijo so omogočili naslednji junaki:";
+
+/*Donate*/
+"settings.donate.titleLabel" = "Donirajte v podporo razvoju";
+"settings.donate.descLabel" = "V Verge-u vedno stremimo k doseganju odličnosti in zagotavljanju produktov oz. nadgradenj programske opreme, ki so zahtevane s strani skupnosti.";
+"settings.donate.desc2Label" = "Poslušanje članov naše skupnosti in sprejemanje povratnih informacij ni samo eno od temeljnih načel Verge-a, ampak je neločljivo povezaon z našo odprtokodno naravo.";
+"settings.donate.addressLabel" = "Naslov za XVG donacije";
+"settings.donate.donateButton" = "Doniraj XVG";
+
+/*Language*/
+"settings.language.title" = "Jezik";
+"settings.language.default" = "Privzeto";
+"settings.language.systemBased" = "Sistemsko";
+
+/*----------------------------------------
+ Shortcuts
+ ----------------------------------------*/
+"shortcuts.action.website.title" = "Spletna stran";
+"shortcuts.action.sourceCode.title" = "Odprta koda";
+"shortcuts.action.send.title" = "Pošlji";
+"shortcuts.action.receive.title" = "Prejmi";
+
+/*----------------------------------------
+ TransactionTableViewCell.swift
+ ----------------------------------------*/
+"transaction.state.moved" = "Premaknjeno";
+"transaction.state.received" = "Prejeto";
+"transaction.state.pending" = "Na čakanju";
+
+/*----------------------------------------
+ ChartFilterToolbar.swift
+ ----------------------------------------*/
+"chart.filter.oneDay" = "1D";
+"chart.filter.oneWeek" = "1T";
+"chart.filter.oneMonth" = "1M";
+"chart.filter.threeMonths" = "3M";
+"chart.filter.oneYear" = "1L";
+"chart.filter.all" = "Vse";
+
+/*----------------------------------------
+ PriceChartView.swift
+ ----------------------------------------*/
+"chart.price.historyTitle" = "Zgodovina cen";
+
+/*----------------------------------------
+ VolumeChartView.swift
+ ----------------------------------------*/
+"chart.volume.historyTitle" = "Zgodovina volumna";
+
+/*----------------------------------------
+ ReceiveViewController.swift
+ ----------------------------------------*/
+"receive.myAddressTitle" = "Moj XVG naslov";
+
+/*----------------------------------------
+ EnterRecoveryKeyController.swift
+ ----------------------------------------*/
+"paperKey.enterWord" = "Vnesite besedo";
+"paperKey.outOf" = "od";
+"paperKey.egCat" = "(npr. Mačka)";
+"paperKey.key" = "Ključ";
+"paperKey.word" = "Beseda";
+
+/*----------------------------------------
+ SendViewController.swift
+ ----------------------------------------*/
+"send.sendXVG" = "Pošlji XVG";
+"send.noConnection" = "Brez povezave";
+"send.transactionFailed" = "Transakcija ni uspela";
+"send.transactionFailedMessage" = "Vaša transakcija je spodletela z naslednjo napako";
+"send.notEnoughBalance" = "Stanje ni zadostno";
+"send.notEnoughBalanceMessage1" = "Nimate dovolj stanja za pošiljanje";
+"send.notEnoughBalanceMessage2" = "Če želite nadaljevati, spremenite znesek za pošiljanje.";
+"send.sendMax" = "Pošlji maksimalno";
+"send.wrongAddress" = "Napačen naslov";
+"send.enterValidAddress" = "Vneseni naslov je neveljaven Verge naslov. Prosimo, vnesite veljaven Verge naslov.";
+
+/*----------------------------------------
+ ConfirmSendView.swift + .xib
+ ----------------------------------------*/
+"send.confirm.resolvedStealth" = "Zamaskirani naslov razrešen";
+"send.confirm.confirmTitleLabel" = "Potrdi transakcijo";
+"send.confirm.recipientLabel" = "Prejemnik";
+"send.confirm.doubleCheckDescLabel" = "Preverite, da je naslov denarnice pravilen. Verge Currency se ne more obravnavati kot odgovorna za izgubo XVG, ki so bili poslani na napačni naslov denarnice.";
+"send.confirm.sendingLabel" = "Pošiljanje v teku";
+"send.confirm.transactionFeeLabel" = "Provizija transakcije";
+"send.confirm.totalLabel" = "Skupaj";
+
+/*----------------------------------------
+ SendingView.swift + .xib
+ ----------------------------------------*/
+"send.sending.signingTransaction" = "Podpisovanje transakcije";
+"send.sending.broadcastingTransaction" = "Oddajanje transakcije";
+"send.sending.transactionSent" = "Transakcija poslana!";
+"send.sending.publishingTransaction" = "Objavljanje transakcije";
+
+/*----------------------------------------
+ LocalAuthTableViewCell.swift
+ ----------------------------------------*/
+"settings.localAuth.useTouchId" = "Uporabi Touch ID";
+
+/*----------------------------------------
+ AddressesTableViewController.swift
+ ----------------------------------------*/
+"addresses.addressCopied" = "Naslov je kopiran!";
+"addresses.addressesWithBalance" = "Naslovi s stanjem";
+"addresses.unusedAddresses" = "Neuporabljeni naslovi";
+"addresses.addressOptions" = "Možnosti naslova";
+"addresses.informationTypeMessage" = "Katere informacije želite kopirati v odložišče?";
+"addresses.address" = "Naslov";
+"addresses.balance" = "Stanje";
+"addresses.balanceCopied" = "Stanje kopirano!";
+"addresses.publicKey" = "Javni ključ";
+"addresses.publicKeyCopied" = "Javni ključ kopiran!";
+"addresses.privateKey" = "Zasebni ključ";
+"addresses.privateKeyCopied" = "Zasebni ključ kopiran!";
+"addresses.scanningAddresses" = "Skeniranje naslovov";
+"addresses.scanningAddressesMessage" = "Skeniranje naslovov za stanje. To lahko traja nekaj časa.";
+
+/*----------------------------------------
+ CreditsTableViewController.swift
+ ----------------------------------------*/
+"credits.header.development" = "Razvoj";
+"credits.header.design" = "Izgled";
+"credits.header.translation" = "Prevod";
+
+/*----------------------------------------
+ DisconnectWalletViewController.swift
+ ----------------------------------------*/
+"settings.disconnect.alert.title" = "Prekinitev povezave Denarnice";
+"settings.disconnect.alert.message" = "Ste pred tem, da napravo prekinete s trenutno denarnico. Prepričajte se, da ste pravilno zapisali papirni ključ. Ne pozabite, da je vaš papirni ključ edini način obnovitve vaše trenutne denarnice.";
+"settings.disconnect.alert.disconnect" = "Prekinitev povezave";
+
+/*----------------------------------------
+ ServiceUrlTableViewController.swift
+ ----------------------------------------*/
+"settings.serviceUrl.alert.title" = "Spremenitev storitve";
+"settings.serviceUrl.alert.message" = "Spreminjanje storitve URL v teku, prosimo, počakajte trenutek...";
+"settings.serviceUrl.alert.usePrevUrl" = "Uporabi predhodno URL storitev";
+"settings.serviceUrl.alert.errorChanging" = "Napaka pri spreminjanju";
+"settings.serviceUrl.alert.errorChanging2" = "Med spremembo URL storitve je prišlo do napake. Poskusite znova ali uporabite drugo URL storitev.";
+"settings.serviceUrl.alert.title2" = "Spremenjena storitev";
+"settings.serviceUrl.alert.message2" = "Uspešno spremenjena storitev URL.";
+
+/*----------------------------------------
+ TransactionProposalsTableViewController.swift
+ ----------------------------------------*/
+"settings.transactions.removeProposal" = "Odstrani predlog";
+"settings.transactions.noProposals" = "Brez predloga";
+"settings.transactions.releaseXvg" = "Sprosti XVG tega transakcijskega predloga.";
+
+/*----------------------------------------
+ Tor Setup
+ ----------------------------------------*/
+"setup.tor.slide1.titleLabel" = "Verge Currency\nSkrije vašo lokacijo";
+"setup.tor.slide1.descLabel" = "Verge uporablja Tor omrežje za zamaskiranje\nvaše lokacije in IP naslova.";
+"setup.tor.slide2.titleLabel" = "Indikator stanja Tor pove naslednje...";
+"setup.tor.slide2.descLabel1" = "Tor je izključen in vaša lokacija in IP sta javno dostopna.";
+"setup.tor.slide2.descLabel2" = "Tor se povezuje. Na tej točki ni povezav na internet.";
+"setup.tor.slide2.descLabel3" = "Tor je vključen in vaša lokacija in IP sta zamaskirana.";
+"setup.tor.slide2.descLabel4" = "Nekaj je šlo narobe in Tor se ne more povezati. Edina rešitev za zdaj je ponovni zagon aplikacije.";
+"setup.tor.slide3.titleLabel" = "Vklopimo Tor";
+"setup.tor.slide3.titleLabel2" = "Vklopi Tor";
+"setup.tor.slide3.descLabel" = "Poskrbite, da je Tor zakonit v vaši državi. Na žalost nekatere države ne želijo, da bi bili zasebni.";
+"setup.tor.slide3.negativeButton" = "Nadaljuj brez Tor";
+"setup.tor.slide3.positiveButton" = "Nadaljuj z Tor";
+
+/*----------------------------------------
+ Transactions.storyboard + .swift + .xib
+ ----------------------------------------*/
+"transactions.title" = "Transakcije";
+"transactions.transaction.title" = "Kdo?";
+"transactions.contacts.title" = "Kontakti";
+
+/*TransactionsTableViewController.swift*/
+"transactions.search.placeholder" = "Iskanje transakcij";
+"transactions.search.all" = "Vse";
+"transactions.search.sent" = "Poslano";
+"transactions.search.received" = "Prejeto";
+
+/*TransactionTableViewController.swift*/
+"transactions.transaction.details" = "Podrobnosti transakcije";
+"transactions.transaction.history" = "Zgodovina transakcije";
+"transactions.transaction.confirmations" = "Potrditve";
+"transactions.transaction.txidCopied" = "Txid je kopiran!";
+
+/*NoTransactionsPlaceholderView.xib*/
+"transactions.noTransaction.titleLabel" = "Ni še zabeleženih prejetih transakcij";
+"transactions.noTransaction.descLabel" = "Prejete transakcije lahko najdete tu";
+
+/*ContactTableViewController.swift*/
+"transactions.contact.section.details" = "Podrobnosti stika";
+"transactions.contact.name" = "Ime";
+"transactions.contact.section.history" = "Zgodovina transakcije";
+"transactions.contact.saved" = "Stik shranjen!";
+
+/*AbstractContactsTableViewController.swift*/
+"transactions.contacts.search" = "Iskanje stikov";
+
+/*NoContactsPlaceholderView.xib*/
+"transactions.noContacts.titleLabel" = "Niste še ustvarili stikov";
+"transactions.noContacts.descLabel" = "Dodaj stik za preprosto pošiljanje XVG";
+
+/*----------------------------------------
+ Wallet Slides
+ ----------------------------------------
+ TransactionsWalletSlideView.xib*/
+"wallet.slides.recentTransactions" = "Nedavne transakcije";
+
+/*SummaryWalletSlideView.xib*/
+"wallet.slides.summary.statistics" = "Statistika";
+"wallet.slides.summary.dataNotFound" = "Statističnih podatkov ni mogoče najti.";
+
+/*SummaryWalletSlideView.swift*/
+"wallet.slides.summary.marketCap" = "Vrednost trga";
+"wallet.slides.summary.24hHigh" = "24h Najvišji";
+"wallet.slides.summary.24hLow" = "24h Najnižji";
+"wallet.slides.summary.24hChange" = "24h Spremembe";
+"wallet.slides.summary.24hVolume" = "24h Volumen";
+
+/*ChartWalletSlideView.xib*/
+"wallet.slides.chart.history" = "Grafikon zgodovine";
+"wallet.slides.chart.high" = "Najvišji";
+"wallet.slides.chart.average" = "Povprečje";
+"wallet.slides.chart.low" = "Najnižji";
+"wallet.slides.chart.availability" = "Podatki grafa so navoljo le v USD";
+"wallet.slides.chart.noData" = "Podatkov za grafikon zgodovine ni mogoče najti.";
+
+/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+"wallet.slides.noTransactions.titleLabel" = "Nimate še prejetih transakcij.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Odstrani stik";
+"alerts.removeContact.message" = "Ali ste prepričani, da želite odstraniti stik?";
+"alerts.invalidContact.title" = "Neveljavni podatki o stiku";
+"alerts.invalidContact.message" = "Prosimo, vnesite velajvno ime in XVG naslov";
+"alerts.removeTransaction.title" = "Odstrani transakcijo";
+"alerts.removeTransaction.message" = "Ali ste prepričani, da želite odstraniti transakcijo";
+"alerts.createAddress.title" = "Naslova ni mogoče ustvariti";
+"alerts.createAddress.message" = "Doseženo je bilo največ neaktivnih naslovov.\nZa ustvarjanje novega uporabite uporabite enega od že ustvarjenih naslovov.";
+"alerts.sendMaxInfo.title" = "Pridobivanje podatkov ni uspelo";
+"alerts.sendMaxInfo.message" = "Pridobivanje podatkov celotnega pošiljanja iz strežnika ni uspelo. Poskusite zonva.";
+"alerts.startTor.title" = "Tor ni aktiviran";
+"alerts.startTor.message" = "Želite poslati transakcijo, ne da bi Tor zamaskiral vaš IP?\nAli želite zagnati Tor in skriti vašo identiteto?";
+"alerts.startTor.button1" = "Zaženi Tor";
+"alerts.startTor.button2" = "Brez Tor";
+"alerts.termsOfUse.title" = "Ogled pogojev uporabe Denarnice";
+"alerts.restart.title" = "Ponovno zagon...";

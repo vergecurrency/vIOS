@@ -16,6 +16,8 @@
 "defaults.address" = "Adres";
 "defaults.next" = "Volgende";
 "defaults.previous" = "Vorige";
+"defaults.delete" = "Verwijder";
+"defaults.open" = "Open";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Luisteren naar feedback van onze community members is niet alleen een principe van Verge. Het is inherent aan het gebruik van open-source code.";
 "settings.donate.addressLabel" = "Donatie XVG adres";
 "settings.donate.donateButton" = "Doneer XVG";
+
+/*Language*/
+"settings.language.title" = "Taal";
+"settings.language.default" = "Standaard";
+"settings.language.systemBased" = "Door systeem bepaald";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nog geen transacties ontvangen.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Verwijder contact";
+"alerts.removeContact.message" = "Bent U er zeker van dat U het contact wilt verwijderen?";
+"alerts.invalidContact.title" = "Ongeldige contact gegevens";
+"alerts.invalidContact.message" = "Geef aub een geldige naam en XVG adres";
+"alerts.removeTransaction.title" = "Verwijder transactie";
+"alerts.removeTransaction.message" = "Bent U er zeker van dat U deze transactie wilt verwijderen?";
+"alerts.createAddress.title" = "Kan geen adres creëren.";
+"alerts.createAddress.message" = "Het maximum inactieve adressen is bereikt. Gebruik een van de reeds gegenereerde adressen om een nieuw te maken.";
+"alerts.sendMaxInfo.title" = "Ophalen data mislukt";
+"alerts.sendMaxInfo.message" = "Kan de door de server gezonden maximum info niet ophalen, probeer het opnieuw aub.";
+"alerts.startTor.title" = "TOR is niet geactiveerd";
+"alerts.startTor.message" = "Wilt U deze transactie verzenden zonder dat TOR Uw IP adres versluierd? Of wilt U TOR starten en Uw identiteit verbergen?";
+"alerts.startTor.button1" = "Start Tor";
+"alerts.startTor.button2" = "Zonder Tor";
+"alerts.termsOfUse.title" = "Bekijk de Wallet Gebruiksvoorwaarden.";
+"alerts.restart.title" = "Opnieuw opstarten...";

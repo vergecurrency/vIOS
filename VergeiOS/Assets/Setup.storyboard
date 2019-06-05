@@ -60,8 +60,8 @@
                         <viewLayoutGuide key="safeArea" id="gb6-qf-ykk"/>
                     </view>
                     <connections>
-                        <segue destination="2yg-Fp-n2B" kind="presentation" identifier="showWelcomeView" animates="NO" modalTransitionStyle="crossDissolve" id="VNO-Cf-ZcJ"/>
                         <segue destination="QdR-PU-LZV" kind="presentation" identifier="showWallet" animates="NO" modalTransitionStyle="crossDissolve" id="yd6-Cd-QB2"/>
+                        <segue destination="8C8-uZ-nak" kind="presentation" identifier="showWelcomeView" animates="NO" id="gYL-g1-4Me"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFn-pv-GGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,6 +272,22 @@
             </objects>
             <point key="canvasLocation" x="1550" y="913"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="L5h-Rz-5iG">
+            <objects>
+                <navigationController id="8C8-uZ-nak" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OaX-3m-jbl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2yg-Fp-n2B" kind="relationship" relationship="rootViewController" id="vRX-yl-km8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y9X-q3-idv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="176"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="R7k-gx-MlN">
             <objects>
@@ -366,6 +382,14 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.restoreDescription"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0j-Lf-QyZ">
+                                <rect key="frame" x="335" y="28" width="30" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Languages"/>
+                                <connections>
+                                    <segue destination="nhq-KK-aFu" kind="show" id="UWe-Fv-lir"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -373,12 +397,14 @@
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" secondItem="b4G-u1-A4L" secondAttribute="trailing" constant="40" id="2Zr-Lh-jPI"/>
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jP0-AP-nMu" secondAttribute="trailing" constant="20" id="3fQ-65-IPq"/>
                             <constraint firstItem="b4G-u1-A4L" firstAttribute="leading" secondItem="Vwx-N4-de5" secondAttribute="leading" constant="40" id="8Oa-Ja-I1z"/>
+                            <constraint firstItem="w0j-Lf-QyZ" firstAttribute="top" secondItem="Vwx-N4-de5" secondAttribute="top" constant="8" id="CPd-RO-KJP"/>
                             <constraint firstItem="jP0-AP-nMu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vwx-N4-de5" secondAttribute="leading" constant="20" id="Dbd-59-hqj"/>
                             <constraint firstItem="qb9-iT-8WP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mgp-vw-fRC" secondAttribute="leading" constant="20" id="JgG-OT-YAj"/>
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" secondItem="LnW-6d-6TD" secondAttribute="trailing" constant="40" id="Joy-iM-QiD"/>
                             <constraint firstItem="jP0-AP-nMu" firstAttribute="top" secondItem="qb9-iT-8WP" secondAttribute="bottom" constant="16" id="M6r-I7-sBl"/>
                             <constraint firstItem="b4G-u1-A4L" firstAttribute="centerX" secondItem="mgp-vw-fRC" secondAttribute="centerX" id="N43-HT-LdN"/>
                             <constraint firstItem="Vwx-N4-de5" firstAttribute="bottom" secondItem="jP0-AP-nMu" secondAttribute="bottom" constant="20" id="Nxa-Gp-1Ed"/>
+                            <constraint firstItem="Vwx-N4-de5" firstAttribute="trailing" secondItem="w0j-Lf-QyZ" secondAttribute="trailing" constant="10" id="RbI-cg-ntl"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qb9-iT-8WP" secondAttribute="trailing" constant="20" id="XRc-oL-i2K"/>
                             <constraint firstItem="LnW-6d-6TD" firstAttribute="centerX" secondItem="mgp-vw-fRC" secondAttribute="centerX" id="Y29-O2-y2r"/>
                             <constraint firstItem="LnW-6d-6TD" firstAttribute="leading" secondItem="Vwx-N4-de5" secondAttribute="leading" constant="40" id="doz-4y-NbZ"/>
@@ -399,7 +425,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1B-ip-Zv4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896.79999999999995" y="176.76161919040482"/>
+            <point key="canvasLocation" x="1577" y="176"/>
+        </scene>
+        <!--Languages-->
+        <scene sceneID="dDc-6O-BI8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="languagesTableViewController" storyboardName="Settings" referencedIdentifier="languagesTableViewController" id="nhq-KK-aFu" userLabel="Languages" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SkQ-04-Mf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2176" y="-40"/>
         </scene>
         <!--WelcomeGuide-->
         <scene sceneID="zYZ-o8-kSp">
@@ -407,7 +441,7 @@
                 <viewControllerPlaceholder storyboardName="WelcomeGuide" id="9e4-GJ-wDF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBW-Za-Lai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="69"/>
+            <point key="canvasLocation" x="2196" y="176"/>
         </scene>
         <!--RestoreGuide-->
         <scene sceneID="2wW-F9-HEm">
@@ -415,7 +449,7 @@
                 <viewControllerPlaceholder storyboardName="RestoreGuide" id="rZo-DU-OJR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UG9-Qn-AL8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="290"/>
+            <point key="canvasLocation" x="2189" y="316"/>
         </scene>
         <!--Finish Setup View Controller-->
         <scene sceneID="4MK-Pg-pMl">
@@ -1229,6 +1263,7 @@
         <image name="Checked" width="30" height="30"/>
         <image name="ChecklistOneItem" width="600" height="600"/>
         <image name="Close" width="30" height="30"/>
+        <image name="Languages" width="30" height="30"/>
         <image name="LogoWhite" width="284" height="284"/>
         <image name="PassphrassePlaceholder" width="842" height="596"/>
         <image name="Pin" width="30" height="30"/>

@@ -16,6 +16,8 @@
 "defaults.address" = "Endereço";
 "defaults.next" = "Próximo";
 "defaults.previous" = "Anterior";
+"defaults.delete" = "Eliminar";
+"defaults.open" = "Abrir";
 
 /*----------------------------------------
  MainTabbarNavigation.storyboard
@@ -230,6 +232,11 @@
 "settings.donate.desc2Label" = "Ouvir os membros da nossa comunidade e receber feedback não é apenas um dos princípios fundamentais da Verge, mas é inerente à nossa natureza de código aberto.";
 "settings.donate.addressLabel" = "Endereço de doação XVG";
 "settings.donate.donateButton" = "Doar XVG";
+
+/*Language*/
+"settings.language.title" = "Idioma";
+"settings.language.default" = "Padrão";
+"settings.language.systemBased" = "Baseado no sistema";
 
 /*----------------------------------------
  Shortcuts
@@ -447,3 +454,23 @@
 
 /*NoWalletTransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nenhuma transação recebida ainda.";
+
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.removeContact.title" = "Eliminar contacto";
+"alerts.removeContact.message" = "Tem a certeza que deseja eliminar o contacto?";
+"alerts.invalidContact.title" = "Dados de contacto inválidos";
+"alerts.invalidContact.message" = "Por favor forneça um nome e endereço XVG válidos";
+"alerts.removeTransaction.title" = "Eliminar transação";
+"alerts.removeTransaction.message" = "Tem a certeza que deseja eliminar esta transação?";
+"alerts.createAddress.title" = "Não é possível criar endereço";
+"alerts.createAddress.message" = "O máximo de endereços inativos foi atingido.\nUse um dos endereços já gerados para criar um novo.";
+"alerts.sendMaxInfo.title" = "Falha ao buscar dados";
+"alerts.sendMaxInfo.message" = "Falha ao buscar informações de envio máximo do servidor, tente novamente.";
+"alerts.startTor.title" = "O Tor não está ativo";
+"alerts.startTor.message" = "Quer enviar esta transação sem ofuscar o seu IP?\nOu quer iniciar o Tor e esconder a sua identidade?";
+"alerts.startTor.button1" = "Iniciar o Tor";
+"alerts.startTor.button2" = "Sem o Tor";
+"alerts.termsOfUse.title" = "Ver os Termos e Condições da Carteira";
+"alerts.restart.title" = "Reiniciando...";
