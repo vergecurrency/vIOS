@@ -14,7 +14,7 @@ class SettingsTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
 
-    let localAuthIndexPath = IndexPath(row: 2, section: 1)
+    let localAuthIndexPath = IndexPath(row: 4, section: 1)
     var applicationRepository: ApplicationRepository!
     
     override func viewWillAppear(_ animated: Bool) {
