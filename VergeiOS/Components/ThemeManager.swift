@@ -126,32 +126,17 @@ class ThemeManager {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         appRepo.useMoonMode = isOn
-        ThemeManager.shared.useMoonMode = isOn
-        ThemeManager.shared.initialize(withWindow: appDelegate.window!)
+        self.useMoonMode = isOn
 
-        NotificationCenter.default.post(name: .themeChanged, object: nil)
+        appDelegate.restart(from: appDelegate.window!.visibleViewController()!)
 
-        let windows = UIApplication.shared.windows as [UIWindow]
-        for window in windows {
-            let subviews = window.subviews as [UIView]
-            for v in subviews {
-                v.removeFromSuperview()
-                window.addSubview(v)
-            }
-        }
+        self.initialize(withWindow: appDelegate.window!)
     }
 }
 
 extension UITextField {
     open override func awakeFromNib() {
         super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeChanged(notification:)),
-            name: .themeChanged,
-            object: nil
-        )
 
         self.setPlaceholderColor()
     }
@@ -165,9 +150,5 @@ extension UITextField {
         self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
             NSAttributedString.Key.foregroundColor: ThemeManager.shared.placeholderColor()
         ])
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.setPlaceholderColor()
     }
 }

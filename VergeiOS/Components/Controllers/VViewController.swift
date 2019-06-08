@@ -16,22 +16,11 @@ class VViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeChanged(notification:)),
-            name: .themeChanged,
-            object: nil
-        )
-
         self.setColors()
     }
 
     func setColors() {
         self.view.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.setNeedsStatusBarAppearanceUpdate()
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.setColors()
     }
 }

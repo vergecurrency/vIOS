@@ -11,17 +11,6 @@ import UIKit
 class WalletContainerView: UIView {
 
     let gl = CAGradientLayer()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeChanged(notification:)),
-            name: .themeChanged,
-            object: nil
-        )
-    }
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -32,10 +21,6 @@ class WalletContainerView: UIView {
         self.gl.frame = rect
         
         self.layer.insertSublayer(self.gl, at: 0)
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.setColor()
     }
     
     func setColor() {
@@ -51,17 +36,6 @@ class WalletContainerBottomView: UIView {
 
     let gl = CALayer()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeChanged(notification:)),
-            name: .themeChanged,
-            object: nil
-        )
-    }
-
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -70,10 +44,6 @@ class WalletContainerBottomView: UIView {
         self.gl.frame = rect
 
         self.layer.insertSublayer(self.gl, at: 0)
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.setColor()
     }
 
     func setColor() {

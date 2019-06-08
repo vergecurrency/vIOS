@@ -17,12 +17,6 @@ class Keyboard: UIView {
     
     weak var delegate: KeyboardDelegate?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
-    }
-
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
@@ -111,14 +105,6 @@ class Keyboard: UIView {
         if let delegate = self.delegate {
             delegate.didReceiveInput(self, input: "\(button.keyboardKey?.getValue() ?? "")", keyboardKey: button.keyboardKey!)
         }
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        guard let shadowLayer = self.shadowLayer else {
-            return
-        }
-
-        shadowLayer.fillColor = ThemeManager.shared.backgroundWhite().cgColor
     }
 
 }

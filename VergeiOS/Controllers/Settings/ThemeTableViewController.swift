@@ -53,7 +53,5 @@ class ThemeTableViewController: EdgedTableViewController {
         let mode = themes[indexPath.row]
 
         ThemeManager.shared.switchMode(isOn: mode == "moon", appRepo: self.applicationRepository)
-
-        (UIApplication.shared.delegate as! AppDelegate).restart(from: self)
     }
 }

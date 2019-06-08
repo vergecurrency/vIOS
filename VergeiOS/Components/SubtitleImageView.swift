@@ -11,8 +11,6 @@ import UIKit
 class SubtitleImageView: UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
     }
 
     override func layoutSubviews() {
@@ -23,10 +21,6 @@ class SubtitleImageView: UIImageView {
 
     func setColors() {
         self.tintColor = ThemeManager.shared.primaryDark()
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.setColors()
     }
 
 }

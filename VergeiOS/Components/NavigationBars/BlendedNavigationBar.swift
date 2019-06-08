@@ -16,8 +16,6 @@ class BlendedNavigationBar: UINavigationBar {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
         
         DispatchQueue.main.async {
             self.setupLayout()
@@ -43,10 +41,6 @@ class BlendedNavigationBar: UINavigationBar {
             NSAttributedString.Key.foregroundColor: ThemeManager.shared.secondaryDark(),
             kCTFontAttributeName: font
         ] as? [NSAttributedString.Key : Any]
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.setColors()
     }
     
 }

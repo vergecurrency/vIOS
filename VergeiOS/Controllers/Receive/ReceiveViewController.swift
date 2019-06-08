@@ -59,13 +59,6 @@ class ReceiveViewController: VViewController {
         self.addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
         
         self.amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingDidEnd)
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(createQRCode),
-            name: .themeChanged,
-            object: nil
-        )
     }
 
     override func viewWillAppear(_ animated: Bool) {

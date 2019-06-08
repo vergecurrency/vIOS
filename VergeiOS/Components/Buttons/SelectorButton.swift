@@ -32,12 +32,6 @@ import UIKit
         return ThemeManager.shared.secondaryDark()
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
-    }
-
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -89,11 +83,5 @@ import UIKit
         self.valueLabel?.lineBreakMode = .byTruncatingMiddle
 
         self.addSubview(self.valueLabel!)
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.border?.backgroundColor = self.borderColor.cgColor
-        self.labelLabel?.textColor = self.titleColor
-        self.valueLabel?.textColor = self.valueColor
     }
 }

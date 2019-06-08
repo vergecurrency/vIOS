@@ -38,13 +38,6 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
             name: .didReceiveFiatRatings,
             object: nil
         )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(themeChanged(notification:)),
-            name: .themeChanged,
-            object: nil
-        )
     }
 
     override func layoutSubviews() {
@@ -137,10 +130,6 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
                 self.tableView.reloadData()
             }
         }
-    }
-
-    @objc func themeChanged(notification: Notification? = nil) {
-        self.tableView.reloadData()
     }
     
 }

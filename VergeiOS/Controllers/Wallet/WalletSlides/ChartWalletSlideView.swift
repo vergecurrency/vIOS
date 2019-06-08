@@ -40,8 +40,6 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        NotificationCenter.default.addObserver(self, selector: #selector(themeChanged(notification:)), name: .themeChanged, object: nil)
         
         self.torClient = Application.container.resolve(TorClient.self)!
 
@@ -222,10 +220,6 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             position = 1 + position
             return position % step == 0
         }
-    }
-
-    @objc func themeChanged(notification: Notification) {
-        self.loadChartData()
     }
     
 }
