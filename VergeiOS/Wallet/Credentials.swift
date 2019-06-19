@@ -53,13 +53,13 @@ public class Credentials {
         let data = Crypto.sha256(requestPrivateKey.privateKey().data)
         let key = "personalKey".data(using: .utf8)!
 
-        var b2 = try! HMAC(key: key.bytes, variant: .sha256).authenticate(data.bytes)
+        let b2 = try! HMAC(key: key.bytes, variant: .sha256).authenticate(data.bytes)
 
         return Data(b2[0..<16]).base64EncodedString()
     }
 
     public var sharedEncryptingKey: String {
-        var sha256Data = walletPrivateKey.privateKey().data.sha256()
+        let sha256Data = walletPrivateKey.privateKey().data.sha256()
 
         return sha256Data[0..<16].base64EncodedString()
     }

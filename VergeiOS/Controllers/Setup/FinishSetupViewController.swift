@@ -96,7 +96,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
     func animateProgress() {
         var selectedImage = 0
-        var images = [
+        let images = [
             "ChecklistTwoItem",
             "ChecklistThreeItem",
             "CheckmarkCircle"
