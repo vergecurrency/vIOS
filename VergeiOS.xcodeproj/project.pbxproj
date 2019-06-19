@@ -234,7 +234,6 @@
 		B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */; };
 		B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */; };
 		CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA101BAD224629590058B84C /* ShortcutsManager.swift */; };
-		CA2B4A17226B336100115B2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */; };
 		CA2B4A18226B336100115B2D /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */; };
 		CA2B4A1B226B34C300115B2D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A1A226B34C300115B2D /* MainInterface.storyboard */; };
 		CA2B4A1D226B354800115B2D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A1C226B354800115B2D /* Interface.storyboard */; };
@@ -244,6 +243,7 @@
 		CA2B4A28226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
 		CA2B4A29226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
 		CA2B4A3B226B3D9700115B2D /* UIView+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */; };
+		CA2D9EBB22BAD9E700129C03 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2D9EBA22BAD9E700129C03 /* LaunchScreen.xib */; };
 		CA51072722294B5200A7BB62 /* WatchWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51072622294B5200A7BB62 /* WatchWalletClient.swift */; };
 		CA51072C222956B700A7BB62 /* AddressBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */; };
 		CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA522EA6220318B000331B0F /* IntentsUI.framework */; };
@@ -621,13 +621,13 @@
 		B2BD7FE6CE69F7288EADDB6F /* CreateAddressErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAddressErrorResponse.swift; sourceTree = "<group>"; };
 		CA101BAD224629590058B84C /* ShortcutsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsManager.swift; sourceTree = "<group>"; };
 		CA15CE54228FE3970053FDC5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeGuide.storyboard; sourceTree = "<group>"; };
 		CA2B4A1A226B34C300115B2D /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		CA2B4A1C226B354800115B2D /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		CA2B4A2A226B398A00115B2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA2B4A2C226B398E00115B2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Localization.swift"; sourceTree = "<group>"; };
+		CA2D9EBA22BAD9E700129C03 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		CA51072622294B5200A7BB62 /* WatchWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWalletClient.swift; sourceTree = "<group>"; };
 		CA522EA5220318B000331B0F /* VergeSiriUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiriUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA522EA6220318B000331B0F /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -964,7 +964,6 @@
 			children = (
 				A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */,
 				A386CA9C21A03C5200FBF465 /* VergeiOS.entitlements */,
-				CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */,
 				A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */,
 				A32566442113729C006FB08A /* Receive.storyboard */,
 				07938403210DAD3800C3C799 /* RestoreGuide.storyboard */,
@@ -974,6 +973,7 @@
 				A3256648211372B3006FB08A /* Transactions.storyboard */,
 				A325664A211373FF006FB08A /* Wallet.storyboard */,
 				CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */,
+				CA2D9EBA22BAD9E700129C03 /* LaunchScreen.xib */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1786,6 +1786,7 @@
 				A338E6B92110D60F000D44EE /* ChartWalletSlideView.xib in Resources */,
 				A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */,
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
+				CA2D9EBB22BAD9E700129C03 /* LaunchScreen.xib in Resources */,
 				A3256647211372A7006FB08A /* Send.storyboard in Resources */,
 				A33B75C421A8917700030CCF /* Settings.storyboard in Resources */,
 				A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */,
@@ -1802,7 +1803,6 @@
 				A3B2E26B214857E600C31719 /* NoWalletTransactionsPlaceholderTableViewCell.xib in Resources */,
 				CA2B4A25226B398A00115B2D /* Localizable.strings in Resources */,
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
-				CA2B4A17226B336100115B2D /* LaunchScreen.storyboard in Resources */,
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
 				A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */,
 			);
