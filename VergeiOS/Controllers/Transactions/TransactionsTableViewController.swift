@@ -83,6 +83,7 @@ class TransactionsTableViewController: EdgedTableViewController {
         if self.transactionManager.hasTransactions && navigationItem.searchController == nil {
             tableView.backgroundView = nil
             tableView.tableFooterView = nil
+            
             // Setup the Search Controller
             searchController.searchResultsUpdater = self
             searchController.obscuresBackgroundDuringPresentation = false
@@ -198,13 +199,15 @@ class TransactionsTableViewController: EdgedTableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.backgroundView?.backgroundColor = ThemeManager.shared.backgroundGrey()
         header.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         header.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         header.textLabel?.frame = header.frame
         header.textLabel?.text = header.textLabel?.text?.capitalized
+        
+        for subview in header.subviews { // Unacceable Gray background view issue
+            subview.backgroundColor = ThemeManager.shared.backgroundGrey()
+        }
     }
-    
 
     // MARK: - Navigation
 
