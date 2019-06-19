@@ -38,6 +38,7 @@ If you want to help us out on the development use this guide:
 0. For beta env choose the beta version of XCode
 ```sh
 sudo xcode-select -s /Applications/Xcode-beta.app/
+brew upgrade carthage
 ```
 
 1. Fork the project, and clone it to your local machine.

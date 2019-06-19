@@ -10,4 +10,4 @@ github "xmartlabs/Eureka" ~> 4.3
 github "krzyzanowskim/CryptoSwift"
 github "hellc/BitcoinKit" ~> 1.2.1
 github "Swinject/Swinject" ~> 2.6.0
-github "Swinject/SwinjectStoryboard"
+github "hellc/SwinjectStoryboard" "master"
