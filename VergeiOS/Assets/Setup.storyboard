@@ -58,7 +58,7 @@
                         <viewLayoutGuide key="safeArea" id="gb6-qf-ykk"/>
                     </view>
                     <connections>
-                        <segue destination="QdR-PU-LZV" kind="presentation" identifier="showWallet" animates="NO" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="yd6-Cd-QB2"/>
+                        <segue destination="QdR-PU-LZV" kind="presentation" identifier="showWallet" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="yd6-Cd-QB2"/>
                         <segue destination="8C8-uZ-nak" kind="presentation" identifier="showWelcomeView" animates="NO" modalPresentationStyle="fullScreen" id="gYL-g1-4Me"/>
                     </connections>
                 </viewController>
