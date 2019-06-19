@@ -152,3 +152,15 @@ extension UITextField {
         ])
     }
 }
+
+extension UITableView {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.updateBackgroundColor()
+    }
+    
+    func updateBackgroundColor() {
+        self.backgroundColor = ThemeManager.shared.backgroundGrey()
+    }
+}
