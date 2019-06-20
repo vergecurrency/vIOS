@@ -336,7 +336,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.restoreButton"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="rZo-DU-OJR" kind="presentation" identifier="restore" modalPresentationStyle="formSheet" id="G4m-E0-zTa"/>
+                                    <segue destination="rZo-DU-OJR" kind="presentation" identifier="restore" modalPresentationStyle="fullScreen" id="G4m-E0-zTa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb9-iT-8WP" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
@@ -353,7 +353,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.createButton"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="9e4-GJ-wDF" kind="presentation" identifier="create" modalPresentationStyle="formSheet" id="pYY-yw-8Tf"/>
+                                    <segue destination="9e4-GJ-wDF" kind="presentation" identifier="create" modalPresentationStyle="fullScreen" id="pYY-yw-8Tf"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new XVG wallet on your iOS device." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9R-19-jxd">
@@ -381,7 +381,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0j-Lf-QyZ">
-                                <rect key="frame" x="305" y="8" width="60" height="60"/>
+                                <rect key="frame" x="335" y="8" width="30" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Languages"/>
                                 <connections>
@@ -617,7 +617,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.finish.openButton"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="x0t-AS-OOO" kind="presentation" modalTransitionStyle="flipHorizontal" id="SMp-wa-NpP"/>
+                                            <segue destination="x0t-AS-OOO" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="SMp-wa-NpP"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ePv-J5-32L">
@@ -754,7 +754,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuv-Fo-okt" customClass="CloseButton" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="0.0" width="60" height="60"/>
+                                <rect key="frame" x="20" y="0.0" width="30" height="30"/>
                                 <viewLayoutGuide key="safeArea" id="je1-4n-zEg"/>
                                 <state key="normal" image="Close"/>
                                 <connections>
