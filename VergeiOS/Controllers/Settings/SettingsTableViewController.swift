@@ -77,7 +77,6 @@ class SettingsTableViewController: EdgedTableViewController {
 
                 pinUnlockView.dismiss(animated: true)
             }
-
             present(pinUnlockView, animated: true)
 
             if let vc = segue.destination as? SelectPinViewController {

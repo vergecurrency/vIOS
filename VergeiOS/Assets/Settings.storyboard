@@ -606,7 +606,7 @@
                 <viewControllerPlaceholder storyboardName="Setup" referencedIdentifier="SelectPinViewController" id="BK0-Ed-W6B" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tYF-yO-4x5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3225" y="1692"/>
+            <point key="canvasLocation" x="2265" y="1993"/>
         </scene>
         <!--Paperkey View Controller-->
         <scene sceneID="a5Z-69-Q5n">
@@ -1619,7 +1619,7 @@ But you can always turn Tor off.</string>
                                             <outlet property="accessoryView" destination="Dxh-0n-KyV" id="14N-LU-eth"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="aGd-fD-VUK" detailTextLabel="Tg0-BR-yrS" style="IBUITableViewCellStyleValue1" id="n1m-lM-nKa" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="aGd-fD-VUK" detailTextLabel="Tg0-BR-yrS" style="IBUITableViewCellStyleValue1" id="n1m-lM-nKa" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="430" width="375" height="47"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n1m-lM-nKa" id="3r1-aX-lu7">

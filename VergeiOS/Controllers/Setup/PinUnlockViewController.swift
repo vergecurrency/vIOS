@@ -40,7 +40,7 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
         } else {
             PinUnlockViewController.storyBoardView!.reset()
         }
-
+        PinUnlockViewController.storyBoardView!.modalPresentationStyle = .fullScreen
         return PinUnlockViewController.storyBoardView!
     }
 

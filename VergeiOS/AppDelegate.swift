@@ -152,7 +152,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             print("Show unlock view")
-            vc.modalPresentationStyle = .fullScreen
             topController.present(vc, animated: false, completion: nil)
         }
     }
