@@ -1263,7 +1263,7 @@
             </objects>
             <point key="canvasLocation" x="2591" y="1737"/>
         </scene>
-        <!--Themes-->
+        <!--Theme Table View Controller-->
         <scene sceneID="n5D-i5-nYX">
             <objects>
                 <tableViewController id="Gft-Wt-Lpc" customClass="ThemeTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1271,9 +1271,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="hWm-Gw-ZUi">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gorgeous Themes for Your Wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lJ8-Je-Mum" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
+                                    <rect key="frame" x="40" y="8" width="295" height="81"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                    <color key="textColor" name="SecondaryDark"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.themes.titleLabel"/>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThemesPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="xxb-Fu-gvk">
+                                    <rect key="frame" x="40" y="97" width="295" height="125"/>
+                                    <color key="tintColor" name="PrimaryLight"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="125" id="p1m-fs-XXQ"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="xxb-Fu-gvk" secondAttribute="bottom" constant="8" id="1c4-pH-Vq2"/>
+                                <constraint firstItem="lJ8-Je-Mum" firstAttribute="top" secondItem="hWm-Gw-ZUi" secondAttribute="top" constant="8" id="4fb-ZM-I1T"/>
+                                <constraint firstItem="lJ8-Je-Mum" firstAttribute="leading" secondItem="hWm-Gw-ZUi" secondAttribute="leading" constant="40" id="66Y-Iu-z9f"/>
+                                <constraint firstItem="xxb-Fu-gvk" firstAttribute="leading" secondItem="hWm-Gw-ZUi" secondAttribute="leading" constant="40" id="7SR-GE-B2T"/>
+                                <constraint firstItem="xxb-Fu-gvk" firstAttribute="top" secondItem="lJ8-Je-Mum" secondAttribute="bottom" constant="8" id="Kig-sU-hDK"/>
+                                <constraint firstAttribute="trailing" secondItem="xxb-Fu-gvk" secondAttribute="trailing" constant="40" id="QAs-ex-ktZ"/>
+                                <constraint firstAttribute="trailing" secondItem="lJ8-Je-Mum" secondAttribute="trailing" constant="40" id="R62-4G-Ocj"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="themeCell" textLabel="aIn-UU-bPM" imageView="eWg-da-Is3" style="IBUITableViewCellStyleDefault" id="Nha-rm-Gdf" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="285.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nha-rm-Gdf" id="Saa-Lq-Chq" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1300,11 +1331,6 @@
                             <outlet property="delegate" destination="Gft-Wt-Lpc" id="dU8-Qx-XJS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Themes" id="dmh-05-ccS">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="settings.themes.title"/>
-                        </userDefinedRuntimeAttributes>
-                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTE-na-Pe1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1760,6 +1786,7 @@ But you can always turn Tor off.</string>
         <image name="ServiceURL" width="842" height="171"/>
         <image name="Settings" width="30" height="30"/>
         <image name="Theme" width="30" height="30"/>
+        <image name="ThemesPlaceholder" width="842" height="596"/>
         <image name="Tor" width="90" height="90"/>
         <image name="TorPlaceholder" width="842" height="596"/>
         <image name="Website" width="30" height="30"/>

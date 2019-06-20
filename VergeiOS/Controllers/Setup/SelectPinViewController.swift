@@ -28,31 +28,33 @@ class SelectPinViewController: VViewController, KeyboardDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pinKeyboard.delegate = self
+        self.pinKeyboard.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        pin = ""
-        pinTextField.reset()
+        self.pin = ""
+        self.pinTextField.reset()
     }
     
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
         if (keyboardKey.isKind(of: BackKey.self)) {
-            pinTextField.removeCharacter()
+            self.pinTextField.removeCharacter()
             
-            if (pin.count > 0) {
-                pin = String(pin[..<pin.index(pin.endIndex, offsetBy: -1)])
+            if (self.pin.count > 0) {
+                self.pin = String(self.pin[..<self.pin.index(self.pin.endIndex, offsetBy: -1)])
             }
         } else {
-            pinTextField.addCharacter()
+            self.pinTextField.addCharacter()
             
-            if (pin.count < pinTextField.pinCharacterCount) {
-                pin = "\(pin)\(input)"
+            if (self.pin.count < self.pinTextField.pinCharacterCount) {
+                self.pin = "\(self.pin)\(input)"
             }
             
             // When all pins are set.
-            if (pin.count == pinTextField.pinCharacterCount) {
-                performSegue(withIdentifier: "confirmPin", sender: self)
+            if (self.pin.count == self.pinTextField.pinCharacterCount) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.performSegue(withIdentifier: "confirmPin", sender: self)
+                }
             }
         }
     }
@@ -73,7 +75,7 @@ class SelectPinViewController: VViewController, KeyboardDelegate {
 
         settings.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
 
-        present(settings, animated: true)
+        self.present(settings, animated: true)
     }
     
     // Dismiss the view
@@ -93,10 +95,10 @@ class SelectPinViewController: VViewController, KeyboardDelegate {
                 backItem.title = "defaults.back".localized
                 navigationItem.backBarButtonItem = backItem
                 
-                vc.previousPin = pin
-                vc.pinCount = pinTextField.pinCharacterCount
-                vc.segueIdentifier = segueIdentifier
-                vc.completion = completion
+                vc.previousPin = self.pin
+                vc.pinCount = self.pinTextField.pinCharacterCount
+                vc.segueIdentifier = self.segueIdentifier
+                vc.completion = self.completion
             }
         }
      }

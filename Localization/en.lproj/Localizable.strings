@@ -245,6 +245,12 @@
 
 "settings.fiatCurrency.title"               = "Fiat currency";
 
+// Themes
+
+"settings.themes.titleLabel"                = "Gorgeous Themes for Your Wallet";
+"settings.themes.sectionHeaderTitle"        = "Choose a theme";
+"settings.themes.sectionFooterTitle"        = "Changing a theme will restart the application. Also it will probably make you feel happy and give you goosebumps in weird places!";
+
 // Use Face ID
 
 "settings.useFaceID.title"                  = "Use Face ID";
