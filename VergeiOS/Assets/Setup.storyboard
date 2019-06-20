@@ -381,7 +381,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0j-Lf-QyZ">
-                                <rect key="frame" x="335" y="8" width="30" height="30"/>
+                                <rect key="frame" x="305" y="8" width="60" height="60"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="Languages"/>
                                 <connections>
@@ -754,7 +754,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuv-Fo-okt" customClass="CloseButton" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="20" y="0.0" width="60" height="60"/>
                                 <viewLayoutGuide key="safeArea" id="je1-4n-zEg"/>
                                 <state key="normal" image="Close"/>
                                 <connections>

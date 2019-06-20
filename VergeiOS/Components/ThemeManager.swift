@@ -17,6 +17,7 @@ class ThemeManager {
         UITabBar.appearance().clipsToBounds = true
 
         UITabBar.appearance().tintColor = self.primaryLight()
+        UITabBar.appearance().unselectedItemTintColor = self.secondaryLight()
         UITabBar.appearance().barTintColor = self.backgroundGrey()
         UITabBar.appearance().backgroundColor = self.backgroundGrey()
         UITabBar.appearance().barStyle = self.useMoonMode ? .black : .default
