@@ -13,8 +13,6 @@ import SwinjectStoryboard
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    static var inactivityView = Bundle.main.loadNibNamed("LaunchScreen", owner: self, options: nil)?.first as! UIView
-    
     var application: Application?
     var window: UIWindow?
     var sendRequest: TransactionFactory?
@@ -87,20 +85,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
-        
-        // Show inactivity view
-        AppDelegate.inactivityView.frame = UIScreen.main.bounds
-        self.window?.addSubview(AppDelegate.inactivityView)
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         Application.container.resolve(TorClient.self)?.restart()
         
-        // Remove inactivity view
-        AppDelegate.inactivityView.removeFromSuperview()
-        
-        // Show pincode
         showPinUnlockViewController(application)
     }
     
