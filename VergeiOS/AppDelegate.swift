@@ -57,9 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func restart(from controller : UIViewController) {
+    func restart() {
         let alert = UIAlertController.restartAlert()
-        controller.present(alert, animated: true)
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             alert.dismiss(animated: true, completion: {
                 self.window?.rootViewController = UIStoryboard.init(name: "Setup", bundle: nil).instantiateInitialViewController()

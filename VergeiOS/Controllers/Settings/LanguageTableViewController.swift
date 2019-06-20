@@ -70,7 +70,7 @@ class LanguageTableViewController: LocalizableTableViewController {
         
         NotificationCenter.default.post(name: .didChangeCurrency, object: languages[indexPath.row])
         
-        (UIApplication.shared.delegate as! AppDelegate).restart(from: self)
+        (UIApplication.shared.delegate as! AppDelegate).restart()
     }
     
 }

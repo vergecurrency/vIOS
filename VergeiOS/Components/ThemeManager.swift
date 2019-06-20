@@ -128,7 +128,8 @@ class ThemeManager {
         appRepo.useMoonMode = isOn
         self.useMoonMode = isOn
 
-        appDelegate.restart(from: appDelegate.window!.visibleViewController()!)
+        // Fix issue when view controller is nil
+        appDelegate.restart()
 
         self.initialize(withWindow: appDelegate.window!)
     }
