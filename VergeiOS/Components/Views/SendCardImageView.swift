@@ -9,17 +9,12 @@
 import UIKit
 
 class SendCardImageView: CardImageView {
-    override var defaultImage: UIImage {
+    
+    override var themeImage: UIImage {
         get {
-            return UIImage(named: "SendCard")!
+            return ThemeManager.shared.currentTheme.sendCardImage
         }
         set {}
     }
     
-    override var moonImage: UIImage {
-        get {
-            return UIImage(named: "SendCardMoonMode")!
-        }
-        set {}
-    }
 }

@@ -9,16 +9,12 @@
 import UIKit
 
 class NoBalancePlaceholderImageView: ThemedImageView {
-    override var defaultImage: UIImage {
+    
+    override var themeImage: UIImage {
         get {
-            return UIImage(named: "NoBalancePlaceholder")!
+            return ThemeManager.shared.currentTheme.noBalancePlaceholderImage
         }
         set {}
     }
-    override var moonImage: UIImage {
-        get {
-            return UIImage(named: "NoBalancePlaceholderMoonMode")!
-        }
-        set {}
-    }
+    
 }

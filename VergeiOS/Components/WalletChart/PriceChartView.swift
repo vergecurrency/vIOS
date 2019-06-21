@@ -51,9 +51,7 @@ class PriceChartView: AbstractChartView {
 
     fileprivate func style(priceSet: LineChartDataSet) {
         let gradientColors = [
-            ThemeManager.shared.useMoonMode ?
-                ThemeManager.shared.backgroundWhite().withAlphaComponent(0).cgColor :
-                UIColor.white.withAlphaComponent(0).cgColor,
+            ThemeManager.shared.priceChartColor().cgColor,
             ThemeManager.shared.primaryLight().withAlphaComponent(0.5).cgColor
         ]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!

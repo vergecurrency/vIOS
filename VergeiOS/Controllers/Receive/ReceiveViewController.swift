@@ -186,10 +186,7 @@ class ReceiveViewController: VViewController {
             qrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
             qrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
         } else {
-            qrCode?.color = CIColor(cgColor: ThemeManager.shared.useMoonMode
-                ? ThemeManager.shared.backgroundGrey().cgColor
-                : UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor
-            )
+            qrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
             qrCode?.backgroundColor = .white
         }
 

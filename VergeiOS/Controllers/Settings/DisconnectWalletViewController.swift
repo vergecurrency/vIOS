@@ -40,7 +40,7 @@ class DisconnectWalletViewController: VViewController {
                     self.torClient.resign()
 
                     pinUnlockView.dismiss(animated: true) {
-                        ThemeManager.shared.switchMode(isOn: false, appRepo: self.applicationRepository)
+                        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
                     }
                 } else {
                     pinUnlockView.dismiss(animated: true)

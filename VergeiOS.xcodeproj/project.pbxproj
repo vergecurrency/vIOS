@@ -264,6 +264,8 @@
 		CA8FCF6E21F7D2420069D150 /* FiatRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* FiatRate.swift */; };
 		CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAF2107889200911B64 /* UIColor+Default.swift */; };
 		CA93C6B3226EFF5A00A16B73 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA93C6B2226EFF5A00A16B73 /* Setup.storyboard */; };
+		CAA6031322BC3E3B00EFCB24 /* UIView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6031222BC3E3B00EFCB24 /* UIView+Theme.swift */; };
+		CAA6031522BC441A00EFCB24 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6031422BC441A00EFCB24 /* ThemeFactory.swift */; };
 		CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF1481221061FD00F92CBC /* UIView+Actions.swift */; };
 		CAD341C82229CBFA002B1774 /* StatsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD341C72229CBFA002B1774 /* StatsProvider.swift */; };
 		CAD6F29721FE1C3900AA3162 /* MainRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6F29621FE1C3900AA3162 /* MainRowController.swift */; };
@@ -649,6 +651,8 @@
 		CA8FCF6021F7C3A40069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CA93C6B2226EFF5A00A16B73 /* Setup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
+		CAA6031222BC3E3B00EFCB24 /* UIView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Theme.swift"; sourceTree = "<group>"; };
+		CAA6031422BC441A00EFCB24 /* ThemeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
 		CABF1481221061FD00F92CBC /* UIView+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Actions.swift"; sourceTree = "<group>"; };
 		CAD341C72229CBFA002B1774 /* StatsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsProvider.swift; sourceTree = "<group>"; };
 		CAD6F29621FE1C3900AA3162 /* MainRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRowController.swift; sourceTree = "<group>"; };
@@ -807,6 +811,7 @@
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 				CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */,
 				CA5FCC7D22842BD1002340A1 /* String+Localization.swift */,
+				CAA6031222BC3E3B00EFCB24 /* UIView+Theme.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -844,7 +849,7 @@
 				B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */,
 				A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */,
 				A3AA2B8A2263DBFA000E4571 /* SubtitleImageView.swift */,
-				B2BD788E0A10804387327127 /* ThemeManager.swift */,
+				CAA6030F22BC3D3500EFCB24 /* Themes */,
 				A305DDAA21077FF800911B64 /* Buttons */,
 				A3AA2B78226335AB000E4571 /* Controllers */,
 				A305DDAB2107801400911B64 /* Extensions */,
@@ -1415,6 +1420,15 @@
 				CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */,
 			);
 			path = "VergeWatch Extension";
+			sourceTree = "<group>";
+		};
+		CAA6030F22BC3D3500EFCB24 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				B2BD788E0A10804387327127 /* ThemeManager.swift */,
+				CAA6031422BC441A00EFCB24 /* ThemeFactory.swift */,
+			);
+			path = Themes;
 			sourceTree = "<group>";
 		};
 		CAD6F28E21FE18FB00AA3162 /* Views */ = {
@@ -2105,6 +2119,7 @@
 				B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */,
 				B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */,
 				B2BD7E8CD1552F1D8D549A20 /* TransactionRepository.swift in Sources */,
+				CAA6031522BC441A00EFCB24 /* ThemeFactory.swift in Sources */,
 				B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */,
 				B2BD768DCD05B478AAC1AC69 /* TransactionProposalsTableViewController.swift in Sources */,
 				B2BD7C0AEF83DA4BEAE42483 /* ApplicationServiceProvider.swift in Sources */,
@@ -2119,6 +2134,7 @@
 				B2BD7DAE3B43E68C2FD123CC /* CoreStoreServiceProvider.swift in Sources */,
 				A3AA2B852263D23D000E4571 /* MutedLabel.swift in Sources */,
 				B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */,
+				CAA6031322BC3E3B00EFCB24 /* UIView+Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

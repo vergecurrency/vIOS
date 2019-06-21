@@ -196,13 +196,13 @@ class ApplicationRepository {
             }
         }
     }
-
-    var useMoonMode: Bool {
+    
+    var currentTheme: String? {
         get {
-            return userDefaults.bool(forKey: "useMoonMode")
+            return userDefaults.string(forKey: "currentTheme")
         }
         set {
-            userDefaults.set(newValue, forKey: "useMoonMode")
+            userDefaults.set(newValue, forKey: "currentTheme")
         }
     }
     
