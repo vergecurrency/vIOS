@@ -9,7 +9,8 @@
 import UIKit
 
 class CreditsTableViewController: EdgedTableViewController {
-
+    @IBOutlet weak var heroImageView: UIImageView!
+    
     var developers = [
         [
             "name": "Swen",
@@ -61,6 +62,9 @@ class CreditsTableViewController: EdgedTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.heroImageView.image = ThemeManager.shared.currentTheme.creditsImage
+        self.heroImageView.tintColor = ThemeManager.shared.currentTheme.placeholderColor
     }
 
     override func didReceiveMemoryWarning() {

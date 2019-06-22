@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressBookCell" textLabel="UjC-jW-2fs" detailTextLabel="Jd6-Zs-Fed" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="u01-2G-Blp" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressBookCell" textLabel="UjC-jW-2fs" detailTextLabel="Jd6-Zs-Fed" rowHeight="54" style="IBUITableViewCellStyleSubtitle" id="u01-2G-Blp">
                                 <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="u01-2G-Blp" id="LRb-bh-RcY">
@@ -92,6 +92,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="tintColor" name="PrimaryLight"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="Bnx-KG-5UX" kind="show" id="hUW-WV-KOl"/>
                                 </connections>
@@ -174,6 +177,9 @@
                                             <constraint firstAttribute="width" constant="50" id="LwC-NI-bLB"/>
                                             <constraint firstAttribute="width" secondItem="VQB-xw-7HZ" secondAttribute="height" multiplier="1:1" id="NdH-rB-lqU"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WyG-8b-yTk">
                                         <rect key="frame" x="146.5" y="95" width="82.5" height="28"/>
@@ -236,7 +242,7 @@
                                 <rect key="frame" x="0.0" y="237" width="375" height="410"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="transactionDetailCell" textLabel="KCn-hn-gTE" detailTextLabel="aec-BM-qFs" style="IBUITableViewCellStyleSubtitle" id="rA0-Me-VIJ" customClass="VTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="transactionDetailCell" textLabel="KCn-hn-gTE" detailTextLabel="aec-BM-qFs" style="IBUITableViewCellStyleSubtitle" id="rA0-Me-VIJ">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="52.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rA0-Me-VIJ" id="Um5-Uc-EWL">
@@ -259,6 +265,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="transactionMemoCell" textLabel="ivJ-p3-jgV" style="IBUITableViewCellStyleDefault" id="ZaT-P8-Xv4">
                                         <rect key="frame" x="0.0" y="108" width="375" height="47.5"/>

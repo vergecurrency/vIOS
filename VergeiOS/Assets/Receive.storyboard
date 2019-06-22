@@ -32,7 +32,7 @@
                                                 <rect key="frame" x="16" y="0.0" width="343" height="220"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReceiveCard" translatesAutoresizingMaskIntoConstraints="NO" id="r0L-Xt-lq2" customClass="ReceiveCardImageView" customModule="VergeiOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="220"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343.00000000000011" height="220"/>
                                                         <gestureRecognizers/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1NMcHbiZuUYU9su1BDKTRtJvxnq14Z8YiT" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8To-PP-rsq">
@@ -302,9 +302,10 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="receive.shareButton"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="shareAddress:" destination="0dW-f5-Hat" eventType="touchUpInside" id="Qei-is-P0O"/>
+                                                            <action selector="shareAddress:" destination="0dW-f5-Hat" eventType="touchUpInside" id="Ins-0P-CKb"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

@@ -9,14 +9,25 @@
 import Foundation
 import UIKit
 
-extension UITextField {
+protocol Themeable {
+    func updateColors()
+}
+
+extension UIView {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        //TODO subscribe to system style changed event and update colors if view supports protocol
+    }
+}
+
+extension UITextField : Themeable {
     open override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.setPlaceholderColor()
+        self.updateColors()
     }
     
-    func setPlaceholderColor() {
+    func updateColors() {
         guard let placeholder = self.placeholder else {
             self.attributedPlaceholder = nil
             return
@@ -28,14 +39,127 @@ extension UITextField {
     }
 }
 
-extension UITableView {
+extension UITableView : Themeable {
     open override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.updateBackgroundColor()
+        self.updateColors()
     }
     
-    func updateBackgroundColor() {
-        self.backgroundColor = ThemeManager.shared.backgroundGrey()
+    func updateColors() {
+        if (self.style == .grouped) { // Appearence for grouped style is not working
+            self.backgroundColor = ThemeManager.shared.backgroundGrey()
+        }
+    }
+}
+
+extension UIImageView : Themeable {
+    @IBInspectable var themeable: Bool {
+        set(value) {
+            if (value == true) {
+                self.updateColors()
+            }
+        }
+        get {
+            return false
+        }
+    }
+    
+    func updateColors() {
+        self.tintColor = ThemeManager.shared.primaryLight()
+    }
+}
+
+extension RoundedButton : Themeable {
+    @IBInspectable var themeable: Bool {
+        set(value) {
+            if (value == true) {
+                self.updateColors()
+            }
+        }
+        get {
+            return false
+        }
+    }
+    
+    func updateColors() {
+        self.backgroundColor = ThemeManager.shared.primaryLight()
+    }
+}
+
+extension UIPageControl : Themeable {
+    @IBInspectable var themeable: Bool {
+        set(value) {
+            if (value == true) {
+                self.updateColors()
+            }
+        }
+        get {
+            return false
+        }
+    }
+    
+    func updateColors() {
+        self.currentPageIndicatorTintColor = ThemeManager.shared.primaryLight()
+        self.pageIndicatorTintColor = ThemeManager.shared.secondaryDark()
+    }
+}
+
+extension UITableViewCell : Themeable {
+    @IBInspectable var themeable: Bool {
+        set(value) {
+            if (value == true) {
+                self.updateColors()
+            }
+        }
+        get {
+            return false
+        }
+    }
+    
+    func updateColors() {
+        self.textLabel?.textColor = ThemeManager.shared.secondaryDark()
+        self.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
+    }
+}
+
+extension UIActivityIndicatorView : Themeable {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.updateColors()
+    }
+    
+    func updateColors() {
+        self.tintColor = ThemeManager.shared.primaryLight()
+    }
+}
+
+extension UIRefreshControl : Themeable {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.updateColors()
+    }
+    
+    func updateColors() {
+        self.tintColor = ThemeManager.shared.primaryLight()
+    }
+}
+
+extension UILabel : Themeable {
+    @IBInspectable var themeable: Bool {
+        set(value) {
+            if (value == true) {
+                self.updateColors()
+            }
+        }
+        get {
+            return false
+        }
+    }
+    
+    func updateColors() {
+        self.textColor = ThemeManager.shared.primaryLight()
     }
 }

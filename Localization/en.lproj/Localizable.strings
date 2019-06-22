@@ -292,6 +292,7 @@
 "settings.themes.title"                     = "Themes";
 "settings.themes.featherMode"               = "Feather Mode";
 "settings.themes.moonMode"                  = "Moon Mode";
+"settings.themes.marsMode"                  = "Mars Mode";
 
 // ----------------------------------------
 // Shortcuts

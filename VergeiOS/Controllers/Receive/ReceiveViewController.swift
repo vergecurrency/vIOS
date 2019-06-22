@@ -43,7 +43,7 @@ class ReceiveViewController: VViewController {
         super.viewDidLoad()
 
         self.xvgCardContainer.alpha = 0.0
-
+        
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
             self.activityIndicator.isHidden = false

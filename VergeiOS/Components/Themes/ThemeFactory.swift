@@ -13,7 +13,7 @@ class ThemeFactory: NSObject {
     static let shared = ThemeFactory()
     
     var themes : Array<Theme> {
-        return [featherMode, moonMode]
+        return [featherMode, moonMode, marsMode]
     }
     
     var featherMode : Theme {
@@ -50,7 +50,8 @@ class ThemeFactory: NSObject {
                                 noContactsPlaceholderImage: UIImage(named: "NoContactsPlaceholder")!,
                                 transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholder")!,
                                 sendCardImage: UIImage(named: "SendCard")!,
-                                receiveCardImage: UIImage(named: "ReceiveCard")!)
+                                receiveCardImage: UIImage(named: "ReceiveCard")!,
+                                creditsImage: UIImage(named: "Hero")!)
         
         return featherMode
     }
@@ -89,13 +90,52 @@ class ThemeFactory: NSObject {
                              noContactsPlaceholderImage: UIImage(named: "NoContactsPlaceholderMoonMode")!,
                              transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholderMoonMode")!,
                              sendCardImage: UIImage(named: "SendCardMoonMode")!,
-                             receiveCardImage: UIImage(named: "ReceiveCardMoonMode")!)
+                             receiveCardImage: UIImage(named: "ReceiveCardMoonMode")!,
+                             creditsImage: UIImage(named: "HeroMoonMode")!)
         
         return moonMode
     }
     
+    private var marsMode : Theme {
+        let marsMode = Theme(name: "settings.themes.marsMode".localized,
+                             id: "marsMode",
+                             icon: UIImage(named: "Mars")!,
+                             
+                             primaryDark: UIColor(rgb: 0xDCEFFC),
+                             primaryLight: UIColor(rgb: 0xFF5A25),
+                             secondaryDark: UIColor(rgb: 0xF8F7F7),
+                             secondaryLight: UIColor(rgb: 0x68261A),
+                             backgroundBlue: UIColor(rgb: 0xFF5A25).withAlphaComponent(0.8),
+                             backgroundGrey: UIColor(rgb: 0x000000),
+                             backgroundWhite: UIColor(rgb: 0x140000),
+                             
+                             separatorColor: UIColor(rgb: 0xCB5E3D),
+                             placeholderColor: UIColor(rgb: 0x5A403F),
+                             backgroundTopColor: .black,
+                             backgroundBottomColor: .black,
+                             qrCodeColor: UIColor(rgb: 0x2B0C01),
+                             priceChartColor: .clear,
+                             
+                             vergeGrey: UIColor(rgb: 0x886357),
+                             vergeGreen: UIColor(rgb: 0x008570),
+                             vergeRed: UIColor(rgb: 0xFF5252),
+                             
+                             barStyle: .black,
+                             statusBarStyle: .lightContent,
+                             isTranslucent: false,
+                             keyboardAppearance: .dark,
+                             
+                             unlockBackgroundImage: UIImage(named: "UnlockBackgroundMarsMode")!,
+                             noBalancePlaceholderImage: UIImage(named: "NoBalancePlaceholderMarsMode")!,
+                             noContactsPlaceholderImage: UIImage(named: "NoContactsPlaceholderMarsMode")!,
+                             transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholderMarsMode")!,
+                             sendCardImage: UIImage(named: "SendCardMarsMode")!,
+                             receiveCardImage: UIImage(named: "ReceiveCardMarsMode")!,
+                             creditsImage: UIImage(named: "HeroMarsMode")!)
+        
+        return marsMode
+    }
 }
-
 
 struct Theme {
     let name : String
@@ -134,4 +174,5 @@ struct Theme {
     let transactionsPlaceholderImage : UIImage
     let sendCardImage : UIImage
     let receiveCardImage : UIImage
+    let creditsImage : UIImage
 }

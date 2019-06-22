@@ -50,8 +50,8 @@ class VolumeChartView: AbstractChartView {
 
     fileprivate func style(priceSet: BarChartDataSet) {
         priceSet.drawValuesEnabled = false
-        priceSet.colors = [ThemeManager.shared.backgroundBlue()]
+        priceSet.colors = [ThemeManager.shared.vergeGrey()]
         priceSet.barBorderWidth = 2.0
-        priceSet.barBorderColor = ThemeManager.shared.backgroundBlue()
+        priceSet.barBorderColor = ThemeManager.shared.vergeGrey()
     }
 }

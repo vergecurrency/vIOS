@@ -15,9 +15,6 @@ class ApplicationServiceProvider: ServiceProvider {
 
         IQKeyboardManager.shared.enable = true
 
-        let applicationRepository = container.resolve(ApplicationRepository.self)!
-        //ThemeManager.shared.useMoonMode = applicationRepository.useMoonMode
-
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         ThemeManager.shared.initialize(withWindow: appDelegate.window ?? UIWindow())
 

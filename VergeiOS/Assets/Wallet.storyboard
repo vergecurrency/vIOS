@@ -140,6 +140,9 @@
                                 </constraints>
                                 <color key="pageIndicatorTintColor" name="VergeGrey"/>
                                 <color key="currentPageIndicatorTintColor" name="PrimaryLight"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
