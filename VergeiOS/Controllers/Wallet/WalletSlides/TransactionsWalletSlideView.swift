@@ -107,7 +107,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        parentContainerViewController()?.performSegue(withIdentifier: "TransactionTableViewController", sender: items[indexPath.row])
+        parentContainerViewController?.performSegue(withIdentifier: "TransactionTableViewController", sender: items[indexPath.row])
         
         tableView.deselectRow(at: indexPath, animated: true)
     }

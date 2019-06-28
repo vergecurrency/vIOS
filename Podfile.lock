@@ -1,0 +1,68 @@
+PODS:
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - CoreStore (6.3.1)
+  - CryptoSwift (1.0.0)
+  - Eureka (4.3.1)
+  - HGPlaceholders (0.4.0)
+  - IQKeyboardManager (6.1.1)
+  - KeychainSwift (11.0.0)
+  - QRCode (2.0)
+  - SwiftyJSON (5.0.0)
+  - Swinject (2.6.1)
+  - SwinjectStoryboard (2.2.0):
+    - Swinject (~> 2.6)
+
+DEPENDENCIES:
+  - Charts (= 3.3.0)
+  - CoreStore (= 6.3.1)
+  - CryptoSwift (= 1.0.0)
+  - Eureka (= 4.3.1)
+  - HGPlaceholders (= 0.4.0)
+  - IQKeyboardManager (= 6.1.1)
+  - KeychainSwift (= 11.0.0)
+  - QRCode (from `https://github.com/gmotzespina/QRCode.git`, branch `master`)
+  - SwiftyJSON (= 5.0.0)
+  - Swinject (= 2.6.1)
+  - SwinjectStoryboard (= 2.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Charts
+    - CoreStore
+    - CryptoSwift
+    - Eureka
+    - HGPlaceholders
+    - IQKeyboardManager
+    - KeychainSwift
+    - SwiftyJSON
+    - Swinject
+    - SwinjectStoryboard
+
+EXTERNAL SOURCES:
+  QRCode:
+    :branch: master
+    :git: https://github.com/gmotzespina/QRCode.git
+
+CHECKOUT OPTIONS:
+  QRCode:
+    :commit: c07e17120ffb34fdfa7ec1f3a85bc1afd39cfdc2
+    :git: https://github.com/gmotzespina/QRCode.git
+
+SPEC CHECKSUMS:
+  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
+  CoreStore: 1ce7b77a95f0939d90b2d1e04e66a4a5bc1614d7
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  HGPlaceholders: fd580aaf6050782bf2ee51eb62ed499ded6615b7
+  IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
+  KeychainSwift: bea6bd9f98af7b8d7ca4aa79fe105c00fab532db
+  QRCode: 282441d0cfe8c4c1766b7578361fe93f72757685
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Swinject: b624462f47b635a64f89a60a247baa5fccec14e1
+  SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
+
+PODFILE CHECKSUM: 7b5e86b6322d1b2759e5395bd5c6e09fabbf6935
+
+COCOAPODS: 1.5.2

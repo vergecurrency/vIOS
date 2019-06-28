@@ -5,7 +5,7 @@
 
 import Foundation
 import UIKit
-import IQKeyboardManagerSwift
+import IQKeyboardManager
 
 class ApplicationServiceProvider: ServiceProvider {
 
@@ -13,7 +13,7 @@ class ApplicationServiceProvider: ServiceProvider {
         TorStatusIndicator.shared.initialize()
         NotificationManager.shared.initialize()
 
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared().isEnabled = true
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         ThemeManager.shared.initialize(withWindow: appDelegate.window ?? UIWindow())
