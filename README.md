@@ -31,7 +31,7 @@ This iOS wallet provides an easy and secure wallet on your iOS device. With **To
 
 ## Local Development
 
-If you want to help us out on the development use this guide:
+If you want to help us out on development you can use this guide:
 
 1. Fork the project, and clone it to your local machine.
 
@@ -49,6 +49,8 @@ carthage update --platform iOS
 ```sh
 open VergeiOS.xcodeproj
 ```
+
+If you want to setup your local VWS instance you can checkout [the bitcore repository](https://github.com/vergecurrency/bitcore) and setup an instance [using docker](https://github.com/vergecurrency/bitcore/blob/master/Docker.md).
 
 ## Build With
 
