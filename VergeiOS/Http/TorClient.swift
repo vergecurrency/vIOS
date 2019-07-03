@@ -7,19 +7,19 @@
 //
 
 import Foundation
-import Tor
+//import Tor
 
 class TorClient {
 
     private var applicationRepository: ApplicationRepository!
-    private var config: TorConfiguration = TorConfiguration()
-    private var thread: TorThread!
-    private var controller: TorController!
+//    private var config: TorConfiguration = TorConfiguration()
+//    private var thread: TorThread!
+//    private var controller: TorController!
 
     // Client status?
     private(set) var isOperational: Bool = false
     private var isConnected: Bool {
-        return self.controller.isConnected
+        return false
     }
 
     // The tor url session configuration.
@@ -36,23 +36,23 @@ class TorClient {
     }
 
     private func setupThread() {
-        config.options = [
-            "DNSPort": "12345",
-            "AutomapHostsOnResolve": "1",
-            "AvoidDiskWrites": "1"
-        ]
-        config.cookieAuthentication = true
-        config.dataDirectory = URL(fileURLWithPath: self.createTorDirectory())
-        config.controlSocket = config.dataDirectory?.appendingPathComponent("cp")
-        config.arguments = [
-            "--allow-missing-torrc",
-            "--ignore-missing-torrc",
-            "--clientonly", "1",
-            "--socksport", "39050",
-            "--controlport", "127.0.0.1:39060",
-        ]
-
-        thread = TorThread(configuration: config)
+//        config.options = [
+//            "DNSPort": "12345",
+//            "AutomapHostsOnResolve": "1",
+//            "AvoidDiskWrites": "1"
+//        ]
+//        config.cookieAuthentication = true
+//        config.dataDirectory = URL(fileURLWithPath: self.createTorDirectory())
+//        config.controlSocket = config.dataDirectory?.appendingPathComponent("cp")
+//        config.arguments = [
+//            "--allow-missing-torrc",
+//            "--ignore-missing-torrc",
+//            "--clientonly", "1",
+//            "--socksport", "39050",
+//            "--controlport", "127.0.0.1:39060",
+//        ]
+//
+//        thread = TorThread(configuration: config)
     }
 
     // Start the tor client.
@@ -62,25 +62,25 @@ class TorClient {
             return completion()
         }
 
-        // Make sure we don't have a thread already.
-        if thread == nil {
-            setupThread()
-        }
-
-        // Initiate the controller.
-        controller = TorController(socketURL: config.controlSocket!)
-        
-        // Start a tor thread.
-        if thread.isExecuting == false {
-            thread.start()
-
-            NotificationCenter.default.post(name: .didStartTorThread, object: self)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            // Connect Tor controller.
-            self.connectController(completion: completion)
-        }
+//        // Make sure we don't have a thread already.
+//        if thread == nil {
+//            setupThread()
+//        }
+//
+//        // Initiate the controller.
+//        controller = TorController(socketURL: config.controlSocket!)
+//
+//        // Start a tor thread.
+//        if thread.isExecuting == false {
+//            thread.start()
+//
+//            NotificationCenter.default.post(name: .didStartTorThread, object: self)
+//        }
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            // Connect Tor controller.
+//            self.connectController(completion: completion)
+//        }
     }
 
     // Resign the tor client.
@@ -91,9 +91,9 @@ class TorClient {
             return
         }
         
-        while controller.isConnected {
-            print("Disconnecting Tor...")
-        }
+//        while controller.isConnected {
+//            print("Disconnecting Tor...")
+//        }
         
         NotificationCenter.default.post(name: .didResignTorConnection, object: self)
         
@@ -109,10 +109,10 @@ class TorClient {
             return
         }
         
-        self.controller.disconnect()
+//        self.controller.disconnect()
         
         self.isOperational = false
-        self.thread = nil
+//        self.thread = nil
         self.sessionConfiguration = .default
 
         NotificationCenter.default.post(name: .didTurnOffTor, object: self)
@@ -120,10 +120,10 @@ class TorClient {
 
     private func connectController(completion: @escaping () -> Void) {
         do {
-            if !self.controller.isConnected {
-                try self.controller?.connect()
-                NotificationCenter.default.post(name: .didConnectTorController, object: self)
-            }
+//            if !self.controller.isConnected {
+//                try self.controller?.connect()
+//                NotificationCenter.default.post(name: .didConnectTorController, object: self)
+//            }
 
             try self.authenticateController {
                 print("Tor tunnel started! 🤩")
@@ -140,32 +140,32 @@ class TorClient {
     }
 
     private func authenticateController(completion: @escaping () -> Void) throws -> Void {
-        let cookie = try Data(
-            contentsOf: config.dataDirectory!.appendingPathComponent("control_auth_cookie"),
-            options: NSData.ReadingOptions(rawValue: 0)
-        )
-
-        self.controller?.authenticate(with: cookie) { success, error in
-            if let error = error {
-                return print(error.localizedDescription)
-            }
-
-            var observer: Any? = nil
-            observer = self.controller?.addObserver(forCircuitEstablished: { established in
-                guard established else {
-                    return
-                }
-
-                self.controller?.getSessionConfiguration() { sessionConfig in
-                    self.sessionConfiguration = sessionConfig!
-
-                    self.isOperational = true
-                    completion()
-                }
-
-                self.controller?.removeObserver(observer)
-            })
-        }
+//        let cookie = try Data(
+//            contentsOf: config.dataDirectory!.appendingPathComponent("control_auth_cookie"),
+//            options: NSData.ReadingOptions(rawValue: 0)
+//        )
+//
+//        self.controller?.authenticate(with: cookie) { success, error in
+//            if let error = error {
+//                return print(error.localizedDescription)
+//            }
+//
+//            var observer: Any? = nil
+//            observer = self.controller?.addObserver(forCircuitEstablished: { established in
+//                guard established else {
+//                    return
+//                }
+//
+//                self.controller?.getSessionConfiguration() { sessionConfig in
+//                    self.sessionConfiguration = sessionConfig!
+//
+//                    self.isOperational = true
+//                    completion()
+//                }
+//
+//                self.controller?.removeObserver(observer)
+//            })
+//        }
     }
     
     private func createTorDirectory() -> String {

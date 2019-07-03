@@ -218,10 +218,6 @@
 		B2BD7F39EE96EB7B9E5A870A /* TransactionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD780B0BE45F52AD3B526D /* TransactionFactory.swift */; };
 		B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */; };
 		B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */; };
-		CA03CCE022C643A9003D3B6D /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA03CCDE22C643A9003D3B6D /* Tor.framework */; };
-		CA03CCE122C643A9003D3B6D /* Tor.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA03CCDE22C643A9003D3B6D /* Tor.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA03CCE222C643A9003D3B6D /* BitcoinKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA03CCDF22C643A9003D3B6D /* BitcoinKit.xcframework */; };
-		CA03CCE322C643A9003D3B6D /* BitcoinKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA03CCDF22C643A9003D3B6D /* BitcoinKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA101BAD224629590058B84C /* ShortcutsManager.swift */; };
 		CA2B4A17226B336100115B2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */; };
 		CA2B4A18226B336100115B2D /* WelcomeGuide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */; };
@@ -242,6 +238,8 @@
 		CA5FCC7E22842BD1002340A1 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5FCC7D22842BD1002340A1 /* String+Localization.swift */; };
 		CA63BA722282CE7400E2023A /* LocalizableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */; };
 		CA63BA752282DC1C00E2023A /* LocalizableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63BA742282DC1C00E2023A /* LocalizableSegmentedControl.swift */; };
+		CA70FB1522CD14B000DB00C6 /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA70FB1422CD14B000DB00C6 /* BitcoinKit.framework */; };
+		CA70FB1622CD14B000DB00C6 /* BitcoinKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA70FB1422CD14B000DB00C6 /* BitcoinKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA8323CB222A8B4F00D74D26 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		CA8FCF4D21F7C3A30069D150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */; };
 		CA8FCF5421F7C3A30069D150 /* VergeWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -253,6 +251,7 @@
 		CA8FCF6E21F7D2420069D150 /* FiatRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* FiatRate.swift */; };
 		CA8FCF6F21F7D7940069D150 /* UIColor+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DDAF2107889200911B64 /* UIColor+Default.swift */; };
 		CA93C6B3226EFF5A00A16B73 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA93C6B2226EFF5A00A16B73 /* Setup.storyboard */; };
+		CA990B7922CCF0BD00E42C58 /* TorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA990B7822CCF0BD00E42C58 /* TorClient.swift */; };
 		CAA6031322BC3E3B00EFCB24 /* UIView+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6031222BC3E3B00EFCB24 /* UIView+Theme.swift */; };
 		CAA6031522BC441A00EFCB24 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6031422BC441A00EFCB24 /* ThemeFactory.swift */; };
 		CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABF1481221061FD00F92CBC /* UIView+Actions.swift */; };
@@ -324,14 +323,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A3C5C3C42196EFB6003B6C02 /* Embed Frameworks */ = {
+		CA70FB1722CD14B000DB00C6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CA03CCE122C643A9003D3B6D /* Tor.framework in Embed Frameworks */,
-				CA03CCE322C643A9003D3B6D /* BitcoinKit.xcframework in Embed Frameworks */,
+				CA70FB1622CD14B000DB00C6 /* BitcoinKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,7 +493,6 @@
 		A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		A373E6EB2154601D00C67390 /* SendTransactionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTransactionDelegate.swift; sourceTree = "<group>"; };
 		A37641092107DC4E00E04521 /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
-		A37641202108FC1F00E04521 /* TorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
 		A37641222108FCFA00E04521 /* ConfirmPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPinViewController.swift; sourceTree = "<group>"; };
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
 		A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyDescriptionViewController.swift; sourceTree = "<group>"; };
@@ -624,6 +621,7 @@
 		CA2B4A2A226B398A00115B2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA2B4A2C226B398E00115B2D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Localization.swift"; sourceTree = "<group>"; };
+		CA3AC36E22CCEA1100B13A16 /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = "../../../Library/Developer/Xcode/DerivedData/BitcoinKit-djyppwvauzvpzxfxnfqgagiaipto/Build/Products/Debug-uikitformac/BitcoinKit.framework"; sourceTree = "<group>"; };
 		CA51072622294B5200A7BB62 /* WatchWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWalletClient.swift; sourceTree = "<group>"; };
 		CA522EA5220318B000331B0F /* VergeSiriUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VergeSiriUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA522EA6220318B000331B0F /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
@@ -634,6 +632,15 @@
 		CA60D193228D53300029FED0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableTableViewController.swift; sourceTree = "<group>"; };
 		CA63BA742282DC1C00E2023A /* LocalizableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableSegmentedControl.swift; sourceTree = "<group>"; };
+		CA70FB0822CD088C00DB00C6 /* libsecp256k1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = libsecp256k1.o; sourceTree = "<group>"; };
+		CA70FB0922CD088C00DB00C6 /* BitcoinKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = BitcoinKit.framework.dSYM; sourceTree = "<group>"; };
+		CA70FB0B22CD088C00DB00C6 /* x86_64.swiftdoc */ = {isa = PBXFileReference; lastKnownFileType = file; path = x86_64.swiftdoc; sourceTree = "<group>"; };
+		CA70FB0C22CD088C00DB00C6 /* x86_64-apple-ios-macabi.swiftmodule */ = {isa = PBXFileReference; lastKnownFileType = file; path = "x86_64-apple-ios-macabi.swiftmodule"; sourceTree = "<group>"; };
+		CA70FB0D22CD088C00DB00C6 /* x86_64.swiftmodule */ = {isa = PBXFileReference; lastKnownFileType = file; path = x86_64.swiftmodule; sourceTree = "<group>"; };
+		CA70FB0E22CD088C00DB00C6 /* x86_64-apple-ios-macabi.swiftdoc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "x86_64-apple-ios-macabi.swiftdoc"; sourceTree = "<group>"; };
+		CA70FB0F22CD088C00DB00C6 /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BitcoinKit.framework; sourceTree = "<group>"; };
+		CA70FB1022CD088C00DB00C6 /* secp256k1.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = secp256k1.o; sourceTree = "<group>"; };
+		CA70FB1422CD14B000DB00C6 /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = "Frameworks/BitcoinKit-uikitformac/BitcoinKit.framework"; sourceTree = "<group>"; };
 		CA8FCF4721F7C3A20069D150 /* VergeWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VergeWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA8FCF4E21F7C3A30069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -645,6 +652,7 @@
 		CA8FCF6021F7C3A40069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8FCF6121F7C3A40069D150 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CA93C6B2226EFF5A00A16B73 /* Setup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
+		CA990B7822CCF0BD00E42C58 /* TorClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
 		CAA6031222BC3E3B00EFCB24 /* UIView+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Theme.swift"; sourceTree = "<group>"; };
 		CAA6031422BC441A00EFCB24 /* ThemeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
 		CABF1481221061FD00F92CBC /* UIView+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Actions.swift"; sourceTree = "<group>"; };
@@ -698,9 +706,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA03CCE022C643A9003D3B6D /* Tor.framework in Frameworks */,
-				CA03CCE222C643A9003D3B6D /* BitcoinKit.xcframework in Frameworks */,
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
+				CA70FB1522CD14B000DB00C6 /* BitcoinKit.framework in Frameworks */,
 				D383155E68CBC72A6F13F0A8 /* Pods_VergeiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1188,6 +1195,9 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA70FB1422CD14B000DB00C6 /* BitcoinKit.framework */,
+				CA70FB0722CD088C00DB00C6 /* BitcoinKit-uikitformac */,
+				CA3AC36E22CCEA1100B13A16 /* BitcoinKit.framework */,
 				CA03CCDF22C643A9003D3B6D /* BitcoinKit.xcframework */,
 				CA03CCDE22C643A9003D3B6D /* Tor.framework */,
 				A3E32B17225D52D9001A8B0E /* Swinject.framework */,
@@ -1215,8 +1225,8 @@
 		A376411F2108FC0200E04521 /* Http */ = {
 			isa = PBXGroup;
 			children = (
+				CA990B7822CCF0BD00E42C58 /* TorClient.swift */,
 				A3256662211A39A2006FB08A /* RatesClient.swift */,
-				A37641202108FC1F00E04521 /* TorClient.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1402,6 +1412,29 @@
 			path = SegmentedControlls;
 			sourceTree = "<group>";
 		};
+		CA70FB0722CD088C00DB00C6 /* BitcoinKit-uikitformac */ = {
+			isa = PBXGroup;
+			children = (
+				CA70FB0822CD088C00DB00C6 /* libsecp256k1.o */,
+				CA70FB0922CD088C00DB00C6 /* BitcoinKit.framework.dSYM */,
+				CA70FB0A22CD088C00DB00C6 /* secp256k1.swiftmodule */,
+				CA70FB0F22CD088C00DB00C6 /* BitcoinKit.framework */,
+				CA70FB1022CD088C00DB00C6 /* secp256k1.o */,
+			);
+			path = "BitcoinKit-uikitformac";
+			sourceTree = "<group>";
+		};
+		CA70FB0A22CD088C00DB00C6 /* secp256k1.swiftmodule */ = {
+			isa = PBXGroup;
+			children = (
+				CA70FB0B22CD088C00DB00C6 /* x86_64.swiftdoc */,
+				CA70FB0C22CD088C00DB00C6 /* x86_64-apple-ios-macabi.swiftmodule */,
+				CA70FB0D22CD088C00DB00C6 /* x86_64.swiftmodule */,
+				CA70FB0E22CD088C00DB00C6 /* x86_64-apple-ios-macabi.swiftdoc */,
+			);
+			path = secp256k1.swiftmodule;
+			sourceTree = "<group>";
+		};
 		CA8FCF4821F7C3A20069D150 /* VergeWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1577,10 +1610,10 @@
 				A33F6A6820EEE485001492C2 /* Sources */,
 				A33F6A6920EEE485001492C2 /* Frameworks */,
 				A33F6A6A20EEE485001492C2 /* Resources */,
-				A3C5C3C42196EFB6003B6C02 /* Embed Frameworks */,
 				CAD929FD21E7DFA300CD5EBA /* Embed App Extensions */,
 				CA8FCF6C21F7C3A40069D150 /* Embed Watch Content */,
 				6F5667D1B90945C900962AB2 /* [CP] Embed Pods Frameworks */,
+				CA70FB1722CD14B000DB00C6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1590,6 +1623,8 @@
 				CA522EB0220318B000331B0F /* PBXTargetDependency */,
 			);
 			name = VergeiOS;
+			packageProductDependencies = (
+			);
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
 			productType = "com.apple.product-type.application";
@@ -1760,6 +1795,8 @@
 				sl,
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
+			packageReferences = (
+			);
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1888,37 +1925,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
-				"${BUILT_PRODUCTS_DIR}/CoreStore/CoreStore.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/QRCode/QRCode.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/SwinjectStoryboard/SwinjectStoryboard.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreStore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/QRCode.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectStoryboard.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1962,6 +1978,7 @@
 				A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */,
 				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
+				CA990B7922CCF0BD00E42C58 /* TorClient.swift in Sources */,
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
 				A3AA2B7D2263CEC3000E4571 /* TitleLabel.swift in Sources */,
 				A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */,
@@ -1972,7 +1989,6 @@
 				A3256663211A39A2006FB08A /* RatesClient.swift in Sources */,
 				A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */,
 				A325665D2116EF71006FB08A /* BlendedNavigationBar.swift in Sources */,
-				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */,
 				A3B2E2642148421300C31719 /* NoTransactionsPlaceholderView.swift in Sources */,
 				CAD85A5B2291A7D20063BF25 /* LanguageTableViewController.swift in Sources */,
@@ -2202,7 +2218,6 @@
 		};
 		CA522EB0220318B000331B0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = CA522EA4220318B000331B0F /* VergeSiriUI */;
 			targetProxy = CA522EAF220318B000331B0F /* PBXContainerItemProxy */;
 		};
@@ -2213,13 +2228,11 @@
 		};
 		CA8FCF6321F7C3A40069D150 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = CA8FCF4621F7C3A20069D150 /* VergeWatch */;
 			targetProxy = CA8FCF6221F7C3A40069D150 /* PBXContainerItemProxy */;
 		};
 		CAD929F821E7DFA300CD5EBA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = CAD929F121E7DFA200CD5EBA /* VergeSiri */;
 			targetProxy = CAD929F721E7DFA300CD5EBA /* PBXContainerItemProxy */;
 		};
@@ -2466,6 +2479,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/BitcoinKit-uikitformac",
+					"$(PROJECT_DIR)/Frameworks/BitcoinKit-uikitformac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2496,6 +2511,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/BitcoinKit-uikitformac",
+					"$(PROJECT_DIR)/Frameworks/BitcoinKit-uikitformac",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
