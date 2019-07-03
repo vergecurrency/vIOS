@@ -23,52 +23,28 @@ class ThemeManager {
             return themes.first!
         }
     }
-
-    func initialize(withWindow window: UIWindow) {
-        UITabBar.appearance().layer.borderWidth = 0
-        UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
-        UITabBar.appearance().clipsToBounds = true
-
-        UITabBar.appearance().tintColor = self.primaryLight()
-        UITabBar.appearance().unselectedItemTintColor = self.secondaryLight()
-        UITabBar.appearance().barTintColor = self.backgroundGrey()
-        UITabBar.appearance().backgroundColor = self.backgroundGrey()
-        UITabBar.appearance().barStyle = self.barStyle()
-        UITabBar.appearance().isTranslucent = self.currentTheme.isTranslucent
-
-        UIToolbar.appearance().tintColor = self.primaryLight()
-        UIToolbar.appearance().barTintColor = self.backgroundWhite()
-        UIToolbar.appearance().backgroundColor = self.backgroundWhite()
-        UIToolbar.appearance().barStyle = self.barStyle()
-        UIToolbar.appearance().isTranslucent = self.currentTheme.isTranslucent
-
-        UITableView.appearance().backgroundColor = self.backgroundGrey()
-        UITableView.appearance().tintColor = self.primaryLight()
-        UITableView.appearance().separatorColor = self.separatorColor()
-
-        let colorView = UIView()
-        colorView.backgroundColor = self.backgroundBlue()
-
-        UITableViewCell.appearance().selectedBackgroundView = colorView
-        UITableViewCell.appearance().backgroundColor = self.backgroundWhite()
-
-        UITextField.appearance().textColor = self.secondaryDark()
-        UITextField.appearance().keyboardAppearance = self.currentTheme.keyboardAppearance
-        UISearchBar.appearance().keyboardAppearance = self.currentTheme.keyboardAppearance
-
-        CloseButton.appearance().titleLabel?.textColor = self.secondaryDark()
-        CloseButton.appearance().tintColor = self.secondaryDark()
-
-        window.tintColor = self.primaryLight()
-    }
     
     func switchTheme(theme: Theme) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
         appRepo.currentTheme = theme.id
-        appDelegate.restart()
         
-        self.initialize(withWindow: appDelegate.window!)
+//        self.changeIcon(to: "AppIconMars")
+    }
+    
+    func changeIcon(to name: String?) {
+        //Check if the app supports alternating icons
+        guard UIApplication.shared.supportsAlternateIcons else {
+            return;
+        }
+        
+        //Change the icon to a specific image with given name
+        UIApplication.shared.setAlternateIconName(name) { (error) in
+            //After app icon changed, print our error or success message
+            if let error = error {
+                print("App icon failed to due to \(error.localizedDescription)")
+            } else {
+                print("App icon changed successfully.")
+            }
+        }
     }
     
     // MARK: Styling

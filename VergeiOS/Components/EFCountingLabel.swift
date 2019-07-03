@@ -218,13 +218,7 @@ open class EFCountingLabel: UILabel {
 }
 
 class TitleEFCountingLabel: EFCountingLabel {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.setColors()
-    }
-
-    func setColors() {
+    override func updateColors() {
         self.textColor = ThemeManager.shared.secondaryDark()
     }
 }

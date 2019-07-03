@@ -203,6 +203,8 @@ class ApplicationRepository {
         }
         set {
             userDefaults.set(newValue, forKey: "currentTheme")
+            
+            NotificationCenter.default.post(name: .didChangeTheme, object: nil)
         }
     }
     

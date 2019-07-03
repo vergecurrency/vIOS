@@ -17,13 +17,16 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.transactions.title"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gsp-5Y-xqC" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gsp-5Y-xqC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryDark"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="SecondaryDark"/>
                         </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="zg5-jw-z2g" kind="relationship" relationship="rootViewController" id="rGu-AS-FRA"/>
@@ -52,13 +55,16 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.send.title"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Fj-Ie-PFO" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Fj-Ie-PFO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryDark"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="SecondaryDark"/>
                         </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="XtL-Pz-PVB" kind="relationship" relationship="rootViewController" id="ec2-Ye-liM"/>
@@ -87,13 +93,16 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.receive.title"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LlX-N7-1Q9" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LlX-N7-1Q9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryDark"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="SecondaryDark"/>
                         </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="9UV-qc-EQe" kind="relationship" relationship="rootViewController" id="HaE-Zq-Mzs"/>
@@ -122,13 +131,16 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="localizationTitleId" value="mainTabBar.barItem.settings.title"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aPi-uw-RI1" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aPi-uw-RI1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="SecondaryDark"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" name="SecondaryDark"/>
                         </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="dcm-Qi-VWh" kind="relationship" relationship="rootViewController" id="99J-Bf-C5w"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DisconnectWalletViewController: VViewController {
+class DisconnectWalletViewController: ThemeableViewController {
 
     var applicationRepository: ApplicationRepository!
     var transactionManager: TransactionManager!

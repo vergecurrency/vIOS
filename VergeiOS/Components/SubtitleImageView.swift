@@ -9,18 +9,7 @@
 import UIKit
 
 class SubtitleImageView: UIImageView {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.setColors()
-    }
-
-    func setColors() {
+    override func updateColors() {
         self.tintColor = ThemeManager.shared.primaryDark()
     }
-
 }

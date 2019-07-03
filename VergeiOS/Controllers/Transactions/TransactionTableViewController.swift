@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransactionTableViewController: VViewController, UITableViewDelegate, UITableViewDataSource {
+class TransactionTableViewController: ThemeableViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!

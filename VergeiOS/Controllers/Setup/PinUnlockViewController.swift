@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class PinUnlockViewController: VViewController, KeyboardDelegate {
+class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
 
     enum UnlockState: String {
         case wallet

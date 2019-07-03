@@ -10,7 +10,7 @@ import UIKit
 import QRCode
 
 @IBDesignable
-class ReceiveViewController: VViewController {
+class ReceiveViewController: ThemeableViewController {
 
     enum CurrencySwitch {
         case XVG

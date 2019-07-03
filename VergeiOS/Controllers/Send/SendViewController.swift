@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendViewController: VViewController {
+class SendViewController: ThemeableViewController {
 
     enum CurrencySwitch {
         case XVG

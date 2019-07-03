@@ -180,9 +180,12 @@
         <scene sceneID="Hk5-0I-z1f">
             <objects>
                 <navigationController id="Csu-Cy-MFz" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n8V-Ff-G4a" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n8V-Ff-G4a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="fv9-8y-BaZ" kind="relationship" relationship="rootViewController" id="OC6-U5-ayw"/>

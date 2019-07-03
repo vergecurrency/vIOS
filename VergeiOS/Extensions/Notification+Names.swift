@@ -30,4 +30,6 @@ extension Notification.Name {
     static let didSignTx = Notification.Name("didSignTx")
     static let didBroadcastTx = Notification.Name("didBroadcastTx")
     static let didReceiveTransaction = Notification.Name("didReceiveTransaction")
+    
+    static let didChangeTheme = Notification.Name("didChangeTheme")
 }

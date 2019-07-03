@@ -800,9 +800,12 @@
         <scene sceneID="tdG-gH-mRv">
             <objects>
                 <navigationController id="EJT-TO-hr5" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgc-A0-eHQ" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgc-A0-eHQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="K7u-WG-qlZ" kind="relationship" relationship="rootViewController" id="jNg-bM-lYA"/>

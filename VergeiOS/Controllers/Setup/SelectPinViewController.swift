@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectPinViewController: VViewController, KeyboardDelegate {
+class SelectPinViewController: ThemeableViewController, KeyboardDelegate {
     
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var pinKeyboard: PinKeyboard!

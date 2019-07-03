@@ -14,9 +14,12 @@
         <scene sceneID="v01-9t-baj">
             <objects>
                 <navigationController id="Xsh-Qv-qas" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ws5-VK-z4R" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ws5-VK-z4R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="ISY-5g-P8F" kind="relationship" relationship="rootViewController" id="s4V-hC-A4f"/>
@@ -344,9 +347,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rUE-pZ-3a3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tPR-Bz-6k7" customClass="BlendedNavigationBar" customModule="VergeiOS" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tPR-Bz-6k7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -374,7 +380,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ehv-iz-SpP"/>
+        <segue reference="9bu-G3-SqU"/>
         <segue reference="hUW-WV-KOl"/>
     </inferredMetricsTieBreakers>
 </document>

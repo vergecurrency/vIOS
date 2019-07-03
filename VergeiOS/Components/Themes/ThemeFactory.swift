@@ -17,7 +17,7 @@ class ThemeFactory: NSObject {
     }
     
     var featherMode : Theme {
-        let featherMode = Theme(name: "settings.themes.featherMode".localized,
+        var featherMode = Theme(name: "settings.themes.featherMode".localized,
                                 id: "featherMode",
                                 icon: UIImage(named: "Feather")!,
                                 
@@ -52,6 +52,10 @@ class ThemeFactory: NSObject {
                                 sendCardImage: UIImage(named: "SendCard")!,
                                 receiveCardImage: UIImage(named: "ReceiveCard")!,
                                 creditsImage: UIImage(named: "Hero")!)
+        
+        if #available(iOS 13.0, *) {
+            featherMode.statusBarStyle = .darkContent
+        }
         
         return featherMode
     }
@@ -164,7 +168,7 @@ struct Theme {
     let vergeRed : UIColor
     
     let barStyle : UIBarStyle
-    let statusBarStyle : UIStatusBarStyle
+    var statusBarStyle : UIStatusBarStyle
     let isTranslucent : Bool
     let keyboardAppearance : UIKeyboardAppearance
     
@@ -176,3 +180,4 @@ struct Theme {
     let receiveCardImage : UIImage
     let creditsImage : UIImage
 }
+

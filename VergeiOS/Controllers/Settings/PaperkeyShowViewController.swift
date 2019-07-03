@@ -9,7 +9,7 @@
 import UIKit
 import QRCode
 
-class PaperkeyShowViewController: VViewController {
+class PaperkeyShowViewController: ThemeableViewController {
 
     @IBOutlet weak var wordsLabel: UILabel!
     @IBOutlet weak var qrImageView: UIImageView!

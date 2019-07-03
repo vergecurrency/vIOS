@@ -14,10 +14,7 @@ class ApplicationServiceProvider: ServiceProvider {
         NotificationManager.shared.initialize()
 
         IQKeyboardManager.shared.enable = true
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        ThemeManager.shared.initialize(withWindow: appDelegate.window ?? UIWindow())
-
+        
         self.bootWatchSyncManager()
     }
 
