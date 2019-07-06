@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZAV-rD-AY1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZAV-rD-AY1">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -58,7 +58,7 @@
                         <viewLayoutGuide key="safeArea" id="gb6-qf-ykk"/>
                     </view>
                     <connections>
-                        <segue destination="QdR-PU-LZV" kind="presentation" identifier="showWallet" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="yd6-Cd-QB2"/>
+                        <segue destination="QdR-PU-LZV" kind="presentation" identifier="showWallet" animates="NO" modalPresentationStyle="fullScreen" id="yd6-Cd-QB2"/>
                         <segue destination="8C8-uZ-nak" kind="presentation" identifier="showWelcomeView" animates="NO" modalPresentationStyle="fullScreen" id="gYL-g1-4Me"/>
                     </connections>
                 </viewController>

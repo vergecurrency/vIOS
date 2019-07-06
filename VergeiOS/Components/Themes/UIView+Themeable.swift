@@ -177,7 +177,7 @@ extension UIRefreshControl {
 
 extension UILabel {
     override func updateColors() {
-        self.textColor = ThemeManager.shared.primaryLight()
+        self.textColor = ThemeManager.shared.secondaryDark()
     }
 }
 
@@ -277,6 +277,13 @@ extension UINavigationBar {
             kCTFontAttributeName: font
             ] as? [NSAttributedString.Key : Any]
         
+        self.setNeedsDisplay()
+    }
+}
+
+extension UISwitch {
+    override func updateColors() {
+        self.onTintColor = ThemeManager.shared.primaryLight()
         self.setNeedsDisplay()
     }
 }

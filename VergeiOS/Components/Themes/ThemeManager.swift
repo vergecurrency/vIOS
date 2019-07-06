@@ -26,8 +26,10 @@ class ThemeManager {
     
     func switchTheme(theme: Theme) {
         appRepo.currentTheme = theme.id
-        
-//        self.changeIcon(to: "AppIconMars")
+    }
+    
+    func switchAppIcon(appIcon: AppIcon) {
+        self.changeIcon(to: appIcon.id)
     }
     
     func changeIcon(to name: String?) {

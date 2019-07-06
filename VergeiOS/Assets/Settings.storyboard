@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IMz-eD-ejn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IMz-eD-ejn">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -801,7 +802,7 @@
             <objects>
                 <navigationController id="EJT-TO-hr5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tgc-A0-eHQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
@@ -1387,7 +1388,7 @@
         <scene sceneID="n5D-i5-nYX">
             <objects>
                 <tableViewController id="Gft-Wt-Lpc" customClass="ThemeTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="12z-4A-Gch">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="12z-4A-Gch">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1402,6 +1403,7 @@
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.themes.titleLabel"/>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThemesPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="xxb-Fu-gvk">
@@ -1449,6 +1451,82 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="appIconsCell" rowHeight="120" id="jxD-s9-c5o" customClass="AppIconsTableViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="329" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jxD-s9-c5o" id="N9v-vf-ncy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fwb-CO-RLc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="Z2B-e4-40r"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="20" id="UZI-Id-Zjp">
+                                                <size key="itemSize" width="90" height="90"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="appIconCell" id="a4C-IS-Gf8" customClass="AppIconCollectionViewCell" customModule="VergeiOS" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="15" width="74" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WfL-EH-Dmh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="74" height="90"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yuI-ek-Rc3">
+                                                                <rect key="frame" x="0.0" y="0.0" width="74" height="64"/>
+                                                                <color key="backgroundColor" name="VergeRed"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="64" id="HCj-UD-MJ6"/>
+                                                                    <constraint firstAttribute="height" constant="64" id="WQu-o6-pUt"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7e-ii-j6W">
+                                                                <rect key="frame" x="4" y="68" width="66" height="22"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="yuI-ek-Rc3" firstAttribute="leading" secondItem="WfL-EH-Dmh" secondAttribute="leading" id="3UW-CW-X2H"/>
+                                                            <constraint firstItem="o7e-ii-j6W" firstAttribute="leading" secondItem="WfL-EH-Dmh" secondAttribute="leading" constant="4" id="6x9-4D-6gR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="o7e-ii-j6W" secondAttribute="trailing" constant="4" id="A4P-9l-Voq"/>
+                                                            <constraint firstItem="yuI-ek-Rc3" firstAttribute="centerX" secondItem="WfL-EH-Dmh" secondAttribute="centerX" id="Uyc-WW-WvK"/>
+                                                            <constraint firstAttribute="bottom" secondItem="o7e-ii-j6W" secondAttribute="bottom" id="g7Q-tr-Her"/>
+                                                            <constraint firstItem="yuI-ek-Rc3" firstAttribute="top" secondItem="WfL-EH-Dmh" secondAttribute="top" id="rEf-cM-6uD"/>
+                                                            <constraint firstAttribute="trailing" secondItem="yuI-ek-Rc3" secondAttribute="trailing" id="rjZ-kR-OHV"/>
+                                                            <constraint firstItem="o7e-ii-j6W" firstAttribute="top" secondItem="yuI-ek-Rc3" secondAttribute="bottom" constant="4" id="whg-5W-ej2"/>
+                                                        </constraints>
+                                                    </collectionViewCellContentView>
+                                                    <size key="customSize" width="74" height="90"/>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="yuI-ek-Rc3" id="UHY-jx-N4w"/>
+                                                        <outlet property="titleLabel" destination="o7e-ii-j6W" id="tc6-5x-rwB"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="fwb-CO-RLc" secondAttribute="trailing" id="Bdg-21-iqi"/>
+                                        <constraint firstItem="fwb-CO-RLc" firstAttribute="top" secondItem="N9v-vf-ncy" secondAttribute="top" id="MKm-5W-K4P"/>
+                                        <constraint firstItem="fwb-CO-RLc" firstAttribute="leading" secondItem="N9v-vf-ncy" secondAttribute="leading" id="OCG-Qx-pQv"/>
+                                        <constraint firstAttribute="bottom" secondItem="fwb-CO-RLc" secondAttribute="bottom" id="Sx6-Jp-zwP"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="collectionView" destination="fwb-CO-RLc" id="9FG-kT-3Ye"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -1952,6 +2030,9 @@ But you can always turn Tor off.</string>
         </namedColor>
         <namedColor name="VergeGreen">
             <color red="0.0" green="0.52156862745098043" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="VergeRed">
+            <color red="1" green="0.32156862745098042" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

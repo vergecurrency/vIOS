@@ -19,6 +19,20 @@
 					<string>AppIconMars</string>
 				</array>
 			</dict>
+			<key>AppIconMoon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIconMoon</string>
+				</array>
+			</dict>
+			<key>AppIconFeather</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIconFeather</string>
+				</array>
+			</dict>
 		</dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>

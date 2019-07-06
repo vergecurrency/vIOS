@@ -12,6 +12,10 @@ import UIKit
 class ThemeFactory: NSObject {
     static let shared = ThemeFactory()
     
+    var appIcons : Array<AppIcon> {
+        return [featherAppIcon, moonAppIcon, marsAppIcon]
+    }
+    
     var themes : Array<Theme> {
         return [featherMode, moonMode, marsMode]
     }
@@ -51,7 +55,8 @@ class ThemeFactory: NSObject {
                                 transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholder")!,
                                 sendCardImage: UIImage(named: "SendCard")!,
                                 receiveCardImage: UIImage(named: "ReceiveCard")!,
-                                creditsImage: UIImage(named: "Hero")!)
+                                creditsImage: UIImage(named: "Hero")!,
+                                appIconName: "AppIconFeather")
         
         if #available(iOS 13.0, *) {
             featherMode.statusBarStyle = .darkContent
@@ -95,7 +100,8 @@ class ThemeFactory: NSObject {
                              transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholderMoonMode")!,
                              sendCardImage: UIImage(named: "SendCardMoonMode")!,
                              receiveCardImage: UIImage(named: "ReceiveCardMoonMode")!,
-                             creditsImage: UIImage(named: "HeroMoonMode")!)
+                             creditsImage: UIImage(named: "HeroMoonMode")!,
+                             appIconName: "AppIconMoon")
         
         return moonMode
     }
@@ -135,10 +141,41 @@ class ThemeFactory: NSObject {
                              transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholderMarsMode")!,
                              sendCardImage: UIImage(named: "SendCardMarsMode")!,
                              receiveCardImage: UIImage(named: "ReceiveCardMarsMode")!,
-                             creditsImage: UIImage(named: "HeroMarsMode")!)
+                             creditsImage: UIImage(named: "HeroMarsMode")!,
+                             appIconName: "AppIconMars")
         
         return marsMode
     }
+    
+    private var featherAppIcon : AppIcon {
+        let featherAppIcon = AppIcon(name: "Default",
+                                     id: "AppIconFeather",
+                                     icon: UIImage(named: "AppIconFeather")!)
+        
+        return featherAppIcon
+    }
+    
+    private var moonAppIcon : AppIcon {
+        let moonAppIcon = AppIcon(name: "Moon",
+                                  id: "AppIconMoon",
+                                  icon: UIImage(named: "AppIconMoon")!)
+        
+        return moonAppIcon
+    }
+    
+    private var marsAppIcon : AppIcon {
+        let marsAppIcon = AppIcon(name: "Mars",
+                                  id: "AppIconMars",
+                                  icon: UIImage(named: "AppIconMars")!)
+        
+        return marsAppIcon
+    }
+}
+
+struct AppIcon {
+    let name : String
+    let id : String
+    let icon : UIImage
 }
 
 struct Theme {
@@ -179,5 +216,7 @@ struct Theme {
     let sendCardImage : UIImage
     let receiveCardImage : UIImage
     let creditsImage : UIImage
+    let appIconName : String
 }
+
 
