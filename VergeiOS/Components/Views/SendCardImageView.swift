@@ -11,10 +11,7 @@ import UIKit
 class SendCardImageView: CardImageView {
     
     override var themeImage: UIImage {
-        get {
-            return ThemeManager.shared.currentTheme.sendCardImage
-        }
-        set {}
+        return ThemeManager.shared.currentTheme.sendCardImage
     }
     
 }

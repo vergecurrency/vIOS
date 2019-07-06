@@ -10,13 +10,12 @@ import UIKit
 
 class TitleLabel: UILabel {
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.setColors()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable();
     }
-
-    func setColors() {
+    
+    override func updateColors() {
         self.textColor = ThemeManager.shared.secondaryDark()
     }
 

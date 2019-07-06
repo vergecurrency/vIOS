@@ -7,6 +7,15 @@ import UIKit
 import Charts
 
 class PriceChartView: AbstractChartView {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
+    }
+    
+    override func updateColors() {
+        self.setNeedsDisplay()
+    }
 
     var chart: LineChartView = LineChartView()
 

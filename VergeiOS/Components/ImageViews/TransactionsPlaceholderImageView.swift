@@ -11,10 +11,7 @@ import UIKit
 class TransactionsPlaceholderImageView: ThemedImageView {
     
     override var themeImage: UIImage {
-        get {
-            return ThemeManager.shared.currentTheme.transactionsPlaceholderImage
-        }
-        set {}
+        return ThemeManager.shared.currentTheme.transactionsPlaceholderImage
     }
     
 }

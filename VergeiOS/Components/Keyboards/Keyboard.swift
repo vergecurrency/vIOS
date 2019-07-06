@@ -16,6 +16,16 @@ class Keyboard: UIView {
     var characters: [KeyboardKey] = []
     
     weak var delegate: KeyboardDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
+    }
+    
+    override func updateColors() {
+        self.layoutSubviews()
+        self.setNeedsDisplay()
+    }
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)

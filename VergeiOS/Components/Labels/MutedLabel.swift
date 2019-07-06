@@ -10,7 +10,7 @@ import UIKit
 
 class MutedLabel: TitleLabel {
 
-    override func setColors() {
+    override func updateColors() {
         self.textColor = ThemeManager.shared.vergeGrey()
     }
 

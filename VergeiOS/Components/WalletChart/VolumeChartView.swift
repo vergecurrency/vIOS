@@ -9,6 +9,15 @@ import Charts
 class VolumeChartView: AbstractChartView {
 
     var chart: BarChartView = BarChartView()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
+    }
+    
+    override func updateColors() {
+        self.setNeedsDisplay()
+    }
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)

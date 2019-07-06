@@ -49,6 +49,12 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
         )
     }
     
+    override func updateColors() {
+        super.updateColors()
+        
+        self.setupSlides()
+    }
+    
     func setupSlides() {
         self.walletSlideScrollView.delegate = self
         self.walletSlides = self.createWalletSlides()

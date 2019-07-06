@@ -26,8 +26,10 @@ class ThemeableViewController : UIViewController {
 }
 
 extension ThemeableViewController : Themeable {
+    
     func updateColors() {
         self.view.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.setNeedsStatusBarAppearanceUpdate()
     }
+    
 }

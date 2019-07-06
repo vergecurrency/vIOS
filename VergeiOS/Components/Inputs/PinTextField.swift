@@ -17,6 +17,15 @@ class PinTextField: UIView {
     
     var pinsFilled: Int = 0
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
+    }
+    
+    override func updateColors() {
+        self.setNeedsDisplay()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear

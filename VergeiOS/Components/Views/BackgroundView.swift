@@ -9,13 +9,14 @@
 import UIKit
 
 class BackgroundView: UIView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.setColors()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
     }
 
-    func setColors() {
+    override func updateColors() {
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
     }
+    
 }

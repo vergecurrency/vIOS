@@ -10,10 +10,13 @@ class ThemedImageView: UIImageView {
     var themeImage: UIImage? {
         return nil
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.image = self.themeImage
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
     }
 
+    override func updateColors() {
+        self.image = self.themeImage
+    }
 }
