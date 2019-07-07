@@ -33,11 +33,23 @@ class ReceiveViewController: ThemeableViewController {
     var walletClient: WalletClient!
     var transactionManager: TransactionManager!
     var fiatRateTicker: FiatRateTicker!
+    var currentQrCode: QRCode?
 
     var address = ""
     var amount = 0.0
     var currency = CurrencySwitch.XVG
     var cardShown = false
+    
+    override func updateColors() {
+        super.updateColors()
+        self.currencyLabel.textColor = ThemeManager.shared.secondaryLight()
+        
+        if self.currentQrCode != nil {
+            //TODO stealth address theme
+            self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
+            self.qrCodeImageView.image = (self.currentQrCode?.image)!
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,17 +192,17 @@ class ReceiveViewController: ThemeableViewController {
 
     @objc func createQRCode() {
         let address = amount > 0.0 ? "verge:\(self.address)?amount=\(amount)" : self.address
-        var qrCode = QRCode(address)
+        self.currentQrCode = QRCode(address)
 
         if stealthSwitch.isOn {
-            qrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
-            qrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
+            self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
+            self.currentQrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
         } else {
-            qrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
-            qrCode?.backgroundColor = .white
+            self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
+            self.currentQrCode?.backgroundColor = .white
         }
 
-        qrCodeImageView.image = (qrCode?.image)!
+        qrCodeImageView.image = (self.currentQrCode?.image)!
     }
     
     func imageCard() -> UIImage? {

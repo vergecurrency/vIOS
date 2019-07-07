@@ -39,6 +39,10 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
             object: nil
         )
     }
+    
+    override func updateColors() {
+        
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -47,6 +51,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
         tableView.layer.cornerRadius = 5.0
         tableView.layer.masksToBounds = true
+        tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
     }
     
     private var fiatRateInfo: FiatRate? {
@@ -59,7 +64,8 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "summaryCell")
-
+        cell.backgroundColor = .clear
+        
         let item = items[indexPath.row]
         
         cell.textLabel?.font = UIFont.avenir(size: 14).demiBold()

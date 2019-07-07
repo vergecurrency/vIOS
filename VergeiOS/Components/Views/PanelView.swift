@@ -15,15 +15,6 @@ import UIKit
     @IBInspectable var shadowRadius: CGFloat = 15
 
     var shadowLayer: CAShapeLayer!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.becomeThemeable()
-    }
-    
-    override func updateColors() {
-        self.layoutSubviews()
-    }
 
     override func layoutSubviews() {
         super.layoutSubviews()

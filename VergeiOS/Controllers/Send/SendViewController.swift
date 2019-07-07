@@ -45,6 +45,11 @@ class SendViewController: ThemeableViewController {
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
     }
+    
+    override func updateColors() {
+        super.updateColors()
+        self.currencyLabel.textColor = ThemeManager.shared.secondaryLight()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

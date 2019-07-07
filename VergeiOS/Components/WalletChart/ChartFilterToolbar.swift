@@ -6,6 +6,10 @@
 import UIKit
 
 class ChartFilterToolbar: UIToolbar {
+    
+    override func updateColors() {
+        super.updateColors()
+    }
 
     enum Filter {
         case oneDay

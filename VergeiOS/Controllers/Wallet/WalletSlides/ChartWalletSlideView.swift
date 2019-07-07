@@ -42,7 +42,8 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         super.awakeFromNib()
         
         self.torClient = Application.container.resolve(TorClient.self)!
-
+        self.filterToolbar.becomeThemeable()
+        
         chartView.addSubview(volumeChartView)
         chartView.addSubview(priceChartView)
         chartView.addSubview(filterToolbar)
