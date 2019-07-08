@@ -16,16 +16,16 @@ import UIKit
 }
 
 /// Themeable UIView extension
-extension UIView : Themeable {
-    
+extension UIView: Themeable {
+
     // MARK: Themeable info
-    
-    private static var _themeable = [String:Bool]()
-    @IBInspectable var themeable : Bool {
+
+    private static var _themeable = [String: Bool]()
+    @IBInspectable var themeable: Bool {
         set(value) {
             let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
             UIView._themeable[tmpAddress] = value
-            
+
             self.themeable ? self.subscribe() : self.unsubscribe()
         }
         get {
@@ -33,19 +33,19 @@ extension UIView : Themeable {
             return UIView._themeable[tmpAddress] ?? false
         }
     }
-    
+
     // MARK: Overrided methods
-    
+
     open override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         if self.themeable == true {
             self.updateColors()
         }
     }
-    
+
     // MARK: Private methods
-    
+
     func subscribe() {
         NotificationCenter.default.removeObserver(self)
         NotificationCenter.default.addObserver(self,
@@ -53,22 +53,22 @@ extension UIView : Themeable {
                                                name: .didChangeTheme,
                                                object: nil)
     }
-    
+
     func unsubscribe() {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     // MARK: Themeable protocol
-    
+
     func updateColors() {
     }
-    
+
     /// Use to become themeable programmatically
     func becomeThemeable() {
         self.themeable = true
         self.updateColors()
     }
-    
+
     /// Use to resign themeable programmatically
     func resignThemeable() {
         self.themeable = false
@@ -80,20 +80,20 @@ extension UITextField {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.textColor = ThemeManager.shared.secondaryDark()
         self.keyboardAppearance = ThemeManager.shared.currentTheme.keyboardAppearance
-        
+
         guard let placeholder = self.placeholder else {
             self.attributedPlaceholder = nil
             return
         }
-        
+
         self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
             NSAttributedString.Key.foregroundColor: ThemeManager.shared.placeholderColor()
             ])
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -103,16 +103,16 @@ extension UITableView {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.tintColor = ThemeManager.shared.primaryLight()
         self.separatorColor = ThemeManager.shared.separatorColor()
-        
+
         if (self.style == .grouped) { // Appearence for grouped style is not working
             self.backgroundColor = ThemeManager.shared.backgroundGrey()
         }
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -134,7 +134,7 @@ extension UIPageControl {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.currentPageIndicatorTintColor = ThemeManager.shared.primaryLight()
         self.pageIndicatorTintColor = ThemeManager.shared.secondaryDark()
@@ -146,13 +146,13 @@ extension UITableViewCell {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         let colorView = UIView()
         colorView.backgroundColor = ThemeManager.shared.backgroundBlue()
         self.selectedBackgroundView = colorView
         self.backgroundColor = ThemeManager.shared.backgroundWhite()
-        
+
         self.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         self.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
     }
@@ -163,7 +163,7 @@ extension UIActivityIndicatorView {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.tintColor = ThemeManager.shared.primaryLight()
     }
@@ -186,19 +186,19 @@ extension UITabBar {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.layer.borderWidth = 0
         self.layer.borderColor = UIColor.clear.cgColor
         self.clipsToBounds = true
-        
+
         self.tintColor = ThemeManager.shared.primaryLight()
         self.unselectedItemTintColor = ThemeManager.shared.secondaryLight()
         self.barTintColor = ThemeManager.shared.backgroundGrey()
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.barStyle = ThemeManager.shared.barStyle()
         self.isTranslucent = ThemeManager.shared.currentTheme.isTranslucent
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -208,14 +208,14 @@ extension UIToolbar {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.tintColor = ThemeManager.shared.primaryLight()
         self.barTintColor = ThemeManager.shared.backgroundWhite()
         self.backgroundColor = ThemeManager.shared.backgroundWhite()
         self.barStyle = ThemeManager.shared.barStyle()
         self.isTranslucent = ThemeManager.shared.currentTheme.isTranslucent
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -225,10 +225,10 @@ extension UISearchBar {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.keyboardAppearance = ThemeManager.shared.currentTheme.keyboardAppearance
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -238,11 +238,11 @@ extension CloseButton {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.titleLabel?.textColor = ThemeManager.shared.secondaryDark()
         self.tintColor = ThemeManager.shared.secondaryDark()
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -252,10 +252,10 @@ extension UIWindow {
         super.awakeFromNib()
         super.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.tintColor = ThemeManager.shared.primaryLight()
-        
+
         self.setNeedsDisplay()
     }
 }
@@ -263,9 +263,9 @@ extension UIWindow {
 extension UINavigationBar {
     override func updateColors() {
         self.setValue(true, forKey: "hidesShadow")
-        
+
         let font = UIFont.avenir(size: 19).medium()
-        
+
         self.shadowImage = UIImage()
         self.tintColor = ThemeManager.shared.primaryLight()
         self.barTintColor = ThemeManager.shared.backgroundGrey()
@@ -275,8 +275,8 @@ extension UINavigationBar {
         self.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: ThemeManager.shared.secondaryDark(),
             kCTFontAttributeName: font
-            ] as? [NSAttributedString.Key : Any]
-        
+            ] as? [NSAttributedString.Key: Any]
+
         self.setNeedsDisplay()
     }
 }

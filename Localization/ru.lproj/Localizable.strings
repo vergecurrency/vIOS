@@ -527,7 +527,7 @@
 "wallet.slides.chart.availability"          = "данные графика доступны только в USD";
 "wallet.slides.chart.noData"                = "Данные графика не могут быть найдены.";
 
-// NoWalletTransactionsPlaceholderTableViewCell.xib
+// TransactionsPlaceholderTableViewCell.xib
 
 "wallet.slides.noTransactions.titleLabel"   = "Пока не было транзакций.";
 

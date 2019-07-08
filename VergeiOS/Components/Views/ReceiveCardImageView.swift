@@ -9,9 +9,9 @@
 import UIKit
 
 class ReceiveCardImageView: CardImageView {
-    
+
     override var themeImage: UIImage {
         return ThemeManager.shared.currentTheme.receiveCardImage
     }
-    
+
 }

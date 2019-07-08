@@ -9,7 +9,7 @@
 import Foundation
 
 class SendViewServiceProvider: ServiceProvider {
-    
+
     override func register() {
         container.storyboardInitCompleted(SendViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
@@ -19,5 +19,5 @@ class SendViewServiceProvider: ServiceProvider {
             c.fiatRateTicker = r.resolve(FiatRateTicker.self)
         }
     }
-    
+
 }

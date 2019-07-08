@@ -1,5 +1,5 @@
 //
-//  NoWalletTransactionsPlaceholderTableViewCell.swift
+//  TransactionsPlaceholderTableViewCell.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 11-09-18.
@@ -8,4 +8,4 @@
 
 import UIKit
 
-class NoWalletTransactionsPlaceholderTableViewCell: UITableViewCell {}
+class TransactionsPlaceholderTableViewCell: UITableViewCell {}

@@ -55,28 +55,28 @@ class ConfirmSendView: UIView {
     }
 
     func setup(_ txp: TxProposalResponse) {
-        let amount = NSNumber(floatLiteral: Double(txp.amount) / Constants.satoshiDivider)
-        let fee = NSNumber(floatLiteral: Double(txp.fee) / Constants.satoshiDivider)
-        let total = NSNumber(floatLiteral: amount.doubleValue + fee.doubleValue)
+        let amount = NSNumber(value: Double(txp.amount) / Constants.satoshiDivider)
+        let fee = NSNumber(value: Double(txp.fee) / Constants.satoshiDivider)
+        let total = NSNumber(value: amount.doubleValue + fee.doubleValue)
 
         let output = txp.outputs.first!
-        
+
         sendingAmountLabel.text = amount.toXvgCurrency()
         transactionFeeAmountLabel.text = fee.toXvgCurrency()
         totalXvgAmountLabel.text = total.toXvgCurrency()
         recipientAddressLabel.text = (output.stealth ?? false)
             ? "send.confirm.resolvedStealth".localized + " 🕵️‍♀️"
             : output.toAddress
-        
+
         let fiatRateTicker = Application.container.resolve(FiatRateTicker.self)
 
         if let xvgInfo = fiatRateTicker?.rateInfo {
             let totalFiat = total.doubleValue * xvgInfo.price
 
-            totalFiatAmountLabel.text = NSNumber(floatLiteral: totalFiat).toPairCurrency()
+            totalFiatAmountLabel.text = NSNumber(value: totalFiat).toPairCurrency()
         }
 
         activityIndicatorView.removeFromSuperview()
     }
-    
+
 }

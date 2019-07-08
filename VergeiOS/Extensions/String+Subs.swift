@@ -14,18 +14,18 @@ extension String {
         case middle
         case tail
     }
-    
+
     func truncated(limit: Int, position: TruncationPosition = .tail, leader: String = "...") -> String {
         guard self.count > limit else { return self }
-        
+
         switch position {
         case .head:
             return leader + self.suffix(limit)
         case .middle:
             let headCharactersCount = Int(ceil(Float(limit - leader.count) / 2.0))
-            
+
             let tailCharactersCount = Int(floor(Float(limit - leader.count) / 2.0))
-            
+
             return "\(self.prefix(headCharactersCount))\(leader)\(self.suffix(tailCharactersCount))"
         case .tail:
             return self.prefix(limit) + leader
@@ -48,7 +48,7 @@ extension String {
         amountWithPrefix = regex.stringByReplacingMatches(
             in: amountWithPrefix,
             options: NSRegularExpression.MatchingOptions(rawValue: 0),
-            range: NSMakeRange(0, self.count),
+            range: NSRange(location: 0, length: self.count),
             withTemplate: ""
         )
 
@@ -68,7 +68,7 @@ extension String {
         let amountWithPrefix = regex.stringByReplacingMatches(
             in: self,
             options: NSRegularExpression.MatchingOptions(rawValue: 0),
-            range: NSMakeRange(0, self.count),
+            range: NSRange(location: 0, length: self.count),
             withTemplate: ""
         )
 
@@ -80,10 +80,10 @@ extension String {
     func urlify() -> String {
         return self.replacingOccurrences(of: "//", with: "/").replacingOccurrences(of: "https:/", with: "https://")
     }
-    
+
     func addUrlReference() -> String {
         let referenceUrl = self.contains("?") ? "\(self)&" : "\(self)?"
-        
+
         return "\(referenceUrl)r=\(Int.random(in: 10000 ... 99999))"
     }
 }

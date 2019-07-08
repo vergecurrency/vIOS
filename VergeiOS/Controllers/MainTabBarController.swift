@@ -10,15 +10,15 @@ import UIKit
 import SwiftyJSON
 
 class MainTabBarController: UITabBarController {
-    
+
     let sendViewIndex: Int = 2
     let receiveViewIndex: Int = 3
 
     var shortcutsManager: ShortcutsManager!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(demandSendView(notification:)),
@@ -26,15 +26,15 @@ class MainTabBarController: UITabBarController {
             object: nil
         )
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             if let sendTransaction = delegate.sendRequest {
                 // Prepare the send view with the transaction.
                 prepareSendView(transaction: sendTransaction)
-                
+
                 // Remove the transaction from the delegate.
                 delegate.sendRequest = nil
             } else if self.shortcutsManager.needHandleShortcut {
@@ -43,43 +43,41 @@ class MainTabBarController: UITabBarController {
             }
         }
     }
-    
+
     func proceedShortcut() {
         let shortCutType = self.shortcutsManager.lastShortcutType
         switch shortCutType {
         case ShortcutsManager.ShortcutIdentifier.send.type:
             selectedIndex = sendViewIndex
-            break
         case ShortcutsManager.ShortcutIdentifier.receive.type:
             selectedIndex = receiveViewIndex
-            break
         default:
             break
         }
     }
-    
+
     func prepareSendView(transaction: TransactionFactory) {
         // Select the send view.
         selectedIndex = sendViewIndex
-        
+
         guard let navigationController = viewControllers?[sendViewIndex] as? UINavigationController else {
             return
         }
-        
+
         guard let sendViewController = navigationController.viewControllers.first as? SendViewController else {
             return
         }
-        
+
         // Set the transaction on the send view.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
             sendViewController.didChangeSendTransaction(transaction)
         }
     }
-    
+
     @objc func demandSendView(notification: Notification) {
         if let sendTransaction = notification.object as? TransactionFactory {
             prepareSendView(transaction: sendTransaction)
         }
     }
-    
+
 }

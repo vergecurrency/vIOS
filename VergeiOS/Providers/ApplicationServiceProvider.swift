@@ -14,12 +14,12 @@ class ApplicationServiceProvider: ServiceProvider {
         NotificationManager.shared.initialize()
 
         IQKeyboardManager.shared.enable = true
-        
+
         self.bootWatchSyncManager()
     }
 
     override func register() {
-        container.register(ApplicationRepository.self) { r in
+        container.register(ApplicationRepository.self) { _ in
             return ApplicationRepository()
         }.inObjectScope(.container)
 

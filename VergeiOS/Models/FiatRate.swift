@@ -9,7 +9,7 @@
 import Foundation
 
 public struct FiatRate: Decodable {
-    
+
     public let rank: Int?
     public let price: Double
     public let openday: Double
@@ -26,5 +26,5 @@ public struct FiatRate: Decodable {
     public let mktcap: Double
     public let totalvolume24H: Double
     public let totalvolume24Hto: Double
-    
+
 }

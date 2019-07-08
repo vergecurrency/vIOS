@@ -17,7 +17,7 @@ class FinalRecoveryController: AbstractRestoreViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         recoveryKeyView.text = self.keys!.joined(separator: " ")
     }
 

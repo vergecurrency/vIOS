@@ -6,7 +6,7 @@
 import UIKit
 
 extension UIAlertController {
-    static func createDeleteContactAlert(handler: ((UIAlertAction) -> Void)?) -> UIAlertController{
+    static func createDeleteContactAlert(handler: ((UIAlertAction) -> Void)?) -> UIAlertController {
         let alert = UIAlertController(
             title: "alerts.removeContact.title".localized,
             message: "alerts.removeContact.message".localized,
@@ -20,16 +20,16 @@ extension UIAlertController {
 
         return alert
     }
-    
+
     static func createInvalidContactAlert() -> UIAlertController {
         let alert = UIAlertController(
             title: "alerts.invalidContact.title".localized,
             message: "alerts.invalidContact.message".localized,
             preferredStyle: .alert
         )
-        
+
         alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
-        
+
         return alert
     }
 
@@ -90,7 +90,7 @@ extension UIAlertController {
         let alert = UIAlertController(title: "alerts.termsOfUse.title".localized, message: nil, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
-        alert.addAction(UIAlertAction(title: "defaults.open".localized, style: .default) { action in
+        alert.addAction(UIAlertAction(title: "defaults.open".localized, style: .default) { _ in
             if let path: URL = URL(string: Constants.termsOfUse) {
                 UIApplication.shared.open(path, options: [:])
             }
@@ -98,10 +98,10 @@ extension UIAlertController {
 
         return alert
     }
-    
+
     static func restartAlert() -> UIAlertController {
         let alert = UIAlertController(title: "alerts.restart.title".localized, message: nil, preferredStyle: .alert)
-        
+
         return alert
     }
 }

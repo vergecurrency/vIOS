@@ -29,7 +29,7 @@ class TransactionTableViewCell: Cell<String>, CellType {
         setDateTime(transaction)
         setAmount(transaction)
     }
-    
+
     fileprivate func setAccount(_ transaction: TxHistory, address: Contact?) {
         textLabel?.text = transaction.address.truncated(limit: 12, position: .tail, leader: "******")
 
@@ -42,28 +42,32 @@ class TransactionTableViewCell: Cell<String>, CellType {
         } else {
             textLabel?.textColor = ThemeManager.shared.secondaryLight().withAlphaComponent(0.75)
         }
-        
+
         if transaction.category == .Moved {
             textLabel?.text = "transaction.state.moved".localized
         }
-        
+
         if transaction.category == .Received {
-            textLabel?.text = transaction.confirmed ? "transaction.state.received".localized : "transaction.state.pending".localized
+            textLabel?.text = transaction.confirmed ?
+                "transaction.state.received".localized :
+                "transaction.state.pending".localized
         }
     }
-    
+
     fileprivate func setDateTime(_ transaction: TxHistory) {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .short
         detailTextLabel?.text = df.string(from: transaction.timeReceived)
     }
-    
+
     fileprivate func setAmount(_ transaction: TxHistory) {
         var prefix = ""
         if transaction.category == .Sent {
             amountLabel.textColor = ThemeManager.shared.vergeRed()
-            imageView?.tintColor = transaction.confirmed ? ThemeManager.shared.vergeRed() : ThemeManager.shared.vergeGrey()
+            imageView?.tintColor = transaction.confirmed ?
+                ThemeManager.shared.vergeRed() :
+                ThemeManager.shared.vergeGrey()
             imageView?.image = UIImage(named: transaction.confirmed ?  "Sent" : "Sending")
 
             prefix = "-"
@@ -75,12 +79,14 @@ class TransactionTableViewCell: Cell<String>, CellType {
             prefix = ""
         } else {
             amountLabel.textColor = ThemeManager.shared.vergeGreen()
-            imageView?.tintColor = transaction.confirmed ? ThemeManager.shared.vergeGreen() : ThemeManager.shared.vergeGrey()
+            imageView?.tintColor = transaction.confirmed ?
+                ThemeManager.shared.vergeGreen() :
+                ThemeManager.shared.vergeGrey()
             imageView?.image = UIImage(named: transaction.confirmed ? "Received" : "Receiving")
-            
+
             prefix = "+"
         }
-        
+
         amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
     }
 }

@@ -33,7 +33,10 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
         super.viewDidLoad()
 
         // Get the back-facing camera for capturing videos
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
+        let deviceDiscoverySession =
+            AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInWideAngleCamera],
+                                             mediaType: AVMediaType.video,
+                                             position: .back)
 
         guard let captureDevice = deviceDiscoverySession.devices.first else {
             print("Failed to get the camera device")
@@ -88,7 +91,9 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
         captureSession?.startRunning()
     }
 
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput,
+                        didOutput metadataObjects: [AVMetadataObject],
+                        from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
@@ -99,7 +104,8 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
 
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
-            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            // If the found metadata is equal to the QR code metadata
+            // then update the status label's text and set the bounds
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
 
@@ -122,7 +128,6 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
             }
         }
     }
-
 
     // MARK: - Navigation
 

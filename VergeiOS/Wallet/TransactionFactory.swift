@@ -13,7 +13,7 @@ class TransactionFactory {
     var memo: String = ""
 
     var fiatRateTracker: FiatRateTicker!
-    
+
     init(fiatRateTracker: FiatRateTicker? = nil) {
         self.fiatRateTracker = fiatRateTracker ?? Application.container.resolve(FiatRateTicker.self)
     }

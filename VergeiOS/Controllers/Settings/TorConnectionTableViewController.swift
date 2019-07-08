@@ -17,43 +17,43 @@ class TorConnectionTableViewController: EdgedTableViewController {
 
     var applicationRepository: ApplicationRepository!
     var torClient: TorClient!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         useTorSwitch.setOn(applicationRepository.useTor, animated: false)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         updateIPAddress()
     }
-    
+
     @IBAction func changeTorUsage(_ sender: UISwitch) {
         applicationRepository.useTor = sender.isOn
-        
+
         if sender.isOn {
             setIpAddressLabel("settings.torConnection.loadingLabel".localized)
-            
+
             self.torClient.start {
                 self.updateIPAddress()
             }
         } else {
             self.torClient.resign()
-            
+
             self.updateIPAddress()
-            
+
             // Notify the whole application.
             NotificationCenter.default.post(name: .didTurnOffTor, object: self)
         }
     }
-    
+
     func updateIPAddress() {
         setIpAddressLabel("settings.torConnection.loadingLabel".localized)
 
         let url = URL(string: Constants.ipCheckEndpoint)
-        let task = self.torClient.session.dataTask(with: url!) { data, response, error in
+        let task = self.torClient.session.dataTask(with: url!) { data, _, error in
             do {
                 if data != nil {
                     let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)
@@ -69,7 +69,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
         }
         task.resume()
     }
-    
+
     func setIpAddressLabel(_ label: String) {
         DispatchQueue.main.async {
             self.ipAddressLabel.text = label

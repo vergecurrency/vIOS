@@ -44,11 +44,11 @@ class TransactionManager {
                 if txids.contains(tx.txid) && tx.category == .Moved {
                     return false
                 }
-                
+
                 txids.append(tx.txid)
                 return true
             }
-            
+
             for transaction in transactions {
                 self.transactionRepository.remove(tx: transaction)
                 self.transactionRepository.put(tx: transaction)
@@ -61,7 +61,7 @@ class TransactionManager {
             completion(self.transactionRepository.all())
         }
     }
-    
+
     public func remove(transaction: TxHistory) {
         transactionRepository.remove(tx: transaction)
     }

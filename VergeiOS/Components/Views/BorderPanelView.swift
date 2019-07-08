@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable class BorderPanelView: UIView {
-    
+
     @IBInspectable var width: CGFloat = 0.5
     @IBInspectable var borderColor: UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.9, alpha: 1)
 

@@ -9,15 +9,15 @@
 import UIKit
 
 extension UIWindow {
-    
+
     func visibleViewController() -> UIViewController? {
         if let rootViewController: UIViewController = self.rootViewController {
             return UIWindow.getVisibleViewControllerFrom(vc: rootViewController)
         }
-        
+
         return nil
     }
-    
+
     class func getVisibleViewControllerFrom(vc: UIViewController) -> UIViewController? {
         if vc.isKind(of: UINavigationController.self) {
             let navigationController = vc as! UINavigationController
@@ -36,7 +36,7 @@ extension UIWindow {
                     return nil
                 }
             } else {
-                return vc;
+                return vc
             }
         }
     }

@@ -9,7 +9,7 @@
 import UIKit
 
 class BackgroundView: UIView {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.becomeThemeable()
@@ -18,5 +18,5 @@ class BackgroundView: UIView {
     override func updateColors() {
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
     }
-    
+
 }

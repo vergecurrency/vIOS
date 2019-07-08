@@ -10,7 +10,7 @@ import Foundation
 import KeychainSwift
 
 class ApplicationRepository {
-    
+
     private let keychain = KeychainSwift(keyPrefix: "verge_")
     private let userDefaults = UserDefaults.standard
 
@@ -23,7 +23,7 @@ class ApplicationRepository {
             userDefaults.set(newValue, forKey: "wallet.state.setup")
         }
     }
-    
+
     // Store the wallet pin in the app key chain.
     var pin: String {
         get {
@@ -43,7 +43,7 @@ class ApplicationRepository {
             userDefaults.set(newValue, forKey: "wallet.pinCount")
         }
     }
-    
+
     // User wants to use tor or not.
     var useTor: Bool {
         get {
@@ -53,7 +53,7 @@ class ApplicationRepository {
             userDefaults.set(newValue, forKey: "wallet.useTor")
         }
     }
-    
+
     // Store the selected wallet currency. Defaults to USD.
     // TODO: String used for now until better solution.
     var currency: String {
@@ -64,7 +64,7 @@ class ApplicationRepository {
             userDefaults.set(newValue, forKey: "wallet.currency")
         }
     }
-    
+
     var language: String? {
         get {
             return userDefaults.string(forKey: "wallet.language")
@@ -73,7 +73,7 @@ class ApplicationRepository {
             userDefaults.set(newValue, forKey: "wallet.language")
         }
     }
-    
+
     var amount: NSNumber {
         get {
             return NSNumber(value: userDefaults.double(forKey: "wallet.amount"))
@@ -196,18 +196,18 @@ class ApplicationRepository {
             }
         }
     }
-    
+
     var currentTheme: String? {
         get {
             return userDefaults.string(forKey: "currentTheme")
         }
         set {
             userDefaults.set(newValue, forKey: "currentTheme")
-            
+
             NotificationCenter.default.post(name: .didChangeTheme, object: nil)
         }
     }
-    
+
     func reset() {
         userDefaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         userDefaults.synchronize()

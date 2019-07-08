@@ -16,7 +16,7 @@ class SettingsTableViewController: EdgedTableViewController {
 
     let localAuthIndexPath = IndexPath(row: 4, section: 1)
     var applicationRepository: ApplicationRepository!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -31,8 +31,8 @@ class SettingsTableViewController: EdgedTableViewController {
         }
     }
 
-    private func otherHandler(index: Int) -> Void {
-        
+    private func otherHandler(index: Int) {
+
         switch index {
         case 2:
             SKStoreReviewController.requestReview()
@@ -45,8 +45,8 @@ class SettingsTableViewController: EdgedTableViewController {
 
         tableView.deselectRow(at: IndexPath(row: index, section: 2), animated: true)
     }
-    
-    private func loadWebsite(url: String) -> Void {
+
+    private func loadWebsite(url: String) {
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
         }
@@ -109,4 +109,3 @@ class SettingsTableViewController: EdgedTableViewController {
         return number
     }
 }
-

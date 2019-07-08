@@ -8,6 +8,7 @@
 
 import UIKit
 
+// swiftlint:disable file_length type_body_length
 class SendViewController: ThemeableViewController {
 
     enum CurrencySwitch {
@@ -31,7 +32,7 @@ class SendViewController: ThemeableViewController {
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClient!
     var fiatRateTicker: FiatRateTicker!
-    
+
     weak var confirmButtonInterval: Timer?
 
     var walletAmount: NSNumber {
@@ -45,7 +46,7 @@ class SendViewController: ThemeableViewController {
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
     }
-    
+
     override func updateColors() {
         super.updateColors()
         self.currencyLabel.textColor = ThemeManager.shared.secondaryLight()
@@ -77,7 +78,7 @@ class SendViewController: ThemeableViewController {
             name: .didReceiveFiatRatings,
             object: nil
         )
-        
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didChangeWalletAmount),
@@ -107,12 +108,12 @@ class SendViewController: ThemeableViewController {
         self.updateAmountLabel()
         self.updateWalletAmountLabel()
     }
-    
+
     @objc func didChangeWalletAmount(notification: Notification) {
         DispatchQueue.main.async {
             self.noBalanceView.isHidden = (self.walletAmount.doubleValue > 0)
         }
-        
+
         if (self.walletAmount.doubleValue > 0) {
             self.updateWalletAmountLabel()
         }
@@ -128,14 +129,14 @@ class SendViewController: ThemeableViewController {
 
     func updateWalletAmountLabel() {
         let sendAmount = txFactory.amount.doubleValue
-        var amount = NSNumber(floatLiteral: walletAmount.doubleValue - sendAmount)
+        var amount = NSNumber(value: walletAmount.doubleValue - sendAmount)
 
         if amount.decimalValue < 0.0 {
             amount = NSNumber(value: 0.0)
         }
 
         let fiat = convertXvgToFiat(amount)
-        
+
         DispatchQueue.main.async {
             self.walletAmountLabel.text = amount.toXvgCurrency()
             self.fiatWalletAmountLabel.text = (fiat != nil) ? "≈ \(fiat!.toCurrency())" : ""
@@ -147,14 +148,14 @@ class SendViewController: ThemeableViewController {
         // more then the wallet amount.
         DispatchQueue.main.async {
             self.amountTextField.setAmount(self.currentAmount())
-            
+
             if self.walletAmount.doubleValue == 0.0 {
                 return
             }
 
             if (self.currentAmount().doubleValue > self.walletAmount.doubleValue) {
                 self.amountTextField.textColor = ThemeManager.shared.vergeRed()
-                
+
                 self.notifySelectedToMuchAmount()
             } else {
                 self.amountTextField.textColor = ThemeManager.shared.secondaryDark()
@@ -220,7 +221,7 @@ class SendViewController: ThemeableViewController {
         present(alertController, animated: true)
 
         getTxProposal { proposal in
-            self.txTransponder.create(proposal: proposal) { txp, errorResponse, error in
+            self.txTransponder.create(proposal: proposal) { txp, errorResponse, _ in
                 guard let txp = txp else {
                     return alertController.dismiss(animated: true) {
                         self.showTransactionError(errorResponse, txp: nil)
@@ -229,7 +230,7 @@ class SendViewController: ThemeableViewController {
 
                 confirmSendView.setup(txp)
 
-                let sendAction = UIAlertAction(title: "send.sendXVG".localized, style: .default) { alert in
+                let sendAction = UIAlertAction(title: "send.sendXVG".localized, style: .default) { _ in
                     self.send(txp: txp)
                 }
                 sendAction.setValue(UIImage(named: "Send"), forKey: "image")
@@ -256,7 +257,7 @@ class SendViewController: ThemeableViewController {
 
             self.txFactory.setBy(
                 currency: "XVG",
-                amount: NSNumber(floatLiteral: Double(info.amount) / Constants.satoshiDivider)
+                amount: NSNumber(value: Double(info.amount) / Constants.satoshiDivider)
             )
 
             completion(TxProposal(
@@ -287,7 +288,10 @@ class SendViewController: ThemeableViewController {
 
             if let popoverController = actionSheet.popoverPresentationController {
                 popoverController.sourceView = self.view
-                popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                popoverController.sourceRect = CGRect(x: self.view.bounds.midX,
+                                                      y: self.view.bounds.midY,
+                                                      width: 0,
+                                                      height: 0)
                 popoverController.permittedArrowDirections = []
             }
 
@@ -303,7 +307,7 @@ class SendViewController: ThemeableViewController {
                     self.didChangeSendTransaction(TransactionFactory())
 
                     let timeout = (error == nil) ? 3.0 : 0.0
-                    let _ = setTimeout(timeout) {
+                    _ = setTimeout(timeout) {
                         actionSheet.dismiss(animated: true)
                     }
                 }
@@ -322,7 +326,7 @@ class SendViewController: ThemeableViewController {
             preferredStyle: .actionSheet
         )
 
-        actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .destructive) { action in
+        actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .destructive) { _ in
             guard let txp = txp else {
                 return
             }
@@ -332,25 +336,29 @@ class SendViewController: ThemeableViewController {
 
         if let popoverController = actionSheet.popoverPresentationController {
             popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX,
+                                                  y: self.view.bounds.midY,
+                                                  width: 0,
+                                                  height: 0)
             popoverController.permittedArrowDirections = []
         }
 
         present(actionSheet, animated: true)
     }
-    
+
     func notifySelectedToMuchAmount() {
         let amount = amountTextField.text ?? "..."
         let alert = UIAlertController(
             title: "send.notEnoughBalance".localized + " ⚖️🤔",
-            message: "send.notEnoughBalanceMessage1".localized + " \(amount). " + "send.notEnoughBalanceMessage2".localized,
+            message: "send.notEnoughBalanceMessage1".localized + " \(amount). " +
+                     "send.notEnoughBalanceMessage2".localized,
             preferredStyle: .alert
         )
-        
+
         let okButton = UIAlertAction(title: "defaults.ok".localized, style: .default, handler: nil)
-        
+
         alert.addAction(okButton)
-        
+
         present(alert, animated: true, completion: nil)
     }
 
@@ -480,7 +488,7 @@ extension SendViewController: UITextFieldDelegate {
 
         return false
     }
-    
+
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == self.amountTextField {
             txFactory.amount = 0.0
@@ -499,7 +507,7 @@ extension SendViewController: UITextFieldDelegate {
             return
         }
 
-        AddressValidator().validate(string: address) { valid, address, amount in
+        AddressValidator().validate(string: address) { valid, address, _ in
             if !valid {
                 return self.showInvalidAddressAlert()
             }
@@ -597,3 +605,4 @@ extension SendViewController: SendTransactionDelegate {
         return currency == .XVG ? "XVG" : applicationRepository.currency
     }
 }
+// swiftlint:enable file_length type_body_length

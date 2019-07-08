@@ -8,36 +8,36 @@ import UIKit
 class ThemeManager {
 
     static let shared = ThemeManager()
-    
+
     let appRepo = Application.container.resolve(ApplicationRepository.self)!
 
-    var currentTheme : Theme {
+    var currentTheme: Theme {
         let themes = ThemeFactory.shared.themes
         if appRepo.currentTheme != nil {
             let index = themes.firstIndex(where: { (theme) -> Bool in
                 theme.id == appRepo.currentTheme
             }) ?? 0
-            
+
             return themes[index]
         } else {
             return themes.first!
         }
     }
-    
+
     func switchTheme(theme: Theme) {
         appRepo.currentTheme = theme.id
     }
-    
+
     func switchAppIcon(appIcon: AppIcon) {
         self.changeIcon(to: appIcon.id)
     }
-    
+
     func changeIcon(to name: String?) {
         //Check if the app supports alternating icons
         guard UIApplication.shared.supportsAlternateIcons else {
-            return;
+            return
         }
-        
+
         //Change the icon to a specific image with given name
         UIApplication.shared.setAlternateIconName(name) { (error) in
             //After app icon changed, print our error or success message
@@ -48,13 +48,13 @@ class ThemeManager {
             }
         }
     }
-    
+
     // MARK: Styling
 
     func separatorColor() -> UIColor {
         return self.currentTheme.separatorColor
     }
-    
+
     func priceChartColor() -> UIColor {
         return self.currentTheme.priceChartColor
     }
@@ -102,11 +102,11 @@ class ThemeManager {
     func placeholderColor() -> UIColor {
         return self.currentTheme.placeholderColor
     }
-    
+
     func backgroundTopColor() -> UIColor {
         return self.currentTheme.backgroundTopColor
     }
-    
+
     func backgroundBottomColor() -> UIColor {
         return self.currentTheme.backgroundBottomColor
     }

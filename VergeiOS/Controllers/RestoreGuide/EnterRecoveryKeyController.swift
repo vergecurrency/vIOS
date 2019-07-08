@@ -9,15 +9,15 @@
 import UIKit
 
 class EnterRecoveryKeyController: AbstractRestoreViewController {
-    
+
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var keyTextField: UITextField!
     @IBOutlet weak var keyProgressLabel: UILabel!
-    
+
     private let numberOfWords = 12
     private var index: Int = 0
     private var keys: [String] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,19 +68,19 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         self.keyTextField.inputAccessoryView = keyboardToolbar
         self.keyTextField.delegate = self
     }
-    
+
     private func createLabelText(index: Int) -> String {
         return "paperKey.enterWord".localized + " #\(index + 1)"
     }
-    
+
     private func createProgressText(index: Int) -> String {
         return "\(index + 1) " + "paperKey.outOf".localized + " \(numberOfWords)"
     }
-    
+
     private func createPlaceholderText(index: Int) -> String {
         return "paperKey.key".localized + " #\(index + 1) " + "paperKey.egCat".localized
     }
-    
+
     private func updateView(index: Int) {
         self.keyLabel.text = self.createLabelText(index: index)
         self.keyTextField.text = self.keys.indices.contains(index) ? keys[index] : ""
@@ -95,7 +95,7 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             previousButton.isEnabled = (index > 0)
         }
     }
-    
+
     private func addKeyToList(text: String?) -> Bool {
         if text == nil || text!.count == 0 {
             return false
@@ -107,24 +107,24 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
 
     @objc func previousClick() {
         self.keys.removeLast()
-        self.index = self.index - 1
+        self.index -= 1
         updateView(index: self.index)
     }
-    
+
     @objc func nextClick() {
         let isAdded: Bool = self.addKeyToList(text: self.keyTextField.text)
-        
+
         if !isAdded {
             self.keyTextField.shake()
-            
+
             return
         }
-        
+
         if self.index < self.numberOfWords - 1 {
-            self.index = self.index + 1
+            self.index += 1
             self.updateView(index: self.index)
         }
-        
+
         if self.keys.count == self.numberOfWords {
             print(self.keys)
             self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
@@ -136,7 +136,7 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
 
         self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
 

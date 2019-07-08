@@ -28,22 +28,22 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     var torClient: TorClient!
     var filter: ChartFilterToolbar.Filter = .oneDay
     var lastChangeFilter: TimeInterval?
-    
+
     var nthFilter = [
         ChartFilterToolbar.Filter.all: 3,
         ChartFilterToolbar.Filter.oneYear: 1,
         ChartFilterToolbar.Filter.threeMonths: 3,
         ChartFilterToolbar.Filter.oneMonth: 3,
         ChartFilterToolbar.Filter.oneWeek: 3,
-        ChartFilterToolbar.Filter.oneDay: 1,
+        ChartFilterToolbar.Filter.oneDay: 1
     ]
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.torClient = Application.container.resolve(TorClient.self)!
         self.filterToolbar.becomeThemeable()
-        
+
         chartView.addSubview(volumeChartView)
         chartView.addSubview(priceChartView)
         chartView.addSubview(filterToolbar)
@@ -90,7 +90,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         if initialized {
             return
         }
-        
+
         initialized = true
 
         loadChartData()
@@ -98,11 +98,11 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         filterToolbar.delegate = self
         filterToolbar.initialize()
         filterToolbar.select(filter: filter)
-        
+
         let priceLabelHandler: ((CGFloat) -> String) = { value in
             return NSNumber(value: Double(value)).toBlankCurrency(fractDigits: 4, floating: false)
         }
-        
+
         highestPriceLabel.formatBlock = priceLabelHandler
         highestPriceLabel.method = .easeInOut
         averagePriceLabel.formatBlock = priceLabelHandler
@@ -129,12 +129,12 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         priceChartView.set(chartData: priceData)
         volumeChartView.set(chartData: volumeData)
         lastChangeFilter = Date.timeIntervalSinceReferenceDate + Constants.fetchRateTimeout
-        
+
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
         }
 
-        self.torClient.session.dataTask(with: chartUrl()) { (data, response, error) in
+        self.torClient.session.dataTask(with: chartUrl()) { (data, _, _) in
             DispatchQueue.main.async {
                 self.placeholderView.isHidden = data != nil
             }
@@ -153,7 +153,10 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
             DispatchQueue.main.async {
                 self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
-                self.volumeChartView.set(chartData: self.nth(entries: volumeData, step: self.nthFilter[self.filter]! + 5) as! [BarChartDataEntry])
+                self.volumeChartView.set(chartData:
+                    self.nth(entries: volumeData,
+                             step: self.nthFilter[self.filter]! + 5)
+                        as! [BarChartDataEntry])
                 self.setPriceLabels(withData: data.priceUsd)
                 self.activityIndicator.stopAnimating()
             }
@@ -202,25 +205,25 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             return nil
         }
     }
-    
+
     func nth(entries: [ChartDataEntry], step: Int) -> [ChartDataEntry] {
         var position = 0
-        
+
         let values: [Double] = entries.map { item in
             return item.y
         }
-        
+
         let highest = values.max()
         let lowest = values.min()
-        
+
         return entries.filter { args in
             if args.y == highest || args.y == lowest {
                 return true
             }
-            
+
             position = 1 + position
             return position % step == 0
         }
     }
-    
+
 }

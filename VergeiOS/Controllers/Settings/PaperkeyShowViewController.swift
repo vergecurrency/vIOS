@@ -36,7 +36,6 @@ class PaperkeyShowViewController: ThemeableViewController {
             if qr != nil {
                 qrImageView.image = qr!.image
             }
-            break
         default:
             qrImageView.image = nil
         }

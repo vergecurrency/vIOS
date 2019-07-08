@@ -10,15 +10,15 @@ import UIKit
 
 class AbstractKey: NSObject, KeyboardKey {
     var label: String = ""
-    var value: Any? = nil
+    var value: Any?
     var image: UIImage?
     var button: UIButton?
-    
+
     init(label: String, value: Any? = nil) {
         self.label = label
         self.value = value
     }
-    
+
     func styleKey(_ button: KeyboardButton) {}
 
     func getValue() -> Any? {

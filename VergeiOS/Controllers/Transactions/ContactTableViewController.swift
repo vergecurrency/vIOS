@@ -48,7 +48,7 @@ class ContactTableViewController: FormViewController {
             row.placeholder = "Swen van Zanten"
             row.value = contact?.name ?? ""
             row.add(rule: RuleRequired())
-        }.cellUpdate { cell, row in
+        }.cellUpdate { cell, _ in
             styleCell(cell)
         }
             <<< TextRow("address") { row in
@@ -56,7 +56,7 @@ class ContactTableViewController: FormViewController {
             row.placeholder = "ErBhGNN9x8G513q3h5wdEgkoi2KbysUblJ8Jk7cjpG"
             row.value = contact?.address ?? ""
             row.add(rule: RuleRequired())
-        }.cellUpdate { cell, row in
+        }.cellUpdate { cell, _ in
             styleCell(cell)
         }
 
@@ -76,10 +76,10 @@ class ContactTableViewController: FormViewController {
 
         let transactionsSection = Section("transactions.contact.section.history".localized)
         form +++ transactionsSection
-        
+
         for transaction in transactions {
             transactionsSection
-                <<< TransactionRow().cellSetup { cell, row in
+                <<< TransactionRow().cellSetup { cell, _ in
                 cell.setTransaction(transaction)
             }
         }
@@ -113,21 +113,21 @@ class ContactTableViewController: FormViewController {
         var tempContact = Contact()
         tempContact.name = (form.rowBy(tag: "name") as! TextRow).value ?? ""
         tempContact.address = (form.rowBy(tag: "address") as! TextRow).value ?? ""
-        
+
         // validate contact
         // if invalid - show alert with description // or TODO: highlight invalid fields
         if (!tempContact.isValid()) {
             let alert = UIAlertController.createInvalidContactAlert()
             present(alert, animated: true)
-            
+
             return
         }
         // if valid - continue
-        
+
         self.addressBookManager.put(address: tempContact)
-        
+
         contact = tempContact
-        
+
         if transactions.count == 0 {
             addTransactions()
         }
@@ -139,7 +139,7 @@ class ContactTableViewController: FormViewController {
     }
 
     @objc func deleteContact(_ sender: Any) {
-        let alert = UIAlertController.createDeleteContactAlert { action in
+        let alert = UIAlertController.createDeleteContactAlert { _ in
             guard let contact = self.contact else {
                 return
             }
@@ -151,7 +151,6 @@ class ContactTableViewController: FormViewController {
 
         present(alert, animated: true)
     }
-
 
     // MARK: - Navigation
 

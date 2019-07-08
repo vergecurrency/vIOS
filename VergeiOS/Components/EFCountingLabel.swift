@@ -33,7 +33,7 @@ public enum EFLabelCountingMethod: Int {
     case easeInOut = 3
 }
 
-//MARK: - UILabelCounter
+// MARK: - UILabelCounter
 let kUILabelCounterRate = Float(3.0)
 
 public protocol UILabelCounter {
@@ -69,7 +69,7 @@ public class UILabelCounterEaseInOut: UILabelCounter {
     }
 }
 
-//MARK: - EFCountingLabel
+// MARK: - EFCountingLabel
 open class EFCountingLabel: UILabel {
 
     public var format = "%f"
@@ -116,16 +116,12 @@ open class EFCountingLabel: UILabel {
         switch self.method {
         case .linear:
             self.counter = UILabelCounterLinear()
-            break
         case .easeIn:
             self.counter = UILabelCounterEaseIn()
-            break
         case .easeOut:
             self.counter = UILabelCounterEaseOut()
-            break
         case .easeInOut:
             self.counter = UILabelCounterEaseInOut()
-            break
         }
 
         let timer = CADisplayLink(target: self, selector: #selector(EFCountingLabel.updateValue(_:)))
@@ -171,7 +167,7 @@ open class EFCountingLabel: UILabel {
     @objc public func updateValue(_ timer: Timer) {
         // update progress
         let now = Date.timeIntervalSinceReferenceDate
-        self.progress = self.progress + now - self.lastUpdate
+        self.progress += (now - self.lastUpdate)
         self.lastUpdate = now
 
         if self.progress >= self.totalTime {

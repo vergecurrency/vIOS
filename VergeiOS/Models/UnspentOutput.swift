@@ -45,7 +45,7 @@ extension UnspentOutput {
         guard let txid = Data(fromHex: txID) else {
             throw UnspentOutputError.invalidTxIdHex(hex: txID)
         }
-        
+
         let transactionOutput = TransactionOutput(value: satoshis, lockingScript: lockingScript)
         let txHash: Data = Data(txid.reversed())
         let transactionOutpoint = TransactionOutPoint(hash: txHash, index: vout)

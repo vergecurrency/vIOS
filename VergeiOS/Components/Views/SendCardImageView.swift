@@ -9,9 +9,9 @@
 import UIKit
 
 class SendCardImageView: CardImageView {
-    
+
     override var themeImage: UIImage {
         return ThemeManager.shared.currentTheme.sendCardImage
     }
-    
+
 }

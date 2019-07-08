@@ -23,36 +23,38 @@ class TorSetup3View: UIView {
 
         self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
         self.torClient = Application.container.resolve(TorClient.self)!
-        
+
         updateIPAddress()
     }
-    
+
     @IBAction func changeTorUsage(_ sender: UISwitch) {
         self.applicationRepository.useTor = sender.isOn
 
-        proceedButton.setTitle(sender.isOn ? "setup.tor.slide3.positiveButton".localized : "setup.tor.slide3.negativeButton".localized, for: .normal)
-        
+        proceedButton.setTitle(sender.isOn ?
+            "setup.tor.slide3.positiveButton".localized :
+            "setup.tor.slide3.negativeButton".localized, for: .normal)
+
         if sender.isOn {
             self.torClient.start {
                 self.updateIPAddress()
             }
         } else {
             self.torClient.resign()
-            
+
             updateIPAddress()
-            
+
             // Notify the whole application.
             NotificationCenter.default.post(name: .didTurnOffTor, object: self)
         }
     }
-    
+
     func updateIPAddress() {
         let url = URL(string: Constants.ipCheckEndpoint)
-        let task = self.torClient.session.dataTask(with: url!) { data, response, error in
+        let task = self.torClient.session.dataTask(with: url!) { data, _, error in
             do {
                 if data != nil {
                     let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)
-                    
+
                     self.centerMapView(withIpLocation: ipAddress)
                 }
             } catch {
@@ -61,16 +63,16 @@ class TorSetup3View: UIView {
         }
         task.resume()
     }
-    
+
     func centerMapView(withIpLocation ipAddress: IpAddress) {
         let coordinate = CLLocationCoordinate2D(
             latitude: CLLocationDegrees(ipAddress.latitude),
             longitude: CLLocationDegrees(ipAddress.longitude)
         )
-        
+
         let distance: CLLocationDistance = 12000
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
-        
+
         DispatchQueue.main.async {
             self.mapView.setCenter(coordinate, animated: true)
             self.mapView.setRegion(region, animated: true)

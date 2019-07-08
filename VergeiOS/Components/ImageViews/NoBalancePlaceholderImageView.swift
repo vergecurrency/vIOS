@@ -9,9 +9,9 @@
 import UIKit
 
 class NoBalancePlaceholderImageView: ThemedImageView {
-    
+
     override var themeImage: UIImage {
         return ThemeManager.shared.currentTheme.noBalancePlaceholderImage
     }
-    
+
 }

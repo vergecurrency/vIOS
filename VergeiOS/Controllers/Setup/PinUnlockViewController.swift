@@ -19,8 +19,8 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var closeButton: UIButton!
-    
-    static var storyBoardView: PinUnlockViewController? = nil
+
+    static var storyBoardView: PinUnlockViewController?
 
     var applicationRepository: ApplicationRepository!
     var pin = ""
@@ -28,7 +28,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
     var showLocalAuthentication = false
     var cancelable = false
     var completion: ((_ authenticated: Bool) -> Void)?
-    
+
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
     }
@@ -84,11 +84,11 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
             promptLocalAuthentication()
         } else {
             self.pinTextField.addCharacter()
-            
+
             if (pin.count < self.pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
-            
+
             // When all pins are set.
             if self.validate() {
                 closeView()
@@ -99,7 +99,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
             }
         }
     }
-    
+
     // Validate the wallet pin.
     func validate() -> Bool {
         return pin.count == self.pinTextField.pinCharacterCount && applicationRepository.pin == pin
@@ -114,7 +114,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
             myContext.evaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 localizedReason: myLocalizedReasonString
-            ) { success, evaluateError in
+            ) { success, _ in
                 DispatchQueue.main.async {
                     if success {
                         // User authenticated successfully, take appropriate action

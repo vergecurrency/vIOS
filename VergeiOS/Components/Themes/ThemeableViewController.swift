@@ -8,16 +8,16 @@
 
 import UIKit
 
-class ThemeableViewController : UIViewController {
+class ThemeableViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return ThemeManager.shared.statusBarStyle()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.updateColors()
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateColors),
                                                name: .didChangeTheme,
@@ -25,11 +25,11 @@ class ThemeableViewController : UIViewController {
     }
 }
 
-extension ThemeableViewController : Themeable {
-    
+extension ThemeableViewController: Themeable {
+
     func updateColors() {
         self.view.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.setNeedsStatusBarAppearanceUpdate()
     }
-    
+
 }

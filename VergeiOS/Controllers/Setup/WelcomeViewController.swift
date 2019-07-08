@@ -16,11 +16,11 @@ class WelcomeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -28,11 +28,11 @@ class WelcomeViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+
         guard let navigationController = segue.destination as? UINavigationController else {
             return
         }
-        
+
         self.transactionManager.removeAll()
         self.applicationRepository.reset()
 
@@ -41,4 +41,3 @@ class WelcomeViewController: UIViewController {
         }
     }
 }
-

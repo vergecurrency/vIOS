@@ -541,7 +541,7 @@
 "wallet.slides.chart.availability"          = "chart data only available in USD";
 "wallet.slides.chart.noData"                = "History chart data can't be found.";
 
-// NoWalletTransactionsPlaceholderTableViewCell.xib
+// TransactionsPlaceholderTableViewCell.xib
 
 "wallet.slides.noTransactions.titleLabel"   = "No transactions received yet.";
 

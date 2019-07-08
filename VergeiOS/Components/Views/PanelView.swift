@@ -20,7 +20,7 @@ import UIKit
         super.layoutSubviews()
 
         backgroundColor = ThemeManager.shared.backgroundWhite()
-        
+
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath

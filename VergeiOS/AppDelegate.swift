@@ -14,7 +14,7 @@ import SwinjectStoryboard
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static var inactivityView = PinUnlockViewController.createFromStoryBoard().view!
-    
+
     var application: Application?
     var window: UIWindow?
     var sendRequest: TransactionFactory?
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        
+
         self.application = Application(container: SwinjectStoryboard.defaultContainer)
         self.application?.boot()
 
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application,
             withOptions: launchOptions
         )
-        
+
         return shouldPerformAdditionalDelegateHandling
     }
 
@@ -46,102 +46,113 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if !valid {
                 return
             }
-            
+
             let transaction = TransactionFactory()
             transaction.address = address!
             transaction.amount = amount ?? 0.0
-            
+
             self.sendRequest = transaction
         }
-        
+
         return true
     }
-    
+
     func restart() {
         let alert = UIAlertController.restartAlert()
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
         alertWindow.rootViewController = UIViewController()
-        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+        alertWindow.windowLevel = UIWindow.Level.alert + 1
         alertWindow.makeKeyAndVisible()
         alertWindow.rootViewController?.present(alert, animated: true, completion: nil)
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             alert.dismiss(animated: true, completion: {
-                self.window?.rootViewController = UIStoryboard.init(name: "Setup", bundle: nil).instantiateInitialViewController()
+                self.window?.rootViewController =
+                    UIStoryboard.init(name: "Setup",
+                                      bundle: nil).instantiateInitialViewController()
                 self.window?.makeKeyAndVisible()
             })
         })
     }
-    
+
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        // Sent when the application is about to move from active to inactive state.
+        // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message)
+        // or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks.
+        // Games should use this method to pause the game.
     }
-    
+
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // Use this method to release shared resources, save user data, invalidate timers,
+        // and store enough application state information to restore your application
+        // to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called
+        // instead of applicationWillTerminate: when the user quits.
 
         // Stop wallet ticker.
         Application.container.resolve(WalletTicker.self)?.stop()
 
         // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
-        
+
         // Show inactivity view
         AppDelegate.inactivityView.frame = UIScreen.main.bounds
         self.window?.addSubview(AppDelegate.inactivityView)
     }
-    
+
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // Called as part of the transition from the background to the active state;
+        // here you can undo many of the changes made on entering the background.
         Application.container.resolve(TorClient.self)?.restart()
-        
+
         // Remove inactivity view
         AppDelegate.inactivityView.removeFromSuperview()
-        
+
         // Show pincode
         showPinUnlockViewController(application)
     }
-    
+
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        // Restart any tasks that were paused (or not yet started) while the application was inactive.
+        // If the application was previously in the background, optionally refresh the user interface.
         Application.container.resolve(ShortcutsManager.self)?.proceedAppDidBecomeActive()
     }
-    
+
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Called when the application is about to terminate. Save data if appropriate.
+        // See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        
+
         // Stop wallet ticker.
         Application.container.resolve(WalletTicker.self)?.stop()
 
         // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
     }
-    
+
     func showPinUnlockViewController(_ application: UIApplication) {
         let appRepo = Application.container.resolve(ApplicationRepository.self)!
         if !appRepo.setup {
             return
         }
-        
+
         if var topController = application.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-            
+
             if let openedPinView = topController as? PinUnlockViewController {
                 openedPinView.closeButtonPushed(self)
-                
+
                 return showPinUnlockViewController(application)
             }
-            
+
             let vc = PinUnlockViewController.createFromStoryBoard()
             vc.fillPinFor = .wallet
             vc.completion = { authenticated in
                 vc.dismiss(animated: true)
-                
+
                 // Start the tor client
                 // @TODO: replace with event.
                 Application.container.resolve(TorClient.self)?.start {
@@ -150,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-            
+
             print("Show unlock view")
             topController.present(vc, animated: false, completion: nil)
         }
@@ -172,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             IntentsManager.donateIntents()
         }
     }
-    
+
     /*
      Called when the user activates your application by selecting a shortcut on the home screen, except when
      application(_:,willFinishLaunchingWithOptions:) or application(_:didFinishLaunchingWithOptions) returns `false`.

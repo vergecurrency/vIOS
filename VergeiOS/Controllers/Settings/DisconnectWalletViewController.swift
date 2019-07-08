@@ -24,13 +24,13 @@ class DisconnectWalletViewController: ThemeableViewController {
         )
 
         let cancel = UIAlertAction(title: "defaults.cancel".localized, style: .cancel)
-        let confirm = UIAlertAction(title: "settings.disconnect.alert.disconnect".localized, style: .destructive) { action in
+        let confirm = UIAlertAction(title: "settings.disconnect.alert.disconnect".localized, style: .destructive) { _ in
             // Show unlock view.
             let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
             pinUnlockView.cancelable = true
             pinUnlockView.completion = { authenticated in
                 if authenticated {
-                    
+
                     // Reset wallet manager.
                     // @TODO: Move to event.
                     self.transactionManager.removeAll()
@@ -46,7 +46,7 @@ class DisconnectWalletViewController: ThemeableViewController {
                     pinUnlockView.dismiss(animated: true)
                 }
             }
-            
+
             self.present(pinUnlockView, animated: true)
          }
 

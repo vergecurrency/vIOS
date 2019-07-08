@@ -9,7 +9,7 @@
 import UIKit
 
 class LightBackgroundView: BackgroundView {
-    
+
     override func updateColors() {
         self.backgroundColor = ThemeManager.shared.backgroundWhite()
     }

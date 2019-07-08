@@ -23,7 +23,7 @@ class Application {
         SendViewServiceProvider.self,
         ReceiveViewServiceProvider.self,
         SettingsViewServiceProvider.self,
-        EventServiceProvider.self,
+        EventServiceProvider.self
     ]
 
     var initializedServiceProviders: [ServiceProvider] = []

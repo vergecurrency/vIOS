@@ -30,13 +30,15 @@ class TransactionRepository {
     }
 
     func put(tx: TxHistory) {
-        var entity: TransactionType? = nil
-        if let existingEntity = ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid))) as TransactionType??) {
+        var entity: TransactionType?
+        if let existingEntity =
+            ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
+                as TransactionType??) {
             entity = existingEntity
         }
 
         do {
-            let _ = try CoreStore.perform(synchronous: { transaction -> Bool in
+            _ = try CoreStore.perform(synchronous: { transaction -> Bool in
                 if entity == nil {
                     entity = transaction.create(Into<TransactionType>())
                 } else {
@@ -62,12 +64,14 @@ class TransactionRepository {
     }
 
     func remove(tx: TxHistory) {
-        guard let entity = ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid))) as TransactionType??) else {
-            return
+        guard let entity =
+            ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
+                as TransactionType??) else {
+                    return
         }
 
         do {
-            let _ = try CoreStore.perform(synchronous: { transaction -> Bool in
+            _ = try CoreStore.perform(synchronous: { transaction -> Bool in
                 transaction.delete(entity)
 
                 return transaction.hasChanges

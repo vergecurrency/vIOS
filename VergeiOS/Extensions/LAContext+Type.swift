@@ -17,9 +17,12 @@ extension LAContext {
     static func available(type: LABiometryType) -> Bool {
         if #available(iOS 11.0, *) {
             let context = LAContext()
-            return (context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication, error: nil) && context.biometryType == type)
+            return (context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthentication,
+                                              error: nil)
+                && context.biometryType == type)
         }
-        
+
         return false
     }
+
 }

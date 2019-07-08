@@ -10,7 +10,7 @@ class ThemedImageView: UIImageView {
     var themeImage: UIImage? {
         return nil
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.becomeThemeable()

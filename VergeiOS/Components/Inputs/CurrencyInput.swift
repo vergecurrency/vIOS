@@ -20,15 +20,15 @@ class CurrencyInput: UITextField {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)
         addTarget(self, action: #selector(editingDidEnd(_:)), for: .editingDidEnd)
     }
-    
+
     @objc public func editingChanged(_ textField: UITextField) {
         handleFormatting()
     }
-    
+
     @objc public func editingDidEnd(_ textField: UITextField) {
         if getNumber().doubleValue == 0.0 {
             textField.text = ""

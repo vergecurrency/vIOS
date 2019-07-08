@@ -12,31 +12,31 @@ import UIKit
 
     @IBInspectable var label: String = ""
     @IBInspectable var value: String = ""
-    
+
     var drawn = false
 
     var labelLabel: UILabel?
     var valueLabel: UILabel?
     var border: CALayer?
-    
+
     var borderWidth: Double = 0.5
     var borderColor: UIColor {
         return ThemeManager.shared.separatorColor()
     }
-    
+
     var titleColor: UIColor {
         return ThemeManager.shared.secondaryLight()
     }
-    
+
     var valueColor: UIColor {
         return ThemeManager.shared.secondaryDark()
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.border?.backgroundColor = self.borderColor.cgColor
         self.labelLabel?.textColor = self.titleColor

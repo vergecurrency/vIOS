@@ -6,7 +6,7 @@
 import Foundation
 
 public struct TxProposal {
-    
+
     public var address: String
     public var amount: NSNumber
     public var message: String

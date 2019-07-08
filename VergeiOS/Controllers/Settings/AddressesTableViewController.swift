@@ -58,7 +58,7 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     func loadBalances() {
-        self.walletClient.getBalance { error, balanceInfo in
+        self.walletClient.getBalance { _, balanceInfo in
             guard let balanceInfo = balanceInfo else {
                 self.balanceAddresses = []
                 return
@@ -103,7 +103,8 @@ class AddressesTableViewController: EdgedTableViewController {
         }
 
         cell.textLabel?.text = address.address
-        cell.detailTextLabel?.text = "xpub\(address.path.replacingOccurrences(of: "m", with: "")) \(address.createdOnDate.string)"
+        cell.detailTextLabel?.text =
+        "xpub\(address.path.replacingOccurrences(of: "m", with: "")) \(address.createdOnDate.string)"
 
         cell.addTapGestureRecognizer(taps: 2) {
             UIPasteboard.general.string = address.address
@@ -161,19 +162,22 @@ class AddressesTableViewController: EdgedTableViewController {
             preferredStyle: .actionSheet
         )
 
-        sheet.addAction(UIAlertAction(title: "addresses.address".localized, style: .default) { action in
-            self.toPasteboard(message: "addresses.addressCopied".localized, value: balanceAddress.address)
+        sheet.addAction(UIAlertAction(title: "addresses.address".localized, style: .default) { _ in
+            self.toPasteboard(message: "addresses.addressCopied".localized,
+                              value: balanceAddress.address)
         })
 
-        sheet.addAction(UIAlertAction(title: "addresses.balance".localized, style: .default) { action in
-            self.toPasteboard(message: "addresses.balanceCopied".localized, value: "\(Double(balanceAddress.amount) / Constants.satoshiDivider)")
+        sheet.addAction(UIAlertAction(title: "addresses.balance".localized, style: .default) { _ in
+            self.toPasteboard(message: "addresses.balanceCopied".localized,
+                              value: "\(Double(balanceAddress.amount) / Constants.satoshiDivider)")
         })
 
-        sheet.addAction(UIAlertAction(title: "addresses.publicKey".localized, style: .default) { action in
-            self.toPasteboard(message: "addresses.publicKeyCopied".localized, value: publicKey?.description)
+        sheet.addAction(UIAlertAction(title: "addresses.publicKey".localized, style: .default) { _ in
+            self.toPasteboard(message: "addresses.publicKeyCopied".localized,
+                              value: publicKey?.description)
         })
 
-        sheet.addAction(UIAlertAction(title: "addresses.privateKey".localized, style: .destructive) { action in
+        sheet.addAction(UIAlertAction(title: "addresses.privateKey".localized, style: .destructive) { _ in
             let unlockView = PinUnlockViewController.createFromStoryBoard()
             unlockView.cancelable = true
             unlockView.completion = { aunthenticated in
@@ -183,7 +187,8 @@ class AddressesTableViewController: EdgedTableViewController {
                     return
                 }
 
-                self.toPasteboard(message: "addresses.privateKeyCopied".localized, value: privateKey?.toWIF())
+                self.toPasteboard(message: "addresses.privateKeyCopied".localized,
+                                  value: privateKey?.toWIF())
             }
 
             self.present(unlockView, animated: true)

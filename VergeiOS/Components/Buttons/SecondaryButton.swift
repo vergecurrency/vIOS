@@ -9,14 +9,14 @@
 import UIKit
 
 class SecondaryButton: UIButton {
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.imageView?.tintColor = ThemeManager.shared.secondaryLight()
     }
-    
+
 }

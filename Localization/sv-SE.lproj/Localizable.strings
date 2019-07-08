@@ -452,7 +452,7 @@
 "wallet.slides.chart.availability" = "Tabelldata visas endast i USD";
 "wallet.slides.chart.noData" = "Tabellhistorik data kan ej hittas.";
 
-/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+/*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Inga transaktioner mottagna ännu.";
 
 /*----------------------------------------

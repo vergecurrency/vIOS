@@ -12,9 +12,9 @@ class TitleLabel: UILabel {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.becomeThemeable();
+        self.becomeThemeable()
     }
-    
+
     override func updateColors() {
         self.textColor = ThemeManager.shared.secondaryDark()
     }

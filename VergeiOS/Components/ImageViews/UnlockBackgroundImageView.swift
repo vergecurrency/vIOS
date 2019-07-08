@@ -9,9 +9,9 @@
 import UIKit
 
 class UnlockBackgroundImageView: ThemedImageView {
-    
+
     override var themeImage: UIImage {
         return ThemeManager.shared.currentTheme.unlockBackgroundImage
     }
-    
+
 }

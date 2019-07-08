@@ -10,7 +10,7 @@ class WalletTicker {
     private var client: WalletClient!
     private var applicationRepository: ApplicationRepository!
     private var transactionManager: TransactionManager!
-    
+
     private var started: Bool = false
     private var interval: Timer?
 
@@ -32,7 +32,7 @@ class WalletTicker {
         fetchWalletAmount()
         fetchTransactions()
 
-        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchWalletTimeout, repeats: true) { timer in
+        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchWalletTimeout, repeats: true) { _ in
             self.fetchWalletAmount()
             self.fetchTransactions()
         }
@@ -53,7 +53,7 @@ class WalletTicker {
     private func fetchWalletAmount() {
         print("Fetching wallet amount")
 
-        client.getBalance { error, info in
+        client.getBalance { _, info in
             if let info = info {
                 self.applicationRepository.amount = info.availableAmountValue
             }
@@ -64,7 +64,7 @@ class WalletTicker {
     private func fetchTransactions() {
         print("Fetching new transactions")
 
-        self.transactionManager.sync(limit: 10) { transactions in
+        self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
         }
     }

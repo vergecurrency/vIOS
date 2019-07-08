@@ -59,9 +59,17 @@ class SendingView: UIView {
     }
 
     private func setupListeners() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didPublishTx, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didSignTx, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(notification:)), name: .didBroadcastTx, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleNotification(notification:)),
+                                               name: .didPublishTx,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleNotification(notification:)),
+                                               name: .didSignTx,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleNotification(notification:)),
+                                               name: .didBroadcastTx, object: nil)
     }
 
     private func animateImage() {
@@ -83,13 +91,10 @@ class SendingView: UIView {
             switch notification.name {
             case Notification.Name.didPublishTx:
                 self.statusLabel.text = "send.sending.signingTransaction".localized
-                break
             case Notification.Name.didSignTx:
                 self.statusLabel.text = "send.sending.broadcastingTransaction".localized
-                break
             case Notification.Name.didBroadcastTx:
                 self.statusLabel.text = "send.sending.transactionSent".localized
-                break
             default:
                 break
             }

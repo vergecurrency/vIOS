@@ -148,7 +148,7 @@ class EventServiceProvider: ServiceProvider {
     @objc func didBroadcastTx(notification: Notification) {
         let walletClient = self.container.resolve(WalletClient.self)
 
-        walletClient?.getBalance { error, info in
+        walletClient?.getBalance { _, info in
             let appRepo = self.container.resolve(ApplicationRepository.self)!
 
             if let info = info {

@@ -10,8 +10,8 @@ import Foundation
 import Swinject
 
 class WalletServiceProvider: ServiceProvider {
-    
-    override func register() -> Void {
+
+    override func register() {
         registerWalletCredentials()
         registerWalletClient()
         registerTxTransponder()
@@ -22,7 +22,7 @@ class WalletServiceProvider: ServiceProvider {
         registerFiatRateTicker()
         registerAddressBookRepository()
     }
-    
+
     func registerWalletCredentials() {
         container.register(Credentials.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
@@ -32,7 +32,7 @@ class WalletServiceProvider: ServiceProvider {
             return Credentials(mnemonic: mnemonic, passphrase: passphrase, network: .mainnetXVG)
         }.inObjectScope(.container)
     }
-    
+
     func registerWalletClient() {
         container.register(WalletClient.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
@@ -50,7 +50,7 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerTransactionRepository() {
-        container.register(TransactionRepository.self) { r in
+        container.register(TransactionRepository.self) { _ in
             return TransactionRepository()
         }
     }
@@ -96,9 +96,9 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerAddressBookRepository() {
-        container.register(AddressBookRepository.self) { r in
+        container.register(AddressBookRepository.self) { _ in
             return AddressBookRepository()
         }
     }
-    
+
 }
