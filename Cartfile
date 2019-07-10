@@ -8,6 +8,6 @@ github "danielgindi/Charts" ~> 3.3.0
 github "JohnEstropia/CoreStore" >= 5.0.0
 github "xmartlabs/Eureka" ~> 4.3
 github "krzyzanowskim/CryptoSwift"
-github "hellc/BitcoinKit" ~> 1.2.1
+github "vergecurrency/BitcoinKit" ~> 1.2.1
 github "Swinject/Swinject" ~> 2.6.0
 github "Swinject/SwinjectStoryboard"
