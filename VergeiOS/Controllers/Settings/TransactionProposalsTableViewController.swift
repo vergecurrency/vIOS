@@ -5,7 +5,7 @@
 
 import UIKit
 
-class TransactionProposalsTableViewController: UITableViewController {
+class TransactionProposalsTableViewController: EdgedTableViewController {
 
     var walletClient: WalletClient!
     var proposals: [TxProposalResponse] = []
@@ -52,9 +52,11 @@ class TransactionProposalsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if !hasProposals {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.themeable = true
             cell.textLabel?.text = "settings.transactions.noProposals".localized
             cell.textLabel?.textColor = ThemeManager.shared.vergeGrey()
             cell.selectionStyle = .none
+            cell.updateColors()
 
             return cell
         }

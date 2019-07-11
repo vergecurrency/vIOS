@@ -18,10 +18,12 @@ class ThemeableViewController: UIViewController {
 
         self.updateColors()
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateColors),
-                                               name: .didChangeTheme,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateColors),
+            name: .didChangeTheme,
+            object: nil
+        )
     }
 }
 

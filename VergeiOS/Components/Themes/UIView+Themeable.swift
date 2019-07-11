@@ -48,10 +48,12 @@ extension UIView: Themeable {
 
     func subscribe() {
         NotificationCenter.default.removeObserver(self)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(Themeable.updateColors),
-                                               name: .didChangeTheme,
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(Themeable.updateColors),
+            name: .didChangeTheme,
+            object: nil
+        )
     }
 
     func unsubscribe() {
@@ -92,7 +94,7 @@ extension UITextField {
 
         self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [
             NSAttributedString.Key.foregroundColor: ThemeManager.shared.placeholderColor()
-            ])
+        ])
 
         self.setNeedsDisplay()
     }
@@ -193,7 +195,7 @@ extension UITabBar {
         self.clipsToBounds = true
 
         self.tintColor = ThemeManager.shared.primaryLight()
-        self.unselectedItemTintColor = ThemeManager.shared.secondaryLight()
+        self.unselectedItemTintColor = ThemeManager.shared.vergeGrey()
         self.barTintColor = ThemeManager.shared.backgroundGrey()
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.barStyle = ThemeManager.shared.barStyle()

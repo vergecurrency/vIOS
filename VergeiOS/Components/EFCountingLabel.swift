@@ -70,7 +70,7 @@ public class UILabelCounterEaseInOut: UILabelCounter {
 }
 
 // MARK: - EFCountingLabel
-open class EFCountingLabel: UILabel {
+class EFCountingLabel: TitleLabel {
 
     public var format = "%f"
     public var method = EFLabelCountingMethod.linear
@@ -181,6 +181,9 @@ open class EFCountingLabel: UILabel {
         if self.progress == self.totalTime {
             self.runCompletionBlock()
         }
+    }
+
+    override func updateColors() {
     }
 
     private func setTextValue(_ value: CGFloat) {

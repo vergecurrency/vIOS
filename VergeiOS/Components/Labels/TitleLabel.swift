@@ -15,6 +15,12 @@ class TitleLabel: UILabel {
         self.becomeThemeable()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.updateColors()
+    }
+
     override func updateColors() {
         self.textColor = ThemeManager.shared.secondaryDark()
     }

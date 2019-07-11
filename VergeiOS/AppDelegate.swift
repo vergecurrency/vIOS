@@ -68,8 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             alert.dismiss(animated: true, completion: {
                 self.window?.rootViewController =
-                    UIStoryboard.init(name: "Setup",
-                                      bundle: nil).instantiateInitialViewController()
+                    UIStoryboard.init(
+                        name: "Setup",
+                        bundle: nil
+                    ).instantiateInitialViewController()
                 self.window?.makeKeyAndVisible()
             })
         })
