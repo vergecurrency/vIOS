@@ -249,7 +249,7 @@
 
 "settings.themes.titleLabel"                = "Gorgeous Themes for Your Wallet";
 "settings.themes.sectionHeaderTitle"        = "Choose a theme";
-"settings.themes.sectionFooterTitle"        = "Changing a theme will probably make you feel happy and give you goosebumps in weird places!";
+"settings.themes.sectionFooterTitle"        = "Changing a theme will restart the application. Also it will probably make you feel happy and give you goosebumps in weird places!";
 "settings.themes.iconsSectionHeaderTitle"   = "App icons";
 
 // Use Face ID
