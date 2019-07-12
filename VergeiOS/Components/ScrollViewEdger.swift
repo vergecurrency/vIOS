@@ -10,14 +10,14 @@ import UIKit
 
 // TODO: find a better solution for this whole class.
 class ScrollViewEdger {
-    
+
     var scrollView: UIScrollView!
     var topShadow: UIView!
     var bottomShadow: UIView!
-    
+
     var hideTopShadow: Bool = false
     var hideBottomShadow: Bool = false
-    
+
     let shadowHeight: CGFloat = 20.0
     let shadowAlpha: CGFloat = 0.1
     let animationDuration: Double = 0.2
@@ -25,34 +25,34 @@ class ScrollViewEdger {
     let shadowColor: UIColor = {
         return UIColor.black.withAlphaComponent(0.6)
     }()
-    
+
     var verticalOffsetForBottom: CGFloat {
         let scrollViewHeight = scrollView.bounds.height
         let scrollContentSizeHeight = scrollView.contentSize.height
         let bottomInset = scrollView.contentInset.bottom
         let scrollViewBottomOffset = scrollContentSizeHeight + bottomInset - scrollViewHeight
-        
+
         return scrollViewBottomOffset
     }
-    
+
     init(scrollView: UITableView) {
         self.scrollView = scrollView
     }
-    
+
     func createShadowViews() {
         if topShadow == nil {
             topShadow = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: shadowHeight))
-            
+
             let gradientLayer = CAGradientLayer()
             gradientLayer.colors = [shadowColor.cgColor, UIColor.clear.cgColor]
             gradientLayer.frame = topShadow.frame
-            
+
             topShadow.layer.insertSublayer(gradientLayer, at: 0)
             topShadow.alpha = 0.0
-            
+
             scrollView.addSubview(topShadow)
         }
-        
+
         if bottomShadow == nil {
             bottomShadow = UIView(frame: CGRect(
                 x: 0,
@@ -60,27 +60,27 @@ class ScrollViewEdger {
                 width: scrollView.frame.size.width,
                 height: shadowHeight
             ))
-            
+
             let gradientBottomLayer = CAGradientLayer()
             gradientBottomLayer.colors = [UIColor.clear.cgColor, shadowColor.cgColor]
             gradientBottomLayer.frame = bottomShadow.frame
-            
+
             bottomShadow.layer.insertSublayer(gradientBottomLayer, at: 0)
             bottomShadow.alpha = 0.0
-            
+
             scrollView.addSubview(bottomShadow)
-            
+
             DispatchQueue.main.async {
                 self.updateView()
             }
         }
     }
-    
+
     func updateView() {
         if topShadow == nil || bottomShadow == nil {
             return
         }
-        
+
         if !hideTopShadow {
             topShadow.frame = CGRect(
                 x: topShadow.frame.origin.x,
@@ -89,7 +89,7 @@ class ScrollViewEdger {
                 height: topShadow.frame.size.height
             )
             scrollView.bringSubviewToFront(topShadow)
-            
+
             if scrollView.contentOffset.y > shadowHeight / 2 {
                 UIView.animate(withDuration: animationDuration) {
                     self.topShadow.alpha = self.shadowAlpha
@@ -100,7 +100,7 @@ class ScrollViewEdger {
                 }
             }
         }
-        
+
         if !hideBottomShadow {
             bottomShadow.frame = CGRect(
                 x: bottomShadow.frame.origin.x,
@@ -109,8 +109,10 @@ class ScrollViewEdger {
                 height: bottomShadow.frame.size.height
             )
             scrollView.bringSubviewToFront(bottomShadow)
-            
-            if scrollView.contentOffset.y + shadowHeight / 2 >= verticalOffsetForBottom + scrollView.safeAreaInsets.bottom {
+
+            if scrollView.contentOffset.y + shadowHeight / 2
+                >=
+                verticalOffsetForBottom + scrollView.safeAreaInsets.bottom {
                 UIView.animate(withDuration: animationDuration) {
                     self.bottomShadow.alpha = 0.0
                 }

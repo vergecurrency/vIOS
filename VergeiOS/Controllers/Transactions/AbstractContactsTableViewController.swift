@@ -8,7 +8,7 @@ import UIKit
 class AbstractContactsTableViewController: UITableViewController {
 
     var contacts: [[Contact]] = []
-    var letters:[String] = []
+    var letters: [String] = []
     let addressBookManager: AddressBookRepository = AddressBookRepository()
     let searchController = UISearchController(searchResultsController: nil)
 

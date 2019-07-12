@@ -15,17 +15,14 @@ class ApplicationServiceProvider: ServiceProvider {
 
         IQKeyboardManager.shared.enable = true
 
-        let applicationRepository = container.resolve(ApplicationRepository.self)!
-        ThemeManager.shared.useMoonMode = applicationRepository.useMoonMode
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        ThemeManager.shared.initialize(withWindow: appDelegate.window ?? UIWindow())
+        // TODO: put in proper place.
+        (UIApplication.shared.delegate as! AppDelegate).window?.tintColor = ThemeManager.shared.primaryLight()
 
         self.bootWatchSyncManager()
     }
 
     override func register() {
-        container.register(ApplicationRepository.self) { r in
+        container.register(ApplicationRepository.self) { _ in
             return ApplicationRepository()
         }.inObjectScope(.container)
 

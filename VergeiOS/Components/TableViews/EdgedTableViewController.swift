@@ -9,23 +9,23 @@
 import UIKit
 
 class EdgedTableViewController: LocalizableTableViewController {
-    
+
     var scrollViewEdger: ScrollViewEdger!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         scrollViewEdger = ScrollViewEdger(scrollView: tableView)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         scrollViewEdger.createShadowViews()
     }
-    
+
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewEdger.updateView()
     }
-    
+
 }

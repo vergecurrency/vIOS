@@ -9,7 +9,7 @@
 import UIKit
 import LocalAuthentication
 
-class PinUnlockViewController: VViewController, KeyboardDelegate {
+class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
 
     enum UnlockState: String {
         case wallet
@@ -19,8 +19,8 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var closeButton: UIButton!
-    
-    static var storyBoardView: PinUnlockViewController? = nil
+
+    static var storyBoardView: PinUnlockViewController?
 
     var applicationRepository: ApplicationRepository!
     var pin = ""
@@ -28,7 +28,7 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
     var showLocalAuthentication = false
     var cancelable = false
     var completion: ((_ authenticated: Bool) -> Void)?
-    
+
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
     }
@@ -40,7 +40,7 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
         } else {
             PinUnlockViewController.storyBoardView!.reset()
         }
-
+        PinUnlockViewController.storyBoardView!.modalPresentationStyle = .fullScreen
         return PinUnlockViewController.storyBoardView!
     }
 
@@ -84,11 +84,11 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
             promptLocalAuthentication()
         } else {
             self.pinTextField.addCharacter()
-            
+
             if (pin.count < self.pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
-            
+
             // When all pins are set.
             if self.validate() {
                 closeView()
@@ -99,7 +99,7 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
             }
         }
     }
-    
+
     // Validate the wallet pin.
     func validate() -> Bool {
         return pin.count == self.pinTextField.pinCharacterCount && applicationRepository.pin == pin
@@ -114,7 +114,7 @@ class PinUnlockViewController: VViewController, KeyboardDelegate {
             myContext.evaluatePolicy(
                 .deviceOwnerAuthenticationWithBiometrics,
                 localizedReason: myLocalizedReasonString
-            ) { success, evaluateError in
+            ) { success, _ in
                 DispatchQueue.main.async {
                     if success {
                         // User authenticated successfully, take appropriate action

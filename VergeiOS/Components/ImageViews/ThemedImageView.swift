@@ -7,16 +7,16 @@ import UIKit
 
 class ThemedImageView: UIImageView {
 
-    var defaultImage: UIImage? {
-        return nil
-    }
-    var moonImage: UIImage? {
+    var themeImage: UIImage? {
         return nil
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.image = ThemeManager.shared.useMoonMode ? self.moonImage : self.defaultImage
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
     }
 
+    override func updateColors() {
+        self.image = self.themeImage
+    }
 }

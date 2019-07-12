@@ -10,25 +10,28 @@ import UIKit
 
 class NumberKey: AbstractKey {
     var subtitle = ""
-    
+
     init(number: Int, subtitle: String = "") {
         super.init(label: "\(number)", value: number)
-        
+
         self.subtitle = subtitle
     }
-    
+
     override func styleKey(_ button: KeyboardButton) {
         button.setTitle(self.label, for: .normal)
         button.titleLabel?.font = UIFont.avenir(size: 26).demiBold()
 
         if (self.subtitle != "") {
-            let subtitle = UILabel(frame: CGRect(x: 0, y: (button.frame.size.height / 2) + 13, width: button.frame.size.width, height: 10))
+            let subtitle = UILabel(frame: CGRect(x: 0,
+                                                 y: (button.frame.size.height / 2) + 13,
+                                                 width: button.frame.size.width,
+                                                 height: 10))
             subtitle.font = UIFont.avenir(size: 10)
             subtitle.textAlignment = .center
             subtitle.textColor = ThemeManager.shared.secondaryDark()
             subtitle.backgroundColor = UIColor.clear
             subtitle.text = self.subtitle
-            
+
             button.addSubview(subtitle)
         }
     }

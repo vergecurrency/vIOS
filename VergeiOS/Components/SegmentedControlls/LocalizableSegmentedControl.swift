@@ -12,7 +12,7 @@ class LocalizableSegmentedControl: UISegmentedControl {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         for subview in self.subviews {
             for subSubview in subview.subviews {
                 if subSubview.isKind(of: UILabel.self) {
@@ -24,5 +24,5 @@ class LocalizableSegmentedControl: UISegmentedControl {
             }
         }
     }
-    
+
 }

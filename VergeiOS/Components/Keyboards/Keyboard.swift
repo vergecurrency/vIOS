@@ -14,8 +14,18 @@ class Keyboard: UIView {
     var containerView: UIView?
     var buttons: [UIButton] = []
     var characters: [KeyboardKey] = []
-    
+
     weak var delegate: KeyboardDelegate?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.becomeThemeable()
+    }
+
+    override func updateColors() {
+        self.layoutSubviews()
+        self.setNeedsDisplay()
+    }
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -53,15 +63,15 @@ class Keyboard: UIView {
         layer.cornerRadius = 5.0
         backgroundColor = .clear
     }
-    
+
     func charactersInOrder() -> [KeyboardKey] {
         return []
     }
-    
+
     func drawButtons() {
         var buttonsAdded = 0
         var level = 0
-        
+
         for (index, key) in self.characters.enumerated() {
             let buttonWidth = self.frame.width / 3
             let buttonHeight = self.frame.height / 4
@@ -69,19 +79,19 @@ class Keyboard: UIView {
             let yPosition = CGFloat(level) * buttonHeight
             let buttonRect = CGRect(x: xPosition, y: yPosition, width: buttonWidth, height: buttonHeight)
             let button = self.createButton(key, rect: buttonRect)
-            
+
             self.buttons.append(button)
             self.containerView?.addSubview(button)
-            
+
             buttonsAdded += 1
-            
+
             if (buttonsAdded == 3) {
                 level += 1
                 buttonsAdded = 0
             }
         }
     }
-    
+
     func createButton(_ key: KeyboardKey, rect: CGRect) -> UIButton {
         let button = KeyboardButton(type: .custom)
         button.frame = rect
@@ -89,21 +99,24 @@ class Keyboard: UIView {
         button.tintColor = ThemeManager.shared.secondaryDark()
         button.setTitleColor(ThemeManager.shared.secondaryDark(), for: .normal)
         button.setTitleColor(ThemeManager.shared.primaryDark(), for: .highlighted)
-        
+
         if (!key.isKind(of: EmptyKey.self)) {
             button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)
-            button.setBackgroundColor(color: ThemeManager.shared.backgroundBlue(), forState: UIControl.State.highlighted)
+            button.setBackgroundColor(color: ThemeManager.shared.backgroundBlue(),
+                                      forState: UIControl.State.highlighted)
         }
-        
+
         key.styleKey(button)
         key.setButton(button)
-        
+
         return button
     }
-    
+
     @objc func buttonPushed(button: KeyboardButton) {
         if let delegate = self.delegate {
-            delegate.didReceiveInput(self, input: "\(button.keyboardKey?.getValue() ?? "")", keyboardKey: button.keyboardKey!)
+            delegate.didReceiveInput(self,
+                                     input: "\(button.keyboardKey?.getValue() ?? "")",
+                keyboardKey: button.keyboardKey!)
         }
     }
 

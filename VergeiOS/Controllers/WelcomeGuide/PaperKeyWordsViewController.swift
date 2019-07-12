@@ -10,7 +10,7 @@ import UIKit
 import BitcoinKit
 
 class PaperKeyWordsViewController: AbstractPaperkeyViewController {
-    
+
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var progressionLabel: UILabel!
     @IBOutlet weak var previousButton: RoundedButton!
@@ -19,7 +19,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
     var applicationRepository: ApplicationRepository!
     var mnemonic: [String] = []
     var selectedWord = 0
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,70 +45,71 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
         }
 
         self.wordLabel.text = self.mnemonic.first
-        
+
         self.updateView()
     }
-    
+
     @IBAction func previousWord(_ sender: Any) {
         self.selectedWord -= 1
         self.wordLabel.text = self.mnemonic[self.selectedWord]
-        
+
         self.updateView()
     }
-    
+
     @IBAction func nextWord(_ sender: Any) {
         if (self.selectedWord == (self.mnemonic.count - 1)) {
             return self.performSegue(withIdentifier: "confirmPaperkey", sender: self)
         }
-        
+
         self.selectedWord += 1
         self.wordLabel.text = self.mnemonic[self.selectedWord]
-        
+
         self.updateView()
     }
-    
+
     func showDoneButton() {
         self.nextButton.setTitle("defaults.done".localized, for: .normal)
         self.nextButton.setImage(UIImage(named: "ClipboardCheck"), for: .normal)
     }
-    
+
     func showNextButton() {
         self.nextButton.setTitle("defaults.next".localized, for: .normal)
         self.nextButton.setImage(UIImage(named: "ArrowRight"), for: .normal)
     }
-    
+
     func updateView() {
-        self.progressionLabel.text = "\(self.selectedWord + 1) " + "paperKey.outOf".localized + " \(self.mnemonic.count)"
-        
+        self.progressionLabel.text =
+            "\(self.selectedWord + 1) " + "paperKey.outOf".localized + " \(self.mnemonic.count)"
+
         if (self.selectedWord == 0) {
             self.hideButton(self.previousButton)
         }
-        
+
         if (self.selectedWord > 0) {
             self.showButton(self.previousButton)
         }
-        
+
         if (self.selectedWord == (self.mnemonic.count - 1)) {
             self.showDoneButton()
         } else {
             self.showNextButton()
         }
     }
-    
+
     func hideButton(_ button: UIButton) {
         UIView.animate(withDuration: 0.3) {
             button.alpha = 0.5
             button.isEnabled = false
         }
     }
-    
+
     func showButton(_ button: UIButton) {
         UIView.animate(withDuration: 0.3) {
             button.alpha = 1
             button.isEnabled = true
         }
     }
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -116,7 +117,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         super.prepare(for: segue, sender: sender)
-        
+
         if (segue.identifier == "confirmPaperkey") {
             let vc = segue.destination as! ConfirmPaperkeyViewController
             vc.mnemonic = self.mnemonic

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransactionTableViewController: VViewController, UITableViewDelegate, UITableViewDataSource {
+class TransactionTableViewController: ThemeableViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var dateTimeLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -17,19 +17,19 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var deleteTransactionBarButtonItem: UIBarButtonItem!
     @IBOutlet var repeatTransactionBarButtonItem: UIBarButtonItem!
-    
+
     @IBOutlet weak var tableView: PlaceholderTableView!
 
     var transactionManager: TransactionManager!
     var addressBookManager: AddressBookRepository!
     var scrollViewEdger: ScrollViewEdger!
-    
+
     var transaction: TxHistory?
     var items: [TxHistory] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         scrollViewEdger = ScrollViewEdger(scrollView: tableView)
         scrollViewEdger.hideBottomShadow = true
 
@@ -49,7 +49,7 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
             loadTransactions(transaction)
         }
     }
-    
+
     func setTransaction(_ transaction: TxHistory) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -69,13 +69,12 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
             addAddressButton.isHidden = true
         }
 
-        
         var prefix = ""
         if transaction.category == .Sent {
             navigationItem.setRightBarButton(repeatTransactionBarButtonItem, animated: true)
             amountLabel.textColor = ThemeManager.shared.vergeRed()
             iconImageView.image = UIImage(named: "Payment")
-            
+
             prefix = "-"
         } else {
             navigationItem.rightBarButtonItems?.removeAll { item in
@@ -83,7 +82,7 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
             }
             amountLabel.textColor = ThemeManager.shared.vergeGreen()
             iconImageView.image = UIImage(named: "Receive")
-            
+
             prefix = "+"
         }
 
@@ -94,10 +93,10 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
         if !transaction.confirmed {
             navigationItem.rightBarButtonItems?.append(deleteTransactionBarButtonItem)
         }
-        
+
         amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
     }
-    
+
     func loadTransactions(_ transaction: TxHistory) {
         items = self.transactionManager.all(byAddress: transaction.address)
     }
@@ -119,19 +118,19 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
                 return 2
             }
         }
-        
+
         return items.count
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let titles = [
             "transactions.transaction.details".localized,
             "transactions.transaction.history".localized
         ]
-        
+
         return titles[section]
     }
-    
+
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
         header.textLabel?.textColor = ThemeManager.shared.secondaryDark()
@@ -140,11 +139,12 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
         header.textLabel?.text = header.textLabel?.text?.capitalized
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell")!
             let indexRow: Int = indexPath.row + (transaction?.category == .Moved ? 1 : 0)
-            
+
             switch indexRow {
             case 0:
                 cell.imageView?.image = UIImage(named: "Address")
@@ -152,48 +152,46 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
                 cell.detailTextLabel?.text = transaction?.address
                 cell.accessoryType = .detailButton
                 addTapRecognizer(cell: cell, action: #selector(addressDoubleTapped(recognizer:)))
-                break
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
                 cell.textLabel?.text = "transactions.transaction.confirmations".localized
                 cell.detailTextLabel?.text = transaction?.confirmationsCount
                 cell.accessoryType = .none
-                break
             case 2:
                 cell.imageView?.image = UIImage(named: "Block")
                 cell.textLabel?.text = "txid"
                 cell.detailTextLabel?.text = transaction?.txid
                 cell.accessoryType = .detailButton
                 addTapRecognizer(cell: cell, action: #selector(blockDoubleTapped(recognizer:)))
-                break
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: "transactionMemoCell")!
                 cell.textLabel?.text = transaction?.memo
                 cell.imageView?.image = UIImage(named: "Memo")
                 cell.accessoryType = .none
-                break
             default:
                 break
             }
-            
+
             cell.imageView?.tintColor = ThemeManager.shared.secondaryLight()
-            
+
             return cell
         }
-        
-        let cell = Bundle.main.loadNibNamed("TransactionTableViewCell", owner: self, options: nil)?.first as! TransactionTableViewCell
-        
+
+        let cell = Bundle.main.loadNibNamed("TransactionTableViewCell",
+                                            owner: self,
+                                            options: nil)?.first as! TransactionTableViewCell
+
         let item = items[indexPath.row]
-        
+
         var recipient = Contact()
         recipient.address = item.address
         recipient.name = nameLabel.text ?? item.address
-        
+
         cell.setTransaction(item)
-        
+
         return cell
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewEdger.updateView()
     }
@@ -210,11 +208,11 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
         if indexPath.section == 0 {
             return
         }
-        
+
         if items[indexPath.row].txid == transaction?.txid {
             return
         }
-        
+
         transaction = items[indexPath.row]
         setTransaction(transaction!)
         tableView.reloadData()
@@ -232,13 +230,11 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
             }
         }
     }
-    
+
     func selectCurrentTransaction() {
-        for (index, item) in items.enumerated() {
-            if (item.txid == self.transaction?.txid) {
-                let indexPath = IndexPath(row: index, section: 1)
-                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
-            }
+        for (index, item) in items.enumerated() where (item.txid == self.transaction?.txid) {
+            let indexPath = IndexPath(row: index, section: 1)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
         }
     }
 
@@ -258,7 +254,7 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
         }
     }
 
-    private func loadWebsite(url: String) -> Void {
+    private func loadWebsite(url: String) {
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
         }
@@ -280,13 +276,13 @@ class TransactionTableViewController: VViewController, UITableViewDelegate, UITa
         UIPasteboard.general.string = transaction!.txid
         NotificationManager.shared.showMessage("transactions.transaction.txidCopied".localized, duration: 3)
     }
-    
+
     @IBAction func deleteTransactionPushed(_ sender: Any) {
         guard let transaction = transaction else {
             return
         }
 
-        let confirmation = UIAlertController.createDeleteTransactionAlert { action in
+        let confirmation = UIAlertController.createDeleteTransactionAlert { _ in
             self.transactionManager.remove(transaction: transaction)
 
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)

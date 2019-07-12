@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 /**
  setTimeout()
  
@@ -24,8 +23,12 @@ import Foundation
  }
  timer.invalidate()      // cancel it.
  */
-func setTimeout(_ delay:TimeInterval, block:@escaping ()->Void) -> Timer {
-    return Timer.scheduledTimer(timeInterval: delay, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: false)
+func setTimeout(_ delay: TimeInterval, block:@escaping () -> Void) -> Timer {
+    return Timer.scheduledTimer(timeInterval: delay,
+                                target: BlockOperation(block: block),
+                                selector: #selector(Operation.main),
+                                userInfo: nil,
+                                repeats: false)
 }
 
 /**
@@ -41,6 +44,10 @@ func setTimeout(_ delay:TimeInterval, block:@escaping ()->Void) -> Timer {
  In addition, ``Timer`` returned should kept as member variable, and call invalidated()
  when the block no longer required. such as deinit, or viewDidDisappear()
  */
-func setInterval(_ interval:TimeInterval, block:@escaping ()->Void) -> Timer {
-    return Timer.scheduledTimer(timeInterval: interval, target: BlockOperation(block: block), selector: #selector(Operation.main), userInfo: nil, repeats: true)
+func setInterval(_ interval: TimeInterval, block:@escaping () -> Void) -> Timer {
+    return Timer.scheduledTimer(timeInterval: interval,
+                                target: BlockOperation(block: block),
+                                selector: #selector(Operation.main),
+                                userInfo: nil,
+                                repeats: true)
 }

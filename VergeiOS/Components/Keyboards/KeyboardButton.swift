@@ -9,9 +9,9 @@
 import UIKit
 
 class KeyboardButton: UIButton {
-    
+
     var keyboardKey: KeyboardKey?
-    
+
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)

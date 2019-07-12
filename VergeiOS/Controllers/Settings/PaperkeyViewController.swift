@@ -5,7 +5,7 @@
 
 import UIKit
 
-class PaperkeyViewController: VViewController {
+class PaperkeyViewController: ThemeableViewController {
 
     @IBAction func showPaperkey(_ sender: Any) {
         let pinUnlockView = PinUnlockViewController.createFromStoryBoard()

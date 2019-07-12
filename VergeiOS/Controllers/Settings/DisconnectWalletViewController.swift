@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DisconnectWalletViewController: VViewController {
+class DisconnectWalletViewController: ThemeableViewController {
 
     var applicationRepository: ApplicationRepository!
     var transactionManager: TransactionManager!
@@ -24,13 +24,13 @@ class DisconnectWalletViewController: VViewController {
         )
 
         let cancel = UIAlertAction(title: "defaults.cancel".localized, style: .cancel)
-        let confirm = UIAlertAction(title: "settings.disconnect.alert.disconnect".localized, style: .destructive) { action in
+        let confirm = UIAlertAction(title: "settings.disconnect.alert.disconnect".localized, style: .destructive) { _ in
             // Show unlock view.
             let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
             pinUnlockView.cancelable = true
             pinUnlockView.completion = { authenticated in
                 if authenticated {
-                    
+
                     // Reset wallet manager.
                     // @TODO: Move to event.
                     self.transactionManager.removeAll()
@@ -40,13 +40,13 @@ class DisconnectWalletViewController: VViewController {
                     self.torClient.resign()
 
                     pinUnlockView.dismiss(animated: true) {
-                        ThemeManager.shared.switchMode(isOn: false, appRepo: self.applicationRepository)
+                        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
                     }
                 } else {
                     pinUnlockView.dismiss(animated: true)
                 }
             }
-            
+
             self.present(pinUnlockView, animated: true)
          }
 

@@ -452,7 +452,7 @@
 "wallet.slides.chart.availability" = "grafiek alleen beschikbaar in USD";
 "wallet.slides.chart.noData" = "Geschiedenis grafiek data kan momenteel niet gevonden worden.";
 
-/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+/*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nog geen transacties ontvangen.";
 
 /*----------------------------------------

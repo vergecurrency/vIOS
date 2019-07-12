@@ -21,15 +21,15 @@ class ContactTableViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        trashButtonItem = UIBarButtonItem(
+        self.trashButtonItem = UIBarButtonItem(
             barButtonSystemItem: .trash,
             target: self,
             action: #selector(deleteContact)
         )
-        trashButtonItem.tintColor = ThemeManager.shared.vergeRed()
+        self.trashButtonItem.tintColor = ThemeManager.shared.vergeRed()
 
         if contact != nil && contact!.name != "" {
-            navigationItem.rightBarButtonItems?.append(trashButtonItem)
+            navigationItem.rightBarButtonItems?.append(self.trashButtonItem)
         }
 
         let styleCell = { (cell: TextCell) in
@@ -37,18 +37,21 @@ class ContactTableViewController: FormViewController {
             cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
             cell.textField?.font = UIFont.avenir(size: 17).demiBold()
             cell.textField?.textColor = ThemeManager.shared.secondaryDark()
-            cell.textField.setPlaceholderColor()
+            cell.backgroundColor = ThemeManager.shared.backgroundWhite()
+            cell.textLabel?.updateColors()
+            cell.textField?.updateColors()
         }
 
-        tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
+        self.tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
+        self.tableView.separatorColor = ThemeManager.shared.separatorColor()
 
-        form +++ Section("transactions.contact.section.details".localized)
+        self.form +++ Section("transactions.contact.section.details".localized)
             <<< TextRow("name") { row in
             row.title = "transactions.contact.name".localized
             row.placeholder = "Swen van Zanten"
             row.value = contact?.name ?? ""
             row.add(rule: RuleRequired())
-        }.cellUpdate { cell, row in
+        }.cellUpdate { cell, _ in
             styleCell(cell)
         }
             <<< TextRow("address") { row in
@@ -56,30 +59,30 @@ class ContactTableViewController: FormViewController {
             row.placeholder = "ErBhGNN9x8G513q3h5wdEgkoi2KbysUblJ8Jk7cjpG"
             row.value = contact?.address ?? ""
             row.add(rule: RuleRequired())
-        }.cellUpdate { cell, row in
+        }.cellUpdate { cell, _ in
             styleCell(cell)
         }
 
-        addTransactions()
+        self.addTransactions()
     }
 
     func addTransactions() {
-        guard let contact = contact else {
+        guard let contact = self.contact else {
             return
         }
 
-        transactions = self.transactionManager.all(byAddress: contact.address)
+        self.transactions = self.transactionManager.all(byAddress: contact.address)
 
-        if transactions.count == 0 {
+        if self.transactions.count == 0 {
             return
         }
 
         let transactionsSection = Section("transactions.contact.section.history".localized)
-        form +++ transactionsSection
-        
-        for transaction in transactions {
+        self.form +++ transactionsSection
+
+        for transaction in self.transactions {
             transactionsSection
-                <<< TransactionRow().cellSetup { cell, row in
+                <<< TransactionRow().cellSetup { cell, _ in
                 cell.setTransaction(transaction)
             }
         }
@@ -97,7 +100,7 @@ class ContactTableViewController: FormViewController {
         super.tableView(tableView, didSelectRowAt: indexPath)
 
         if indexPath.section == 1 {
-            performSegue(withIdentifier: "TransactionTableViewController", sender: nil)
+            self.performSegue(withIdentifier: "TransactionTableViewController", sender: nil)
         }
     }
 
@@ -111,35 +114,35 @@ class ContactTableViewController: FormViewController {
 
     @IBAction func saveContact(_ sender: Any) {
         var tempContact = Contact()
-        tempContact.name = (form.rowBy(tag: "name") as! TextRow).value ?? ""
-        tempContact.address = (form.rowBy(tag: "address") as! TextRow).value ?? ""
-        
+        tempContact.name = (self.form.rowBy(tag: "name") as! TextRow).value ?? ""
+        tempContact.address = (self.form.rowBy(tag: "address") as! TextRow).value ?? ""
+
         // validate contact
         // if invalid - show alert with description // or TODO: highlight invalid fields
         if (!tempContact.isValid()) {
             let alert = UIAlertController.createInvalidContactAlert()
-            present(alert, animated: true)
-            
+            self.present(alert, animated: true)
+
             return
         }
         // if valid - continue
-        
+
         self.addressBookManager.put(address: tempContact)
-        
-        contact = tempContact
-        
-        if transactions.count == 0 {
-            addTransactions()
+
+        self.contact = tempContact
+
+        if self.transactions.count == 0 {
+            self.addTransactions()
         }
 
         NotificationManager.shared.showMessage("transactions.contact.saved".localized, duration: 1)
 
         // Pop screen on completion
-        navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 
     @objc func deleteContact(_ sender: Any) {
-        let alert = UIAlertController.createDeleteContactAlert { action in
+        let alert = UIAlertController.createDeleteContactAlert { _ in
             guard let contact = self.contact else {
                 return
             }
@@ -149,9 +152,8 @@ class ContactTableViewController: FormViewController {
             self.navigationController?.popViewController(animated: true)
         }
 
-        present(alert, animated: true)
+        self.present(alert, animated: true)
     }
-
 
     // MARK: - Navigation
 
@@ -162,7 +164,7 @@ class ContactTableViewController: FormViewController {
         if segue.identifier == "TransactionTableViewController" {
             if let vc = segue.destination as? TransactionTableViewController {
                 vc.navigationItem.leftBarButtonItem = nil
-                vc.transaction = transactions[tableView.indexPathForSelectedRow!.row]
+                vc.transaction = self.transactions[self.tableView.indexPathForSelectedRow!.row]
             }
         }
     }

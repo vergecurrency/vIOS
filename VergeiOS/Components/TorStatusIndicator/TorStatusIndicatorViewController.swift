@@ -9,20 +9,20 @@
 import UIKit
 
 class TorStatusIndicatorViewController: UIViewController {
-    
+
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var indicatorView: UIImageView!
 
-    var status: TorStatusIndicator.status = .turnedOff
-    
+    var status: TorStatusIndicator.Status = .turnedOff
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         indicatorView.layer.cornerRadius = 5.0
         indicatorView.clipsToBounds = true
     }
-    
-    func setStatus(_ status: TorStatusIndicator.status) {
+
+    func setStatus(_ status: TorStatusIndicator.Status) {
         indicatorView.stopAnimating()
         indicatorView.animationImages = nil
 
@@ -51,19 +51,17 @@ class TorStatusIndicatorViewController: UIViewController {
             indicatorView.image = UIImage(named: "TorConnectionError")
             indicatorView.tintColor = ThemeManager.shared.vergeRed()
         }
-        
+
         indicatorView.layoutIfNeeded()
     }
-    
+
     func setHasNotch(_ hasNotch: Bool) {
-        for contraint in containerView.constraints {
-            if contraint.identifier == "containerViewHeight" {
-                contraint.constant = hasNotch ? 54.0 : 33.0
-            }
+        for contraint in containerView.constraints
+            where contraint.identifier == "containerViewHeight" {
+            contraint.constant = hasNotch ? 54.0 : 33.0
         }
-        
+
         containerView.layoutIfNeeded()
     }
-    
-}
 
+}

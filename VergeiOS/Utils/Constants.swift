@@ -9,12 +9,12 @@
 import Foundation
 
 public struct Constants {
-    
+
     /**
      * The timeout used for fetching wallet data.
      */
     public static let fetchWalletTimeout: Double = 30
-    
+
     /**
      * The timeout used for fetching fiat rating data.
      */
@@ -29,7 +29,7 @@ public struct Constants {
      * Confirmations needed to change the UI.
      */
     public static let confirmationsNeeded: Int = 1
-    
+
     /**
      * The maximum of digits.
      */
@@ -49,7 +49,7 @@ public struct Constants {
      * The blockchain explorer used.
      */
     public static let blockchainExlorer: String = "https://verge-blockchain.info/"
-    
+
     /**
      * The application terms of use link.
      */
@@ -74,7 +74,6 @@ public struct Constants {
      * IP Address endpoint.
      */
     public static let ipCheckEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/ip/"
-
 
     /**
      * The Verge Currency CORE team donation address.

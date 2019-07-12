@@ -10,9 +10,9 @@ import Foundation
 import Swinject
 
 class ServiceProvider: ServiceProviderProtocol {
-    
+
     let container: Container
-    
+
     required init(container: Container) {
         self.container = container
     }
@@ -23,9 +23,9 @@ class ServiceProvider: ServiceProviderProtocol {
 }
 
 protocol ServiceProviderProtocol {
-    
+
     init(container: Container)
-    func boot() -> Void
-    func register() -> Void
-    
+    func boot()
+    func register()
+
 }

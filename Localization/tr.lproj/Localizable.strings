@@ -452,7 +452,7 @@
 "wallet.slides.chart.availability" = "Çizelgeler yalnızca USD için geçerli";
 "wallet.slides.chart.noData" = "Geçmiş çizelgeleri bulunamadı";
 
-/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+/*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Henüz bir işlem alınmadı.";
 
 /*----------------------------------------

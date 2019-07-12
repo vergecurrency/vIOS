@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ConfirmPinViewController: VViewController, KeyboardDelegate {
-    
+class ConfirmPinViewController: ThemeableViewController, KeyboardDelegate {
+
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinConfirmedView: PanelView!
@@ -21,7 +21,7 @@ class ConfirmPinViewController: VViewController, KeyboardDelegate {
     var pinCount: Int!
     var segueIdentifier: String?
     var completion: ((_ pin: String) -> Void)?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,28 +31,28 @@ class ConfirmPinViewController: VViewController, KeyboardDelegate {
         pinTextField.pinCharacterCount = pinCount
         pinTextField.reset()
     }
-    
+
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
         if (keyboardKey.isKind(of: BackKey.self)) {
             self.pinTextField.removeCharacter()
-            
+
             if (pin.count > 0) {
                 pin = String(pin[..<pin.index(pin.endIndex, offsetBy: -1)])
             }
         } else {
             self.pinTextField.addCharacter()
-            
+
             if (pin.count < self.pinTextField.pinCharacterCount) {
                 pin = "\(pin)\(input)"
             }
-            
+
             // When all pins are set.
             if (pin.count == self.pinTextField.pinCharacterCount) {
                 self.handlePinCreation()
             }
         }
     }
-    
+
     func handlePinCreation() {
         if (self.pin == self.previousPin) {
             self.applicationRepository.pinCount = pinCount
@@ -61,7 +61,7 @@ class ConfirmPinViewController: VViewController, KeyboardDelegate {
             self.pinConfirmedView.center.y -= 60.0
             UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseInOut, animations: {
                 self.pinKeyboard.alpha = 0.0
-                
+
                 self.pinConfirmedView.isHidden = false
                 self.pinConfirmedView.alpha = 1.0
                 self.pinConfirmedView.center.y += 60.0
@@ -71,15 +71,15 @@ class ConfirmPinViewController: VViewController, KeyboardDelegate {
             self.pinFailedView.center.y -= 60
             UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseInOut, animations: {
                 self.pinKeyboard.alpha = 0.0
-                
+
                 self.pinFailedView.isHidden = false
                 self.pinFailedView.alpha = 1.0
                 self.pinFailedView.center.y += 60.0
-                
+
             }, completion: nil)
         }
     }
-    
+
     @IBAction func confirmPin(_ sender: Any) {
         self.applicationRepository.pin = self.pin
 

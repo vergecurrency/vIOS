@@ -9,16 +9,9 @@
 import UIKit
 
 class NoContactsPlaceholderImageView: ThemedImageView {
-    override var defaultImage: UIImage {
-        get {
-            return UIImage(named: "NoContactsPlaceholder")!
-        }
-        set {}
+
+    override var themeImage: UIImage {
+        return ThemeManager.shared.currentTheme.noContactsPlaceholderImage
     }
-    override var moonImage: UIImage {
-        get {
-            return UIImage(named: "NoContactsPlaceholderMoonMode")!
-        }
-        set {}
-    }
+
 }

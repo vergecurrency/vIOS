@@ -21,7 +21,7 @@ class FiatRateTicker {
         self.applicationRepository = applicationRepository
         self.statisicsClient = statisicsClient
     }
-    
+
     // Start the fiat rate ticker.
     func start() {
         if started {
@@ -31,17 +31,17 @@ class FiatRateTicker {
         if !applicationRepository.setup {
             return
         }
-        
+
         fetch()
-        
-        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchRateTimeout, repeats: true) { timer in
+
+        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchRateTimeout, repeats: true) { _ in
             self.fetch()
         }
-        
+
         started = true
         print("Fiat rate ticker started...")
     }
-    
+
     // Stop the price ticker.
     func stop() {
         interval?.invalidate()
@@ -49,7 +49,7 @@ class FiatRateTicker {
 
         print("Fiat rate ticker stopped...")
     }
-    
+
     // Fetch statistics from the API and notify all absorbers.
     @objc func fetch() {
         print("Fetching new stats")

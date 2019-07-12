@@ -10,7 +10,7 @@ import UIKit
 
 class PrimaryLabel: TitleLabel {
 
-    override func setColors() {
+    override func updateColors() {
         self.textColor = ThemeManager.shared.primaryLight()
     }
 

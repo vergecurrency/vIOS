@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class WalletViewController: VViewController, UIScrollViewDelegate {
+class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var backgroundView: WalletContainerView!
     @IBOutlet weak var xvgBalanceLabel: UILabel!
@@ -48,45 +48,56 @@ class WalletViewController: VViewController, UIScrollViewDelegate {
             object: nil
         )
     }
-    
+
+    override func updateColors() {
+        super.updateColors()
+
+        self.setupSlides()
+    }
+
     func setupSlides() {
         self.walletSlideScrollView.delegate = self
         self.walletSlides = self.createWalletSlides()
-        
+
         DispatchQueue.main.async {
             self.setupWalletSlideScrollView()
-            
+
             for slide in self.walletSlides {
                 self.walletSlideScrollView.addSubview(slide)
             }
         }
     }
-    
-    
+
     // MARK: - Wallet Scroll View
-    
+
     func createWalletSlides() -> [WalletSlideView] {
-        let transactionsSlide = Bundle.main.loadNibNamed("TransactionsWalletSlideView", owner: self, options: nil)?.first as! WalletSlideView
-        let chartSlide = Bundle.main.loadNibNamed("ChartWalletSlideView", owner: self, options: nil)?.first as! WalletSlideView
-        let summarySlide = Bundle.main.loadNibNamed("SummaryWalletSlideView", owner: self, options: nil)?.first as! WalletSlideView
-        
+        let transactionsSlide = Bundle.main.loadNibNamed("TransactionsWalletSlideView",
+                                                         owner: self,
+                                                         options: nil)?.first as! WalletSlideView
+        let chartSlide = Bundle.main.loadNibNamed("ChartWalletSlideView",
+                                                  owner: self,
+                                                  options: nil)?.first as! WalletSlideView
+        let summarySlide = Bundle.main.loadNibNamed("SummaryWalletSlideView",
+                                                    owner: self,
+                                                    options: nil)?.first as! WalletSlideView
+
         return [
             transactionsSlide,
             chartSlide,
             summarySlide
         ]
     }
-    
+
     func setupWalletSlideScrollView() {
         walletSlideScrollView.contentSize = CGSize(
             width: walletSlideScrollView.frame.width * CGFloat(walletSlides.count),
             height: walletSlideScrollView.frame.height
         )
-        
+
         for i in 0 ..< walletSlides.count {
             let slideX = walletSlideScrollView.frame.width * CGFloat(i)
             let slideWidth = walletSlideScrollView.frame.width
-            
+
             walletSlides[i].frame = CGRect(
                 x: slideX,
                 y: 0,
@@ -95,14 +106,14 @@ class WalletViewController: VViewController, UIScrollViewDelegate {
             )
         }
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView == walletSlideScrollView) {
             let currentPage = Int(round(walletSlideScrollView.contentOffset.x/walletSlideScrollView.frame.width))
             self.walletSlidePageControl.currentPage = currentPage
         }
     }
-    
+
     @objc func didReceiveStats(notification: Notification? = nil) {
         setStats()
     }
@@ -110,7 +121,7 @@ class WalletViewController: VViewController, UIScrollViewDelegate {
     @objc func didChangeWalletAmount(notification: Notification? = nil) {
         setStats()
     }
-    
+
     func setStats() {
         DispatchQueue.main.async {
             let walletAmount = self.applicationRepository.amount
@@ -118,14 +129,15 @@ class WalletViewController: VViewController, UIScrollViewDelegate {
 
             if let xvgInfo = self.fiatRateTicker.rateInfo {
                 self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
-                self.pairSymbolBalanceLabel.text = "\(self.applicationRepository.currency) " + "wallet.balanceTitle".localized
-                
+                self.pairSymbolBalanceLabel.text =
+                    "\(self.applicationRepository.currency) " + "wallet.balanceTitle".localized
+
                 self.xvgPairBalanceLabel.text = NSNumber(value: xvgInfo.price).toPairCurrency(fractDigits: 6)
                 self.xvgPairSymbolLabel.text = "\(self.applicationRepository.currency)/XVG"
             }
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TransactionTableViewController" {
             if let nc = segue.destination as? UINavigationController {

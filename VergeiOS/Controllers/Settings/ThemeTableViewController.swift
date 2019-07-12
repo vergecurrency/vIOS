@@ -12,54 +12,86 @@ class ThemeTableViewController: EdgedTableViewController {
 
     var applicationRepository: ApplicationRepository!
 
-    let themes: [String] = [
-        "feather",
-        "moon"
-    ]
+    let themes = ThemeFactory.shared.themes
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
 
-    // MARK: - Table view data source
+// MARK: Table view data source
+extension ThemeTableViewController {
+
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return themes.count
+        if section == 0 {
+            return self.themes.count
+        } else if section == 1 {
+            return 1
+        }
+        return 0
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "settings.themes.sectionHeaderTitle".localized
+        if section == 0 {
+            return "settings.themes.sectionHeaderTitle".localized
+        } else if section == 1 {
+            return "settings.themes.iconsSectionHeaderTitle".localized
+        }
+        return nil
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "settings.themes.sectionFooterTitle".localized
+        if section == 0 {
+            return "settings.themes.sectionFooterTitle".localized
+        }
+        return nil
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "themeCell", for: indexPath)
+        var cell = UITableViewCell.init()
 
-        let mode = themes[indexPath.row]
+        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "themeCell", for: indexPath)
 
-        switch mode {
-        case "moon":
-            cell.textLabel?.text = "settings.themes.moonMode".localized
-            cell.imageView?.image = UIImage(named: "Moon")
-            cell.accessoryType = ThemeManager.shared.useMoonMode ? .checkmark : .none
-        default:
-            cell.textLabel?.text = "settings.themes.featherMode".localized
-            cell.imageView?.image = UIImage(named: "Feather")
-            cell.accessoryType = ThemeManager.shared.useMoonMode ? .none : .checkmark
+            let theme = themes[indexPath.row]
+            let currentTheme = ThemeManager.shared.currentTheme
+
+            cell.textLabel?.text = theme.name
+            cell.imageView?.image = theme.icon
+            cell.accessoryType = theme.id == currentTheme.id ? .checkmark : .none
+        }
+
+        if indexPath.section == 1 {
+            cell = tableView.dequeueReusableCell(withIdentifier: "appIconsCell", for: indexPath)
+
+            let appIconCell = cell as! AppIconsTableViewCell
+
+            appIconCell.didAppIconSelected = { appIcon in
+                ThemeManager.shared.switchAppIcon(appIcon: appIcon)
+            }
         }
 
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let mode = themes[indexPath.row]
+}
 
-        ThemeManager.shared.switchMode(isOn: mode == "moon", appRepo: self.applicationRepository)
+// MARK: Table view delegate
+extension ThemeTableViewController {
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if indexPath.section == 0 {
+            let theme = themes[indexPath.row]
+            ThemeManager.shared.switchTheme(theme: theme)
+
+            self.tableView.reloadData()
+        }
+
     }
+
 }

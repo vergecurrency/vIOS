@@ -250,6 +250,7 @@
 "settings.themes.titleLabel"                = "Gorgeous Themes for Your Wallet";
 "settings.themes.sectionHeaderTitle"        = "Choose a theme";
 "settings.themes.sectionFooterTitle"        = "Changing a theme will restart the application. Also it will probably make you feel happy and give you goosebumps in weird places!";
+"settings.themes.iconsSectionHeaderTitle"   = "App icons";
 
 // Use Face ID
 
@@ -292,6 +293,7 @@
 "settings.themes.title"                     = "Themes";
 "settings.themes.featherMode"               = "Feather Mode";
 "settings.themes.moonMode"                  = "Moon Mode";
+"settings.themes.marsMode"                  = "Mars Mode";
 
 // ----------------------------------------
 // Shortcuts
@@ -539,7 +541,7 @@
 "wallet.slides.chart.availability"          = "chart data only available in USD";
 "wallet.slides.chart.noData"                = "History chart data can't be found.";
 
-// NoWalletTransactionsPlaceholderTableViewCell.xib
+// TransactionsPlaceholderTableViewCell.xib
 
 "wallet.slides.noTransactions.titleLabel"   = "No transactions received yet.";
 

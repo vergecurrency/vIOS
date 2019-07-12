@@ -5,7 +5,7 @@
 
 import UIKit
 
-class TransactionProposalsTableViewController: UITableViewController {
+class TransactionProposalsTableViewController: EdgedTableViewController {
 
     var walletClient: WalletClient!
     var proposals: [TxProposalResponse] = []
@@ -29,7 +29,7 @@ class TransactionProposalsTableViewController: UITableViewController {
     @objc func loadProposals() {
         refreshControl?.beginRefreshing()
 
-        self.walletClient.getTxProposals { proposals, error in
+        self.walletClient.getTxProposals { proposals, _ in
             self.proposals = proposals
 
             self.tableView.reloadData()
@@ -52,9 +52,11 @@ class TransactionProposalsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if !hasProposals {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            cell.themeable = true
             cell.textLabel?.text = "settings.transactions.noProposals".localized
             cell.textLabel?.textColor = ThemeManager.shared.vergeGrey()
             cell.selectionStyle = .none
+            cell.updateColors()
 
             return cell
         }
@@ -78,17 +80,17 @@ class TransactionProposalsTableViewController: UITableViewController {
         }
 
         let proposal = proposals[indexPath.row]
-        
+
         let sheet = UIAlertController(
             title: "settings.transactions.removeProposal".localized,
             message: "settings.transactions.releaseXvg".localized,
             preferredStyle: .alert
         )
         sheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
-        sheet.addAction(UIAlertAction(title: "defaults.remove".localized, style: .destructive) { action in
+        sheet.addAction(UIAlertAction(title: "defaults.remove".localized, style: .destructive) { _ in
             self.refreshControl?.beginRefreshing()
 
-            self.walletClient.deleteTxProposal(txp: proposal) { error in
+            self.walletClient.deleteTxProposal(txp: proposal) { _ in
                 self.loadProposals()
             }
         })

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UILabel {
-    
+
     @IBInspectable var localizationId: String {
         set(value) {
             self.text = value.localized
@@ -19,11 +19,11 @@ extension UILabel {
             return ""
         }
     }
-    
+
 }
 
 extension UIButton {
-    
+
     @IBInspectable var localizationId: String {
         set(value) {
             self.setTitle(value.localized, for: .normal)
@@ -32,11 +32,11 @@ extension UIButton {
             return ""
         }
     }
-    
+
 }
 
 extension UINavigationItem {
-    
+
     @IBInspectable var localizationTitleId: String {
         set(value) {
             self.title = value.localized
@@ -45,7 +45,7 @@ extension UINavigationItem {
             return ""
         }
     }
-    
+
     @IBInspectable var localizationPromptId: String {
         set(value) {
             self.prompt = value.localized
@@ -54,7 +54,7 @@ extension UINavigationItem {
             return ""
         }
     }
-    
+
     @IBInspectable var localizationBackButtonId: String {
         set(value) {
             self.backBarButtonItem?.title = value.localized
@@ -63,11 +63,11 @@ extension UINavigationItem {
             return ""
         }
     }
-    
+
 }
 
 extension UITextField {
-    
+
     @IBInspectable var localizationPlaceholderId: String {
         set(value) {
             self.placeholder = value.localized
@@ -76,11 +76,11 @@ extension UITextField {
             return ""
         }
     }
-    
+
 }
 
 extension SelectorButton {
-    
+
     @IBInspectable var localizationLabelId: String {
         set(value) {
             self.label = value.localized
@@ -89,11 +89,11 @@ extension SelectorButton {
             return ""
         }
     }
-    
+
 }
 
 extension UITabBarItem {
-    
+
     @IBInspectable var localizationTitleId: String {
         set(value) {
             self.title = value.localized
@@ -102,5 +102,5 @@ extension UITabBarItem {
             return ""
         }
     }
-    
+
 }

@@ -27,11 +27,11 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
     var agreedWithTerms: Bool = false
     weak var interval: Timer?
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,10 +43,10 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         self.createWalletButton.isEnabled = false
         self.openWalletButton.alpha = 0
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         self.interval?.invalidate()
     }
 
@@ -96,7 +96,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
     func animateProgress() {
         var selectedImage = 0
-        var images = [
+        let images = [
             "ChecklistTwoItem",
             "ChecklistThreeItem",
             "CheckmarkCircle"
@@ -114,7 +114,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             }
         }
     }
-    
+
     func showWalletButton(button: UIButton) {
         button.center.y += 30
         button.isEnabled = true

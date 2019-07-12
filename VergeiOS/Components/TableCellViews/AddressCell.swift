@@ -10,7 +10,7 @@ import UIKit
 
 class AddressCell: UITableViewCell {
     @IBOutlet weak var addressTextField: UITextField!
-    
+
     @IBAction func pasteButtonClicked(_ sender: Any) {
         addressTextField.text = UIPasteboard.general.string
     }

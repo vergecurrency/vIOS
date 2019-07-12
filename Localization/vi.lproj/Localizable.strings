@@ -452,7 +452,7 @@
 "wallet.slides.chart.availability" = "dữ liệu biểu đồ chỉ sẵn sàng cho USD";
 "wallet.slides.chart.noData" = "Biểu đồ không thấy";
 
-/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+/*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Không có giao dịch nhận tiền nào.";
 
 /*----------------------------------------

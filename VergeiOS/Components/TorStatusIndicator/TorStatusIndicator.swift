@@ -11,21 +11,23 @@ import SystemConfiguration
 
 class TorStatusIndicator: UIWindow {
 
-    enum status {
+    enum Status {
         case connected
         case disconnected
         case turnedOff
         case error
     }
-    
+
     static var shared = TorStatusIndicator()
     var torStatusIndicatorViewController: TorStatusIndicatorViewController?
-    let defaultStatus: TorStatusIndicator.status = .turnedOff
+    let defaultStatus: TorStatusIndicator.Status = .turnedOff
     var isShown = true
 
     func initialize() {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: frameHeight())
-        self.torStatusIndicatorViewController = TorStatusIndicatorViewController(nibName: "TorStatusIndicatorViewController", bundle: .main)
+        self.torStatusIndicatorViewController =
+            TorStatusIndicatorViewController(nibName: "TorStatusIndicatorViewController",
+                                             bundle: .main)
         self.torStatusIndicatorViewController?.view.frame = frame
         self.backgroundColor = .clear
 
@@ -33,12 +35,12 @@ class TorStatusIndicator: UIWindow {
         self.rootViewController = self.torStatusIndicatorViewController
 
         self.frame = frame
-        
+
         self.layoutIfNeeded()
-        
+
         self.torStatusIndicatorViewController?.setHasNotch(hasNotch())
         self.makeKeyAndVisible()
-        
+
         self.setStatus(defaultStatus)
     }
 
@@ -48,8 +50,7 @@ class TorStatusIndicator: UIWindow {
             if self.safeAreaInsets != UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0) {
                 hasNotch = true
             }
-        }
-        else if #available(iOS 11.0, *) {
+        } else if #available(iOS 11.0, *) {
             if self.safeAreaInsets != UIEdgeInsets.zero {
                 hasNotch = true
             }
@@ -60,8 +61,8 @@ class TorStatusIndicator: UIWindow {
     func frameHeight() -> CGFloat {
         return hasNotch() ? 54 : 33
     }
-    
-    func setStatus(_ status: TorStatusIndicator.status) {
+
+    func setStatus(_ status: TorStatusIndicator.Status) {
         torStatusIndicatorViewController?.setStatus(status)
     }
 

@@ -10,7 +10,7 @@ import UIKit
 import QRCode
 
 @IBDesignable
-class ReceiveViewController: VViewController {
+class ReceiveViewController: ThemeableViewController {
 
     enum CurrencySwitch {
         case XVG
@@ -33,11 +33,23 @@ class ReceiveViewController: VViewController {
     var walletClient: WalletClient!
     var transactionManager: TransactionManager!
     var fiatRateTicker: FiatRateTicker!
+    var currentQrCode: QRCode?
 
     var address = ""
     var amount = 0.0
     var currency = CurrencySwitch.XVG
     var cardShown = false
+
+    override func updateColors() {
+        super.updateColors()
+        self.currencyLabel.textColor = ThemeManager.shared.secondaryLight()
+
+        if self.currentQrCode != nil {
+            //TODO stealth address theme
+            self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
+            self.qrCodeImageView.image = (self.currentQrCode?.image)!
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +69,7 @@ class ReceiveViewController: VViewController {
 
         self.addTapRecognizer(target: addressTextField, action: #selector(copyAddress(recognizer:)))
         self.addTapRecognizer(target: xvgCardImageView, action: #selector(copyAddress(recognizer:)))
-        
+
         self.amountTextField.addTarget(self, action: #selector(amountTextFieldDidChange), for: .editingDidEnd)
     }
 
@@ -87,16 +99,16 @@ class ReceiveViewController: VViewController {
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
             self.xvgCardContainer.alpha = 1.0
             self.xvgCardContainer.center.y -= 20.0
-        }, completion: { (true) in
+        }, completion: { (_) in
             let image = self.imageCard()
             let imageData = image!.pngData()
-            
+
             if imageData != nil {
                 let defaults = UserDefaults(suiteName: "group.org.verge.wallet")
                 defaults?.setData(imageData!, forKey: "wallet.receive.image.shared")
             }
         })
-        
+
         cardShown = true
     }
 
@@ -168,7 +180,7 @@ class ReceiveViewController: VViewController {
 
     func changeAddress(_ address: String) {
         self.address = address
-        
+
         NotificationCenter.default.post(name: .didChangeReceiveAddress, object: address)
 
         DispatchQueue.main.async {
@@ -180,32 +192,29 @@ class ReceiveViewController: VViewController {
 
     @objc func createQRCode() {
         let address = amount > 0.0 ? "verge:\(self.address)?amount=\(amount)" : self.address
-        var qrCode = QRCode(address)
+        self.currentQrCode = QRCode(address)
 
         if stealthSwitch.isOn {
-            qrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
-            qrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
+            self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.backgroundBlue().cgColor)
+            self.currentQrCode?.backgroundColor = CIColor(cgColor: ThemeManager.shared.primaryDark().cgColor)
         } else {
-            qrCode?.color = CIColor(cgColor: ThemeManager.shared.useMoonMode
-                ? ThemeManager.shared.backgroundGrey().cgColor
-                : UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0).cgColor
-            )
-            qrCode?.backgroundColor = .white
+            self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
+            self.currentQrCode?.backgroundColor = .white
         }
 
-        qrCodeImageView.image = (qrCode?.image)!
+        qrCodeImageView.image = (self.currentQrCode?.image)!
     }
-    
+
     func imageCard() -> UIImage? {
         var image: UIImage?
-        
+
         UIGraphicsBeginImageContextWithOptions(xvgCardContainer.bounds.size, false, 0.0)
         xvgCardImageView.clipsToBounds = true
         xvgCardContainer.drawHierarchy(in: xvgCardContainer.bounds, afterScreenUpdates: true)
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         xvgCardImageView.clipsToBounds = false
-        
+
         return image
     }
 
@@ -278,13 +287,13 @@ class ReceiveViewController: VViewController {
             print("There is nothing to share")
         }
     }
-    
+
     @objc func amountTextFieldDidChange(_ textField: CurrencyInput) {
         amount = textField.getNumber().doubleValue
 
         if currency == .FIAT {
             if let xvgInfo = self.fiatRateTicker.rateInfo {
-                amount = amount / xvgInfo.price
+                amount /= xvgInfo.price
             }
         }
 

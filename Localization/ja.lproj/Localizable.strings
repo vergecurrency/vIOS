@@ -452,7 +452,7 @@
 "wallet.slides.chart.availability" = "チャートデータはUSドルのみ表示できます";
 "wallet.slides.chart.noData" = "チャート履歴が見つかりませんでした";
 
-/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+/*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "トランザクションは未受領";
 
 /*----------------------------------------

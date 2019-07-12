@@ -10,14 +10,14 @@ import Foundation
 
 extension Array {
     func sortByIndices(indices: [Int]) -> Array {
-        var array: Array<Element> = []
-        
+        var array: [Element] = []
+
         for index in indices {
             if self.indices.contains(index) {
                 array.append(self[index])
             }
         }
-        
+
         return array
     }
 }

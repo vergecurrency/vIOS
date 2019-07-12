@@ -14,7 +14,7 @@ class LocalAuthTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+
         if LAContext.available(type: .touchID) {
             textLabel?.text = "settings.localAuth.useTouchId".localized
             imageView?.image = UIImage(named: "TouchID")

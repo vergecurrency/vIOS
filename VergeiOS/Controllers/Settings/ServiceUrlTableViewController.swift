@@ -72,7 +72,7 @@ class ServiceUrlTableViewController: LocalizableTableViewController {
 
     func errorDuringChange(alert: UIAlertController) {
         alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
-        alert.addAction(UIAlertAction(title: "settings.serviceUrl.alert.usePrevUrl".localized, style: .default) { action in
+        alert.addAction(UIAlertAction(title: "settings.serviceUrl.alert.usePrevUrl".localized, style: .default) { _ in
             self.rollbackServiceUrl(serviceUrl: self.previousServiceUrl)
         })
         alert.title = "settings.serviceUrl.alert.errorChanging".localized

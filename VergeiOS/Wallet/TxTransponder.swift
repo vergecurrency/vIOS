@@ -13,10 +13,12 @@ class TxTransponder {
         case broadcast = 2
     }
 
-    typealias completionType = (_ txp: TxProposalResponse?, _ errorResponse: TxProposalErrorResponse?, _ error: Error?) -> Void
+    typealias CompletionType = (_ txp: TxProposalResponse?,
+                                _ errorResponse: TxProposalErrorResponse?,
+                                _ error: Error?) -> Void
 
     private var walletClient: WalletClientProtocol!
-    private var completion: completionType!
+    private var completion: CompletionType!
     private var step: Step = .publish
     private var previousTxp: TxProposalResponse?
 
@@ -24,11 +26,11 @@ class TxTransponder {
         self.walletClient = walletClient
     }
 
-    public func create(proposal: TxProposal, completion: @escaping completionType) {
+    public func create(proposal: TxProposal, completion: @escaping CompletionType) {
         self.walletClient.createTxProposal(proposal: proposal, completion: completion)
     }
 
-    public func send(txp: TxProposalResponse, completion: @escaping completionType) {
+    public func send(txp: TxProposalResponse, completion: @escaping CompletionType) {
         self.completion = completion
 
         // Publish the tx proposal and start the sequence.
@@ -62,7 +64,7 @@ class TxTransponder {
         _ txp: TxProposalResponse?,
         _ errorResponse: TxProposalErrorResponse?,
         _ error: Error?
-    ) -> Void {
+    ) {
         if let errorResponse = errorResponse {
             print(errorResponse)
             self.completion(self.previousTxp, errorResponse, error)

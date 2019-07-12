@@ -9,21 +9,21 @@
 import UIKit
 
 class PaperKeyDescriptionViewController: AbstractPaperkeyViewController {
-    
+
     @IBOutlet weak var paperKeyIcon: UIImageView!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.paperKeyIcon.alpha = 0.0
         self.paperKeyIcon.center.y -= 20.0
-        
+
         UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseInOut, animations: {
             self.paperKeyIcon.alpha = 1.0
             self.paperKeyIcon.center.y += 20.0
         }, completion: nil)
     }
-    
+
     // Dismiss the view
     @IBAction func backToWelcome(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

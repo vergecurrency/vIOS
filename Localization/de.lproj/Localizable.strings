@@ -452,7 +452,7 @@
 "wallet.slides.chart.availability" = "Kursdaten sind nur in USD verfügbar";
 "wallet.slides.chart.noData" = "Der Kursverlauf könnte nicht geladen werden.";
 
-/*NoWalletTransactionsPlaceholderTableViewCell.xib*/
+/*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Keine Transaktion bisher empfangen.";
 
 /*----------------------------------------

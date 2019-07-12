@@ -18,8 +18,8 @@ class RatesClient {
 
     func infoBy(currency: String, completion: @escaping (_ data: FiatRate?) -> Void) {
         let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
-    
-        let task = self.torClient.session.dataTask(with: url!) { data, resonse, error in
+
+        let task = self.torClient.session.dataTask(with: url!) { data, _, _ in
             guard let data = data else {
                 return completion(nil)
             }
@@ -28,7 +28,7 @@ class RatesClient {
                 completion(try? JSONDecoder().decode(FiatRate.self, from: data))
             }
         }
-        
+
         task.resume()
     }
 

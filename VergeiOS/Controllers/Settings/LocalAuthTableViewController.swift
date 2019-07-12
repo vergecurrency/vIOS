@@ -32,9 +32,9 @@ class LocalAuthTableViewController: LocalizableTableViewController {
     @IBAction func switchForUnlockingWallet(_ sender: UISwitch) {
         applicationRepository.localAuthForWalletUnlock = sender.isOn
     }
-    
+
     @IBAction func switchForSendingXvg(_ sender: UISwitch) {
         applicationRepository.localAuthForSendingXvg = sender.isOn
     }
-    
+
 }

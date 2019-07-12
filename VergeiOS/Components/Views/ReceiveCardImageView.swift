@@ -9,17 +9,9 @@
 import UIKit
 
 class ReceiveCardImageView: CardImageView {
-    override var defaultImage: UIImage {
-        get {
-            return UIImage(named: "ReceiveCard")!
-        }
-        set {}
+
+    override var themeImage: UIImage {
+        return ThemeManager.shared.currentTheme.receiveCardImage
     }
-    
-    override var moonImage: UIImage {
-        get {
-            return UIImage(named: "ReceiveCardMoonMode")!
-        }
-        set {}
-    }
+
 }

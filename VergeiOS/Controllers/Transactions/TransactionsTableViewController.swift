@@ -16,15 +16,15 @@ class TransactionsTableViewController: EdgedTableViewController {
     var transactions: [[TxHistory]] = []
     var dates: [Date] = []
     let searchController = UISearchController(searchResultsController: nil)
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .fade
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -83,6 +83,7 @@ class TransactionsTableViewController: EdgedTableViewController {
         if self.transactionManager.hasTransactions && navigationItem.searchController == nil {
             tableView.backgroundView = nil
             tableView.tableFooterView = nil
+
             // Setup the Search Controller
             searchController.searchResultsUpdater = self
             searchController.obscuresBackgroundDuringPresentation = false
@@ -94,7 +95,10 @@ class TransactionsTableViewController: EdgedTableViewController {
             extendedLayoutIncludesOpaqueBars = true
 
             // Setup the Scope Bar
-            searchController.searchBar.scopeButtonTitles = ["transactions.search.all".localized, "transactions.search.sent".localized, "transactions.search.received".localized]
+            searchController.searchBar.scopeButtonTitles =
+                ["transactions.search.all".localized,
+                 "transactions.search.sent".localized,
+                 "transactions.search.received".localized]
             searchController.searchBar.delegate = self
             searchController.delegate = self
         }
@@ -105,13 +109,14 @@ class TransactionsTableViewController: EdgedTableViewController {
         dates.removeAll()
 
         let categories = [
-            "transactions.search.sent".localized : TxAction.Sent,
-            "transactions.search.received".localized : TxAction.Received
+            "transactions.search.sent".localized: TxAction.Sent,
+            "transactions.search.received".localized: TxAction.Received
         ]
 
         self.transactionManager.all { transactions in
             let ftransactions = transactions.filter { transaction in
-                let doesCategoryMatch = (scope == "transactions.search.all".localized) || (transaction.category == categories[scope])
+                let doesCategoryMatch = (scope == "transactions.search.all".localized) ||
+                    (transaction.category == categories[scope])
 
                 if searchText == "" {
                     return doesCategoryMatch
@@ -137,23 +142,23 @@ class TransactionsTableViewController: EdgedTableViewController {
             }
         }
     }
-    
+
     func sectionDate(bySection section: Int) -> Date {
         return dates[section]
     }
-    
+
     func transactions(bySection section: Int) -> [TxHistory] {
         return transactions[section]
     }
-    
+
     func transaction(byIndexpath indexPath: IndexPath) -> TxHistory {
         let items = transactions(bySection: indexPath.section)
-        
+
         return items[indexPath.row]
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return transactions.count
     }
@@ -167,20 +172,22 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("TransactionTableViewCell", owner: self, options: nil)?.first as! TransactionTableViewCell
-        
+        let cell = Bundle.main.loadNibNamed("TransactionTableViewCell",
+                                            owner: self,
+                                            options: nil)?.first as! TransactionTableViewCell
+
         let item = transaction(byIndexpath: indexPath)
 
-        var recipient: Contact? = nil
+        var recipient: Contact?
         if let name = addressBookManager.name(byAddress: item.address) {
             recipient = Contact()
             recipient?.address = item.address
             recipient?.name = name
         }
-        
+
         cell.setTransaction(item, address: recipient)
         cell.backgroundColor = ThemeManager.shared.backgroundGrey()
-        
+
         return cell
     }
 
@@ -192,19 +199,21 @@ class TransactionsTableViewController: EdgedTableViewController {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .none
-        
+
         return df.string(from: sectionDate(bySection: section))
     }
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.backgroundView?.backgroundColor = ThemeManager.shared.backgroundGrey()
         header.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         header.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         header.textLabel?.frame = header.frame
         header.textLabel?.text = header.textLabel?.text?.capitalized
+
+        for subview in header.subviews { // Unacceable Gray background view issue
+            subview.backgroundColor = ThemeManager.shared.backgroundGrey()
+        }
     }
-    
 
     // MARK: - Navigation
 
@@ -227,7 +236,8 @@ class TransactionsTableViewController: EdgedTableViewController {
 
             let searchText = self.searchController.searchBar.text ?? ""
             let scopeIndex = self.searchController.searchBar.selectedScopeButtonIndex
-            let scope = self.searchController.searchBar.scopeButtonTitles?[scopeIndex] ?? "transactions.search.all".localized
+            let scope = self.searchController.searchBar.scopeButtonTitles?[scopeIndex] ??
+                "transactions.search.all".localized
 
             self.getTransactions(searchText, scope: scope)
 

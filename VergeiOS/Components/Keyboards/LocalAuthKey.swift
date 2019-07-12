@@ -10,7 +10,7 @@ import UIKit
 import LocalAuthentication
 
 class LocalAuthKey: ImageKey {
-    
+
     var lastIsHidden: Bool = true
     var isHidden: Bool {
         get {
@@ -21,7 +21,7 @@ class LocalAuthKey: ImageKey {
             lastIsHidden = newValue
         }
     }
-    
+
     init() {
         var imageName: String?
         if LAContext.available(type: .touchID) {

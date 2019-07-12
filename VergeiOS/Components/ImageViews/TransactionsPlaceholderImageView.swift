@@ -9,16 +9,9 @@
 import UIKit
 
 class TransactionsPlaceholderImageView: ThemedImageView {
-    override var defaultImage: UIImage {
-        get {
-            return UIImage(named: "TransactionsPlaceholder")!
-        }
-        set {}
+
+    override var themeImage: UIImage {
+        return ThemeManager.shared.currentTheme.transactionsPlaceholderImage
     }
-    override var moonImage: UIImage {
-        get {
-            return UIImage(named: "TransactionsPlaceholderMoonMode")!
-        }
-        set {}
-    }
+
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class CreditsTableViewController: EdgedTableViewController {
+    @IBOutlet weak var heroImageView: UIImageView!
 
     var developers = [
         [
@@ -32,7 +33,7 @@ class CreditsTableViewController: EdgedTableViewController {
             "twitter": "ihellc"
         ]
     ]
-    
+
     var designers = [
         [
             "name": "Hassan",
@@ -45,9 +46,9 @@ class CreditsTableViewController: EdgedTableViewController {
         [
             "name": "Vadim",
             "twitter": "grevcev_vadim"
-        ],
+        ]
     ]
-    
+
     var translators = [
         [
             "name": "Swen",
@@ -56,11 +57,14 @@ class CreditsTableViewController: EdgedTableViewController {
         [
             "name": "Ivan",
             "twitter": "ihellc"
-        ],
+        ]
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.heroImageView.image = ThemeManager.shared.currentTheme.creditsImage
+        self.heroImageView.tintColor = ThemeManager.shared.currentTheme.placeholderColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,7 +92,7 @@ class CreditsTableViewController: EdgedTableViewController {
             return 0
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 52
     }
@@ -97,13 +101,13 @@ class CreditsTableViewController: EdgedTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "creditTableViewCell", for: indexPath)
 
         let credit = getCredit(from: indexPath)
-        
+
         cell.textLabel?.text = credit["name"]
         cell.detailTextLabel?.text = "@\(credit["twitter"]!)"
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -116,7 +120,7 @@ class CreditsTableViewController: EdgedTableViewController {
             return ""
         }
     }
-    
+
     func getCredit(from indexPath: IndexPath) -> [String: String] {
         switch indexPath.section {
         case 0:
@@ -129,14 +133,14 @@ class CreditsTableViewController: EdgedTableViewController {
             return [:]
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let credit = getCredit(from: indexPath)
-        
+
         loadWebsite(url: "https://twitter.com/\(credit["twitter"]!)")
     }
-    
-    private func loadWebsite(url: String) -> Void {
+
+    private func loadWebsite(url: String) {
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
         }

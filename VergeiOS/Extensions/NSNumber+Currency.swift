@@ -31,15 +31,15 @@ extension NSNumber {
             formatter.currencySymbol = ""
             suffix = " XVG"
         }
-        
+
         // Remove extra symbol space
         return "\(formatter.string(from: self)!)\(suffix)"
     }
-    
+
     func toPairCurrency(fractDigits: Int = 2) -> String {
         return toCurrency(currency: defaultCurrency, fractDigits: fractDigits)
     }
-    
+
     func toXvgCurrency(fractDigits: Int? = nil) -> String {
         var fractDigits = fractDigits
 

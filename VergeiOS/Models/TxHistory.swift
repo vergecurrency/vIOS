@@ -39,7 +39,7 @@ extension TxHistory {
                 return address
             }
         }
-        
+
         if category == .Moved {
             return ""
         }
@@ -75,7 +75,7 @@ extension TxHistory {
     public var confirmationsCount: String {
         return confirmations > 6 ? "6+" : String(confirmations < 0 ? 0 : confirmations)
     }
-    
+
     public var confirmed: Bool {
         return confirmations >= Constants.confirmationsNeeded
     }

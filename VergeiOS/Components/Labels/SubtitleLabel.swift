@@ -10,7 +10,7 @@ import UIKit
 
 class SubtitleLabel: TitleLabel {
 
-    override func setColors() {
+    override func updateColors() {
         self.textColor = ThemeManager.shared.primaryDark()
     }
 

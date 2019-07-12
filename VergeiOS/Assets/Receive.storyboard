@@ -98,7 +98,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOU-XB-kSS">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agS-ch-rwn">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agS-ch-rwn" customClass="SecondaryButton" customModule="VergeiOS" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="0.0" width="44" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="44" id="tt2-kG-e9v"/>
@@ -148,7 +148,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OOn-Ee-pZj">
                                                         <rect key="frame" x="0.0" y="64" width="375" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nh-uR-eBP">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nh-uR-eBP" customClass="SecondaryButton" customModule="VergeiOS" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="0.0" width="44" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="44" id="D3d-Le-V4B"/>
@@ -226,7 +226,7 @@
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-fo-5vX">
                                                         <rect key="frame" x="0.0" y="114" width="375" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSh-0O-LT9">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSh-0O-LT9" customClass="SecondaryButton" customModule="VergeiOS" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="0.0" width="44" height="50"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="44" id="afq-21-Baf"/>
@@ -292,7 +292,6 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KmK-1e-NjM" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="0.0" width="295" height="50"/>
-                                                        <color key="backgroundColor" name="PrimaryLight"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="uG2-yO-vut"/>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="zGO-RT-D6d"/>
@@ -304,9 +303,10 @@
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="receive.shareButton"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="shareAddress:" destination="0dW-f5-Hat" eventType="touchUpInside" id="Qei-is-P0O"/>
+                                                            <action selector="shareAddress:" destination="0dW-f5-Hat" eventType="touchUpInside" id="Ins-0P-CKb"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

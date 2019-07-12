@@ -20,7 +20,7 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (CurrencyTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
-        
+
         container.storyboardInitCompleted (LanguageTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }

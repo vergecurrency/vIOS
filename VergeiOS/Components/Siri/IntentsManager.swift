@@ -9,14 +9,14 @@
 import Intents
 
 class IntentsManager: NSObject {
-    
+
     @available(iOS 12.0, *)
     static func donateIntents() {
         let priceIntent = VergePriceIntent()
         priceIntent.suggestedInvocationPhrase = "Verge price"
-        
+
         let interaction = INInteraction(intent: priceIntent, response: nil)
-        
+
         interaction.donate { (error) in
             if error != nil {
                 if let error = error as NSError? {
@@ -26,10 +26,10 @@ class IntentsManager: NSObject {
                 }
             }
         }
-        
+
         let receiveFundsIntent = ReceiveFundsIntent()
         receiveFundsIntent.suggestedInvocationPhrase = "Receive Funds in Verge Currency"
-        
+
         let receiveFundsInteraction = INInteraction(intent: receiveFundsIntent, response: nil)
         receiveFundsInteraction.donate { (error) in
             if error != nil {
@@ -40,7 +40,6 @@ class IntentsManager: NSObject {
                 }
             }
         }
-        
+
     }
 }
-

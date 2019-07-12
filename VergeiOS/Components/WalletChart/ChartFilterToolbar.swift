@@ -7,6 +7,10 @@ import UIKit
 
 class ChartFilterToolbar: UIToolbar {
 
+    override func updateColors() {
+        super.updateColors()
+    }
+
     enum Filter {
         case oneDay
         case oneWeek
@@ -22,7 +26,7 @@ class ChartFilterToolbar: UIToolbar {
         Filter.oneMonth: "chart.filter.oneMonth".localized,
         Filter.threeMonths: "chart.filter.threeMonths".localized,
         Filter.oneYear: "chart.filter.oneYear".localized,
-        Filter.all: "chart.filter.all".localized,
+        Filter.all: "chart.filter.all".localized
     ]
 
     private let buttons: [Filter] = [
@@ -31,7 +35,7 @@ class ChartFilterToolbar: UIToolbar {
         Filter.oneMonth,
         Filter.threeMonths,
         Filter.oneYear,
-        Filter.all,
+        Filter.all
     ]
 
     func initialize() {
@@ -58,7 +62,7 @@ class ChartFilterToolbar: UIToolbar {
 
     func select(filter: Filter) {
         deselectAllItems()
-        
+
         if let delegate = delegate as? ChartFilterToolbarDelegate {
             delegate.didSelectChartFilter(filter: filter)
         }
@@ -67,13 +71,11 @@ class ChartFilterToolbar: UIToolbar {
             return
         }
 
-        for item in items {
-            if item.title == names[filter] {
-                item.tintColor = ThemeManager.shared.primaryLight()
-            }
+        for item in items where item.title == names[filter] {
+            item.tintColor = ThemeManager.shared.primaryLight()
         }
     }
-    
+
     @objc func didSelectFilter(sender: UIBarButtonItem) {
         deselectAllItems()
 
@@ -97,7 +99,7 @@ class ChartFilterToolbar: UIToolbar {
         guard let items = items else {
             return
         }
-        
+
         for button in items {
             button.tintColor = ThemeManager.shared.vergeGrey()
         }

@@ -23,11 +23,12 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
 
         return .lightContent
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : ThemeManager.shared.primaryLight()]
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: ThemeManager.shared.primaryLight()]
         navigationController?.navigationBar.tintColor = ThemeManager.shared.primaryLight()
         navigationController?.navigationBar.barStyle = .default
 

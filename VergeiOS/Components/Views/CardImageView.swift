@@ -18,7 +18,7 @@ class CardImageView: ThemedImageView {
 
     func createView() {
         self.layer.cornerRadius = 15
-        
+
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.15
         self.layer.shadowOffset = CGSize(width: 0, height: 5)
