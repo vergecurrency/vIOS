@@ -721,7 +721,6 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2E-iK-uHw" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="548" width="295" height="50"/>
-                                <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RgP-cp-8Uc"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="a62-t8-cko"/>
@@ -769,7 +768,6 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="q2E-iK-uHw" firstAttribute="leading" secondItem="IMz-ci-RPJ" secondAttribute="leading" priority="750" constant="40" id="2om-hA-kZ4"/>
                             <constraint firstItem="IMz-ci-RPJ" firstAttribute="trailing" secondItem="o8D-qQ-8GG" secondAttribute="trailing" constant="40" id="AD6-wO-vl4"/>
@@ -976,7 +974,6 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7P9-rp-OVn" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="548" width="295" height="50"/>
-                                <color key="backgroundColor" name="PrimaryLight"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Tej-8k-lb4"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="ahv-DG-3wJ"/>
@@ -995,7 +992,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7P9-rp-OVn" firstAttribute="centerX" secondItem="yWC-6F-4Ky" secondAttribute="centerX" id="1xF-lZ-CYz"/>
                             <constraint firstItem="JEF-8K-bNN" firstAttribute="top" secondItem="rrC-hP-YHx" secondAttribute="bottom" constant="8" id="2Ut-Ow-8Rq"/>
@@ -1043,7 +1039,6 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqL-IM-qeL" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="40" width="295" height="50"/>
-                                    <color key="backgroundColor" name="PrimaryLight"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="GNd-39-Qs8"/>
                                         <constraint firstAttribute="height" constant="50" id="Lim-DV-Kkn"/>
@@ -1166,7 +1161,6 @@
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-Bt-gDA" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="120" width="295" height="50"/>
-                                    <color key="backgroundColor" name="PrimaryLight"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="m8P-Yv-NOJ"/>
                                     </constraints>
@@ -1694,7 +1688,6 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Q3-eU-Fg1" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="0.0" width="295" height="50"/>
-                                    <color key="backgroundColor" name="PrimaryLight"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="FQn-d7-qJd"/>
                                         <constraint firstAttribute="height" constant="50" id="zmw-eF-1y5"/>

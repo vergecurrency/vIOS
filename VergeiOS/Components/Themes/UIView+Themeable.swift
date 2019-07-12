@@ -139,7 +139,7 @@ extension UIPageControl {
 
     override func updateColors() {
         self.currentPageIndicatorTintColor = ThemeManager.shared.primaryLight()
-        self.pageIndicatorTintColor = ThemeManager.shared.secondaryDark()
+        self.pageIndicatorTintColor = ThemeManager.shared.secondaryLight()
     }
 }
 
