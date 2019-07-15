@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var application: Application?
     var window: UIWindow?
-    var sendRequest: TransactionFactory?
+    var sendRequest: WalletTransactionFactory?
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
 
     func application(
@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
 
-            let transaction = TransactionFactory()
+            let transaction = WalletTransactionFactory()
             transaction.address = address!
             transaction.amount = amount ?? 0.0
 

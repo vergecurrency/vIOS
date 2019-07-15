@@ -17,7 +17,7 @@ class DonateTableViewController: EdgedTableViewController {
 
     @IBAction func donate(_ sender: Any) {
         // Create a send transaction.
-        let sendTransaction = TransactionFactory()
+        let sendTransaction = WalletTransactionFactory()
         sendTransaction.address = Constants.donationXvgAddress
         sendTransaction.amount = NSNumber(value: 0)
 

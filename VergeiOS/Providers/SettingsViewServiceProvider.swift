@@ -50,6 +50,12 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (ThemeTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
+
+        container.storyboardInitCompleted (SweepPaperWalletViewController.self) { r, c in
+            c.bitcoreNodeClient = r.resolve(BitcoreNodeClientProtocol.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
+            c.transactionFactory = r.resolve(TransactionFactoryProtocol.self)
+        }
     }
 
 }

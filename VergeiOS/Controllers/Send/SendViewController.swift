@@ -27,7 +27,7 @@ class SendViewController: ThemeableViewController {
     @IBOutlet weak var confirmButton: UIButton!
 
     var currency = CurrencySwitch.XVG
-    var txFactory: TransactionFactory!
+    var txFactory: WalletTransactionFactory!
     var txTransponder: TxTransponder!
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClient!
@@ -304,7 +304,7 @@ class SendViewController: ThemeableViewController {
                         return
                     }
 
-                    self.didChangeSendTransaction(TransactionFactory())
+                    self.didChangeSendTransaction(WalletTransactionFactory())
 
                     let timeout = (error == nil) ? 3.0 : 0.0
                     _ = setTimeout(timeout) {
@@ -375,7 +375,7 @@ class SendViewController: ThemeableViewController {
     }
 
     @objc func clearTransactionDetails() {
-        didChangeSendTransaction(TransactionFactory())
+        didChangeSendTransaction(WalletTransactionFactory())
     }
 }
 
@@ -566,7 +566,7 @@ extension SendViewController: UITextFieldDelegate {
 extension SendViewController: SendTransactionDelegate {
     // MARK: - Send Transaction Delegate
 
-    func didChangeSendTransaction(_ transaction: TransactionFactory) {
+    func didChangeSendTransaction(_ transaction: WalletTransactionFactory) {
         txFactory = transaction
 
         recipientTextField.text = txFactory.address
@@ -593,7 +593,7 @@ extension SendViewController: SendTransactionDelegate {
         updateWalletAmountLabel()
     }
 
-    func getSendTransaction() -> TransactionFactory {
+    func getSendTransaction() -> WalletTransactionFactory {
         return txFactory
     }
 

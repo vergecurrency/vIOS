@@ -189,6 +189,7 @@
 "settings.wallet.footer.title"              = "Manage your wallet with the options given.";
 "settings.wallet.cell.removeLabel"          = "Remove wallet";
 "settings.wallet.cell.paperKeyLabel"        = "Paper key";
+"settings.wallet.cell.sweepWalletLabel"     = "Sweep paper wallet";
 "settings.wallet.cell.addressesLabel"       = "Addresses";
 "settings.wallet.cell.transactionsLabel"    = "Transaction Proposals";
 "settings.wallet.cell.serviceUrlLabel"      = "Service URL";

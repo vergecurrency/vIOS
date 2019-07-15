@@ -41,6 +41,10 @@ class WalletServiceProvider: ServiceProvider {
 
             return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient)
         }
+
+        container.register(WalletClientProtocol.self) { r in
+            return r.resolve(WalletClient.self)!
+        }
     }
 
     func registerTxTransponder() {
@@ -56,10 +60,10 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerTransactionFactory() {
-        container.register(TransactionFactory.self) { r in
+        container.register(WalletTransactionFactory.self) { r in
             let fiatRateTracker = r.resolve(FiatRateTicker.self)!
 
-            return TransactionFactory(fiatRateTracker: fiatRateTracker)
+            return WalletTransactionFactory(fiatRateTracker: fiatRateTracker)
         }
     }
 

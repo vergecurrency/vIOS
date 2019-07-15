@@ -11,7 +11,7 @@ import UIKit
 class SelectRecipientTableViewController: AbstractContactsTableViewController {
 
     weak var sendTransactionDelegate: SendTransactionDelegate!
-    var sendTransaction: TransactionFactory?
+    var sendTransaction: WalletTransactionFactory?
 
     override func viewDidLoad() {
         super.viewDidLoad()
