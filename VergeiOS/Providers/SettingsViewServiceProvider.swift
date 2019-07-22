@@ -51,10 +51,10 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
 
-        container.storyboardInitCompleted (SweepPaperWalletViewController.self) { r, c in
-            c.bitcoreNodeClient = r.resolve(BitcoreNodeClientProtocol.self)
-            c.walletClient = r.resolve(WalletClientProtocol.self)
-            c.transactionFactory = r.resolve(TransactionFactoryProtocol.self)
+        container.storyboardInitCompleted (WalletSweepingTableViewController.self) { r, c in
+//            c.bitcoreNodeClient = r.resolve(BitcoreNodeClientProtocol.self)
+//            c.walletClient = r.resolve(WalletClientProtocol.self)
+//            c.transactionFactory = r.resolve(TransactionFactoryProtocol.self)
         }
     }
 

@@ -47,6 +47,8 @@
 		A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316B0AE215454FB00FF5200 /* AddressValidator.swift */; };
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
+		A3239D6222E2012100430F8B /* SweepPaperWalletAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6122E2012100430F8B /* SweepPaperWalletAmountViewController.swift */; };
+		A3239D6422E60C2B00430F8B /* Sweeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6322E60C2B00430F8B /* Sweeper.swift */; };
 		A324DAE6229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE5229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift */; };
 		A324DAE8229F2EC200EF12D7 /* NoBalancePlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE7229F2EC200EF12D7 /* NoBalancePlaceholderImageView.swift */; };
 		A324DAEA229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE9229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift */; };
@@ -140,7 +142,7 @@
 		A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */; };
 		A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */; };
 		A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */; };
-		A3A71C0722D9092A0098D861 /* SweepPaperWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0622D9092A0098D861 /* SweepPaperWalletViewController.swift */; };
+		A3A71C0722D9092A0098D861 /* WalletSweepingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */; };
 		A3A71C0922D90A650098D861 /* BitcoreNodeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0822D90A650098D861 /* BitcoreNodeClient.swift */; };
 		A3A71C0B22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */; };
 		A3A71C0D22D90B5E0098D861 /* BNBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0C22D90B5E0098D861 /* BNBlock.swift */; };
@@ -186,6 +188,7 @@
 		A3E8FF33217B7ED700CB50ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F5703F1CEC52AAC784E /* AddressBookRepository.swift */; };
 		B2BD704D491D821519B7EEAB /* PriceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD75B9C4893B96B7175FA7 /* PriceChartView.swift */; };
+		B2BD705A821A647FDD71AD91 /* PaperWalletScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7448F804D363626E357F /* PaperWalletScanViewController.swift */; };
 		B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */; };
 		B2BD70891B57E89471E5B492 /* WalletAddressesOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD78C9C4831DD8B44AC041 /* WalletAddressesOptions.swift */; };
 		B2BD70FA0DF99FC892D91961 /* AddressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B580D4EC531F9591FFE /* AddressInfo.swift */; };
@@ -434,6 +437,8 @@
 		A30D27972260D165000377F8 /* TxTransponderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderTest.swift; sourceTree = "<group>"; };
 		A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClientProtocol.swift; sourceTree = "<group>"; };
 		A316B0AE215454FB00FF5200 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
+		A3239D6122E2012100430F8B /* SweepPaperWalletAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweepPaperWalletAmountViewController.swift; sourceTree = "<group>"; };
+		A3239D6322E60C2B00430F8B /* Sweeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeper.swift; sourceTree = "<group>"; };
 		A324DAE5229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsPlaceholderImageView.swift; sourceTree = "<group>"; };
 		A324DAE7229F2EC200EF12D7 /* NoBalancePlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBalancePlaceholderImageView.swift; sourceTree = "<group>"; };
 		A324DAE9229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPlaceholderImageView.swift; sourceTree = "<group>"; };
@@ -541,7 +546,7 @@
 		A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectWalletViewController.swift; sourceTree = "<group>"; };
 		A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSendView.swift; sourceTree = "<group>"; };
 		A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSendView.xib; sourceTree = "<group>"; };
-		A3A71C0622D9092A0098D861 /* SweepPaperWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweepPaperWalletViewController.swift; sourceTree = "<group>"; };
+		A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSweepingTableViewController.swift; sourceTree = "<group>"; };
 		A3A71C0822D90A650098D861 /* BitcoreNodeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoreNodeClient.swift; sourceTree = "<group>"; };
 		A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoreNodeClientProtocol.swift; sourceTree = "<group>"; };
 		A3A71C0C22D90B5E0098D861 /* BNBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNBlock.swift; sourceTree = "<group>"; };
@@ -602,6 +607,7 @@
 		B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBalance.swift; sourceTree = "<group>"; };
 		B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDelegate.swift; sourceTree = "<group>"; };
 		B2BD74133C8DA2D5802055B3 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		B2BD7448F804D363626E357F /* PaperWalletScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperWalletScanViewController.swift; sourceTree = "<group>"; };
 		B2BD74A8CBD24955A0BE06BE /* SettingsViewServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposalErrorResponse.swift; sourceTree = "<group>"; };
 		B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
@@ -1151,12 +1157,14 @@
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
+				B2BD7448F804D363626E357F /* PaperWalletScanViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
-				A3A71C0622D9092A0098D861 /* SweepPaperWalletViewController.swift */,
+				A3239D6122E2012100430F8B /* SweepPaperWalletAmountViewController.swift */,
 				A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 				B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */,
+				A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1356,6 +1364,7 @@
 				B2BD7A3D8D516C3586332E99 /* TxTransponder.swift */,
 				B2BD78A6683D5C34785959E3 /* WalletClient.swift */,
 				B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */,
+				A3239D6322E60C2B00430F8B /* Sweeper.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2056,6 +2065,7 @@
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
+				A3239D6222E2012100430F8B /* SweepPaperWalletAmountViewController.swift in Sources */,
 				A3E8FF33217B7ED700CB50ED /* Constants.swift in Sources */,
 				A324DAE6229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift in Sources */,
 				A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */,
@@ -2146,6 +2156,7 @@
 				B2BD7B44BD3879802B5A1FF2 /* NotificationManager.swift in Sources */,
 				CA9FFBA522CC33C100BE8598 /* ThemeableViewController.swift in Sources */,
 				B2BD717BC2C013EDDB11EB48 /* NotificationViewController.swift in Sources */,
+				A3239D6422E60C2B00430F8B /* Sweeper.swift in Sources */,
 				B2BD7AC777EC6838A1322F0E /* ThemeManager.swift in Sources */,
 				B2BD7A81D726B7C482B57EA8 /* ChartFilterToolbar.swift in Sources */,
 				B2BD71BB2B06C6F10205ECBC /* ChartFilterToolbarDelegate.swift in Sources */,
@@ -2191,7 +2202,7 @@
 				A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */,
 				A3AA2B8D2263EAC8000E4571 /* LightBackgroundView.swift in Sources */,
 				A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */,
-				A3A71C0722D9092A0098D861 /* SweepPaperWalletViewController.swift in Sources */,
+				A3A71C0722D9092A0098D861 /* WalletSweepingTableViewController.swift in Sources */,
 				B2BD76C55CCA3241E93A1A2B /* WalletTicker.swift in Sources */,
 				B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */,
 				B2BD73C50F4BA27C71F772FB /* Data+Extensions.swift in Sources */,
@@ -2217,6 +2228,7 @@
 				A3AA2B852263D23D000E4571 /* MutedLabel.swift in Sources */,
 				B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */,
 				CAA6031322BC3E3B00EFCB24 /* UIView+Themeable.swift in Sources */,
+				B2BD705A821A647FDD71AD91 /* PaperWalletScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2407,7 +2419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 201912070001;
+				CF_BUNDLE_BUILD_VERSION_STRING = 201907160001;
 				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2471,7 +2483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 201912070001;
+				CF_BUNDLE_BUILD_VERSION_STRING = 201907160001;
 				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
