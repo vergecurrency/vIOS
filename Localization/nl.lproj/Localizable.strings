@@ -195,7 +195,7 @@
 
 /*Transaction Proposals*/
 "settings.transactions.title" = "Transactie voorstellen";
-"settings.transactions.descLabel" = "Alle transactievoorstellen die mislukt zijn  tijdens een transactie, worden hieronder weergegeven. U moet ze handmatig verwijderen om het saldo vrij te geven.";
+"settings.transactions.descLabel" = "Alle transactievoorstellen die mislukt zijn tijdens een transactie, worden hieronder weergegeven. U moet ze handmatig verwijderen om het saldo vrij te geven.";
 
 /*Service URL*/
 "settings.serviceUrl.title" = "Service URL";
@@ -435,7 +435,7 @@
 
 /*SummaryWalletSlideView.xib*/
 "wallet.slides.summary.statistics" = "Statistieken";
-"wallet.slides.summary.dataNotFound" = "Statistieken data kan niet gevonden worden.";
+"wallet.slides.summary.dataNotFound" = "Statistieken data is tijdelijk niet beschikbaar.";
 
 /*SummaryWalletSlideView.swift*/
 "wallet.slides.summary.marketCap" = "Market Cap";
@@ -450,7 +450,7 @@
 "wallet.slides.chart.average" = "Gemiddeld";
 "wallet.slides.chart.low" = "Laag";
 "wallet.slides.chart.availability" = "grafiek alleen beschikbaar in USD";
-"wallet.slides.chart.noData" = "Geschiedenis grafiek data kan momenteel niet gevonden worden.";
+"wallet.slides.chart.noData" = "Geschiedenis grafiek data is tijdelijk niet beschikbaar.";
 
 /*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nog geen transacties ontvangen.";
