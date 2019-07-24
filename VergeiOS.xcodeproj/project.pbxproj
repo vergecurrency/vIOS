@@ -47,8 +47,9 @@
 		A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316B0AE215454FB00FF5200 /* AddressValidator.swift */; };
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
-		A3239D6222E2012100430F8B /* SweepPaperWalletAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6122E2012100430F8B /* SweepPaperWalletAmountViewController.swift */; };
 		A3239D6422E60C2B00430F8B /* Sweeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6322E60C2B00430F8B /* Sweeper.swift */; };
+		A3239D6722E8EC9200430F8B /* PaperWalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */; };
+		A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */; };
 		A324DAE6229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE5229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift */; };
 		A324DAE8229F2EC200EF12D7 /* NoBalancePlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE7229F2EC200EF12D7 /* NoBalancePlaceholderImageView.swift */; };
 		A324DAEA229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324DAE9229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift */; };
@@ -188,7 +189,6 @@
 		A3E8FF33217B7ED700CB50ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F5703F1CEC52AAC784E /* AddressBookRepository.swift */; };
 		B2BD704D491D821519B7EEAB /* PriceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD75B9C4893B96B7175FA7 /* PriceChartView.swift */; };
-		B2BD705A821A647FDD71AD91 /* PaperWalletScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7448F804D363626E357F /* PaperWalletScanViewController.swift */; };
 		B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */; };
 		B2BD70891B57E89471E5B492 /* WalletAddressesOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD78C9C4831DD8B44AC041 /* WalletAddressesOptions.swift */; };
 		B2BD70FA0DF99FC892D91961 /* AddressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B580D4EC531F9591FFE /* AddressInfo.swift */; };
@@ -437,8 +437,9 @@
 		A30D27972260D165000377F8 /* TxTransponderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderTest.swift; sourceTree = "<group>"; };
 		A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClientProtocol.swift; sourceTree = "<group>"; };
 		A316B0AE215454FB00FF5200 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
-		A3239D6122E2012100430F8B /* SweepPaperWalletAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweepPaperWalletAmountViewController.swift; sourceTree = "<group>"; };
 		A3239D6322E60C2B00430F8B /* Sweeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sweeper.swift; sourceTree = "<group>"; };
+		A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperWalletTableViewController.swift; sourceTree = "<group>"; };
+		A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletSweepingScannerViewController.swift; sourceTree = "<group>"; };
 		A324DAE5229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsPlaceholderImageView.swift; sourceTree = "<group>"; };
 		A324DAE7229F2EC200EF12D7 /* NoBalancePlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBalancePlaceholderImageView.swift; sourceTree = "<group>"; };
 		A324DAE9229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPlaceholderImageView.swift; sourceTree = "<group>"; };
@@ -546,7 +547,7 @@
 		A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectWalletViewController.swift; sourceTree = "<group>"; };
 		A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSendView.swift; sourceTree = "<group>"; };
 		A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSendView.xib; sourceTree = "<group>"; };
-		A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSweepingTableViewController.swift; sourceTree = "<group>"; };
+		A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalletSweepingTableViewController.swift; path = VergeiOS/Controllers/Settings/WalletSweeping/WalletSweepingTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		A3A71C0822D90A650098D861 /* BitcoreNodeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoreNodeClient.swift; sourceTree = "<group>"; };
 		A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoreNodeClientProtocol.swift; sourceTree = "<group>"; };
 		A3A71C0C22D90B5E0098D861 /* BNBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNBlock.swift; sourceTree = "<group>"; };
@@ -607,7 +608,6 @@
 		B2BD73F10225A0AABD04F1D4 /* AddressBalance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBalance.swift; sourceTree = "<group>"; };
 		B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientDelegate.swift; sourceTree = "<group>"; };
 		B2BD74133C8DA2D5802055B3 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		B2BD7448F804D363626E357F /* PaperWalletScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperWalletScanViewController.swift; sourceTree = "<group>"; };
 		B2BD74A8CBD24955A0BE06BE /* SettingsViewServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD74B4143A368E99C1180D /* TxProposalErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposalErrorResponse.swift; sourceTree = "<group>"; };
 		B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
@@ -1021,6 +1021,16 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		A3239D6522E8EC3100430F8B /* WalletSweeping */ = {
+			isa = PBXGroup;
+			children = (
+				A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */,
+				A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */,
+				A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */,
+			);
+			path = WalletSweeping;
+			sourceTree = "<group>";
+		};
 		A324DAE4229EFB8800EF12D7 /* ImageViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,6 +1158,7 @@
 			isa = PBXGroup;
 			children = (
 				A398B209212B01E3004ACB73 /* Cells */,
+				A3239D6522E8EC3100430F8B /* WalletSweeping */,
 				A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */,
 				A398B212212EBDD7004ACB73 /* CreditsTableViewController.swift */,
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
@@ -1157,14 +1168,11 @@
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
 				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
-				B2BD7448F804D363626E357F /* PaperWalletScanViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
-				A3239D6122E2012100430F8B /* SweepPaperWalletAmountViewController.swift */,
 				A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 				B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */,
-				A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -2029,6 +2037,7 @@
 				A338E6B72110D5D4000D44EE /* TransactionsWalletSlideView.swift in Sources */,
 				A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */,
 				A338E6A2210DD893000D44EE /* FinishSetupViewController.swift in Sources */,
+				A3239D6722E8EC9200430F8B /* PaperWalletTableViewController.swift in Sources */,
 				A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */,
 				A324DAEE22A0323900EF12D7 /* CloseButton.swift in Sources */,
 				A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */,
@@ -2065,7 +2074,6 @@
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,
-				A3239D6222E2012100430F8B /* SweepPaperWalletAmountViewController.swift in Sources */,
 				A3E8FF33217B7ED700CB50ED /* Constants.swift in Sources */,
 				A324DAE6229EFBB500EF12D7 /* NoContactsPlaceholderImageView.swift in Sources */,
 				A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */,
@@ -2189,6 +2197,7 @@
 				B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */,
 				B2BD711DC7A69C1F9F9C2875 /* TxAction.swift in Sources */,
 				B2BD782690228E5BDAFE38C4 /* TxProposal.swift in Sources */,
+				A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */,
 				B2BD741F2CC30614537FA183 /* TxProposalResponse.swift in Sources */,
 				CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */,
 				A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */,
@@ -2228,7 +2237,6 @@
 				A3AA2B852263D23D000E4571 /* MutedLabel.swift in Sources */,
 				B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */,
 				CAA6031322BC3E3B00EFCB24 /* UIView+Themeable.swift in Sources */,
-				B2BD705A821A647FDD71AD91 /* PaperWalletScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
