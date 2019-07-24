@@ -6,9 +6,8 @@
 import UIKit
 import AVFoundation
 
-class WalletSweepingScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class PaperWalletScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
-    var delegate: WalletSweepingScannerViewDelegate?
     var qrCodeFrameView: UIView!
     var imagePicker = UIImagePickerController()
     var captureSession: AVCaptureSession?
@@ -165,7 +164,7 @@ class WalletSweepingScannerViewController: UIViewController, AVCaptureMetadataOu
     }
 }
 
-extension WalletSweepingScannerViewController {
+extension PaperWalletScanViewController {
     private func setupCamera() {
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(
@@ -213,15 +212,19 @@ extension WalletSweepingScannerViewController {
     }
 
     func privateKeyScanned(privateKey: String) {
-        self.delegate?.didScanValue(scannedValue: privateKey)
+        let sweepPaperWalletAmountViewController = SweepPaperWalletAmountViewController()
+        let navigationController = UINavigationController(rootViewController: sweepPaperWalletAmountViewController)
+        navigationController.navigationBar.updateColors()
 
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            self.present(navigationController, animated: false)
+        }
     }
 }
 
 // Mark - Setup layout
 
-extension WalletSweepingScannerViewController {
+extension PaperWalletScanViewController {
     private func setupLayout() {
         self.view.addSubview(self.overlayView)
         self.overlayView.addSubview(self.qrCutoutView)
@@ -277,7 +280,7 @@ extension WalletSweepingScannerViewController {
     }
 }
 
-extension WalletSweepingScannerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension PaperWalletScanViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
@@ -302,8 +305,4 @@ extension WalletSweepingScannerViewController: UIImagePickerControllerDelegate, 
 
         dismiss(animated: true, completion: nil)
     }
-}
-
-protocol WalletSweepingScannerViewDelegate {
-    func didScanValue(scannedValue: String)
 }

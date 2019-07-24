@@ -50,23 +50,25 @@ class WalletSweepingTableViewController: UITableViewController {
         cell.detailTextLabel?.text = item.subtitle
         cell.accessoryType = .disclosureIndicator
         cell.updateColors()
-        cell.updateFonts()
+
+        cell.textLabel?.font = UIFont.avenir(size: 17).demiBold()
+        cell.detailTextLabel?.font = UIFont.avenir(size: 12)
 
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = self.items[indexPath.row]
+    @IBAction func openCamera(_ sender: Any) {
+        let paperWalletScanViewController = PaperWalletScanViewController()
 
-        switch item.id {
-        case "privateKey":
-            self.navigationController?.pushViewController(PaperWalletTableViewController(style: .grouped), animated: true)
-        case "electrum":
-            print("Not implemented")
-        case "android":
-            print("Not implemented")
-        default:
-            print("Not implemented")
-        }
+        self.present(paperWalletScanViewController, animated: true)
     }
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+
 }

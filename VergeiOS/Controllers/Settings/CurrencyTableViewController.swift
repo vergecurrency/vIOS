@@ -113,7 +113,8 @@ class CurrencyTableViewController: EdgedTableViewController {
 
         let currency = self.currencies[indexPath.row]
 
-        cell.updateFonts()
+        cell.textLabel?.font = UIFont.avenir(size: 17).demiBold()
+        cell.detailTextLabel?.font = UIFont.avenir(size: 12)
         cell.textLabel?.text = currency["currency"]
         cell.detailTextLabel?.text = currency["name"]
 
