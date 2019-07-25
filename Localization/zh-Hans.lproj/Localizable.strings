@@ -1,0 +1,567 @@
+/*
+ Localizable.strings
+ VergeiOS
+ 
+ Created by Ivan Manov on 20/04/2019.
+ Copyright © 2019 Verge Currency. All rights reserved.
+ */
+
+// ----------------------------------------
+// Global defaults
+// ----------------------------------------
+
+"defaults.ok"                               = "确认";
+"defaults.cancel"                           = "取消";
+"defaults.done"                             = "完成";
+"defaults.remove"                           = "移除";
+"defaults.back"                             = "返回";
+"defaults.address"                          = "地址";
+"defaults.next"                             = "继续";
+"defaults.previous"                         = "之前";
+"defaults.delete"                           = "删除";
+"defaults.open"                             = "打开";
+
+// ----------------------------------------
+// MainTabbarNavigation.storyboard
+// ----------------------------------------
+
+"mainTabBar.barItem.wallet.title"           = "钱包";
+"mainTabBar.barItem.transactions.title"     = "交易";
+"mainTabBar.barItem.send.title"             = "发送";
+"mainTabBar.barItem.receive.title"          = "接收";
+"mainTabBar.barItem.settings.title"         = "设置";
+
+// ----------------------------------------
+// Setup.storyboard
+// ----------------------------------------
+
+// Defaults
+
+"setup.walletName"                          = "Verge iOS 钱包";
+
+// Loading Tor
+
+"setup.loadingTor.subtitle"                 = "隐私是我们的标准";
+
+// Welcome
+
+"setup.welcome.message"                     = "安全、匿名、私人的iOS Verge钱包.发送和接收XVG.";
+"setup.welcome.createButton"                = "新建一个XVG钱包";
+"setup.welcome.createDescription"           = "在你的iOS设备上创建一个XVG钱包.";
+"setup.welcome.restoreButton"               = "恢复你的钱包";
+"setup.welcome.restoreDescription"          = "丢失了你的iOS钱包?在这里恢复.";
+
+// Pin unlock
+
+"setup.pinCode.title"                       = "输入PIN码来解锁";
+
+// Set wallet pin
+
+"setup.pinCode.setPinTitle"                 = "设置钱包PIN码";
+"setup.pinCode.setPinDesc"                  = "你的钱包PIN码会被用来打开本app,和发送XVG.如果你忘记了,你将无法访问你的钱包.";
+
+// Re enter wallet pin
+
+"setup.pinCode.reenterPinTitle"             = "重新输入PIN码";
+
+"setup.pinCode.reenterPinSucceedTitle"      = "真棒!";
+"setup.pinCode.reenterPinSucceedDesc"       = "你的PIN码设置成功.";
+"setup.pinCode.reenterPinSucceedDesc2"      = "请不要忘记它!";
+"setup.pinCode.reenterPinSucceedButton"     = "继续";
+
+"setup.pinCode.reenterPinErrorTitle"        = "错误的PIN码";
+"setup.pinCode.reenterPinErrorDesc"         = "你的PIN码不能被验证!";
+"setup.pinCode.reenterPinErrorDesc2"        = "请再试一次";
+"setup.pinCode.reenterPinErrorButton"       = "再试一次";
+
+"setup.pinCode.alert.chooseSize"            = "选择PIN码长度";
+"setup.pinCode.alert.digits"                = "位数";
+
+// Passphrase
+
+"setup.passphrase.title"                    = "使用密码导出钱包钥匙";
+"setup.passphrase.desc"                     = "加密你的钱包钥匙是一项重要的安全措施.确保恢复钱包时使用之前设置的密码.";
+"setup.passphrase.req1"                     = "最少8个字符";
+"setup.passphrase.req2"                     = "大写和小写字母";
+"setup.passphrase.req3"                     = "特殊字符 (!.,-#€%&+#)";
+"setup.passphrase.passPlaceholder"          = "输入你的密码";
+"setup.passphrase.confirmButton"            = "确认";
+
+"setup.passphrase.confirmTitle"             = "确认你的密码";
+"setup.passphrase.proceedButton"            = "继续";
+
+// Finish
+
+"setup.finish.title"                        = "就快完成了!";
+"setup.finish.switch1"                      = "我理解我的货币安全存储在此设备上.";
+"setup.finish.switch2"                      = "我理解如果这个app被移动到其他设备上或者被删除,我的Verge只能通过钱包钥匙和密码恢复.";
+"setup.finish.switch3"                      = "我已经阅读、理解和同意使用条款.";
+"setup.finish.termsButton"                  = "使用条款";
+"setup.finish.createButton"                 = "新建钱包";
+"setup.finish.openButton"                   = "打开你的钱包";
+"setup.finish.desc"                         = "你的钱包即将准备完成...";
+"setup.finish.congrats"                     = "恭喜你!你的钱包已经准备就绪!";
+
+// ----------------------------------------
+// WelcomeGuide.storyboard
+// ----------------------------------------
+
+"welcomeGuide.paperKey.title"               = "钱包钥匙";
+"welcomeGuide.paperKey.message"             = "在下一个界面,你将会看到一组单词,请记下单词并保存在一个绝对安全的地方!";
+"welcomeGuide.paperKey.description"         = "你的钱包钥匙是你私钥的一部分,这是你访问你的资金唯一需要的东西.";
+"welcomeGuide.paperKey.actionButton"        = "写下钱包钥匙";
+"welcomeGuide.paperKey.makeSureLabel"       = "为了确保所有东西都已正确记下,请输入下列单词.";
+"welcomeGuide.paperKey.submitButton"        = "提交";
+
+// ----------------------------------------
+// Receive.storyboard
+// ----------------------------------------
+
+// Receive
+
+"receive.title"                             = "接受";
+"receive.addressButtonLabel"                = "地址";
+"receive.amountButtonLabel"                 = "数量";
+"receive.amountPlaceholder"                 = "接收数量";
+"receive.stealthAddressLabel"               = "隐身地址";
+"receive.shareButton"                       = "分享";
+
+// ----------------------------------------
+// RestoreGuide.storyboard
+// ----------------------------------------
+
+// Restore wallet
+
+"restoreGuide.restore.title"                = "恢复钱包";
+"restoreGuide.restore.desc"                 = "在下一个界面中,你将需要按照完全相同的顺序填写你钱包的钥匙.";
+"restoreGuide.restore.notice"               = "请保证在这个过程中没有人看着你.";
+"restoreGuide.restore.restoreButton"        = "开始恢复";
+"restoreGuide.restore.paperKeyTitle"        = "你的钥匙:";
+"restoreGuide.restore.paperKeyWarning"      = "你确定你的钱包钥匙是正确的?";
+"restoreGuide.restore.paperKeyProceedButton"= "继续";
+
+// Paperkey QR
+
+"restoreGuide.qrcode.title"                 = "扫描钱包钥匙二维码";
+"restoreGuide.qrcode.closeButton"           = "关闭";
+
+// ----------------------------------------
+// Send.storyboard
+// ----------------------------------------
+
+// Send
+
+"send.title"                                = "发送";
+"send.addressButtonLabel"                   = "接收者地址";
+"send.addressPlaceholder"                   = "输入接收者地址";
+"send.amountButtonLabel"                    = "数量";
+"send.memoButtonLabel"                      = "内部备忘录 (可选的)";
+"send.memoPlaceholder"                      = "送给Swen的礼物";
+"send.confirmButton"                        = "确认";
+"send.noBalanceTitle"                       = "没有余额";
+"send.noBalanceDesc"                        = "你没有任何XVG去发送.\n请增加你的余额.";
+
+// QR-code
+
+"send.qrcode.title"                         = "扫描XVG二维码";
+"send.qrcode.closeButton"                   = "关闭";
+
+// Select recipient
+
+"send.selectRecipient.title"                = "选择接收者";
+
+// ----------------------------------------
+// Wallet.storyboard
+// ----------------------------------------
+
+"wallet.xvgBalanceTitle"                    = "XVG余额";
+"wallet.balanceTitle"                       = "余额";
+
+// ----------------------------------------
+// Settings.storyboard
+// ----------------------------------------
+
+// Settings
+
+"settings.title"                            = "设置";
+
+"settings.wallet.header.title"              = "钱包";
+"settings.wallet.footer.title"              = "用下面的选项来管理你的钱包.";
+"settings.wallet.cell.removeLabel"          = "移除钱包";
+"settings.wallet.cell.paperKeyLabel"        = "钱包钥匙";
+"settings.wallet.cell.addressesLabel"       = "地址";
+"settings.wallet.cell.transactionsLabel"    = "交易提案";
+"settings.wallet.cell.serviceUrlLabel"      = "服务URL";
+
+"settings.settings.cell.fiatCurrencyLabel"  = "法定货币";
+"settings.settings.cell.changePinLabel"     = "更改钱包PIN码";
+"settings.settings.cell.useFaceIdLabel"     = "使用面容ID";
+"settings.settings.cell.torConnectionLabel" = "Tor连接";
+
+"settings.other.header.title"               = "其它";
+"settings.other.cell.creditsLabel"          = "信用";
+"settings.other.cell.donateLabel"           = "捐赠";
+"settings.other.cell.rateAppLabel"          = "给app打分";
+"settings.other.cell.websiteLabel"          = "官方网站";
+"settings.other.cell.contributeLabel"       = "贡献";
+
+// Paper key
+
+"settings.paperKey.titleLabel"              = "再次写下你的钱包钥匙";
+"settings.paperKey.descLabel"               = "你想要再次查看你的钱包钥匙?在下一个界面,你将会看到一个单词列表,请在纸上记下他们并且放在安全的地方!";
+"settings.paperKey.showButton"              = "显示钱包钥匙";
+"settings.paperKey.preview.titleLabel"      = "你的钱包钥匙";
+"settings.paperKey.preview.noticeLabel"     = "截图是不安全的.用笔在纸上记下你的钱包密钥.";
+"settings.paperKey.preview.descLabel"       = "细心地用小写写下每个单词.";
+"settings.paperKey.preview.wordsSegment"    = "单词";
+"settings.paperKey.preview.qrSegment"       = "二维码";
+
+// Disconnect wallet
+
+"settings.disconnect.titleLabel"            = "断开这个设备与钱包的连接";
+"settings.disconnect.descLabel"             = "你即将断开这个设备与钱包的连接.请确保你写下了钱包钥匙并且知道你的密码.记住你的钱包钥匙和密码是恢复你当前钱包的唯一办法.";
+"settings.disconnect.disconnectButton"      = "断开连接";
+
+// Addresses
+
+"settings.addresses.title"                  = "地址";
+"settings.addresses.descLabel"              = "每个Verge钱包根据你的12个单词可以生成数十亿地址.当你收到一笔交易时一个新的地址会自动生成并显示.";
+"settings.addresses.scanButton"             = "扫描地址获取余额";
+
+// Transaction Proposals
+
+"settings.transactions.title"               = "交易提案";
+"settings.transactions.descLabel"           = "下面列出了所有在交易序列中失败的交易提案.你需要手动删除它们才能释放资金.";
+
+// Service URL
+
+"settings.serviceUrl.title"                 = "服务URL";
+"settings.serviceUrl.header.title"          = "钱包服务URL";
+"settings.serviceUrl.footer.title"          = "这个应用程序的区块信息、网络和Copayer同步依赖于Verge钱包服务(VWS).默认的配置指向 https://vws.vergecurrency.network/vws/api (Verge的公共VWS)";
+"settings.serviceUrl.defaultUrlButton"      = "使用默认url";
+"settings.serviceUrl.saveButton"            = "保存";
+
+// Fiat currency
+
+"settings.fiatCurrency.title"               = "法定货币";
+
+// Themes
+
+"settings.themes.titleLabel"                = "给你钱包华丽的主题";
+"settings.themes.sectionHeaderTitle"        = "选择一个主题";
+"settings.themes.sectionFooterTitle"        = "改变主题会重启应用.它也可能会让你快乐,并在奇怪的地方让你感到鸡皮疙瘩!";
+"settings.themes.iconsSectionHeaderTitle"   = "应用图标";
+
+// Use Face ID
+
+"settings.useFaceID.title"                  = "使用面容ID";
+"settings.useFaceID.header.title"           = "用于";
+"settings.useFaceID.footer.title"           = "相比较于提供你的钱包PIN码,面容ID提供了一种代替的验证方法.";
+"settings.useFaceID.unlockLabel"            = "解锁你的钱包";
+"settings.useFaceID.sendingLabel"           = "发送XVG";
+
+// Tor connection
+
+"settings.torConnection.titleLabel"         = "Tor为保护你的隐私和隐藏你的位置而生";
+"settings.torConnection.descLabel"          = "当你使用Tor时,你的IP地址完全被混淆并且交易记录完全无法被追踪.\n\n你随时都可以关闭Tor.";
+"settings.torConnection.obfuscateIpLabel"   = "混淆的IP地址";
+"settings.torConnection.yourIpLabel"        = "你的IP地址";
+"settings.torConnection.loadingLabel"       = "加载中...";
+"settings.torConnection.notAvailable"       = "服务不可用";
+
+// Credits
+
+"settings.credits.title"                    = "信用";
+"settings.credits.descLabel"                = "这个程序的开发离不开下面几位英雄:";
+
+// Donate
+
+"settings.donate.titleLabel"                = "捐赠支持开发";
+"settings.donate.descLabel"                 = "在Verge,我们一直在努力达到新的高度，并提供社区要求的产品或软件.";
+"settings.donate.desc2Label"                = "聆听我们的社区成员并收集反馈不仅仅是Verge的核心理念之一,同样是我们开源所固有的.";
+"settings.donate.addressLabel"              = "XVG捐赠地址";
+"settings.donate.donateButton"              = "捐赠XVG";
+
+// Language
+
+"settings.language.title"                   = "语言";
+"settings.language.default"                 = "默认";
+"settings.language.systemBased"             = "跟随系统";
+
+// Themes
+
+"settings.themes.title"                     = "主题";
+"settings.themes.featherMode"               = "羽毛模式";
+"settings.themes.moonMode"                  = "月亮模式";
+"settings.themes.marsMode"                  = "火星模式";
+
+// ----------------------------------------
+// Shortcuts
+// ----------------------------------------
+
+"shortcuts.action.website.title"            = "官方网站";
+"shortcuts.action.sourceCode.title"         = "源代码";
+"shortcuts.action.send.title"               = "发送";
+"shortcuts.action.receive.title"            = "接受";
+
+// ----------------------------------------
+// TransactionTableViewCell.swift
+// ----------------------------------------
+
+"transaction.state.moved"                   = "已移动";
+"transaction.state.received"                = "已接收";
+"transaction.state.pending"                 = "待定中";
+
+// ----------------------------------------
+// ChartFilterToolbar.swift
+// ----------------------------------------
+
+"chart.filter.oneDay"                       = "1天";
+"chart.filter.oneWeek"                      = "1周";
+"chart.filter.oneMonth"                     = "1个月";
+"chart.filter.threeMonths"                  = "3个月";
+"chart.filter.oneYear"                      = "1年";
+"chart.filter.all"                          = "所有";
+
+// ----------------------------------------
+// PriceChartView.swift
+// ----------------------------------------
+
+"chart.price.historyTitle"                  = "历史价格";
+
+// ----------------------------------------
+// VolumeChartView.swift
+// ----------------------------------------
+
+"chart.volume.historyTitle"                 = "成交量历史";
+
+// ----------------------------------------
+// ReceiveViewController.swift
+// ----------------------------------------
+
+"receive.myAddressTitle"                    = "我的XVG地址";
+
+// ----------------------------------------
+// EnterRecoveryKeyController.swift
+// ----------------------------------------
+
+"paperKey.enterWord"                        = "输入单词";
+"paperKey.outOf"                            = "/";
+"paperKey.egCat"                            = "(比如: Cat)";
+"paperKey.key"                              = "钥匙";
+"paperKey.word"                             = "单词";
+
+// ----------------------------------------
+// SendViewController.swift
+// ----------------------------------------
+
+"send.sendXVG"                              = "发送XVG";
+"send.noConnection"                         = "没有连接";
+"send.transactionFailed"                    = "交易失败";
+"send.transactionFailedMessage"             = "你的交易失败因为以下原因";
+
+"send.notEnoughBalance"                     = "余额不足";
+"send.notEnoughBalanceMessage1"             = "你没有足够的余额发送";
+"send.notEnoughBalanceMessage2"             = "修改发送的数量来继续.";
+"send.sendMax"                              = "全部发送";
+"send.wrongAddress"                         = "错误的地址";
+"send.enterValidAddress"                    = "输入的地址不是有效的Verge地址.请输入一个有效的Verge地址.";
+
+// ----------------------------------------
+// ConfirmSendView.swift + .xib
+// ----------------------------------------
+
+"send.confirm.resolvedStealth"              = "已识别的隐身地址";
+"send.confirm.confirmTitleLabel"            = "确认交易";
+"send.confirm.recipientLabel"               = "接收者";
+"send.confirm.doubleCheckDescLabel"         = "请再次确认钱包地址是正确的.Verge货币无法追究因为发送到错误的钱包而造成的XVG损失.";
+"send.confirm.sendingLabel"                 = "发送中";
+"send.confirm.transactionFeeLabel"          = "交易手续费";
+"send.confirm.totalLabel"                   = "总计";
+
+// ----------------------------------------
+// SendingView.swift + .xib
+// ----------------------------------------
+
+"send.sending.signingTransaction"           = "签名交易中";
+"send.sending.broadcastingTransaction"      = "广播交易中";
+"send.sending.transactionSent"              = "交易发送成功!";
+"send.sending.publishingTransaction"        = "发布交易中";
+
+// ----------------------------------------
+// LocalAuthTableViewCell.swift
+// ----------------------------------------
+
+"settings.localAuth.useTouchId"             = "使用触控ID";
+
+// ----------------------------------------
+// AddressesTableViewController.swift
+// ----------------------------------------
+
+"addresses.addressCopied"                   = "地址拷贝成功!";
+"addresses.addressesWithBalance"            = "有余额的地址";
+"addresses.unusedAddresses"                 = "未使用的地址";
+"addresses.addressOptions"                  = "地址选项";
+"addresses.informationTypeMessage"          = "你想要复制什么信息到粘贴板?";
+"addresses.address"                         = "地址";
+"addresses.balance"                         = "余额";
+"addresses.balanceCopied"                   = "余额复制成功!";
+"addresses.publicKey"                       = "公钥";
+"addresses.publicKeyCopied"                 = "公钥拷贝成功!";
+"addresses.privateKey"                      = "私钥";
+"addresses.privateKeyCopied"                = "私钥拷贝成功!";
+"addresses.scanningAddresses"               = "扫描地址";
+"addresses.scanningAddressesMessage"        = "扫描地址获取余额中.这可能需要一点时间才能完成.";
+
+// ----------------------------------------
+// CreditsTableViewController.swift
+// ----------------------------------------
+
+"credits.header.development"                = "开发";
+"credits.header.design"                     = "设计";
+"credits.header.translation"                = "翻译";
+
+// ----------------------------------------
+// DisconnectWalletViewController.swift
+// ----------------------------------------
+
+"settings.disconnect.alert.title"           = "断开钱包连接";
+"settings.disconnect.alert.message"         = "你即将断开这个设备于你钱包的连接.请务必确保你已经记下了钱包钥匙.请记住,你的钱包钥匙是恢复你当前钱包的唯一办法.";
+"settings.disconnect.alert.disconnect"      = "断开连接";
+
+// ----------------------------------------
+// ServiceUrlTableViewController.swift
+// ----------------------------------------
+
+"settings.serviceUrl.alert.title"           = "修改服务";
+"settings.serviceUrl.alert.message"         = "正在修改服务URL,请稍等片刻...";
+"settings.serviceUrl.alert.usePrevUrl"      = "使用之前的服务URL";
+"settings.serviceUrl.alert.errorChanging"   = "修改错误";
+"settings.serviceUrl.alert.errorChanging2"  = "修改服务URL时发生了错误. 请重试或者使用另外一个服务URL.";
+"settings.serviceUrl.alert.title2"          = "服务修改成功";
+"settings.serviceUrl.alert.message2"        = "成功修改服务URL.";
+
+// ----------------------------------------
+// TransactionProposalsTableViewController.swift
+// ----------------------------------------
+
+"settings.transactions.removeProposal"      = "删除一个提案";
+"settings.transactions.noProposals"         = "没有提案";
+"settings.transactions.releaseXvg"          = "释放这个交易提案的XVG.";
+
+// ----------------------------------------
+// Tor Setup
+// ----------------------------------------
+
+"setup.tor.slide1.titleLabel"               = "Verge货币\n隐藏你的位置";
+"setup.tor.slide1.descLabel"                = "Verge使用Tor网络去混淆\n你的位置和IP地址.";
+
+"setup.tor.slide2.titleLabel"               = "Tor状态指示器表达了以下状态...";
+"setup.tor.slide2.descLabel1"               = "Tor已关闭,你的位置和IP信息是公开的.";
+"setup.tor.slide2.descLabel2"               = "Tor正在连接.此时无法连接到互联网.";
+"setup.tor.slide2.descLabel3"               = "Tor已经打开,你的位置和IP信息已混淆.";
+"setup.tor.slide2.descLabel4"               = "Tor无法连接,发生错误.现在唯一的解决方法是重启应用.";
+
+"setup.tor.slide3.titleLabel"               = "让我们打开Tor";
+"setup.tor.slide3.titleLabel2"              = "打开Tor";
+"setup.tor.slide3.descLabel"                = "确保Tor在你国家是合法的.很不幸的是有些国家不让你拥有隐私.";
+"setup.tor.slide3.negativeButton"           = "不使用Tor继续";
+"setup.tor.slide3.positiveButton"           = "使用Tor继续";
+
+// ----------------------------------------
+// Transactions.storyboard + .swift + .xib
+// ----------------------------------------
+
+"transactions.title"                        = "交易";
+"transactions.transaction.title"            = "接收者?";
+"transactions.contacts.title"               = "联系人";
+
+// TransactionsTableViewController.swift
+
+"transactions.search.placeholder"           = "搜索交易";
+"transactions.search.all"                   = "所有";
+"transactions.search.sent"                  = "发送";
+"transactions.search.received"              = "接受";
+
+// TransactionTableViewController.swift
+
+"transactions.transaction.details"          = "交易细节;
+"transactions.transaction.history"          = "交易历史";
+"transactions.transaction.confirmations"    = "确认数";
+"transactions.transaction.txidCopied"       = "Txid拷贝成功!";
+
+// NoTransactionsPlaceholderView.xib
+
+"transactions.noTransaction.titleLabel"     = "还没有收到任何交易";
+"transactions.noTransaction.descLabel"      = "已接收的交易可以在这里找到";
+
+// ContactTableViewController.swift
+
+"transactions.contact.section.details"      = "联系人详细";
+"transactions.contact.name"                 = "名称";
+"transactions.contact.section.history"      = "交易历史";
+"transactions.contact.saved"                = "联系人已保存!";
+
+// AbstractContactsTableViewController.swift
+
+"transactions.contacts.search"              = "搜索联系人";
+
+// NoContactsPlaceholderView.xib
+
+"transactions.noContacts.titleLabel"        = "还没有创建联系人";
+"transactions.noContacts.descLabel"         = "增加一个联系人来方便发送XVG";
+
+// ----------------------------------------
+// Wallet Slides
+// ----------------------------------------
+
+// TransactionsWalletSlideView.xib
+
+"wallet.slides.recentTransactions"          = "最近的交易";
+
+// SummaryWalletSlideView.xib
+
+"wallet.slides.summary.statistics"          = "统计";
+"wallet.slides.summary.dataNotFound"        = "统计数据无法找到.";
+
+// SummaryWalletSlideView.swift
+
+"wallet.slides.summary.marketCap"           = "市值";
+"wallet.slides.summary.24hHigh"             = "24小时最高值";
+"wallet.slides.summary.24hLow"              = "24小时最低值";
+"wallet.slides.summary.24hChange"           = "24小时变化值";
+"wallet.slides.summary.24hVolume"           = "24小时交易量";
+
+// ChartWalletSlideView.xib
+
+"wallet.slides.chart.history"               = "历史图表";
+"wallet.slides.chart.high"                  = "最高";
+"wallet.slides.chart.average"               = "平均";
+"wallet.slides.chart.low"                   = "最低";
+"wallet.slides.chart.availability"          = "图表数据只能使用USD";
+"wallet.slides.chart.noData"                = "历史图表数据无法找到.";
+
+// TransactionsPlaceholderTableViewCell.xib
+
+"wallet.slides.noTransactions.titleLabel"   = "还没有收到任何交易.";
+
+// ----------------------------------------
+// Alerts
+// ----------------------------------------
+
+"alerts.removeContact.title"                = "移除联系人";
+"alerts.removeContact.message"              = "你确定要移除联系人吗?";
+"alerts.invalidContact.title"               = "无效的联系人数据";
+"alerts.invalidContact.message"             = "请提供一个有效的名称和XVG地址";
+"alerts.removeTransaction.title"            = "删除交易";
+"alerts.removeTransaction.message"          = "你确定要删除这个交易吗?";
+"alerts.createAddress.title"                = "无法创建地址";
+"alerts.createAddress.message"              = "最大不活动的地址已达到上限.\n使用已经生成的地址来创建新的地址.";
+"alerts.sendMaxInfo.title"                  = "获取数据时发生错误";
+"alerts.sendMaxInfo.message"                = "无法从服务器获取最大发送量信息,请重试.";
+"alerts.startTor.title"                     = "Tor没有激活";
+"alerts.startTor.message"                   = "你确定发送这笔交易而不使用Tor混淆你的IP?\n或者你想要开启Tor并且隐藏你的身份?";
+"alerts.startTor.button1"                   = "开启Tor";
+"alerts.startTor.button2"                   = "不使用Tor";
+"alerts.termsOfUse.title"                   = "查看钱包使用条款";
+"alerts.restart.title"                      = "重启中...";

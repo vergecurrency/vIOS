@@ -89,6 +89,11 @@ public class Languages {
             "name": "Slovenian",
             "localizedName": "Slovenski",
             "code": "sl",
+        ],
+        [
+            "name": "Chinese Simplified",
+            "localizedName": "简体中文",
+            "code": "zh-CN",
         ]
     ]
 }
