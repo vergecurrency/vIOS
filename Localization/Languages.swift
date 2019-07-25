@@ -93,7 +93,7 @@ public class Languages {
         [
             "name": "Chinese Simplified",
             "localizedName": "简体中文",
-            "code": "zh-CN",
+            "code": "zh-Hans",
         ]
     ]
 }
