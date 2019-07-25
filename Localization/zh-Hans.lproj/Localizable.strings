@@ -485,7 +485,7 @@
 
 // TransactionTableViewController.swift
 
-"transactions.transaction.details"          = "交易细节;
+"transactions.transaction.details"          = "交易细节";
 "transactions.transaction.history"          = "交易历史";
 "transactions.transaction.confirmations"    = "确认数";
 "transactions.transaction.txidCopied"       = "Txid拷贝成功!";
