@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Swinject
 
 struct WalletSweepingItem {
     public let id: String
@@ -15,6 +16,8 @@ struct WalletSweepingItem {
 }
 
 class WalletSweepingTableViewController: UITableViewController {
+
+    var container: Container!
 
     let items = [
         WalletSweepingItem(id: "privateKey", name: "Private key", subtitle: "Paper wallet, Card wallet etc"),
@@ -60,7 +63,10 @@ class WalletSweepingTableViewController: UITableViewController {
 
         switch item.id {
         case "privateKey":
-            self.navigationController?.pushViewController(PaperWalletTableViewController(style: .grouped), animated: true)
+            self.navigationController?.pushViewController(
+                self.container.resolve(PaperWalletTableViewController.self)!,
+                animated: true
+            )
         case "electrum":
             print("Not implemented")
         case "android":

@@ -52,9 +52,14 @@ class SettingsViewServiceProvider: ServiceProvider {
         }
 
         container.storyboardInitCompleted (WalletSweepingTableViewController.self) { r, c in
-//            c.bitcoreNodeClient = r.resolve(BitcoreNodeClientProtocol.self)
-//            c.walletClient = r.resolve(WalletClientProtocol.self)
-//            c.transactionFactory = r.resolve(TransactionFactoryProtocol.self)
+            c.container = self.container
+        }
+
+        container.register (PaperWalletTableViewController.self) { r in
+            let controller = PaperWalletTableViewController(style: .grouped)
+            controller.sweeperHelper = r.resolve(SweeperHelperProtocol.self)
+
+            return controller
         }
     }
 

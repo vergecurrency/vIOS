@@ -6,7 +6,7 @@
 import UIKit
 import AVFoundation
 
-class WalletSweepingScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class WalletSweepingScannerViewController: UIViewController {
 
     var delegate: WalletSweepingScannerViewDelegate?
     var qrCodeFrameView: UIView!
@@ -95,7 +95,6 @@ class WalletSweepingScannerViewController: UIViewController, AVCaptureMetadataOu
         self.imagePicker.delegate = self
 
         self.setupLayout()
-        self.setupCamera()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +111,7 @@ class WalletSweepingScannerViewController: UIViewController, AVCaptureMetadataOu
         super.viewDidAppear(animated)
 
         self.cutoutQrView()
+        self.setupCamera()
 
         // Start video capture.
         self.captureSession?.startRunning()
@@ -274,6 +274,33 @@ extension WalletSweepingScannerViewController {
     @objc
     private func openImage(sender: Any) {
         self.present(self.imagePicker, animated: true)
+    }
+}
+
+extension WalletSweepingScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+    public func metadataOutput(
+        _ output: AVCaptureMetadataOutput,
+        didOutput metadataObjects: [AVMetadataObject],
+        from connection: AVCaptureConnection
+    ) {
+        // Check if the metadataObjects array is not nil and it contains at least one object.
+        if metadataObjects.count == 0 {
+            return
+        }
+
+        // Get the metadata object.
+        let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+
+        if metadataObj.type == AVMetadataObject.ObjectType.qr {
+            guard let privateKey = metadataObj.stringValue else {
+                return
+            }
+
+            self.captureSession?.stopRunning()
+
+            print(privateKey)
+            self.privateKeyScanned(privateKey: privateKey)
+        }
     }
 }
 
