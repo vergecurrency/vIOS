@@ -390,6 +390,7 @@
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
+		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
 		A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableViewController.swift; sourceTree = "<group>"; };
@@ -1767,6 +1768,7 @@
 				vi,
 				ja,
 				sl,
+				"zh-Hans",
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -2270,6 +2272,7 @@
 				CA60D193228D53300029FED0 /* vi */,
 				CA15CE54228FE3970053FDC5 /* ja */,
 				CAF3F47322A5B80100F584A3 /* sl */,
+				565DF16322E5BB8F004AD2E8 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
