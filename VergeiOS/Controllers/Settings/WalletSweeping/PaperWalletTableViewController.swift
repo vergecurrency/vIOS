@@ -27,6 +27,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
         self.privateKeyCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         self.privateKeyCell.textLabel?.text = "Private key"
         self.privateKeyCell.detailTextLabel?.text = "Scan wallet private key..."
+        self.privateKeyCell.imageView?.image = UIImage(named: "QRcode")
         self.privateKeyCell.updateColors()
         self.privateKeyCell.detailTextLabel?.textColor = ThemeManager.shared.vergeGrey()
         self.privateKeyCell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
@@ -39,10 +40,8 @@ class PaperWalletTableViewController: EdgedTableViewController {
         self.amountCell.detailTextLabel?.font = UIFont.avenir(size: 24)
 
         self.recipientAddressCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        self.recipientAddressCell.textLabel?.text = "Recipient Address"
-        self.recipientAddressCell.detailTextLabel?.text = "Set a recipient address"
+        self.recipientAddressCell.textLabel?.text = "Your Recipient Address"
         self.recipientAddressCell.updateColors()
-        self.recipientAddressCell.detailTextLabel?.textColor = ThemeManager.shared.vergeGrey()
         self.recipientAddressCell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         self.recipientAddressCell.detailTextLabel?.font = UIFont.avenir(size: 17)
 
@@ -50,7 +49,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
         self.sections.append(self.startingCells)
 
         self.tableView.tableHeaderView = TableHeaderView(
-            title: "Let's sweep a private key wallet",
+            title: "Lets sweep a private key wallet",
             image: UIImage(named: "PrivateKeySweepingPlaceholder")!
         )
     }
@@ -88,6 +87,34 @@ class PaperWalletTableViewController: EdgedTableViewController {
             return "Sweeping from"
         }
     }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case 1:
+            return "Import the wallets available XVG amount to your iOS wallet."
+        default:
+            return "Scan a valid XVG private key QR code from a paper wallet, card wallet or any other private key based wallet."
+        }
+    }
+
+    private func addSendButton() {
+        let sendButton = RoundedButton(type: .system)
+        sendButton.setTitle("Send", for: .normal)
+        sendButton.setTitleColor(.white, for: .normal)
+        sendButton.backgroundColor = ThemeManager.shared.primaryLight()
+
+        let footerView = UIView()
+        footerView.frame.size.height = 50
+        footerView.addSubview(sendButton)
+
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.topAnchor.constraint(equalTo: footerView.topAnchor)
+        sendButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor)
+        sendButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor)
+        sendButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor)
+
+        self.tableView.tableFooterView = footerView
+    }
 }
 
 extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
@@ -101,11 +128,17 @@ extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
             let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider).toXvgCurrency()
             self.amountCell.detailTextLabel?.text = amount
 
-            self.detailCells.append(self.amountCell)
-            self.detailCells.append(self.recipientAddressCell)
-            self.sections.append(self.detailCells)
+            self.sweeperHelper.recipientAddress { _, address in
+                self.recipientAddressCell.detailTextLabel?.text = address
 
-            self.tableView.reloadData()
+                self.detailCells.append(self.amountCell)
+                self.detailCells.append(self.recipientAddressCell)
+                self.sections.append(self.detailCells)
+
+                self.addSendButton()
+
+                self.tableView.reloadData()
+            }
         }
     }
 }

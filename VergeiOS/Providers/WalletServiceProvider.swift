@@ -111,7 +111,8 @@ class WalletServiceProvider: ServiceProvider {
             return SweeperHelper(
                 bitcoreNodeClient: r.resolve(BitcoreNodeClientProtocol.self)!,
                 walletClient: r.resolve(WalletClientProtocol.self)!,
-                transactionFactory: r.resolve(TransactionFactoryProtocol.self)!
+                transactionFactory: r.resolve(TransactionFactoryProtocol.self)!,
+                transactionManager: r.resolve(TransactionManager.self)!
             )
         }
     }

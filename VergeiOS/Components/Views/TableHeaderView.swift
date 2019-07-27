@@ -60,10 +60,20 @@ class TableHeaderView: UIView {
     private func setupLayout() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
-        self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40).isActive = true
-        self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40).isActive = true
         self.titleLabel.bottomAnchor.constraint(equalTo: self.imageView.topAnchor, constant: -8).isActive = true
+        self.titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
         self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+
+        let titleLeadingContraint = self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40)
+        titleLeadingContraint.isActive = true
+        titleLeadingContraint.priority = .defaultHigh
+
+        let titleTrailingContraint = self.titleLabel.trailingAnchor.constraint(
+            equalTo: self.trailingAnchor,
+            constant: -40
+        )
+        titleTrailingContraint.isActive = true
+        titleTrailingContraint.priority = .defaultHigh
 
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
         self.imageView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8).isActive = true
@@ -73,9 +83,9 @@ class TableHeaderView: UIView {
         self.imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
     }
 
-    //custom views should override this to return true if
-    //they cannot layout correctly using autoresizing.
-    //from apple docs https://developer.apple.com/documentation/uikit/uiview/1622549-requiresconstraintbasedlayout
+    // custom views should override this to return true if
+    // they cannot layout correctly using autoresizing.
+    // from apple docs https://developer.apple.com/documentation/uikit/uiview/1622549-requiresconstraintbasedlayout
     override class var requiresConstraintBasedLayout: Bool {
         return true
     }
