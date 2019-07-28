@@ -12,13 +12,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>AppIconFeather</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIconFeather</string>
-				</array>
-			</dict>
 			<key>AppIconMars</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -31,6 +24,13 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconMoon</string>
+				</array>
+			</dict>
+			<key>AppIconFeather</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIconFeather</string>
 				</array>
 			</dict>
 		</dict>
@@ -59,13 +59,6 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>AppIconFeather</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIconFeather</string>
-				</array>
-			</dict>
 			<key>AppIconMars</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
@@ -78,6 +71,13 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconMoon</string>
+				</array>
+			</dict>
+			<key>AppIconFeather</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIconFeather</string>
 				</array>
 			</dict>
 		</dict>
