@@ -14,6 +14,7 @@ class MainTabBarController: UITabBarController {
     let sendViewIndex: Int = 2
     let receiveViewIndex: Int = 3
 
+    var applicationRepository: ApplicationRepository!
     var shortcutsManager: ShortcutsManager!
 
     override func viewDidLoad() {
@@ -23,6 +24,13 @@ class MainTabBarController: UITabBarController {
             self,
             selector: #selector(demandSendView(notification:)),
             name: .demandSendView,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didDeviceShaken(notification:)),
+            name: .didDeviceShaken,
             object: nil
         )
     }
@@ -80,4 +88,8 @@ class MainTabBarController: UITabBarController {
         }
     }
 
+    @objc func didDeviceShaken(notification: Notification? = nil) {
+        self.applicationRepository.secureContent = !self.applicationRepository.secureContent
+    }
+    
 }

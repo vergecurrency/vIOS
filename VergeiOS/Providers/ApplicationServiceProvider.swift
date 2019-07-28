@@ -33,6 +33,7 @@ class ApplicationServiceProvider: ServiceProvider {
         }.inObjectScope(.container)
 
         container.storyboardInitCompleted (MainTabBarController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.shortcutsManager = r.resolve(ShortcutsManager.self)
         }
 
