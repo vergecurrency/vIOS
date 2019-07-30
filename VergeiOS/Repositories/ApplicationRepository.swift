@@ -209,9 +209,21 @@ class ApplicationRepository {
         }
     }
 
+    /// Secure content setting (hidden xvg amount, etc.)
+    var secureContent: Bool {
+        get {
+            return userDefaults.bool(forKey: "app.secureContent")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "app.secureContent")
+            NotificationCenter.default.post(name: .didChangeSecureContent, object: nil)
+        }
+    }
+
     func reset() {
         userDefaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         userDefaults.synchronize()
         keychain.clear()
     }
+
 }

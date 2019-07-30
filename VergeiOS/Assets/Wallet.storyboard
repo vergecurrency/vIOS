@@ -28,8 +28,11 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iaW-lj-1in">
                                                 <rect key="frame" x="0.0" y="0.0" width="38" height="38.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58g-eU-5Oo">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58g-eU-5Oo" customClass="SecureLabel" customModule="VergeiOS" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="38" height="27.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="27.5" id="sDj-gg-JaY"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -50,6 +53,9 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7aq-2h-WQx">
                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="27.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="27.5" id="jak-d7-jeu"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -70,12 +76,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Th7-Kf-Rjw">
                                         <rect key="frame" x="40" y="36" width="295" height="63"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="bIi-4U-p2A">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="bIi-4U-p2A" customClass="SecureLabel" customModule="VergeiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="295" height="52"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="52" id="3Cd-0J-WdR"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="38"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="tapToToggle" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="XVG BALANCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKd-u1-2SQ">
                                                 <rect key="frame" x="0.0" y="52" width="295" height="11"/>
@@ -168,7 +180,7 @@
                         <outlet property="pairSymbolBalanceLabel" destination="O6a-x6-tKc" id="gm2-NJ-JVv"/>
                         <outlet property="walletSlidePageControl" destination="API-tf-Czt" id="ta0-p9-6r7"/>
                         <outlet property="walletSlideScrollView" destination="QFh-kB-F7Z" id="XcV-la-SRD"/>
-                        <outlet property="xvgBalanceLabel" destination="bIi-4U-p2A" id="9TT-Lw-Z8C"/>
+                        <outlet property="xvgBalanceLabel" destination="bIi-4U-p2A" id="WDR-5Y-OPl"/>
                         <outlet property="xvgPairBalanceLabel" destination="7aq-2h-WQx" id="WpD-Ep-QlE"/>
                         <outlet property="xvgPairSymbolLabel" destination="XnU-wF-6BW" id="Tb4-xc-C2G"/>
                         <segue destination="Csu-Cy-MFz" kind="presentation" identifier="TransactionTableViewController" modalPresentationStyle="formSheet" id="JMh-xK-xH4"/>
