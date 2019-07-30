@@ -119,7 +119,7 @@
 
 // Receive
 
-"receive.title"                             = "接受";
+"receive.title"                             = "接收";
 "receive.addressButtonLabel"                = "地址";
 "receive.amountButtonLabel"                 = "数量";
 "receive.amountPlaceholder"                 = "接收数量";
@@ -302,7 +302,7 @@
 "shortcuts.action.website.title"            = "官方网站";
 "shortcuts.action.sourceCode.title"         = "源代码";
 "shortcuts.action.send.title"               = "发送";
-"shortcuts.action.receive.title"            = "接受";
+"shortcuts.action.receive.title"            = "接收";
 
 // ----------------------------------------
 // TransactionTableViewCell.swift
@@ -481,7 +481,7 @@
 "transactions.search.placeholder"           = "搜索交易";
 "transactions.search.all"                   = "所有";
 "transactions.search.sent"                  = "发送";
-"transactions.search.received"              = "接受";
+"transactions.search.received"              = "接收";
 
 // TransactionTableViewController.swift
 
