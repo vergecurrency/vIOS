@@ -58,7 +58,7 @@ class SecureLabel: UILabel {
     var originText: String?
     var secureText: String? {
         if self.originText != nil {
-            return self.secure ? String(self.originText!.map { _ in return "-" }) : self.originText
+            return self.secure ? String(self.originText!.map { _ in return "•" }) : self.originText
         }
         return originText
     }
