@@ -22,6 +22,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
     override func loadView() {
         super.loadView()
 
+        self.refreshControl = UIRefreshControl()
         self.tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
 
         self.privateKeyCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
@@ -34,7 +35,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
         self.privateKeyCell.detailTextLabel?.font = UIFont.avenir(size: 17)
 
         self.amountCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        self.amountCell.textLabel?.text = "Amount"
+        self.amountCell.textLabel?.text = "Amount To Sweep"
         self.amountCell.updateColors()
         self.amountCell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
         self.amountCell.detailTextLabel?.font = UIFont.avenir(size: 24)
@@ -99,19 +100,33 @@ class PaperWalletTableViewController: EdgedTableViewController {
 
     private func addSendButton() {
         let sendButton = RoundedButton(type: .system)
-        sendButton.setTitle("Send", for: .normal)
+        sendButton.setTitle("Sweep Wallet", for: .normal)
         sendButton.setTitleColor(.white, for: .normal)
+        sendButton.titleLabel?.font = UIFont.avenir(size: 17).demiBold()
         sendButton.backgroundColor = ThemeManager.shared.primaryLight()
 
         let footerView = UIView()
-        footerView.frame.size.height = 50
+        footerView.frame.size.height = 66
         footerView.addSubview(sendButton)
 
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.topAnchor.constraint(equalTo: footerView.topAnchor)
-        sendButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor)
-        sendButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor)
-        sendButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor)
+        sendButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 8).isActive = true
+        sendButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -8).isActive = true
+        sendButton.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
+
+        let sendButtonLeadingConstraint = sendButton.leadingAnchor.constraint(
+            equalTo: footerView.leadingAnchor,
+            constant: 40
+        )
+        sendButtonLeadingConstraint.isActive = true
+        sendButtonLeadingConstraint.priority = .defaultHigh
+
+        let sendButtonTrailingConstraint = sendButton.trailingAnchor.constraint(
+            equalTo: footerView.trailingAnchor,
+            constant: -40
+        )
+        sendButtonTrailingConstraint.isActive = true
+        sendButtonTrailingConstraint.priority = .defaultHigh
 
         self.tableView.tableFooterView = footerView
     }
@@ -122,8 +137,13 @@ extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
         self.privateKeyCell.detailTextLabel?.text = scannedValue
         self.privateKeyCell.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
 
+        self.refreshControl?.beginRefreshing()
+
         self.sweeperHelper.balance(byPrivateKeyWIF: scannedValue) { _, balance in
-            guard let balance = balance else { return }
+            guard let balance = balance else {
+                self.refreshControl?.endRefreshing()
+                return
+            }
 
             let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider).toXvgCurrency()
             self.amountCell.detailTextLabel?.text = amount
@@ -138,6 +158,12 @@ extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
                 self.addSendButton()
 
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+
+                DispatchQueue.main.async {
+                    let indexPath = IndexPath(row: self.detailCells.count-1, section: 1)
+                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                }
             }
         }
     }
