@@ -121,7 +121,7 @@ class ThemeFactory: NSObject {
             secondaryDark: UIColor(rgb: 0xF8F7F7),
             secondaryLight: UIColor(rgb: 0x853D30),
             backgroundBlue: UIColor(rgb: 0x350C01),
-            backgroundGrey: UIColor(rgb: 0x050000),
+            backgroundGrey: UIColor(rgb: 0x140000),
             backgroundWhite: UIColor(rgb: 0x250505),
 
             separatorColor: UIColor(rgb: 0x96391F),
