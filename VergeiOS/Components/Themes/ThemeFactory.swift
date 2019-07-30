@@ -126,7 +126,7 @@ class ThemeFactory: NSObject {
 
             separatorColor: UIColor(rgb: 0x96391F),
             placeholderColor: UIColor(rgb: 0x5A403F),
-            backgroundTopColor: UIColor(rgb: 0x00181B),
+            backgroundTopColor: UIColor(rgb: 0x140000),
             backgroundBottomColor: .black,
             qrCodeColor: UIColor(rgb: 0x2B0C01),
             priceChartColor: .clear,

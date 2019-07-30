@@ -47,16 +47,18 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="YlW-9w-ZEO"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="DN9-S2-hlj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CIz-ar-VoY"/>
                 <constraint firstItem="DN9-S2-hlj" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RX6-Pi-tnt"/>
-                <constraint firstItem="DN9-S2-hlj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="lS2-Em-pHG"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DN9-S2-hlj" secondAttribute="trailing" constant="20" id="mgz-LB-7cC"/>
+                <constraint firstItem="DN9-S2-hlj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="20" id="lS2-Em-pHG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DN9-S2-hlj" secondAttribute="trailing" priority="750" constant="20" id="mgz-LB-7cC"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.40000000000001" y="208.24587706146929"/>
         </view>

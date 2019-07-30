@@ -1,4 +1,4 @@
-binary "https://icepa.github.io/Tor.framework/Tor.json" "305.8.1"
+binary "https://icepa.github.io/Tor.framework/Tor.json" "400.5.2"
 binary "https://vergecurrency.github.io/BitcoinKit/BitcoinKit.json" "1.2.0"
 github "HamzaGhazouani/HGPlaceholders" "0.4.0"
 github "JohnEstropia/CoreStore" "6.3.1"

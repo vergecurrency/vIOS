@@ -32,4 +32,8 @@ extension Notification.Name {
     static let didReceiveTransaction = Notification.Name("didReceiveTransaction")
 
     static let didChangeTheme = Notification.Name("didChangeTheme")
+
+    static let didChangeSecureContent = Notification.Name("didChangeSecureContent")
+
+    static let didDeviceShaken = Notification.Name("didDeviceShaken")
 }

@@ -55,8 +55,8 @@
                     <constraints>
                         <constraint firstItem="cCd-x2-0kG" firstAttribute="centerX" secondItem="Br9-EO-Rea" secondAttribute="centerX" id="diw-5E-1Lu"/>
                         <constraint firstItem="cCd-x2-0kG" firstAttribute="centerY" secondItem="Br9-EO-Rea" secondAttribute="centerY" constant="-10" id="i3d-rW-SNn"/>
-                        <constraint firstItem="cCd-x2-0kG" firstAttribute="leading" secondItem="Br9-EO-Rea" secondAttribute="leading" constant="24" id="qmy-15-cWq"/>
-                        <constraint firstAttribute="trailing" secondItem="cCd-x2-0kG" secondAttribute="trailing" constant="24" id="xI5-kU-KBZ"/>
+                        <constraint firstItem="cCd-x2-0kG" firstAttribute="leading" secondItem="Br9-EO-Rea" secondAttribute="leading" priority="750" constant="24" id="qmy-15-cWq"/>
+                        <constraint firstAttribute="trailing" secondItem="cCd-x2-0kG" secondAttribute="trailing" priority="750" constant="24" id="xI5-kU-KBZ"/>
                     </constraints>
                 </view>
             </subviews>

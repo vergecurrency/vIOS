@@ -17,3 +17,16 @@ extension UIView {
         layer.add(animation, forKey: "shake")
     }
 }
+
+extension UIWindow {
+
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            NotificationCenter.default.post(
+                name: .didDeviceShaken,
+                object: nil
+            )
+        }
+    }
+
+}

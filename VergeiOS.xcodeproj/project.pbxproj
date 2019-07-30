@@ -301,6 +301,7 @@
 		CADA0BE72203AE0900FE74C1 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */; };
 		CADA0BE82203AEA700FE74C1 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */; };
 		CADA0BEB2203B38400FE74C1 /* IntentsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */; };
+		CAE81C0222ED750C00E11782 /* SecureLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE81C0122ED750C00E11782 /* SecureLabel.swift */; };
 		CAF4F6DE222AD0DA00096B71 /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F6DD222AD0DA00096B71 /* WatchInfo.swift */; };
 		CAF4F6DF222AD0EE00096B71 /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4F6DD222AD0DA00096B71 /* WatchInfo.swift */; };
 		CAFA5B642226DBAB00372712 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
@@ -404,6 +405,7 @@
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
+		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
 		A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableViewController.swift; sourceTree = "<group>"; };
@@ -704,6 +706,7 @@
 		CADA0BE62203AE0900FE74C1 /* WalletInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletInfo.swift; sourceTree = "<group>"; };
 		CADA0BE92203B15E00FE74C1 /* VergeSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VergeSiri.entitlements; sourceTree = "<group>"; };
 		CADA0BEA2203B38400FE74C1 /* IntentsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsManager.swift; sourceTree = "<group>"; };
+		CAE81C0122ED750C00E11782 /* SecureLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureLabel.swift; sourceTree = "<group>"; };
 		CAF3F47322A5B80100F584A3 /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAF4F6DD222AD0DA00096B71 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		CAFB2004228AC7040096623D /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1329,6 +1332,7 @@
 				A3AA2B802263D212000E4571 /* SubtitleLabel.swift */,
 				A3AA2B842263D23D000E4571 /* MutedLabel.swift */,
 				A3AA2B862263D3B3000E4571 /* PrimaryLabel.swift */,
+				CAE81C0122ED750C00E11782 /* SecureLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -1825,6 +1829,7 @@
 				vi,
 				ja,
 				sl,
+				"zh-Hans",
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -2180,6 +2185,7 @@
 				B2BD7C21A80B98CD8857B476 /* AbstractChartView.swift in Sources */,
 				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */,
 				CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */,
+				CAE81C0222ED750C00E11782 /* SecureLabel.swift in Sources */,
 				B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */,
 				A3A71C1A22DA67370098D861 /* BlockchainServiceProvider.swift in Sources */,
 				A3AA2B872263D3B3000E4571 /* PrimaryLabel.swift in Sources */,
@@ -2342,6 +2348,7 @@
 				CA60D193228D53300029FED0 /* vi */,
 				CA15CE54228FE3970053FDC5 /* ja */,
 				CAF3F47322A5B80100F584A3 /* sl */,
+				565DF16322E5BB8F004AD2E8 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
