@@ -26,6 +26,11 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         "dayTotalvolumePair"
     ]
 
+    private var interval: Timer?
+    private var fiatRateInfo: FiatRate? {
+        return self.fiatRateTicker.rateInfo
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -38,10 +43,10 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
             name: .didReceiveFiatRatings,
             object: nil
         )
-    }
 
-    override func updateColors() {
-
+        interval = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.didReceiveStats()
+        }
     }
 
     override func layoutSubviews() {
@@ -52,10 +57,6 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         tableView.layer.cornerRadius = 5.0
         tableView.layer.masksToBounds = true
         tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
-    }
-
-    private var fiatRateInfo: FiatRate? {
-        return self.fiatRateTicker.rateInfo
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,8 +127,13 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
             self.placeholderView.isHidden = self.fiatRateInfo != nil
             if self.fiatRateInfo != nil {
                 self.tableView.reloadData()
+                self.interval = nil
             }
         }
+    }
+
+    @IBAction func refreshData(sender: Any) {
+        self.fiatRateTicker.fetch()
     }
 
 }

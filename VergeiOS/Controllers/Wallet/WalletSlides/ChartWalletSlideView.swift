@@ -118,6 +118,10 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         }
     }
 
+    @IBAction func refreshData(sender: Any) {
+        self.loadChartData()
+    }
+
     func didSelectChartFilter(filter: ChartFilterToolbar.Filter) {
         self.filter = filter
         loadChartData()
