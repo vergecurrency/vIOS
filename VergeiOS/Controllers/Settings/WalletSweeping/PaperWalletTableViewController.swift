@@ -12,42 +12,31 @@ class PaperWalletTableViewController: EdgedTableViewController {
 
     var sweeperHelper: SweeperHelperProtocol!
 
-    var sections: [[UITableViewCell]] = []
-    var startingCells: [UITableViewCell] = []
-    var detailCells: [UITableViewCell] = []
-    var privateKeyCell: UITableViewCell!
-    var amountCell: UITableViewCell!
-    var recipientAddressCell: UITableViewCell!
+    var sections: [TableSection] = []
 
     override func loadView() {
         super.loadView()
 
-        self.refreshControl = UIRefreshControl()
         self.tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
 
-        self.privateKeyCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        self.privateKeyCell.textLabel?.text = "Private key"
-        self.privateKeyCell.detailTextLabel?.text = "Scan wallet private key..."
-        self.privateKeyCell.imageView?.image = UIImage(named: "QRcode")
-        self.privateKeyCell.updateColors()
-        self.privateKeyCell.detailTextLabel?.textColor = ThemeManager.shared.vergeGrey()
-        self.privateKeyCell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
-        self.privateKeyCell.detailTextLabel?.font = UIFont.avenir(size: 17)
+        let scanCell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        scanCell.textLabel?.text = "Scan private key"
+        scanCell.imageView?.image = UIImage(named: "QRcode")
+        scanCell.updateColors()
+        scanCell.updateFonts()
 
-        self.amountCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        self.amountCell.textLabel?.text = "Amount To Sweep"
-        self.amountCell.updateColors()
-        self.amountCell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
-        self.amountCell.detailTextLabel?.font = UIFont.avenir(size: 24)
+        let inputCell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        inputCell.textLabel?.text = "Fillin private key"
+        inputCell.imageView?.image = UIImage(named: "Quill")
+        inputCell.updateColors()
+        inputCell.updateFonts()
 
-        self.recipientAddressCell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        self.recipientAddressCell.textLabel?.text = "Your Recipient Address"
-        self.recipientAddressCell.updateColors()
-        self.recipientAddressCell.textLabel?.font = UIFont.avenir(size: 14).demiBold()
-        self.recipientAddressCell.detailTextLabel?.font = UIFont.avenir(size: 17)
-
-        self.startingCells.append(self.privateKeyCell)
-        self.sections.append(self.startingCells)
+        self.sections.append(TableSection(
+            header: "Private key",
+            footer: "Scan or fillin a valid XVG private key QR code from a paper wallet, "
+                + "card wallet or any other private key based wallet.",
+            items: [scanCell, inputCell]
+        ))
 
         self.tableView.tableHeaderView = TableHeaderView(
             title: "Lets sweep a private key wallet",
@@ -60,11 +49,11 @@ class PaperWalletTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sections[section].count
+        return self.sections[section].items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.sections[indexPath.section][indexPath.row]
+        return self.sections[indexPath.section].items[indexPath.row]
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -74,96 +63,87 @@ class PaperWalletTableViewController: EdgedTableViewController {
             walletSweepingScannerViewController.delegate = self
 
             self.present(walletSweepingScannerViewController, animated: true)
+        case 1:
+            let alert = UIAlertController(
+                title: "Fillin private key", 
+                message: "Fillin your valid XVG private key.", 
+                preferredStyle: .alert
+            )
+
+            alert.addTextField { field in
+                field.placeholder = "Private key"
+            }
+
+            alert.addAction(UIAlertAction(title: "Sweep", style: .default) { _ in
+                guard let address = alert.textFields?.first?.text else {
+                    return
+                }
+                self.didScanValue(scannedValue: address)
+            })
+
+            alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+
+            self.present(alert, animated: true)
         default:
             tableView.deselectRow(at: indexPath, animated: false)
             print("Not implemented")
         }
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 1:
-            return "Sweeping details"
-        default:
-            return "Sweeping from"
-        }
+        return self.sections[section].header
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case 1:
-            return "Import the wallets available XVG amount to your iOS wallet."
-        default:
-            return "Scan a valid XVG private key QR code from a paper wallet, card wallet or any other private key based wallet."
-        }
-    }
-
-    private func addSendButton() {
-        let sendButton = RoundedButton(type: .system)
-        sendButton.setTitle("Sweep Wallet", for: .normal)
-        sendButton.setTitleColor(.white, for: .normal)
-        sendButton.titleLabel?.font = UIFont.avenir(size: 17).demiBold()
-        sendButton.backgroundColor = ThemeManager.shared.primaryLight()
-
-        let footerView = UIView()
-        footerView.frame.size.height = 66
-        footerView.addSubview(sendButton)
-
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 8).isActive = true
-        sendButton.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -8).isActive = true
-        sendButton.widthAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
-
-        let sendButtonLeadingConstraint = sendButton.leadingAnchor.constraint(
-            equalTo: footerView.leadingAnchor,
-            constant: 40
-        )
-        sendButtonLeadingConstraint.isActive = true
-        sendButtonLeadingConstraint.priority = .defaultHigh
-
-        let sendButtonTrailingConstraint = sendButton.trailingAnchor.constraint(
-            equalTo: footerView.trailingAnchor,
-            constant: -40
-        )
-        sendButtonTrailingConstraint.isActive = true
-        sendButtonTrailingConstraint.priority = .defaultHigh
-
-        self.tableView.tableFooterView = footerView
+        return self.sections[section].footer
     }
 }
 
 extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
     func didScanValue(scannedValue: String) {
-        self.privateKeyCell.detailTextLabel?.text = scannedValue
-        self.privateKeyCell.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
+        let confirmSweepView = Bundle.main.loadNibNamed(
+            "ConfirmSweepView",
+            owner: self,
+            options: nil
+        )?.first as! ConfirmSweepView
 
-        self.refreshControl?.beginRefreshing()
+        let alertController = confirmSweepView.makeActionSheet()
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(
+                x: self.view.bounds.midX,
+                y: self.view.bounds.midY,
+                width: 0,
+                height: 0
+            )
+            popoverController.permittedArrowDirections = []
+        }
+
+        self.present(alertController, animated: true)
 
         self.sweeperHelper.balance(byPrivateKeyWIF: scannedValue) { _, balance in
             guard let balance = balance else {
-                self.refreshControl?.endRefreshing()
                 return
             }
 
-            let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider).toXvgCurrency()
-            self.amountCell.detailTextLabel?.text = amount
+            let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider)
 
             self.sweeperHelper.recipientAddress { _, address in
-                self.recipientAddressCell.detailTextLabel?.text = address
-
-                self.detailCells.append(self.amountCell)
-                self.detailCells.append(self.recipientAddressCell)
-                self.sections.append(self.detailCells)
-
-                self.addSendButton()
-
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-
-                DispatchQueue.main.async {
-                    let indexPath = IndexPath(row: self.detailCells.count-1, section: 1)
-                    self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                guard let address = address else {
+                    return
                 }
+
+                confirmSweepView.setup(toAddress: address, amount: amount)
+
+                let sendAction = UIAlertAction(title: "send.sendXVG".localized, style: .default) { _ in
+                    // self.sweeperHelper.sweep()
+                }
+                sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
+
+                alertController.addAction(sendAction)
+                alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
             }
         }
     }

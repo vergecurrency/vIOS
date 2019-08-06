@@ -188,6 +188,9 @@
 		A3E32B1E225D56FB001A8B0E /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E32B1D225D56FB001A8B0E /* ServiceProvider.swift */; };
 		A3E32B20225D5983001A8B0E /* SendViewServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E32B1F225D5983001A8B0E /* SendViewServiceProvider.swift */; };
 		A3E8FF33217B7ED700CB50ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
+		A3EA38DE22FA0C5900E89CF0 /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA38DD22FA0C5900E89CF0 /* TableSection.swift */; };
+		A3EA38E022FA0E8700E89CF0 /* ConfirmSweepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA38DF22FA0E8700E89CF0 /* ConfirmSweepView.swift */; };
+		A3EA38E622FA196900E89CF0 /* ConfirmSweepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */; };
 		B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F5703F1CEC52AAC784E /* AddressBookRepository.swift */; };
 		B2BD704D491D821519B7EEAB /* PriceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD75B9C4893B96B7175FA7 /* PriceChartView.swift */; };
 		B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */; };
@@ -596,6 +599,9 @@
 		A3E32B1D225D56FB001A8B0E /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		A3E32B1F225D5983001A8B0E /* SendViewServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewServiceProvider.swift; sourceTree = "<group>"; };
 		A3E8FF32217B7ED700CB50ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A3EA38DD22FA0C5900E89CF0 /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
+		A3EA38DF22FA0E8700E89CF0 /* ConfirmSweepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSweepView.swift; sourceTree = "<group>"; };
+		A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSweepView.xib; sourceTree = "<group>"; };
 		B2BD70361646D756C13B826D /* DonateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateTableViewController.swift; sourceTree = "<group>"; };
 		B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnspentOutput.swift; sourceTree = "<group>"; };
 		B2BD707901E103DAE1455E18 /* TxProposal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposal.swift; sourceTree = "<group>"; };
@@ -1030,6 +1036,8 @@
 		A3239D6522E8EC3100430F8B /* WalletSweeping */ = {
 			isa = PBXGroup;
 			children = (
+				A3EA38DF22FA0E8700E89CF0 /* ConfirmSweepView.swift */,
+				A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */,
 				A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */,
 				A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */,
 				A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */,
@@ -1449,6 +1457,7 @@
 				CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */,
 				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
 				A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */,
+				A3EA38DD22FA0C5900E89CF0 /* TableSection.swift */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -1866,6 +1875,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3EA38E622FA196900E89CF0 /* ConfirmSweepView.xib in Resources */,
 				CA93C6B3226EFF5A00A16B73 /* Setup.storyboard in Resources */,
 				A38D6F7621BBFA6D00280FFE /* TorSetup1View.xib in Resources */,
 				07938404210DAD3800C3C799 /* RestoreGuide.storyboard in Resources */,
@@ -2203,6 +2213,7 @@
 				B2BD70FA0DF99FC892D91961 /* AddressInfo.swift in Sources */,
 				B2BD7EAD955C16295629FF73 /* AddressBalance.swift in Sources */,
 				B2BD7F005F419E6C2A8B8A9A /* TxHistory.swift in Sources */,
+				A3EA38E022FA0E8700E89CF0 /* ConfirmSweepView.swift in Sources */,
 				B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */,
 				B2BD711DC7A69C1F9F9C2875 /* TxAction.swift in Sources */,
 				B2BD782690228E5BDAFE38C4 /* TxProposal.swift in Sources */,
@@ -2246,6 +2257,7 @@
 				CA1E3BC622D176F800210562 /* SecondaryButton.swift in Sources */,
 				A3AA2B852263D23D000E4571 /* MutedLabel.swift in Sources */,
 				B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */,
+				A3EA38DE22FA0C5900E89CF0 /* TableSection.swift in Sources */,
 				CAA6031322BC3E3B00EFCB24 /* UIView+Themeable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

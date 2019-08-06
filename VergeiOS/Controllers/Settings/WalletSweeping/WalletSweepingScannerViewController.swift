@@ -213,9 +213,9 @@ extension WalletSweepingScannerViewController {
     }
 
     func privateKeyScanned(privateKey: String) {
-        self.delegate?.didScanValue(scannedValue: privateKey)
-
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            self.delegate?.didScanValue(scannedValue: privateKey)
+        }
     }
 }
 
@@ -324,10 +324,11 @@ extension WalletSweepingScannerViewController: UIImagePickerControllerDelegate, 
             }
 
             print(qrCode)
-            self.privateKeyScanned(privateKey: qrCode)
-        }
 
-        dismiss(animated: true, completion: nil)
+            return self.dismiss(animated: true) {
+                self.privateKeyScanned(privateKey: qrCode)
+            }
+        }
     }
 }
 
