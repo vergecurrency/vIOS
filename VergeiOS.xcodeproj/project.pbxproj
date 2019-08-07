@@ -1011,10 +1011,10 @@
 			isa = PBXGroup;
 			children = (
 				A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */,
+				A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */,
 				A3A71C1722DA66B80098D861 /* TransactionFactoryProtocol.swift */,
 				A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */,
 				A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */,
-				A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
