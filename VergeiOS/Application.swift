@@ -17,6 +17,7 @@ class Application {
         ApplicationServiceProvider.self,
         CoreStoreServiceProvider.self,
         HttpServiceProvider.self,
+        BlockchainServiceProvider.self,
         WalletServiceProvider.self,
         SetupViewServiceProvider.self,
         WalletViewServiceProvider.self,

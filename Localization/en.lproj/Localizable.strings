@@ -189,6 +189,7 @@
 "settings.wallet.footer.title"              = "Manage your wallet with the options given.";
 "settings.wallet.cell.removeLabel"          = "Remove wallet";
 "settings.wallet.cell.paperKeyLabel"        = "Paper key";
+"settings.wallet.cell.walletSweepingLabel"  = "Wallet sweeping";
 "settings.wallet.cell.addressesLabel"       = "Addresses";
 "settings.wallet.cell.transactionsLabel"    = "Transaction Proposals";
 "settings.wallet.cell.serviceUrlLabel"      = "Service URL";
@@ -215,6 +216,41 @@
 "settings.paperKey.preview.descLabel"       = "Write down each word carefully without capital letters.";
 "settings.paperKey.preview.wordsSegment"    = "Words";
 "settings.paperKey.preview.qrSegment"       = "QR";
+
+// Wallet sweeping
+
+"settings.sweeping.sweep"                   = "Sweep";
+"settings.sweeping.titleLabel"              = "Lets sweep a wallet into your iOS wallet";
+"settings.sweeping.header.title"            = "Sweeping Method";
+"settings.sweeping.footer.title"            = "Choose a sweeping method to transfer one of the external wallets into your current iOS wallet.";
+"settings.sweeping.cell.privateKeyLabel"    = "Private key";
+"settings.sweeping.cell.privateKeyDecs"     = "Paper wallet, card wallet or another private key";
+"settings.sweeping.cell.electrumLabel"      = "Electrum";
+"settings.sweeping.cell.electrumDecs"       = "v2.1.0 or lower";
+"settings.sweeping.cell.androidLabel"       = "Android";
+"settings.sweeping.cell.androidDecs"        = "v1.0.0 or lower";
+
+// Private key wallet sweeping
+
+"sweeping.privateKey.titleLabel"            = "Lets sweep a private key wallet";
+"sweeping.privateKey.header.title"          = "Private key";
+"sweeping.privateKey.footer.title"          = "Scan or fillin a valid XVG private key QR code from a paper wallet, card wallet or any other private key based wallet.";
+"sweeping.privateKey.cell.scanLabel"        = "Scan private key";
+"sweeping.privateKey.cell.fillInLabel"      = "Fill in private key";
+"sweeping.privateKey.alert.title"           = "Fill in private key";
+"sweeping.privateKey.alert.message"         = "Fill in your valid XVG private key.";
+"sweeping.privateKey.alert.placeholder"     = "Private key";
+"sweeping.privateKey.swept.title"           = "Swept successful";
+"sweeping.privateKey.swept.description"     = "The wallet was successfully swept and a transaction was created with TXID";
+
+// Sweeping Scanner
+
+"sweeping.scanner.scanLabel"                = "Scan paper wallet private key";
+
+// Confirm Sweeping
+
+"sweeping.confirm.titleLabel"               = "Confirm Wallet Sweep";
+"sweeping.confirm.recipientLabel"           = "Your Recipient Address";
 
 // Disconnect wallet
 

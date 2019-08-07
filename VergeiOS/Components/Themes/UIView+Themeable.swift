@@ -139,7 +139,7 @@ extension UIPageControl {
 
     override func updateColors() {
         self.currentPageIndicatorTintColor = ThemeManager.shared.primaryLight()
-        self.pageIndicatorTintColor = ThemeManager.shared.secondaryLight()
+        self.pageIndicatorTintColor = ThemeManager.shared.vergeGrey()
     }
 }
 
@@ -157,6 +157,11 @@ extension UITableViewCell {
 
         self.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         self.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
+    }
+
+    func updateFonts() {
+        self.textLabel?.font = UIFont.avenir(size: 17).demiBold()
+        self.detailTextLabel?.font = UIFont.avenir(size: 12)
     }
 }
 

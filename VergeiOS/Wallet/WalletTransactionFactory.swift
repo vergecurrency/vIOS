@@ -5,7 +5,7 @@
 
 import Foundation
 
-class TransactionFactory {
+class WalletTransactionFactory {
 
     var amount: NSNumber = 0.0
     var fiatAmount: NSNumber = 0.0

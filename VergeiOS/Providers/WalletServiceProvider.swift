@@ -21,6 +21,7 @@ class WalletServiceProvider: ServiceProvider {
         registerWalletTicker()
         registerFiatRateTicker()
         registerAddressBookRepository()
+        registerSweeperHelper()
     }
 
     func registerWalletCredentials() {
@@ -41,6 +42,10 @@ class WalletServiceProvider: ServiceProvider {
 
             return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient)
         }
+
+        container.register(WalletClientProtocol.self) { r in
+            return r.resolve(WalletClient.self)!
+        }
     }
 
     func registerTxTransponder() {
@@ -56,10 +61,10 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerTransactionFactory() {
-        container.register(TransactionFactory.self) { r in
+        container.register(WalletTransactionFactory.self) { r in
             let fiatRateTracker = r.resolve(FiatRateTicker.self)!
 
-            return TransactionFactory(fiatRateTracker: fiatRateTracker)
+            return WalletTransactionFactory(fiatRateTracker: fiatRateTracker)
         }
     }
 
@@ -98,6 +103,17 @@ class WalletServiceProvider: ServiceProvider {
     func registerAddressBookRepository() {
         container.register(AddressBookRepository.self) { _ in
             return AddressBookRepository()
+        }
+    }
+
+    func registerSweeperHelper() {
+        container.register(SweeperHelperProtocol.self) { r in
+            return SweeperHelper(
+                bitcoreNodeClient: r.resolve(BitcoreNodeClientProtocol.self)!,
+                walletClient: r.resolve(WalletClientProtocol.self)!,
+                transactionFactory: r.resolve(TransactionFactoryProtocol.self)!,
+                transactionManager: r.resolve(TransactionManager.self)!
+            )
         }
     }
 

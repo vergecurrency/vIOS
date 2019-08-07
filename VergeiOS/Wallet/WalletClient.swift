@@ -34,10 +34,12 @@ public class WalletClient: WalletClientProtocol {
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
-    init(appRepo: ApplicationRepository,
-         credentials: Credentials,
-         torClient: TorClient,
-         network: Network = .mainnetXVG) {
+    init(
+        appRepo: ApplicationRepository,
+        credentials: Credentials,
+        torClient: TorClient,
+        network: Network = .mainnetXVG
+    ) {
         self.applicationRepository = appRepo
         self.baseUrl = appRepo.walletServiceUrl
         self.credentials = credentials
@@ -186,7 +188,7 @@ extension WalletClient {
         n: Int,
         options: WalletOptions?,
         completion: @escaping (_ error: Error?, _ secret: String?) -> Void
-        ) {
+    ) {
         // swiftlint:enable function_parameter_count
         let encWalletName = encryptMessage(plaintext: walletName, encryptingKey: credentials.sharedEncryptingKey)
 
@@ -294,7 +296,7 @@ extension WalletClient {
         completion: @escaping (_ error: Error?,
                                _ address: AddressInfo?,
                                _ createAddressErrorResponse: CreateAddressErrorResponse?) -> Void
-        ) {
+    ) {
         postRequest(url: "/v4/addresses/", arguments: nil) { data, _, error in
             guard let data = data else {
                 return completion(error, nil, nil)
@@ -320,7 +322,7 @@ extension WalletClient {
     public func getMainAddresses(
         options: WalletAddressesOptions? = nil,
         completion: @escaping (_ addresses: [AddressInfo]) -> Void
-        ) {
+    ) {
         var args: [String] = []
         var qs = ""
 
@@ -373,7 +375,7 @@ extension WalletClient {
         skip: Int? = nil,
         limit: Int? = nil,
         completion: @escaping (_ transactions: [TxHistory]) -> Void
-        ) {
+    ) {
         var url = "/v1/txhistory/?includeExtendedInfo=1"
         if (skip != nil && limit != nil) {
             url = "\(url)&skip=\(skip!)&limit=\(limit!)"
@@ -407,7 +409,7 @@ extension WalletClient {
     public func getUnspentOutputs(
         address: String? = nil,
         completion: @escaping (_ unspentOutputs: [UnspentOutput]) -> Void
-        ) {
+    ) {
         getRequest(url: "/v1/utxos/") { data, _, _ in
             guard let data = data else {
                 return completion([])
@@ -454,12 +456,13 @@ extension WalletClient {
 
 extension WalletClient {
 
-    public func createTxProposal(
-        proposal: TxProposal,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
-        ) {
+    public typealias TxProposalCompletion = (
+        _ txp: TxProposalResponse?,
+        _ errorResponse: TxProposalErrorResponse?,
+        _ error: Error?
+    ) -> Void
+
+    public func createTxProposal(proposal: TxProposal, completion: @escaping TxProposalCompletion) {
         var arguments = JSON()
         var output = JSON()
         output["toAddress"].stringValue = proposal.address
@@ -491,12 +494,7 @@ extension WalletClient {
         }
     }
 
-    public func publishTxProposal(
-        txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
-        ) {
+    public func publishTxProposal(txp: TxProposalResponse, completion: @escaping TxProposalCompletion) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
 
@@ -516,10 +514,11 @@ extension WalletClient {
                     do {
                         return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
                     } catch {
-                        return completion(nil,
-                                          try? JSONDecoder().decode(TxProposalErrorResponse.self,
-                                                                    from: data),
-                                          error)
+                        return completion(
+                            nil,
+                            try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data),
+                            error
+                        )
                     }
                 } else {
                     return completion(nil, nil, error)
@@ -530,12 +529,7 @@ extension WalletClient {
         }
     }
 
-    public func signTxProposal(
-        txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
-        ) {
+    public func signTxProposal(txp: TxProposalResponse, completion: @escaping TxProposalCompletion) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
 
@@ -555,9 +549,11 @@ extension WalletClient {
                     do {
                         return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
                     } catch {
-                        return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self,
-                                                                         from: data),
-                                          error)
+                        return completion(
+                            nil,
+                            try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data),
+                            error
+                        )
                     }
                 } else {
                     return completion(nil, nil, error)
@@ -568,12 +564,7 @@ extension WalletClient {
         }
     }
 
-    public func broadcastTxProposal(
-        txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
-        ) {
+    public func broadcastTxProposal(txp: TxProposalResponse, completion: @escaping TxProposalCompletion) {
         postRequest(
             url: "/v1/txproposals/\(txp.id)/broadcast/",
             arguments: nil

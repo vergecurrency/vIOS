@@ -50,6 +50,17 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (ThemeTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
+
+        container.storyboardInitCompleted (WalletSweepingTableViewController.self) { _, c in
+            c.container = self.container
+        }
+
+        container.register (PaperWalletTableViewController.self) { r in
+            let controller = PaperWalletTableViewController(style: .grouped)
+            controller.sweeperHelper = r.resolve(SweeperHelperProtocol.self)
+
+            return controller
+        }
     }
 
 }

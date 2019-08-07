@@ -245,7 +245,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
 
         DispatchQueue.main.async {
             // Create a send transaction.
-            let sendTransaction = TransactionFactory()
+            let sendTransaction = WalletTransactionFactory()
             sendTransaction.address = transaction.address
             sendTransaction.amount = transaction.amountValue
 

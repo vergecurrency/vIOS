@@ -61,6 +61,11 @@ public struct Constants {
     public static let bwsEndpoint: String = "https://vws.vergecurrency.network/vws/api/"
 
     /**
+     * The default Verge Bitcore Node.
+     */
+    public static let bnEndpoint: String = "https://vws.vergecurrency.network/node/api/XVG/mainnet"
+
+    /**
      * The fiat rate data service.
      */
     public static let priceDataEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/price/"

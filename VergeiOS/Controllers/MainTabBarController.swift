@@ -64,7 +64,7 @@ class MainTabBarController: UITabBarController {
         }
     }
 
-    func prepareSendView(transaction: TransactionFactory) {
+    func prepareSendView(transaction: WalletTransactionFactory) {
         // Select the send view.
         selectedIndex = sendViewIndex
 
@@ -83,7 +83,7 @@ class MainTabBarController: UITabBarController {
     }
 
     @objc func demandSendView(notification: Notification) {
-        if let sendTransaction = notification.object as? TransactionFactory {
+        if let sendTransaction = notification.object as? WalletTransactionFactory {
             prepareSendView(transaction: sendTransaction)
         }
     }
@@ -91,5 +91,4 @@ class MainTabBarController: UITabBarController {
     @objc func didDeviceShaken(notification: Notification? = nil) {
         self.applicationRepository.secureContent = !self.applicationRepository.secureContent
     }
-    
 }
