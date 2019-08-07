@@ -297,7 +297,6 @@ extension WalletSweepingScannerViewController: AVCaptureMetadataOutputObjectsDel
 
             self.captureSession?.stopRunning()
 
-            print(privateKey)
             self.privateKeyScanned(privateKey: privateKey)
         }
     }
