@@ -11,7 +11,6 @@ import UIKit
 class PaperWalletTableViewController: EdgedTableViewController {
 
     var sweeperHelper: SweeperHelperProtocol!
-
     var sections: [TableSection] = []
 
     override func loadView() {
@@ -20,26 +19,25 @@ class PaperWalletTableViewController: EdgedTableViewController {
         self.tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
 
         let scanCell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        scanCell.textLabel?.text = "Scan private key"
+        scanCell.textLabel?.text = "sweeping.privateKey.cell.scanLabel".localized
         scanCell.imageView?.image = UIImage(named: "QRcode")
         scanCell.updateColors()
         scanCell.updateFonts()
 
         let inputCell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        inputCell.textLabel?.text = "Fillin private key"
+        inputCell.textLabel?.text = "sweeping.privateKey.cell.fillInLabel".localized
         inputCell.imageView?.image = UIImage(named: "Quill")
         inputCell.updateColors()
         inputCell.updateFonts()
 
         self.sections.append(TableSection(
-            header: "Private key",
-            footer: "Scan or fillin a valid XVG private key QR code from a paper wallet, "
-                + "card wallet or any other private key based wallet.",
+            header: "sweeping.privateKey.header.title".localized,
+            footer: "sweeping.privateKey.footer.title".localized,
             items: [scanCell, inputCell]
         ))
 
         self.tableView.tableHeaderView = TableHeaderView(
-            title: "Lets sweep a private key wallet",
+            title: "sweeping.privateKey.titleLabel".localized,
             image: UIImage(named: "PrivateKeySweepingPlaceholder")!
         )
     }
@@ -65,20 +63,20 @@ class PaperWalletTableViewController: EdgedTableViewController {
             self.present(walletSweepingScannerViewController, animated: true)
         case 1:
             let alert = UIAlertController(
-                title: "Fillin private key", 
-                message: "Fillin your valid XVG private key.", 
+                title: "sweeping.privateKey.alert.title".localized,
+                message: "sweeping.privateKey.alert.message".localized,
                 preferredStyle: .alert
             )
 
             alert.addTextField { field in
-                field.placeholder = "Private key"
+                field.placeholder = "sweeping.privateKey.alert.placeholder".localized
             }
 
-            alert.addAction(UIAlertAction(title: "Sweep", style: .default) { _ in
-                guard let address = alert.textFields?.first?.text else {
+            alert.addAction(UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
+                guard let privateKey = alert.textFields?.first?.text else {
                     return
                 }
-                self.didScanValue(scannedValue: address)
+                self.didScanValue(scannedValue: privateKey)
             })
 
             alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
@@ -98,6 +96,30 @@ class PaperWalletTableViewController: EdgedTableViewController {
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return self.sections[section].footer
+    }
+
+    private func sweep(balance: BNBalance, toAddress address: String, key: String) {
+        self.sweeperHelper.sweep(
+            balance: balance,
+            destinationAddress: address,
+            privateKeyWIF: key
+        ) { _, txid in
+            guard let txid = txid else {
+                return print("No txid returned")
+            }
+
+            let alert = UIAlertController(
+                title: "sweeping.privateKey.swept.title".localized,
+                message: "sweeping.privateKey.swept.description".localized + ":\n\n" + txid,
+                preferredStyle: .alert
+            )
+
+            alert.addAction(UIAlertAction(title: "defaults.done".localized, style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            })
+
+            self.present(alert, animated: true)
+        }
     }
 }
 
@@ -137,8 +159,8 @@ extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
 
                 confirmSweepView.setup(toAddress: address, amount: amount)
 
-                let sendAction = UIAlertAction(title: "send.sendXVG".localized, style: .default) { _ in
-                    // self.sweeperHelper.sweep()
+                let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
+                    self.sweep(balance: balance, toAddress: address, key: scannedValue)
                 }
                 sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
 

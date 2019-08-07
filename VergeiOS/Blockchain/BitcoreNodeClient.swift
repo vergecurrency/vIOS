@@ -88,7 +88,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "accept")
         print("Get request to: \(urlObject.absoluteURL)")
-        
+
         let task = self.torClient.session.dataTask(with: request) { data, response, error in
             DispatchQueue.main.sync {
                 completion(data, response, error)

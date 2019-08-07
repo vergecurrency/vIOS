@@ -20,9 +20,23 @@ class WalletSweepingTableViewController: UITableViewController {
     var container: Container!
 
     let items = [
-        WalletSweepingItem(id: "privateKey", name: "Private key", subtitle: "Paper wallet, Card wallet etc"),
-        WalletSweepingItem(id: "electrum", name: "Electrum", subtitle: "V2.1.0 or lower"),
-        WalletSweepingItem(id: "android", name: "Android", subtitle: "v1.0.0 or lower")
+        WalletSweepingItem(
+            id: "privateKey",
+            name: "settings.sweeping.cell.privateKeyLabel".localized,
+            subtitle: "settings.sweeping.cell.privateKeyDecs".localized
+        )
+        /*
+        WalletSweepingItem(
+            id: "electrum",
+            name: "settings.sweeping.cell.electrumLabel".localized,
+            subtitle: "settings.sweeping.cell.electrumDecs".localized
+        ),
+        WalletSweepingItem(
+            id: "android",
+            name: "settings.sweeping.cell.androidLabel".localized,
+            subtitle: "settings.sweeping.cell.androidDecs".localized
+        )
+        */
     ]
 
     override func viewDidLoad() {
@@ -38,11 +52,11 @@ class WalletSweepingTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Sweeping method"
+        return "settings.sweeping.header.title".localized
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Choose a sweeping method to transfer one of the external wallets into your current iOS wallet."
+        return "settings.sweeping.footer.title".localized
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

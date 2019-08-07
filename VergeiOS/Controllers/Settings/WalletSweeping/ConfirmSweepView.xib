@@ -37,6 +37,9 @@
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                             <color key="textColor" name="SecondaryDark"/>
                             <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="sweeping.confirm.titleLabel"/>
+                            </userDefinedRuntimeAttributes>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Receive" translatesAutoresizingMaskIntoConstraints="NO" id="c5c-Y1-O2W">
                             <rect key="frame" x="8" y="116" width="25" height="25"/>
@@ -54,6 +57,9 @@
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="15"/>
                             <color key="textColor" name="SecondaryDark"/>
                             <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="sweeping.confirm.recipientLabel"/>
+                            </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yf9-Rn-ng9" customClass="BorderPanelView" customModule="VergeiOS" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="41" width="414" height="67"/>

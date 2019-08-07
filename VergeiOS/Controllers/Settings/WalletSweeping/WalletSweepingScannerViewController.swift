@@ -8,7 +8,7 @@ import AVFoundation
 
 class WalletSweepingScannerViewController: UIViewController {
 
-    var delegate: WalletSweepingScannerViewDelegate?
+    weak var delegate: WalletSweepingScannerViewDelegate?
     var qrCodeFrameView: UIView!
     var imagePicker = UIImagePickerController()
     var captureSession: AVCaptureSession?
@@ -34,7 +34,7 @@ class WalletSweepingScannerViewController: UIViewController {
         label.adjustsFontSizeToFitWidth = true
         label.textColor = .white
         label.font = .avenir(size: 17)
-        label.text = "Scan paper wallet private key"
+        label.text = "sweeping.scanner.scanLabel".localized
 
         return label
     }()
@@ -70,7 +70,6 @@ class WalletSweepingScannerViewController: UIViewController {
 
         return button
     }()
-
 
     var statusBarShouldBeHidden = false
 
@@ -323,15 +322,9 @@ extension WalletSweepingScannerViewController: UIImagePickerControllerDelegate, 
                 qrCode += feature.messageString!
             }
 
-            print(qrCode)
-
             return self.dismiss(animated: true) {
                 self.privateKeyScanned(privateKey: qrCode)
             }
         }
     }
-}
-
-protocol WalletSweepingScannerViewDelegate {
-    func didScanValue(scannedValue: String)
 }

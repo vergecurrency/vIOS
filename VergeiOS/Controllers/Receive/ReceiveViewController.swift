@@ -45,7 +45,6 @@ class ReceiveViewController: ThemeableViewController {
         self.currencyLabel.textColor = ThemeManager.shared.secondaryLight()
 
         if self.currentQrCode != nil {
-            //TODO stealth address theme
             self.currentQrCode?.color = CIColor(cgColor: ThemeManager.shared.currentTheme.qrCodeColor.cgColor)
             self.qrCodeImageView.image = (self.currentQrCode?.image)!
         }

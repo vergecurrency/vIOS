@@ -91,5 +91,4 @@ class MainTabBarController: UITabBarController {
     @objc func didDeviceShaken(notification: Notification? = nil) {
         self.applicationRepository.secureContent = !self.applicationRepository.secureContent
     }
-    
 }

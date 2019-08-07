@@ -2032,6 +2032,9 @@ But you can always turn Tor off.</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                     <color key="textColor" name="SecondaryDark"/>
                                     <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.sweeping.titleLabel"/>
+                                    </userDefinedRuntimeAttributes>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="SweepPaperWalletPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="m1e-vU-cea">
                                     <rect key="frame" x="40" y="76.5" width="295" height="125"/>

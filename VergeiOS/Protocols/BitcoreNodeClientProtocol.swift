@@ -11,7 +11,7 @@ import Foundation
 protocol BitcoreNodeClientProtocol {
     typealias SendCompletion = (_ error: Error?, _ response: BNSendResponse?) -> Void
     typealias BlockCompletion = (_ error: Error?, _ block: BNBlock?) -> Void
-    typealias TransactionCompletion = (_ error: Error?, _ transaction: [BNTransaction]) -> Void
+    typealias TransactionCompletion = (_ error: Error?, _ transactions: [BNTransaction]) -> Void
     typealias BalanceCompletion = (_ error: Error?, _ balance: BNBalance?) -> Void
     typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 

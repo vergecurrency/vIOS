@@ -55,7 +55,6 @@ class ApplicationRepository {
     }
 
     // Store the selected wallet currency. Defaults to USD.
-    // TODO: String used for now until better solution.
     var currency: String {
         get {
             return userDefaults.string(forKey: "wallet.currency") ?? "USD"

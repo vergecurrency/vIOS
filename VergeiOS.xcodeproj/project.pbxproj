@@ -191,6 +191,8 @@
 		A3EA38DE22FA0C5900E89CF0 /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA38DD22FA0C5900E89CF0 /* TableSection.swift */; };
 		A3EA38E022FA0E8700E89CF0 /* ConfirmSweepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA38DF22FA0E8700E89CF0 /* ConfirmSweepView.swift */; };
 		A3EA38E622FA196900E89CF0 /* ConfirmSweepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */; };
+		A3EA38E822FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */; };
+		A3EA38EA22FB619F00E89CF0 /* SweeperHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */; };
 		B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F5703F1CEC52AAC784E /* AddressBookRepository.swift */; };
 		B2BD704D491D821519B7EEAB /* PriceChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD75B9C4893B96B7175FA7 /* PriceChartView.swift */; };
 		B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */; };
@@ -602,6 +604,8 @@
 		A3EA38DD22FA0C5900E89CF0 /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 		A3EA38DF22FA0E8700E89CF0 /* ConfirmSweepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSweepView.swift; sourceTree = "<group>"; };
 		A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSweepView.xib; sourceTree = "<group>"; };
+		A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSweepingScannerViewDelegate.swift; sourceTree = "<group>"; };
+		A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeperHelperProtocol.swift; sourceTree = "<group>"; };
 		B2BD70361646D756C13B826D /* DonateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonateTableViewController.swift; sourceTree = "<group>"; };
 		B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnspentOutput.swift; sourceTree = "<group>"; };
 		B2BD707901E103DAE1455E18 /* TxProposal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposal.swift; sourceTree = "<group>"; };
@@ -1009,6 +1013,8 @@
 				A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */,
 				A3A71C1722DA66B80098D861 /* TransactionFactoryProtocol.swift */,
 				A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */,
+				A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */,
+				A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -2172,6 +2178,7 @@
 				A338E6BB2110D620000D44EE /* ChartWalletSlideView.swift in Sources */,
 				A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */,
 				A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */,
+				A3EA38EA22FB619F00E89CF0 /* SweeperHelperProtocol.swift in Sources */,
 				A33F6A7020EEE485001492C2 /* AppDelegate.swift in Sources */,
 				A302D2F9211F3F5700EA8091 /* CardImageView.swift in Sources */,
 				A3AA21FF2163F66B00160576 /* TorStatusIndicator.swift in Sources */,
@@ -2219,6 +2226,7 @@
 				B2BD782690228E5BDAFE38C4 /* TxProposal.swift in Sources */,
 				A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */,
 				B2BD741F2CC30614537FA183 /* TxProposalResponse.swift in Sources */,
+				A3EA38E822FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift in Sources */,
 				CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */,
 				A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */,
 				B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */,

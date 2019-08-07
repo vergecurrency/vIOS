@@ -51,7 +51,7 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
 
-        container.storyboardInitCompleted (WalletSweepingTableViewController.self) { r, c in
+        container.storyboardInitCompleted (WalletSweepingTableViewController.self) { _, c in
             c.container = self.container
         }
 

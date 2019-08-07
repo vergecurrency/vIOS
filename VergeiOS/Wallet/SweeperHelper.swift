@@ -24,32 +24,59 @@ class SweeperHelper: SweeperHelperProtocol {
         self.transactionManager = transactionManager
     }
 
-    public func sweep(unspendTransactions: [Transaction], balance: BNBalance, destinationAddress: String) {
-//        let unsignedTx = try? self.transactionFactory.getUnsignedTx(
-//            balance: balance,
-//            destinationAddress: destinationAddress,
-//            outputs: unspendTransactions
-//        )
-//
-//        print(unsignedTx)
-//        print(unsignedTx?.tx.serialized().hex)
-//
-//        let signedTx = try? self.transactionFactory.signTx(unsignedTx: unsignedTx!, keys: [privateKey!])
-//        let rawTx = signedTx?.serialized()
-//
-//        print(rawTx?.hex)
-//        self.bitcoreNodeClient.send(rawTx: rawTx!.hex) { error, response in
-//            print(response)
-//            print(error?.localizedDescription)
-//        }
+    func sweep(
+        balance: BNBalance,
+        destinationAddress: String,
+        privateKeyWIF: String,
+        completion: @escaping SweepCompletion
+    ) {
+        self.sweep(
+            balance: balance,
+            destinationAddress: destinationAddress,
+            key: self.wifToPrivateKey(wif: privateKeyWIF)!,
+            completion: completion
+        )
+    }
+
+    public func sweep(
+        balance: BNBalance,
+        destinationAddress: String,
+        key: PrivateKey,
+        completion: @escaping SweepCompletion
+    ) {
+        self.bitcoreNodeClient.unspendTransactions(
+            byAddress: key.publicKey().toLegacy().description
+        ) { _, transactions in
+            do {
+                print(transactions)
+                let unsignedTx = try self.transactionFactory.getUnsignedTx(
+                    balance: balance,
+                    destinationAddress: destinationAddress,
+                    outputs: transactions
+                )
+
+                let signedTx = try self.transactionFactory.signTx(unsignedTx: unsignedTx, keys: [key])
+                let rawTx = signedTx.serialized()
+
+                print(rawTx.hex)
+                self.bitcoreNodeClient.send(rawTx: rawTx.hex) { error, response in
+                    completion(error, response?.txid)
+                }
+            } catch TransactionFactory.TransactionFactoryError.addressToScriptError {
+                // TODO
+                print("addressToScriptError")
+            } catch {
+                // TODO
+                print("Unexpected error: \(error).")
+            }
+        }
     }
 
     public func balance(
         byPrivateKeyWIF wif: String,
         completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
     ) {
-        let privateKey = try? PrivateKey(wif: wif)
-        let publicKey = privateKey?.publicKey()
+        let publicKey = self.wifToPrivateKey(wif: wif)?.publicKey()
         guard let address = publicKey?.toLegacy().description else {
             // Couldn't resolve address.
             completion(nil, nil)
@@ -78,7 +105,7 @@ class SweeperHelper: SweeperHelperProtocol {
             }
 
             // Otherwise generate a new one.
-            self.walletClient.createAddress { error, addressInfo, errorResponse in
+            self.walletClient.createAddress { _, addressInfo, _ in
                 guard let addressInfo = addressInfo else {
                     return
                 }
@@ -87,18 +114,8 @@ class SweeperHelper: SweeperHelperProtocol {
             }
         }
     }
-}
 
-protocol SweeperHelperProtocol {
-    func balance(
-        byPrivateKeyWIF wif: String,
-        completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    )
-
-    func balance(
-        byAddress address: String,
-        completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    )
-
-    func recipientAddress(completion: @escaping (_ error: Error?, _ address: String?) -> Void)
+    private func wifToPrivateKey(wif: String) -> PrivateKey? {
+        return try! PrivateKey(wif: wif)
+    }
 }
