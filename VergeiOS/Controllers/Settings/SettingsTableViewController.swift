@@ -34,11 +34,11 @@ class SettingsTableViewController: EdgedTableViewController {
     private func otherHandler(index: Int) -> Void {
         
         switch index {
-        case 2:
+        case 1:
             SKStoreReviewController.requestReview()
-        case 3:
+        case 2:
             loadWebsite(url: Constants.website)
-        case 4:
+        case 3:
             loadWebsite(url: Constants.iOSRepo)
         default: break
         }
