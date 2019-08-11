@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BitcoinKit
 
 class PaperWalletTableViewController: EdgedTableViewController {
 
@@ -99,56 +100,61 @@ class PaperWalletTableViewController: EdgedTableViewController {
     }
 
     private func sweep(balance: BNBalance, toAddress address: String, key: String) {
-        self.sweeperHelper.sweep(
-            balance: balance,
-            destinationAddress: address,
-            privateKeyWIF: key
-        ) { _, txid in
-            guard let txid = txid else {
-                return print("No txid returned")
+        do {
+            try self.sweeperHelper.sweep(
+                balance: balance,
+                destinationAddress: address,
+                privateKeyWIF: key
+            ) { _, txid in
+                guard let txid = txid else {
+                    return print("No txid returned")
+                }
+
+                let alert = UIAlertController(
+                    title: "sweeping.privateKey.swept.title".localized,
+                    message: "sweeping.privateKey.swept.description".localized + ":\n\n" + txid,
+                    preferredStyle: .alert
+                )
+
+                alert.addAction(UIAlertAction(title: "defaults.done".localized, style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                })
+
+                self.present(alert, animated: true)
             }
-
-            let alert = UIAlertController(
-                title: "sweeping.privateKey.swept.title".localized,
-                message: "sweeping.privateKey.swept.description".localized + ":\n\n" + txid,
-                preferredStyle: .alert
-            )
-
-            alert.addAction(UIAlertAction(title: "defaults.done".localized, style: .default) { _ in
-                self.navigationController?.popViewController(animated: true)
-            })
-
-            self.present(alert, animated: true)
+        } catch PrivateKeyError.invalidFormat {
+            self.showInvalidPrivateKeyAlert()
+        } catch {
+            print("Unexpected error: \(error).")
         }
     }
-}
 
-extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
-    func didScanValue(scannedValue: String) {
-        let confirmSweepView = Bundle.main.loadNibNamed(
-            "ConfirmSweepView",
-            owner: self,
-            options: nil
-        )?.first as! ConfirmSweepView
-
-        let alertController = confirmSweepView.makeActionSheet()
-        if let popoverController = alertController.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(
-                x: self.view.bounds.midX,
-                y: self.view.bounds.midY,
-                width: 0,
-                height: 0
-            )
-            popoverController.permittedArrowDirections = []
-        }
-
-        self.present(alertController, animated: true)
-
-        self.sweeperHelper.balance(byPrivateKeyWIF: scannedValue) { _, balance in
-            guard let balance = balance else {
-                return
+    private func prepareSweepingWithScannedValue(scannedValue: String) throws {
+        try self.sweeperHelper.balance(byPrivateKeyWIF: scannedValue) { _, balance in
+            guard let balance = balance, balance.balance > 0 else {
+                return self.showNotEnoughBalanceAlert()
             }
+
+            let confirmSweepView = Bundle.main.loadNibNamed(
+                "ConfirmSweepView",
+                owner: self,
+                options: nil
+                )?.first as! ConfirmSweepView
+
+            let alertController = confirmSweepView.makeActionSheet()
+            if let popoverController = alertController.popoverPresentationController {
+                popoverController.sourceView = self.view
+                popoverController.sourceRect = CGRect(
+                    x: self.view.bounds.midX,
+                    y: self.view.bounds.midY,
+                    width: 0,
+                    height: 0
+                )
+
+                popoverController.permittedArrowDirections = []
+            }
+
+            self.present(alertController, animated: true)
 
             let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider)
 
@@ -167,6 +173,43 @@ extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
                 alertController.addAction(sendAction)
                 alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
             }
+        }
+    }
+
+    private func showNotEnoughBalanceAlert() {
+        let alertController = UIAlertController(
+            title: "Not Enough Balance",
+            message: "Your scanned private key doesn't seem to have enough balance.",
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        self.present(alertController, animated: true)
+    }
+
+    private func showInvalidPrivateKeyAlert() {
+        let alertController = UIAlertController(
+            title: "Invalid Private Key",
+            message: "You've provided an invalid private key because it couldn't be resolved. "
+                + "Please make sure you've scanned of filled in the correct key.",
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        self.present(alertController, animated: true)
+    }
+}
+
+extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
+    func didScanValue(scannedValue: String) {
+        do {
+            try self.prepareSweepingWithScannedValue(scannedValue: scannedValue)
+        } catch PrivateKeyError.invalidFormat {
+            self.showInvalidPrivateKeyAlert()
+        } catch {
+            print("Unexpected error: \(error).")
         }
     }
 }

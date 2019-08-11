@@ -17,7 +17,7 @@ protocol SweeperHelperProtocol: class {
         destinationAddress: String,
         privateKeyWIF: String,
         completion: @escaping SweepCompletion
-    )
+    ) throws
 
     func sweep(
         balance: BNBalance,
@@ -29,7 +29,7 @@ protocol SweeperHelperProtocol: class {
     func balance(
         byPrivateKeyWIF wif: String,
         completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    )
+    ) throws
 
     func balance(
         byAddress address: String,

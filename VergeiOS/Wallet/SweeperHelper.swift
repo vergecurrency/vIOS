@@ -29,11 +29,11 @@ class SweeperHelper: SweeperHelperProtocol {
         destinationAddress: String,
         privateKeyWIF: String,
         completion: @escaping SweepCompletion
-    ) {
+    ) throws {
         self.sweep(
             balance: balance,
             destinationAddress: destinationAddress,
-            key: self.wifToPrivateKey(wif: privateKeyWIF)!,
+            key: try self.wifToPrivateKey(wif: privateKeyWIF)!,
             completion: completion
         )
     }
@@ -75,8 +75,8 @@ class SweeperHelper: SweeperHelperProtocol {
     public func balance(
         byPrivateKeyWIF wif: String,
         completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    ) {
-        let publicKey = self.wifToPrivateKey(wif: wif)?.publicKey()
+    ) throws {
+        let publicKey = try self.wifToPrivateKey(wif: wif)?.publicKey()
         guard let address = publicKey?.toLegacy().description else {
             // Couldn't resolve address.
             completion(nil, nil)
@@ -115,7 +115,7 @@ class SweeperHelper: SweeperHelperProtocol {
         }
     }
 
-    private func wifToPrivateKey(wif: String) -> PrivateKey? {
-        return try! PrivateKey(wif: wif)
+    private func wifToPrivateKey(wif: String) throws -> PrivateKey? {
+        return try PrivateKey(wif: wif)
     }
 }
