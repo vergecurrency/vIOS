@@ -105,9 +105,9 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 balance: balance,
                 destinationAddress: address,
                 privateKeyWIF: key
-            ) { _, txid in
+            ) { error, txid in
                 guard let txid = txid else {
-                    return print("No txid returned")
+                    return error != nil ? self.showUnexpectedErrorAlert(error: error) : self.showNoTxIDAlert()
                 }
 
                 let alert = UIAlertController(
@@ -125,7 +125,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
         } catch PrivateKeyError.invalidFormat {
             self.showInvalidPrivateKeyAlert()
         } catch {
-            print("Unexpected error: \(error).")
+            self.showUnexpectedErrorAlert(error: error)
         }
     }
 
@@ -139,7 +139,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 "ConfirmSweepView",
                 owner: self,
                 options: nil
-                )?.first as! ConfirmSweepView
+            )?.first as! ConfirmSweepView
 
             let alertController = confirmSweepView.makeActionSheet()
             if let popoverController = alertController.popoverPresentationController {
@@ -200,6 +200,33 @@ class PaperWalletTableViewController: EdgedTableViewController {
 
         self.present(alertController, animated: true)
     }
+
+    private func showNoTxIDAlert() {
+        let alertController = UIAlertController(
+            title: "No TXID returned",
+            message: """
+                     There was no TXID returned. So we can't be sure the wallet was swept. 
+                     You quickly check if the wallet is swept you can try sweeping it again.
+                     """,
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        self.present(alertController, animated: true)
+    }
+
+    private func showUnexpectedErrorAlert(error: Error) {
+        let alertController = UIAlertController(
+            title: "Unexpected Error",
+            message: "Unexpected error thrown with message: \(error.localizedDescription)",
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        self.present(alertController, animated: true)
+    }
 }
 
 extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
@@ -209,7 +236,7 @@ extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
         } catch PrivateKeyError.invalidFormat {
             self.showInvalidPrivateKeyAlert()
         } catch {
-            print("Unexpected error: \(error).")
+            self.showUnexpectedErrorAlert(error: error)
         }
     }
 }

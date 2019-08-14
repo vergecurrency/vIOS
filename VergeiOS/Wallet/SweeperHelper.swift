@@ -48,7 +48,6 @@ class SweeperHelper: SweeperHelperProtocol {
             byAddress: key.publicKey().toLegacy().description
         ) { _, transactions in
             do {
-                print(transactions)
                 let unsignedTx = try self.transactionFactory.getUnsignedTx(
                     balance: balance,
                     destinationAddress: destinationAddress,
@@ -58,7 +57,6 @@ class SweeperHelper: SweeperHelperProtocol {
                 let signedTx = try self.transactionFactory.signTx(unsignedTx: unsignedTx, keys: [key])
                 let rawTx = signedTx.serialized()
 
-                print(rawTx.hex)
                 self.bitcoreNodeClient.send(rawTx: rawTx.hex) { error, response in
                     completion(error, response?.txid)
                 }
