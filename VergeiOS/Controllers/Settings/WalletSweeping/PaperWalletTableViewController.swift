@@ -107,7 +107,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 privateKeyWIF: key
             ) { error, txid in
                 guard let txid = txid else {
-                    return error != nil ? self.showUnexpectedErrorAlert(error: error) : self.showNoTxIDAlert()
+                    return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
                 }
 
                 let alert = UIAlertController(
