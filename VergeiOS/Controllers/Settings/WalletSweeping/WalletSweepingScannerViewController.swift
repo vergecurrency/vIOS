@@ -17,7 +17,7 @@ class WalletSweepingScannerViewController: UIViewController {
 
     var qrCutoutView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 240, height: 240))
-        view.backgroundColor = ThemeManager.shared.primaryDark()
+        view.backgroundColor = ThemeFactory.shared.featherMode.primaryDark
 
         return view
     }()
@@ -85,7 +85,7 @@ class WalletSweepingScannerViewController: UIViewController {
         super.loadView()
 
         self.view = UIView()
-        self.view.backgroundColor = ThemeManager.shared.primaryDark()
+        self.view.backgroundColor = ThemeFactory.shared.featherMode.primaryDark
     }
 
     override func viewDidLoad() {
