@@ -600,4 +600,13 @@
 "alerts.startTor.button1"                   = "Start Tor";
 "alerts.startTor.button2"                   = "Without Tor";
 "alerts.termsOfUse.title"                   = "View Wallet Terms of Use";
+"alerts.notEnoughBalance.title"             = "Not Enough Balance";
+"alerts.notEnoughBalance.message"           = "Your scanned private key doesn't seem to have enough balance.";
+"alerts.invalidPrivateKey.title"            = "Invalid Private Key";
+"alerts.invalidPrivateKey.message"          = "You've provided an invalid private key because it couldn't be resolved. Please make sure you've scanned of filled in the correct key.";
+"alerts.noTxID.title"                       = "No TXID returned";
+"alerts.noTxID.message"                     = "There was no TXID returned. So we can't be sure the wallet was swept.\nYou quickly check if the wallet is swept you can try sweeping it again.";
+"alerts.unexpectedError.title"              = "Unexpected Error";
+"alerts.unexpectedError.message"            = "Unexpected error thrown with message:";
 "alerts.restart.title"                      = "Restarting...";
+"alerts.loading.title"                      = "Loading...";

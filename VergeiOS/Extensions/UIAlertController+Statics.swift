@@ -99,8 +99,62 @@ extension UIAlertController {
         return alert
     }
 
+    static func createNotEnoughBalanceAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alerts.notEnoughBalance.title".localized,
+            message: "alerts.notEnoughBalance.message".localized,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        return alert
+    }
+
+    static func createInvalidPrivateKeyAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alerts.invalidPrivateKey.title".localized,
+            message: "alerts.invalidPrivateKey.message".localized,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        return alert
+    }
+
+    static func createNoTxIDAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alerts.noTxID.title".localized,
+            message: "alerts.noTxID.message".localized,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        return alert
+    }
+
+    static func createUnexpectedErrorAlert(error: Error) -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alerts.unexpectedError.title".localized,
+            message: "alerts.unexpectedError.message".localized + " \(error.localizedDescription)",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        return alert
+    }
+
     static func restartAlert() -> UIAlertController {
         let alert = UIAlertController(title: "alerts.restart.title".localized, message: nil, preferredStyle: .alert)
+
+        return alert
+    }
+
+    static func loadingAlert(title: String = "alerts.loading.title".localized) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
 
         return alert
     }

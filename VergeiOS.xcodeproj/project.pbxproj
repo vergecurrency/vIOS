@@ -126,6 +126,8 @@
 		A3764128210A298700E04521 /* AbstractKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764127210A298700E04521 /* AbstractKey.swift */; };
 		A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */; };
 		A3764131210AE1D500E04521 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3764130210AE1D500E04521 /* Platform.swift */; };
+		A385829A2305EFFC0048C1B5 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A38582992305EFFB0048C1B5 /* Promises.framework */; };
+		A385829C2305F2430048C1B5 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A385829B2305F2430048C1B5 /* FBLPromises.framework */; };
 		A386CA99219E28ED00FBF465 /* SendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A386CA98219E28ED00FBF465 /* SendingView.swift */; };
 		A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A386CA9A219E28FA00FBF465 /* SendingView.xib */; };
 		A38D6F7621BBFA6D00280FFE /* TorSetup1View.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38D6F7521BBFA6D00280FFE /* TorSetup1View.xib */; };
@@ -535,6 +537,8 @@
 		A3764127210A298700E04521 /* AbstractKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractKey.swift; sourceTree = "<group>"; };
 		A376412B210A500E00E04521 /* PaperKeyDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyDescriptionViewController.swift; sourceTree = "<group>"; };
 		A3764130210AE1D500E04521 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
+		A38582992305EFFB0048C1B5 /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Promises.framework; path = Carthage/Build/iOS/Promises.framework; sourceTree = "<group>"; };
+		A385829B2305F2430048C1B5 /* FBLPromises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBLPromises.framework; path = Carthage/Build/iOS/FBLPromises.framework; sourceTree = "<group>"; };
 		A386564B21F5441000D4EB29 /* VergeiOS 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VergeiOS 2.xcdatamodel"; sourceTree = "<group>"; };
 		A386CA98219E28ED00FBF465 /* SendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendingView.swift; sourceTree = "<group>"; };
 		A386CA9A219E28FA00FBF465 /* SendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendingView.xib; sourceTree = "<group>"; };
@@ -745,12 +749,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A385829A2305EFFC0048C1B5 /* Promises.framework in Frameworks */,
 				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
 				A3E32B19225D52D9001A8B0E /* Swinject.framework in Frameworks */,
 				A302D30A21203B6700EA8091 /* CoreGraphics.framework in Frameworks */,
 				A3647288217E604B001B1B18 /* CoreStore.framework in Frameworks */,
 				A33B759421A22F5A00030CCF /* CryptoSwift.framework in Frameworks */,
 				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
+				A385829C2305F2430048C1B5 /* FBLPromises.framework in Frameworks */,
 				A338E6A0210DC037000D44EE /* IQKeyboardManagerSwift.framework in Frameworks */,
 				A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
@@ -1258,6 +1264,8 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A385829B2305F2430048C1B5 /* FBLPromises.framework */,
+				A38582992305EFFB0048C1B5 /* Promises.framework */,
 				A3E32B17225D52D9001A8B0E /* Swinject.framework */,
 				A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */,
 				A33B759D21A5CDD400030CCF /* BitcoinKit.framework */,
@@ -1989,6 +1997,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Swinject.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwinjectStoryboard.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Promises.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FBLPromises.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
@@ -2005,6 +2015,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CryptoSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Swinject.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwinjectStoryboard.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Promises.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FBLPromises.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2458,7 +2470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 201908080002;
+				CF_BUNDLE_BUILD_VERSION_STRING = 201908140001;
 				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2522,7 +2534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 201908080002;
+				CF_BUNDLE_BUILD_VERSION_STRING = 201908140001;
 				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.0;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;

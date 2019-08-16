@@ -8,16 +8,18 @@
 
 import UIKit
 import BitcoinKit
+import Promises
 
 class PaperWalletTableViewController: EdgedTableViewController {
 
     var sweeperHelper: SweeperHelperProtocol!
     var sections: [TableSection] = []
+    var loadingAlert: UIAlertController = UIAlertController.loadingAlert()
 
     override func loadView() {
         super.loadView()
 
-        self.tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
+        self.tableView.updateColors()
 
         let scanCell = UITableViewCell(style: .default, reuseIdentifier: nil)
         scanCell.textLabel?.text = "sweeping.privateKey.cell.scanLabel".localized
@@ -107,7 +109,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 privateKeyWIF: key
             ) { error, txid in
                 guard let txid = txid else {
-                    return error != nil ? self.showUnexpectedErrorAlert(error: error) : self.showNoTxIDAlert()
+                    return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
                 }
 
                 let alert = UIAlertController(
@@ -154,7 +156,9 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 popoverController.permittedArrowDirections = []
             }
 
-            self.present(alertController, animated: true)
+            self.dismissLoadingAlert().then { _ in
+                self.present(alertController, animated: true)
+            }
 
             let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider)
 
@@ -177,60 +181,46 @@ class PaperWalletTableViewController: EdgedTableViewController {
     }
 
     private func showNotEnoughBalanceAlert() {
-        let alertController = UIAlertController(
-            title: "Not Enough Balance",
-            message: "Your scanned private key doesn't seem to have enough balance.",
-            preferredStyle: .alert
-        )
-
-        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
-
-        self.present(alertController, animated: true)
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createNotEnoughBalanceAlert(), animated: true)
+        }
     }
 
     private func showInvalidPrivateKeyAlert() {
-        let alertController = UIAlertController(
-            title: "Invalid Private Key",
-            message: "You've provided an invalid private key because it couldn't be resolved. "
-                + "Please make sure you've scanned of filled in the correct key.",
-            preferredStyle: .alert
-        )
-
-        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
-
-        self.present(alertController, animated: true)
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createInvalidPrivateKeyAlert(), animated: true)
+        }
     }
 
     private func showNoTxIDAlert() {
-        let alertController = UIAlertController(
-            title: "No TXID returned",
-            message: """
-                     There was no TXID returned. So we can't be sure the wallet was swept. 
-                     You quickly check if the wallet is swept you can try sweeping it again.
-                     """,
-            preferredStyle: .alert
-        )
-
-        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
-
-        self.present(alertController, animated: true)
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createNoTxIDAlert(), animated: true)
+        }
     }
 
     private func showUnexpectedErrorAlert(error: Error) {
-        let alertController = UIAlertController(
-            title: "Unexpected Error",
-            message: "Unexpected error thrown with message: \(error.localizedDescription)",
-            preferredStyle: .alert
-        )
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createUnexpectedErrorAlert(error: error), animated: true)
+        }
+    }
 
-        alertController.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+    private func showLoadingAlert() {
+        self.present(self.loadingAlert, animated: true)
+    }
 
-        self.present(alertController, animated: true)
+    private func dismissLoadingAlert() -> Promise<UIAlertController> {
+        return Promise<UIAlertController> { fulfill, _ in
+            self.loadingAlert.dismiss(animated: true) {
+                fulfill(self.loadingAlert)
+            }
+        }
     }
 }
 
 extension PaperWalletTableViewController: WalletSweepingScannerViewDelegate {
     func didScanValue(scannedValue: String) {
+        self.showLoadingAlert()
+
         do {
             try self.prepareSweepingWithScannedValue(scannedValue: scannedValue)
         } catch PrivateKeyError.invalidFormat {
