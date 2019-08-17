@@ -93,6 +93,9 @@
                                 <constraint firstAttribute="width" constant="25" id="mO2-0a-42M"/>
                             </constraints>
                             <state key="normal" image="Refresh"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="refreshDataWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ijh-67-3ZO"/>
                             </connections>

@@ -249,6 +249,9 @@
                                 <constraint firstAttribute="height" constant="25" id="jIQ-bt-yVa"/>
                             </constraints>
                             <state key="normal" image="Refresh"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="refreshDataWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="2RJ-B5-obf"/>
                             </connections>
