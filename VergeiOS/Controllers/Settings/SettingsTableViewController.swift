@@ -14,7 +14,7 @@ class SettingsTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
 
-    let localAuthIndexPath = IndexPath(row: 4, section: 1)
+    let localAuthIndexPath = IndexPath(row: 4, section: 2)
     var applicationRepository: ApplicationRepository!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -26,24 +26,23 @@ class SettingsTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //handle sections
         switch indexPath.section {
-        case 2: otherHandler(index: indexPath.row)
+        case 3: otherHandler(index: indexPath.row)
         default: break
         }
     }
 
     private func otherHandler(index: Int) {
-
         switch index {
-        case 2:
+        case 1:
             SKStoreReviewController.requestReview()
-        case 3:
+        case 2:
             loadWebsite(url: Constants.website)
-        case 4:
+        case 3:
             loadWebsite(url: Constants.iOSRepo)
         default: break
         }
 
-        tableView.deselectRow(at: IndexPath(row: index, section: 2), animated: true)
+        tableView.deselectRow(at: IndexPath(row: index, section: 3), animated: true)
     }
 
     private func loadWebsite(url: String) {

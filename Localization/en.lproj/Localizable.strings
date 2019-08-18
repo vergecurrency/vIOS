@@ -189,15 +189,18 @@
 "settings.wallet.footer.title"              = "Manage your wallet with the options given.";
 "settings.wallet.cell.removeLabel"          = "Remove wallet";
 "settings.wallet.cell.paperKeyLabel"        = "Paper key";
-"settings.wallet.cell.walletSweepingLabel"  = "Wallet sweeping";
 "settings.wallet.cell.addressesLabel"       = "Addresses";
-"settings.wallet.cell.transactionsLabel"    = "Transaction Proposals";
+"settings.wallet.cell.transactionsLabel"    = "Transaction proposals";
 "settings.wallet.cell.serviceUrlLabel"      = "Service URL";
+"settings.wallet.cell.walletSweepingLabel"  = "Sweeping";
+
+"settings.privacy.header.title"             = "Privacy";
+"settings.privacy.footer.title"             = "Protect your privacy while using the Verge iOS wallet.";
+"settings.privacy.cell.torConnectionLabel"  = "Tor connection";
 
 "settings.settings.cell.fiatCurrencyLabel"  = "Fiat currency";
 "settings.settings.cell.changePinLabel"     = "Change wallet PIN";
 "settings.settings.cell.useFaceIdLabel"     = "Use Face ID";
-"settings.settings.cell.torConnectionLabel" = "Tor connection";
 
 "settings.other.header.title"               = "Other";
 "settings.other.cell.creditsLabel"          = "Credits";

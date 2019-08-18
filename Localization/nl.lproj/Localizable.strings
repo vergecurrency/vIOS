@@ -183,6 +183,41 @@
 "settings.paperKey.preview.wordsSegment" = "Woorden";
 "settings.paperKey.preview.qrSegment" = "QR";
 
+// Wallet sweeping
+
+"settings.sweeping.sweep"                   = "Sweep";
+"settings.sweeping.titleLabel"              = "Laten we een wallet sweepen naar deze wallet";
+"settings.sweeping.header.title"            = "Sweeping Methode";
+"settings.sweeping.footer.title"            = "Kies een sweeping methode om de waarde van een externe wallet in deze iOS wallet toe te voegen.";
+"settings.sweeping.cell.privateKeyLabel"    = "Private key";
+"settings.sweeping.cell.privateKeyDecs"     = "Paper wallet, card wallet of een andere private key";
+"settings.sweeping.cell.electrumLabel"      = "Electrum";
+"settings.sweeping.cell.electrumDecs"       = "v2.1.0 of lager";
+"settings.sweeping.cell.androidLabel"       = "Android";
+"settings.sweeping.cell.androidDecs"        = "v1.0.0 of lager";
+
+// Private key wallet sweeping
+
+"sweeping.privateKey.titleLabel"            = "Laten we een private key wallet sweepen";
+"sweeping.privateKey.header.title"          = "Private key";
+"sweeping.privateKey.footer.title"          = "Scan of vul een valide XVG private key QR code van een paper wallet, card wallet of een andere private key gebaseerde wallet in.";
+"sweeping.privateKey.cell.scanLabel"        = "Scan een private key";
+"sweeping.privateKey.cell.fillInLabel"      = "Vul een private key in";
+"sweeping.privateKey.alert.title"           = "Vul in";
+"sweeping.privateKey.alert.message"         = "Vul een valide XVG private key in.";
+"sweeping.privateKey.alert.placeholder"     = "Private key";
+"sweeping.privateKey.swept.title"           = "Succesvol gesweept";
+"sweeping.privateKey.swept.description"     = "De wallet was succesvol gesweept en een transactie is aangemaakt met TXID";
+
+// Sweeping Scanner
+
+"sweeping.scanner.scanLabel"                = "Scan paper wallet private key";
+
+// Confirm Sweeping
+
+"sweeping.confirm.titleLabel"               = "Bevestig Wallet Sweep";
+"sweeping.confirm.recipientLabel"           = "Jou Ontvangst Adres";
+
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Verwijder dit toestel van uw huidige wallet";
 "settings.disconnect.descLabel" = "U staat op het punt dit apparaat los te koppelen van uw huidige wallet. Zorg ervoor dat u uw paper key hebt genoteerd en weet wat uw wachtwoordzin is. Onthoud dat uw paper key + wachtwoordzin de enige manier is om je huidige wallet te herstellen.";
@@ -206,6 +241,13 @@
 
 /*Fiat currency*/
 "settings.fiatCurrency.title" = "Fiat valuta";
+
+// Themes
+
+"settings.themes.titleLabel"                = "Prachtige Thema's voor je walelt";
+"settings.themes.sectionHeaderTitle"        = "Kies een thema";
+"settings.themes.sectionFooterTitle"        = "Het veranderen van een thema zal de applicatie herstarten. Ook zul je je daarna super blij voelen omdat je wallet zo mooi is!";
+"settings.themes.iconsSectionHeaderTitle"   = "App icons";
 
 /*Use Face ID*/
 "settings.useFaceID.title" = "Gebruik Face ID";
