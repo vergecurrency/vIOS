@@ -52,6 +52,10 @@ open VergeiOS.xcodeproj
 
 If you want to setup your local VWS instance you can checkout [the bitcore repository](https://github.com/vergecurrency/bitcore) and setup an instance [using docker](https://github.com/vergecurrency/bitcore/blob/master/Docker.md).
 
+## Join TestFlight Program
+
+If you want to keep up with development and see the latest changes in action, you can [join the TestFlight program](https://testflight.apple.com/join/Uw1OQgdx).
+
 ## Build With
 
 * [Swift](https://github.com/apple/swift) - Language used writing the application
