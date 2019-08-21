@@ -16,6 +16,7 @@ class EventServiceProvider: ServiceProvider {
         setupTorListeners()
         setupWalletListeners()
         setupFiatRatingListeners()
+        setupThemeListeners()
     }
 
     func setupWatchListeners() {
@@ -103,6 +104,10 @@ class EventServiceProvider: ServiceProvider {
         )
     }
 
+    func setupThemeListeners() {
+        self.nc.addObserver(self, selector: #selector(didChangeTheme), name: .didChangeTheme, object: nil)
+    }
+
     @objc func syncWatchCurrency() {
         container.resolve(WatchSyncManager.self)?.syncCurrency()
     }
@@ -162,6 +167,10 @@ class EventServiceProvider: ServiceProvider {
             print("Currency changed 💰")
             self.container.resolve(FiatRateTicker.self)?.fetch()
         }
+    }
+
+    @objc private func didChangeTheme(_ notification: Notification) {
+        PinUnlockViewController.storyBoardView = nil
     }
 
 }

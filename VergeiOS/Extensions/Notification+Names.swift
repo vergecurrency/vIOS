@@ -14,7 +14,6 @@ extension Notification.Name {
 
     static let didReceiveFiatRatings = Notification.Name("didReceiveFiatRatings")
     static let didChangeCurrency = Notification.Name("didChangeCurrency")
-    static let didChangeLanguage = Notification.Name("didChangeLanguage")
     static let didChangeWalletAmount = Notification.Name("didChangeWalletAmount")
     static let didChangeReceiveAddress = Notification.Name("didChangeReceiveAddress")
 

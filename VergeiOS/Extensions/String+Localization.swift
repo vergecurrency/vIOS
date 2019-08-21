@@ -10,9 +10,7 @@ import Foundation
 
 extension String {
     var localized: String {
-        let currentLang = UserDefaults.standard.string(forKey: "wallet.language")
-        let bundle = self.bundleForLanguage(language: currentLang) ?? Bundle.main
-        let result = bundle.localizedString(forKey: self, value: "_", table: nil)
+        let result = Bundle.main.localizedString(forKey: self, value: "_", table: nil)
 
         return (result == "_") ?  localizedDefault : result
     }

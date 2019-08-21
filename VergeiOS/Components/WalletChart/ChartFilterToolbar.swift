@@ -7,10 +7,6 @@ import UIKit
 
 class ChartFilterToolbar: UIToolbar {
 
-    override func updateColors() {
-        super.updateColors()
-    }
-
     enum Filter {
         case oneDay
         case oneWeek
@@ -103,5 +99,11 @@ class ChartFilterToolbar: UIToolbar {
         for button in items {
             button.tintColor = ThemeManager.shared.vergeGrey()
         }
+    }
+
+    override func updateColors() {
+        super.updateColors()
+
+        self.select(filter: .oneDay)
     }
 }

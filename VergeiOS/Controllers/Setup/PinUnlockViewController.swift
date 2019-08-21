@@ -40,7 +40,11 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
         } else {
             PinUnlockViewController.storyBoardView!.reset()
         }
-        PinUnlockViewController.storyBoardView!.modalPresentationStyle = .fullScreen
+
+        if #available(iOS 13.0, *) {
+            PinUnlockViewController.storyBoardView!.modalPresentationStyle = .fullScreen
+        }
+
         return PinUnlockViewController.storyBoardView!
     }
 
@@ -154,5 +158,4 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
         pinTextField.reset()
         pin = ""
     }
-
 }

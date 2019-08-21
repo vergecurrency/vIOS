@@ -49,12 +49,6 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
         )
     }
 
-    override func updateColors() {
-        super.updateColors()
-
-        self.setupSlides()
-    }
-
     func setupSlides() {
         self.walletSlideScrollView.delegate = self
         self.walletSlides = self.createWalletSlides()
@@ -71,15 +65,21 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
     // MARK: - Wallet Scroll View
 
     func createWalletSlides() -> [WalletSlideView] {
-        let transactionsSlide = Bundle.main.loadNibNamed("TransactionsWalletSlideView",
-                                                         owner: self,
-                                                         options: nil)?.first as! WalletSlideView
-        let chartSlide = Bundle.main.loadNibNamed("ChartWalletSlideView",
-                                                  owner: self,
-                                                  options: nil)?.first as! WalletSlideView
-        let summarySlide = Bundle.main.loadNibNamed("SummaryWalletSlideView",
-                                                    owner: self,
-                                                    options: nil)?.first as! WalletSlideView
+        let transactionsSlide = Bundle.main.loadNibNamed(
+            "TransactionsWalletSlideView",
+            owner: self,
+            options: nil
+        )?.first as! WalletSlideView
+        let chartSlide = Bundle.main.loadNibNamed(
+            "ChartWalletSlideView",
+            owner: self,
+            options: nil
+        )?.first as! WalletSlideView
+        let summarySlide = Bundle.main.loadNibNamed(
+            "SummaryWalletSlideView",
+            owner: self,
+            options: nil
+        )?.first as! WalletSlideView
 
         return [
             transactionsSlide,

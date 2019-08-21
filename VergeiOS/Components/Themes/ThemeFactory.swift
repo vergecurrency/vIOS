@@ -20,7 +20,7 @@ class ThemeFactory: NSObject {
         return [featherMode, moonMode, marsMode]
     }
 
-    var featherMode: Theme {
+    lazy var featherMode: Theme = {
         let featherMode = Theme(
             name: "settings.themes.featherMode".localized,
             id: "featherMode",
@@ -65,9 +65,9 @@ class ThemeFactory: NSObject {
         //        }
 
         return featherMode
-    }
+    }()
 
-    private var moonMode: Theme {
+    private lazy var moonMode: Theme = {
         let moonMode = Theme(
             name: "settings.themes.moonMode".localized,
             id: "moonMode",
@@ -108,9 +108,9 @@ class ThemeFactory: NSObject {
         )
 
         return moonMode
-    }
+    }()
 
-    private var marsMode: Theme {
+    private lazy var marsMode: Theme = {
         let marsMode = Theme(
             name: "settings.themes.marsMode".localized,
             id: "marsMode",
@@ -151,7 +151,7 @@ class ThemeFactory: NSObject {
         )
 
         return marsMode
-    }
+    }()
 
     private var featherAppIcon: AppIcon {
         let featherAppIcon = AppIcon(

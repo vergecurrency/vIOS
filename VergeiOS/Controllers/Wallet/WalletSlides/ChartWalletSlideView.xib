@@ -295,6 +295,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="activityIndicator" destination="Xcs-Fs-lXl" id="4fs-HY-Ea4"/>
                 <outlet property="averagePriceLabel" destination="4dl-nh-26T" id="2a3-ct-CF9"/>

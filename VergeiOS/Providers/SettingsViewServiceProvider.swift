@@ -21,10 +21,6 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
 
-        container.storyboardInitCompleted (LanguageTableViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
         container.storyboardInitCompleted (LocalAuthTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }

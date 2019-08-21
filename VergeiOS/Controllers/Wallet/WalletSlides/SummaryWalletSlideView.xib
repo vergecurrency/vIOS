@@ -45,8 +45,11 @@
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1aL-sL-uDN">
                             <rect key="frame" x="0.0" y="49" width="335" height="599"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="NO"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <outlet property="dataSource" destination="iN0-l3-epB" id="3YW-Nd-B1K"/>
                                 <outlet property="delegate" destination="iN0-l3-epB" id="ruB-Mq-SRc"/>

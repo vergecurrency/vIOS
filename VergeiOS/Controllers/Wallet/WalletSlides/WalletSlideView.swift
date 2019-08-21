@@ -9,5 +9,8 @@
 import UIKit
 
 class WalletSlideView: UIView {
-    //
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        super.becomeThemeable()
+    }
 }

@@ -150,13 +150,21 @@ extension UITableViewCell {
     }
 
     override func updateColors() {
+        self.setSelected(false, animated: false)
+
         let colorView = UIView()
         colorView.backgroundColor = ThemeManager.shared.backgroundBlue()
         self.selectedBackgroundView = colorView
         self.backgroundColor = ThemeManager.shared.backgroundWhite()
 
         self.textLabel?.textColor = ThemeManager.shared.secondaryDark()
+        self.textLabel?.backgroundColor = .clear
         self.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
+        self.detailTextLabel?.backgroundColor = .clear
+
+        self.textLabel?.setNeedsDisplay()
+        self.detailTextLabel?.setNeedsDisplay()
+        self.setNeedsDisplay()
     }
 
     func updateFonts() {
@@ -166,6 +174,17 @@ extension UITableViewCell {
 }
 
 extension UIActivityIndicatorView {
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        super.becomeThemeable()
+    }
+
+    override func updateColors() {
+        self.tintColor = ThemeManager.shared.primaryLight()
+    }
+}
+
+extension UIButton {
     open override func awakeFromNib() {
         super.awakeFromNib()
         super.becomeThemeable()
@@ -263,7 +282,7 @@ extension UIWindow {
     override func updateColors() {
         self.tintColor = ThemeManager.shared.primaryLight()
 
-        self.setNeedsDisplay()
+//        self.setNeedsDisplay()
     }
 }
 

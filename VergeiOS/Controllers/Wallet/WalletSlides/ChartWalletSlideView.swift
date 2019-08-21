@@ -40,6 +40,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        super.becomeThemeable()
 
         self.torClient = Application.container.resolve(TorClient.self)!
         self.filterToolbar.becomeThemeable()
@@ -138,7 +139,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             self.activityIndicator.startAnimating()
         }
 
-        self.torClient.session.dataTask(with: chartUrl()) { (data, _, _) in
+        self.torClient.session.dataTask(with: chartUrl()) { data, _, _ in
             DispatchQueue.main.async {
                 self.placeholderView.isHidden = data != nil
             }
@@ -158,9 +159,11 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             DispatchQueue.main.async {
                 self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
                 self.volumeChartView.set(chartData:
-                    self.nth(entries: volumeData,
-                             step: self.nthFilter[self.filter]! + 5)
-                        as! [BarChartDataEntry])
+                    self.nth(
+                        entries: volumeData,
+                        step: self.nthFilter[self.filter]! + 5
+                    ) as! [BarChartDataEntry]
+                )
                 self.setPriceLabels(withData: data.priceUsd)
                 self.activityIndicator.stopAnimating()
             }
@@ -229,5 +232,4 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             return position % step == 0
         }
     }
-
 }

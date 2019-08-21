@@ -14,28 +14,42 @@ import UIKit
     @IBInspectable var shadowOpacity: Float = 0.15
     @IBInspectable var shadowRadius: CGFloat = 15
 
-    var shadowLayer: CAShapeLayer!
+    var shadowLayer: CAShapeLayer?
+
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.themeable = true
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        backgroundColor = ThemeManager.shared.backgroundWhite()
+        self.backgroundColor = ThemeManager.shared.backgroundWhite()
 
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer()
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-            shadowLayer.fillColor = backgroundColor?.cgColor
+        if self.shadowLayer == nil {
+            self.shadowLayer = CAShapeLayer()
+            self.shadowLayer!.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.cornerRadius).cgPath
+            self.shadowLayer!.fillColor = self.backgroundColor?.cgColor
 
-            shadowLayer.shadowColor = UIColor.darkGray.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize.zero
-            shadowLayer.shadowOpacity = shadowOpacity
-            shadowLayer.shadowRadius = shadowRadius
+            self.shadowLayer!.shadowColor = UIColor.darkGray.cgColor
+            self.shadowLayer!.shadowPath = self.shadowLayer!.path
+            self.shadowLayer!.shadowOffset = CGSize.zero
+            self.shadowLayer!.shadowOpacity = self.shadowOpacity
+            self.shadowLayer!.shadowRadius = self.shadowRadius
 
-            layer.insertSublayer(shadowLayer, at: 0)
+            self.layer.insertSublayer(self.shadowLayer!, at: 0)
         }
 
-        layer.cornerRadius = cornerRadius
-        backgroundColor = .clear
+        self.layer.cornerRadius = self.cornerRadius
+    }
+
+    override func updateColors() {
+        super.updateColors()
+
+        self.shadowLayer?.removeFromSuperlayer()
+        self.shadowLayer = nil
+
+        self.layoutSubviews()
     }
 }

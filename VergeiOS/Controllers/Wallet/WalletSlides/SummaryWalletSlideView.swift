@@ -136,4 +136,11 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         self.fiatRateTicker.fetch()
     }
 
+    override func updateColors() {
+        super.updateColors()
+
+        DispatchQueue.main.async {
+            self.tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
+        }
+    }
 }
