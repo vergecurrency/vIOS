@@ -9,7 +9,6 @@
 import UIKit
 import Swinject
 import SwinjectStoryboard
-import Promises
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
