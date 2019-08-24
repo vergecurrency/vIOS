@@ -336,6 +336,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.welcome.restoreButton"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="rZo-DU-OJR" kind="presentation" identifier="restore" modalPresentationStyle="fullScreen" id="G4m-E0-zTa"/>

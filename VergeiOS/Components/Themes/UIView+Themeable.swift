@@ -23,15 +23,17 @@ extension UIView: Themeable {
     private static var _themeable = [String: Bool]()
     @IBInspectable var themeable: Bool {
         set(value) {
-            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            UIView._themeable[tmpAddress] = value
+            UIView._themeable[self.identifier] = value
 
             self.themeable ? self.subscribe() : self.unsubscribe()
         }
         get {
-            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            return UIView._themeable[tmpAddress] ?? false
+            return UIView._themeable[self.identifier] ?? false
         }
+    }
+    
+    var identifier: String {
+        return ObjectIdentifier(self).debugDescription
     }
 
     // MARK: Overrided methods
@@ -67,6 +69,10 @@ extension UIView: Themeable {
 
     /// Use to become themeable programmatically
     func becomeThemeable() {
+        if UIView._themeable.index(forKey: self.identifier) != nil && UIView._themeable[self.identifier] == false {
+            return
+        }
+
         self.themeable = true
         self.updateColors()
     }
