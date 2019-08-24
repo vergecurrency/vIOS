@@ -63,7 +63,7 @@ class CreditsTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.heroImageView.image = ThemeManager.shared.currentTheme.creditsImage
+        self.heroImageView.image = UIImage(named: ThemeManager.shared.currentTheme.creditsImage)
         self.heroImageView.tintColor = ThemeManager.shared.currentTheme.placeholderColor
     }
 

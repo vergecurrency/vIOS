@@ -50,13 +50,13 @@ class ThemeFactory: NSObject {
             isTranslucent: true,
             keyboardAppearance: .default,
 
-            unlockBackgroundImage: UIImage(named: "UnlockBackground")!,
-            noBalancePlaceholderImage: UIImage(named: "NoBalancePlaceholder")!,
-            noContactsPlaceholderImage: UIImage(named: "NoContactsPlaceholder")!,
-            transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholder")!,
-            sendCardImage: UIImage(named: "SendCard")!,
-            receiveCardImage: UIImage(named: "ReceiveCard")!,
-            creditsImage: UIImage(named: "Hero")!,
+            unlockBackgroundImage: "UnlockBackground",
+            noBalancePlaceholderImage: "NoBalancePlaceholder",
+            noContactsPlaceholderImage: "NoContactsPlaceholder",
+            transactionsPlaceholderImage: "TransactionsPlaceholder",
+            sendCardImage: "SendCard",
+            receiveCardImage: "ReceiveCard",
+            creditsImage: "Hero",
             appIconName: "AppIconFeather"
         )
 
@@ -97,13 +97,13 @@ class ThemeFactory: NSObject {
             isTranslucent: false,
             keyboardAppearance: .dark,
 
-            unlockBackgroundImage: UIImage(named: "UnlockBackgroundMoonMode")!,
-            noBalancePlaceholderImage: UIImage(named: "NoBalancePlaceholderMoonMode")!,
-            noContactsPlaceholderImage: UIImage(named: "NoContactsPlaceholderMoonMode")!,
-            transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholderMoonMode")!,
-            sendCardImage: UIImage(named: "SendCardMoonMode")!,
-            receiveCardImage: UIImage(named: "ReceiveCardMoonMode")!,
-            creditsImage: UIImage(named: "Hero")!,
+            unlockBackgroundImage: "UnlockBackgroundMoonMode",
+            noBalancePlaceholderImage: "NoBalancePlaceholderMoonMode",
+            noContactsPlaceholderImage: "NoContactsPlaceholderMoonMode",
+            transactionsPlaceholderImage: "TransactionsPlaceholderMoonMode",
+            sendCardImage: "SendCardMoonMode",
+            receiveCardImage: "ReceiveCardMoonMode",
+            creditsImage: "Hero",
             appIconName: "AppIconMoon"
         )
 
@@ -140,13 +140,13 @@ class ThemeFactory: NSObject {
             isTranslucent: false,
             keyboardAppearance: .dark,
 
-            unlockBackgroundImage: UIImage(named: "UnlockBackgroundMarsMode")!,
-            noBalancePlaceholderImage: UIImage(named: "NoBalancePlaceholderMarsMode")!,
-            noContactsPlaceholderImage: UIImage(named: "NoContactsPlaceholderMarsMode")!,
-            transactionsPlaceholderImage: UIImage(named: "TransactionsPlaceholderMarsMode")!,
-            sendCardImage: UIImage(named: "SendCardMarsMode")!,
-            receiveCardImage: UIImage(named: "ReceiveCardMarsMode")!,
-            creditsImage: UIImage(named: "HeroMarsMode")!,
+            unlockBackgroundImage: "UnlockBackgroundMarsMode",
+            noBalancePlaceholderImage: "NoBalancePlaceholderMarsMode",
+            noContactsPlaceholderImage: "NoContactsPlaceholderMarsMode",
+            transactionsPlaceholderImage: "TransactionsPlaceholderMarsMode",
+            sendCardImage: "SendCardMarsMode",
+            receiveCardImage: "ReceiveCardMarsMode",
+            creditsImage: "HeroMarsMode",
             appIconName: "AppIconMars"
         )
 
@@ -221,12 +221,12 @@ struct Theme {
     let isTranslucent: Bool
     let keyboardAppearance: UIKeyboardAppearance
 
-    let unlockBackgroundImage: UIImage
-    let noBalancePlaceholderImage: UIImage
-    let noContactsPlaceholderImage: UIImage
-    let transactionsPlaceholderImage: UIImage
-    let sendCardImage: UIImage
-    let receiveCardImage: UIImage
-    let creditsImage: UIImage
+    var unlockBackgroundImage: String
+    var noBalancePlaceholderImage: String
+    var noContactsPlaceholderImage: String
+    var transactionsPlaceholderImage: String
+    var sendCardImage: String
+    var receiveCardImage: String
+    var creditsImage: String
     let appIconName: String
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class NoContactsPlaceholderImageView: ThemedImageView {
 
-    override var themeImage: UIImage {
+    override var themeImageName: String {
         return ThemeManager.shared.currentTheme.noContactsPlaceholderImage
     }
 

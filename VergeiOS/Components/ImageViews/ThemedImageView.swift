@@ -7,8 +7,8 @@ import UIKit
 
 class ThemedImageView: UIImageView {
 
-    var themeImage: UIImage? {
-        return nil
+    var themeImageName: String {
+        return ""
     }
 
     override func awakeFromNib() {
@@ -17,6 +17,6 @@ class ThemedImageView: UIImageView {
     }
 
     override func updateColors() {
-        self.image = self.themeImage
+        self.image = UIImage(named: self.themeImageName)
     }
 }
