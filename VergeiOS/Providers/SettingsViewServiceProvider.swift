@@ -31,14 +31,6 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.walletClient = r.resolve(WalletClient.self)
         }
 
-        container.storyboardInitCompleted (DisconnectWalletViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.transactionManager = r.resolve(TransactionManager.self)
-            c.walletTicker = r.resolve(WalletTicker.self)
-            c.fiatRateTicker = r.resolve(FiatRateTicker.self)
-            c.torClient = r.resolve(TorClient.self)
-        }
-
         container.storyboardInitCompleted (TransactionProposalsTableViewController.self) { r, c in
             c.walletClient = r.resolve(WalletClient.self)
         }

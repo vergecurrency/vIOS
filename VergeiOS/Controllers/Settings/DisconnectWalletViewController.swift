@@ -10,12 +10,6 @@ import UIKit
 
 class DisconnectWalletViewController: ThemeableViewController {
 
-    var applicationRepository: ApplicationRepository!
-    var transactionManager: TransactionManager!
-    var walletTicker: WalletTicker!
-    var fiatRateTicker: FiatRateTicker!
-    var torClient: TorClient!
-
     @IBAction func disconnectWallet(_ sender: Any) {
         let alert = UIAlertController(
             title: "settings.disconnect.alert.title".localized,
@@ -30,18 +24,8 @@ class DisconnectWalletViewController: ThemeableViewController {
             pinUnlockView.cancelable = true
             pinUnlockView.completion = { authenticated in
                 if authenticated {
-
                     // Reset wallet manager.
-                    // @TODO: Move to event.
-                    self.transactionManager.removeAll()
-                    self.applicationRepository.reset()
-                    self.fiatRateTicker.stop()
-                    self.walletTicker.stop()
-                    self.torClient.resign()
-
-                    pinUnlockView.dismiss(animated: true) {
-                        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
-                    }
+                    NotificationCenter.default.post(name: .didDisconnectWallet, object: nil)
                 } else {
                     pinUnlockView.dismiss(animated: true)
                 }

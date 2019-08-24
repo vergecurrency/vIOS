@@ -23,6 +23,13 @@ class LoadingTorViewController: UIViewController {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: identifier, sender: self)
         }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didDisconnectWallet(notification:)),
+            name: .didDisconnectWallet,
+            object: nil
+        )
     }
 
     // MARK: - Navigation
@@ -35,6 +42,12 @@ class LoadingTorViewController: UIViewController {
             vc.completion = { authenticated in
                 vc.performSegue(withIdentifier: "showWallet", sender: vc)
             }
+        }
+    }
+
+    @objc func didDisconnectWallet(notification: Notification) {
+        self.presentedViewController?.dismiss(animated: false) {
+            self.performSegue(withIdentifier: "showWelcomeView", sender: self)
         }
     }
 }

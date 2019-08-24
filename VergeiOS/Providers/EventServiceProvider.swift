@@ -89,6 +89,13 @@ class EventServiceProvider: ServiceProvider {
 
         self.nc.addObserver(
             self,
+            selector: #selector(didDisconnectWallet(notification:)),
+            name: .didDisconnectWallet,
+            object: nil
+        )
+
+        self.nc.addObserver(
+            self,
             selector: #selector(didBroadcastTx(notification:)),
             name: .didBroadcastTx,
             object: nil
@@ -148,6 +155,16 @@ class EventServiceProvider: ServiceProvider {
         self.container.resolve(WalletTicker.self)?.start()
         self.container.resolve(FiatRateTicker.self)?.start()
         self.container.resolve(ShortcutsManager.self)?.updateShortcuts()
+    }
+
+    @objc func didDisconnectWallet(notification: Notification) {
+        self.container.resolve(ApplicationRepository.self)!.reset()
+        self.container.resolve(TransactionManager.self)!.removeAll()
+        self.container.resolve(WalletTicker.self)!.stop()
+        self.container.resolve(FiatRateTicker.self)!.stop()
+        self.container.resolve(TorClient.self)!.resign()
+
+        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
     }
 
     @objc func didBroadcastTx(notification: Notification) {
