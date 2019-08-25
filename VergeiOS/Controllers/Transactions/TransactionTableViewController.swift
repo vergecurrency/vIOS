@@ -139,8 +139,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         header.textLabel?.text = header.textLabel?.text?.capitalized
     }
 
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell")!
             let indexRow: Int = indexPath.row + (transaction?.category == .Moved ? 1 : 0)
@@ -151,7 +150,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
                 cell.textLabel?.text = "defaults.address".localized
                 cell.detailTextLabel?.text = transaction?.address
                 cell.accessoryType = .detailButton
-                addTapRecognizer(cell: cell, action: #selector(addressDoubleTapped(recognizer:)))
+                self.addTapRecognizer(cell: cell, action: #selector(self.addressDoubleTapped(recognizer:)))
             case 1:
                 cell.imageView?.image = UIImage(named: "Confirmations")
                 cell.textLabel?.text = "transactions.transaction.confirmations".localized
@@ -162,7 +161,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
                 cell.textLabel?.text = "txid"
                 cell.detailTextLabel?.text = transaction?.txid
                 cell.accessoryType = .detailButton
-                addTapRecognizer(cell: cell, action: #selector(blockDoubleTapped(recognizer:)))
+                self.addTapRecognizer(cell: cell, action: #selector(self.blockDoubleTapped(recognizer:)))
             case 3:
                 cell = tableView.dequeueReusableCell(withIdentifier: "transactionMemoCell")!
                 cell.textLabel?.text = transaction?.memo
@@ -177,9 +176,11 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
             return cell
         }
 
-        let cell = Bundle.main.loadNibNamed("TransactionTableViewCell",
-                                            owner: self,
-                                            options: nil)?.first as! TransactionTableViewCell
+        let cell = Bundle.main.loadNibNamed(
+            "TransactionTableViewCell",
+            owner: self,
+            options: nil
+        )?.first as! TransactionTableViewCell
 
         let item = items[indexPath.row]
 
@@ -220,12 +221,16 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        if indexPath.section == 0 && transaction != nil {
+        if indexPath.section == 0 && self.transaction != nil {
+            if self.transaction!.category == .Moved && indexPath.row == 1 {
+                return self.loadWebsite(url: "\(Constants.blockchainExlorer)tx/\(self.transaction!.txid)")
+            }
+
             switch indexPath.row {
             case 0:
-                loadWebsite(url: "\(Constants.blockchainExlorer)address/\(transaction!.address)")
+                self.loadWebsite(url: "\(Constants.blockchainExlorer)address/\(self.transaction!.address)")
             case 2:
-                loadWebsite(url: "\(Constants.blockchainExlorer)tx/\(transaction!.txid)")
+                self.loadWebsite(url: "\(Constants.blockchainExlorer)tx/\(self.transaction!.txid)")
             default: break
             }
         }
