@@ -55,7 +55,9 @@ class ConfirmPinViewController: ThemeableViewController, KeyboardDelegate {
 
     func handlePinCreation() {
         if (self.pin == self.previousPin) {
-            self.applicationRepository.pinCount = pinCount
+            self.applicationRepository.pinCount = self.pinCount
+            
+            NotificationCenter.default.post(name: .didChangePinCharacterCount, object: self.pinCount)
 
             self.pinConfirmedView.alpha = 0.0
             self.pinConfirmedView.center.y -= 60.0

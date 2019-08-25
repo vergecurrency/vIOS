@@ -28,12 +28,17 @@ class PinTextField: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .clear
-        self.pinCharacterCount = Application.container.resolve(ApplicationRepository.self)!.pinCount
+
+        self.setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
+        self.setup()
+    }
+
+    func setup() {
         self.backgroundColor = .clear
         self.pinCharacterCount = Application.container.resolve(ApplicationRepository.self)!.pinCount
     }
@@ -61,11 +66,13 @@ class PinTextField: UIView {
         let radius = CGFloat(pinRadius)
         let startAngle =  CGFloat(0)
         let endAngle = CGFloat(Double.pi * 2)
-        let circlePath = UIBezierPath(arcCenter: arcCenter,
-                                      radius: radius,
-                                      startAngle: startAngle,
-                                      endAngle: endAngle,
-                                      clockwise: true)
+        let circlePath = UIBezierPath(
+            arcCenter: arcCenter,
+            radius: radius,
+            startAngle: startAngle,
+            endAngle: endAngle,
+            clockwise: true
+        )
 
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
@@ -98,5 +105,4 @@ class PinTextField: UIView {
         self.pinsFilled = 0
         self.draw(self.frame)
     }
-
 }

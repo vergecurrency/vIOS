@@ -12,6 +12,7 @@ extension Notification.Name {
     static let didSetupWallet = Notification.Name("didSetupWallet")
     static let didDisconnectWallet = Notification.Name("didDisconnectWallet")
     static let themeChanged = Notification.Name("themeChanged")
+    static let didChangePinCharacterCount = Notification.Name("didChangePinCharacterCount")
 
     static let didReceiveFiatRatings = Notification.Name("didReceiveFiatRatings")
     static let didChangeCurrency = Notification.Name("didChangeCurrency")

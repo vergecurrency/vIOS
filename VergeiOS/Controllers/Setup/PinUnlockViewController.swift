@@ -51,30 +51,37 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        pinKeyboard.delegate = self
+        self.pinKeyboard.delegate = self
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.didChangePinCharacterCount),
+            name: .didChangePinCharacterCount,
+            object: nil
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if LAContext.anyAvailable() {
-            if fillPinFor == .wallet {
-                showLocalAuthentication = applicationRepository.localAuthForWalletUnlock
-            } else if fillPinFor == .sending {
-                showLocalAuthentication = applicationRepository.localAuthForSendingXvg
+            if self.fillPinFor == .wallet {
+                self.showLocalAuthentication = self.applicationRepository.localAuthForWalletUnlock
+            } else if self.fillPinFor == .sending {
+                self.showLocalAuthentication = self.applicationRepository.localAuthForSendingXvg
             }
         }
 
-        if showLocalAuthentication {
+        if self.showLocalAuthentication {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 self.promptLocalAuthentication()
             }
         }
 
-        pinKeyboard.setShowLocalAuthKey(showLocalAuthentication)
-        closeButton.isHidden = !cancelable
-        pinTextField.reset()
-        pin = ""
+        self.pinKeyboard.setShowLocalAuthKey(self.showLocalAuthentication)
+        self.closeButton.isHidden = !self.cancelable
+        self.pinTextField.reset()
+        self.pin = ""
     }
 
     func didReceiveInput(_ sender: Keyboard, input: String, keyboardKey: KeyboardKey) {
@@ -82,31 +89,31 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
             self.pinTextField.removeCharacter()
 
             if (pin.count > 0) {
-                pin = String(pin[..<pin.index(pin.endIndex, offsetBy: -1)])
+                self.pin = String(self.pin[..<self.pin.index(self.pin.endIndex, offsetBy: -1)])
             }
         } else if (keyboardKey.isKind(of: LocalAuthKey.self)) {
-            promptLocalAuthentication()
+            self.promptLocalAuthentication()
         } else {
             self.pinTextField.addCharacter()
 
-            if (pin.count < self.pinTextField.pinCharacterCount) {
-                pin = "\(pin)\(input)"
+            if (self.pin.count < self.pinTextField.pinCharacterCount) {
+                self.pin = "\(self.pin)\(input)"
             }
 
             // When all pins are set.
             if self.validate() {
-                closeView()
-            } else if pin.count == self.pinTextField.pinCharacterCount {
-                pinTextField.shake()
-                pinTextField.reset()
-                pin = ""
+                self.closeView()
+            } else if self.pin.count == self.pinTextField.pinCharacterCount {
+                self.pinTextField.shake()
+                self.pinTextField.reset()
+                self.pin = ""
             }
         }
     }
 
     // Validate the wallet pin.
     func validate() -> Bool {
-        return pin.count == self.pinTextField.pinCharacterCount && applicationRepository.pin == pin
+        return self.pin.count == self.pinTextField.pinCharacterCount && self.applicationRepository.pin == self.pin
     }
 
     func promptLocalAuthentication() {
@@ -129,33 +136,38 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
         }
     }
 
+    @objc private func didChangePinCharacterCount() {
+        self.pinTextField.pinCharacterCount = self.applicationRepository.pinCount
+        self.reset()
+    }
+
     func closeView() {
-        if completion != nil {
-            completion?(true)
+        if self.completion != nil {
+            self.completion?(true)
         } else {
-            dismiss(animated: true)
+            self.dismiss(animated: true)
         }
     }
 
     func cancelView() {
-        if completion != nil {
-            completion?(false)
+        if self.completion != nil {
+            self.completion?(false)
         } else {
-            dismiss(animated: true)
+            self.dismiss(animated: true)
         }
     }
 
     @IBAction func closeButtonPushed(_ sender: Any) {
-        cancelView()
+        self.cancelView()
     }
 
     func reset() {
-        fillPinFor = nil
-        cancelable = false
-        showLocalAuthentication = false
-        completion = nil
+        self.fillPinFor = nil
+        self.cancelable = false
+        self.showLocalAuthentication = false
+        self.completion = nil
 
-        pinTextField.reset()
-        pin = ""
+        self.pinTextField.reset()
+        self.pin = ""
     }
 }

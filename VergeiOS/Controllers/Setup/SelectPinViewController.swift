@@ -60,14 +60,18 @@ class SelectPinViewController: ThemeableViewController, KeyboardDelegate {
     }
 
     @IBAction func showSettings(_ sender: Any) {
-        let settings = UIAlertController(title: "setup.pinCode.alert.chooseSize".localized,
-                                         message: nil,
-                                         preferredStyle: .actionSheet)
+        let settings = UIAlertController(
+            title: "setup.pinCode.alert.chooseSize".localized,
+            message: nil,
+            preferredStyle: .actionSheet
+        )
 
         let digitCounts = [4, 5, 6, 7, 8]
         for count in digitCounts {
-            let action = UIAlertAction(title: "\(count) " + "setup.pinCode.alert.digits".localized,
-                                       style: .default) { _ in
+            let action = UIAlertAction(
+                title: "\(count) " + "setup.pinCode.alert.digits".localized,
+                style: .default
+            ) { _ in
                 self.pinTextField.pinCharacterCount = count
                 self.pinTextField.reset()
                 self.pin = ""
