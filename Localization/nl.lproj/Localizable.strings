@@ -134,7 +134,7 @@
 "send.memoButtonLabel" = "Interne memo (optioneel)";
 "send.memoPlaceholder" = "Cadeautje voor Swen";
 "send.confirmButton" = "Bevestig";
-"send.noBalanceTitle" = "Geen tegoed";
+"send.noBalanceTitle" = "Geen saldo";
 "send.noBalanceDesc" = "Je hebt geen XVG om te verzenden.\nVerhoog uw saldo.";
 
 /*QR-code*/
@@ -337,8 +337,8 @@
 "send.transactionFailed" = "Transactie mislukt";
 "send.transactionFailedMessage" = "Uw transactie is mislukt met de volgende foutmelding";
 "send.notEnoughBalance" = "Niet genoeg saldo";
-"send.notEnoughBalanceMessage1" = "U heeft niet genoeg saldo om XVG te sturen";
-"send.notEnoughBalanceMessage2" = "Verander het aantal om door te kunnen gaan";
+"send.notEnoughBalanceMessage1" = "U saldo is te laag voor het versturen van XVG";
+"send.notEnoughBalanceMessage2" = "Verander het bedrag om door te kunnen gaan";
 "send.sendMax" = "Verzend Max";
 "send.wrongAddress" = "Verkeerd Adres";
 "send.enterValidAddress" = "Het door u gebruikte adres is een foutief Verge adres. Gebruik alstublieft een geldig verge adres.";
@@ -347,10 +347,10 @@
  ConfirmSendView.swift + .xib
  ----------------------------------------*/
 "send.confirm.resolvedStealth" = "Opgelost stealth adres";
-"send.confirm.confirmTitleLabel" = "Bevestig transactie";
+"send.confirm.confirmTitleLabel" = "Transactie bevestiging";
 "send.confirm.recipientLabel" = "Ontvanger";
 "send.confirm.doubleCheckDescLabel" = "Controleer het wallet adres nogmaals. Verge Currency kan niet verantwoordelijk gehouden worden voor het verlies van XVG door foutief gebruikte wallet adressen.";
-"send.confirm.sendingLabel" = "Bezig met verzenden";
+"send.confirm.sendingLabel" = "Overmaken";
 "send.confirm.transactionFeeLabel" = "Transactiekosten";
 "send.confirm.totalLabel" = "Totaal";
 
@@ -358,7 +358,7 @@
  SendingView.swift + .xib
  ----------------------------------------*/
 "send.sending.signingTransaction" = "Transactie ondertekenen";
-"send.sending.broadcastingTransaction" = "Verzenden van transactie";
+"send.sending.broadcastingTransaction" = "Transactie verzenden";
 "send.sending.transactionSent" = "Transactie verzonden!";
 "send.sending.publishingTransaction" = "Transactie publiceren";
 
