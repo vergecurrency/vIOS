@@ -33,6 +33,10 @@ class WelcomeViewController: UIViewController {
             return
         }
 
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            navigationController.modalPresentationStyle = .formSheet
+        }
+
         self.transactionManager.removeAll()
         self.applicationRepository.reset()
 
