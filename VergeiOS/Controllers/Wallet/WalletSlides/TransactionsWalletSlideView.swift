@@ -35,6 +35,10 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
 
         self.transactionManager = Application.container.resolve(TransactionManager.self)!
         self.addressBookManager = Application.container.resolve(AddressBookRepository.self)!
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
         NotificationCenter.default.addObserver(
             self,
@@ -90,9 +94,11 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("TransactionTableViewCell",
-                                            owner: self,
-                                            options: nil)?.first as! TransactionTableViewCell
+        let cell = Bundle.main.loadNibNamed(
+            "TransactionTableViewCell",
+            owner: self,
+            options: nil
+        )?.first as! TransactionTableViewCell
 
         let item = items[indexPath.row]
 
@@ -109,8 +115,10 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        parentContainerViewController()?.performSegue(withIdentifier: "TransactionTableViewController",
-                                                      sender: items[indexPath.row])
+        parentContainerViewController()?.performSegue(
+            withIdentifier: "TransactionTableViewController",
+            sender: items[indexPath.row]
+        )
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
