@@ -14,7 +14,7 @@ class SettingsTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
 
-    let localAuthIndexPath = IndexPath(row: 4, section: 2)
+    let localAuthIndexPath = IndexPath(row: 3, section: 2)
     var applicationRepository: ApplicationRepository!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +90,7 @@ class SettingsTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
 
-        if indexPath == localAuthIndexPath && LAContext.available(type: .touchID) {
+        if indexPath == self.localAuthIndexPath && LAContext.available(type: .touchID) {
             cell.textLabel?.text = "settings.localAuth.useTouchId".localized
             cell.imageView?.image = UIImage(named: "TouchID")
         }
