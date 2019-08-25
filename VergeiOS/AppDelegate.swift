@@ -128,7 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 vc.dismiss(animated: true)
 
                 // Start the tor client
-                // @TODO: replace with event.
                 Application.container.resolve(TorClient.self)?.start {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                         self.torClientStarted()

@@ -31,7 +31,7 @@ extension UIView: Themeable {
             return UIView._themeable[self.identifier] ?? false
         }
     }
-    
+
     var identifier: String {
         return ObjectIdentifier(self).debugDescription
     }

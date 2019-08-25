@@ -60,12 +60,8 @@ class SweeperHelper: SweeperHelperProtocol {
                 self.bitcoreNodeClient.send(rawTx: rawTx.hex) { error, response in
                     completion(error, response?.txid)
                 }
-            } catch TransactionFactory.TransactionFactoryError.addressToScriptError {
-                // TODO
-                print("addressToScriptError")
             } catch {
-                // TODO
-                print("Unexpected error: \(error).")
+                completion(error, nil)
             }
         }
     }

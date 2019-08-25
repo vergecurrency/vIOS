@@ -26,11 +26,11 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
         // Generate a new mnemonic.
         do {
             let newMnemonic = try Mnemonic.generate()
-            mnemonic = applicationRepository.mnemonic ?? newMnemonic
+            self.mnemonic = self.applicationRepository.mnemonic ?? newMnemonic
         } catch {
-            // TODO: handle the error.
-            print(error.localizedDescription)
-            navigationController?.popViewController(animated: true)
+            self.present(UIAlertController.createUnexpectedErrorAlert(error: error), animated: true)
+
+            self.navigationController?.popViewController(animated: true)
         }
 
         if navigationController?.viewControllers.first?.isKind(of: PaperKeyWordsViewController.self) ?? false {

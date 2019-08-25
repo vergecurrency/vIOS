@@ -117,15 +117,12 @@ class ContactTableViewController: FormViewController {
         tempContact.name = (self.form.rowBy(tag: "name") as! TextRow).value ?? ""
         tempContact.address = (self.form.rowBy(tag: "address") as! TextRow).value ?? ""
 
-        // validate contact
-        // if invalid - show alert with description // or TODO: highlight invalid fields
         if (!tempContact.isValid()) {
             let alert = UIAlertController.createInvalidContactAlert()
             self.present(alert, animated: true)
 
             return
         }
-        // if valid - continue
 
         self.addressBookManager.put(address: tempContact)
 
