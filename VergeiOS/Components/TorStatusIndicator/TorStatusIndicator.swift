@@ -40,6 +40,7 @@ class TorStatusIndicator: UIWindow {
 
         self.torStatusIndicatorViewController?.setHasNotch(hasNotch())
         self.makeKeyAndVisible()
+        self.isUserInteractionEnabled = false
 
         self.setStatus(defaultStatus)
     }

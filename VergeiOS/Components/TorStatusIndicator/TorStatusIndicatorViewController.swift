@@ -20,6 +20,7 @@ class TorStatusIndicatorViewController: UIViewController {
 
         indicatorView.layer.cornerRadius = 5.0
         indicatorView.clipsToBounds = true
+        indicatorView.isUserInteractionEnabled = false
     }
 
     func setStatus(_ status: TorStatusIndicator.Status) {
