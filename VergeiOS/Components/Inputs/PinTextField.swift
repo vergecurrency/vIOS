@@ -62,15 +62,11 @@ class PinTextField: UIView {
 
     // Create the pin character circle.
     private func createCircleForIndex(_ index: Int) -> CAShapeLayer {
-        let arcCenter = CGPoint(x: (CGFloat(index) * pinMargin) + pinRadius, y: pinRadius)
-        let radius = CGFloat(pinRadius)
-        let startAngle =  CGFloat(0)
-        let endAngle = CGFloat(Double.pi * 2)
         let circlePath = UIBezierPath(
-            arcCenter: arcCenter,
-            radius: radius,
-            startAngle: startAngle,
-            endAngle: endAngle,
+            arcCenter: CGPoint(x: (CGFloat(index) * pinMargin) + pinRadius, y: pinRadius),
+            radius: pinRadius,
+            startAngle: 0,
+            endAngle: CGFloat(Double.pi * 2),
             clockwise: true
         )
 
