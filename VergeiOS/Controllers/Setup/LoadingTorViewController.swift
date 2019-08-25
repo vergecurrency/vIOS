@@ -26,7 +26,7 @@ class LoadingTorViewController: UIViewController {
 
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(didDisconnectWallet(notification:)),
+            selector: #selector(didDisconnectWallet),
             name: .didDisconnectWallet,
             object: nil
         )
@@ -45,8 +45,12 @@ class LoadingTorViewController: UIViewController {
         }
     }
 
-    @objc func didDisconnectWallet(notification: Notification) {
-        self.presentedViewController?.dismiss(animated: false) {
+    @objc func didDisconnectWallet(animated: Bool = false) {
+        self.presentedViewController?.dismiss(animated: animated) {
+            if self.presentedViewController?.isKind(of: PinUnlockViewController.self) == true {
+                return self.didDisconnectWallet(animated: true)
+            }
+
             self.performSegue(withIdentifier: "showWelcomeView", sender: self)
         }
     }

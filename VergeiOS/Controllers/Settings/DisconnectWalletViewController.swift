@@ -25,6 +25,8 @@ class DisconnectWalletViewController: ThemeableViewController {
             pinUnlockView.completion = { authenticated in
                 if authenticated {
                     // Reset wallet manager.
+
+                    pinUnlockView.dismiss(animated: false)
                     NotificationCenter.default.post(name: .didDisconnectWallet, object: nil)
                 } else {
                     pinUnlockView.dismiss(animated: true)

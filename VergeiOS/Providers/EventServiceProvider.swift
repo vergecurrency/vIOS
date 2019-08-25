@@ -158,13 +158,13 @@ class EventServiceProvider: ServiceProvider {
     }
 
     @objc func didDisconnectWallet(notification: Notification) {
+        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
+
         self.container.resolve(ApplicationRepository.self)!.reset()
         self.container.resolve(TransactionManager.self)!.removeAll()
         self.container.resolve(WalletTicker.self)!.stop()
         self.container.resolve(FiatRateTicker.self)!.stop()
         self.container.resolve(TorClient.self)!.resign()
-
-        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
     }
 
     @objc func didBroadcastTx(notification: Notification) {
