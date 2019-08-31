@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZAV-rD-AY1">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZAV-rD-AY1">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -25,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3W-PA-UHV">
-                                <rect key="frame" x="40" y="188" width="295" height="44"/>
+                                <rect key="frame" x="40" y="168" width="295" height="44"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -34,7 +32,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="jdy-ZC-H6U">
-                                <rect key="frame" x="87.5" y="120" width="200" height="60"/>
+                                <rect key="frame" x="87.5" y="100" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="54g-Sv-x6u"/>
                                     <constraint firstAttribute="height" constant="60" id="d4k-qv-eMn"/>
@@ -110,7 +108,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Derive your paper key with a passphrase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qeK-Sl-tnh">
-                                <rect key="frame" x="40" y="72" width="295" height="60.5"/>
+                                <rect key="frame" x="40" y="52" width="295" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="7gO-de-ET6"/>
                                     <constraint firstAttribute="height" constant="60.5" id="ugr-Sc-ult"/>
@@ -123,7 +121,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Encrypting your paper key is an important safety measure. Make sure when restoring a wallet to use your previous passphrase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-Ey-oui">
-                                <rect key="frame" x="40" y="298.5" width="295" height="57.5"/>
+                                <rect key="frame" x="40" y="278.5" width="295" height="57.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="JLP-H5-iXk"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="57" id="Vn2-h0-Lfv"/>
@@ -136,7 +134,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Vh-N4-7X2">
-                                <rect key="frame" x="40" y="380" width="295" height="92"/>
+                                <rect key="frame" x="40" y="360" width="295" height="92"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OLT-R7-Yns">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="24"/>
@@ -210,12 +208,11 @@
                                 </constraints>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your passphrase" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Gi-4f-XxR">
-                                <rect key="frame" x="40" y="496" width="295" height="30"/>
+                                <rect key="frame" x="40" y="476" width="295" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="JGW-IS-Xjf"/>
                                     <constraint firstAttribute="height" constant="30" id="irl-v8-KxQ"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <userDefinedRuntimeAttributes>
@@ -223,7 +220,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="PassphrassePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="1UT-ng-F17">
-                                <rect key="frame" x="40" y="140.5" width="295" height="150"/>
+                                <rect key="frame" x="40" y="120.5" width="295" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="kcU-LV-8bJ"/>
                                 </constraints>
@@ -283,7 +280,7 @@
             <objects>
                 <navigationController id="8C8-uZ-nak" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OaX-3m-jbl">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -307,14 +304,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="FJT-Ap-9YN">
-                                <rect key="frame" x="87.5" y="120" width="200" height="60"/>
+                                <rect key="frame" x="87.5" y="100" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="1IO-Np-P5a"/>
                                     <constraint firstAttribute="width" constant="200" id="q3M-J5-xR1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verge iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-6d-6TD">
-                                <rect key="frame" x="40" y="188" width="295" height="44"/>
+                                <rect key="frame" x="40" y="168" width="295" height="44"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -323,7 +320,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure, anonymous and private iOS wallet for Verge. Send and Receive XVG." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4G-u1-A4L">
-                                <rect key="frame" x="40" y="240" width="295" height="38.5"/>
+                                <rect key="frame" x="40" y="220" width="295" height="38.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <color key="textColor" white="0.90456814240000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -459,7 +456,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQ5-o2-Drs">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="fWx-cR-uFI">
                                         <rect key="frame" x="37.5" y="40" width="300" height="406"/>
@@ -567,7 +564,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VA8-aJ-O8O" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="577" width="295" height="50"/>
+                                        <rect key="frame" x="40" y="597" width="295" height="50"/>
                                         <color key="backgroundColor" name="PrimaryLight"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="hLT-tR-VyT"/>
@@ -598,10 +595,10 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrW-qJ-WDG">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYg-qk-M7J" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="577" width="295" height="50"/>
+                                        <rect key="frame" x="40" y="597" width="295" height="50"/>
                                         <color key="backgroundColor" name="PrimaryLight"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="g52-Ob-vwd"/>
@@ -711,10 +708,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dM1-lb-6ae">
-                                <rect key="frame" x="16" y="20" width="343" height="351"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="371"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mvH-0a-8Ow">
-                                        <rect key="frame" x="0.0" y="142" width="343" height="67"/>
+                                        <rect key="frame" x="0.0" y="152" width="343" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter PIN to unlock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDl-bz-Vqv" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
@@ -752,7 +749,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuv-Fo-okt" customClass="CloseButton" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <rect key="frame" x="20" y="0.0" width="60" height="60"/>
                                 <viewLayoutGuide key="safeArea" id="je1-4n-zEg"/>
                                 <state key="normal" image="Close"/>
                                 <connections>
@@ -799,7 +796,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwu-qd-xG0" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="80" width="295" height="53.5"/>
+                                <rect key="frame" x="40" y="60" width="295" height="53.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -808,7 +805,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hT-E2-uoK" customClass="PinTextField" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="193.5" width="200" height="30"/>
+                                <rect key="frame" x="87.5" y="173.5" width="200" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="DVE-Tw-Qwj"/>
@@ -878,7 +875,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your wallet PIN will be used to open this app, and to send XVG with. If you forget it, you wont be able to access your wallet." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-1E-mP3" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="80" width="295" height="53.5"/>
+                                <rect key="frame" x="40" y="60" width="295" height="53.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -887,7 +884,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-uN-bl5" customClass="PinTextField" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="193.5" width="200" height="30"/>
+                                <rect key="frame" x="87.5" y="173.5" width="200" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="4EH-zi-wr5"/>
@@ -948,6 +945,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinSucceedButton"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="confirmPin:" destination="vK3-Cs-LCr" eventType="touchUpInside" id="AFg-ms-a6j"/>
@@ -1018,6 +1016,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.pinCode.reenterPinErrorButton"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="scT-N6-Rxa" kind="unwind" identifier="unwindAfterWrongPin" unwindAction="unwindToSelectionWithSegue:" id="fcv-no-kDU"/>
@@ -1140,7 +1139,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm your passphrase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNz-ZY-442">
-                                <rect key="frame" x="40" y="72" width="295" height="30.5"/>
+                                <rect key="frame" x="40" y="52" width="295" height="30.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="uGR-bE-Yto"/>
                                 </constraints>
@@ -1152,7 +1151,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encrypting your paper key is an important safety measure. Make sure when restoring a wallet to use your previous passphrase." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mK8-sf-BgZ">
-                                <rect key="frame" x="40" y="110.5" width="295" height="57.5"/>
+                                <rect key="frame" x="40" y="90.5" width="295" height="57.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="DKI-VF-n4H"/>
                                 </constraints>
@@ -1164,12 +1163,11 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm your passphrase" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PSX-bm-9cT">
-                                <rect key="frame" x="40" y="192" width="295" height="30"/>
+                                <rect key="frame" x="40" y="172" width="295" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="EG8-tg-epC"/>
                                     <constraint firstAttribute="height" constant="30" id="HPP-QQ-JFf"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <userDefinedRuntimeAttributes>
@@ -1221,7 +1219,7 @@
                                 <color key="currentPageIndicatorTintColor" name="PrimaryLight"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPw-z9-KJ1">
-                                <rect key="frame" x="0.0" y="34" width="375" height="552"/>
+                                <rect key="frame" x="0.0" y="14" width="375" height="572"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundGrey"/>

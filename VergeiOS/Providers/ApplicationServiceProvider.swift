@@ -15,8 +15,9 @@ class ApplicationServiceProvider: ServiceProvider {
 
         IQKeyboardManager.shared.enable = true
 
-        // TODO: put in proper place.
-        (UIApplication.shared.delegate as! AppDelegate).window?.tintColor = ThemeManager.shared.primaryLight()
+        if let window = (UIApplication.shared.delegate as! AppDelegate).window {
+            window.tintColor = ThemeManager.shared.primaryLight()
+        }
 
         self.bootWatchSyncManager()
     }

@@ -36,11 +36,8 @@ class NotificationManager: UIWindow {
             if self.safeAreaInsets != UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0) {
                 hasNotch = true
             }
-        } else if #available(iOS 11.0, *) {
-            if self.safeAreaInsets != UIEdgeInsets.zero {
-                hasNotch = true
-            }
         }
+
         return hasNotch
     }
 
