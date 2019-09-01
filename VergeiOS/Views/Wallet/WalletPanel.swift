@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  WalletPanel.swift
 //  VergeiOS
 //
 //  Created by Swen van Zanten on 01/09/2019.
@@ -7,26 +7,6 @@
 //
 
 import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack(alignment: .leading) {
-            VStack(alignment: .leading) {
-                LargeTitle(content: "Stats")
-                    .foregroundColor(.white)
-            }
-            .padding(30)
-            Spacer()
-            VStack(alignment: .leading) {
-                Title(content: "Wallets")
-                    .foregroundColor(.white)
-                WalletPanel()
-            }
-            .padding([.top, .leading, .trailing], 30)
-        }
-        .background(GradientBackgroundView())
-    }
-}
 
 struct WalletPanel: View {
     @State var showSend: Bool = false
@@ -89,8 +69,8 @@ struct WalletPanel: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct WalletPanel_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        WalletPanel()
     }
 }

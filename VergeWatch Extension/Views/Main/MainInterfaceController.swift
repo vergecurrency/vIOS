@@ -89,7 +89,7 @@ class MainInterfaceController: WKInterfaceController {
         
         if self.priceRow != nil {
             if lastStats != nil {
-                var color = UIColor.vergeGrey()
+                var color = UIColor(named: "VergeGrey")
                 var priceResult = String(format: "%.4f", lastStats!.price)
                 
                 priceResult = symbolForCurrency(currency: currency ?? "$") + priceResult
@@ -97,10 +97,10 @@ class MainInterfaceController: WKInterfaceController {
                 var priceDiffResult = String(format: "%.2f%%", lastStats!.changepct24Hour)
                 if (lastStats!.changepct24Hour > 0) {
                     priceDiffResult = "+" + priceDiffResult + " ▲"
-                    color = UIColor.vergeGreen()
+                    color = UIColor(named: "VergeGreen")
                 } else if (lastStats!.changepct24Hour < 0) {
                     priceDiffResult = priceDiffResult + " ▼"
-                    color = UIColor.vergeRed()
+                    color = UIColor(named: "VergeRed")
                 }
                 
                 self.priceRow?.titleLabel.setText(priceResult)
