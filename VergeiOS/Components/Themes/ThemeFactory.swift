@@ -21,7 +21,7 @@ class ThemeFactory: NSObject {
     }
 
     lazy var featherMode: Theme = {
-        let featherMode = Theme(
+        var featherMode = Theme(
             name: "settings.themes.featherMode".localized,
             id: "featherMode",
             icon: UIImage(named: "Feather")!,
@@ -60,9 +60,9 @@ class ThemeFactory: NSObject {
             appIconName: "AppIconFeather"
         )
 
-        //        if #available(iOS 13.0, *) {
-        //            featherMode.statusBarStyle = .darkContent
-        //        }
+        if #available(iOS 13.0, *) {
+            featherMode.statusBarStyle = .darkContent
+        }
 
         return featherMode
     }()
