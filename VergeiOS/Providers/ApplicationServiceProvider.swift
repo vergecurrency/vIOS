@@ -33,10 +33,10 @@ class ApplicationServiceProvider: ServiceProvider {
             return ShortcutsManager(applicationRepository: applicationRepository)
         }.inObjectScope(.container)
 
-        container.storyboardInitCompleted (MainTabBarController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.shortcutsManager = r.resolve(ShortcutsManager.self)
-        }
+//        container.storyboardInitCompleted (MainTabBarController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//            c.shortcutsManager = r.resolve(ShortcutsManager.self)
+//        }
 
         container.register(WatchSyncManager.self) { r in
             let walletClient = r.resolve(WalletClient.self)!

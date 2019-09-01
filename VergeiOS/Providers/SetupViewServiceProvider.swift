@@ -8,44 +8,44 @@ import Foundation
 class SetupViewServiceProvider: ServiceProvider {
 
     override func register() {
-        container.storyboardInitCompleted (WelcomeViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.transactionManager = r.resolve(TransactionManager.self)
-        }
-
-        container.storyboardInitCompleted (PassphraseConfirmationViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
-        container.storyboardInitCompleted (FinishSetupViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.walletClient = r.resolve(WalletClient.self)
-            c.credentials = r.resolve(Credentials.self)
-        }
-
-        container.storyboardInitCompleted (PaperkeyShowViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
-        container.storyboardInitCompleted (ConfirmPaperkeyViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
-        container.storyboardInitCompleted (ConfirmPinViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
-        container.storyboardInitCompleted (PinUnlockViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
-        container.storyboardInitCompleted (PaperKeyWordsViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
-
-        container.storyboardInitCompleted (FinalRecoveryController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
+//        container.storyboardInitCompleted (WelcomeViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//            c.transactionManager = r.resolve(TransactionManager.self)
+//        }
+//
+//        container.storyboardInitCompleted (PassphraseConfirmationViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
+//
+//        container.storyboardInitCompleted (FinishSetupViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//            c.walletClient = r.resolve(WalletClient.self)
+//            c.credentials = r.resolve(Credentials.self)
+//        }
+//
+//        container.storyboardInitCompleted (PaperkeyShowViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
+//
+//        container.storyboardInitCompleted (ConfirmPaperkeyViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
+//
+//        container.storyboardInitCompleted (ConfirmPinViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
+//
+//        container.storyboardInitCompleted (PinUnlockViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
+//
+//        container.storyboardInitCompleted (PaperKeyWordsViewController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
+//
+//        container.storyboardInitCompleted (FinalRecoveryController.self) { r, c in
+//            c.applicationRepository = r.resolve(ApplicationRepository.self)
+//        }
     }
 
 }

@@ -187,7 +187,7 @@ class EventServiceProvider: ServiceProvider {
     }
 
     @objc private func didChangeTheme(_ notification: Notification) {
-        PinUnlockViewController.storyBoardView = nil
+//        PinUnlockViewController.storyBoardView = nil
     }
 
 }
