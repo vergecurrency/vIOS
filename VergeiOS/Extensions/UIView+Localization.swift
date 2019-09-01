@@ -79,19 +79,6 @@ extension UITextField {
 
 }
 
-extension SelectorButton {
-
-    @IBInspectable var localizationLabelId: String {
-        set(value) {
-            self.label = value.localized
-        }
-        get {
-            return ""
-        }
-    }
-
-}
-
 extension UITabBarItem {
 
     @IBInspectable var localizationTitleId: String {

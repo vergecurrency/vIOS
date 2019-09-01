@@ -128,26 +128,26 @@ class EventServiceProvider: ServiceProvider {
     }
 
     @objc func didStartTorThread(notification: Notification? = nil) {
-        TorStatusIndicator.shared.setStatus(.disconnected)
+//        TorStatusIndicator.shared.setStatus(.disconnected)
     }
 
     @objc func didEstablishTorConnection(notification: Notification? = nil) {
         DispatchQueue.main.async {
-            TorStatusIndicator.shared.setStatus(.connected)
+//            TorStatusIndicator.shared.setStatus(.connected)
         }
     }
 
     @objc func didResignTorConnection(notification: Notification? = nil) {
-        TorStatusIndicator.shared.setStatus(.disconnected)
+//        TorStatusIndicator.shared.setStatus(.disconnected)
     }
 
     @objc func didTurnOffTor(notification: Notification? = nil) {
-        TorStatusIndicator.shared.setStatus(.turnedOff)
+//        TorStatusIndicator.shared.setStatus(.turnedOff)
     }
 
     @objc func errorDuringTorConnection(notification: Notification? = nil) {
         DispatchQueue.main.async {
-            TorStatusIndicator.shared.setStatus(.error)
+//            TorStatusIndicator.shared.setStatus(.error)
         }
     }
 
@@ -158,8 +158,6 @@ class EventServiceProvider: ServiceProvider {
     }
 
     @objc func didDisconnectWallet(notification: Notification) {
-        ThemeManager.shared.switchTheme(theme: ThemeFactory.shared.featherMode)
-
         self.container.resolve(ApplicationRepository.self)!.reset()
         self.container.resolve(TransactionManager.self)!.removeAll()
         self.container.resolve(WalletTicker.self)!.stop()

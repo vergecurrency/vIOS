@@ -29,8 +29,11 @@ struct ContentView: View {
 }
 
 struct WalletPanel: View {
+    @State var showSend: Bool = false
+    @State var showReceive: Bool = false
+    
     var body: some View {
-        VStack(alignment: .leading) {
+        return VStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 Subheadline(content: "MAIN WALLET")
                     .foregroundColor(.primaryDark())
@@ -54,51 +57,35 @@ struct WalletPanel: View {
                     Button(action: openSend) {
                         DefaultButton(text: Text("Send"))
                     }
+                        .sheet(isPresented: self.$showSend) {
+                            SendView()
+                        }
                     Button(action: openReceive) {
                         DefaultButton(text: Text("Receive"))
                     }
+                        .sheet(isPresented: self.$showReceive) {
+                            ReceiveView()
+                        }
                 }
             }
             .padding([.leading, .bottom, .trailing], 25)
         }
-        .frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            alignment: .topLeading
-        )
-        .background(Color.backgroundWhite())
-        .cornerRadius(30)
-        .shadow(radius: 10, y: 10)
-    }
-    
-    func openSend() {
-        
-    }
-    
-    func openReceive() {
-        
-    }
-}
-
-struct DefaultButton: View {
-    let text: Text
-    
-    var body: some View {
-        HStack {
-            text
-                .foregroundColor(.primaryLight())
-                .font(Font.avenir(size: 16, weight: .medium))
-        }
             .frame(
                 minWidth: 0,
                 maxWidth: .infinity,
-                minHeight: 20,
-                maxHeight: 20,
-                alignment: .center
+                alignment: .topLeading
             )
-            .padding(10)
-            .background(Color.backgroundGrey())
-            .cornerRadius(5)
+            .background(Color.backgroundWhite())
+            .cornerRadius(30)
+            .shadow(radius: 10, y: 10)
+    }
+    
+    func openSend() {
+        self.showSend = true
+    }
+    
+    func openReceive() {
+        self.showReceive = true
     }
 }
 

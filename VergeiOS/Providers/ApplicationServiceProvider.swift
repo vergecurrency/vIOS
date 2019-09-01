@@ -10,14 +10,10 @@ import IQKeyboardManagerSwift
 class ApplicationServiceProvider: ServiceProvider {
 
     override func boot() {
-        TorStatusIndicator.shared.initialize()
-        NotificationManager.shared.initialize()
+//        TorStatusIndicator.shared.initialize()
+//        NotificationManager.shared.initialize()
 
         IQKeyboardManager.shared.enable = true
-
-        if let window = (UIApplication.shared.delegate as! AppDelegate).window {
-            window.tintColor = ThemeManager.shared.primaryLight()
-        }
 
         self.bootWatchSyncManager()
     }

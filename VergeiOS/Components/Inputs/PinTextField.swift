@@ -17,15 +17,6 @@ class PinTextField: UIView {
 
     var pinsFilled: Int = 0
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.becomeThemeable()
-    }
-
-    override func updateColors() {
-        self.setNeedsDisplay()
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -74,11 +65,11 @@ class PinTextField: UIView {
         shapeLayer.path = circlePath.cgPath
 
         // Change the fill color
-        shapeLayer.fillColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.4).cgColor
+        shapeLayer.fillColor = UIColor.blue.withAlphaComponent(0.4).cgColor
 
         // Fill the pin when
         if (self.pinsFilled >= (index + 1)) {
-            shapeLayer.fillColor = ThemeManager.shared.primaryLight().cgColor
+            shapeLayer.fillColor = UIColor.blue.cgColor
         }
 
         return shapeLayer

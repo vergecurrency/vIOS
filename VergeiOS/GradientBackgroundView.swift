@@ -14,7 +14,7 @@ struct GradientBackgroundView: View {
     let gradient = LinearGradient(
         gradient: Gradient(colors: Color.blueGradient()),
         startPoint: .top,
-        endPoint: .bottom
+        endPoint: UnitPoint(x: 0.5, y: 0.8)
     )
     
     var body: some View {
