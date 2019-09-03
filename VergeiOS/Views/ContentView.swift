@@ -9,8 +9,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showSettings: Bool = false
+    
     var body: some View {
-        WalletView()
+        ZStack(alignment: .topTrailing) {
+            WalletView()
+            HStack {
+                Button(action: self.openSettings) {
+                    Image("Settings")
+                        .foregroundColor(.white)
+                }
+                .sheet(isPresented: self.$showSettings) {
+                    SettingsView()
+                }
+            }.padding()
+        }
+    }
+    
+    func openSettings() {
+        self.showSettings = true
     }
 }
 

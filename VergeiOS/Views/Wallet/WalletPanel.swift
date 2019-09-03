@@ -13,12 +13,11 @@ struct WalletPanel: View {
     @State var showReceive: Bool = false
     
     var body: some View {
-        return VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 Subheadline(content: "MAIN WALLET")
                     .foregroundColor(.primaryDark())
-                Headline(content: NSNumber(value: 1434839.03).toXvgCurrency())
-                    .foregroundColor(.primaryDark())
+                NeonTitle(content: NSNumber(value: 1434839.03).toXvgCurrency())
                 Subheadline(content: "€ 10,034.44")
                     .foregroundColor(.primaryLight())
             }
@@ -66,6 +65,25 @@ struct WalletPanel: View {
     
     func openReceive() {
         self.showReceive = true
+    }
+}
+
+struct NeonTitle: View {
+    let content: String
+    let gradient: LinearGradient = LinearGradient(
+        gradient: Gradient(colors: [Color.white.opacity(0), .white, Color(rgb: 0x6700FF).opacity(0)]),
+        startPoint: .leading,
+        endPoint: .trailing
+    )
+    
+    var body: some View {
+        Headline(content: self.content)
+            .foregroundColor(.primaryDark())
+            .background(
+                Headline(content: self.content)
+                    .foregroundColor(Color(rgb: 0x6700FF).opacity(0.25))
+                    .offset(x: 0, y: 2)
+            )
     }
 }
 

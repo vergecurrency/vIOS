@@ -23,6 +23,8 @@
 		A319D421231C665200465094 /* DefaultButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D420231C665200465094 /* DefaultButton.swift */; };
 		A319D429231C6BE300465094 /* WalletPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D428231C6BE300465094 /* WalletPanel.swift */; };
 		A319D42B231C6C2D00465094 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D42A231C6C2D00465094 /* WalletView.swift */; };
+		A319D42E231C6E4C00465094 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D42D231C6E4C00465094 /* Labels.swift */; };
+		A319D431231DA12400465094 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D430231DA12400465094 /* SettingsView.swift */; };
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A3239D6422E60C2B00430F8B /* SweeperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6322E60C2B00430F8B /* SweeperHelper.swift */; };
@@ -282,6 +284,8 @@
 		A319D420231C665200465094 /* DefaultButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButton.swift; sourceTree = "<group>"; };
 		A319D428231C6BE300465094 /* WalletPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPanel.swift; sourceTree = "<group>"; };
 		A319D42A231C6C2D00465094 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		A319D42D231C6E4C00465094 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		A319D430231DA12400465094 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A3239D6322E60C2B00430F8B /* SweeperHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeperHelper.swift; sourceTree = "<group>"; };
 		A325665E211A2219006FB08A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		A3256662211A39A2006FB08A /* RatesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesClient.swift; sourceTree = "<group>"; };
@@ -567,6 +571,7 @@
 		A305DD9A21066AE600911B64 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A319D42C231C6E3F00465094 /* Labels */,
 				A319D426231C6BAC00465094 /* Backgrounds */,
 				A305DDAA21077FF800911B64 /* Buttons */,
 				A305DDAC2107802E00911B64 /* Inputs */,
@@ -626,6 +631,7 @@
 				A3CAC280231C086800522191 /* ContentView.swift */,
 				A319D425231C6B8900465094 /* Receive */,
 				A319D424231C6B8300465094 /* Send */,
+				A319D42F231DA11000465094 /* Settings */,
 				A319D427231C6BC600465094 /* Wallet */,
 			);
 			path = Views;
@@ -662,6 +668,22 @@
 				A319D42A231C6C2D00465094 /* WalletView.swift */,
 			);
 			path = Wallet;
+			sourceTree = "<group>";
+		};
+		A319D42C231C6E3F00465094 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				A319D42D231C6E4C00465094 /* Labels.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		A319D42F231DA11000465094 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A319D430231DA12400465094 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A31A99242208F3A800213F3E /* Assets */ = {
@@ -1447,6 +1469,7 @@
 				A3A71C0D22D90B5E0098D861 /* BNBlock.swift in Sources */,
 				A3256668211B8E1A006FB08A /* ApplicationRepository.swift in Sources */,
 				CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */,
+				A319D42E231C6E4C00465094 /* Labels.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */,
 				A3256663211A39A2006FB08A /* RatesClient.swift in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
@@ -1457,6 +1480,7 @@
 				A319D421231C665200465094 /* DefaultButton.swift in Sources */,
 				A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */,
 				A3E32B20225D5983001A8B0E /* SendViewServiceProvider.swift in Sources */,
+				A319D431231DA12400465094 /* SettingsView.swift in Sources */,
 				A302D3412122053300EA8091 /* FiatRateTicker.swift in Sources */,
 				A3CAC285231C137900522191 /* Color+Extensions.swift in Sources */,
 				A3A71C1822DA66B80098D861 /* TransactionFactoryProtocol.swift in Sources */,

@@ -10,7 +10,13 @@ import SwiftUI
 
 struct ReceiveView: View {
     var body: some View {
-        Text("Receive!")
+        NavigationView {
+            VStack {
+                Text("Build it boy!")
+                Spacer()
+            }
+            .navigationBarTitle(Text("Receive"))
+        }
     }
 }
 

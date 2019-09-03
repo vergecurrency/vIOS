@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "ReceiveCard.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "ReceiveCard-1.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {
