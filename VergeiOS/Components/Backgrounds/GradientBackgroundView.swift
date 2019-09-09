@@ -18,17 +18,14 @@ struct GradientBackgroundView: View {
     )
     
     var body: some View {
-        ZStack {
-            Image("Watermark")
-                .resizable()
-                .scaledToFill()
-                .clipped()
-                .frame(alignment: .center)
-                .blendMode(.screen)
-                .blur(radius: self.blurRadius)
-                .background(self.gradient)
-        }
-            .edgesIgnoringSafeArea([.top, .bottom])
+        Image("Watermark")
+            .resizable()
+            .scaledToFill()
+            .frame(width: UIScreen.main.bounds.width, alignment: .center)
+            .blendMode(.screen)
+            .blur(radius: self.blurRadius)
+            .background(self.gradient)
+            .edgesIgnoringSafeArea(.vertical)
     }
 }
 

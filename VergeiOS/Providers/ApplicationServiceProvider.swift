@@ -10,9 +10,6 @@ import IQKeyboardManagerSwift
 class ApplicationServiceProvider: ServiceProvider {
 
     override func boot() {
-//        TorStatusIndicator.shared.initialize()
-//        NotificationManager.shared.initialize()
-
         IQKeyboardManager.shared.enable = true
 
         self.bootWatchSyncManager()

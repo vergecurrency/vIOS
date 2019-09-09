@@ -8,7 +8,6 @@
 
 import UIKit
 import Swinject
-import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
-        self.application = Application(container: SwinjectStoryboard.defaultContainer)
+        self.application = Application(container: Container())
         self.application?.boot()
 
         let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!

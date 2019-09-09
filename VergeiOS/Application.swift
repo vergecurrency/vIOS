@@ -5,7 +5,6 @@
 
 import Foundation
 import Swinject
-import SwinjectStoryboard
 
 class Application {
 
@@ -19,11 +18,6 @@ class Application {
         HttpServiceProvider.self,
         BlockchainServiceProvider.self,
         WalletServiceProvider.self,
-        SetupViewServiceProvider.self,
-        WalletViewServiceProvider.self,
-        SendViewServiceProvider.self,
-        ReceiveViewServiceProvider.self,
-        SettingsViewServiceProvider.self,
         EventServiceProvider.self
     ]
 

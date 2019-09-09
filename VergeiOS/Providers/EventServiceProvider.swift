@@ -127,29 +127,15 @@ class EventServiceProvider: ServiceProvider {
         container.resolve(WatchSyncManager.self)?.syncAddress(notification: notification)
     }
 
-    @objc func didStartTorThread(notification: Notification? = nil) {
-//        TorStatusIndicator.shared.setStatus(.disconnected)
-    }
+    @objc func didStartTorThread(notification: Notification? = nil) {}
 
-    @objc func didEstablishTorConnection(notification: Notification? = nil) {
-        DispatchQueue.main.async {
-//            TorStatusIndicator.shared.setStatus(.connected)
-        }
-    }
+    @objc func didEstablishTorConnection(notification: Notification? = nil) {}
 
-    @objc func didResignTorConnection(notification: Notification? = nil) {
-//        TorStatusIndicator.shared.setStatus(.disconnected)
-    }
+    @objc func didResignTorConnection(notification: Notification? = nil) {}
 
-    @objc func didTurnOffTor(notification: Notification? = nil) {
-//        TorStatusIndicator.shared.setStatus(.turnedOff)
-    }
+    @objc func didTurnOffTor(notification: Notification? = nil) {}
 
-    @objc func errorDuringTorConnection(notification: Notification? = nil) {
-        DispatchQueue.main.async {
-//            TorStatusIndicator.shared.setStatus(.error)
-        }
-    }
+    @objc func errorDuringTorConnection(notification: Notification? = nil) {}
 
     @objc func didSetupWallet(notification: Notification) {
         self.container.resolve(WalletTicker.self)?.start()
@@ -184,8 +170,6 @@ class EventServiceProvider: ServiceProvider {
         }
     }
 
-    @objc private func didChangeTheme(_ notification: Notification) {
-//        PinUnlockViewController.storyBoardView = nil
-    }
+    @objc private func didChangeTheme(_ notification: Notification) {}
 
 }
