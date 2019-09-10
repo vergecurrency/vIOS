@@ -1,7 +1,7 @@
 binary "https://icepa.github.io/Tor.framework/Tor.json" "305.8.1"
 github "JohnEstropia/CoreStore" "6.3.2"
 github "SwiftyJSON/SwiftyJSON" "5.0.0"
-github "Swinject/Swinject" "2.6.2"
+github "Swinject/Swinject" "2.7.1"
 github "evgenyneu/keychain-swift" "11.0.0"
 github "gmotzespina/QRCode" "c07e17120ffb34fdfa7ec1f3a85bc1afd39cfdc2"
 github "google/promises" "1.2.8"
