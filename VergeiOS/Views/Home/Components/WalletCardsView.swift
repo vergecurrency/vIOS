@@ -19,6 +19,8 @@ struct WalletCardsView: View {
         return UIScreen.main.bounds.width * 0.75
     }
     
+    @State var showWallet: Bool = false
+    
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 30.0) {
@@ -29,14 +31,22 @@ struct WalletCardsView: View {
                             .scaleEffect(g.frame(in: .global).minX < self.maxWidth ? 1 : 0.95, anchor: .trailing)
                             .offset(x: g.frame(in: .global).minX < self.maxWidth ? 0 : -10)
                             .animation(.spring())
+                            .sheet(isPresented: self.$showWallet) {
+                                NavigationView {
+                                    WalletView(wallet: wallet)
+                                }
+                            }
+                            .onTapGesture {
+                                self.showWallet.toggle()
+                            }
                     }
                     .frame(
                         minWidth: 0,
                         idealWidth: self.maxWidth > 350 ? 350 : self.maxWidth,
                         maxWidth: 350,
-                        minHeight: 280,
-                        idealHeight: 280,
-                        maxHeight: 280
+                        minHeight: 190,
+                        idealHeight: 190,
+                        maxHeight: 190
                     )
                 }
             }

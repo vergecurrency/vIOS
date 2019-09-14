@@ -16,15 +16,15 @@ struct SettingsView: View {
                     header: Text("Privacy"),
                     footer: Text("Protect your privacy while using the Verge iOS wallet.")
                 ) {
-                    SettingItemView(label: Text("Tor connection"), icon: Image("Tor"), hasDisclosure: true)
+                    SettingItemView(label: Text("Tor connection"), icon: Image("Tor"))
                 }
                 Section(header: Text("Settings")) {
-                    SettingItemView(label: Text("Fiat valuta"), icon: Image("Currency"), hasDisclosure: true)
-                    SettingItemView(label: Text("Verander wallet PIN"), icon: Image("Pin"), hasDisclosure: true)
-                    SettingItemView(label: Text("Gebruik Touch ID"), icon: Image("TouchID"), hasDisclosure: true)
+                    SettingItemView(label: Text("Fiat valuta"), icon: Image("Currency"))
+                    SettingItemView(label: Text("Verander wallet PIN"), icon: Image("Pin"))
+                    SettingItemView(label: Text("Gebruik Touch ID"), icon: Image("TouchID"))
                 }
                 Section(header: Text("Extra")) {
-                    SettingItemView(label: Text("Credits"), icon: Image("Credits"), hasDisclosure: true)
+                    SettingItemView(label: Text("Credits"), icon: Image("Credits"))
                     SettingItemView(label: Text("Rate"), icon: Image("RateApp"))
                     SettingItemView(label: Text("Website"), icon: Image("Website"))
                     SettingItemView(label: Text("Contribute"), icon: Image("GitHub"))
@@ -40,7 +40,6 @@ struct SettingsView: View {
 struct SettingItemView: View {
     let label: Text
     let icon: Image
-    var hasDisclosure: Bool = false
     
     var body: some View {
         HStack {
@@ -49,12 +48,6 @@ struct SettingItemView: View {
             label
                 .font(.avenir(size: 16))
                 .foregroundColor(.primaryDark())
-        
-            if self.hasDisclosure {
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.vergeGrey())
-            }
         }
     }
 }

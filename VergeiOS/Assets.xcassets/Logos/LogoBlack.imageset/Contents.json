@@ -3,6 +3,16 @@
     {
       "idiom" : "universal",
       "filename" : "verge-color_logo.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "verge-color-white_logo.pdf",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
     }
   ],
   "info" : {

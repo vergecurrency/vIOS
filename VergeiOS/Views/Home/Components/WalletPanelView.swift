@@ -30,21 +30,7 @@ struct WalletPanelView: View {
                     Subheadline(content: "€ 10,034.44")
                         .foregroundColor(.primaryLight())
                 }
-                    .padding([.leading, .top, .trailing], 25)
-
-                Spacer()
-
-                Image("ChartLinePlaceholder")
-                    .resizable()
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: 350,
-                        minHeight: 100,
-                        maxHeight: 100,
-                        alignment: .center
-                    )
-
-                Spacer()
+                    .padding(25)
 
                 VStack {
                     HStack {
@@ -68,8 +54,8 @@ struct WalletPanelView: View {
             .frame(
                 minWidth: 0,
                 maxWidth: 350,
-                minHeight: 280,
-                maxHeight: 280,
+                minHeight: 190,
+                maxHeight: 190,
                 alignment: self.wallet != nil ? .topLeading : .center
             )
             .background(Color.backgroundWhite())

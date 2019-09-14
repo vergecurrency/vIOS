@@ -21,7 +21,7 @@ struct GradientBackgroundView: View {
         Image("Watermark")
             .resizable()
             .scaledToFill()
-            .frame(width: UIScreen.main.bounds.width, alignment: .center)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             .blendMode(.screen)
             .blur(radius: self.blurRadius)
             .background(self.gradient)
