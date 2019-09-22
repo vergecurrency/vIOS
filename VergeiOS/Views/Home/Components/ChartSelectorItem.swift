@@ -14,7 +14,7 @@ struct ChartSelectorItem: View {
     var body: some View {
         Text(self.label)
             .foregroundColor(.white)
-            .blendMode(.softLight)
+            .blendMode(.overlay)
             .font(Font.avenir(size: 15, weight: .semibold))
     }
 }

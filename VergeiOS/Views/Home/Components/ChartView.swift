@@ -10,19 +10,22 @@ import SwiftUI
 
 struct ChartView: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             Image("ChartPlaceholder")
                 .resizable()
                 .frame(
                     minWidth: 0,
                     maxWidth: .infinity,
-                    minHeight: 190,
-                    maxHeight: .infinity,
+                    minHeight: 0,
+                    maxHeight: 150,
                     alignment: .center
                 )
-                .padding(.bottom, 15)
+                .blendMode(.hardLight)
+                .layoutPriority(1)
             ChartSelectorView()
+                .font(.avenir(size: 12, weight: .semibold))
         }
+        .padding(.vertical, 15)
     }
 }
 

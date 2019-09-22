@@ -19,14 +19,7 @@ struct ChartSelectorView: View {
             ChartSelectorItem(label: "1Y")
             ChartSelectorItem(label: "ALL")
         }
-        .frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            minHeight: 0,
-            maxHeight: .infinity,
-            alignment: .center
-        )
-        .padding(.horizontal, 30)
+        .padding(.horizontal, 15)
     }
 }
 
