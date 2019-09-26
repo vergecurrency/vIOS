@@ -1903,7 +1903,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(CF_BUNDLE_SHORT_VERSION_STRING)";
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -1934,7 +1934,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = "$(CF_BUNDLE_SHORT_VERSION_STRING)";
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -1958,7 +1958,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.siriui;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.siriui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -1981,7 +1981,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.siriui;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.siriui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -2001,7 +2001,7 @@
 				INFOPLIST_FILE = VergeWatch/Info.plist;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2021,7 +2021,7 @@
 				IBSC_MODULE = VergeWatch_Extension;
 				INFOPLIST_FILE = VergeWatch/Info.plist;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2050,7 +2050,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -2079,7 +2079,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -2109,7 +2109,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.siri;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.siri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -2136,7 +2136,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet.siri;
+				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallet2.siri;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;

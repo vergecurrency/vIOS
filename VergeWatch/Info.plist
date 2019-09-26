@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>org.verge.wallet</string>
+	<string>org.verge.wallet2</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

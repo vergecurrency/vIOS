@@ -10,7 +10,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.verge.wallet</string>
+		<string>group.org.verge.wallet2</string>
 	</array>
 	<key>com.apple.security.device.camera</key>
 	<true/>

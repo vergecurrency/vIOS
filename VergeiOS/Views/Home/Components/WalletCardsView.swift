@@ -33,7 +33,7 @@ struct WalletCardsView: View {
                             .animation(.spring())
                             .sheet(isPresented: self.$showWallet) {
                                 NavigationView {
-                                    WalletView(wallet: wallet)
+                                    WalletView(wallet: wallet) 
                                 }
                             }
                             .onTapGesture {

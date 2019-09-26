@@ -34,7 +34,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>org.verge.ioswallet</string>
+			<string>org.verge.wallet2</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>verge</string>

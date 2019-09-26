@@ -16,15 +16,25 @@ struct SettingsView: View {
                     header: Text("Privacy"),
                     footer: Text("Protect your privacy while using the Verge iOS wallet.")
                 ) {
-                    SettingItemView(label: Text("Tor connection"), icon: Image("Tor"))
+                    NavigationLink(destination: Text("Tor")) {
+                        SettingItemView(label: Text("Tor connection"), icon: Image("Tor"))
+                    }
                 }
                 Section(header: Text("Settings")) {
-                    SettingItemView(label: Text("Fiat valuta"), icon: Image("Currency"))
-                    SettingItemView(label: Text("Verander wallet PIN"), icon: Image("Pin"))
-                    SettingItemView(label: Text("Gebruik Touch ID"), icon: Image("TouchID"))
+                    NavigationLink(destination: Text("Currency")) {
+                        SettingItemView(label: Text("Fiat valuta"), icon: Image("Currency"))
+                    }
+                    NavigationLink(destination: Text("Verander wallet PIN")) {
+                        SettingItemView(label: Text("Verander wallet PIN"), icon: Image("Pin"))
+                    }
+                    NavigationLink(destination: Text("Touch ID")) {
+                        SettingItemView(label: Text("Gebruik Touch ID"), icon: Image("TouchID"))
+                    }
                 }
                 Section(header: Text("Extra")) {
-                    SettingItemView(label: Text("Credits"), icon: Image("Credits"))
+                    NavigationLink(destination: Text("Credits")) {
+                        SettingItemView(label: Text("Credits"), icon: Image("Credits"))
+                    }
                     SettingItemView(label: Text("Rate"), icon: Image("RateApp"))
                     SettingItemView(label: Text("Website"), icon: Image("Website"))
                     SettingItemView(label: Text("Contribute"), icon: Image("GitHub"))

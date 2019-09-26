@@ -13,18 +13,11 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
 
-                LargeTitle(content: "Stats")
+                LargeTitle(content: "Overview")
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 
                 ChartView()
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 220, maxHeight: .infinity, alignment: .center)
-                    .background(Color.black.blendMode(.softLight).opacity(0.6))
-                    .background(Color(rgb: 0x0049F2).blendMode(.saturation))
-                    .background(BlurBackgroundView(style: .systemThinMaterial))
-                    .cornerRadius(30)
-                    .padding(.horizontal, 30)
-                    .shadow(radius: 10, y: 10)
                 
                 Title(content: "Wallets")
                     .foregroundColor(.white)
@@ -32,7 +25,7 @@ struct HomeView: View {
                 
                 WalletCardsView()
                 
-                Title(content: "More stats")
+                Title(content: "More")
                     .foregroundColor(.white)
                     .padding(.horizontal, 30)
                 

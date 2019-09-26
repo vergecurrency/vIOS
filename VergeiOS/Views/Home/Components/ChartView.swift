@@ -26,6 +26,13 @@ struct ChartView: View {
                 .font(.avenir(size: 12, weight: .semibold))
         }
         .padding(.vertical, 15)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 220, maxHeight: .infinity, alignment: .center)
+        .background(Color.black.blendMode(.overlay).opacity(0.6))
+        .background(Color.purple.blendMode(.saturation).opacity(0.5))
+        .background(BlurBackgroundView(style: .systemThinMaterial))
+        .cornerRadius(30)
+        .padding(.horizontal, 30)
+        .shadow(color: Color.black.opacity(0.1), radius: 10, y: 10)
     }
 }
 
