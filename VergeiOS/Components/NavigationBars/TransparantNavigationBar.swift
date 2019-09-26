@@ -30,10 +30,6 @@ class TransparantNavigationBar: UINavigationBar {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-
-        let font = UIFont.avenir(size: 19).medium()
-
-        self.titleTextAttributes = [kCTFontAttributeName: font] as [NSAttributedString.Key: Any]
     }
 
 }

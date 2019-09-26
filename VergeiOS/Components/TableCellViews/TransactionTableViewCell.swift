@@ -11,11 +11,18 @@ import Eureka
 
 class TransactionTableViewCell: Cell<String>, CellType {
 
-    @IBOutlet weak var amountLabel: UILabel!
+    let amountLabel: UILabel = UILabel()
 
     override func setup() {}
 
     override func update() {}
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        amountLabel.font = UIFont.avenir(size: 14).demiBold()
+        accessoryView = amountLabel
+    }
 
     func setTransaction(_ transaction: TxHistory, address: Contact?) {
         setAccount(transaction, address: address)
@@ -88,6 +95,7 @@ class TransactionTableViewCell: Cell<String>, CellType {
         }
 
         amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
+        amountLabel.sizeToFit()
     }
 }
 
