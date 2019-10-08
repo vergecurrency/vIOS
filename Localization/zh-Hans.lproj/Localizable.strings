@@ -237,7 +237,7 @@
 
 "settings.serviceUrl.title"                 = "服务URL";
 "settings.serviceUrl.header.title"          = "钱包服务URL";
-"settings.serviceUrl.footer.title"          = "这个应用程序的区块信息、网络和Copayer同步依赖于Verge钱包服务(VWS).默认的配置指向 https://vws.vergecurrency.network/vws/api (Verge的公共VWS)";
+"settings.serviceUrl.footer.title"          = "这个应用程序的区块信息、网络和Copayer同步依赖于Verge钱包服务(VWS).默认的配置指向 https://api.vergecurrency.network/vws/api (Verge的公共VWS)";
 "settings.serviceUrl.defaultUrlButton"      = "使用默认url";
 "settings.serviceUrl.saveButton"            = "保存";
 

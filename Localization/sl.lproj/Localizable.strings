@@ -200,7 +200,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "URL storitev";
 "settings.serviceUrl.header.title" = "URL storitev denarnice";
-"settings.serviceUrl.footer.title" = "Ta aplikacija je odvisna od storitve Verge Wallet Service (VWS) za informacijo o veriženju blokov, omrežju in Copayer sinhronizaciji. Privzeta konfiguracija kaže na https://vws.vergecurrency.network/vws/api (Verge javna VWS instanca)";
+"settings.serviceUrl.footer.title" = "Ta aplikacija je odvisna od storitve Verge Wallet Service (VWS) za informacijo o veriženju blokov, omrežju in Copayer sinhronizaciji. Privzeta konfiguracija kaže na https://api.vergecurrency.network/vws/api (Verge javna VWS instanca)";
 "settings.serviceUrl.defaultUrlButton" = "Uporabi privzeti url";
 "settings.serviceUrl.saveButton" = "Shrani";
 

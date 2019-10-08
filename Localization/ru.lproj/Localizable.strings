@@ -237,7 +237,7 @@
 
 "settings.serviceUrl.title"                 = "URL сервиса";
 "settings.serviceUrl.header.title"          = "URL сервиса Кошелька";
-"settings.serviceUrl.footer.title"          = "Это приложение зависит от Сервиса Кошелька Verge (VWS). Он предоставляет информацию о блокчейне, сети и Copayer синхронизации. По умолчанию выбран https://vws.vergecurrency.network/vws/api (публичный VWS)";
+"settings.serviceUrl.footer.title"          = "Это приложение зависит от Сервиса Кошелька Verge (VWS). Он предоставляет информацию о блокчейне, сети и Copayer синхронизации. По умолчанию выбран https://api.vergecurrency.network/vws/api (публичный VWS)";
 "settings.serviceUrl.defaultUrlButton"      = "Использовать URL по умолчанию";
 "settings.serviceUrl.saveButton"            = "Сохранить";
 

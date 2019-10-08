@@ -276,7 +276,7 @@
 
 "settings.serviceUrl.title"                 = "Service URL";
 "settings.serviceUrl.header.title"          = "Wallet Service URL";
-"settings.serviceUrl.footer.title"          = "This application depends on Verge Wallet Service (VWS) for blockchain information, networking and Copayer synchronization. The default configuration points to https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)";
+"settings.serviceUrl.footer.title"          = "This application depends on Verge Wallet Service (VWS) for blockchain information, networking and Copayer synchronization. The default configuration points to https://api.vergecurrency.network/vws/api (Verge's public VWS instance)";
 "settings.serviceUrl.defaultUrlButton"      = "Use default url";
 "settings.serviceUrl.saveButton"            = "Save";
 

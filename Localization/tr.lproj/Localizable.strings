@@ -200,7 +200,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "Servis URL'si";
 "settings.serviceUrl.header.title" = "Cüzdan Servis URL'si";
-"settings.serviceUrl.footer.title" = "Bu uygulama blockchain bilgileri, ağ iletişimi ve Copayer senkronizasyonu için Verge Cüzdan Hizmeti'ne (VWS) bağlıdır. Varsayılan yapılandırma noktası https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)";
+"settings.serviceUrl.footer.title" = "Bu uygulama blockchain bilgileri, ağ iletişimi ve Copayer senkronizasyonu için Verge Cüzdan Hizmeti'ne (VWS) bağlıdır. Varsayılan yapılandırma noktası https://api.vergecurrency.network/vws/api (Verge's public VWS instance)";
 "settings.serviceUrl.defaultUrlButton" = "Varsayılan URL kullan";
 "settings.serviceUrl.saveButton" = "Kaydet";
 

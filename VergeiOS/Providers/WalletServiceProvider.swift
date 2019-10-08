@@ -41,7 +41,7 @@ class WalletServiceProvider: ServiceProvider {
             let torClient = r.resolve(TorClient.self)!
 
             return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient)
-        }
+        }.inObjectScope(.container)
 
         container.register(WalletClientProtocol.self) { r in
             return r.resolve(WalletClient.self)!

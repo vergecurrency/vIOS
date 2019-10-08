@@ -58,27 +58,27 @@ public struct Constants {
     /**
      * The default Verge Wallet Service.
      */
-    public static let bwsEndpoint: String = "https://vws.vergecurrency.network/vws/api/"
+    public static let bwsEndpoint: String = "https://api.vergecurrency.network/vws/api/"
 
     /**
      * The default Verge Bitcore Node.
      */
-    public static let bnEndpoint: String = "https://vws.vergecurrency.network/node/api/XVG/mainnet"
+    public static let bnEndpoint: String = "https://api.vergecurrency.network/node/api/XVG/mainnet"
 
     /**
      * The fiat rate data service.
      */
-    public static let priceDataEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/price/"
+    public static let priceDataEndpoint: String = "https://api.vergecurrency.network/price/api/v1/price/"
 
     /**
      * Chart data endpoint.
      */
-    public static let chartDataEndpoint: String = "https://vws.vergecurrency.network/price/api/v1/chart/"
+    public static let chartDataEndpoint: String = "https://api.vergecurrency.network/price/api/v1/chart/"
 
     /**
      * IP Address endpoint.
      */
-    public static let ipCheckEndpoint: String = "https://vws2.swenvanzanten.com/price/api/v1/ip/"
+    public static let ipCheckEndpoint: String = "https://api.vergecurrency.network/price/api/v1/ip/"
 
     /**
      * The Verge Currency CORE team donation address.

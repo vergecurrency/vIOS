@@ -198,7 +198,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "Service URL";
 "settings.serviceUrl.header.title" = "Service Porte-monnaie URL";
-"settings.serviceUrl.footer.title" = "Cette application dépend du service VWS (Verge Wallet Service) pour les informations de blockchain, la mise en réseau et la synchronisation Copayer. La configuration par défaut pointe vers https://vws.vergecurrency.network/vws/api (instance de VWS publique de Verge).";
+"settings.serviceUrl.footer.title" = "Cette application dépend du service VWS (Verge Wallet Service) pour les informations de blockchain, la mise en réseau et la synchronisation Copayer. La configuration par défaut pointe vers https://api.vergecurrency.network/vws/api (instance de VWS publique de Verge).";
 "settings.serviceUrl.defaultUrlButton" = "Utiliser l'url par défaut";
 "settings.serviceUrl.saveButton" = "Sauvegarder";
 

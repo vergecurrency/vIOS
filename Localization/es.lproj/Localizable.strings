@@ -200,7 +200,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "URL del servicio";
 "settings.serviceUrl.header.title" = "URL del servicio del monedero";
-"settings.serviceUrl.footer.title" = "Esta aplicación depende del Servicio de Monedero de Verge (VWS) para obtener la información de la blockchain, red y sincronización Copayer.\nLa configuración por defecto apunta a https://vws.vergecurrency.network/vws/api (Instancia VWS pública de Verge)";
+"settings.serviceUrl.footer.title" = "Esta aplicación depende del Servicio de Monedero de Verge (VWS) para obtener la información de la blockchain, red y sincronización Copayer.\nLa configuración por defecto apunta a https://api.vergecurrency.network/vws/api (Instancia VWS pública de Verge)";
 "settings.serviceUrl.defaultUrlButton" = "Utilizar URL por defecto";
 "settings.serviceUrl.saveButton" = "Guardar";
 

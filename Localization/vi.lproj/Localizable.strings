@@ -200,7 +200,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "URL dịch vụ";
 "settings.serviceUrl.header.title" = "URL ví dịch vụ";
-"settings.serviceUrl.footer.title" = "Ứng dụng này thuộc Verge Wallet Service(VWS) để thông tin chuỗi khối,mạng và đồng bộ Copayer.\nĐiểm cài đặt mặt định tới https://vws.vergecurrency.network/vws/api (Verge's public VWS instance)";
+"settings.serviceUrl.footer.title" = "Ứng dụng này thuộc Verge Wallet Service(VWS) để thông tin chuỗi khối,mạng và đồng bộ Copayer.\nĐiểm cài đặt mặt định tới https://api.vergecurrency.network/vws/api (Verge's public VWS instance)";
 "settings.serviceUrl.defaultUrlButton" = "Sử dụng url mặc định";
 "settings.serviceUrl.saveButton" = "Lưu";
 

@@ -198,7 +198,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "URL usluge";
 "settings.serviceUrl.header.title" = "URL usluge novčanika";
-"settings.serviceUrl.footer.title" = "Ova aplikacija ovisi o usluzi Verge Wallet (VWS) za blockchain informacije, umrežavanje i Copayer sinkronizaciji. Zadana konfiguracija upućuje na https://vws.vergecurrency.network/vws/api (Vergeova javna VWS instanca)";
+"settings.serviceUrl.footer.title" = "Ova aplikacija ovisi o usluzi Verge Wallet (VWS) za blockchain informacije, umrežavanje i Copayer sinkronizaciji. Zadana konfiguracija upućuje na https://api.vergecurrency.network/vws/api (Vergeova javna VWS instanca)";
 "settings.serviceUrl.defaultUrlButton" = "Upotrijebi zadani URL";
 "settings.serviceUrl.saveButton" = "Spremi";
 

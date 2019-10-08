@@ -200,7 +200,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "URL service";
 "settings.serviceUrl.header.title" = "Plånbok URL service";
-"settings.serviceUrl.footer.title" = "Denna applikation beror på Verge Wallet Service (VWS) för blockchain information, nätverk och Copayer synkronisering. Standard inställningens poäng för https://vws.vergecurrency.network/vws/api(Verge’s publikka VWS instans)";
+"settings.serviceUrl.footer.title" = "Denna applikation beror på Verge Wallet Service (VWS) för blockchain information, nätverk och Copayer synkronisering. Standard inställningens poäng för https://api.vergecurrency.network/vws/api(Verge’s publikka VWS instans)";
 "settings.serviceUrl.defaultUrlButton" = "Använd standard url";
 "settings.serviceUrl.saveButton" = "Spara";
 

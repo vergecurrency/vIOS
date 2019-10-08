@@ -35,39 +35,15 @@ class ServiceUrlTableViewController: LocalizableTableViewController {
             preferredStyle: .alert
         )
 
-        present(alert, animated: true)
+        self.present(alert, animated: true)
 
-        previousServiceUrl = applicationRepository.walletServiceUrl
-        applicationRepository.walletServiceUrl = serviceUrlTextField.text!
+        self.previousServiceUrl = self.applicationRepository.walletServiceUrl
+        self.applicationRepository.walletServiceUrl = self.serviceUrlTextField.text!
 
-        walletTicker.stop()
-        walletClient.resetServiceUrl(baseUrl: applicationRepository.walletServiceUrl)
+        self.walletTicker.stop()
+        self.walletClient.resetServiceUrl(baseUrl: self.applicationRepository.walletServiceUrl)
 
-        walletClient.createWallet(
-            walletName: "ioswallet",
-            copayerName: "iosuser",
-            m: 1,
-            n: 1,
-            options: nil
-        ) { error, secret in
-            if (error != nil || secret == nil) {
-                DispatchQueue.main.async {
-                    self.errorDuringChange(alert: alert)
-                }
-
-                print(error ?? "")
-                return
-            }
-
-            self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
-                print(error ?? "")
-
-                DispatchQueue.main.async {
-                    self.walletTicker.start()
-                    self.urlChanged(alert: alert)
-                }
-            }
-        }
+        self.joinWallet(alert: alert)
     }
 
     func errorDuringChange(alert: UIAlertController) {
@@ -90,5 +66,47 @@ class ServiceUrlTableViewController: LocalizableTableViewController {
         serviceUrlTextField.text = serviceUrl
         walletClient.resetServiceUrl(baseUrl: serviceUrl)
         walletTicker.start()
+    }
+    
+    private func joinWallet(alert: UIAlertController, create: Bool = true) {
+        self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
+            guard let error = error else {
+                return DispatchQueue.main.async {
+                    self.walletTicker.start()
+                    self.urlChanged(alert: alert)
+                }
+            }
+            
+            print(error)
+
+            if !create {
+                return
+            }
+
+            print("Joining wallet failed... tring to create a new wallet")
+            
+            return self.createWallet(alert: alert)
+        }
+    }
+    
+    private func createWallet(alert: UIAlertController) {
+        self.walletClient.createWallet(
+            walletName: "ioswallet",
+            copayerName: "iosuser",
+            m: 1,
+            n: 1,
+            options: nil
+        ) { error, secret in
+            if (error != nil || secret == nil) {
+                DispatchQueue.main.async {
+                    self.errorDuringChange(alert: alert)
+                }
+
+                print(error ?? "")
+                return
+            }
+            
+            self.joinWallet(alert: alert, create: false)
+        }
     }
 }

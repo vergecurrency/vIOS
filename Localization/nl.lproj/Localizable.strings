@@ -235,7 +235,7 @@
 /*Service URL*/
 "settings.serviceUrl.title" = "Service URL";
 "settings.serviceUrl.header.title" = "Wallet service URL";
-"settings.serviceUrl.footer.title" = "Deze applicatie is afhankelijk van Verge Wallet Service (VWS) voor blockchain-informatie, netwerken en Copayer-synchronisatie. De standaardconfiguratie verwijst naar https://vws.vergecurrency.network/vws/api (openbare VWS-instantie van Verge)";
+"settings.serviceUrl.footer.title" = "Deze applicatie is afhankelijk van Verge Wallet Service (VWS) voor blockchain-informatie, netwerken en Copayer-synchronisatie. De standaardconfiguratie verwijst naar https://api.vergecurrency.network/vws/api (openbare VWS-instantie van Verge)";
 "settings.serviceUrl.defaultUrlButton" = "Gebruik standaard url";
 "settings.serviceUrl.saveButton" = "Bewaar";
 
