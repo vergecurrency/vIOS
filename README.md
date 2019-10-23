@@ -50,7 +50,7 @@ carthage update --platform iOS
 open VergeiOS.xcodeproj
 ```
 
-If you want to setup your local VWS instance you can checkout [the bitcore repository](https://github.com/vergecurrency/bitcore) and setup an instance [using docker](https://github.com/vergecurrency/bitcore/blob/master/Docker.md).
+Please setup your own local VWS instance to test your changes against. You can checkout [the bitcore repository](https://github.com/vergecurrency/bitcore) and setup an instance [using docker](https://github.com/vergecurrency/bitcore/blob/master/Docker.md).
 
 ## Join TestFlight Program
 
