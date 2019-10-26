@@ -61,6 +61,13 @@ public struct Constants {
     public static let bwsEndpoint: String = "https://api.vergecurrency.network/vws/api/"
 
     /**
+     * A list of deprecated Verge Wallet Service endpoints.
+     */
+    public static let deprecatedBwsEndpoints: [String] = [
+        "https://vws.vergecurrency.network/vws/api/"
+    ]
+
+    /**
      * The default Verge Bitcore Node.
      */
     public static let bnEndpoint: String = "https://api.vergecurrency.network/node/api/XVG/mainnet"

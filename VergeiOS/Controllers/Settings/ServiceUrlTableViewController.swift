@@ -67,7 +67,7 @@ class ServiceUrlTableViewController: LocalizableTableViewController {
         walletClient.resetServiceUrl(baseUrl: serviceUrl)
         walletTicker.start()
     }
-    
+
     private func joinWallet(alert: UIAlertController, create: Bool = true) {
         self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
             guard let error = error else {
@@ -76,19 +76,19 @@ class ServiceUrlTableViewController: LocalizableTableViewController {
                     self.urlChanged(alert: alert)
                 }
             }
-            
+
             print(error)
 
             if !create {
                 return
             }
 
-            print("Joining wallet failed... tring to create a new wallet")
-            
+            print("Joining wallet failed... trying to create a new wallet")
+
             return self.createWallet(alert: alert)
         }
     }
-    
+
     private func createWallet(alert: UIAlertController) {
         self.walletClient.createWallet(
             walletName: "ioswallet",
@@ -105,7 +105,7 @@ class ServiceUrlTableViewController: LocalizableTableViewController {
                 print(error ?? "")
                 return
             }
-            
+
             self.joinWallet(alert: alert, create: false)
         }
     }

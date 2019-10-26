@@ -12,16 +12,26 @@ import Swinject
 class WalletServiceProvider: ServiceProvider {
 
     override func register() {
-        registerWalletCredentials()
-        registerWalletClient()
-        registerTxTransponder()
-        registerTransactionRepository()
-        registerTransactionFactory()
-        registerTransactionManager()
-        registerWalletTicker()
-        registerFiatRateTicker()
-        registerAddressBookRepository()
-        registerSweeperHelper()
+        self.registerWalletCredentials()
+        self.registerWalletClient()
+        self.registerTxTransponder()
+        self.registerTransactionRepository()
+        self.registerTransactionFactory()
+        self.registerTransactionManager()
+        self.registerWalletTicker()
+        self.registerFiatRateTicker()
+        self.registerAddressBookRepository()
+        self.registerSweeperHelper()
+        self.registerWalletManager()
+    }
+
+    override func boot() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(bootServerMigration(notification:)),
+            name: .didEstablishTorConnection,
+            object: nil
+        )
     }
 
     func registerWalletCredentials() {
@@ -117,4 +127,42 @@ class WalletServiceProvider: ServiceProvider {
         }
     }
 
+    func registerWalletManager() {
+        container.register(WalletManagerProtocol.self) { r in
+            return WalletManager(
+                walletClient: r.resolve(WalletClientProtocol.self)!,
+                walletTicker: r.resolve(WalletTicker.self)!,
+                applicationRepository: r.resolve(ApplicationRepository.self)!
+            )
+        }.inObjectScope(.container)
+    }
+
+    @objc func bootServerMigration(notification: Notification) {
+        let applicationRepository = self.container.resolve(ApplicationRepository.self)!
+
+        // Check if the deprecated VWS endpoints are in the users memory.
+        if !Constants.deprecatedBwsEndpoints.contains(applicationRepository.walletServiceUrl) {
+            return print("No deprecated VWS endpoints found.")
+        }
+
+        let walletClient = self.container.resolve(WalletClientProtocol.self)!
+        let walletManager = self.container.resolve(WalletManagerProtocol.self)!
+
+        // If so replace them by the replacement VWS endpoint.
+        applicationRepository.walletServiceUrl = Constants.bwsEndpoint
+        walletClient.resetServiceUrl(baseUrl: applicationRepository.walletServiceUrl)
+
+        // If the wallet is setup we check on the server if there is a wallet present.
+        if applicationRepository.setup {
+            walletManager.joinWallet(createWallet: true) { error in
+                if error != nil {
+                    return print(error ?? "Unresolved error")
+                }
+
+                walletManager.synchronizeWallet { error in
+                    print(error ?? "Unresolved error")
+                }
+            }
+        }
+    }
 }

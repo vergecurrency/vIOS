@@ -108,6 +108,8 @@
 		A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3408E4B217333B5009F0C9D /* NotificationViewController.xib */; };
 		A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E55217687F9009F0C9D /* Charts.framework */; };
 		A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3408E5721768AF4009F0C9D /* Date+Extensions.swift */; };
+		A3478B4923647FF20018149C /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3478B4823647FF20018149C /* WalletManager.swift */; };
+		A3478B4B236480230018149C /* WalletManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3478B4A236480230018149C /* WalletManagerProtocol.swift */; };
 		A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */; };
 		A35EFA9B22EA48F30064D3E0 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35EFA9A22EA48F30064D3E0 /* TableHeaderView.swift */; };
 		A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */; };
@@ -517,6 +519,8 @@
 		A3408E4B217333B5009F0C9D /* NotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		A3408E55217687F9009F0C9D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		A3408E5721768AF4009F0C9D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A3478B4823647FF20018149C /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		A3478B4A236480230018149C /* WalletManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerProtocol.swift; sourceTree = "<group>"; };
 		A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseConfirmationViewController.swift; sourceTree = "<group>"; };
 		A35EFA9A22EA48F30064D3E0 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepositoryTest.swift; sourceTree = "<group>"; };
@@ -1016,6 +1020,7 @@
 				A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */,
 				A3A71C1722DA66B80098D861 /* TransactionFactoryProtocol.swift */,
 				A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */,
+				A3478B4A236480230018149C /* WalletManagerProtocol.swift */,
 				A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */,
 			);
 			path = Protocols;
@@ -1395,6 +1400,7 @@
 				B2BD7365DCBB13FEA0B32516 /* TxAction.swift */,
 				B2BD7A3D8D516C3586332E99 /* TxTransponder.swift */,
 				B2BD78A6683D5C34785959E3 /* WalletClient.swift */,
+				A3478B4823647FF20018149C /* WalletManager.swift */,
 				B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */,
 				A3239D6322E60C2B00430F8B /* SweeperHelper.swift */,
 			);
@@ -2262,6 +2268,7 @@
 				B2BD7A6D183C729DC88C4E3B /* ReceiveViewServiceProvider.swift in Sources */,
 				B2BD72FBDC0135287D5E1587 /* HttpServiceProvider.swift in Sources */,
 				A3AA2B7F2263D207000E4571 /* TextLabel.swift in Sources */,
+				A3478B4923647FF20018149C /* WalletManager.swift in Sources */,
 				B2BD7C656B2431B5A693354F /* WalletViewServiceProvider.swift in Sources */,
 				B2BD7E83471050D83BF5709F /* Application.swift in Sources */,
 				B2BD7E88E838F993C74C3EA7 /* EventServiceProvider.swift in Sources */,
@@ -2271,6 +2278,7 @@
 				B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */,
 				A3EA38DE22FA0C5900E89CF0 /* TableSection.swift in Sources */,
 				CAA6031322BC3E3B00EFCB24 /* UIView+Themeable.swift in Sources */,
+				A3478B4B236480230018149C /* WalletManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
