@@ -10,5 +10,5 @@ github "xmartlabs/Eureka" ~> 4.3
 github "krzyzanowskim/CryptoSwift"
 github "vergecurrency/BitcoinKit" ~> 1.2.0
 github "Swinject/Swinject" ~> 2.6.0
-github "Swinject/SwinjectStoryboard"
+github "Swinject/SwinjectStoryboard" "master"
 github "google/promises"

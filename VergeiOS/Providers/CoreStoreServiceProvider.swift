@@ -10,7 +10,7 @@ class CoreStoreServiceProvider: ServiceProvider {
 
     override func boot() {
         do {
-            CoreStore.defaultStack = DataStack(
+            CoreStoreDefaults.dataStack = DataStack(
                 xcodeModelName: "CoreData",
                 bundle: Bundle.main,
                 migrationChain: [

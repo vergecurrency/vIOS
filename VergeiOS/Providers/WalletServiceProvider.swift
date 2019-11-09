@@ -23,13 +23,11 @@ class WalletServiceProvider: ServiceProvider {
         self.registerAddressBookRepository()
         self.registerSweeperHelper()
         self.registerWalletManager()
-    }
 
-    override func boot() {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(bootServerMigration(notification:)),
-            name: .didEstablishTorConnection,
+            name: .didFinishTorStart,
             object: nil
         )
     }
@@ -141,7 +139,7 @@ class WalletServiceProvider: ServiceProvider {
         let applicationRepository = self.container.resolve(ApplicationRepository.self)!
 
         // Check if the deprecated VWS endpoints are in the users memory.
-        if !Constants.deprecatedBwsEndpoints.contains(applicationRepository.walletServiceUrl) {
+        if applicationRepository.isWalletServiceUrlSet && !Constants.deprecatedBwsEndpoints.contains(applicationRepository.walletServiceUrl) {
             return print("No deprecated VWS endpoints found.")
         }
 

@@ -251,6 +251,10 @@ extension WalletClient {
             }
 
             print(jsonResponse)
+            
+            if jsonResponse["code"].stringValue == "WALLET_NOT_FOUND" {
+                return completion(NSError(domain: "Wallet not found", code: 404, userInfo: nil))
+            }
 
             if jsonResponse["code"].stringValue == "COPAYER_REGISTERED" {
                 self.openWallet { error in

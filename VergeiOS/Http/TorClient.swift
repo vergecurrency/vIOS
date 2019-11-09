@@ -59,6 +59,8 @@ class TorClient {
     func start(completion: @escaping () -> Void) {
         // If already operational don't start a new client.
         if isOperational || turnedOff() {
+            NotificationCenter.default.post(name: .didFinishTorStart, object: self)
+print("hierroeroero")
             return completion()
         }
 
@@ -79,7 +81,11 @@ class TorClient {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // Connect Tor controller.
-            self.connectController(completion: completion)
+            self.connectController {
+                NotificationCenter.default.post(name: .didFinishTorStart, object: self)
+
+                completion()
+            }
         }
     }
 
