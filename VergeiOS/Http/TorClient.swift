@@ -28,6 +28,7 @@ class TorClient {
 
     // The tor client url session including the tor configuration.
     var session: URLSession {
+        sessionConfiguration.httpAdditionalHeaders = ["User-Agent": UUID().uuidString]
         return URLSession(configuration: sessionConfiguration)
     }
 
@@ -60,7 +61,7 @@ class TorClient {
         // If already operational don't start a new client.
         if isOperational || turnedOff() {
             NotificationCenter.default.post(name: .didFinishTorStart, object: self)
-print("hierroeroero")
+
             return completion()
         }
 
