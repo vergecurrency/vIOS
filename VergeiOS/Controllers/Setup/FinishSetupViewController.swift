@@ -71,7 +71,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
         self.credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
 
-        walletClient.createWallet(
+        self.walletClient.createWallet(
             walletName: "ioswallet",
             copayerName: "iosuser",
             m: 1,

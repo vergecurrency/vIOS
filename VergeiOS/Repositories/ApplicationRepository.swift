@@ -16,7 +16,7 @@ class ApplicationRepository {
 
     // Is the wallet already setup?
     var setup: Bool {
-        return self.mnemonic?.count == 12 && (self.passphrase?.count ?? 0) > 7 && self.pin != ""
+        return self.mnemonic?.count == 12 && (self.passphrase?.count ?? 0) > 7 && self.pin != "" && self.walletId != nil
     }
 
     // Store the wallet pin in the app key chain.
@@ -34,7 +34,7 @@ class ApplicationRepository {
             if self.pin.count > 0 {
                 self.pinCount = self.pin.count
             }
-            
+
             userDefaults.register(defaults: ["wallet.pinCount": 6])
             return userDefaults.integer(forKey: "wallet.pinCount")
         }
