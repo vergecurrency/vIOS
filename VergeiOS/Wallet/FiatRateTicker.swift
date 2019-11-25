@@ -24,11 +24,7 @@ class FiatRateTicker {
 
     // Start the fiat rate ticker.
     func start() {
-        if started {
-            return
-        }
-
-        if !applicationRepository.setup {
+        if started || !applicationRepository.setup {
             return
         }
 
