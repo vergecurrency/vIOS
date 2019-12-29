@@ -32,6 +32,7 @@ class SendViewController: ThemeableViewController {
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClient!
     var fiatRateTicker: FiatRateTicker!
+    var waitingForConfirmationPopover: Bool = false
 
     weak var confirmButtonInterval: Timer?
 
@@ -197,6 +198,7 @@ class SendViewController: ThemeableViewController {
         let enabled = self.txFactory.amount.doubleValue > 0.0
             && self.txFactory.amount.doubleValue <= self.walletAmount.doubleValue
             && self.txFactory.address != ""
+            && self.waitingForConfirmationPopover == false
 
         self.confirmButton.isEnabled = enabled
         self.confirmButton.backgroundColor = (
@@ -216,12 +218,16 @@ class SendViewController: ThemeableViewController {
             popoverController.sourceView = view
             popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
             popoverController.permittedArrowDirections = []
-        }
 
-        present(alertController, animated: true)
+            self.waitingForConfirmationPopover = true
+        } else {
+            self.present(alertController, animated: true)
+        }
 
         getTxProposal { proposal in
             self.txTransponder.create(proposal: proposal) { txp, errorResponse, _ in
+                self.waitingForConfirmationPopover = false
+
                 guard let txp = txp else {
                     return alertController.dismiss(animated: true) {
                         self.showTransactionError(errorResponse, txp: nil)
@@ -237,6 +243,10 @@ class SendViewController: ThemeableViewController {
 
                 alertController.addAction(sendAction)
                 alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    self.present(alertController, animated: true)
+                }
             }
         }
     }
