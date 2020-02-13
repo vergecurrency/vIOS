@@ -228,8 +228,8 @@
 "settings.sweeping.footer.title"            = "Choose a sweeping method to transfer one of the external wallets into your current iOS wallet.";
 "settings.sweeping.cell.privateKeyLabel"    = "Private key";
 "settings.sweeping.cell.privateKeyDecs"     = "Paper wallet, card wallet or another private key";
-"settings.sweeping.cell.electrumLabel"      = "Electrum";
-"settings.sweeping.cell.electrumDecs"       = "v2.1.0 or lower";
+"settings.sweeping.cell.electrumLabel"      = "Electrum Mnemonic";
+"settings.sweeping.cell.electrumDecs"       = "v2.4.1 or lower";
 "settings.sweeping.cell.androidLabel"       = "Android";
 "settings.sweeping.cell.androidDecs"        = "v1.0.0 or lower";
 

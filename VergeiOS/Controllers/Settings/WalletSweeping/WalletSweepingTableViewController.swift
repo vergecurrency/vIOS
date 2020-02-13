@@ -24,13 +24,13 @@ class WalletSweepingTableViewController: UITableViewController {
             id: "privateKey",
             name: "settings.sweeping.cell.privateKeyLabel".localized,
             subtitle: "settings.sweeping.cell.privateKeyDecs".localized
-        )
-        /*
+        ),
         WalletSweepingItem(
             id: "electrum",
             name: "settings.sweeping.cell.electrumLabel".localized,
             subtitle: "settings.sweeping.cell.electrumDecs".localized
-        ),
+        )
+        /*
         WalletSweepingItem(
             id: "android",
             name: "settings.sweeping.cell.androidLabel".localized,
@@ -82,7 +82,10 @@ class WalletSweepingTableViewController: UITableViewController {
                 animated: true
             )
         case "electrum":
-            print("Not implemented")
+        self.navigationController?.pushViewController(
+            self.container.resolve(ElectrumMnemonicTableViewController.self)!,
+            animated: true
+        )
         case "android":
             print("Not implemented")
         default:

@@ -191,8 +191,8 @@
 "settings.sweeping.footer.title"            = "Kies een sweeping methode om de waarde van een externe wallet in deze iOS wallet toe te voegen.";
 "settings.sweeping.cell.privateKeyLabel"    = "Private key";
 "settings.sweeping.cell.privateKeyDecs"     = "Paper wallet, card wallet of een andere private key";
-"settings.sweeping.cell.electrumLabel"      = "Electrum";
-"settings.sweeping.cell.electrumDecs"       = "v2.1.0 of lager";
+"settings.sweeping.cell.electrumLabel"      = "Electrum Mnemonic";
+"settings.sweeping.cell.electrumDecs"       = "v2.4.1 of lager";
 "settings.sweeping.cell.androidLabel"       = "Android";
 "settings.sweeping.cell.androidDecs"        = "v1.0.0 of lager";
 
