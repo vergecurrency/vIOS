@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Använd ansiktsigenkänning";
 "settings.settings.cell.torConnectionLabel" = "Tor anslutning";
 "settings.other.header.title" = "Andra";
+"settings.other.cell.supportLabel" = "Stöd";
 "settings.other.cell.creditsLabel" = "Förtjänst";
 "settings.other.cell.donateLabel" = "Donera";
 "settings.other.cell.rateAppLabel" = "Betygsätt app";
@@ -182,6 +183,11 @@
 "settings.paperKey.preview.descLabel" = "Skriv ner varje ord noggrant utan versaler.";
 "settings.paperKey.preview.wordsSegment" = "Ord";
 "settings.paperKey.preview.qrSegment" = "QR";
+
+// Support
+
+"settings.support.titleLabel" = "Kan du verkligen använda lite stöd?";
+"settings.support.descLabel" = "Har du problem med din plånbok? Eller har du helt enkelt frågor? Verge Currency-gruppen är alltid tillgänglig!";
 
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Frånkoppla denna enhet från din nuvarande plånbok. ";

@@ -187,6 +187,7 @@
 		A3D3A06B2156FC130018599A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A06A2156FC130018599A /* MainTabBarController.swift */; };
 		A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */; };
 		A3D68366213F34E50067E0B9 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */; };
+		A3D98EE124263D6500A2BBEB /* SupportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */; };
 		A3E32B18225D52D9001A8B0E /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */; };
 		A3E32B19225D52D9001A8B0E /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B17225D52D9001A8B0E /* Swinject.framework */; };
 		A3E32B1C225D56D9001A8B0E /* WalletServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E32B1B225D56D9001A8B0E /* WalletServiceProvider.swift */; };
@@ -603,6 +604,7 @@
 		A3D3A06A2156FC130018599A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
+		A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTableViewController.swift; sourceTree = "<group>"; };
 		A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		A3E32B17225D52D9001A8B0E /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		A3E32B1B225D56D9001A8B0E /* WalletServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletServiceProvider.swift; sourceTree = "<group>"; };
@@ -1199,6 +1201,7 @@
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
+				A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */,
 				A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
 				B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */,
@@ -2242,6 +2245,7 @@
 				B2BD741F2CC30614537FA183 /* TxProposalResponse.swift in Sources */,
 				A3EA38E822FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift in Sources */,
 				CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */,
+				A3D98EE124263D6500A2BBEB /* SupportTableViewController.swift in Sources */,
 				A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */,
 				B2BD7471363B356878B01396 /* UnspentOutput.swift in Sources */,
 				A3AA2B8B2263DBFA000E4571 /* SubtitleImageView.swift in Sources */,
@@ -2474,8 +2478,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 201911140001;
-				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.3;
+				CF_BUNDLE_BUILD_VERSION_STRING = 202003210001;
+				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.4;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2538,8 +2542,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 201911140001;
-				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.3;
+				CF_BUNDLE_BUILD_VERSION_STRING = 202003210001;
+				CF_BUNDLE_SHORT_VERSION_STRING = 1.2.4;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

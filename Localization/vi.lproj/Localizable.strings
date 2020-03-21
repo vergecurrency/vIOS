@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Sử dụng nhận diện khuôn mặt";
 "settings.settings.cell.torConnectionLabel" = "Kết nối qua mạng Tor";
 "settings.other.header.title" = "Khác";
+"settings.other.cell.supportLabel" = "Ủng hộ";
 "settings.other.cell.creditsLabel" = "Tín dụng";
 "settings.other.cell.donateLabel" = "Ủng hộ";
 "settings.other.cell.rateAppLabel" = "Xếp hạng ứng dụng";
@@ -182,6 +183,11 @@
 "settings.paperKey.preview.descLabel" = "Viết xuống cẩn thận từng từ không in Hoa";
 "settings.paperKey.preview.wordsSegment" = "Từ";
 "settings.paperKey.preview.qrSegment" = "Mã QR";
+
+// Support
+
+"settings.support.titleLabel" = "Bạn thực sự có thể sử dụng một số hỗ trợ?";
+"settings.support.descLabel" = "Bạn có gặp vấn đề với ví của bạn? Hay đơn giản là bạn có câu hỏi? Cộng đồng tiền tệ Verge luôn có sẵn!";
 
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Ngắt kết nối thiết bị này với ví hiện tại";

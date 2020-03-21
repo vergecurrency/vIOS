@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Face IDを使用する";
 "settings.settings.cell.torConnectionLabel" = "Tor接続";
 "settings.other.header.title" = "その他";
+"settings.other.cell.supportLabel" = "サポート";
 "settings.other.cell.creditsLabel" = "クレジット";
 "settings.other.cell.donateLabel" = "寄付";
 "settings.other.cell.rateAppLabel" = "このアプリを評価する";
@@ -182,6 +183,11 @@
 "settings.paperKey.preview.descLabel" = "各単語を注意しながら記入してください（大文字はありません）";
 "settings.paperKey.preview.wordsSegment" = "単語";
 "settings.paperKey.preview.qrSegment" = "QRコード";
+
+// Support
+
+"settings.support.titleLabel" = "本当にサポートを利用できますか?";
+"settings.support.descLabel" = "財布に問題がありますか？ または、単に質問がありますか？ Verge Currencyコミュニティはいつでも利用できます！";
 
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "直近のウォレットと接続を停止する";

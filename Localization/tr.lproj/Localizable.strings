@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Face ID kullan";
 "settings.settings.cell.torConnectionLabel" = "Tor Bağlantısı";
 "settings.other.header.title" = "Diğerleri";
+"settings.other.cell.supportLabel" = "Destek";
 "settings.other.cell.creditsLabel" = "Emeği Geçenler";
 "settings.other.cell.donateLabel" = "Bağış";
 "settings.other.cell.rateAppLabel" = "Uygulamayı Oyla";
@@ -182,6 +183,11 @@
 "settings.paperKey.preview.descLabel" = "Her sözcüğü büyük harf olmadan dikkatlice yazın.";
 "settings.paperKey.preview.wordsSegment" = "Kelimeler";
 "settings.paperKey.preview.qrSegment" = "QR";
+
+// Support
+
+"settings.support.titleLabel" = "Gerçekten biraz destek kullanabilir misiniz?";
+"settings.support.descLabel" = "Cüzdanınızla ilgili sorunlar yaşıyor musunuz? Yoksa sorularınız mı var? Verge Currency topluluğu her zaman kullanılabilir!";
 
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Cüzdanınızın bu cihazla bağlantısını kesin";

@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Usar o Face ID";
 "settings.settings.cell.torConnectionLabel" = "Ligação Tor";
 "settings.other.header.title" = "Outro";
+"settings.other.cell.supportLabel" = "Apoio, suporte";
 "settings.other.cell.creditsLabel" = "Créditos";
 "settings.other.cell.donateLabel" = "Doar";
 "settings.other.cell.rateAppLabel" = "Classifique a app";
@@ -182,6 +183,11 @@
 "settings.paperKey.preview.descLabel" = "Anote cada palavra cuidadosamente sem letras maiúsculas.";
 "settings.paperKey.preview.wordsSegment" = "Palavras";
 "settings.paperKey.preview.qrSegment" = "QR";
+
+// Support
+
+"settings.support.titleLabel" = "Você poderia realmente usar algum suporte?";
+"settings.support.descLabel" = "Você tem problemas com sua carteira? Ou você simplesmente tem perguntas? A comunidade Verge Currency está sempre disponível!";
 
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Desconecte este dispositivo da sua carteira actual";
