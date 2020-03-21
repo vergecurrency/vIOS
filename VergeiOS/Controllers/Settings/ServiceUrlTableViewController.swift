@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServiceUrlTableViewController: LocalizableTableViewController {
+class ServiceUrlTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var serviceUrlTextField: UITextField!
 

@@ -193,7 +193,7 @@
 "settings.sweeping.cell.privateKeyLabel"    = "Private key";
 "settings.sweeping.cell.privateKeyDecs"     = "Paper wallet, card wallet of een andere private key";
 "settings.sweeping.cell.electrumLabel"      = "Electrum Mnemonic";
-"settings.sweeping.cell.electrumDecs"       = "v2.4.1 of lager";
+"settings.sweeping.cell.electrumDecs"       = "v2.4.0 of hoger";
 "settings.sweeping.cell.androidLabel"       = "Android";
 "settings.sweeping.cell.androidDecs"        = "v1.0.0 of lager";
 
@@ -214,6 +214,12 @@
 "sweeping.privateKey.alert.placeholder"     = "Private key";
 "sweeping.privateKey.swept.title"           = "Succesvol gesweept";
 "sweeping.privateKey.swept.description"     = "De wallet was succesvol gesweept en een transactie is aangemaakt met TXID";
+
+// Electrum wallet sweeping
+
+"sweeping.electrum.titleLabel"              = "Laten we je Electrum wallet sweepen";
+"sweeping.electrum.mnemonic"                = "Vul je mnemonic in";
+"sweeping.electrum.sweep"                   = "Sweep";
 
 // Sweeping Scanner
 

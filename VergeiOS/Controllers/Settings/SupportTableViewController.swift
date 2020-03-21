@@ -8,12 +8,12 @@
 
 import UIKit
 
-fileprivate struct SupportLink {
+private struct SupportLink {
     public let name: String
     public let link: String
 }
 
-class SupportTableViewController: UITableViewController {
+class SupportTableViewController: EdgedTableViewController {
 
     private let items: [SupportLink] = [
         SupportLink(

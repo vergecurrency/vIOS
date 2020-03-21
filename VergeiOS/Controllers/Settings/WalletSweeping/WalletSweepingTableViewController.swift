@@ -9,17 +9,17 @@
 import UIKit
 import Swinject
 
-struct WalletSweepingItem {
+private struct WalletSweepingItem {
     public let id: String
     public let name: String
     public let subtitle: String
 }
 
-class WalletSweepingTableViewController: UITableViewController {
+class WalletSweepingTableViewController: EdgedTableViewController {
 
     var container: Container!
 
-    let items = [
+    private let items = [
         WalletSweepingItem(
             id: "privateKey",
             name: "settings.sweeping.cell.privateKeyLabel".localized,

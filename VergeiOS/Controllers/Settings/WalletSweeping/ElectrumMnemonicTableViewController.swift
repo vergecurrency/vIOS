@@ -9,97 +9,72 @@
 import UIKit
 import BitcoinKit
 import Promises
+import Eureka
 
-class ElectrumMnemonicTableViewController: UITableViewController {
+class ElectrumMnemonicTableViewController: FormViewController {
 
     var sweeperHelper: SweeperHelperProtocol!
-    var sections: [TableSection] = []
     var loadingAlert: UIAlertController = UIAlertController.loadingAlert()
+    var balancesLoaded: Int = 0
 
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         self.tableView.updateColors()
 
-        let inputCell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        inputCell.textLabel?.text = "sweeping.privateKey.cell.fillInLabel".localized
-        inputCell.imageView?.image = UIImage(named: "Quill")
-        inputCell.updateColors()
-        inputCell.updateFonts()
-
-        self.sections.append(TableSection(
-            header: "sweeping.privateKey.header.title".localized,
-            footer: "sweeping.privateKey.footer.title".localized,
-            items: [inputCell]
-        ))
-
         self.tableView.tableHeaderView = TableHeaderView(
-            title: "sweeping.privateKey.titleLabel".localized,
+            title: "sweeping.electrum.titleLabel".localized,
             image: UIImage(named: "PrivateKeySweepingPlaceholder")!
         )
-    }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sections[section].items.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.sections[indexPath.section].items[indexPath.row]
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            let alert = UIAlertController(
-                title: "sweeping.privateKey.alert.title".localized,
-                message: "sweeping.privateKey.alert.message".localized,
-                preferredStyle: .alert
-            )
-
-            alert.addTextField { field in
-                field.placeholder = "sweeping.privateKey.alert.placeholder".localized
-            }
-
-            alert.addAction(UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
-                guard let privateKey = alert.textFields?.first?.text else {
-                    return
-                }
-                self.didScanValue(scannedValue: privateKey)
-            })
-
-            alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
-
-            self.present(alert, animated: true)
-        default:
-            tableView.deselectRow(at: indexPath, animated: false)
-            print("Not implemented")
+        let styleCell = { (cell: TextAreaCell) in
+            cell.textLabel?.font = UIFont.avenir(size: 17)
+            cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
+            cell.textView?.font = UIFont.avenir(size: 17).demiBold()
+            cell.textView?.textColor = ThemeManager.shared.secondaryDark()
+            cell.textView?.autocorrectionType = .no
+            cell.textView?.autocapitalizationType = .none
+            cell.textView?.spellCheckingType = .no
+            cell.textView?.smartDashesType = .no
+            cell.textView?.smartInsertDeleteType = .no
+            cell.textView?.smartQuotesType = .no
+            cell.backgroundColor = ThemeManager.shared.backgroundWhite()
+            cell.textLabel?.updateColors()
+            cell.textView?.updateColors()
         }
 
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+        self.form +++ Section("sweeping.electrum.mnemonic".localized)
+            <<< TextAreaRow("mnemonic") { row in
+            row.title = "sweeping.electrum.mnemonic".localized
+            row.add(rule: RuleRequired())
+        }.cellUpdate { cell, _ in
+            styleCell(cell)
+        }
+            <<< ButtonRow("submit") { row in
+            row.title = "sweeping.electrum.sweep".localized
+        }.onCellSelection { _, _ in
+            let mnemonic = (self.form.rowBy(tag: "mnemonic") as! TextAreaRow).value ?? ""
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section].header
-    }
-
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return self.sections[section].footer
-    }
-
-    private func sweep(balances: [String: BNBalance], toAddress address: String) {
-        do {
-            let filteredBalances = balances.filter { balance in
-                return balance.value.confirmed > 0
+            if !self.validateMnemonic(mnemonic: mnemonic) {
+                return self.showInvalidMnemonicAlert()
             }
 
+            self.prepareSweeping(mnemonic: mnemonic)
+        }
+    }
+
+    private func sweep(keyBalances: [KeyBalance], toAddress address: String) {
+        self.showLoadingAlert()
+        self.loadingAlert.message = "Sweeping the Electrum mnemonic..."
+
+        let filteredKeyBalances = keyBalances.filter { keyBalance in
+            return keyBalance.balance.confirmed > 0
+        }
+
+        do {
             try self.sweeperHelper.sweep(
-                balance: filteredBalances.first!.value,
-                destinationAddress: address,
-                privateKeyWIF: filteredBalances.first!.key
+                keyBalances: filteredKeyBalances,
+                destinationAddress: address
             ) { error, txid in
                 guard let txid = txid else {
                     return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
@@ -115,40 +90,19 @@ class ElectrumMnemonicTableViewController: UITableViewController {
                     self.navigationController?.popViewController(animated: true)
                 })
 
-                self.present(alert, animated: true)
+                self.dismissLoadingAlert().then { _ in
+                    self.present(alert, animated: true)
+                }
             }
         } catch PrivateKeyError.invalidFormat {
-            self.showInvalidPrivateKeyAlert()
+            self.showInvalidMnemonicAlert()
         } catch {
             self.showUnexpectedErrorAlert(error: error)
         }
     }
 
-    private func prepareSweepingWithScannedValue(scannedValue: String) throws {
-        let mnemonic = scannedValue.decomposedStringWithCompatibilityMapping.data(using: .utf8)!
-        let salt = ("electrum" + "").decomposedStringWithCompatibilityMapping.data(using: .utf8)!
-        let seed = _Key.deriveKey(mnemonic, salt: salt, iterations: 2048, keyLength: 64)
-
-        let privateKey = HDPrivateKey(seed: seed, network: .mainnetXVG)
-
-        let m0prv = try! privateKey.derived(at: 0)
-        let m1prv = try! privateKey.derived(at: 1)
-
-        var keys: [String] = []
-        var addresses: [String] = []
-
-        for i in 0..<20 {
-            keys.append(try! m0prv.derived(at: UInt32(i)).privateKey().toWIF())
-            addresses.append(try! m0prv.derived(at: UInt32(i)).privateKey().publicKey().toLegacy().description)
-        }
-
-        for i in 0..<6 {
-            keys.append(try! m1prv.derived(at: UInt32(i)).privateKey().toWIF())
-            addresses.append(try! m1prv.derived(at: UInt32(i)).privateKey().publicKey().toLegacy().description)
-        }
-
-        print(keys)
-        print(addresses)
+    private func prepareSweeping(mnemonic: String) {
+        let keys = self.getKeysFromMnemonic(mnemonic: mnemonic)
 
         let confirmSweepView = Bundle.main.loadNibNamed(
             "ConfirmSweepView",
@@ -170,57 +124,104 @@ class ElectrumMnemonicTableViewController: UITableViewController {
         }
 
         self.loadingAlert.message = "Scanning balances 0/\(keys.count)"
+        self.showLoadingAlert()
 
-        try self.loadBalances(keys: keys).then { balances in
-            self.dismissLoadingAlert().then { _ in
-                self.present(alertController, animated: true)
-            }
+        self.loadBalances(keys: keys)
+            .then { keyBalances in
+                let amount = NSNumber(floatLiteral: Double(keyBalances.reduce(0, { result, keyBalance in
+                    return result + keyBalance.balance.confirmed
+                })) / Constants.satoshiDivider)
 
-            let amount = NSNumber(floatLiteral: Double(balances.reduce(0, { result, balance in
-                return result + balance.value.confirmed
-            })) / Constants.satoshiDivider)
-
-            self.sweeperHelper.recipientAddress { _, address in
-                guard let address = address else {
-                    return
+                if amount == 0 {
+                    return self.showNotEnoughBalanceAlert()
                 }
 
-                confirmSweepView.setup(toAddress: address, amount: amount)
-
-                let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
-                    self.sweep(balances: balances, toAddress: address)
+                self.dismissLoadingAlert().then { _ in
+                    self.present(alertController, animated: true)
                 }
-                sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
 
-                alertController.addAction(sendAction)
-                alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+                self.sweeperHelper.recipientAddress { _, address in
+                    guard let address = address else {
+                        return
+                    }
+
+                    confirmSweepView.setup(toAddress: address, amount: amount)
+
+                    let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
+                        self.sweep(keyBalances: keyBalances, toAddress: address)
+                    }
+                    sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
+
+                    alertController.addAction(sendAction)
+                    alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+                }
             }
-        }
+            .catch { error in
+                if error is PrivateKeyError {
+                    return self.showInvalidMnemonicAlert()
+                }
+
+                self.showUnexpectedErrorAlert(error: error)
+            }
     }
 
-    private func loadBalances(keys: [String]) throws -> Promise<[String: BNBalance]> {
-        var keysDone = 0
-        var balances: [String: BNBalance] = [:]
+    private func validateMnemonic(mnemonic: String) -> Bool {
+        // Simply check if there are 12 or more spaces... improve check if needed.
+        return mnemonic.components(separatedBy: " ").count > 8
+    }
 
-        return Promise<[String: BNBalance]> { fulfill, _ in
-            for key in keys {
-                try self.sweeperHelper.balance(byPrivateKeyWIF: key) { _, balance in
-                    keysDone += 1
+    private func getKeysFromMnemonic(mnemonic: String) -> [String] {
+        let mnemonicData = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+        let salt = ("electrum" + "").decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+        let seed = _Key.deriveKey(mnemonicData, salt: salt, iterations: 2048, keyLength: 64)
 
-                    self.loadingAlert.message = "Scanning balances \(keysDone)/\(keys.count)"
+        let privateKey = HDPrivateKey(seed: seed, network: .mainnetXVG)
 
-                    guard let balance = balance, balance.balance >= 0 else {
-                        return self.showNotEnoughBalanceAlert()
+        let m0prv = try! privateKey.derived(at: 0)
+        let m1prv = try! privateKey.derived(at: 1)
+
+        var keys: [String] = []
+
+        for i in 0..<20 {
+            keys.append(try! m0prv.derived(at: UInt32(i)).privateKey().toWIF())
+        }
+
+        for i in 0..<6 {
+            keys.append(try! m1prv.derived(at: UInt32(i)).privateKey().toWIF())
+        }
+
+        return keys
+    }
+
+    private func loadBalances(keys: [String]) -> Promise<[KeyBalance]> {
+        self.balancesLoaded = 0
+
+        var promises: [Promise<KeyBalance>] = []
+        for key in keys {
+            let promise = Promise<KeyBalance> { fulfill, reject in
+
+                do {
+                    let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
+
+                    self.sweeperHelper.balance(privateKey: privateKey) { error, balance in
+                        guard let balance = balance else {
+                            return reject(error!)
+                        }
+
+                        self.balancesLoaded += 1
+                        self.loadingAlert.message = "Scanning balances \(self.balancesLoaded)/\(keys.count)"
+
+                        fulfill(KeyBalance(privateKey: privateKey, balance: balance))
                     }
-
-                    balances[key] = balance
-
-                    if keysDone == 26 {
-                        fulfill(balances)
-                    }
+                } catch {
+                    reject(error)
                 }
             }
+
+            promises.append(promise)
         }
+
+        return all(promises)
     }
 
     private func showNotEnoughBalanceAlert() {
@@ -229,9 +230,9 @@ class ElectrumMnemonicTableViewController: UITableViewController {
         }
     }
 
-    private func showInvalidPrivateKeyAlert() {
+    private func showInvalidMnemonicAlert() {
         self.dismissLoadingAlert().then { _ in
-            self.present(UIAlertController.createInvalidPrivateKeyAlert(), animated: true)
+            self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
         }
     }
 
@@ -259,18 +260,4 @@ class ElectrumMnemonicTableViewController: UITableViewController {
         }
     }
 
-}
-
-extension ElectrumMnemonicTableViewController: WalletSweepingScannerViewDelegate {
-    func didScanValue(scannedValue: String) {
-        self.showLoadingAlert()
-
-        do {
-            try self.prepareSweepingWithScannedValue(scannedValue: scannedValue)
-        } catch PrivateKeyError.invalidFormat {
-            self.showInvalidPrivateKeyAlert()
-        } catch {
-            self.showUnexpectedErrorAlert(error: error)
-        }
-    }
 }

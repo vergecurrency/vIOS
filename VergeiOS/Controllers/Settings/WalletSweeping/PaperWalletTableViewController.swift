@@ -103,10 +103,11 @@ class PaperWalletTableViewController: EdgedTableViewController {
 
     private func sweep(balance: BNBalance, toAddress address: String, key: String) {
         do {
+            let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
+
             try self.sweeperHelper.sweep(
-                balance: balance,
-                destinationAddress: address,
-                privateKeyWIF: key
+                keyBalances: [KeyBalance(privateKey: privateKey, balance: balance)],
+                destinationAddress: address
             ) { error, txid in
                 guard let txid = txid else {
                     return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
@@ -132,7 +133,9 @@ class PaperWalletTableViewController: EdgedTableViewController {
     }
 
     private func prepareSweepingWithScannedValue(scannedValue: String) throws {
-        try self.sweeperHelper.balance(byPrivateKeyWIF: scannedValue) { _, balance in
+        let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: scannedValue)
+
+        self.sweeperHelper.balance(privateKey: privateKey) { _, balance in
             guard let balance = balance, balance.balance > 0 else {
                 return self.showNotEnoughBalanceAlert()
             }
