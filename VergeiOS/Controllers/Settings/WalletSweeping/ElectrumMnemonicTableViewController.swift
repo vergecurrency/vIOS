@@ -166,8 +166,8 @@ class ElectrumMnemonicTableViewController: FormViewController {
     }
 
     private func validateMnemonic(mnemonic: String) -> Bool {
-        // Simply check if there are 12 or more spaces... improve check if needed.
-        return mnemonic.components(separatedBy: " ").count > 8
+        // Simply check if there are 8 or more spaces... improve check if needed.
+        return mnemonic.components(separatedBy: " ").count >= 8
     }
 
     private func getKeysFromMnemonic(mnemonic: String) -> [String] {
