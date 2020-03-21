@@ -224,13 +224,13 @@
 // Wallet sweeping
 
 "settings.sweeping.sweep"                   = "Sweep";
-"settings.sweeping.titleLabel"              = "Lets sweep a wallet into your iOS wallet";
+"settings.sweeping.titleLabel"              = "Let's sweep a wallet into your iOS wallet";
 "settings.sweeping.header.title"            = "Sweeping Method";
 "settings.sweeping.footer.title"            = "Choose a sweeping method to transfer one of the external wallets into your current iOS wallet.";
 "settings.sweeping.cell.privateKeyLabel"    = "Private key";
 "settings.sweeping.cell.privateKeyDecs"     = "Paper wallet, card wallet or another private key";
-"settings.sweeping.cell.electrumLabel"      = "Electrum";
-"settings.sweeping.cell.electrumDecs"       = "v2.1.0 or lower";
+"settings.sweeping.cell.electrumLabel"      = "Electrum Mnemonic";
+"settings.sweeping.cell.electrumDecs"       = "v2.4.0 or higher";
 "settings.sweeping.cell.androidLabel"       = "Android";
 "settings.sweeping.cell.androidDecs"        = "v1.0.0 or lower";
 
@@ -241,7 +241,7 @@
 
 // Private key wallet sweeping
 
-"sweeping.privateKey.titleLabel"            = "Lets sweep a private key wallet";
+"sweeping.privateKey.titleLabel"            = "Let's sweep a private key wallet";
 "sweeping.privateKey.header.title"          = "Private key";
 "sweeping.privateKey.footer.title"          = "Scan or fillin a valid XVG private key QR code from a paper wallet, card wallet or any other private key based wallet.";
 "sweeping.privateKey.cell.scanLabel"        = "Scan private key";
@@ -251,6 +251,12 @@
 "sweeping.privateKey.alert.placeholder"     = "Private key";
 "sweeping.privateKey.swept.title"           = "Swept successful";
 "sweeping.privateKey.swept.description"     = "The wallet was successfully swept and a transaction was created with TXID";
+
+// Electrum wallet sweeping
+
+"sweeping.electrum.titleLabel"              = "Let's sweep your Electrum wallet";
+"sweeping.electrum.mnemonic"                = "Fill in your mnemonic";
+"sweeping.electrum.sweep"                   = "Sweep";
 
 // Sweeping Scanner
 
@@ -612,7 +618,9 @@
 "alerts.notEnoughBalance.title"             = "Not Enough Balance";
 "alerts.notEnoughBalance.message"           = "Your scanned private key doesn't seem to have enough balance.";
 "alerts.invalidPrivateKey.title"            = "Invalid Private Key";
-"alerts.invalidPrivateKey.message"          = "You've provided an invalid private key because it couldn't be resolved. Please make sure you've scanned of filled in the correct key.";
+"alerts.invalidPrivateKey.message"          = "You've provided an invalid private key because it couldn't be resolved. Please make sure you've scanned or filled in the correct key.";
+"alerts.invalidMnemonic.title"              = "Invalid Mnemonic";
+"alerts.invalidMnemonic.message"            = "You've provided an invalid mnemonic because it couldn't be resolved. Please make sure you've filled in the correct mnemonic.";
 "alerts.noTxID.title"                       = "No TXID returned";
 "alerts.noTxID.message"                     = "There was no TXID returned. So we can't be sure the wallet was swept.\nYou quickly check if the wallet is swept you can try sweeping it again.";
 "alerts.unexpectedError.title"              = "Unexpected Error";

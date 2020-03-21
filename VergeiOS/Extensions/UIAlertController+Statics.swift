@@ -123,6 +123,18 @@ extension UIAlertController {
         return alert
     }
 
+    static func createInvalidMnemonicAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alerts.invalidMnemonic.title".localized,
+            message: "alerts.invalidMnemonic.message".localized,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+
+        return alert
+    }
+
     static func createNoTxIDAlert() -> UIAlertController {
         let alert = UIAlertController(
             title: "alerts.noTxID.title".localized,

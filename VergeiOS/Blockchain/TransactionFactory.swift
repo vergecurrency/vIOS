@@ -14,7 +14,6 @@ class TransactionFactory: TransactionFactoryProtocol {
         case addressToScriptError(address: Address)
     }
 
-    // Put in seperate class.
     public func getUnsignedTx(
         balance: BNBalance,
         destinationAddress: String,

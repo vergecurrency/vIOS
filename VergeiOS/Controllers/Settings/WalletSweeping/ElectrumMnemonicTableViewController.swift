@@ -1,0 +1,263 @@
+//
+//  ElectrumMnemonicTableViewController.swift
+//  VergeiOS
+//
+//  Created by Swen van Zanten on 25/01/2020.
+//  Copyright © 2020 Verge Currency. All rights reserved.
+//
+
+import UIKit
+import BitcoinKit
+import Promises
+import Eureka
+
+class ElectrumMnemonicTableViewController: FormViewController {
+
+    var sweeperHelper: SweeperHelperProtocol!
+    var loadingAlert: UIAlertController = UIAlertController.loadingAlert()
+    var balancesLoaded: Int = 0
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.tableView.updateColors()
+
+        self.tableView.tableHeaderView = TableHeaderView(
+            title: "sweeping.electrum.titleLabel".localized,
+            image: UIImage(named: "PrivateKeySweepingPlaceholder")!
+        )
+
+        let styleCell = { (cell: TextAreaCell) in
+            cell.textLabel?.font = UIFont.avenir(size: 17)
+            cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
+            cell.textView?.font = UIFont.avenir(size: 17).demiBold()
+            cell.textView?.textColor = ThemeManager.shared.secondaryDark()
+            cell.textView?.autocorrectionType = .no
+            cell.textView?.autocapitalizationType = .none
+            cell.textView?.spellCheckingType = .no
+            cell.textView?.smartDashesType = .no
+            cell.textView?.smartInsertDeleteType = .no
+            cell.textView?.smartQuotesType = .no
+            cell.backgroundColor = ThemeManager.shared.backgroundWhite()
+            cell.textLabel?.updateColors()
+            cell.textView?.updateColors()
+        }
+
+        self.form +++ Section("sweeping.electrum.mnemonic".localized)
+            <<< TextAreaRow("mnemonic") { row in
+            row.title = "sweeping.electrum.mnemonic".localized
+            row.add(rule: RuleRequired())
+        }.cellUpdate { cell, _ in
+            styleCell(cell)
+        }
+            <<< ButtonRow("submit") { row in
+            row.title = "sweeping.electrum.sweep".localized
+        }.onCellSelection { _, _ in
+            let mnemonic = (self.form.rowBy(tag: "mnemonic") as! TextAreaRow).value ?? ""
+
+            if !self.validateMnemonic(mnemonic: mnemonic) {
+                return self.showInvalidMnemonicAlert()
+            }
+
+            self.prepareSweeping(mnemonic: mnemonic)
+        }
+    }
+
+    private func sweep(keyBalances: [KeyBalance], toAddress address: String) {
+        self.showLoadingAlert()
+        self.loadingAlert.message = "Sweeping the Electrum mnemonic..."
+
+        let filteredKeyBalances = keyBalances.filter { keyBalance in
+            return keyBalance.balance.confirmed > 0
+        }
+
+        do {
+            try self.sweeperHelper.sweep(
+                keyBalances: filteredKeyBalances,
+                destinationAddress: address
+            ) { error, txid in
+                guard let txid = txid else {
+                    return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
+                }
+
+                let alert = UIAlertController(
+                    title: "sweeping.privateKey.swept.title".localized,
+                    message: "sweeping.privateKey.swept.description".localized + ":\n\n" + txid,
+                    preferredStyle: .alert
+                )
+
+                alert.addAction(UIAlertAction(title: "defaults.done".localized, style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                })
+
+                self.dismissLoadingAlert().then { _ in
+                    self.present(alert, animated: true)
+                }
+            }
+        } catch PrivateKeyError.invalidFormat {
+            self.showInvalidMnemonicAlert()
+        } catch {
+            self.showUnexpectedErrorAlert(error: error)
+        }
+    }
+
+    private func prepareSweeping(mnemonic: String) {
+        let keys = self.getKeysFromMnemonic(mnemonic: mnemonic)
+
+        let confirmSweepView = Bundle.main.loadNibNamed(
+            "ConfirmSweepView",
+            owner: self,
+            options: nil
+        )?.first as! ConfirmSweepView
+
+        let alertController = confirmSweepView.makeActionSheet()
+        if let popoverController = alertController.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(
+                x: self.view.bounds.midX,
+                y: self.view.bounds.midY,
+                width: 0,
+                height: 0
+            )
+
+            popoverController.permittedArrowDirections = []
+        }
+
+        self.loadingAlert.message = "Scanning balances 0/\(keys.count)"
+        self.showLoadingAlert()
+
+        self.loadBalances(keys: keys)
+            .then { keyBalances in
+                let amount = NSNumber(floatLiteral: Double(keyBalances.reduce(0, { result, keyBalance in
+                    return result + keyBalance.balance.confirmed
+                })) / Constants.satoshiDivider)
+
+                if amount == 0 {
+                    return self.showNotEnoughBalanceAlert()
+                }
+
+                self.dismissLoadingAlert().then { _ in
+                    self.present(alertController, animated: true)
+                }
+
+                self.sweeperHelper.recipientAddress { _, address in
+                    guard let address = address else {
+                        return
+                    }
+
+                    confirmSweepView.setup(toAddress: address, amount: amount)
+
+                    let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
+                        self.sweep(keyBalances: keyBalances, toAddress: address)
+                    }
+                    sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
+
+                    alertController.addAction(sendAction)
+                    alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+                }
+            }
+            .catch { error in
+                if error is PrivateKeyError {
+                    return self.showInvalidMnemonicAlert()
+                }
+
+                self.showUnexpectedErrorAlert(error: error)
+            }
+    }
+
+    private func validateMnemonic(mnemonic: String) -> Bool {
+        // Simply check if there are 8 or more spaces... improve check if needed.
+        return mnemonic.components(separatedBy: " ").count >= 8
+    }
+
+    private func getKeysFromMnemonic(mnemonic: String) -> [String] {
+        let mnemonicData = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+        let salt = ("electrum" + "").decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+        let seed = _Key.deriveKey(mnemonicData, salt: salt, iterations: 2048, keyLength: 64)
+
+        let privateKey = HDPrivateKey(seed: seed, network: .mainnetXVG)
+
+        let m0prv = try! privateKey.derived(at: 0)
+        let m1prv = try! privateKey.derived(at: 1)
+
+        var keys: [String] = []
+
+        for i in 0..<20 {
+            keys.append(try! m0prv.derived(at: UInt32(i)).privateKey().toWIF())
+        }
+
+        for i in 0..<6 {
+            keys.append(try! m1prv.derived(at: UInt32(i)).privateKey().toWIF())
+        }
+
+        return keys
+    }
+
+    private func loadBalances(keys: [String]) -> Promise<[KeyBalance]> {
+        self.balancesLoaded = 0
+
+        var promises: [Promise<KeyBalance>] = []
+        for key in keys {
+            let promise = Promise<KeyBalance> { fulfill, reject in
+
+                do {
+                    let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
+
+                    self.sweeperHelper.balance(privateKey: privateKey) { error, balance in
+                        guard let balance = balance else {
+                            return reject(error!)
+                        }
+
+                        self.balancesLoaded += 1
+                        self.loadingAlert.message = "Scanning balances \(self.balancesLoaded)/\(keys.count)"
+
+                        fulfill(KeyBalance(privateKey: privateKey, balance: balance))
+                    }
+                } catch {
+                    reject(error)
+                }
+            }
+
+            promises.append(promise)
+        }
+
+        return all(promises)
+    }
+
+    private func showNotEnoughBalanceAlert() {
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createNotEnoughBalanceAlert(), animated: true)
+        }
+    }
+
+    private func showInvalidMnemonicAlert() {
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
+        }
+    }
+
+    private func showNoTxIDAlert() {
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createNoTxIDAlert(), animated: true)
+        }
+    }
+
+    private func showUnexpectedErrorAlert(error: Error) {
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createUnexpectedErrorAlert(error: error), animated: true)
+        }
+    }
+
+    private func showLoadingAlert() {
+        self.present(self.loadingAlert, animated: true)
+    }
+
+    private func dismissLoadingAlert() -> Promise<UIAlertController> {
+        return Promise<UIAlertController> { fulfill, _ in
+            self.loadingAlert.dismiss(animated: true) {
+                fulfill(self.loadingAlert)
+            }
+        }
+    }
+
+}

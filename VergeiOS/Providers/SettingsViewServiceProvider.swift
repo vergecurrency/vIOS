@@ -49,6 +49,13 @@ class SettingsViewServiceProvider: ServiceProvider {
 
             return controller
         }
+        
+        container.register (ElectrumMnemonicTableViewController.self) { r in
+            let controller = ElectrumMnemonicTableViewController(style: .grouped)
+            controller.sweeperHelper = r.resolve(SweeperHelperProtocol.self)
+
+            return controller
+        }
     }
 
 }

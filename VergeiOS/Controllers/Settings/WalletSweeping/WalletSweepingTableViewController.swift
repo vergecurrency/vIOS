@@ -9,28 +9,28 @@
 import UIKit
 import Swinject
 
-struct WalletSweepingItem {
+private struct WalletSweepingItem {
     public let id: String
     public let name: String
     public let subtitle: String
 }
 
-class WalletSweepingTableViewController: UITableViewController {
+class WalletSweepingTableViewController: EdgedTableViewController {
 
     var container: Container!
 
-    let items = [
+    private let items = [
         WalletSweepingItem(
             id: "privateKey",
             name: "settings.sweeping.cell.privateKeyLabel".localized,
             subtitle: "settings.sweeping.cell.privateKeyDecs".localized
-        )
-        /*
+        ),
         WalletSweepingItem(
             id: "electrum",
             name: "settings.sweeping.cell.electrumLabel".localized,
             subtitle: "settings.sweeping.cell.electrumDecs".localized
-        ),
+        )
+        /*
         WalletSweepingItem(
             id: "android",
             name: "settings.sweeping.cell.androidLabel".localized,
@@ -78,7 +78,10 @@ class WalletSweepingTableViewController: UITableViewController {
                 animated: true
             )
         case "electrum":
-            print("Not implemented")
+        self.navigationController?.pushViewController(
+            self.container.resolve(ElectrumMnemonicTableViewController.self)!,
+            animated: true
+        )
         case "android":
             print("Not implemented")
         default:

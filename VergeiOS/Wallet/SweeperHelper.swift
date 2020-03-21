@@ -5,6 +5,13 @@
 
 import Foundation
 import BitcoinKit
+import Promises
+
+private struct SweepCandidate {
+    let privateKey: PrivateKey
+    let balance: BNBalance
+    let unspendTransactions: [BNTransaction]
+}
 
 class SweeperHelper: SweeperHelperProtocol {
     let bitcoreNodeClient: BitcoreNodeClientProtocol!
@@ -24,60 +31,72 @@ class SweeperHelper: SweeperHelperProtocol {
         self.transactionManager = transactionManager
     }
 
-    func sweep(
-        balance: BNBalance,
+    public func sweep(
+        keyBalances: [KeyBalance],
         destinationAddress: String,
-        privateKeyWIF: String,
         completion: @escaping SweepCompletion
     ) throws {
-        self.sweep(
-            balance: balance,
-            destinationAddress: destinationAddress,
-            key: try self.wifToPrivateKey(wif: privateKeyWIF)!,
-            completion: completion
-        )
-    }
+        var promises: [Promise<SweepCandidate>] = []
+        for keyBalance in keyBalances {
+            let promise = Promise<SweepCandidate> { fulfill, reject in
+                let address = keyBalance.privateKey.publicKey().toLegacy().description
 
-    public func sweep(
-        balance: BNBalance,
-        destinationAddress: String,
-        key: PrivateKey,
-        completion: @escaping SweepCompletion
-    ) {
-        self.bitcoreNodeClient.unspendTransactions(
-            byAddress: key.publicKey().toLegacy().description
-        ) { _, transactions in
-            do {
-                let unsignedTx = try self.transactionFactory.getUnsignedTx(
-                    balance: balance,
-                    destinationAddress: destinationAddress,
-                    outputs: transactions
-                )
-
-                let signedTx = try self.transactionFactory.signTx(unsignedTx: unsignedTx, keys: [key])
-                let rawTx = signedTx.serialized()
-
-                self.bitcoreNodeClient.send(rawTx: rawTx.hex) { error, response in
-                    completion(error, response?.txid)
+                self.bitcoreNodeClient.unspendTransactions(byAddress: address) { error, transactions in
+                    guard let error = error else {
+                        return fulfill(SweepCandidate(
+                            privateKey: keyBalance.privateKey,
+                            balance: keyBalance.balance,
+                            unspendTransactions: transactions
+                        ))
+                    }
+                    
+                    reject(error)
                 }
-            } catch {
+            }
+
+            promises.append(promise)
+        }
+
+        all(promises)
+            .then { sweepCandidates in
+                let transactions = sweepCandidates.map { $0.unspendTransactions }.flatMap { $0 }
+                let privateKeys = sweepCandidates.map { $0.privateKey }
+                let zeroBalance = BNBalance(confirmed: 0, unconfirmed: 0, balance: 0)
+                let balance = sweepCandidates.map { $0.balance }.reduce(zeroBalance) { previous, next in
+                    return BNBalance(
+                        confirmed: previous.confirmed + next.confirmed,
+                        unconfirmed: previous.unconfirmed + next.unconfirmed,
+                        balance: previous.balance + previous.balance
+                    )
+                }
+
+                do {
+                    let unsignedTx = try self.transactionFactory.getUnsignedTx(
+                        balance: balance,
+                        destinationAddress: destinationAddress,
+                        outputs: transactions
+                    )
+
+                    let signedTx = try self.transactionFactory.signTx(unsignedTx: unsignedTx, keys: privateKeys)
+                    let rawTx = signedTx.serialized()
+
+                    self.bitcoreNodeClient.send(rawTx: rawTx.hex) { error, response in
+                        completion(error, response?.txid)
+                    }
+                } catch {
+                    completion(error, nil)
+                }
+            }
+            .catch { error in
                 completion(error, nil)
             }
-        }
     }
 
     public func balance(
-        byPrivateKeyWIF wif: String,
+        privateKey: PrivateKey,
         completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    ) throws {
-        let publicKey = try self.wifToPrivateKey(wif: wif)?.publicKey()
-        guard let address = publicKey?.toLegacy().description else {
-            // Couldn't resolve address.
-            completion(nil, nil)
-            return
-        }
-
-        self.balance(byAddress: address, completion: completion)
+    ) {
+        self.balance(byAddress: privateKey.publicKey().toLegacy().description, completion: completion)
     }
 
     public func balance(
@@ -109,7 +128,7 @@ class SweeperHelper: SweeperHelperProtocol {
         }
     }
 
-    private func wifToPrivateKey(wif: String) throws -> PrivateKey? {
+    public func wifToPrivateKey(wif: String) throws -> PrivateKey {
         return try PrivateKey(wif: wif)
     }
 }

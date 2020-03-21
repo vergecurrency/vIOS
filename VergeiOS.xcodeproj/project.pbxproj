@@ -181,12 +181,14 @@
 		A3B2E26A214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E268214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift */; };
 		A3B2E26B214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E269214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib */; };
 		A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */; };
+		A3BA6ECC23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA6ECB23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift */; };
 		A3C5C3CE21985B11003B6C02 /* sjcl.js in Resources */ = {isa = PBXBuildFile; fileRef = A3C5C3CD21985B11003B6C02 /* sjcl.js */; };
 		A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A068215661C20018599A /* AddressValidatorTest.swift */; };
 		A3D3A06B2156FC130018599A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A06A2156FC130018599A /* MainTabBarController.swift */; };
 		A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */; };
 		A3D68366213F34E50067E0B9 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */; };
 		A3D98EE124263D6500A2BBEB /* SupportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */; };
+		A3D98EE524269A7800A2BBEB /* KeyBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D98EE424269A7800A2BBEB /* KeyBalance.swift */; };
 		A3E32B18225D52D9001A8B0E /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */; };
 		A3E32B19225D52D9001A8B0E /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B17225D52D9001A8B0E /* Swinject.framework */; };
 		A3E32B1C225D56D9001A8B0E /* WalletServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E32B1B225D56D9001A8B0E /* WalletServiceProvider.swift */; };
@@ -597,12 +599,14 @@
 		A3B2E268214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		A3B2E269214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
 		A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewEdger.swift; sourceTree = "<group>"; };
+		A3BA6ECB23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumMnemonicTableViewController.swift; sourceTree = "<group>"; };
 		A3C5C3CD21985B11003B6C02 /* sjcl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjcl.js; sourceTree = "<group>"; };
 		A3D3A068215661C20018599A /* AddressValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidatorTest.swift; sourceTree = "<group>"; };
 		A3D3A06A2156FC130018599A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTableViewController.swift; sourceTree = "<group>"; };
+		A3D98EE424269A7800A2BBEB /* KeyBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBalance.swift; sourceTree = "<group>"; };
 		A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		A3E32B17225D52D9001A8B0E /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		A3E32B1B225D56D9001A8B0E /* WalletServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletServiceProvider.swift; sourceTree = "<group>"; };
@@ -810,6 +814,7 @@
 				A3256664211A3B61006FB08A /* FiatRate.swift */,
 				B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */,
 				A3AA2205216576BE00160576 /* IpAddress.swift */,
+				A3D98EE424269A7800A2BBEB /* KeyBalance.swift */,
 				B2BD7F271D86AF3260FFBF11 /* SendMaxInfo.swift */,
 				B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */,
 				B2BD7B38FF9FBCE00640E947 /* TxHistory.swift */,
@@ -1053,6 +1058,7 @@
 			children = (
 				A3EA38DF22FA0E8700E89CF0 /* ConfirmSweepView.swift */,
 				A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */,
+				A3BA6ECB23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift */,
 				A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */,
 				A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */,
 				A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */,
@@ -2149,6 +2155,7 @@
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
+				A3BA6ECC23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift in Sources */,
 				CADA0BEB2203B38400FE74C1 /* IntentsManager.swift in Sources */,
 				A324DAEA229F4A5400EF12D7 /* TransactionsPlaceholderImageView.swift in Sources */,
 				A3A71C0F22D90C3B0098D861 /* BNBalance.swift in Sources */,
@@ -2247,6 +2254,7 @@
 				A3AA2B8B2263DBFA000E4571 /* SubtitleImageView.swift in Sources */,
 				B2BD7216E5E949A43C2B4FC4 /* TxOutput.swift in Sources */,
 				A3AF9A5F21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift in Sources */,
+				A3D98EE524269A7800A2BBEB /* KeyBalance.swift in Sources */,
 				B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
 				A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */,

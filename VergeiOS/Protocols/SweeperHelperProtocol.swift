@@ -13,23 +13,15 @@ protocol SweeperHelperProtocol: class {
     typealias SweepCompletion = (_ error: Error?, _ txid: String?) -> Void
 
     func sweep(
-        balance: BNBalance,
+        keyBalances: [KeyBalance],
         destinationAddress: String,
-        privateKeyWIF: String,
         completion: @escaping SweepCompletion
     ) throws
-
-    func sweep(
-        balance: BNBalance,
-        destinationAddress: String,
-        key: PrivateKey,
-        completion: @escaping SweepCompletion
-    )
 
     func balance(
-        byPrivateKeyWIF wif: String,
+        privateKey: PrivateKey,
         completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    ) throws
+    )
 
     func balance(
         byAddress address: String,
@@ -37,4 +29,6 @@ protocol SweeperHelperProtocol: class {
     )
 
     func recipientAddress(completion: @escaping (_ error: Error?, _ address: String?) -> Void)
+    
+    func wifToPrivateKey(wif: String) throws -> PrivateKey
 }
