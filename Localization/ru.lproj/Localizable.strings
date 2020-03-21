@@ -199,6 +199,7 @@
 "settings.settings.cell.torConnectionLabel" = "Tor-соединение";
 
 "settings.other.header.title"               = "Другое";
+"settings.other.cell.supportLabel"          = "Служба поддержки";
 "settings.other.cell.creditsLabel"          = "О приложении";
 "settings.other.cell.donateLabel"           = "Поддержать проект";
 "settings.other.cell.rateAppLabel"          = "Оценить приложение";
@@ -215,6 +216,11 @@
 "settings.paperKey.preview.descLabel"       = "Аккуратно запишите каждое слово в нижнем регистре.";
 "settings.paperKey.preview.wordsSegment"    = "Слова";
 "settings.paperKey.preview.qrSegment"       = "QR-код";
+
+// Support
+
+"settings.support.titleLabel"               = "Не могли бы вы действительно использовать некоторую поддержку?";
+"settings.support.descLabel"                = "У вас есть проблемы с вашим кошельком? Или у тебя просто есть вопросы? Сообщество Verge Currency всегда доступно!";
 
 // Disconnect wallet
 

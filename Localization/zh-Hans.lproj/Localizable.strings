@@ -199,6 +199,7 @@
 "settings.settings.cell.torConnectionLabel" = "Tor连接";
 
 "settings.other.header.title"               = "其它";
+"settings.other.cell.supportLabel"          = "支持";
 "settings.other.cell.creditsLabel"          = "信用";
 "settings.other.cell.donateLabel"           = "捐赠";
 "settings.other.cell.rateAppLabel"          = "给app打分";
@@ -215,6 +216,11 @@
 "settings.paperKey.preview.descLabel"       = "细心地用小写写下每个单词.";
 "settings.paperKey.preview.wordsSegment"    = "单词";
 "settings.paperKey.preview.qrSegment"       = "二维码";
+
+// Support
+
+"settings.support.titleLabel"               = "您真的可以使用一些支持吗?";
+"settings.support.descLabel"                = "钱包有问题吗？ 还是您只是有疑问？ 边缘货币社区始终可用!";
 
 // Disconnect wallet
 

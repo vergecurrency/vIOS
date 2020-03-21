@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Uporabi Face ID";
 "settings.settings.cell.torConnectionLabel" = "Tor povezava";
 "settings.other.header.title" = "Ostalo";
+"settings.other.cell.supportLabel" = "Podpora";
 "settings.other.cell.creditsLabel" = "Zasluge";
 "settings.other.cell.donateLabel" = "Donirajte";
 "settings.other.cell.rateAppLabel" = "Ocenite aplikacijo";
@@ -182,6 +183,11 @@
 "settings.paperKey.preview.descLabel" = "Vsako besedo zapišite previdno, brez velikih črk.";
 "settings.paperKey.preview.wordsSegment" = "Besede";
 "settings.paperKey.preview.qrSegment" = "QR";
+
+// Support
+
+"settings.support.titleLabel" = "Bi res lahko uporabil kakšno podporo?";
+"settings.support.descLabel" = "Imate težave z denarnico? Ali preprosto imate vprašanja? Skupnost Verge Currency je vedno na voljo!";
 
 /*Disconnect wallet*/
 "settings.disconnect.titleLabel" = "Prekinite povezavo naprave z vašo trenutno denarnico.";

@@ -203,6 +203,7 @@
 "settings.settings.cell.useFaceIdLabel"     = "Use Face ID";
 
 "settings.other.header.title"               = "Other";
+"settings.other.cell.supportLabel"          = "Support";
 "settings.other.cell.creditsLabel"          = "Credits";
 "settings.other.cell.donateLabel"           = "Donate";
 "settings.other.cell.rateAppLabel"          = "Rate app";
@@ -232,6 +233,11 @@
 "settings.sweeping.cell.electrumDecs"       = "v2.1.0 or lower";
 "settings.sweeping.cell.androidLabel"       = "Android";
 "settings.sweeping.cell.androidDecs"        = "v1.0.0 or lower";
+
+// Support
+
+"settings.support.titleLabel"               = "Could you really use some support?";
+"settings.support.descLabel"                = "Do you experience problems with your wallet? Or do you simply have questions? The Verge Currency community is always available!";
 
 // Private key wallet sweeping
 

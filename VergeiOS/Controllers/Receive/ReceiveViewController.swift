@@ -162,6 +162,12 @@ class ReceiveViewController: ThemeableViewController {
             }
 
             guard let addressInfo = addressInfo else {
+                let alert = UIAlertController.createUnexpectedErrorAlert(
+                    error: error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil)
+                )
+
+                self.present(alert, animated: true)
+
                 return
             }
 

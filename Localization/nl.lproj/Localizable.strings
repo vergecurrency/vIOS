@@ -167,6 +167,7 @@
 "settings.settings.cell.useFaceIdLabel" = "Gebruik Face ID";
 "settings.settings.cell.torConnectionLabel" = "Tor verbinding";
 "settings.other.header.title" = "Anders";
+"settings.other.cell.supportLabel" = "Ondersteuning";
 "settings.other.cell.creditsLabel" = "Credits";
 "settings.other.cell.donateLabel" = "Doneer";
 "settings.other.cell.rateAppLabel" = "Beoordeel app";
@@ -195,6 +196,11 @@
 "settings.sweeping.cell.electrumDecs"       = "v2.1.0 of lager";
 "settings.sweeping.cell.androidLabel"       = "Android";
 "settings.sweeping.cell.androidDecs"        = "v1.0.0 of lager";
+
+// Support
+
+"settings.support.titleLabel"               = "Kun je wel wat hulp gebruiken?";
+"settings.support.descLabel"                = "Heb je problemen met je wallet? Of heb je gewoon een vraag? De Verge Currency gemeenschap is altijd beschikbaar!";
 
 // Private key wallet sweeping
 
