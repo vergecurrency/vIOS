@@ -343,14 +343,16 @@ extension WalletClient {
         }
 
         getRequest(url: "/v1/addresses/\(qs)") { data, _, error in
-            if let data = data {
-                do {
-                    let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
-                    completion(addresses)
-                } catch {
-                    print(error)
-                    completion([])
-                }
+            guard let data = data else {
+                return completion([])
+            }
+            
+            do {
+                let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
+                completion(addresses)
+            } catch {
+                print(error)
+                completion([])
             }
         }
     }

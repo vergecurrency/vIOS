@@ -34,6 +34,7 @@ class ReceiveViewController: ThemeableViewController {
     var transactionManager: TransactionManager!
     var fiatRateTicker: FiatRateTicker!
     var currentQrCode: QRCode?
+    var addressErrorView: AddressErrorView?
 
     var address = ""
     var amount = 0.0
@@ -162,13 +163,7 @@ class ReceiveViewController: ThemeableViewController {
             }
 
             guard let addressInfo = addressInfo else {
-                let alert = UIAlertController.createUnexpectedErrorAlert(
-                    error: error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil)
-                )
-
-                self.present(alert, animated: true)
-
-                return
+                return self.showAddressError(error: error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil))
             }
 
             self.handleChangeAddress(addressInfo.address)
@@ -303,5 +298,22 @@ class ReceiveViewController: ThemeableViewController {
         }
 
         createQRCode()
+    }
+
+    private func showAddressError(error: Error) {
+        let errorView = Bundle.main.loadNibNamed(
+            "AddressErrorView",
+            owner: self,
+            options: nil
+        )?.first as! AddressErrorView
+        errorView.becomeThemeable()
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.errorLabel.text = error.localizedDescription
+
+        self.view.addSubview(errorView)
+
+        errorView.pinEdges(to: self.view)
+
+        self.addressErrorView = errorView
     }
 }

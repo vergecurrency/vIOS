@@ -25,6 +25,9 @@
 		A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34221220A1E00EA8091 /* Notification+Names.swift */; };
 		A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3482123448200EA8091 /* NSNumber+Currency.swift */; };
 		A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */; };
+		A30510662427F30300CEAEAD /* AddressErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30510652427F30300CEAEAD /* AddressErrorView.xib */; };
+		A30510682427F32300CEAEAD /* AddressErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30510672427F32300CEAEAD /* AddressErrorView.swift */; };
+		A305106A2427F70C00CEAEAD /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30510692427F70C00CEAEAD /* UIView+Layout.swift */; };
 		A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */; };
 		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
 		A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */; };
@@ -429,6 +432,9 @@
 		A302D34221220A1E00EA8091 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		A302D3482123448200EA8091 /* NSNumber+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Currency.swift"; sourceTree = "<group>"; };
 		A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Pagination.swift"; sourceTree = "<group>"; };
+		A30510652427F30300CEAEAD /* AddressErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressErrorView.xib; sourceTree = "<group>"; };
+		A30510672427F32300CEAEAD /* AddressErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressErrorView.swift; sourceTree = "<group>"; };
+		A30510692427F70C00CEAEAD /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabbarNavigator.storyboard; sourceTree = "<group>"; };
 		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
 		A305DD9C21066B1100911B64 /* TransparantNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparantNavigationBar.swift; sourceTree = "<group>"; };
@@ -870,13 +876,14 @@
 				A398B207212B0103004ACB73 /* LAContext+Type.swift */,
 				A302D34221220A1E00EA8091 /* Notification+Names.swift */,
 				A302D3482123448200EA8091 /* NSNumber+Currency.swift */,
+				CA5FCC7D22842BD1002340A1 /* String+Localization.swift */,
 				A36F8A882146EE0F00304777 /* String+Subs.swift */,
 				B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */,
 				A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */,
 				CABF1481221061FD00F92CBC /* UIView+Actions.swift */,
-				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
+				A30510692427F70C00CEAEAD /* UIView+Layout.swift */,
 				CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */,
-				CA5FCC7D22842BD1002340A1 /* String+Localization.swift */,
+				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1185,6 +1192,8 @@
 			isa = PBXGroup;
 			children = (
 				A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */,
+				A30510652427F30300CEAEAD /* AddressErrorView.xib */,
+				A30510672427F32300CEAEAD /* AddressErrorView.swift */,
 			);
 			path = Receive;
 			sourceTree = "<group>";
@@ -1910,6 +1919,7 @@
 				A376411B2108F0C700E04521 /* Cartfile in Resources */,
 				A338E6B92110D60F000D44EE /* ChartWalletSlideView.xib in Resources */,
 				A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */,
+				A30510662427F30300CEAEAD /* AddressErrorView.xib in Resources */,
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
 				A3256647211372A7006FB08A /* Send.storyboard in Resources */,
 				A33B75C421A8917700030CCF /* Settings.storyboard in Resources */,
@@ -2270,12 +2280,14 @@
 				B2BD724949D1989F82E187A8 /* CreateAddressErrorResponse.swift in Sources */,
 				B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */,
 				B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */,
+				A30510682427F32300CEAEAD /* AddressErrorView.swift in Sources */,
 				B2BD7E8CD1552F1D8D549A20 /* TransactionRepository.swift in Sources */,
 				CAA6031522BC441A00EFCB24 /* ThemeFactory.swift in Sources */,
 				B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */,
 				B2BD768DCD05B478AAC1AC69 /* TransactionProposalsTableViewController.swift in Sources */,
 				B2BD7C0AEF83DA4BEAE42483 /* ApplicationServiceProvider.swift in Sources */,
 				B2BD7925E4F0300891E42803 /* SettingsViewServiceProvider.swift in Sources */,
+				A305106A2427F70C00CEAEAD /* UIView+Layout.swift in Sources */,
 				B2BD70FD18F932E7B2699B6E /* SetupViewServiceProvider.swift in Sources */,
 				B2BD7A6D183C729DC88C4E3B /* ReceiveViewServiceProvider.swift in Sources */,
 				B2BD72FBDC0135287D5E1587 /* HttpServiceProvider.swift in Sources */,
