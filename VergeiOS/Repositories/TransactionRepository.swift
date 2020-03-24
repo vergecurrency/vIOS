@@ -7,8 +7,14 @@ import Foundation
 import CoreStore
 
 class TransactionRepository {
+    private let dataStack: DataStack
+
+    init(dataStack: DataStack) {
+        self.dataStack = dataStack
+    }
+
     public func get(byAddress address: String) -> [TxHistory] {
-        let entities = try? CoreStore.fetchAll(From<TransactionType>().where(\.address == address))
+        let entities = try? self.dataStack.fetchAll(From<TransactionType>().where(\.address == address))
         var transactions: [TxHistory] = []
 
         for entity in entities ?? [] {
@@ -19,7 +25,7 @@ class TransactionRepository {
     }
 
     func all() -> [TxHistory] {
-        let entities = try? CoreStore.fetchAll(From<TransactionType>())
+        let entities = try? self.dataStack.fetchAll(From<TransactionType>())
         var transactions: [TxHistory] = []
 
         for entity in entities ?? [] {
@@ -32,13 +38,13 @@ class TransactionRepository {
     func put(tx: TxHistory) {
         var entity: TransactionType?
         if let existingEntity =
-            ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
+            ((try? self.dataStack.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
                 as TransactionType??) {
             entity = existingEntity
         }
 
         do {
-            _ = try CoreStore.perform(synchronous: { transaction -> Bool in
+            _ = try self.dataStack.perform(synchronous: { transaction -> Bool in
                 if entity == nil {
                     entity = transaction.create(Into<TransactionType>())
                 } else {
@@ -65,13 +71,13 @@ class TransactionRepository {
 
     func remove(tx: TxHistory) {
         guard let entity =
-            ((try? CoreStore.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
+            ((try? self.dataStack.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
                 as TransactionType??) else {
                     return
         }
 
         do {
-            _ = try CoreStore.perform(synchronous: { transaction -> Bool in
+            _ = try self.dataStack.perform(synchronous: { transaction -> Bool in
                 transaction.delete(entity)
 
                 return transaction.hasChanges
@@ -90,7 +96,7 @@ class TransactionRepository {
     }
 
     private func transform(entity: TransactionType?) -> TxHistory {
-        let transaction = TxHistory(
+        TxHistory(
             txid: entity?.txid ?? "",
             action: entity?.action ?? "moved",
             amount: entity?.amount ?? 0,
@@ -106,7 +112,5 @@ class TransactionRepository {
             message: entity?.message,
             addressTo: ""
         )
-
-        return transaction
     }
 }

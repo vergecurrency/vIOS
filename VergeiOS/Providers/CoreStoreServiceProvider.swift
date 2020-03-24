@@ -8,20 +8,28 @@ import CoreStore
 
 class CoreStoreServiceProvider: ServiceProvider {
 
+    let dataStack: DataStack = {
+        DataStack(
+            xcodeModelName: "CoreData",
+            bundle: Bundle.main,
+            migrationChain: [
+                "VergeiOS",
+                "VergeiOS 2"
+            ]
+        )
+    }()
+
     override func boot() {
         do {
-            CoreStoreDefaults.dataStack = DataStack(
-                xcodeModelName: "CoreData",
-                bundle: Bundle.main,
-                migrationChain: [
-                    "VergeiOS",
-                    "VergeiOS 2"
-                ]
-            )
+            CoreStoreDefaults.dataStack = dataStack
 
-            try CoreStore.addStorageAndWait(
+            try self.dataStack.addStorageAndWait(
                 SQLiteStore(fileName: "VergeiOS.sqlite", localStorageOptions: .allowSynchronousLightweightMigration)
             )
+
+            container.register(DataStack.self) { _ in
+                self.dataStack
+            }
         } catch {
             print(error.localizedDescription)
         }

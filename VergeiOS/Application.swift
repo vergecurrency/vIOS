@@ -21,6 +21,7 @@ class Application {
         WalletServiceProvider.self,
         SetupViewServiceProvider.self,
         WalletViewServiceProvider.self,
+        TransactionServiceProvider.self,
         SendViewServiceProvider.self,
         ReceiveViewServiceProvider.self,
         SettingsViewServiceProvider.self,

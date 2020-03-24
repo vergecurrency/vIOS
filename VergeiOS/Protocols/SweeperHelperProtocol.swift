@@ -29,6 +29,6 @@ protocol SweeperHelperProtocol: class {
     )
 
     func recipientAddress(completion: @escaping (_ error: Error?, _ address: String?) -> Void)
-    
+
     func wifToPrivateKey(wif: String) throws -> PrivateKey
 }

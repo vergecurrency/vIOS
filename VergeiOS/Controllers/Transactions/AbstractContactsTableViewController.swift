@@ -9,7 +9,7 @@ class AbstractContactsTableViewController: UITableViewController {
 
     var contacts: [[Contact]] = []
     var letters: [String] = []
-    let addressBookManager: AddressBookRepository = AddressBookRepository()
+    var addressBookManager: AddressBookRepository!
     let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {

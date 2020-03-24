@@ -251,7 +251,7 @@ extension WalletClient {
             }
 
             print(jsonResponse)
-            
+
             if jsonResponse["code"].stringValue == "WALLET_NOT_FOUND" {
                 return completion(NSError(domain: "Wallet not found", code: 404, userInfo: nil))
             }
@@ -346,7 +346,7 @@ extension WalletClient {
             guard let data = data else {
                 return completion([])
             }
-            
+
             do {
                 let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
                 completion(addresses)

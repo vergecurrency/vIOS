@@ -11,7 +11,7 @@ import UIKit
 class AddressErrorView: UIView {
 
     @IBOutlet weak var errorLabel: UILabel!
-    
+
     override func updateColors() {
         self.backgroundColor = ThemeManager.shared.currentTheme.backgroundGrey
     }

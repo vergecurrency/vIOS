@@ -8,6 +8,7 @@
 
 import Foundation
 import Swinject
+import CoreStore
 
 class WalletServiceProvider: ServiceProvider {
 
@@ -58,13 +59,13 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerTxTransponder() {
         container.register(TxTransponder.self) { r in
-            return TxTransponder(walletClient: r.resolve(WalletClient.self)!)
+            TxTransponder(walletClient: r.resolve(WalletClient.self)!)
         }
     }
 
     func registerTransactionRepository() {
-        container.register(TransactionRepository.self) { _ in
-            return TransactionRepository()
+        container.register(TransactionRepository.self) { r in
+            TransactionRepository(dataStack: r.resolve(DataStack.self)!)
         }
     }
 
@@ -109,14 +110,14 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerAddressBookRepository() {
-        container.register(AddressBookRepository.self) { _ in
-            return AddressBookRepository()
+        container.register(AddressBookRepository.self) { r in
+            AddressBookRepository(dataStack: r.resolve(DataStack.self)!)
         }
     }
 
     func registerSweeperHelper() {
         container.register(SweeperHelperProtocol.self) { r in
-            return SweeperHelper(
+            SweeperHelper(
                 bitcoreNodeClient: r.resolve(BitcoreNodeClientProtocol.self)!,
                 walletClient: r.resolve(WalletClientProtocol.self)!,
                 transactionFactory: r.resolve(TransactionFactoryProtocol.self)!,
@@ -127,7 +128,7 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerWalletManager() {
         container.register(WalletManagerProtocol.self) { r in
-            return WalletManager(
+            WalletManager(
                 walletClient: r.resolve(WalletClientProtocol.self)!,
                 walletTicker: r.resolve(WalletTicker.self)!,
                 applicationRepository: r.resolve(ApplicationRepository.self)!
@@ -139,7 +140,9 @@ class WalletServiceProvider: ServiceProvider {
         let applicationRepository = self.container.resolve(ApplicationRepository.self)!
 
         // Check if the deprecated VWS endpoints are in the users memory.
-        if applicationRepository.isWalletServiceUrlSet && !Constants.deprecatedBwsEndpoints.contains(applicationRepository.walletServiceUrl) {
+        if applicationRepository.isWalletServiceUrlSet && !Constants.deprecatedBwsEndpoints.contains(
+            applicationRepository.walletServiceUrl
+        ) {
             return print("No deprecated VWS endpoints found.")
         }
 

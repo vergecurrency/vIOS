@@ -129,7 +129,7 @@ class ElectrumMnemonicTableViewController: FormViewController {
         self.loadBalances(keys: keys)
             .then { keyBalances in
                 let amount = NSNumber(floatLiteral: Double(keyBalances.reduce(0, { result, keyBalance in
-                    return result + keyBalance.balance.confirmed
+                    result + keyBalance.balance.confirmed
                 })) / Constants.satoshiDivider)
 
                 if amount == 0 {
@@ -167,7 +167,7 @@ class ElectrumMnemonicTableViewController: FormViewController {
 
     private func validateMnemonic(mnemonic: String) -> Bool {
         // Simply check if there are 8 or more spaces... improve check if needed.
-        return mnemonic.components(separatedBy: " ").count >= 8
+        mnemonic.components(separatedBy: " ").count >= 8
     }
 
     private func getKeysFromMnemonic(mnemonic: String) -> [String] {
@@ -253,7 +253,7 @@ class ElectrumMnemonicTableViewController: FormViewController {
     }
 
     private func dismissLoadingAlert() -> Promise<UIAlertController> {
-        return Promise<UIAlertController> { fulfill, _ in
+        Promise<UIAlertController> { fulfill, _ in
             self.loadingAlert.dismiss(animated: true) {
                 fulfill(self.loadingAlert)
             }

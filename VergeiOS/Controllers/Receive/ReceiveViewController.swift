@@ -163,7 +163,9 @@ class ReceiveViewController: ThemeableViewController {
             }
 
             guard let addressInfo = addressInfo else {
-                return self.showAddressError(error: error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil))
+                return self.showAddressError(error:
+                    error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil)
+                )
             }
 
             self.handleChangeAddress(addressInfo.address)
