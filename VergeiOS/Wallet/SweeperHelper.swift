@@ -49,7 +49,7 @@ class SweeperHelper: SweeperHelperProtocol {
                             unspendTransactions: transactions
                         ))
                     }
-                    
+
                     reject(error)
                 }
             }

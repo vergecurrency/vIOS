@@ -163,7 +163,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 self.present(alertController, animated: true)
             }
 
-            let amount = NSNumber(floatLiteral: Double(balance.balance) / Constants.satoshiDivider)
+            let amount = NSNumber(value: Double(balance.balance) / Constants.satoshiDivider)
 
             self.sweeperHelper.recipientAddress { _, address in
                 guard let address = address else {

@@ -241,13 +241,12 @@ extension WalletClient {
                                                                      privateKey: credentials.walletPrivateKey)
 
         postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
-            // TODO: clean this up...
             guard let data = data else {
-                return print(error!)
+                return completion(error)
             }
 
             guard let jsonResponse = try? JSON(data: data) else {
-                return print(error!)
+                return completion(error)
             }
 
             print(jsonResponse)

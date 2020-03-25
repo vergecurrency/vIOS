@@ -128,7 +128,7 @@ class ElectrumMnemonicTableViewController: FormViewController {
 
         self.loadBalances(keys: keys)
             .then { keyBalances in
-                let amount = NSNumber(floatLiteral: Double(keyBalances.reduce(0, { result, keyBalance in
+                let amount = NSNumber(value: Double(keyBalances.reduce(0, { result, keyBalance in
                     result + keyBalance.balance.confirmed
                 })) / Constants.satoshiDivider)
 
