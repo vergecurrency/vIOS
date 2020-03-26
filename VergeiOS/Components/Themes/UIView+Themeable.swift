@@ -117,10 +117,6 @@ extension UITableView {
         self.tintColor = ThemeManager.shared.primaryLight()
         self.separatorColor = ThemeManager.shared.separatorColor()
 
-        if (self.style == .grouped) { // Appearence for grouped style is not working
-            self.backgroundColor = ThemeManager.shared.backgroundGrey()
-        }
-
         self.setNeedsDisplay()
     }
 }

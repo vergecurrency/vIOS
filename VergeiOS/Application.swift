@@ -5,7 +5,6 @@
 
 import Foundation
 import Swinject
-import SwinjectStoryboard
 
 class Application {
 
@@ -13,7 +12,7 @@ class Application {
     private(set) static var container: Container!
 
     // Register all service providers.
-    let serviceProviders: [ServiceProvider.Type] = [
+    private let serviceProviders: [ServiceProvider.Type] = [
         ApplicationServiceProvider.self,
         CoreStoreServiceProvider.self,
         HttpServiceProvider.self,
@@ -28,7 +27,9 @@ class Application {
         EventServiceProvider.self
     ]
 
-    var initializedServiceProviders: [ServiceProvider] = []
+    private var initializedServiceProviders: [ServiceProvider] = []
+
+    private var booted: Bool = false
 
     // Init the application with a container.
     public init(container: Container) {
@@ -37,6 +38,10 @@ class Application {
 
     // Boot the service providers.
     public func boot() {
+        if booted {
+            return
+        }
+
         // Initialize providers.
         for serviceProvider in self.serviceProviders {
             self.initializedServiceProviders.append(serviceProvider.init(container: Application.container))
@@ -51,6 +56,8 @@ class Application {
         for serviceProvider in self.initializedServiceProviders {
             serviceProvider.boot()
         }
+
+        self.booted = true
     }
 
 }
