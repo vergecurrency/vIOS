@@ -105,7 +105,7 @@ class ReceiveViewController: ThemeableViewController {
 
             if imageData != nil {
                 let defaults = UserDefaults(suiteName: "group.org.verge.wallet")
-                defaults?.setData(imageData!, forKey: "wallet.receive.image.shared")
+                defaults?.set(imageData!, forKey: "wallet.receive.image.shared")
             }
         })
 
