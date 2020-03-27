@@ -11,7 +11,7 @@ import BitcoinKit
 import Promises
 import Eureka
 
-class ElectrumMnemonicTableViewController: FormViewController {
+class ElectrumMnemonicTableViewController: EdgedFormViewController {
 
     var sweeperHelper: SweeperHelperProtocol!
     var loadingAlert: UIAlertController = UIAlertController.loadingAlert()

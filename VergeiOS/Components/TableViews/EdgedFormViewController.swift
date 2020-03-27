@@ -1,14 +1,15 @@
 //
-//  EdgedTableViewController.swift
+//  EdgedFormViewController.swift
 //  VergeiOS
 //
-//  Created by Swen van Zanten on 13-09-18.
-//  Copyright © 2018 Verge Currency. All rights reserved.
+//  Created by Swen van Zanten on 27/03/2020.
+//  Copyright © 2020 Verge Currency. All rights reserved.
 //
 
 import UIKit
+import Eureka
 
-class EdgedTableViewController: LocalizableTableViewController {
+class EdgedFormViewController: FormViewController {
     var scrollViewEdger: ScrollViewEdger!
 
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class EdgedTableViewController: LocalizableTableViewController {
         scrollViewEdger.createShadowViews()
     }
 
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewEdger.updateView()
     }
 }

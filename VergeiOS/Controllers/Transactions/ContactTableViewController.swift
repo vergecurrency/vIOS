@@ -9,7 +9,7 @@
 import UIKit
 import Eureka
 
-class ContactTableViewController: FormViewController {
+class ContactTableViewController: EdgedFormViewController {
 
     var transactionManager: TransactionManager!
     var addressBookManager: AddressBookRepository!

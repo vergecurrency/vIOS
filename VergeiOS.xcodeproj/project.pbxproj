@@ -50,6 +50,7 @@
 		A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316B0AE215454FB00FF5200 /* AddressValidator.swift */; };
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
+		A31C2BCD242DF5B1004EDAEC /* EdgedFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */; };
 		A3239D6422E60C2B00430F8B /* SweeperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6322E60C2B00430F8B /* SweeperHelper.swift */; };
 		A3239D6722E8EC9200430F8B /* PaperWalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */; };
 		A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */; };
@@ -456,6 +457,7 @@
 		A30D27972260D165000377F8 /* TxTransponderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderTest.swift; sourceTree = "<group>"; };
 		A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClientProtocol.swift; sourceTree = "<group>"; };
 		A316B0AE215454FB00FF5200 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
+		A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedFormViewController.swift; sourceTree = "<group>"; };
 		A3239D6322E60C2B00430F8B /* SweeperHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeperHelper.swift; sourceTree = "<group>"; };
 		A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperWalletTableViewController.swift; sourceTree = "<group>"; };
 		A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletSweepingScannerViewController.swift; sourceTree = "<group>"; };
@@ -1486,9 +1488,10 @@
 		CA63BA702282CE3000E2023A /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
+				A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */,
+				A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */,
 				CA63BA712282CE7400E2023A /* LocalizableTableViewController.swift */,
 				A3B2E2662148577000C31719 /* PlaceholderTableView.swift */,
-				A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */,
 				A3EA38DD22FA0C5900E89CF0 /* TableSection.swift */,
 			);
 			path = TableViews;
@@ -2125,6 +2128,7 @@
 				A3B2E26A214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift in Sources */,
 				A373E6EC2154601D00C67390 /* SendTransactionDelegate.swift in Sources */,
 				A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */,
+				A31C2BCD242DF5B1004EDAEC /* EdgedFormViewController.swift in Sources */,
 				A376410A2107DC4E00E04521 /* KeyboardButton.swift in Sources */,
 				A3764128210A298700E04521 /* AbstractKey.swift in Sources */,
 				A305DDC12107C82A00911B64 /* ImageKey.swift in Sources */,

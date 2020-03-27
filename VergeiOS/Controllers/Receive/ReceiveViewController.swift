@@ -34,7 +34,6 @@ class ReceiveViewController: ThemeableViewController {
     var transactionManager: TransactionManager!
     var fiatRateTicker: FiatRateTicker!
     var currentQrCode: QRCode?
-    var addressErrorView: AddressErrorView?
 
     var address = ""
     var amount = 0.0
@@ -314,8 +313,11 @@ class ReceiveViewController: ThemeableViewController {
 
         self.view.addSubview(errorView)
 
-        errorView.pinEdges(to: self.view)
+        errorView.pinEdgesToSafeArea(to: self.view)
+        errorView.onRetry {
+            errorView.removeFromSuperview()
 
-        self.addressErrorView = errorView
+            self.setAddress()
+        }
     }
 }
