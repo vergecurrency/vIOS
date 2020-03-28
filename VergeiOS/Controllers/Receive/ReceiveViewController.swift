@@ -139,7 +139,7 @@ class ReceiveViewController: ThemeableViewController {
 
             self.walletClient.getMainAddresses(options: options) { error, addresses in
                 if let error = error {
-                    self.showAddressError(error: error)
+                    return self.showAddressError(error: error)
                 }
 
                 guard let lastAddress = addresses.first else {
