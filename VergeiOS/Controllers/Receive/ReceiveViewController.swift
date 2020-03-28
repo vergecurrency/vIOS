@@ -137,7 +137,11 @@ class ReceiveViewController: ThemeableViewController {
             options.limit = 1
             options.reverse = true
 
-            self.walletClient.getMainAddresses(options: options) { addresses in
+            self.walletClient.getMainAddresses(options: options) { error, addresses in
+                if let error = error {
+                    self.showAddressError(error: error)
+                }
+
                 guard let lastAddress = addresses.first else {
                     return self.getNewAddress()
                 }
@@ -290,33 +294,19 @@ class ReceiveViewController: ThemeableViewController {
     }
 
     @objc func amountTextFieldDidChange(_ textField: CurrencyInput) {
-        amount = textField.getNumber().doubleValue
+        self.amount = textField.getNumber().doubleValue
 
         if currency == .FIAT {
             if let xvgInfo = self.fiatRateTicker.rateInfo {
-                amount /= xvgInfo.price
+                self.amount /= xvgInfo.price
             }
         }
 
-        createQRCode()
+        self.createQRCode()
     }
 
     private func showAddressError(error: Error) {
-        let errorView = Bundle.main.loadNibNamed(
-            "AddressErrorView",
-            owner: self,
-            options: nil
-        )?.first as! AddressErrorView
-        errorView.becomeThemeable()
-        errorView.translatesAutoresizingMaskIntoConstraints = false
-        errorView.errorLabel.text = error.localizedDescription
-
-        self.view.addSubview(errorView)
-
-        errorView.pinEdgesToSafeArea(to: self.view)
-        errorView.onRetry {
-            errorView.removeFromSuperview()
-
+        ErrorView.showError(error: error, bind: self.view) {
             self.setAddress()
         }
     }

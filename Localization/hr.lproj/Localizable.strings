@@ -453,3 +453,9 @@
 
 /*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Još nije primljena nijedna transakcija.";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Joj! Nešto je pošlo po zlu:";
+"errorView.retryLabel"                      = "Ponoviti";
+"errorView.helpLabel"                       = "Ili zatražite pomoć od XVG zajednice";

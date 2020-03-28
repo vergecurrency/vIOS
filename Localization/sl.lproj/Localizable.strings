@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Brez Tor";
 "alerts.termsOfUse.title" = "Ogled pogojev uporabe Denarnice";
 "alerts.restart.title" = "Ponovno zagon...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Ups! Nekaj je šlo narobe:";
+"errorView.retryLabel"                      = "Poskusi znova";
+"errorView.helpLabel"                       = "Ali pa prosite za pomoč skupnosti XVG";

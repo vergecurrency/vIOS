@@ -34,23 +34,27 @@ class AddressesTableViewController: EdgedTableViewController {
 
         refreshControl?.addTarget(
             self,
-            action: #selector(AddressesTableViewController.loadAddress),
+            action: #selector(AddressesTableViewController.loadAddresses),
             for: .valueChanged
         )
 
-        loadAddress()
+        self.loadAddresses()
     }
 
-    @objc func loadAddress() {
+    @objc func loadAddresses() {
         refreshControl?.beginRefreshing()
 
         var options = WalletAddressesOptions()
         options.limit = 25
         options.reverse = true
 
-        self.walletClient.getMainAddresses(options: options) { addresses in
+        self.walletClient.getMainAddresses(options: options) { error, addresses in
+            if let error = error {
+                return self.showLoadingError(error: error)
+            }
+
             self.addresses = addresses.filter { addressInfo in
-                return self.transactionManager.all(byAddress: addressInfo.address).count == 0
+                self.transactionManager.all(byAddress: addressInfo.address).count == 0
             }
 
             self.loadBalances()
@@ -58,9 +62,14 @@ class AddressesTableViewController: EdgedTableViewController {
     }
 
     func loadBalances() {
-        self.walletClient.getBalance { _, balanceInfo in
+        self.walletClient.getBalance { error, balanceInfo in
+            if let error = error {
+                return self.showLoadingError(error: error)
+            }
+
             guard let balanceInfo = balanceInfo else {
                 self.balanceAddresses = []
+
                 return
             }
 
@@ -219,5 +228,11 @@ class AddressesTableViewController: EdgedTableViewController {
         alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
 
         present(alert, animated: true)
+    }
+
+    private func showLoadingError(error: Error) {
+        ErrorView.showError(error: error, bind: self.view) {
+            self.loadAddresses()
+        }
     }
 }

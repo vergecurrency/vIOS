@@ -453,3 +453,9 @@
 
 /*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nenhuma transação foi recebida ainda.";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Ops! Algo deu errado:";
+"errorView.retryLabel"                      = "Repetir";
+"errorView.helpLabel"                       = "Ou peça ajuda à Comunidade XVG";

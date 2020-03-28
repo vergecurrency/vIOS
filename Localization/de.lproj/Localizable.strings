@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Ohne Tor";
 "alerts.termsOfUse.title" = "Nutzungsbedingungen für diese Wallet anzeigen";
 "alerts.restart.title" = "Neustart...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Hoppla! Etwas ist schief gelaufen:";
+"errorView.retryLabel"                      = "Wiederholen";
+"errorView.helpLabel"                       = "Oder bitten Sie die XVG Community um Hilfe";

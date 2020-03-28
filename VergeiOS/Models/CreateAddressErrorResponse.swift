@@ -19,7 +19,10 @@ public struct CreateAddressErrorResponse: Decodable {
 public extension CreateAddressErrorResponse {
 
     var error: CreateAddressErrorResponse.Error? {
-        return CreateAddressErrorResponse.Error.init(rawValue: code)
+        CreateAddressErrorResponse.Error.init(rawValue: code)
     }
 
+    func getError() -> NSError {
+        NSError(domain: code, code: 500)
+    }
 }

@@ -557,3 +557,9 @@
 "alerts.startTor.button2"                   = "Без Tor";
 "alerts.termsOfUse.title"                   = "Просмотр Правил использования";
 "alerts.restart.title"                      = "Перезагрузка...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Упс! Что-то пошло не так";
+"errorView.retryLabel"                      = "Retry";
+"errorView.helpLabel"                       = "Или попросите помощи у сообщества XVG";

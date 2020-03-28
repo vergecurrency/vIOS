@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Senza Tor";
 "alerts.termsOfUse.title" = "Visualizza i termini d'uso del portafogli";
 "alerts.restart.title" = "Riavviando...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Ops! Qualcosa è andato storto:";
+"errorView.retryLabel"                      = "Riprova";
+"errorView.helpLabel"                       = "Oppure chiedi aiuto alla comunità XVG";

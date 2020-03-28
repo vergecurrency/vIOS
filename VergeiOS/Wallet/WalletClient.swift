@@ -324,7 +324,7 @@ extension WalletClient {
 
     public func getMainAddresses(
         options: WalletAddressesOptions? = nil,
-        completion: @escaping (_ addresses: [AddressInfo]) -> Void
+        completion: @escaping (_ error: Error?, _ addresses: [AddressInfo]) -> Void
     ) {
         var args: [String] = []
         var qs = ""
@@ -343,15 +343,15 @@ extension WalletClient {
 
         getRequest(url: "/v1/addresses/\(qs)") { data, _, error in
             guard let data = data else {
-                return completion([])
+                return completion(error, [])
             }
 
             do {
                 let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
-                completion(addresses)
+                completion(nil, addresses)
             } catch {
                 print(error)
-                completion([])
+                completion(error, [])
             }
         }
     }
@@ -364,14 +364,20 @@ extension WalletClient {
 
     public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void) {
         getRequest(url: "/v1/balance/") { data, _, error in
-            if let data = data {
-                do {
-                    let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
-                    completion(error, balanceInfo)
-                } catch {
-                    print(error)
+            guard let data = data else {
+                if error != nil {
                     completion(error, nil)
                 }
+
+                return
+            }
+
+            do {
+                let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
+                completion(error, balanceInfo)
+            } catch {
+                print(error)
+                completion(error, nil)
             }
         }
     }
@@ -603,12 +609,21 @@ extension WalletClient {
 
     public func getTxProposals(completion: @escaping (_ txps: [TxProposalResponse], _ error: Error?) -> Void) {
         getRequest(url: "/v2/txproposals/") { data, _, error in
+            if let error = error {
+                return completion([], error)
+            }
+
             guard let data = data else {
                 return completion([], nil)
             }
 
-            let txps = try? JSONDecoder().decode([TxProposalResponse].self, from: data)
-            completion(txps ?? [], error)
+            do {
+                let txps = try JSONDecoder().decode([TxProposalResponse].self, from: data)
+
+                completion(txps, nil)
+            } catch {
+                completion([], error)
+            }
         }
     }
 

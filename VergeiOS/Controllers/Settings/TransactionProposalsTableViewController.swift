@@ -11,7 +11,7 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
     var proposals: [TxProposalResponse] = []
 
     var hasProposals: Bool {
-        return proposals.count > 0
+        proposals.count > 0
     }
 
     override func viewDidLoad() {
@@ -23,13 +23,17 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
             for: .valueChanged
         )
 
-        loadProposals()
+        self.loadProposals()
     }
 
     @objc func loadProposals() {
         refreshControl?.beginRefreshing()
 
-        self.walletClient.getTxProposals { proposals, _ in
+        self.walletClient.getTxProposals { proposals, error in
+            if let error = error {
+                return self.showLoadingError(error: error)
+            }
+
             self.proposals = proposals
 
             self.tableView.reloadData()
@@ -99,4 +103,9 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
+    private func showLoadingError(error: Error) {
+        ErrorView.showError(error: error, bind: self.view) {
+            self.loadProposals()
+        }
+    }
 }

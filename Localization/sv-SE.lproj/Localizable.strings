@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Utan Tor";
 "alerts.termsOfUse.title" = "Se användarvillkor för plånbok";
 "alerts.restart.title" = "Omstartar...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Hoppsan! Något gick fel:";
+"errorView.retryLabel"                      = "Försök igen";
+"errorView.helpLabel"                       = "Eller fråga hjälp från XVG-gemenskapen";

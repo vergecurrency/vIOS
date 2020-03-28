@@ -257,7 +257,7 @@ class WalletClientMock: WalletClientProtocol {
     func scanAddresses(completion: @escaping (Error?) -> Void) {}
     func createAddress(completion: @escaping (Error?, AddressInfo?, CreateAddressErrorResponse?) -> Void) {}
     func getBalance(completion: @escaping (Error?, WalletBalanceInfo?) -> Void) {}
-    func getMainAddresses(options: WalletAddressesOptions?, completion: @escaping ([AddressInfo]) -> Void) {}
+    func getMainAddresses(options: WalletAddressesOptions?, completion: @escaping (Error?, [AddressInfo]) -> ()) {}
     func getTxHistory(skip: Int?, limit: Int?, completion: @escaping ([TxHistory]) -> Void) {}
     func getUnspentOutputs(address: String?, completion: @escaping ([UnspentOutput]) -> Void) {}
     func getSendMaxInfo(completion: @escaping (SendMaxInfo?) -> Void) {}

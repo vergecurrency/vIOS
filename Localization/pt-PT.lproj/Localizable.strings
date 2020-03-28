@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Sem o Tor";
 "alerts.termsOfUse.title" = "Ver os Termos e Condições da Carteira";
 "alerts.restart.title" = "Reiniciando...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Ops! Algo deu errado:";
+"errorView.retryLabel"                      = "Repetir";
+"errorView.helpLabel"                       = "Ou peça ajuda à Comunidade XVG";

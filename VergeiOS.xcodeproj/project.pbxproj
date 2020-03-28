@@ -25,8 +25,8 @@
 		A302D34321220A1E00EA8091 /* Notification+Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34221220A1E00EA8091 /* Notification+Names.swift */; };
 		A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D3482123448200EA8091 /* NSNumber+Currency.swift */; };
 		A302D34D21260F1C00EA8091 /* UIScrollView+Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */; };
-		A30510662427F30300CEAEAD /* AddressErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30510652427F30300CEAEAD /* AddressErrorView.xib */; };
-		A30510682427F32300CEAEAD /* AddressErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30510672427F32300CEAEAD /* AddressErrorView.swift */; };
+		A30510662427F30300CEAEAD /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A30510652427F30300CEAEAD /* ErrorView.xib */; };
+		A30510682427F32300CEAEAD /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30510672427F32300CEAEAD /* ErrorView.swift */; };
 		A305106A2427F70C00CEAEAD /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30510692427F70C00CEAEAD /* UIView+Layout.swift */; };
 		A305DD95210641C300911B64 /* MainTabbarNavigator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */; };
 		A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305DD98210666AD00911B64 /* SelectPinViewController.swift */; };
@@ -51,6 +51,7 @@
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31C2BCD242DF5B1004EDAEC /* EdgedFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */; };
+		A31C2BD4242E6174004EDAEC /* UIBarButtonItem+Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */; };
 		A3239D6422E60C2B00430F8B /* SweeperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6322E60C2B00430F8B /* SweeperHelper.swift */; };
 		A3239D6722E8EC9200430F8B /* PaperWalletTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */; };
 		A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */; };
@@ -433,8 +434,8 @@
 		A302D34221220A1E00EA8091 /* Notification+Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Names.swift"; sourceTree = "<group>"; };
 		A302D3482123448200EA8091 /* NSNumber+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNumber+Currency.swift"; sourceTree = "<group>"; };
 		A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Pagination.swift"; sourceTree = "<group>"; };
-		A30510652427F30300CEAEAD /* AddressErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressErrorView.xib; sourceTree = "<group>"; };
-		A30510672427F32300CEAEAD /* AddressErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressErrorView.swift; sourceTree = "<group>"; };
+		A30510652427F30300CEAEAD /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		A30510672427F32300CEAEAD /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		A30510692427F70C00CEAEAD /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabbarNavigator.storyboard; sourceTree = "<group>"; };
 		A305DD98210666AD00911B64 /* SelectPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPinViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +459,7 @@
 		A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClientProtocol.swift; sourceTree = "<group>"; };
 		A316B0AE215454FB00FF5200 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
 		A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedFormViewController.swift; sourceTree = "<group>"; };
+		A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Completion.swift"; sourceTree = "<group>"; };
 		A3239D6322E60C2B00430F8B /* SweeperHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeperHelper.swift; sourceTree = "<group>"; };
 		A3239D6622E8EC9200430F8B /* PaperWalletTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperWalletTableViewController.swift; sourceTree = "<group>"; };
 		A3239D6822E8ED1300430F8B /* WalletSweepingScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletSweepingScannerViewController.swift; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 				A30510692427F70C00CEAEAD /* UIView+Layout.swift */,
 				CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */,
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
+				A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -923,8 +926,8 @@
 				B2BD72E59AFE0FEE562DD1CE /* EFCountingLabel.swift */,
 				A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */,
 				A3AA2B8A2263DBFA000E4571 /* SubtitleImageView.swift */,
-				CAA6030F22BC3D3500EFCB24 /* Themes */,
 				A305DDAA21077FF800911B64 /* Buttons */,
+				A31C2BD2242E4DCF004EDAEC /* ErrorViews */,
 				A305DDAB2107801400911B64 /* Extensions */,
 				A324DAE4229EFB8800EF12D7 /* ImageViews */,
 				A305DDAC2107802E00911B64 /* Inputs */,
@@ -937,6 +940,7 @@
 				CAD929FE21E7E05900CD5EBA /* Siri */,
 				A302D3132120F52900EA8091 /* TableCellViews */,
 				CA63BA702282CE3000E2023A /* TableViews */,
+				CAA6030F22BC3D3500EFCB24 /* Themes */,
 				A3AA21FA2163F64F00160576 /* TorStatusIndicator */,
 				A302D2F7211F3F4C00EA8091 /* Views */,
 				B2BD7DE012024B6499CAA5BE /* WalletChart */,
@@ -1060,6 +1064,15 @@
 				CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		A31C2BD2242E4DCF004EDAEC /* ErrorViews */ = {
+			isa = PBXGroup;
+			children = (
+				A30510652427F30300CEAEAD /* ErrorView.xib */,
+				A30510672427F32300CEAEAD /* ErrorView.swift */,
+			);
+			path = ErrorViews;
 			sourceTree = "<group>";
 		};
 		A3239D6522E8EC3100430F8B /* WalletSweeping */ = {
@@ -1194,8 +1207,6 @@
 			isa = PBXGroup;
 			children = (
 				A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */,
-				A30510652427F30300CEAEAD /* AddressErrorView.xib */,
-				A30510672427F32300CEAEAD /* AddressErrorView.swift */,
 			);
 			path = Receive;
 			sourceTree = "<group>";
@@ -1922,7 +1933,7 @@
 				A376411B2108F0C700E04521 /* Cartfile in Resources */,
 				A338E6B92110D60F000D44EE /* ChartWalletSlideView.xib in Resources */,
 				A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */,
-				A30510662427F30300CEAEAD /* AddressErrorView.xib in Resources */,
+				A30510662427F30300CEAEAD /* ErrorView.xib in Resources */,
 				A305DDA52106940E00911B64 /* .gitignore in Resources */,
 				A3256647211372A7006FB08A /* Send.storyboard in Resources */,
 				A33B75C421A8917700030CCF /* Settings.storyboard in Resources */,
@@ -2206,6 +2217,7 @@
 				A302D3492123448200EA8091 /* NSNumber+Currency.swift in Sources */,
 				CA63BA722282CE7400E2023A /* LocalizableTableViewController.swift in Sources */,
 				A30D279B2260D2AD000377F8 /* WalletClientProtocol.swift in Sources */,
+				A31C2BD4242E6174004EDAEC /* UIBarButtonItem+Completion.swift in Sources */,
 				A324DAF222A43AE800EF12D7 /* ReceiveCardImageView.swift in Sources */,
 				A305DDA121068BCF00911B64 /* UIFont+Default.swift in Sources */,
 				A3A71C1122D90CA90098D861 /* BNTransaction.swift in Sources */,
@@ -2283,7 +2295,7 @@
 				B2BD724949D1989F82E187A8 /* CreateAddressErrorResponse.swift in Sources */,
 				B2BD7E7F646F8F31FC3B3F59 /* SendMaxInfo.swift in Sources */,
 				B2BD704898FBFB7CA67BC403 /* AddressBookRepository.swift in Sources */,
-				A30510682427F32300CEAEAD /* AddressErrorView.swift in Sources */,
+				A30510682427F32300CEAEAD /* ErrorView.swift in Sources */,
 				B2BD7E8CD1552F1D8D549A20 /* TransactionRepository.swift in Sources */,
 				CAA6031522BC441A00EFCB24 /* ThemeFactory.swift in Sources */,
 				B2BD7E5DF3C0081ADEB87BF6 /* Credentials.swift in Sources */,

@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Không dùng Tor";
 "alerts.termsOfUse.title" = "Xem điều khoảng sử dụng ví";
 "alerts.restart.title" = "Đang khởi động lại...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Rất tiếc! Đã xảy ra lỗi:";
+"errorView.retryLabel"                      = "Thử lại";
+"errorView.helpLabel"                       = "Hoặc yêu cầu trợ giúp từ cộng đồng XVG";

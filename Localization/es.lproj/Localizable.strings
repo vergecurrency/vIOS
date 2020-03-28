@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Sin Tor";
 "alerts.termsOfUse.title" = "Ver los Términos de Uso del monedero";
 "alerts.restart.title" = "Reiniciando...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Whoops! Algo salió mal:";
+"errorView.retryLabel"                      = "Procesar de nuevo";
+"errorView.helpLabel"                       = "O pedir ayuda a la comunidad XVG";

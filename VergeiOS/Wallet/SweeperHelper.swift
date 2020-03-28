@@ -111,14 +111,26 @@ class SweeperHelper: SweeperHelperProtocol {
         options.limit = 1
         options.reverse = true
 
-        self.walletClient.getMainAddresses(options: options) { addresses in
+        self.walletClient.getMainAddresses(options: options) { error, addresses in
+            if let error = error {
+                return completion(error, nil)
+            }
+
             // If the last address isn't used we return that one.
             if let address = addresses.first, self.transactionManager.all(byAddress: address.address).count == 0 {
                 return completion(nil, address.address)
             }
 
             // Otherwise generate a new one.
-            self.walletClient.createAddress { _, addressInfo, _ in
+            self.walletClient.createAddress { error, addressInfo, responseError in
+                if let error = error {
+                    return completion(error, nil)
+                }
+
+                if let responseError = responseError {
+                    return completion(responseError.getError(), nil)
+                }
+
                 guard let addressInfo = addressInfo else {
                     return
                 }
@@ -129,6 +141,6 @@ class SweeperHelper: SweeperHelperProtocol {
     }
 
     public func wifToPrivateKey(wif: String) throws -> PrivateKey {
-        return try PrivateKey(wif: wif)
+        try PrivateKey(wif: wif)
     }
 }

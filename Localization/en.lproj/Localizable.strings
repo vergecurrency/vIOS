@@ -627,3 +627,9 @@
 "alerts.unexpectedError.message"            = "Unexpected error thrown with message:";
 "alerts.restart.title"                      = "Restarting...";
 "alerts.loading.title"                      = "Loading...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Whoops! Something went wrong:";
+"errorView.retryLabel"                      = "Retry";
+"errorView.helpLabel"                       = "Or ask help from the XVG Community";

@@ -571,3 +571,9 @@
 "alerts.startTor.button2"                   = "不使用Tor";
 "alerts.termsOfUse.title"                   = "查看钱包使用条款";
 "alerts.restart.title"                      = "重启中...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "哎呀！ 出了点问题：";
+"errorView.retryLabel"                      = "重试";
+"errorView.helpLabel"                       = "或向XVG社区寻求帮助";

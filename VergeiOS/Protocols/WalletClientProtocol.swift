@@ -35,7 +35,7 @@ protocol WalletClientProtocol {
 
     func getMainAddresses(
         options: WalletAddressesOptions?,
-        completion: @escaping (_ addresses: [AddressInfo]) -> Void
+        completion: @escaping (_ error: Error?, _ addresses: [AddressInfo]) -> Void
     )
 
     func getTxHistory(

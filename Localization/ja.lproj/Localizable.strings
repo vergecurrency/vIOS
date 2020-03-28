@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Torを利用しない";
 "alerts.termsOfUse.title" = "ウォレットの利用規約を確認する";
 "alerts.restart.title" = "再起動中...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "おっと！ エラーが発生しました：";
+"errorView.retryLabel"                      = "リトライ";
+"errorView.helpLabel"                       = "または、XVGコミュニティに助けを求める";

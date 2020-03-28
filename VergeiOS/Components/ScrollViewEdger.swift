@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: find a better solution for this whole class.
 class ScrollViewEdger {
 
     var scrollView: UIScrollView!
@@ -23,7 +22,7 @@ class ScrollViewEdger {
     let animationDuration: Double = 0.2
 
     let shadowColor: UIColor = {
-        return UIColor.black.withAlphaComponent(0.6)
+        UIColor.black.withAlphaComponent(0.6)
     }()
 
     var verticalOffsetForBottom: CGFloat {
@@ -99,6 +98,8 @@ class ScrollViewEdger {
                     self.topShadow.alpha = 0.0
                 }
             }
+        } else {
+            self.topShadow.alpha = 0.0
         }
 
         if !hideBottomShadow {
@@ -122,5 +123,10 @@ class ScrollViewEdger {
                 }
             }
         }
+    }
+
+    func removeBottomShadow() {
+        self.hideBottomShadow = true
+        self.bottomShadow.alpha = 0.0
     }
 }

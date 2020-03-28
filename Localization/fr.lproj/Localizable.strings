@@ -453,3 +453,9 @@
 
 /*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Aucune transaction reçue pour le moment.";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Oups! Quelque chose a mal tourné:";
+"errorView.retryLabel"                      = "Retenter";
+"errorView.helpLabel"                       = "Ou demandez l'aide de la communauté XVG";

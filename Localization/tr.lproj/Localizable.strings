@@ -480,3 +480,9 @@
 "alerts.startTor.button2" = "Tor olmadan devam";
 "alerts.termsOfUse.title" = "Cüzdan Kullanım Koşullarını görüntüle";
 "alerts.restart.title" = "Yeniden başlıyor...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Tüh! Bir şeyler ters gitti:";
+"errorView.retryLabel"                      = "Yeniden Dene";
+"errorView.helpLabel"                       = "Veya XVG Topluluğundan yardım isteyin";

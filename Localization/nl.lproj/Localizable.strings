@@ -528,3 +528,9 @@
 "alerts.startTor.button2" = "Zonder Tor";
 "alerts.termsOfUse.title" = "Bekijk de Wallet Gebruiksvoorwaarden.";
 "alerts.restart.title" = "Opnieuw opstarten...";
+
+// ErrorView.xib
+
+"errorView.titleLabel"                      = "Oeps! Er is iets fout gegaan:";
+"errorView.retryLabel"                      = "Opnieuw Proberen";
+"errorView.helpLabel"                       = "Of vraag de XVG gemeenschap om hulp";
