@@ -295,15 +295,7 @@ class SendViewController: ThemeableViewController {
             )?.first as! SendingView
 
             let actionSheet = sendingView.makeActionSheet()
-
-            if let popoverController = actionSheet.popoverPresentationController {
-                popoverController.sourceView = self.view
-                popoverController.sourceRect = CGRect(x: self.view.bounds.midX,
-                                                      y: self.view.bounds.midY,
-                                                      width: 0,
-                                                      height: 0)
-                popoverController.permittedArrowDirections = []
-            }
+            actionSheet.centerPopoverController(to: self.view)
 
             self.present(actionSheet, animated: true) {
                 self.txTransponder.send(txp: txp) { txp, errorResponse, error  in
@@ -336,6 +328,7 @@ class SendViewController: ThemeableViewController {
             preferredStyle: .actionSheet
         )
 
+        actionSheet.centerPopoverController(to: self.view)
         actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .destructive) { _ in
             guard let txp = txp else {
                 return
@@ -344,16 +337,7 @@ class SendViewController: ThemeableViewController {
             self.walletClient.deleteTxProposal(txp: txp)
         })
 
-        if let popoverController = actionSheet.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = CGRect(x: self.view.bounds.midX,
-                                                  y: self.view.bounds.midY,
-                                                  width: 0,
-                                                  height: 0)
-            popoverController.permittedArrowDirections = []
-        }
-
-        present(actionSheet, animated: true)
+        self.present(actionSheet, animated: true)
     }
 
     func notifySelectedToMuchAmount() {

@@ -66,6 +66,8 @@ class SelectPinViewController: ThemeableViewController, KeyboardDelegate {
             preferredStyle: .actionSheet
         )
 
+        settings.centerPopoverController(to: self.view)
+
         let digitCounts = [4, 5, 6, 7, 8]
         for count in digitCounts {
             let action = UIAlertAction(

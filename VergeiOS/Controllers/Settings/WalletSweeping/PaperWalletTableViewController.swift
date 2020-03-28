@@ -147,17 +147,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
             )?.first as! ConfirmSweepView
 
             let alertController = confirmSweepView.makeActionSheet()
-            if let popoverController = alertController.popoverPresentationController {
-                popoverController.sourceView = self.view
-                popoverController.sourceRect = CGRect(
-                    x: self.view.bounds.midX,
-                    y: self.view.bounds.midY,
-                    width: 0,
-                    height: 0
-                )
-
-                popoverController.permittedArrowDirections = []
-            }
+            alertController.centerPopoverController(to: self.view)
 
             self.dismissLoadingAlert().then { _ in
                 self.present(alertController, animated: true)

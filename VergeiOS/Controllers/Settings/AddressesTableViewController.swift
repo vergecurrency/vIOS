@@ -170,6 +170,7 @@ class AddressesTableViewController: EdgedTableViewController {
             message: "addresses.informationTypeMessage".localized,
             preferredStyle: .actionSheet
         )
+        sheet.centerPopoverController(to: self.view)
 
         sheet.addAction(UIAlertAction(title: "addresses.address".localized, style: .default) { _ in
             self.toPasteboard(message: "addresses.addressCopied".localized,

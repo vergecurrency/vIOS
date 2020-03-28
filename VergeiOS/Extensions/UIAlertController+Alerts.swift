@@ -170,4 +170,18 @@ extension UIAlertController {
 
         return alert
     }
+    
+    func centerPopoverController(to view: UIView) {
+        if let popoverController = self.popoverPresentationController {
+            popoverController.sourceView = view
+            popoverController.sourceRect = CGRect(
+                x: view.bounds.midX,
+                y: view.bounds.midY,
+                width: 0,
+                height: 0
+            )
+
+            popoverController.permittedArrowDirections = []
+        }
+    }
 }

@@ -236,7 +236,7 @@
 		B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		B2BD7925E4F0300891E42803 /* SettingsViewServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74A8CBD24955A0BE06BE /* SettingsViewServiceProvider.swift */; };
 		B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */; };
-		B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */; };
+		B2BD7A0901F3913D19FF13B2 /* UIAlertController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7945C26A344BBFEAB261 /* UIAlertController+Alerts.swift */; };
 		B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */; };
 		B2BD7A6D183C729DC88C4E3B /* ReceiveViewServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD751221B17301B9F435E5 /* ReceiveViewServiceProvider.swift */; };
 		B2BD7A81D726B7C482B57EA8 /* ChartFilterToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD71B08FC506AC51C07E3B /* ChartFilterToolbar.swift */; };
@@ -660,7 +660,7 @@
 		B2BD78A6683D5C34785959E3 /* WalletClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletClient.swift; sourceTree = "<group>"; };
 		B2BD78C9C4831DD8B44AC041 /* WalletAddressesOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletAddressesOptions.swift; sourceTree = "<group>"; };
 		B2BD791F2A29BF10031F61A9 /* WalletID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletID.swift; sourceTree = "<group>"; };
-		B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Statics.swift"; sourceTree = "<group>"; };
+		B2BD7945C26A344BBFEAB261 /* UIAlertController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Alerts.swift"; sourceTree = "<group>"; };
 		B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletOptions.swift; sourceTree = "<group>"; };
 		B2BD7A3D8D516C3586332E99 /* TxTransponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxTransponder.swift; sourceTree = "<group>"; };
 		B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputOutput.swift; sourceTree = "<group>"; };
@@ -882,7 +882,7 @@
 				A302D3482123448200EA8091 /* NSNumber+Currency.swift */,
 				CA5FCC7D22842BD1002340A1 /* String+Localization.swift */,
 				A36F8A882146EE0F00304777 /* String+Subs.swift */,
-				B2BD7945C26A344BBFEAB261 /* UIAlertController+Statics.swift */,
+				B2BD7945C26A344BBFEAB261 /* UIAlertController+Alerts.swift */,
 				A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */,
 				CABF1481221061FD00F92CBC /* UIView+Actions.swift */,
 				A30510692427F70C00CEAEAD /* UIView+Layout.swift */,
@@ -2246,7 +2246,7 @@
 				B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */,
 				B2BD772D9991DC3D8C515D31 /* EFCountingLabel.swift in Sources */,
 				B2BD7C21A80B98CD8857B476 /* AbstractChartView.swift in Sources */,
-				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Statics.swift in Sources */,
+				B2BD7A0901F3913D19FF13B2 /* UIAlertController+Alerts.swift in Sources */,
 				CAD6F2A421FE4DDD00AA3162 /* WatchSyncManager.swift in Sources */,
 				CAE81C0222ED750C00E11782 /* SecureLabel.swift in Sources */,
 				B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */,
