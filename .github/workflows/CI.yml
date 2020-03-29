@@ -8,9 +8,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Select XCode 11.4
+      - name: Install Swift 5.2 Toolchain
         run: |
-          sudo xcode-select --switch /Applications/Xcode_11.4_beta.app/Contents/Developer
+          curl -O https://swift.org/builds/swift-5.2-release/xcode/swift-5.2-RELEASE/swift-5.2-RELEASE-osx.pkg
+          sudo installer -pkg swift-5.2-RELEASE-osx.pkg -target /
+          export TOOLCHAINS=swift
       - name: Cache Carthage modules
         uses: actions/cache@preview
         with:
@@ -23,7 +25,7 @@ jobs:
           bundle install
       - name: Carthage update
         run: |
-          chmod u+x install.sh && ./install.sh
+          carthage update --platform iOS --cache-builds --toolchain=
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
@@ -32,9 +34,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Select XCode 11.4
-        run: |
-          sudo xcode-select --switch /Applications/Xcode_11.4_beta.app/Contents/Developer
       - name: Cache Carthage modules
         uses: actions/cache@preview
         with:
