@@ -16,17 +16,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-carthage-
       - name: Cache Swift 5.2 Toolchain
-          uses: actions/cache@preview
-          with:
-            path: /Library/Developer/Toolchains
-            key: ${{ runner.os }}-swift-toolchain-${{ hashFiles('/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain') }}
-            restore-keys: |
-              ${{ runner.os }}-swift-toolchain-
+        uses: actions/cache@preview
+        with:
+          path: /Library/Developer/Toolchains
+          key: ${{ runner.os }}-swift-toolchain-${{ hashFiles('/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain') }}
+          restore-keys: |
+            ${{ runner.os }}-swift-toolchain-
       - name: Check file existence
-          id: check_files
-          uses: andstor/file-existence-action@v1
-          with:
-            files: "/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain"
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain"
       - name: Install Swift 5.2 Toolchain
         if: steps.check_files.outputs.files_exists == 'true'
         run: |
