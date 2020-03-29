@@ -25,11 +25,12 @@ jobs:
           bundle install
       - name: Carthage update
         run: |
-          carthage update --platform iOS --cache-builds
+          carthage update --platform iOS --cache-builds --toolchain=/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
   test:
+    needs: [build]
     runs-on: macOS-latest
 
     steps:
