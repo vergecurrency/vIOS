@@ -15,13 +15,13 @@ jobs:
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
             ${{ runner.os }}-carthage-
-      - uses: SwenVanZanten/setup-swift@master
-        with:
-          swift-version: "5.2"
       - name: Bundle Install
         run: |
           bundle install
       - name: Carthage update
+        uses: SwenVanZanten/setup-swift@master
+        with:
+          swift-version: "5.2"
         run: |
           carthage update --platform iOS --cache-builds
         env:
