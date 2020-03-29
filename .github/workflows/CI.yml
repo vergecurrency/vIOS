@@ -24,7 +24,7 @@ jobs:
           swift-version: "5.2"
       - name: Carthage update
         run: |
-          carthage update --platform iOS --cache-builds --toolchain /Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain
+          carthage update --platform iOS --cache-builds --toolchain org.swift.520202003241a
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
