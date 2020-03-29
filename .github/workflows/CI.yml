@@ -21,8 +21,8 @@ jobs:
       - name: Carthage update
         run: |
           carthage update --platform iOS --cache-builds
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     needs: [build]
