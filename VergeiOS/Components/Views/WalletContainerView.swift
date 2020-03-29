@@ -9,7 +9,6 @@
 import UIKit
 
 class WalletContainerView: UIView {
-
     let gl = CAGradientLayer()
 
     override func awakeFromNib() {
@@ -35,6 +34,13 @@ class WalletContainerView: UIView {
         self.layer.insertSublayer(self.gl, at: 0)
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.gl.locations = [0.0, 1.0]
+        self.gl.frame = self.frame
+        self.gl.setNeedsDisplay()
+    }
 }
 
 class WalletContainerBottomView: UIView {

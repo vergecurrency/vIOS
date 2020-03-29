@@ -10,7 +10,6 @@ import UIKit
 import Charts
 
 class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolbarDelegate {
-
     @IBOutlet weak var highestPriceLabel: EFCountingLabel!
     @IBOutlet weak var averagePriceLabel: EFCountingLabel!
     @IBOutlet weak var lowestPriceLabel: EFCountingLabel!
@@ -61,61 +60,70 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         super.draw(rect)
 
         let filterToolbarHeight: CGFloat = 44.0
-        filterToolbar.frame = CGRect(
+        self.filterToolbar.frame = CGRect(
             x: rect.origin.x,
-            y: chartView.bounds.height - filterToolbarHeight,
-            width: chartView.bounds.width,
+            y: self.chartView.bounds.height - filterToolbarHeight,
+            width: self.chartView.bounds.width,
             height: filterToolbarHeight
         )
 
-        priceChartView.frame = CGRect(
+        self.chartView.layer.cornerRadius = self.panelView.cornerRadius
+        self.chartView.clipsToBounds = true
+        self.layoutSubviews()
+
+        self.initialize()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        let filterToolbarHeight: CGFloat = 44.0
+        self.priceChartView.frame = CGRect(
             x: 0,
             y: 0,
-            width: chartView.frame.width,
-            height: chartView.frame.height - filterToolbarHeight
+            width: self.chartView.bounds.width,
+            height: self.chartView.bounds.height - filterToolbarHeight
         )
-        volumeChartView.frame = CGRect(
+        self.volumeChartView.frame = CGRect(
             x: 0,
-            y: chartView.frame.height - (chartView.frame.height * 0.5),
-            width: chartView.frame.width,
-            height: (chartView.frame.height * 0.5) - filterToolbarHeight
+            y: self.chartView.frame.height - (self.chartView.bounds.height * 0.5),
+            width: self.chartView.bounds.width,
+            height: (self.chartView.bounds.height * 0.5) - filterToolbarHeight
         )
 
-        chartView.layer.cornerRadius = panelView.cornerRadius
-        chartView.clipsToBounds = true
-
-        initialize()
+        self.priceChartView.setNeedsDisplay()
+        self.volumeChartView.setNeedsDisplay()
     }
 
     func initialize() {
-        if initialized {
+        if self.initialized {
             return
         }
 
-        initialized = true
+        self.initialized = true
 
-        loadChartData()
+        self.loadChartData()
 
-        filterToolbar.delegate = self
-        filterToolbar.initialize()
-        filterToolbar.select(filter: filter)
+        self.filterToolbar.delegate = self
+        self.filterToolbar.initialize()
+        self.filterToolbar.select(filter: self.filter)
 
         let priceLabelHandler: ((CGFloat) -> String) = { value in
-            return NSNumber(value: Double(value)).toBlankCurrency(fractDigits: 4, floating: false)
+            NSNumber(value: Double(value)).toBlankCurrency(fractDigits: 4, floating: false)
         }
 
-        highestPriceLabel.formatBlock = priceLabelHandler
-        highestPriceLabel.method = .easeInOut
-        averagePriceLabel.formatBlock = priceLabelHandler
-        averagePriceLabel.method = .easeInOut
-        lowestPriceLabel.formatBlock = priceLabelHandler
-        lowestPriceLabel.method = .easeInOut
+        self.highestPriceLabel.formatBlock = priceLabelHandler
+        self.highestPriceLabel.method = .easeInOut
+        self.averagePriceLabel.formatBlock = priceLabelHandler
+        self.averagePriceLabel.method = .easeInOut
+        self.lowestPriceLabel.formatBlock = priceLabelHandler
+        self.lowestPriceLabel.method = .easeInOut
     }
 
     @objc func didReceiveStats(notification: Notification) {
         if Int(Date.timeIntervalSinceReferenceDate) > Int(lastChangeFilter ?? 0.0) {
             print("Reload chart")
-            loadChartData()
+            self.loadChartData()
         }
     }
 
@@ -125,15 +133,15 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
     func didSelectChartFilter(filter: ChartFilterToolbar.Filter) {
         self.filter = filter
-        loadChartData()
+        self.loadChartData()
     }
 
     func loadChartData() {
         var priceData: [ChartDataEntry] = []
         var volumeData: [BarChartDataEntry] = []
-        priceChartView.set(chartData: priceData)
-        volumeChartView.set(chartData: volumeData)
-        lastChangeFilter = Date.timeIntervalSinceReferenceDate + Constants.fetchRateTimeout
+        self.priceChartView.set(chartData: priceData)
+        self.volumeChartView.set(chartData: volumeData)
+        self.lastChangeFilter = Date.timeIntervalSinceReferenceDate + Constants.fetchRateTimeout
 
         DispatchQueue.main.async {
             self.activityIndicator.startAnimating()
@@ -176,9 +184,9 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         }
 
         let duration = 1.0
-        highestPriceLabel.countFromCurrentValueTo(CGFloat(prices.max()!), withDuration: duration)
-        averagePriceLabel.countFromCurrentValueTo(CGFloat(prices.average), withDuration: duration)
-        lowestPriceLabel.countFromCurrentValueTo(CGFloat(prices.min()!), withDuration: duration)
+        self.highestPriceLabel.countFromCurrentValueTo(CGFloat(prices.max()!), withDuration: duration)
+        self.averagePriceLabel.countFromCurrentValueTo(CGFloat(prices.average), withDuration: duration)
+        self.lowestPriceLabel.countFromCurrentValueTo(CGFloat(prices.min()!), withDuration: duration)
     }
 
     func chartUrl() -> URL {

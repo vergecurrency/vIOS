@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,9 +40,9 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="0PT-JF-SIi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4c8-mN-iTo"/>
                 <constraint firstAttribute="trailing" secondItem="0PT-JF-SIi" secondAttribute="trailing" id="aIG-2j-zLx"/>
                 <constraint firstItem="0PT-JF-SIi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cLp-bH-rkC"/>
-                <constraint firstItem="0PT-JF-SIi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="deq-3W-2Kc"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

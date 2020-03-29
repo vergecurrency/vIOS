@@ -24,60 +24,68 @@ class TorStatusIndicator: UIWindow {
     var isShown = true
 
     func initialize() {
-        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: frameHeight())
-        self.torStatusIndicatorViewController =
-            TorStatusIndicatorViewController(nibName: "TorStatusIndicatorViewController",
-                                             bundle: .main)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: self.frameHeight())
+        self.torStatusIndicatorViewController = TorStatusIndicatorViewController(
+            nibName: "TorStatusIndicatorViewController",
+            bundle: .main
+        )
         self.torStatusIndicatorViewController?.view.frame = frame
         self.backgroundColor = .clear
 
-        self.windowLevel = UIWindow.Level.statusBar + 1
+        self.windowLevel = UIWindow.Level.statusBar - 2
         self.rootViewController = self.torStatusIndicatorViewController
 
         self.frame = frame
 
         self.layoutIfNeeded()
 
-        self.torStatusIndicatorViewController?.setHasNotch(hasNotch())
+        self.torStatusIndicatorViewController?.setHasNotch(self.hasNotch())
         self.makeKeyAndVisible()
         self.isUserInteractionEnabled = false
 
-        self.setStatus(defaultStatus)
+        self.setStatus(self.defaultStatus)
     }
 
     func hasNotch() -> Bool {
-        var hasNotch = false
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return false
+        }
+
         if #available(iOS 12.0, *) {
             if self.safeAreaInsets != UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0) {
-                hasNotch = true
+                return true
             }
         }
 
-        return hasNotch
+        return false
     }
 
     func frameHeight() -> CGFloat {
-        return hasNotch() ? 54 : 33
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return UIScreen.main.bounds.size.height - 1
+        }
+
+        return self.hasNotch() ? 54 : 33
     }
 
     func setStatus(_ status: TorStatusIndicator.Status) {
-        torStatusIndicatorViewController?.setStatus(status)
+        self.torStatusIndicatorViewController?.setStatus(status)
     }
 
     func refresh() {
-        torStatusIndicatorViewController?.setStatus(torStatusIndicatorViewController!.status)
+        self.torStatusIndicatorViewController?.setStatus(self.torStatusIndicatorViewController!.status)
     }
 
     func hide() {
-        toggleView(show: false)
+        self.toggleView(show: false)
     }
 
     func show() {
-        toggleView(show: true)
+        self.toggleView(show: true)
     }
 
     func toggleView(show: Bool) {
-        if isShown == show {
+        if self.isShown == show {
             return
         }
 

@@ -27,19 +27,19 @@ import UIKit
 
         self.backgroundColor = ThemeManager.shared.backgroundWhite()
 
-        if self.shadowLayer == nil {
-            self.shadowLayer = CAShapeLayer()
-            self.shadowLayer!.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.cornerRadius).cgPath
-            self.shadowLayer!.fillColor = self.backgroundColor?.cgColor
+        self.shadowLayer?.removeFromSuperlayer()
 
-            self.shadowLayer!.shadowColor = UIColor.darkGray.cgColor
-            self.shadowLayer!.shadowPath = self.shadowLayer!.path
-            self.shadowLayer!.shadowOffset = CGSize.zero
-            self.shadowLayer!.shadowOpacity = self.shadowOpacity
-            self.shadowLayer!.shadowRadius = self.shadowRadius
+        self.shadowLayer = CAShapeLayer()
+        self.shadowLayer!.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.cornerRadius).cgPath
+        self.shadowLayer!.fillColor = self.backgroundColor?.cgColor
 
-            self.layer.insertSublayer(self.shadowLayer!, at: 0)
-        }
+        self.shadowLayer!.shadowColor = UIColor.darkGray.cgColor
+        self.shadowLayer!.shadowPath = self.shadowLayer!.path
+        self.shadowLayer!.shadowOffset = CGSize.zero
+        self.shadowLayer!.shadowOpacity = self.shadowOpacity
+        self.shadowLayer!.shadowRadius = self.shadowRadius
+
+        self.layer.insertSublayer(self.shadowLayer!, at: 0)
 
         self.layer.cornerRadius = self.cornerRadius
     }

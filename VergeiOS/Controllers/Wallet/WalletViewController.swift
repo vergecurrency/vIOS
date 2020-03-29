@@ -22,10 +22,11 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
 
     var applicationRepository: ApplicationRepository!
     var fiatRateTicker: FiatRateTicker!
-    var walletSlides: [WalletSlideView] = []
+    private var walletSlides: [WalletSlideView] = []
+    private var pageBeforeLayoutSubviews: Int?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     override func viewDidLoad() {
@@ -47,6 +48,26 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
             name: .didChangeWalletAmount,
             object: nil
         )
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        self.pageBeforeLayoutSubviews = Int(
+            round(self.walletSlideScrollView.contentOffset.x / self.walletSlideScrollView.frame.width)
+        )
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        DispatchQueue.main.async {
+            self.setupWalletSlideScrollView()
+
+            if let page = self.pageBeforeLayoutSubviews {
+                self.walletSlideScrollView.scrollRectToVisible(self.walletSlides[page].frame, animated: false)
+            }
+        }
     }
 
     func setupSlides() {
@@ -89,6 +110,7 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
     }
 
     func setupWalletSlideScrollView() {
+        walletSlideScrollView.setNeedsDisplay()
         walletSlideScrollView.contentSize = CGSize(
             width: walletSlideScrollView.frame.width * CGFloat(walletSlides.count),
             height: walletSlideScrollView.frame.height
@@ -104,6 +126,7 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
                 width: slideWidth,
                 height: walletSlideScrollView.frame.height
             )
+            walletSlides[i].setNeedsDisplay()
         }
     }
 

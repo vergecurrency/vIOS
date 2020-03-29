@@ -101,4 +101,10 @@ class PinTextField: UIView {
         self.pinsFilled = 0
         self.draw(self.frame)
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.draw(self.frame)
+    }
 }

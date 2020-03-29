@@ -170,7 +170,7 @@ extension UIAlertController {
 
         return alert
     }
-    
+
     func centerPopoverController(to view: UIView) {
         if let popoverController = self.popoverPresentationController {
             popoverController.sourceView = view
