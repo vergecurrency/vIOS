@@ -8,6 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Cache Carthage modules
         uses: actions/cache@preview
         with:
@@ -21,8 +23,6 @@ jobs:
       - name: Carthage update
         run: |
           carthage update --platform iOS --cache-builds
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     needs: [build]
