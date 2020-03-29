@@ -3,11 +3,16 @@
 // Copyright (c) 2019 Verge Currency. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class SettingsViewServiceProvider: ServiceProvider {
 
     override func register() {
+        var tableViewStyle: UITableView.Style = .grouped
+        if #available(iOS 13.0, *) {
+            tableViewStyle = .insetGrouped
+        }
+
         container.storyboardInitCompleted (SettingsTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
@@ -44,14 +49,14 @@ class SettingsViewServiceProvider: ServiceProvider {
         }
 
         container.register (PaperWalletTableViewController.self) { r in
-            let controller = PaperWalletTableViewController(style: .grouped)
+            let controller = PaperWalletTableViewController(style: tableViewStyle)
             controller.sweeperHelper = r.resolve(SweeperHelperProtocol.self)
 
             return controller
         }
 
         container.register (ElectrumMnemonicTableViewController.self) { r in
-            let controller = ElectrumMnemonicTableViewController(style: .grouped)
+            let controller = ElectrumMnemonicTableViewController(style: tableViewStyle)
             controller.sweeperHelper = r.resolve(SweeperHelperProtocol.self)
 
             return controller
