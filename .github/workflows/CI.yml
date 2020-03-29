@@ -8,11 +8,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Install Swift 5.2 Toolchain
-        run: |
-          curl -O https://swift.org/builds/swift-5.2-release/xcode/swift-5.2-RELEASE/swift-5.2-RELEASE-osx.pkg
-          sudo installer -pkg swift-5.2-RELEASE-osx.pkg -target /
-          export TOOLCHAINS=swift
       - name: Cache Carthage modules
         uses: actions/cache@preview
         with:
@@ -20,12 +15,30 @@ jobs:
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
           restore-keys: |
             ${{ runner.os }}-carthage-
+      - name: Cache Swift 5.2 Toolchain
+          uses: actions/cache@preview
+          with:
+            path: /Library/Developer/Toolchains
+            key: ${{ runner.os }}-swift-toolchain-${{ hashFiles('/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain') }}
+            restore-keys: |
+              ${{ runner.os }}-swift-toolchain-
+      - name: Check file existence
+          id: check_files
+          uses: andstor/file-existence-action@v1
+          with:
+            files: "/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain"
+      - name: Install Swift 5.2 Toolchain
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: |
+          curl -O https://swift.org/builds/swift-5.2-release/xcode/swift-5.2-RELEASE/swift-5.2-RELEASE-osx.pkg
+          sudo installer -pkg swift-5.2-RELEASE-osx.pkg -target /
+          export TOOLCHAINS=swift
       - name: Bundle Install
         run: |
           bundle install
       - name: Carthage update
         run: |
-          carthage update --platform iOS --cache-builds --toolchain=/Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain
+          carthage update --platform iOS --cache-builds --toolchain /Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
