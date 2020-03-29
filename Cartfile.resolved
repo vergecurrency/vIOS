@@ -1,5 +1,5 @@
 binary "https://icepa.github.io/Tor.framework/Tor.json" "400.6.3"
-binary "https://vergecurrency.github.io/BitcoinKit/BitcoinKit.json" "1.2.2"
+github "vergecurrency/BitcoinKit" "1.2.2"
 github "HamzaGhazouani/HGPlaceholders" "0.4.0"
 github "JohnEstropia/CoreStore" "73b7fcd9071616ead14d3c486e8d1076b29f8bf2"
 github "SwiftyJSON/SwiftyJSON" "5.0.0"

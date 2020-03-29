@@ -20,9 +20,13 @@ jobs:
       - name: Bundle Install
         run: |
           bundle install
+      - name: Use Swift 5.2
+        uses: YOCKOW/Action-setup-swift@master
+        with:
+          swift-version: '5.2'
       - name: Carthage update
         run: |
-          carthage update --platform iOS --cache-builds
+          carthage update --platform iOS --cache-builds --toolchain org.swift.520202003241a
 
   test:
     needs: [build]
