@@ -25,7 +25,7 @@ jobs:
           bundle install
       - name: Carthage update
         run: |
-          carthage update --platform iOS --cache-builds --toolchain=
+          carthage update --platform iOS --cache-builds
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
