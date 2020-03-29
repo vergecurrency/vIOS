@@ -18,10 +18,11 @@ jobs:
       - name: Bundle Install
         run: |
           bundle install
-      - name: Carthage update
+      - name: Use Swift 5.2
         uses: SwenVanZanten/setup-swift@master
         with:
           swift-version: "5.2"
+      - name: Carthage update
         run: |
           carthage update --platform iOS --cache-builds --toolchain /Library/Developer/Toolchains/swift-5.2-RELEASE.xctoolchain
         env:
