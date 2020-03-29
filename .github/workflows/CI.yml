@@ -8,6 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Select XCode 11.4
+        run: |
+          xcode-select --switch /Applications/Xcode_11.4_beta.app/Contents/Developer
       - name: Cache Carthage modules
         uses: actions/cache@preview
         with:
@@ -21,12 +24,17 @@ jobs:
       - name: Carthage update
         run: |
           chmod u+x install.sh && ./install.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
   test:
     runs-on: macOS-latest
 
     steps:
       - uses: actions/checkout@v1
+      - name: Select XCode 11.4
+        run: |
+          xcode-select --switch /Applications/Xcode_11.4_beta.app/Contents/Developer
       - name: Cache Carthage modules
         uses: actions/cache@preview
         with:
