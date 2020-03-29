@@ -1,0 +1,39 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache Carthage modules
+        uses: actions/cache@preview
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-carthage-
+      - name: Bundle Install
+        run: |
+          bundle install
+      - name: Carthage update
+        run: |
+          chmod u+x install.sh && ./install.sh
+
+  test:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache Carthage modules
+        uses: actions/cache@preview
+        with:
+          path: Carthage
+          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-carthage-
+      - name: Run tests
+        run: |
+          fastlane test
