@@ -19,14 +19,14 @@ jobs:
         run: |
           bundle install
       - name: Use Swift 5.2
-        uses: SwenVanZanten/setup-swift@master
+        uses: YOCKOW/Action-setup-swift@master
         with:
-          swift-version: "5.2"
+          swift-version: '5.2'
       - name: Carthage update
         run: |
           carthage update --platform iOS --cache-builds --toolchain org.swift.520202003241a
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     needs: [build]
