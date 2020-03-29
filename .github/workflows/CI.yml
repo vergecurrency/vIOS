@@ -25,7 +25,7 @@ jobs:
       - name: Carthage update
         run: |
           carthage update --platform iOS --cache-builds --toolchain org.swift.520202003241a
-        with:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test:
