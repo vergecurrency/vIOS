@@ -7,16 +7,14 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v1
       - name: Cache Carthage modules
-        uses: actions/cache@preview
+        uses: actions/cache@v1
+        id: carthage-cache
         with:
           path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-carthage-
       - name: Bundle Install
         run: |
           bundle install
@@ -25,22 +23,24 @@ jobs:
         with:
           swift-version: '5.2'
       - name: Carthage update
+        if: steps.carthage-cache.outputs.cache-hit != 'true'
         run: |
-          carthage update --platform iOS --cache-builds --toolchain org.swift.520202003241a
+          brew install automake autoconf libtool gettext libevent openssl
+          ln -s /usr/local/bin/glibtoolize /usr/local/bin/libtoolize
+          carthage bootstrap --platform iOS --cache-builds --toolchain org.swift.520202003241a
 
   test:
     needs: [build]
     runs-on: macOS-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
       - name: Cache Carthage modules
-        uses: actions/cache@preview
+        uses: actions/cache@v1
         with:
           path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-carthage-
       - name: Run tests
         run: |
           fastlane test
