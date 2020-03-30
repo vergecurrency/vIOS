@@ -27,7 +27,7 @@ jobs:
         run: |
           brew install automake autoconf libtool gettext libevent openssl
           ln -s /usr/local/bin/glibtoolize /usr/local/bin/libtoolize
-          carthage bootstrap --platform iOS --cache-builds --use-ssh --toolchain org.swift.520202003241a
+          carthage bootstrap --platform iOS --cache-builds --toolchain org.swift.520202003241a
 
   test:
     needs: [build]
