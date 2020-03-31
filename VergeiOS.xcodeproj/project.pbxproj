@@ -1283,6 +1283,7 @@
 				A305DDA6210694ED00911B64 /* README.md */,
 				A376411A2108F0C700E04521 /* Cartfile */,
 				A305DDA42106940E00911B64 /* .gitignore */,
+				A36B17CF2433F7E100D327D8 /* Sources */,
 				A33F6A6E20EEE485001492C2 /* VergeiOS */,
 				A3256679211CBA9A006FB08A /* VergeiOSTests */,
 				A3256695211CBBE2006FB08A /* VergeiOSUITests */,
@@ -1314,24 +1315,11 @@
 			isa = PBXGroup;
 			children = (
 				A33F6A6F20EEE485001492C2 /* AppDelegate.swift */,
-				B2BD74133C8DA2D5802055B3 /* Application.swift */,
 				A33F6A7920EEE487001492C2 /* Assets.xcassets */,
 				A33F6A7E20EEE487001492C2 /* Info.plist */,
 				A3C5C3CD21985B11003B6C02 /* sjcl.js */,
 				A31A99242208F3A800213F3E /* Assets */,
-				A3A71C1422DA64C90098D861 /* Blockchain */,
-				A305DD9A21066AE600911B64 /* Components */,
 				A305DD9121052A6A00911B64 /* Controllers */,
-				A305DDB82107BB7F00911B64 /* Delegates */,
-				A302D34B21260EE800EA8091 /* Extensions */,
-				A376411F2108FC0200E04521 /* Http */,
-				07B9F44B2107C69D00871990 /* Models */,
-				A30D27992260D289000377F8 /* Protocols */,
-				A3E32B1A225D56AE001A8B0E /* Providers */,
-				A36B17BB2432A12F00D327D8 /* Subscribers */,
-				B2BD7EF5670C29839E5FC53D /* Repositories */,
-				A376412F210AE1CA00E04521 /* Utils */,
-				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
 			);
 			path = VergeiOS;
 			sourceTree = "<group>";
@@ -1348,6 +1336,26 @@
 				A36B17C524335D1300D327D8 /* WatchSubscriber.swift */,
 			);
 			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		A36B17CF2433F7E100D327D8 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B2BD74133C8DA2D5802055B3 /* Application.swift */,
+				A3A71C1422DA64C90098D861 /* Blockchain */,
+				A305DD9A21066AE600911B64 /* Components */,
+				A305DDB82107BB7F00911B64 /* Delegates */,
+				A302D34B21260EE800EA8091 /* Extensions */,
+				A376411F2108FC0200E04521 /* Http */,
+				07B9F44B2107C69D00871990 /* Models */,
+				A30D27992260D289000377F8 /* Protocols */,
+				A3E32B1A225D56AE001A8B0E /* Providers */,
+				A36B17BB2432A12F00D327D8 /* Subscribers */,
+				B2BD7EF5670C29839E5FC53D /* Repositories */,
+				A376412F210AE1CA00E04521 /* Utils */,
+				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		A37641112108E79800E04521 /* Frameworks */ = {
