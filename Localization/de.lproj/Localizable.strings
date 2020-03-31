@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "XVG Balance";
 "wallet.balanceTitle" = "Balance";
+"wallet.notification.txpTitle" = "Ungültiger Saldo";
+"wallet.notification.txpMessage" = "%d Fehlgeschlagener Transaktionsvorschlag gefunden";
 
 /*----------------------------------------
  Settings.storyboard

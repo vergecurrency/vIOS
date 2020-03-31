@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "SỐ DƯ XVG";
 "wallet.balanceTitle" = "SỐ DƯ";
+"wallet.notification.txpTitle" = "Số dư không hợp lệ";
+"wallet.notification.txpMessage" = "%d đề xuất giao dịch thất bại được tìm thấy";
 
 /*----------------------------------------
  Settings.storyboard

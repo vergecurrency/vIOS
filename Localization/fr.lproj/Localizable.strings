@@ -147,6 +147,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "SOLDE XVG";
 "wallet.balanceTitle" = "SOLDE";
+"wallet.notification.txpTitle" = "Solde invalide";
+"wallet.notification.txpMessage" = "%d Proposition de transaction échouée trouvée";
 
 /*----------------------------------------
  Settings.storyboard

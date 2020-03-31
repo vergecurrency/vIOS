@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "XVG SALDO";
 "wallet.balanceTitle" = "SALDO";
+"wallet.notification.txpTitle" = "Ogiltig Saldo";
+"wallet.notification.txpMessage" = "%d Felaktigt transaktionsförslag hittades";
 
 /*----------------------------------------
  Settings.storyboard

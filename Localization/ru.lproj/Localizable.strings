@@ -176,6 +176,8 @@
 
 "wallet.xvgBalanceTitle"                    = "БАЛАНС XVG";
 "wallet.balanceTitle"                       = "БАЛАНС";
+"wallet.notification.txpTitle"              = "Неверный баланс";
+"wallet.notification.txpMessage"            = "%d Обнаружено ошибочное предложение по транзакции";
 
 // ----------------------------------------
 // Settings.storyboard

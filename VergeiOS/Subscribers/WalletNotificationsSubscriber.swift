@@ -47,8 +47,8 @@ class WalletNotificationsSubscriber: Subscriber {
         }
 
         walletNotificationView.warning(
-            title: "Inaccurate Balance",
-            message: "\(proposals.count) Transaction proposal found"
+            title: "wallet.notification.txpTitle".localized,
+            message: String(format: "wallet.notification.txpMessage".localized, proposals.count)
         ) {
             let controller = UIStoryboard.createFromStoryboard(
                 name: "Settings",

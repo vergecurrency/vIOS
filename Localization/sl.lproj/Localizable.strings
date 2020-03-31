@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "XVG STANJE";
 "wallet.balanceTitle" = "STANJE";
+"wallet.notification.txpTitle" = "Neveljavno Stanje";
+"wallet.notification.txpMessage" = "%d ni bilo mogoče najti predloga za transakcijo";
 
 /*----------------------------------------
  Settings.storyboard

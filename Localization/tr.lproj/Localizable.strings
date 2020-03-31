@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "XVG bakiyesi";
 "wallet.balanceTitle" = "Bakiye";
+"wallet.notification.txpTitle" = "Geçersiz Bakiye";
+"wallet.notification.txpMessage" = "%d Başarısız işlem teklifi bulundu";
 
 /*----------------------------------------
  Settings.storyboard

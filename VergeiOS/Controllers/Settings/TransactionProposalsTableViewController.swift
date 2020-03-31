@@ -10,6 +10,7 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
     var walletClient: WalletClient!
     var proposals: [TxProposalResponse] = []
 
+    var initialLoaded: Bool = false
     var hasProposals: Bool {
         proposals.count > 0
     }
@@ -30,6 +31,8 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
         refreshControl?.beginRefreshing()
 
         self.walletClient.getTxProposals { proposals, error in
+            self.initialLoaded = true
+
             if let error = error {
                 return self.showLoadingError(error: error)
             }
@@ -48,19 +51,19 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hasProposals ? proposals.count : 1
+        self.hasProposals ? self.proposals.count : (self.initialLoaded ? 1 : 0)
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return hasProposals ? "settings.transactions.removeProposal".localized : ""
+        self.hasProposals ? "settings.transactions.removeProposal".localized : ""
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if !hasProposals {
+        if !self.hasProposals {
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             cell.themeable = true
             cell.textLabel?.text = "settings.transactions.noProposals".localized

@@ -147,6 +147,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "STANJE XVG-a";
 "wallet.balanceTitle" = "STANJE RAČUNA";
+"wallet.notification.txpTitle" = "Nevažeća ravnoteža";
+"wallet.notification.txpMessage" = "%d Pronađen neuspjeli prijedlog transakcije";
 
 /*----------------------------------------
  Settings.storyboard

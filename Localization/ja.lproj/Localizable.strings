@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "XVG残高";
 "wallet.balanceTitle" = "残高";
+"wallet.notification.txpTitle" = "残高が無効です";
+"wallet.notification.txpMessage" = "%d失敗したトランザクション提案が見つかりました";
 
 /*----------------------------------------
  Settings.storyboard

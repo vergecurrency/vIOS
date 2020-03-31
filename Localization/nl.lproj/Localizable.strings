@@ -149,6 +149,8 @@
  ----------------------------------------*/
 "wallet.xvgBalanceTitle" = "XVG SALDO";
 "wallet.balanceTitle" = "SALDO";
+"wallet.notification.txpTitle" = "Ongeldig Saldo";
+"wallet.notification.txpMessage" = "%d Gefaalde transactie voorstel(len) gevonden";
 
 /*----------------------------------------
  Settings.storyboard

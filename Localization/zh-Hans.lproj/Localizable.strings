@@ -176,6 +176,8 @@
 
 "wallet.xvgBalanceTitle"                    = "XVG余额";
 "wallet.balanceTitle"                       = "余额";
+"wallet.notification.txpTitle"              = "无效余额";
+"wallet.notification.txpMessage"            = "找到%d个失败的交易建议";
 
 // ----------------------------------------
 // Settings.storyboard
