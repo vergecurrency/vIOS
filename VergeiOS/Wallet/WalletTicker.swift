@@ -7,37 +7,37 @@ import Foundation
 
 class WalletTicker {
 
-    private var client: WalletClient!
+    private var client: WalletClientProtocol!
     private var applicationRepository: ApplicationRepository!
     private var transactionManager: TransactionManager!
 
     private var started: Bool = false
     private var interval: Timer?
 
-    init(client: WalletClient, applicationRepository: ApplicationRepository, transactionManager: TransactionManager) {
+    init(client: WalletClientProtocol, applicationRepository: ApplicationRepository, transactionManager: TransactionManager) {
         self.client = client
         self.applicationRepository = applicationRepository
         self.transactionManager = transactionManager
     }
 
     public func start() {
-        if started {
+        if self.started {
             return
         }
 
-        if !applicationRepository.setup {
+        if !self.applicationRepository.setup {
             return
         }
 
-        fetchWalletAmount()
-        fetchTransactions()
+        self.fetchWalletAmount()
+        self.fetchTransactions()
 
         interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchWalletTimeout, repeats: true) { _ in
             self.fetchWalletAmount()
             self.fetchTransactions()
         }
 
-        started = true
+        self.started = true
         print("Wallet ticker started...")
     }
 
@@ -48,6 +48,11 @@ class WalletTicker {
         started = false
 
         print("Wallet ticker stopped...")
+    }
+
+    func tick() {
+        self.fetchWalletAmount()
+        self.fetchTransactions()
     }
 
     private func fetchWalletAmount() {

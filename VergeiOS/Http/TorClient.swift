@@ -57,7 +57,7 @@ class TorClient {
     }
 
     // Start the tor client.
-    func start(completion: @escaping () -> Void) {
+    func start(completion: @escaping () -> Void = {}) {
         // If already operational don't start a new client.
         if isOperational || turnedOff() {
             NotificationCenter.default.post(name: .didFinishTorStart, object: self)

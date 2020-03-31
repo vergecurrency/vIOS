@@ -121,6 +121,14 @@
 		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
 		A3647286217CF9A9001B1B18 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3647285217CF9A9001B1B18 /* Eureka.framework */; };
 		A3647288217E604B001B1B18 /* CoreStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3647287217E604B001B1B18 /* CoreStore.framework */; };
+		A36B17BE2432A15800D327D8 /* WalletNotificationsSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */; };
+		A36B17C02432A17C00D327D8 /* SubscriberProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */; };
+		A36B17C224334E8D00D327D8 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C124334E8D00D327D8 /* Subscriber.swift */; };
+		A36B17C4243350A600D327D8 /* TorConnectionSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C3243350A600D327D8 /* TorConnectionSubscriber.swift */; };
+		A36B17C624335D1300D327D8 /* WatchSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C524335D1300D327D8 /* WatchSubscriber.swift */; };
+		A36B17C824335E5400D327D8 /* WalletSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C724335E5400D327D8 /* WalletSubscriber.swift */; };
+		A36B17CA2433605200D327D8 /* CurrencySubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C92433605200D327D8 /* CurrencySubscriber.swift */; };
+		A36B17CC243360FE00D327D8 /* ThemeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */; };
 		A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */; };
 		A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
 		A36F8A8F21471B4300304777 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */; };
@@ -184,6 +192,8 @@
 		A3B2E26A214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E268214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift */; };
 		A3B2E26B214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E269214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib */; };
 		A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */; };
+		A3B83F7824322F2000869E61 /* WalletNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B83F7724322F2000869E61 /* WalletNotificationView.swift */; };
+		A3B83F7A24322F2800869E61 /* WalletNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B83F7924322F2800869E61 /* WalletNotificationView.xib */; };
 		A3BA6ECC23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA6ECB23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift */; };
 		A3C5C3CE21985B11003B6C02 /* sjcl.js in Resources */ = {isa = PBXBuildFile; fileRef = A3C5C3CD21985B11003B6C02 /* sjcl.js */; };
 		A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A068215661C20018599A /* AddressValidatorTest.swift */; };
@@ -550,6 +560,14 @@
 		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A3647285217CF9A9001B1B18 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		A3647287217E604B001B1B18 /* CoreStore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreStore.framework; path = Carthage/Build/iOS/CoreStore.framework; sourceTree = "<group>"; };
+		A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNotificationsSubscriber.swift; sourceTree = "<group>"; };
+		A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberProtocol.swift; sourceTree = "<group>"; };
+		A36B17C124334E8D00D327D8 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		A36B17C3243350A600D327D8 /* TorConnectionSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorConnectionSubscriber.swift; sourceTree = "<group>"; };
+		A36B17C524335D1300D327D8 /* WatchSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSubscriber.swift; sourceTree = "<group>"; };
+		A36B17C724335E5400D327D8 /* WalletSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSubscriber.swift; sourceTree = "<group>"; };
+		A36B17C92433605200D327D8 /* CurrencySubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySubscriber.swift; sourceTree = "<group>"; };
+		A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSubscriber.swift; sourceTree = "<group>"; };
 		A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedTableViewController.swift; sourceTree = "<group>"; };
 		A36F8A882146EE0F00304777 /* String+Subs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subs.swift"; sourceTree = "<group>"; };
 		A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
@@ -618,6 +636,8 @@
 		A3B2E268214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		A3B2E269214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
 		A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewEdger.swift; sourceTree = "<group>"; };
+		A3B83F7724322F2000869E61 /* WalletNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNotificationView.swift; sourceTree = "<group>"; };
+		A3B83F7924322F2800869E61 /* WalletNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletNotificationView.xib; sourceTree = "<group>"; };
 		A3BA6ECB23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumMnemonicTableViewController.swift; sourceTree = "<group>"; };
 		A3C5C3CD21985B11003B6C02 /* sjcl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjcl.js; sourceTree = "<group>"; };
 		A3D3A068215661C20018599A /* AddressValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidatorTest.swift; sourceTree = "<group>"; };
@@ -1051,6 +1071,7 @@
 				A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */,
 				A3478B4A236480230018149C /* WalletManagerProtocol.swift */,
 				A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */,
+				A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1304,11 +1325,26 @@
 				07B9F44B2107C69D00871990 /* Models */,
 				A30D27992260D289000377F8 /* Protocols */,
 				A3E32B1A225D56AE001A8B0E /* Providers */,
+				A36B17BB2432A12F00D327D8 /* Subscribers */,
 				B2BD7EF5670C29839E5FC53D /* Repositories */,
 				A376412F210AE1CA00E04521 /* Utils */,
 				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
 			);
 			path = VergeiOS;
+			sourceTree = "<group>";
+		};
+		A36B17BB2432A12F00D327D8 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				A36B17C92433605200D327D8 /* CurrencySubscriber.swift */,
+				A36B17C124334E8D00D327D8 /* Subscriber.swift */,
+				A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */,
+				A36B17C3243350A600D327D8 /* TorConnectionSubscriber.swift */,
+				A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */,
+				A36B17C724335E5400D327D8 /* WalletSubscriber.swift */,
+				A36B17C524335D1300D327D8 /* WatchSubscriber.swift */,
+			);
+			path = Subscribers;
 			sourceTree = "<group>";
 		};
 		A37641112108E79800E04521 /* Frameworks */ = {
@@ -1435,6 +1471,8 @@
 				B2BD7EF009F29B5AAA801A96 /* NotificationManager.swift */,
 				B2BD7FCD299CE8410048C780 /* NotificationViewController.swift */,
 				A3408E4B217333B5009F0C9D /* NotificationViewController.xib */,
+				A3B83F7724322F2000869E61 /* WalletNotificationView.swift */,
+				A3B83F7924322F2800869E61 /* WalletNotificationView.xib */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1965,6 +2003,7 @@
 				A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */,
 				A3C5C3CE21985B11003B6C02 /* sjcl.js in Resources */,
 				A38D6F7C21BBFAA700280FFE /* TorSetup3View.xib in Resources */,
+				A3B83F7A24322F2800869E61 /* WalletNotificationView.xib in Resources */,
 				A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */,
 				A3B2E26B214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib in Resources */,
 				CA2B4A25226B398A00115B2D /* Localizable.strings in Resources */,
@@ -2190,6 +2229,7 @@
 				A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */,
 				CA5FCC7E22842BD1002340A1 /* String+Localization.swift in Sources */,
 				CAD92A0021E7E07100CD5EBA /* Intents.intentdefinition in Sources */,
+				A36B17CC243360FE00D327D8 /* ThemeSubscriber.swift in Sources */,
 				A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */,
 				A38D6F8221C17EFB00280FFE /* AddressesTableViewController.swift in Sources */,
 				A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */,
@@ -2206,9 +2246,11 @@
 				A305DD99210666AD00911B64 /* SelectPinViewController.swift in Sources */,
 				A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */,
 				A305DDA32106917400911B64 /* RoundedButton.swift in Sources */,
+				A36B17C224334E8D00D327D8 /* Subscriber.swift in Sources */,
 				CAF4F6DE222AD0DA00096B71 /* WatchInfo.swift in Sources */,
 				07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */,
 				A302D2FB211F64FB00EA8091 /* Contact.swift in Sources */,
+				A36B17C02432A17C00D327D8 /* SubscriberProtocol.swift in Sources */,
 				A3256665211A3B61006FB08A /* FiatRate.swift in Sources */,
 				A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */,
 				A398B20F212B2886004ACB73 /* UIWindow+VisibleViewController.swift in Sources */,
@@ -2223,11 +2265,14 @@
 				A305DDC52107C9E300911B64 /* BackKey.swift in Sources */,
 				A3AA2B812263D212000E4571 /* SubtitleLabel.swift in Sources */,
 				A3AA22042165706C00160576 /* TorConnectionTableViewController.swift in Sources */,
+				A36B17C4243350A600D327D8 /* TorConnectionSubscriber.swift in Sources */,
 				A338E6A6210DE489000D44EE /* Timeout.swift in Sources */,
 				A305DDB72107A6CB00911B64 /* PanelView.swift in Sources */,
 				CA9EE9E822D111A70040C3FF /* AppIconCollectionViewCell.swift in Sources */,
+				A36B17CA2433605200D327D8 /* CurrencySubscriber.swift in Sources */,
 				A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */,
 				CA9EE9E622D10EE90040C3FF /* AppIconsTableViewCell.swift in Sources */,
+				A36B17C824335E5400D327D8 /* WalletSubscriber.swift in Sources */,
 				A36F8A8F21471B4300304777 /* TransactionTableViewController.swift in Sources */,
 				A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */,
 				A3A71C0B22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift in Sources */,
@@ -2258,6 +2303,7 @@
 				B2BD7A81D726B7C482B57EA8 /* ChartFilterToolbar.swift in Sources */,
 				B2BD71BB2B06C6F10205ECBC /* ChartFilterToolbarDelegate.swift in Sources */,
 				B2BD704D491D821519B7EEAB /* PriceChartView.swift in Sources */,
+				A36B17BE2432A15800D327D8 /* WalletNotificationsSubscriber.swift in Sources */,
 				B2BD777C8DE885732CFA2D1E /* ChartInfo.swift in Sources */,
 				B2BD74F4EC93C6025BE4DC28 /* VolumeChartView.swift in Sources */,
 				A3E32B1C225D56D9001A8B0E /* WalletServiceProvider.swift in Sources */,
@@ -2282,6 +2328,7 @@
 				B2BD70891B57E89471E5B492 /* WalletAddressesOptions.swift in Sources */,
 				B2BD70FA0DF99FC892D91961 /* AddressInfo.swift in Sources */,
 				B2BD7EAD955C16295629FF73 /* AddressBalance.swift in Sources */,
+				A36B17C624335D1300D327D8 /* WatchSubscriber.swift in Sources */,
 				B2BD7F005F419E6C2A8B8A9A /* TxHistory.swift in Sources */,
 				A3EA38E022FA0E8700E89CF0 /* ConfirmSweepView.swift in Sources */,
 				B2BD706DF8820D17FE68DCFE /* InputOutput.swift in Sources */,
@@ -2335,6 +2382,7 @@
 				B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */,
 				A3EA38DE22FA0C5900E89CF0 /* TableSection.swift in Sources */,
 				CAA6031322BC3E3B00EFCB24 /* UIView+Themeable.swift in Sources */,
+				A3B83F7824322F2000869E61 /* WalletNotificationView.swift in Sources */,
 				A3478B4B236480230018149C /* WalletManagerProtocol.swift in Sources */,
 				B2BD7762464A503831C13F2F /* TransactionServiceProvider.swift in Sources */,
 			);

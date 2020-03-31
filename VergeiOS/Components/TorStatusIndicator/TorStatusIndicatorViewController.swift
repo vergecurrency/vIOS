@@ -53,6 +53,7 @@ class TorStatusIndicatorViewController: UIViewController {
             self.indicatorView.tintColor = ThemeManager.shared.vergeRed()
         }
 
+        self.view.layoutIfNeeded()
         self.indicatorView.layoutIfNeeded()
     }
 

@@ -299,7 +299,14 @@ class SendViewController: ThemeableViewController {
 
             self.present(actionSheet, animated: true) {
                 self.txTransponder.send(txp: txp) { txp, errorResponse, error  in
-                    if let errorResponse = errorResponse {
+                    var thrownError: TxProposalErrorResponse? = nil
+                    if let error = error {
+                        thrownError = TxProposalErrorResponse(code: "500", message: error.localizedDescription)
+                    } else if let errorResponse = errorResponse {
+                        thrownError = errorResponse
+                    }
+
+                    if let thrownError = thrownError {
                         actionSheet.dismiss(animated: true) {
                             self.showTransactionError(errorResponse, txp: txp)
                         }
@@ -308,8 +315,7 @@ class SendViewController: ThemeableViewController {
 
                     self.didChangeSendTransaction(WalletTransactionFactory())
 
-                    let timeout = (error == nil) ? 3.0 : 0.0
-                    _ = setTimeout(timeout) {
+                    _ = setTimeout(3.0) {
                         actionSheet.dismiss(animated: true)
                     }
                 }

@@ -128,32 +128,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 vc.dismiss(animated: true)
 
                 // Start the tor client
-                Application.container.resolve(TorClient.self)?.start {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                        self.torClientStarted()
-                    }
-                }
+                Application.container.resolve(TorClient.self)?.start()
             }
 
             print("Show unlock view")
             topController.present(vc, animated: false)
-        }
-    }
-
-    func torClientStarted() {
-        // Start the price ticker.
-        Application.container.resolve(FiatRateTicker.self)?.start()
-
-        let appRepo = Application.container.resolve(ApplicationRepository.self)
-        if !appRepo!.setup {
-            return
-        }
-
-        // Start the wallet ticker.
-        Application.container.resolve(WalletTicker.self)?.start()
-
-        if #available(iOS 12.0, *) {
-            IntentsManager.donateIntents()
         }
     }
 

@@ -27,11 +27,16 @@ extension Notification.Name {
     static let didTurnOffTor = Notification.Name("didTurnOffTor")
     static let errorDuringTorConnection = Notification.Name("errorDuringTorConnection")
 
+    static let didLoadWalletViewController = Notification.Name("didLoadWalletViewController")
+
     static let demandSendView = Notification.Name("demandSendView")
     static let didPublishTx = Notification.Name("didPublishTx")
     static let didSignTx = Notification.Name("didSignTx")
     static let didBroadcastTx = Notification.Name("didBroadcastTx")
     static let didReceiveTransaction = Notification.Name("didReceiveTransaction")
+    static let didAbortTransactionWithError = Notification.Name("didAbortTransactionWithError")
+    static let didResolveTransactionProposals = Notification.Name("didResolveTransactionProposals")
+    static let didFindTransactionProposals = Notification.Name("didFindTransactionProposals")
 
     static let didChangeTheme = Notification.Name("didChangeTheme")
 

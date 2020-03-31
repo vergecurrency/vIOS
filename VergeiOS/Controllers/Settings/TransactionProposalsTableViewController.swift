@@ -14,6 +14,17 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
         proposals.count > 0
     }
 
+    static func createFromStoryBoard() -> TransactionProposalsTableViewController {
+        guard let controller = UIStoryboard(name: "Settings", bundle: nil)
+            .instantiateViewController(
+                withIdentifier: "TransactionProposalsTableViewController"
+            ) as? TransactionProposalsTableViewController else {
+            fatalError("Can't create TransactionProposalsTableViewController from the StoryBoard")
+        }
+
+        return controller
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +43,12 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
         self.walletClient.getTxProposals { proposals, error in
             if let error = error {
                 return self.showLoadingError(error: error)
+            }
+
+            if proposals.isEmpty {
+                NotificationCenter.default.post(name: .didResolveTransactionProposals, object: nil)
+            } else {
+                NotificationCenter.default.post(name: .didFindTransactionProposals, object: proposals)
             }
 
             self.proposals = proposals
@@ -99,7 +116,7 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
             }
         })
 
-        present(sheet, animated: true)
+        self.present(sheet, animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
     }
 

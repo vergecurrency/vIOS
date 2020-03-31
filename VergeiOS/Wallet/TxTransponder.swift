@@ -32,6 +32,7 @@ class TxTransponder {
 
     public func send(txp: TxProposalResponse, completion: @escaping CompletionType) {
         self.completion = completion
+        self.step = .publish
 
         // Publish the tx proposal and start the sequence.
         self.walletClient.publishTxProposal(txp: txp, completion: self.completionHandler)
@@ -66,13 +67,15 @@ class TxTransponder {
         _ error: Error?
     ) {
         if let errorResponse = errorResponse {
-            print(errorResponse)
+            NotificationCenter.default.post(name: .didAbortTransactionWithError, object: errorResponse)
+
             self.completion(self.previousTxp, errorResponse, error)
             return
         }
 
         if let error = error {
-            print(error)
+            NotificationCenter.default.post(name: .didAbortTransactionWithError, object: error)
+
             self.completion(txp, errorResponse, error)
             return
         }

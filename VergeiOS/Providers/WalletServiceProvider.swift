@@ -88,7 +88,7 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerWalletTicker() {
         container.register(WalletTicker.self) { r in
-            let walletClient = r.resolve(WalletClient.self)!
+            let walletClient = r.resolve(WalletClientProtocol.self)!
             let appRepo = r.resolve(ApplicationRepository.self)!
             let transactionManager = r.resolve(TransactionManager.self)!
 

@@ -12,6 +12,7 @@ import SwiftyJSON
 class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var backgroundView: WalletContainerView!
+    @IBOutlet weak var walletNotificationView: WalletNotificationView!
     @IBOutlet weak var xvgBalanceLabel: UILabel!
     @IBOutlet weak var pairBalanceLabel: UILabel!
     @IBOutlet weak var pairSymbolBalanceLabel: UILabel!
@@ -34,6 +35,8 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
 
         self.setupSlides()
         self.setStats()
+
+        NotificationCenter.default.post(name: .didLoadWalletViewController, object: self)
 
         NotificationCenter.default.addObserver(
             self,

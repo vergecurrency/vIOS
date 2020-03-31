@@ -15,6 +15,7 @@ class Application {
     private let serviceProviders: [ServiceProvider.Type] = [
         ApplicationServiceProvider.self,
         CoreStoreServiceProvider.self,
+        EventServiceProvider.self,
         HttpServiceProvider.self,
         BlockchainServiceProvider.self,
         WalletServiceProvider.self,
@@ -23,8 +24,7 @@ class Application {
         TransactionServiceProvider.self,
         SendViewServiceProvider.self,
         ReceiveViewServiceProvider.self,
-        SettingsViewServiceProvider.self,
-        EventServiceProvider.self
+        SettingsViewServiceProvider.self
     ]
 
     private var initializedServiceProviders: [ServiceProvider] = []
