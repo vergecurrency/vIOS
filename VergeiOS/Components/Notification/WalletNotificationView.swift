@@ -57,6 +57,11 @@ class WalletNotificationView: UIView {
         self.imageView.isHidden = true
         self.titleLabel.text = title
         self.messageLabel.text = message
+
+        if !self.isHidden {
+            return
+        }
+
         self.alpha = 0.0
         self.layoutIfNeeded()
 
