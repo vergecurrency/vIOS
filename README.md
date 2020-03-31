@@ -25,6 +25,7 @@ This iOS wallet provides an easy and secure wallet on your iOS device. With **To
 * Share your receive card
 * Private keys are yours
 * Possibility to choose your own wallet service
+* Private key & Electrum Mnemonic sweeping
 * Touch ID & Face ID support
 * Apple Watch support (balance, fiat rate and receive address)
 * Siri integrated
