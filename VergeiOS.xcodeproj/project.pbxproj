@@ -129,6 +129,7 @@
 		A36B17C824335E5400D327D8 /* WalletSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C724335E5400D327D8 /* WalletSubscriber.swift */; };
 		A36B17CA2433605200D327D8 /* CurrencySubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C92433605200D327D8 /* CurrencySubscriber.swift */; };
 		A36B17CC243360FE00D327D8 /* ThemeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */; };
+		A36B17CE2433DAEA00D327D8 /* UIStoryboard+Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17CD2433DAEA00D327D8 /* UIStoryboard+Statics.swift */; };
 		A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */; };
 		A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
 		A36F8A8F21471B4300304777 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */; };
@@ -568,6 +569,7 @@
 		A36B17C724335E5400D327D8 /* WalletSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSubscriber.swift; sourceTree = "<group>"; };
 		A36B17C92433605200D327D8 /* CurrencySubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySubscriber.swift; sourceTree = "<group>"; };
 		A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSubscriber.swift; sourceTree = "<group>"; };
+		A36B17CD2433DAEA00D327D8 /* UIStoryboard+Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Statics.swift"; sourceTree = "<group>"; };
 		A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedTableViewController.swift; sourceTree = "<group>"; };
 		A36F8A882146EE0F00304777 /* String+Subs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subs.swift"; sourceTree = "<group>"; };
 		A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
@@ -912,12 +914,13 @@
 				CA5FCC7D22842BD1002340A1 /* String+Localization.swift */,
 				A36F8A882146EE0F00304777 /* String+Subs.swift */,
 				B2BD7945C26A344BBFEAB261 /* UIAlertController+Alerts.swift */,
+				A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */,
 				A302D34C21260F1C00EA8091 /* UIScrollView+Pagination.swift */,
+				A36B17CD2433DAEA00D327D8 /* UIStoryboard+Statics.swift */,
 				CABF1481221061FD00F92CBC /* UIView+Actions.swift */,
 				A30510692427F70C00CEAEAD /* UIView+Layout.swift */,
 				CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */,
 				A398B20E212B2886004ACB73 /* UIWindow+VisibleViewController.swift */,
-				A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2236,6 +2239,7 @@
 				A324DAEC229F65A700EF12D7 /* UnlockBackgroundImageView.swift in Sources */,
 				A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
+				A36B17CE2433DAEA00D327D8 /* UIStoryboard+Statics.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
 				A3BA6ECC23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift in Sources */,

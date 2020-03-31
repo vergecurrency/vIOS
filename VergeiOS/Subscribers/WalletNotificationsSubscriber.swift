@@ -50,7 +50,10 @@ class WalletNotificationsSubscriber: Subscriber {
             title: "Inaccurate Balance",
             message: "\(proposals.count) Transaction proposal found"
         ) {
-            let controller = TransactionProposalsTableViewController.createFromStoryBoard()
+            let controller = UIStoryboard.createFromStoryboard(
+                name: "Settings",
+                type: TransactionProposalsTableViewController.self
+            )
             let navigationController = UINavigationController(rootViewController: controller)
             let closeButton = UIBarButtonItem(image: UIImage(named: "Close"), style: .plain) { _ in
                 controller.dismiss(animated: true)

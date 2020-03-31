@@ -13,9 +13,11 @@ class TxTransponder {
         case broadcast = 2
     }
 
-    typealias CompletionType = (_ txp: TxProposalResponse?,
-                                _ errorResponse: TxProposalErrorResponse?,
-                                _ error: Error?) -> Void
+    typealias CompletionType = (
+        _ txp: TxProposalResponse?,
+        _ errorResponse: TxProposalErrorResponse?,
+        _ error: Error?
+    ) -> Void
 
     private var walletClient: WalletClientProtocol!
     private var completion: CompletionType!

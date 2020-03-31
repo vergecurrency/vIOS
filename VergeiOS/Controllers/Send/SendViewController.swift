@@ -308,7 +308,7 @@ class SendViewController: ThemeableViewController {
 
                     if let thrownError = thrownError {
                         actionSheet.dismiss(animated: true) {
-                            self.showTransactionError(errorResponse, txp: txp)
+                            self.showTransactionError(thrownError, txp: txp)
                         }
                         return
                     }

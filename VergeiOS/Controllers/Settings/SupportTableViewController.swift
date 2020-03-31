@@ -28,17 +28,6 @@ class SupportTableViewController: EdgedTableViewController {
         SupportLink(name: "GitHub", link: "https://github.com/vergecurrency/vIOS")
     ]
 
-    static func createFromStoryBoard() -> SupportTableViewController {
-        guard let controller = UIStoryboard(name: "Settings", bundle: nil)
-            .instantiateViewController(
-                withIdentifier: "SupportTableViewController"
-            ) as? SupportTableViewController else {
-            fatalError("Can't create SupportTableViewController from the StoryBoard")
-        }
-
-        return controller
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

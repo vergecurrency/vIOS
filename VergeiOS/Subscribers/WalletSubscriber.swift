@@ -69,7 +69,8 @@ class WalletSubscriber: Subscriber {
             .didDisconnectWallet: #selector(didDisconnectWallet(notification:)),
             .didBroadcastTx: #selector(didBroadcastTx(notification:)),
             .didResolveTransactionProposals: #selector(updateBalance(notification:)),
-            .didFindTransactionProposals: #selector(updateBalance(notification:))
+            .didFindTransactionProposals: #selector(updateBalance(notification:)),
+            .didAbortTransactionWithError: #selector(updateBalance(notification:))
         ]
     }
 }

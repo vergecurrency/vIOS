@@ -51,7 +51,10 @@ class ErrorView: UIView {
     }
 
     @IBAction func askHelp(_ sender: UIButton) {
-        let supportTableViewController = SupportTableViewController.createFromStoryBoard()
+        let supportTableViewController = UIStoryboard.createFromStoryboard(
+            name: "Settings",
+            type: SupportTableViewController.self
+        )
 
         guard let parent = self.parentContainerViewController() else {
             fatalError("Couldn't find parent container view controller")

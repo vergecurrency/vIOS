@@ -14,17 +14,6 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
         proposals.count > 0
     }
 
-    static func createFromStoryBoard() -> TransactionProposalsTableViewController {
-        guard let controller = UIStoryboard(name: "Settings", bundle: nil)
-            .instantiateViewController(
-                withIdentifier: "TransactionProposalsTableViewController"
-            ) as? TransactionProposalsTableViewController else {
-            fatalError("Can't create TransactionProposalsTableViewController from the StoryBoard")
-        }
-
-        return controller
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
