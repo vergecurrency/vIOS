@@ -26,9 +26,11 @@ protocol WalletClientProtocol {
     func scanAddresses(completion: @escaping (_ error: Error?) -> Void)
 
     func createAddress(
-        completion: @escaping (_ error: Error?,
-                               _ address: AddressInfo?,
-                               _ createAddressErrorResponse: CreateAddressErrorResponse?) -> Void
+        completion: @escaping (
+            _ error: Error?,
+            _ address: AddressInfo?,
+            _ createAddressErrorResponse: CreateAddressErrorResponse?
+        ) -> Void
     )
 
     func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void)
@@ -53,30 +55,38 @@ protocol WalletClientProtocol {
 
     func createTxProposal(
         proposal: TxProposal,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
+        completion: @escaping (
+            _ txp: TxProposalResponse?,
+            _ errorResponse: TxProposalErrorResponse?,
+            _ error: Error?
+        ) -> Void
     )
 
     func publishTxProposal(
         txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
+        completion: @escaping (
+            _ txp: TxProposalResponse?,
+            _ errorResponse: TxProposalErrorResponse?,
+            _ error: Error?
+        ) -> Void
     )
 
     func signTxProposal(
         txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
+        completion: @escaping (
+            _ txp: TxProposalResponse?,
+            _ errorResponse: TxProposalErrorResponse?,
+            _ error: Error?
+        ) -> Void
     )
 
     func broadcastTxProposal(
         txp: TxProposalResponse,
-        completion: @escaping (_ txp: TxProposalResponse?,
-                               _ errorResponse: TxProposalErrorResponse?,
-                               _ error: Error?) -> Void
+        completion: @escaping (
+            _ txp: TxProposalResponse?,
+            _ errorResponse: TxProposalErrorResponse?,
+            _ error: Error?
+        ) -> Void
     )
 
     func rejectTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void)

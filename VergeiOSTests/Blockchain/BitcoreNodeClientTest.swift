@@ -16,7 +16,7 @@ class BitcoreNodeClientTest: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.client = BitcoreNodeClient(baseUrl: "/", torClient: self.torClient!)
+        // self.client = BitcoreNodeClient(baseUrl: "/", torClient: self.torClient!)
     }
 
     override func tearDownWithError() throws {
