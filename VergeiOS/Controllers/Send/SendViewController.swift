@@ -299,7 +299,7 @@ class SendViewController: ThemeableViewController {
 
             self.present(actionSheet, animated: true) {
                 self.txTransponder.send(txp: txp) { txp, errorResponse, error  in
-                    var thrownError: TxProposalErrorResponse? = nil
+                    var thrownError: TxProposalErrorResponse?
                     if let error = error {
                         thrownError = TxProposalErrorResponse(code: "500", message: error.localizedDescription)
                     } else if let errorResponse = errorResponse {
