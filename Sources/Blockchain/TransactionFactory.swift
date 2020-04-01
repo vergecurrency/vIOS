@@ -28,7 +28,7 @@ class TransactionFactory: TransactionFactoryProtocol {
         }
 
         let fee = UInt64(ceil(size / 1000) * 100000)
-        let amount = balance.confirmed - fee
+        let amount = UInt64(max(Int(balance.confirmed) - Int(fee), 0))
 
         guard let lockingScriptTo = Script(address: toAddress) else {
             throw TransactionFactoryError.addressToScriptError(address: toAddress)
