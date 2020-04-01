@@ -95,3 +95,13 @@ protocol WalletClientProtocol {
     func resetServiceUrl(baseUrl: String)
     func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials
 }
+
+extension WalletClientProtocol {
+    func scanAddresses(completion: @escaping (_ error: Error?) -> Void = {_ in }) {
+        self.scanAddresses(completion: completion)
+    }
+
+    public func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+        self.deleteTxProposal(txp: txp, completion: completion)
+    }
+}

@@ -266,7 +266,7 @@ class WalletClientMock: WalletClientProtocol {
     func signTxProposal(txp: TxProposalResponse, completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void) {}
     func broadcastTxProposal(txp: TxProposalResponse, completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void) {}
     func rejectTxProposal(txp: TxProposalResponse, completion: @escaping (Error?) -> Void) {}
-    func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (Error?) -> Void) {}
+    func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (Error?) -> Void = {_ in }) {}
     func getTxProposals(completion: @escaping ([TxProposalResponse], Error?) -> Void) {}
     func resetServiceUrl(baseUrl: String) {}
     func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials {

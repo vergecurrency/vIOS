@@ -6,7 +6,6 @@
 import Foundation
 
 class TransactionManager {
-
     private var walletClient: WalletClientProtocol!
     private var transactionRepository: TransactionRepository!
 
