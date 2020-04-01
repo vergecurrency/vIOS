@@ -689,7 +689,7 @@ extension WalletClient {
 
         let amount = txp.amount
         let totalAmount: UInt64 = unspentTransactions.reduce(0) { $0 + $1.output.value }
-        let change: UInt64 = totalAmount - amount - txp.fee
+        let change: UInt64 = UInt64(max(Int(totalAmount) - Int(amount) - Int(txp.fee), 0))
 
         guard let lockingScriptChange = Script(address: changeAddress) else {
             throw WalletClientError.addressToScriptError(address: changeAddress)
