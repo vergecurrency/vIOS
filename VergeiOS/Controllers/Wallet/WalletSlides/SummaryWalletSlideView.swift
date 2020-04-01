@@ -28,14 +28,13 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
     private var interval: Timer?
     private var fiatRateInfo: FiatRate? {
-        return self.fiatRateTicker.rateInfo
+        return self.applicationRepository.latestRateInfo
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
-        self.fiatRateTicker = Application.container.resolve(FiatRateTicker.self)!
 
         NotificationCenter.default.addObserver(
             self,
@@ -133,7 +132,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     }
 
     @IBAction func refreshData(sender: Any) {
-        self.fiatRateTicker.fetch()
+        self.fiatRateTicker.tick()
     }
 
     override func updateColors() {

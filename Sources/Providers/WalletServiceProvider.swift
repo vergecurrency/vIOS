@@ -67,9 +67,9 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerTransactionFactory() {
         container.register(WalletTransactionFactory.self) { r in
-            let fiatRateTracker = r.resolve(FiatRateTicker.self)!
+            let applicationRepository = r.resolve(ApplicationRepository.self)!
 
-            return WalletTransactionFactory(fiatRateTracker: fiatRateTracker)
+            return WalletTransactionFactory(applicationRepository: applicationRepository)
         }
     }
 

@@ -31,7 +31,6 @@ class SendViewController: ThemeableViewController {
     var txTransponder: TxTransponderProtocol!
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClientProtocol!
-    var fiatRateTicker: FiatRateTicker!
     var waitingForConfirmationPopover: Bool = false
 
     weak var confirmButtonInterval: Timer?
@@ -165,7 +164,7 @@ class SendViewController: ThemeableViewController {
     }
 
     func convertXvgToFiat(_ amount: NSNumber) -> NSNumber? {
-        if let xvgInfo = self.fiatRateTicker.rateInfo {
+        if let xvgInfo = self.applicationRepository.latestRateInfo {
             return NSNumber(value: amount.doubleValue * xvgInfo.price)
         }
 
@@ -313,7 +312,9 @@ class SendViewController: ThemeableViewController {
                         return
                     }
 
-                    self.didChangeSendTransaction(WalletTransactionFactory())
+                    self.didChangeSendTransaction(
+                        WalletTransactionFactory(applicationRepository: self.applicationRepository)
+                    )
 
                     _ = setTimeout(3.0) {
                         actionSheet.dismiss(animated: true)
@@ -366,16 +367,16 @@ class SendViewController: ThemeableViewController {
         let amount = textField.getNumber().doubleValue
 
         txFactory.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
-        didChangeSendTransaction(txFactory)
+        self.didChangeSendTransaction(txFactory)
     }
 
     @objc func setMaximumAmount() {
         txFactory.setBy(currency: "XVG", amount: walletAmount)
-        didChangeSendTransaction(txFactory)
+        self.didChangeSendTransaction(txFactory)
     }
 
     @objc func clearTransactionDetails() {
-        didChangeSendTransaction(WalletTransactionFactory())
+        self.didChangeSendTransaction(WalletTransactionFactory(applicationRepository: self.applicationRepository))
     }
 }
 

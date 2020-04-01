@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
 
-            let transaction = WalletTransactionFactory()
+            let transaction = Application.container.resolve(WalletTransactionFactory.self)!
             transaction.address = address!
             transaction.amount = amount ?? 0.0
 

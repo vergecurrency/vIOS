@@ -32,7 +32,6 @@ class ReceiveViewController: ThemeableViewController {
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClientProtocol!
     var transactionManager: TransactionManager!
-    var fiatRateTicker: FiatRateTicker!
     var currentQrCode: QRCode?
 
     var address = ""
@@ -228,15 +227,15 @@ class ReceiveViewController: ThemeableViewController {
     }
 
     @IBAction func switchCurrency(_ sender: Any) {
-        currency = (currency == .XVG) ? .FIAT : .XVG
+        self.currency = (self.currency == .XVG) ? .FIAT : .XVG
         var newAmount = ""
-        if let xvgInfo = self.fiatRateTicker.rateInfo {
-            if currency == .XVG {
-                currencyLabel.text = "XVG"
-                newAmount = String(Int(amount * 100))
+        if let xvgInfo = self.applicationRepository.latestRateInfo {
+            if self.currency == .XVG {
+                self.currencyLabel.text = "XVG"
+                newAmount = String(Int(self.amount * 100))
             } else {
-                currencyLabel.text = applicationRepository.currency
-                newAmount = String(Int((amount * 100) * xvgInfo.price))
+                self.currencyLabel.text = self.applicationRepository.currency
+                newAmount = String(Int((self.amount * 100) * xvgInfo.price))
             }
         }
 
@@ -297,7 +296,7 @@ class ReceiveViewController: ThemeableViewController {
         self.amount = textField.getNumber().doubleValue
 
         if currency == .FIAT {
-            if let xvgInfo = self.fiatRateTicker.rateInfo {
+            if let xvgInfo = self.applicationRepository.latestRateInfo {
                 self.amount /= xvgInfo.price
             }
         }

@@ -14,6 +14,9 @@ class ApplicationRepository {
     private let keychain = KeychainSwift(keyPrefix: "verge_")
     private let userDefaults = UserDefaults.standard
 
+    // Store the latest fiat rate on application level.
+    var latestRateInfo: FiatRate?
+
     // Is the wallet already setup?
     var setup: Bool {
         return self.mnemonic?.count == 12 && (self.passphrase?.count ?? 0) > 7 && self.pin != "" && self.walletId != nil

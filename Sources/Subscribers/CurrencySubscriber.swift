@@ -9,9 +9,9 @@
 import Foundation
 
 class CurrencySubscriber: Subscriber {
-    private let fiatRateTicker: FiatRateTicker
+    private let fiatRateTicker: TickerProtocol
 
-    init(fiatRateTicker: FiatRateTicker) {
+    init(fiatRateTicker: TickerProtocol) {
         self.fiatRateTicker = fiatRateTicker
     }
 
@@ -19,7 +19,7 @@ class CurrencySubscriber: Subscriber {
         DispatchQueue.main.async {
             print("Currency changed 💰")
 
-            self.fiatRateTicker.fetch()
+            self.fiatRateTicker.tick()
         }
     }
 

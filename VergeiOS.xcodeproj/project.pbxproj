@@ -133,6 +133,7 @@
 		A36B17D22433F9A800D327D8 /* BitcoreNodeClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D12433F9A800D327D8 /* BitcoreNodeClientTest.swift */; };
 		A36B17D42433FA3700D327D8 /* TorClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D32433FA3700D327D8 /* TorClientProtocol.swift */; };
 		A36B17D62434764700D327D8 /* TxTransponderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D52434764700D327D8 /* TxTransponderProtocol.swift */; };
+		A36B17D82434BFF600D327D8 /* TickerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D72434BFF600D327D8 /* TickerProtocol.swift */; };
 		A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */; };
 		A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
 		A36F8A8F21471B4300304777 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */; };
@@ -576,6 +577,7 @@
 		A36B17D12433F9A800D327D8 /* BitcoreNodeClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoreNodeClientTest.swift; sourceTree = "<group>"; };
 		A36B17D32433FA3700D327D8 /* TorClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClientProtocol.swift; sourceTree = "<group>"; };
 		A36B17D52434764700D327D8 /* TxTransponderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderProtocol.swift; sourceTree = "<group>"; };
+		A36B17D72434BFF600D327D8 /* TickerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerProtocol.swift; sourceTree = "<group>"; };
 		A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedTableViewController.swift; sourceTree = "<group>"; };
 		A36F8A882146EE0F00304777 /* String+Subs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subs.swift"; sourceTree = "<group>"; };
 		A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
@@ -1077,6 +1079,7 @@
 				A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */,
 				A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */,
 				A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */,
+				A36B17D72434BFF600D327D8 /* TickerProtocol.swift */,
 				A36B17D32433FA3700D327D8 /* TorClientProtocol.swift */,
 				A3A71C1722DA66B80098D861 /* TransactionFactoryProtocol.swift */,
 				A36B17D52434764700D327D8 /* TxTransponderProtocol.swift */,
@@ -2267,6 +2270,7 @@
 				A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */,
 				A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */,
 				A36B17CE2433DAEA00D327D8 /* UIStoryboard+Statics.swift in Sources */,
+				A36B17D82434BFF600D327D8 /* TickerProtocol.swift in Sources */,
 				0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */,
 				A338E6BF2110D64C000D44EE /* SummaryWalletSlideView.swift in Sources */,
 				A3BA6ECC23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift in Sources */,

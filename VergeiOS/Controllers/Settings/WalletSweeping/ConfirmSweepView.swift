@@ -56,9 +56,9 @@ class ConfirmSweepView: UIView {
         self.totalXvgAmountLabel.text = amount.toXvgCurrency()
         self.recipientAddressLabel.text = address
 
-        let fiatRateTicker = Application.container.resolve(FiatRateTicker.self)
+        let applicationRepository = Application.container.resolve(ApplicationRepository.self)
 
-        if let xvgInfo = fiatRateTicker?.rateInfo {
+        if let xvgInfo = applicationRepository?.latestRateInfo {
             let totalFiat = amount.doubleValue * xvgInfo.price
 
             self.totalFiatAmountLabel.text = NSNumber(value: totalFiat).toPairCurrency()

@@ -61,22 +61,22 @@ class ConfirmSendView: UIView {
 
         let output = txp.outputs.first!
 
-        sendingAmountLabel.text = amount.toXvgCurrency()
-        transactionFeeAmountLabel.text = fee.toXvgCurrency()
-        totalXvgAmountLabel.text = total.toXvgCurrency()
-        recipientAddressLabel.text = (output.stealth ?? false)
+        self.sendingAmountLabel.text = amount.toXvgCurrency()
+        self.transactionFeeAmountLabel.text = fee.toXvgCurrency()
+        self.totalXvgAmountLabel.text = total.toXvgCurrency()
+        self.recipientAddressLabel.text = (output.stealth ?? false)
             ? "send.confirm.resolvedStealth".localized + " 🕵️‍♀️"
             : output.toAddress
 
-        let fiatRateTicker = Application.container.resolve(FiatRateTicker.self)
+        let applicationRepository = Application.container.resolve(ApplicationRepository.self)
 
-        if let xvgInfo = fiatRateTicker?.rateInfo {
+        if let xvgInfo = applicationRepository?.latestRateInfo {
             let totalFiat = total.doubleValue * xvgInfo.price
 
-            totalFiatAmountLabel.text = NSNumber(value: totalFiat).toPairCurrency()
+            self.totalFiatAmountLabel.text = NSNumber(value: totalFiat).toPairCurrency()
         }
 
-        activityIndicatorView.removeFromSuperview()
+        self.activityIndicatorView.removeFromSuperview()
     }
 
 }

@@ -12,7 +12,6 @@ class ReceiveViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
             c.transactionManager = r.resolve(TransactionManager.self)
-            c.fiatRateTicker = r.resolve(FiatRateTicker.self)
         }
     }
 

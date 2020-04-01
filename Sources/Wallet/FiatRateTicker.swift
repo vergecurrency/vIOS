@@ -8,14 +8,11 @@
 
 import Foundation
 
-class FiatRateTicker {
-
+class FiatRateTicker: TickerProtocol {
     private var started: Bool = false
     private var interval: Timer?
-
-    var applicationRepository: ApplicationRepository!
-    var statisicsClient: RatesClient!
-    var rateInfo: FiatRate?
+    private var applicationRepository: ApplicationRepository!
+    private var statisicsClient: RatesClient!
 
     init (applicationRepository: ApplicationRepository, statisicsClient: RatesClient) {
         self.applicationRepository = applicationRepository
@@ -24,36 +21,36 @@ class FiatRateTicker {
 
     // Start the fiat rate ticker.
     func start() {
-        if started || !applicationRepository.setup {
+        if self.started || !self.applicationRepository.setup {
             return
         }
 
-        fetch()
+        self.tick()
 
-        interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchRateTimeout, repeats: true) { _ in
-            self.fetch()
+        self.interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchRateTimeout, repeats: true) { _ in
+            self.tick()
         }
 
-        started = true
+        self.started = true
         print("Fiat rate ticker started...")
     }
 
     // Stop the price ticker.
     func stop() {
-        interval?.invalidate()
-        started = false
+        self.interval?.invalidate()
+        self.started = false
 
         print("Fiat rate ticker stopped...")
     }
 
     // Fetch statistics from the API and notify all absorbers.
-    @objc func fetch() {
+    func tick() {
         print("Fetching new stats")
-        statisicsClient.infoBy(currency: applicationRepository.currency) { info in
-            self.rateInfo = info
+        self.statisicsClient.infoBy(currency: self.applicationRepository.currency) { info in
+            self.applicationRepository.latestRateInfo = info
 
             print("Fiat ratings received, posting notification")
-            NotificationCenter.default.post(name: .didReceiveFiatRatings, object: self.rateInfo)
+            NotificationCenter.default.post(name: .didReceiveFiatRatings, object: info)
         }
     }
 

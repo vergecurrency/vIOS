@@ -12,10 +12,10 @@ class WalletTransactionFactory {
     var address: String = ""
     var memo: String = ""
 
-    var fiatRateTracker: FiatRateTicker!
+    private let applicationRepository: ApplicationRepository!
 
-    init(fiatRateTracker: FiatRateTicker? = nil) {
-        self.fiatRateTracker = fiatRateTracker ?? Application.container.resolve(FiatRateTicker.self)
+    init(applicationRepository: ApplicationRepository) {
+        self.applicationRepository = applicationRepository
     }
 
     func setBy(currency: String, amount: NSNumber) {
@@ -29,7 +29,7 @@ class WalletTransactionFactory {
     }
 
     func update(currency: String) {
-        if let xvgInfo = self.fiatRateTracker.rateInfo {
+        if let xvgInfo = self.applicationRepository.latestRateInfo {
             if currency == "XVG" {
                 fiatAmount = NSNumber(value: amount.doubleValue * xvgInfo.price)
             } else {

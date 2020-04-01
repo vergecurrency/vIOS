@@ -16,7 +16,6 @@ class SendViewServiceProvider: ServiceProvider {
             c.txFactory = r.resolve(WalletTransactionFactory.self)
             c.txTransponder = r.resolve(TxTransponderProtocol.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
-            c.fiatRateTicker = r.resolve(FiatRateTicker.self)
         }
     }
 

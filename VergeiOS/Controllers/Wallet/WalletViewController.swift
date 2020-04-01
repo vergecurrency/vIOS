@@ -22,7 +22,6 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
     @IBOutlet weak var walletSlidePageControl: UIPageControl!
 
     var applicationRepository: ApplicationRepository!
-    var fiatRateTicker: FiatRateTicker!
     private var walletSlides: [WalletSlideView] = []
     private var pageBeforeLayoutSubviews: Int?
 
@@ -153,7 +152,7 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
             let walletAmount = self.applicationRepository.amount
             self.xvgBalanceLabel.text = self.applicationRepository.amount.toXvgCurrency()
 
-            if let xvgInfo = self.fiatRateTicker.rateInfo {
+            if let xvgInfo = self.applicationRepository.latestRateInfo {
                 self.pairBalanceLabel.text = NSNumber(value: walletAmount.doubleValue * xvgInfo.price).toCurrency()
                 self.pairSymbolBalanceLabel.text =
                     "\(self.applicationRepository.currency) " + "wallet.balanceTitle".localized

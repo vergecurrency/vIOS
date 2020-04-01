@@ -5,8 +5,7 @@
 
 import Foundation
 
-class WalletTicker {
-
+class WalletTicker: TickerProtocol {
     private var client: WalletClientProtocol!
     private var applicationRepository: ApplicationRepository!
     private var transactionManager: TransactionManager!
@@ -14,7 +13,11 @@ class WalletTicker {
     private var started: Bool = false
     private var interval: Timer?
 
-    init(client: WalletClientProtocol, applicationRepository: ApplicationRepository, transactionManager: TransactionManager) {
+    init(
+        client: WalletClientProtocol,
+        applicationRepository: ApplicationRepository,
+        transactionManager: TransactionManager
+    ) {
         self.client = client
         self.applicationRepository = applicationRepository
         self.transactionManager = transactionManager
@@ -29,12 +32,10 @@ class WalletTicker {
             return
         }
 
-        self.fetchWalletAmount()
-        self.fetchTransactions()
+        self.tick()
 
         interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchWalletTimeout, repeats: true) { _ in
-            self.fetchWalletAmount()
-            self.fetchTransactions()
+            self.tick()
         }
 
         self.started = true
