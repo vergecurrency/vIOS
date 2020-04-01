@@ -1,6 +1,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/vergecurrency/vIOS/master/readme-header.png" alt="Verge iOS Wallet"></p>
 <p align="center">
-  <img src="https://github.com/vergecurrency/vIOS/workflows/CI/badge.svg">
+  <a href="https://github.com/vergecurrency/vIOS/actions"><img src="https://github.com/vergecurrency/vIOS/workflows/CI/badge.svg"></a>
   <img src="https://img.shields.io/badge/iOS-^12.0-green.svg">
   <img src="https://img.shields.io/badge/watchOS-^4.0-brightgreen.svg">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg">
