@@ -12,7 +12,7 @@ import QRCode
 
 class WatchSyncManager: NSObject, WCSessionDelegate {
 
-    private var walletClient: WalletClient!
+    private var walletClient: WalletClientProtocol!
 
     // MARK: Init
 
@@ -20,7 +20,7 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
         super.init()
     }
 
-    init(walletClient: WalletClient) {
+    init(walletClient: WalletClientProtocol) {
         super.init()
 
         self.walletClient = walletClient

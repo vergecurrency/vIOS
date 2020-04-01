@@ -7,7 +7,7 @@ import UIKit
 
 class TransactionProposalsTableViewController: EdgedTableViewController {
 
-    var walletClient: WalletClient!
+    var walletClient: WalletClientProtocol!
     var proposals: [TxProposalResponse] = []
 
     var initialLoaded: Bool = false

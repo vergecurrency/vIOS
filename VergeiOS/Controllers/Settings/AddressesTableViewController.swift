@@ -11,7 +11,7 @@ import UIKit
 class AddressesTableViewController: EdgedTableViewController {
 
     var credentials: Credentials!
-    var walletClient: WalletClient!
+    var walletClient: WalletClientProtocol!
     var transactionManager: TransactionManager!
 
     var addresses: [AddressInfo] = []

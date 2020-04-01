@@ -33,11 +33,11 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (ServiceUrlTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.walletTicker = r.resolve(WalletTicker.self)
-            c.walletClient = r.resolve(WalletClient.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
         }
 
         container.storyboardInitCompleted (TransactionProposalsTableViewController.self) { r, c in
-            c.walletClient = r.resolve(WalletClient.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
         }
 
         container.storyboardInitCompleted (ThemeTableViewController.self) { r, c in

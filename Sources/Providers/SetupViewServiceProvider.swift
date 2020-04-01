@@ -19,7 +19,7 @@ class SetupViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted (FinishSetupViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.walletClient = r.resolve(WalletClient.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
             c.credentials = r.resolve(Credentials.self)
         }
 

@@ -30,7 +30,7 @@ class SendViewController: ThemeableViewController {
     var txFactory: WalletTransactionFactory!
     var txTransponder: TxTransponderProtocol!
     var applicationRepository: ApplicationRepository!
-    var walletClient: WalletClient!
+    var walletClient: WalletClientProtocol!
     var fiatRateTicker: FiatRateTicker!
     var waitingForConfirmationPopover: Bool = false
 

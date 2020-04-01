@@ -10,7 +10,7 @@ class ReceiveViewServiceProvider: ServiceProvider {
     override func register() {
         container.storyboardInitCompleted (ReceiveViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.walletClient = r.resolve(WalletClient.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
             c.transactionManager = r.resolve(TransactionManager.self)
             c.fiatRateTicker = r.resolve(FiatRateTicker.self)
         }

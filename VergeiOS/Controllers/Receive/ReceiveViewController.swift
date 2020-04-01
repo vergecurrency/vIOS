@@ -30,7 +30,7 @@ class ReceiveViewController: ThemeableViewController {
     @IBOutlet weak var stealthSwitch: UISwitch!
 
     var applicationRepository: ApplicationRepository!
-    var walletClient: WalletClient!
+    var walletClient: WalletClientProtocol!
     var transactionManager: TransactionManager!
     var fiatRateTicker: FiatRateTicker!
     var currentQrCode: QRCode?

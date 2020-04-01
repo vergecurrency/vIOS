@@ -14,7 +14,7 @@ class ServiceUrlTableViewController: EdgedTableViewController {
 
     var applicationRepository: ApplicationRepository!
     var walletTicker: WalletTicker!
-    var walletClient: WalletClient!
+    var walletClient: WalletClientProtocol!
     var previousServiceUrl: String = ""
 
     override func viewDidLoad() {

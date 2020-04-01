@@ -44,22 +44,18 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerWalletClient() {
-        container.register(WalletClient.self) { r in
+        container.register(WalletClientProtocol.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
             let credentials = r.resolve(Credentials.self)!
             let torClient = r.resolve(TorClient.self)!
 
             return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient)
         }.inObjectScope(.container)
-
-        container.register(WalletClientProtocol.self) { r in
-            return r.resolve(WalletClient.self)!
-        }
     }
 
     func registerTxTransponder() {
         container.register(TxTransponderProtocol.self) { r in
-            TxTransponder(walletClient: r.resolve(WalletClient.self)!)
+            TxTransponder(walletClient: r.resolve(WalletClientProtocol.self)!)
         }
     }
 
@@ -79,7 +75,7 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerTransactionManager() {
         container.register(TransactionManager.self) { r in
-            let walletClient = r.resolve(WalletClient.self)!
+            let walletClient = r.resolve(WalletClientProtocol.self)!
             let transactionRepository = r.resolve(TransactionRepository.self)!
 
             return TransactionManager(walletClient: walletClient, transactionRepository: transactionRepository)

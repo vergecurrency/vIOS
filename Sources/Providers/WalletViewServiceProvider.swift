@@ -25,7 +25,7 @@ class WalletViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted(AddressesTableViewController.self) { r, c in
             c.credentials = r.resolve(Credentials.self)
-            c.walletClient = r.resolve(WalletClient.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
             c.transactionManager = r.resolve(TransactionManager.self)
         }
 

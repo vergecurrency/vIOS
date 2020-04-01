@@ -22,7 +22,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     @IBOutlet weak var openWalletButton: RoundedButton!
 
     var applicationRepository: ApplicationRepository!
-    var walletClient: WalletClient!
+    var walletClient: WalletClientProtocol!
     var credentials: Credentials!
 
     var agreedWithTerms: Bool = false

@@ -39,7 +39,7 @@ class ApplicationServiceProvider: ServiceProvider {
         }
 
         container.register(WatchSyncManager.self) { r in
-            let walletClient = r.resolve(WalletClient.self)!
+            let walletClient = r.resolve(WalletClientProtocol.self)!
 
             return WatchSyncManager(walletClient: walletClient)
         }.inObjectScope(.container)

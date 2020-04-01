@@ -7,10 +7,10 @@ import Foundation
 
 class TransactionManager {
 
-    private var walletClient: WalletClient!
+    private var walletClient: WalletClientProtocol!
     private var transactionRepository: TransactionRepository!
 
-    public init (walletClient: WalletClient, transactionRepository: TransactionRepository) {
+    public init (walletClient: WalletClientProtocol, transactionRepository: TransactionRepository) {
         self.walletClient = walletClient
         self.transactionRepository = transactionRepository
     }
