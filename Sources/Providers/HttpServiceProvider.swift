@@ -13,9 +13,13 @@ class HttpServiceProvider: ServiceProvider {
     }
 
     override func register() {
-        container.register(TorClient.self) { r in
-            return TorClient(applicationRepository: r.resolve(ApplicationRepository.self)!)
+        container.register(TorClientProtocol.self) { r in
+            TorClient(applicationRepository: r.resolve(ApplicationRepository.self)!)
         }.inObjectScope(.container)
+
+        container.register(TorClient.self) { r in
+            r.resolve(TorClientProtocol.self) as! TorClient
+        }
 
         container.register(RatesClient.self) { r in
             return RatesClient(torClient: r.resolve(TorClient.self)!)

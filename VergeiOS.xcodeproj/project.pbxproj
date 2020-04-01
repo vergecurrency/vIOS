@@ -130,6 +130,9 @@
 		A36B17CA2433605200D327D8 /* CurrencySubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17C92433605200D327D8 /* CurrencySubscriber.swift */; };
 		A36B17CC243360FE00D327D8 /* ThemeSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */; };
 		A36B17CE2433DAEA00D327D8 /* UIStoryboard+Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17CD2433DAEA00D327D8 /* UIStoryboard+Statics.swift */; };
+		A36B17D22433F9A800D327D8 /* BitcoreNodeClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D12433F9A800D327D8 /* BitcoreNodeClientTest.swift */; };
+		A36B17D42433FA3700D327D8 /* TorClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D32433FA3700D327D8 /* TorClientProtocol.swift */; };
+		A36B17D62434764700D327D8 /* TxTransponderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17D52434764700D327D8 /* TxTransponderProtocol.swift */; };
 		A36E94DD214AE507002CC756 /* EdgedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */; };
 		A36F8A892146EE0F00304777 /* String+Subs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A882146EE0F00304777 /* String+Subs.swift */; };
 		A36F8A8F21471B4300304777 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */; };
@@ -570,6 +573,9 @@
 		A36B17C92433605200D327D8 /* CurrencySubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySubscriber.swift; sourceTree = "<group>"; };
 		A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSubscriber.swift; sourceTree = "<group>"; };
 		A36B17CD2433DAEA00D327D8 /* UIStoryboard+Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Statics.swift"; sourceTree = "<group>"; };
+		A36B17D12433F9A800D327D8 /* BitcoreNodeClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoreNodeClientTest.swift; sourceTree = "<group>"; };
+		A36B17D32433FA3700D327D8 /* TorClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClientProtocol.swift; sourceTree = "<group>"; };
+		A36B17D52434764700D327D8 /* TxTransponderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderProtocol.swift; sourceTree = "<group>"; };
 		A36E94DC214AE507002CC756 /* EdgedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedTableViewController.swift; sourceTree = "<group>"; };
 		A36F8A882146EE0F00304777 /* String+Subs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subs.swift"; sourceTree = "<group>"; };
 		A36F8A8E21471B4300304777 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
@@ -1069,12 +1075,14 @@
 			isa = PBXGroup;
 			children = (
 				A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */,
+				A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */,
 				A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */,
+				A36B17D32433FA3700D327D8 /* TorClientProtocol.swift */,
 				A3A71C1722DA66B80098D861 /* TransactionFactoryProtocol.swift */,
+				A36B17D52434764700D327D8 /* TxTransponderProtocol.swift */,
 				A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */,
 				A3478B4A236480230018149C /* WalletManagerProtocol.swift */,
 				A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */,
-				A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1152,6 +1160,7 @@
 		A3256679211CBA9A006FB08A /* VergeiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				A36B17D02433F97400D327D8 /* Blockchain */,
 				A30D27962260C938000377F8 /* Repositories */,
 				A30D27952260C8F4000377F8 /* Wallet */,
 				A325667C211CBA9A006FB08A /* Info.plist */,
@@ -1356,6 +1365,14 @@
 				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		A36B17D02433F97400D327D8 /* Blockchain */ = {
+			isa = PBXGroup;
+			children = (
+				A36B17D12433F9A800D327D8 /* BitcoreNodeClientTest.swift */,
+			);
+			path = Blockchain;
 			sourceTree = "<group>";
 		};
 		A37641112108E79800E04521 /* Frameworks */ = {
@@ -2150,6 +2167,7 @@
 				A30D27982260D165000377F8 /* TxTransponderTest.swift in Sources */,
 				A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */,
 				A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */,
+				A36B17D22433F9A800D327D8 /* BitcoreNodeClientTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2233,6 +2251,7 @@
 				A338E6C32110F9CB000D44EE /* StringKey.swift in Sources */,
 				A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */,
 				A305DDC32107C83200911B64 /* NumberKey.swift in Sources */,
+				A36B17D42433FA3700D327D8 /* TorClientProtocol.swift in Sources */,
 				A302D3412122053300EA8091 /* FiatRateTicker.swift in Sources */,
 				A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */,
 				A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */,
@@ -2316,6 +2335,7 @@
 				B2BD71BB2B06C6F10205ECBC /* ChartFilterToolbarDelegate.swift in Sources */,
 				B2BD704D491D821519B7EEAB /* PriceChartView.swift in Sources */,
 				A36B17BE2432A15800D327D8 /* WalletNotificationsSubscriber.swift in Sources */,
+				A36B17D62434764700D327D8 /* TxTransponderProtocol.swift in Sources */,
 				B2BD777C8DE885732CFA2D1E /* ChartInfo.swift in Sources */,
 				B2BD74F4EC93C6025BE4DC28 /* VolumeChartView.swift in Sources */,
 				A3E32B1C225D56D9001A8B0E /* WalletServiceProvider.swift in Sources */,

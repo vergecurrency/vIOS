@@ -12,9 +12,9 @@ class BlockchainServiceProvider: ServiceProvider {
 
     override func register() {
         container.register(BitcoreNodeClientProtocol.self) { r in
-            return BitcoreNodeClient(
+            BitcoreNodeClient(
                 baseUrl: Constants.bnEndpoint,
-                torClient: r.resolve(TorClient.self)!
+                torClient: r.resolve(TorClientProtocol.self)!
             )
         }
 

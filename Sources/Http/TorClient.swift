@@ -9,7 +9,7 @@
 import Foundation
 import Tor
 
-class TorClient {
+class TorClient: TorClientProtocol {
 
     private var applicationRepository: ApplicationRepository!
     private var config: TorConfiguration = TorConfiguration()

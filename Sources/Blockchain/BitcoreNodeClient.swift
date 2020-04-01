@@ -15,9 +15,9 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
     }
 
     let baseUrl: String!
-    let torClient: TorClient!
+    let torClient: TorClientProtocol!
 
-    init(baseUrl: String, torClient: TorClient) {
+    init(baseUrl: String, torClient: TorClientProtocol) {
         self.baseUrl = baseUrl
         self.torClient = torClient
     }

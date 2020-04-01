@@ -5,19 +5,13 @@
 
 import Foundation
 
-class TxTransponder {
+class TxTransponder: TxTransponderProtocol {
 
     enum Step: Int {
         case publish = 0
         case sign = 1
         case broadcast = 2
     }
-
-    typealias CompletionType = (
-        _ txp: TxProposalResponse?,
-        _ errorResponse: TxProposalErrorResponse?,
-        _ error: Error?
-    ) -> Void
 
     private var walletClient: WalletClientProtocol!
     private var completion: CompletionType!

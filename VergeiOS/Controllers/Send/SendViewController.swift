@@ -28,7 +28,7 @@ class SendViewController: ThemeableViewController {
 
     var currency = CurrencySwitch.XVG
     var txFactory: WalletTransactionFactory!
-    var txTransponder: TxTransponder!
+    var txTransponder: TxTransponderProtocol!
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClient!
     var fiatRateTicker: FiatRateTicker!

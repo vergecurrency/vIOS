@@ -58,7 +58,7 @@ class WalletServiceProvider: ServiceProvider {
     }
 
     func registerTxTransponder() {
-        container.register(TxTransponder.self) { r in
+        container.register(TxTransponderProtocol.self) { r in
             TxTransponder(walletClient: r.resolve(WalletClient.self)!)
         }
     }
