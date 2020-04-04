@@ -70,7 +70,6 @@
 		A325664D211375E5006FB08A /* PinUnlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325664C211375E5006FB08A /* PinUnlockViewController.swift */; };
 		A325664F2113B504006FB08A /* CurrencyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A325664E2113B504006FB08A /* CurrencyTableViewController.swift */; };
 		A325665F211A2219006FB08A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A325665E211A2219006FB08A /* SwiftyJSON.framework */; };
-		A3256663211A39A2006FB08A /* RatesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256662211A39A2006FB08A /* RatesClient.swift */; };
 		A3256665211A3B61006FB08A /* FiatRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256664211A3B61006FB08A /* FiatRate.swift */; };
 		A3256668211B8E1A006FB08A /* ApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3256667211B8E1A006FB08A /* ApplicationRepository.swift */; };
 		A325666A211B9ABC006FB08A /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3256669211B9ABB006FB08A /* KeychainSwift.framework */; };
@@ -259,6 +258,7 @@
 		B2BD7C0AEF83DA4BEAE42483 /* ApplicationServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD707FF14AA2915590755F /* ApplicationServiceProvider.swift */; };
 		B2BD7C21A80B98CD8857B476 /* AbstractChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7AA4FFBD193456C18CA6 /* AbstractChartView.swift */; };
 		B2BD7C656B2431B5A693354F /* WalletViewServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD76511482FCD3396C2D30 /* WalletViewServiceProvider.swift */; };
+		B2BD7CA972CA1617BB70D35F /* RatesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD709F30B9516F1A745E7A /* RatesClient.swift */; };
 		B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7557B745B64D241A9CEB /* WalletInfo.swift */; };
 		B2BD7DA076BD1BCE8275229A /* WalletOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */; };
 		B2BD7DAE3B43E68C2FD123CC /* CoreStoreServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7359693BF4B930CAB5C0 /* CoreStoreServiceProvider.swift */; };
@@ -503,7 +503,6 @@
 		A325664C211375E5006FB08A /* PinUnlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinUnlockViewController.swift; sourceTree = "<group>"; };
 		A325664E2113B504006FB08A /* CurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewController.swift; sourceTree = "<group>"; };
 		A325665E211A2219006FB08A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		A3256662211A39A2006FB08A /* RatesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesClient.swift; sourceTree = "<group>"; };
 		A3256664211A3B61006FB08A /* FiatRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatRate.swift; sourceTree = "<group>"; };
 		A3256667211B8E1A006FB08A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
 		A3256669211B9ABB006FB08A /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
@@ -670,6 +669,7 @@
 		B2BD7041A1FDCFDF5189FFEF /* UnspentOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnspentOutput.swift; sourceTree = "<group>"; };
 		B2BD707901E103DAE1455E18 /* TxProposal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxProposal.swift; sourceTree = "<group>"; };
 		B2BD707FF14AA2915590755F /* ApplicationServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServiceProvider.swift; sourceTree = "<group>"; };
+		B2BD709F30B9516F1A745E7A /* RatesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesClient.swift; sourceTree = "<group>"; };
 		B2BD70B8E771173478E760E2 /* TransactionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		B2BD71B08FC506AC51C07E3B /* ChartFilterToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbar.swift; sourceTree = "<group>"; };
 		B2BD71D8BB26F2884D44A1BD /* TransactionProposalsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionProposalsTableViewController.swift; sourceTree = "<group>"; };
@@ -1363,6 +1363,7 @@
 				A30D27992260D289000377F8 /* Protocols */,
 				A3E32B1A225D56AE001A8B0E /* Providers */,
 				A36B17BB2432A12F00D327D8 /* Subscribers */,
+				B2BD73866594D610AB7159BC /* Rates */,
 				B2BD7EF5670C29839E5FC53D /* Repositories */,
 				A376412F210AE1CA00E04521 /* Utils */,
 				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
@@ -1407,7 +1408,6 @@
 		A376411F2108FC0200E04521 /* Http */ = {
 			isa = PBXGroup;
 			children = (
-				A3256662211A39A2006FB08A /* RatesClient.swift */,
 				A37641202108FC1F00E04521 /* TorClient.swift */,
 			);
 			path = Http;
@@ -1494,6 +1494,14 @@
 				B2BD76511482FCD3396C2D30 /* WalletViewServiceProvider.swift */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		B2BD73866594D610AB7159BC /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				B2BD709F30B9516F1A745E7A /* RatesClient.swift */,
+			);
+			path = Rates;
 			sourceTree = "<group>";
 		};
 		B2BD7713B76A4A8371FACC27 /* Notification */ = {
@@ -2211,7 +2219,6 @@
 				CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */,
 				A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */,
-				A3256663211A39A2006FB08A /* RatesClient.swift in Sources */,
 				A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */,
 				A37641212108FC1F00E04521 /* TorClient.swift in Sources */,
 				A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */,
@@ -2421,6 +2428,7 @@
 				A3B83F7824322F2000869E61 /* WalletNotificationView.swift in Sources */,
 				A3478B4B236480230018149C /* WalletManagerProtocol.swift in Sources */,
 				B2BD7762464A503831C13F2F /* TransactionServiceProvider.swift in Sources */,
+				B2BD7CA972CA1617BB70D35F /* RatesClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
