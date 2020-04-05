@@ -8,7 +8,7 @@ github "danielgindi/Charts" ~> 3.3.0
 github "JohnEstropia/CoreStore" "develop"
 github "xmartlabs/Eureka" ~> 5.2
 github "krzyzanowskim/CryptoSwift"
-github "vergecurrency/BitcoinKit" ~> "v1.2.2"
+github "vergecurrency/BitcoinKit"
 github "Swinject/Swinject" ~> 2.6.0
 github "Swinject/SwinjectStoryboard" "master"
 github "google/promises"

@@ -5,9 +5,9 @@
 
 import UIKit
 
-class NotificationManager: UIWindow {
+class NotificationBar: UIWindow {
 
-    static var shared = NotificationManager()
+    static var shared = NotificationBar()
     var notificationViewController: NotificationViewController?
 
     func initialize() {
@@ -19,7 +19,7 @@ class NotificationManager: UIWindow {
 
         self.notificationViewController?.view.frame = frame
         self.frame = frame
-        self.windowLevel = UIWindow.Level.statusBar + 1
+        self.windowLevel = UIWindow.Level.notificationBar
     }
 
     func frameHeight() -> CGFloat {

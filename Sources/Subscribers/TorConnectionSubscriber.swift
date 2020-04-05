@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TorConnectionSubscriber: Subscriber {
     private let fiatRateTicker: FiatRateTicker
@@ -57,6 +58,12 @@ class TorConnectionSubscriber: Subscriber {
 
     @objc func errorDuringTorConnection(notification: Notification) {
         TorStatusIndicator.shared.setStatus(.error)
+
+        TorFixer.shared.present()
+    }
+
+    @objc func didNotGetHiddenHttpSession(notification: Notification) {
+        TorFixer.shared.present()
     }
 
     override func getSubscribedEvents() -> [Notification.Name: Selector] {
@@ -66,7 +73,8 @@ class TorConnectionSubscriber: Subscriber {
             .didEstablishTorConnection: #selector(didEstablishTorConnection(notification:)),
             .didResignTorConnection: #selector(didResignTorConnection(notification:)),
             .didTurnOffTor: #selector(didTurnOffTor(notification:)),
-            .errorDuringTorConnection: #selector(errorDuringTorConnection(notification:))
+            .errorDuringTorConnection: #selector(errorDuringTorConnection(notification:)),
+            .didNotGetHiddenHttpSession: #selector(didNotGetHiddenHttpSession(notification:))
         ]
     }
 }

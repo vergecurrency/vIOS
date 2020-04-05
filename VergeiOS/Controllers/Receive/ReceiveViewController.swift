@@ -265,7 +265,7 @@ class ReceiveViewController: ThemeableViewController {
 
     @objc func copyAddress(recognizer: UIGestureRecognizer) {
         UIPasteboard.general.string = address
-        NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
+        NotificationBar.shared.showMessage("addresses.addressCopied".localized, duration: 3)
     }
 
     func openShareSheet(shareText text: String?, shareImage: UIImage?) {

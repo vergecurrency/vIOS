@@ -132,7 +132,7 @@ class ContactTableViewController: EdgedFormViewController {
             self.addTransactions()
         }
 
-        NotificationManager.shared.showMessage("transactions.contact.saved".localized, duration: 1)
+        NotificationBar.shared.showMessage("transactions.contact.saved".localized, duration: 1)
 
         // Pop screen on completion
         self.navigationController?.popViewController(animated: true)

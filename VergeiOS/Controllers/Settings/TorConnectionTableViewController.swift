@@ -36,7 +36,7 @@ class TorConnectionTableViewController: EdgedTableViewController {
         if sender.isOn {
             setIpAddressLabel("settings.torConnection.loadingLabel".localized)
 
-            self.torClient.start {
+            self.torClient.start { _ in 
                 self.updateIPAddress()
             }
         } else {

@@ -275,12 +275,12 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
 
     @objc func addressDoubleTapped(recognizer: UIGestureRecognizer) {
         UIPasteboard.general.string = transaction!.address
-        NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
+        NotificationBar.shared.showMessage("addresses.addressCopied".localized, duration: 3)
     }
 
     @objc func blockDoubleTapped(recognizer: UITapGestureRecognizer) {
         UIPasteboard.general.string = transaction!.txid
-        NotificationManager.shared.showMessage("transactions.transaction.txidCopied".localized, duration: 3)
+        NotificationBar.shared.showMessage("transactions.transaction.txidCopied".localized, duration: 3)
     }
 
     @IBAction func deleteTransactionPushed(_ sender: Any) {

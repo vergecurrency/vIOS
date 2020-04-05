@@ -42,6 +42,8 @@ class Application {
             return
         }
 
+        Container.loggingFunction = .none
+
         // Initialize providers.
         for serviceProvider in self.serviceProviders {
             self.initializedServiceProviders.append(serviceProvider.init(container: Application.container))

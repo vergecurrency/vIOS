@@ -26,6 +26,8 @@ extension Notification.Name {
     static let didResignTorConnection = Notification.Name("didResignTorConnection")
     static let didTurnOffTor = Notification.Name("didTurnOffTor")
     static let errorDuringTorConnection = Notification.Name("errorDuringTorConnection")
+    static let didNotGetHiddenHttpSession = Notification.Name("didNotGetHiddenHttpSession")
+    static let didResolveHiddenHttpSessionError = Notification.Name("didResolveHiddenHttpSessionError")
 
     static let didLoadWalletViewController = Notification.Name("didLoadWalletViewController")
 

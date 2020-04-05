@@ -9,8 +9,30 @@
 import Foundation
 import Swinject
 import CoreStore
+import SwiftyJSON
 
 class WalletServiceProvider: ServiceProvider {
+    override func boot() {
+        guard let hiddenHttpSession = self.container.resolve(HiddenHttpSession.self) else {
+            return
+        }
+
+        hiddenHttpSession.dataTask(
+            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
+        ).then { response in
+            print(try? JSON(data: response.data ?? Data()))
+        }.catch { error in
+            print(error.localizedDescription)
+        }
+
+        hiddenHttpSession.dataTask(
+            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
+        ).then { response in
+            print(try? JSON(data: response.data ?? Data()))
+        }.catch { error in
+            print(error.localizedDescription)
+        }
+    }
 
     override func register() {
         self.registerWalletCredentials()
@@ -24,6 +46,10 @@ class WalletServiceProvider: ServiceProvider {
         self.registerAddressBookRepository()
         self.registerSweeperHelper()
         self.registerWalletManager()
+
+        self.container.register(HiddenHttpSession.self) { r in
+            return HiddenHttpSession(hiddenClient: r.resolve(TorClient.self)!)
+        }
 
         NotificationCenter.default.addObserver(
             self,

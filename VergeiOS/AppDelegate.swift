@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-
         self.application = Application(container: SwinjectStoryboard.defaultContainer)
         self.application?.boot()
 
@@ -76,6 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
 
+        // Resign Tor.
+        Application.container.resolve(TorClientProtocol.self)?.resign()
+
         // Show pincode
         self.showPinUnlockViewController(application)
     }
@@ -83,8 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state;
         // here you can undo many of the changes made on entering the background.
-
-        Application.container.resolve(TorClient.self)?.restart()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
