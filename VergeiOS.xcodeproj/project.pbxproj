@@ -204,6 +204,8 @@
 		A3CE63F3243CC190006EE501 /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F2243CC190006EE501 /* Promises */; };
 		A3CE63F5243CC190006EE501 /* FBLPromises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F4243CC190006EE501 /* FBLPromises */; };
 		A3CE63F9243CC297006EE501 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
+		A3CE6401243CCA39006EE501 /* FBLPromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */; };
+		A3CE6403243CCA39006EE501 /* PromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE6402243CCA39006EE501 /* PromisesTestHelpers */; };
 		A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A068215661C20018599A /* AddressValidatorTest.swift */; };
 		A3D3A06B2156FC130018599A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A06A2156FC130018599A /* MainTabBarController.swift */; };
 		A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */; };
@@ -814,8 +816,10 @@
 				A3CE63DC243CC0B3006EE501 /* SwiftyJSON in Frameworks */,
 				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
 				A3CE63E2243CC0F6006EE501 /* Charts in Frameworks */,
+				A3CE6401243CCA39006EE501 /* FBLPromisesTestHelpers in Frameworks */,
 				A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */,
 				A3CE63F3243CC190006EE501 /* Promises in Frameworks */,
+				A3CE6403243CCA39006EE501 /* PromisesTestHelpers in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
 				A3E32B18225D52D9001A8B0E /* SwinjectStoryboard.framework in Frameworks */,
 				A3CE63E5243CC110006EE501 /* CoreStore in Frameworks */,
@@ -1836,6 +1840,8 @@
 				A3CE63EA243CC151006EE501 /* CryptoSwift */,
 				A3CE63F2243CC190006EE501 /* Promises */,
 				A3CE63F4243CC190006EE501 /* FBLPromises */,
+				A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */,
+				A3CE6402243CCA39006EE501 /* PromisesTestHelpers */,
 			);
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
@@ -3228,6 +3234,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = FBLPromises;
+		};
+		A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
+			productName = FBLPromisesTestHelpers;
+		};
+		A3CE6402243CCA39006EE501 /* PromisesTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
+			productName = PromisesTestHelpers;
 		};
 /* End XCSwiftPackageProductDependency section */
 
