@@ -10,6 +10,9 @@ struct LogMessage {
 
     typealias Log = Logger.Message
 
+    /// Migrations
+    static let NoDeprecatedVWSEndpointsFound: Log = "no deprecated VWS endpoints found"
+
     /// Tor Client
     static let TorClientRestarting: Log = "tor client is restarting"
     static let TorClientNoRestartStillInOperation: Log = "tor couldn't restart cause it's still operational"

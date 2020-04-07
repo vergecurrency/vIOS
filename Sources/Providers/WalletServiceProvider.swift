@@ -51,13 +51,6 @@ class WalletServiceProvider: ServiceProvider {
         self.container.register(HiddenHttpSession.self) { r in
             return HiddenHttpSession(hiddenClient: r.resolve(TorClient.self)!)
         }
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(bootServerMigration(notification:)),
-            name: .didFinishTorStart,
-            object: nil
-        )
     }
 
     func registerWalletCredentials() {
@@ -161,36 +154,5 @@ class WalletServiceProvider: ServiceProvider {
                 applicationRepository: r.resolve(ApplicationRepository.self)!
             )
         }.inObjectScope(.container)
-    }
-
-    @objc func bootServerMigration(notification: Notification) {
-        let applicationRepository = self.container.resolve(ApplicationRepository.self)!
-
-        // Check if the deprecated VWS endpoints are in the users memory.
-        if applicationRepository.isWalletServiceUrlSet && !Constants.deprecatedBwsEndpoints.contains(
-            applicationRepository.walletServiceUrl
-        ) {
-            return print("No deprecated VWS endpoints found.")
-        }
-
-        let walletClient = self.container.resolve(WalletClientProtocol.self)!
-        let walletManager = self.container.resolve(WalletManagerProtocol.self)!
-
-        // If so replace them by the replacement VWS endpoint.
-        applicationRepository.walletServiceUrl = Constants.bwsEndpoint
-        walletClient.resetServiceUrl(baseUrl: applicationRepository.walletServiceUrl)
-
-        // If the wallet is setup we check on the server if there is a wallet present.
-        if applicationRepository.setup {
-            walletManager.joinWallet(createWallet: true) { error in
-                if error != nil {
-                    return print(error ?? "Unresolved error")
-                }
-
-                walletManager.synchronizeWallet { error in
-                    print(error ?? "Unresolved error")
-                }
-            }
-        }
     }
 }

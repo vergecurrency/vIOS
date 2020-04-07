@@ -194,6 +194,18 @@
 		A3BA6ECC23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA6ECB23DCC15D00CD41E4 /* ElectrumMnemonicTableViewController.swift */; };
 		A3C5C3CE21985B11003B6C02 /* sjcl.js in Resources */ = {isa = PBXBuildFile; fileRef = A3C5C3CD21985B11003B6C02 /* sjcl.js */; };
 		A3CE63F9243CC297006EE501 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
+		A3CE6434243D1F86006EE501 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = A32F3C87243A938700474726 /* Logging */; };
+		A3CE6435243D1F86006EE501 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63D8243CC0A1006EE501 /* IQKeyboardManagerSwift */; };
+		A3CE6436243D1F86006EE501 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63DB243CC0B3006EE501 /* SwiftyJSON */; };
+		A3CE6437243D1F86006EE501 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63DE243CC0C6006EE501 /* KeychainSwift */; };
+		A3CE6438243D1F86006EE501 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E1243CC0F6006EE501 /* Charts */; };
+		A3CE6439243D1F86006EE501 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E4243CC110006EE501 /* CoreStore */; };
+		A3CE643A243D1F86006EE501 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E7243CC134006EE501 /* Eureka */; };
+		A3CE643B243D1F86006EE501 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63EA243CC151006EE501 /* CryptoSwift */; };
+		A3CE643C243D1F86006EE501 /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F2243CC190006EE501 /* Promises */; };
+		A3CE643D243D1F86006EE501 /* FBLPromises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F4243CC190006EE501 /* FBLPromises */; };
+		A3CE643E243D1F86006EE501 /* FBLPromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */; };
+		A3CE643F243D1F86006EE501 /* PromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE6402243CCA39006EE501 /* PromisesTestHelpers */; };
 		A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A068215661C20018599A /* AddressValidatorTest.swift */; };
 		A3D3A06B2156FC130018599A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A06A2156FC130018599A /* MainTabBarController.swift */; };
 		A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */; };
@@ -243,6 +255,7 @@
 		B2BD7851B858E027F5497F2B /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD72AA028FCF1D0BC2427C /* TransactionManager.swift */; };
 		B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C3E89EDF78877DD1B77 /* WalletBalanceInfo.swift */; };
 		B2BD7925E4F0300891E42803 /* SettingsViewServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74A8CBD24955A0BE06BE /* SettingsViewServiceProvider.swift */; };
+		B2BD798B6F7162533DFB5C0E /* ConfigurationSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7A805317AE751AC61D90 /* ConfigurationSubscriber.swift */; };
 		B2BD79F2D030AF3546003FED /* AbstractContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C766147B460AEF220CF /* AbstractContactsTableViewController.swift */; };
 		B2BD7A0901F3913D19FF13B2 /* UIAlertController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7945C26A344BBFEAB261 /* UIAlertController+Alerts.swift */; };
 		B2BD7A0E400CB0DA33EE2634 /* TxChangeAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD73930AE34F70DFA6F652 /* TxChangeAddress.swift */; };
@@ -691,6 +704,7 @@
 		B2BD7945C26A344BBFEAB261 /* UIAlertController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Alerts.swift"; sourceTree = "<group>"; };
 		B2BD79F6358BC9B93A5AF7BE /* WalletOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletOptions.swift; sourceTree = "<group>"; };
 		B2BD7A3D8D516C3586332E99 /* TxTransponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TxTransponder.swift; sourceTree = "<group>"; };
+		B2BD7A805317AE751AC61D90 /* ConfigurationSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationSubscriber.swift; sourceTree = "<group>"; };
 		B2BD7A9DE60CF90BD2FAA0CA /* InputOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputOutput.swift; sourceTree = "<group>"; };
 		B2BD7AA4FFBD193456C18CA6 /* AbstractChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractChartView.swift; sourceTree = "<group>"; };
 		B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJCL.swift; sourceTree = "<group>"; };
@@ -797,12 +811,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CE643A243D1F86006EE501 /* Eureka in Frameworks */,
+				A3CE643D243D1F86006EE501 /* FBLPromises in Frameworks */,
+				A3CE6436243D1F86006EE501 /* SwiftyJSON in Frameworks */,
 				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
+				A3CE6437243D1F86006EE501 /* KeychainSwift in Frameworks */,
+				A3CE6435243D1F86006EE501 /* IQKeyboardManagerSwift in Frameworks */,
 				A3CE63F9243CC297006EE501 /* Swinject.framework in Frameworks */,
+				A3CE6438243D1F86006EE501 /* Charts in Frameworks */,
+				A3CE6434243D1F86006EE501 /* Logging in Frameworks */,
+				A3CE643E243D1F86006EE501 /* FBLPromisesTestHelpers in Frameworks */,
+				A3CE643C243D1F86006EE501 /* Promises in Frameworks */,
+				A3CE6439243D1F86006EE501 /* CoreStore in Frameworks */,
+				A3CE643F243D1F86006EE501 /* PromisesTestHelpers in Frameworks */,
 				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
 				A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
 				A3E32B18225D52D9001A8B0E /* SwinjectStoryboard.framework in Frameworks */,
+				A3CE643B243D1F86006EE501 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,6 +1353,7 @@
 		A36B17BB2432A12F00D327D8 /* Subscribers */ = {
 			isa = PBXGroup;
 			children = (
+				B2BD7A805317AE751AC61D90 /* ConfigurationSubscriber.swift */,
 				A36B17C92433605200D327D8 /* CurrencySubscriber.swift */,
 				A36B17C124334E8D00D327D8 /* Subscriber.swift */,
 				A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */,
@@ -1342,6 +1369,7 @@
 			isa = PBXGroup;
 			children = (
 				B2BD74133C8DA2D5802055B3 /* Application.swift */,
+				B2BD7F59DAC558FB6DA83167 /* LogMessage.swift */,
 				A3A71C1422DA64C90098D861 /* Blockchain */,
 				A305DD9A21066AE600911B64 /* Components */,
 				A305DDB82107BB7F00911B64 /* Delegates */,
@@ -1355,7 +1383,6 @@
 				A36B17BB2432A12F00D327D8 /* Subscribers */,
 				A376412F210AE1CA00E04521 /* Utils */,
 				B2BD79F0F7D47405BDDD1AAD /* Wallet */,
-				B2BD7F59DAC558FB6DA83167 /* LogMessage.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1809,18 +1836,18 @@
 			);
 			name = VergeiOS;
 			packageProductDependencies = (
-				A32F3C87243A938700474726 /* XCSwiftPackageProductDependency */,
-				A3CE63D8243CC0A1006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63DB243CC0B3006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63DE243CC0C6006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63E1243CC0F6006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63E4243CC110006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63E7243CC134006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63EA243CC151006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63F2243CC190006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63F4243CC190006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE6400243CCA39006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE6402243CCA39006EE501 /* XCSwiftPackageProductDependency */,
+				A32F3C87243A938700474726 /* Logging */,
+				A3CE63D8243CC0A1006EE501 /* IQKeyboardManagerSwift */,
+				A3CE63DB243CC0B3006EE501 /* SwiftyJSON */,
+				A3CE63DE243CC0C6006EE501 /* KeychainSwift */,
+				A3CE63E1243CC0F6006EE501 /* Charts */,
+				A3CE63E4243CC110006EE501 /* CoreStore */,
+				A3CE63E7243CC134006EE501 /* Eureka */,
+				A3CE63EA243CC151006EE501 /* CryptoSwift */,
+				A3CE63F2243CC190006EE501 /* Promises */,
+				A3CE63F4243CC190006EE501 /* FBLPromises */,
+				A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */,
+				A3CE6402243CCA39006EE501 /* PromisesTestHelpers */,
 			);
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
@@ -1993,15 +2020,15 @@
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			packageReferences = (
-				A32F3C86243A938700474726 /* XCRemoteSwiftPackageReference */,
-				A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */,
+				A32F3C86243A938700474726 /* XCRemoteSwiftPackageReference "swift-log" */,
+				A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference "Charts" */,
+				A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference "CoreStore" */,
+				A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference "Eureka" */,
+				A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */,
 			);
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
 			projectDirPath = "";
@@ -2439,6 +2466,7 @@
 				B2BD77F791F22F1B5570EF82 /* TorFixer.swift in Sources */,
 				B2BD7F7DCE0929291A5DCA2E /* UIWindow+Levels.swift in Sources */,
 				B2BD7F20858381C0CA2E74A1 /* LogMessage.swift in Sources */,
+				B2BD798B6F7162533DFB5C0E /* ConfigurationSubscriber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3090,7 +3118,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A32F3C86243A938700474726 /* XCRemoteSwiftPackageReference */ = {
+		A32F3C86243A938700474726 /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log.git";
 			requirement = {
@@ -3098,7 +3126,7 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -3106,7 +3134,7 @@
 				minimumVersion = 6.5.5;
 			};
 		};
-		A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -3114,7 +3142,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
 			requirement = {
@@ -3122,7 +3150,7 @@
 				minimumVersion = 19.0.0;
 			};
 		};
-		A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
@@ -3130,7 +3158,7 @@
 				minimumVersion = 3.4.0;
 			};
 		};
-		A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference "CoreStore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnEstropia/CoreStore.git";
 			requirement = {
@@ -3138,7 +3166,7 @@
 				minimumVersion = 7.1.0;
 			};
 		};
-		A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
@@ -3146,7 +3174,7 @@
 				minimumVersion = 5.2.1;
 			};
 		};
-		A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
 			requirement = {
@@ -3154,7 +3182,7 @@
 				minimumVersion = 1.3.0;
 			};
 		};
-		A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/promises.git";
 			requirement = {
@@ -3165,64 +3193,64 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A32F3C87243A938700474726 /* XCSwiftPackageProductDependency */ = {
+		A32F3C87243A938700474726 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A32F3C86243A938700474726 /* XCRemoteSwiftPackageReference */;
+			package = A32F3C86243A938700474726 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
 		};
-		A3CE63D8243CC0A1006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63D8243CC0A1006EE501 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		A3CE63DB243CC0B3006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63DB243CC0B3006EE501 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		A3CE63DE243CC0C6006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63DE243CC0C6006EE501 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
 		};
-		A3CE63E1243CC0F6006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63E1243CC0F6006EE501 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
-		A3CE63E4243CC110006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63E4243CC110006EE501 /* CoreStore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference "CoreStore" */;
 			productName = CoreStore;
 		};
-		A3CE63E7243CC134006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63E7243CC134006EE501 /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference "Eureka" */;
 			productName = Eureka;
 		};
-		A3CE63EA243CC151006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63EA243CC151006EE501 /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
 		};
-		A3CE63F2243CC190006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63F2243CC190006EE501 /* Promises */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = Promises;
 		};
-		A3CE63F4243CC190006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63F4243CC190006EE501 /* FBLPromises */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = FBLPromises;
 		};
-		A3CE6400243CCA39006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = FBLPromisesTestHelpers;
 		};
-		A3CE6402243CCA39006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE6402243CCA39006EE501 /* PromisesTestHelpers */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = PromisesTestHelpers;
 		};
 /* End XCSwiftPackageProductDependency section */
