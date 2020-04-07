@@ -1,6 +1,6 @@
 binary "https://icepa.github.io/Tor.framework/Tor.json" "400.6.3"
+binary "https://vergecurrency.github.io/BitcoinKit/BitcoinKit.json" "1.2.2"
 github "HamzaGhazouani/HGPlaceholders" "0.4.0"
 github "Swinject/Swinject" "2.7.1"
 github "Swinject/SwinjectStoryboard" "0ca45c83a8aa398c153d8a036c95abb4343cfa0c"
 github "gmotzespina/QRCode" "c07e17120ffb34fdfa7ec1f3a85bc1afd39cfdc2"
-github "vergecurrency/BitcoinKit" "v1.2.2"

@@ -201,10 +201,8 @@
 		A3CE63E5243CC110006EE501 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E4243CC110006EE501 /* CoreStore */; };
 		A3CE63E8243CC134006EE501 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E7243CC134006EE501 /* Eureka */; };
 		A3CE63EB243CC151006EE501 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63EA243CC151006EE501 /* CryptoSwift */; };
-		A3CE63F1243CC190006EE501 /* PromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F0243CC190006EE501 /* PromisesTestHelpers */; };
 		A3CE63F3243CC190006EE501 /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F2243CC190006EE501 /* Promises */; };
 		A3CE63F5243CC190006EE501 /* FBLPromises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F4243CC190006EE501 /* FBLPromises */; };
-		A3CE63F7243CC190006EE501 /* FBLPromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F6243CC190006EE501 /* FBLPromisesTestHelpers */; };
 		A3CE63F9243CC297006EE501 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
 		A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A068215661C20018599A /* AddressValidatorTest.swift */; };
 		A3D3A06B2156FC130018599A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A06A2156FC130018599A /* MainTabBarController.swift */; };
@@ -793,8 +791,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3CE63F1243CC190006EE501 /* PromisesTestHelpers in Frameworks */,
-				A3CE63F7243CC190006EE501 /* FBLPromisesTestHelpers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1785,8 +1781,6 @@
 			);
 			name = VergeiOSTests;
 			packageProductDependencies = (
-				A3CE63F0243CC190006EE501 /* PromisesTestHelpers */,
-				A3CE63F6243CC190006EE501 /* FBLPromisesTestHelpers */,
 			);
 			productName = VergeiOSTests;
 			productReference = A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */;
@@ -3225,11 +3219,6 @@
 			package = A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
 		};
-		A3CE63F0243CC190006EE501 /* PromisesTestHelpers */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
-			productName = PromisesTestHelpers;
-		};
 		A3CE63F2243CC190006EE501 /* Promises */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
@@ -3239,11 +3228,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = FBLPromises;
-		};
-		A3CE63F6243CC190006EE501 /* FBLPromisesTestHelpers */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
-			productName = FBLPromisesTestHelpers;
 		};
 /* End XCSwiftPackageProductDependency section */
 

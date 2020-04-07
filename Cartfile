@@ -1,6 +1,6 @@
 github "gmotzespina/QRCode" "master"
 github "HamzaGhazouani/HGPlaceholders"
 binary "https://icepa.github.io/Tor.framework/Tor.json" == 400.6.3
-github "vergecurrency/BitcoinKit"
+binary "https://vergecurrency.github.io/BitcoinKit/BitcoinKit.json" == 1.2.2
 github "Swinject/Swinject" ~> 2.6.0
 github "Swinject/SwinjectStoryboard" "master"
