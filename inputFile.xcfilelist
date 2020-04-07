@@ -1,0 +1,6 @@
+$(SRCROOT)/Carthage/Build/iOS/QRCode.framework
+$(SRCROOT)/Carthage/Build/iOS/HGPlaceholders.framework
+$(SRCROOT)/Carthage/Build/iOS/Tor.framework
+$(SRCROOT)/Carthage/Build/iOS/BitcoinKit.framework
+$(SRCROOT)/Carthage/Build/iOS/Swinject.framework
+$(SRCROOT)/Carthage/Build/iOS/SwinjectStoryboard.framework

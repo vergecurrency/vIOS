@@ -1,14 +1,6 @@
-github "hackiftekhar/IQKeyboardManager" "v6.5.5"
 github "gmotzespina/QRCode" "master"
-github "SwiftyJSON/SwiftyJSON" ~> 5.0.0
-github "evgenyneu/keychain-swift" ~> 19.0
 github "HamzaGhazouani/HGPlaceholders"
 binary "https://icepa.github.io/Tor.framework/Tor.json" == 400.6.3
-github "danielgindi/Charts" ~> 3.3.0
-github "JohnEstropia/CoreStore" "develop"
-github "xmartlabs/Eureka" ~> 5.2
-github "krzyzanowskim/CryptoSwift"
 github "vergecurrency/BitcoinKit"
 github "Swinject/Swinject" ~> 2.6.0
 github "Swinject/SwinjectStoryboard" "master"
-github "google/promises"

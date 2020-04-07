@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import Logging
 
 class HttpServiceProvider: ServiceProvider {
 
@@ -14,7 +15,7 @@ class HttpServiceProvider: ServiceProvider {
 
     override func register() {
         container.register(TorClientProtocol.self) { r in
-            TorClient(applicationRepository: r.resolve(ApplicationRepository.self)!)
+            TorClient(applicationRepository: r.resolve(ApplicationRepository.self)!, log: r.resolve(Logger.self)!)
         }.inObjectScope(.container)
 
         container.register(TorClient.self) { r in
