@@ -9,7 +9,6 @@
 import XCTest
 import Foundation
 import Promises
-import PromisesTestHelpers
 @testable import VergeiOS
 
 class HiddenHttpSessionTest: XCTestCase {

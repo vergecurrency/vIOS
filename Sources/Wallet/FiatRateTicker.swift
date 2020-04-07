@@ -7,22 +7,30 @@
 //
 
 import Foundation
+import Logging
 
 class FiatRateTicker: TickerProtocol {
+    private let applicationRepository: ApplicationRepository
+    private let statisicsClient: RatesClient
+    private let log: Logger
+
     private var started: Bool = false
     private var interval: Timer?
-    private var applicationRepository: ApplicationRepository!
-    private var statisicsClient: RatesClient!
 
-    init (applicationRepository: ApplicationRepository, statisicsClient: RatesClient) {
+    init (applicationRepository: ApplicationRepository, statisicsClient: RatesClient, log: Logger) {
         self.applicationRepository = applicationRepository
         self.statisicsClient = statisicsClient
+        self.log = log
     }
 
     // Start the fiat rate ticker.
     func start() {
-        if self.started || !self.applicationRepository.setup {
-            return
+        if self.started {
+            return self.log.notice(LogMessage.FiatRateTickerStartTwice)
+        }
+
+        if !self.applicationRepository.setup {
+            return self.log.notice(LogMessage.FiatRateTickerStartBeforeSetup)
         }
 
         self.tick()
@@ -32,7 +40,7 @@ class FiatRateTicker: TickerProtocol {
         }
 
         self.started = true
-        print("Fiat rate ticker started...")
+        self.log.notice(LogMessage.FiatRateTickerStarted)
     }
 
     // Stop the price ticker.
@@ -40,16 +48,18 @@ class FiatRateTicker: TickerProtocol {
         self.interval?.invalidate()
         self.started = false
 
-        print("Fiat rate ticker stopped...")
+        self.log.notice(LogMessage.FiatRateTickerStopped)
     }
 
     // Fetch statistics from the API and notify all absorbers.
     func tick() {
-        print("Fetching new stats")
+        self.log.notice(LogMessage.FiatRateTickerFetchingRates)
+
         self.statisicsClient.infoBy(currency: self.applicationRepository.currency) { info in
             self.applicationRepository.latestRateInfo = info
 
-            print("Fiat ratings received, posting notification")
+            self.log.notice(LogMessage.FiatRateTickerReceivedRates)
+
             NotificationCenter.default.post(name: .didReceiveFiatRatings, object: info)
         }
     }

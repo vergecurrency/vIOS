@@ -10,28 +10,29 @@ import Foundation
 import Swinject
 import CoreStore
 import SwiftyJSON
+import Logging
 
 class WalletServiceProvider: ServiceProvider {
     override func boot() {
-        guard let hiddenHttpSession = self.container.resolve(HiddenHttpSession.self) else {
-            return
-        }
-
-        hiddenHttpSession.dataTask(
-            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
-        ).then { response in
-            print(try? JSON(data: response.data ?? Data()))
-        }.catch { error in
-            print(error.localizedDescription)
-        }
-
-        hiddenHttpSession.dataTask(
-            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
-        ).then { response in
-            print(try? JSON(data: response.data ?? Data()))
-        }.catch { error in
-            print(error.localizedDescription)
-        }
+//        guard let hiddenHttpSession = self.container.resolve(HiddenHttpSession.self) else {
+//            return
+//        }
+//
+//        hiddenHttpSession.dataTask(
+//            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
+//        ).then { response in
+//            print(try? JSON(data: response.data ?? Data()))
+//        }.catch { error in
+//            print(error.localizedDescription)
+//        }
+//
+//        hiddenHttpSession.dataTask(
+//            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
+//        ).then { response in
+//            print(try? JSON(data: response.data ?? Data()))
+//        }.catch { error in
+//            print(error.localizedDescription)
+//        }
     }
 
     override func register() {
@@ -74,8 +75,9 @@ class WalletServiceProvider: ServiceProvider {
             let appRepo = r.resolve(ApplicationRepository.self)!
             let credentials = r.resolve(Credentials.self)!
             let torClient = r.resolve(TorClient.self)!
+            let log = r.resolve(Logger.self)!
 
-            return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient)
+            return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient, log: log)
         }.inObjectScope(.container)
     }
 
@@ -113,11 +115,13 @@ class WalletServiceProvider: ServiceProvider {
             let walletClient = r.resolve(WalletClientProtocol.self)!
             let appRepo = r.resolve(ApplicationRepository.self)!
             let transactionManager = r.resolve(TransactionManager.self)!
+            let log = r.resolve(Logger.self)!
 
             return WalletTicker(
                 client: walletClient,
                 applicationRepository: appRepo,
-                transactionManager: transactionManager
+                transactionManager: transactionManager,
+                log: log
             )
         }.inObjectScope(.container)
     }
@@ -126,8 +130,9 @@ class WalletServiceProvider: ServiceProvider {
         container.register(FiatRateTicker.self) { r in
             let appRepo = r.resolve(ApplicationRepository.self)!
             let ratesClient = r.resolve(RatesClient.self)!
+            let log = r.resolve(Logger.self)!
 
-            return FiatRateTicker(applicationRepository: appRepo, statisicsClient: ratesClient)
+            return FiatRateTicker(applicationRepository: appRepo, statisicsClient: ratesClient, log: log)
         }.inObjectScope(.container)
     }
 

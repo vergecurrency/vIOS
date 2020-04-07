@@ -7,6 +7,7 @@ import Foundation
 import BitcoinKit
 import SwiftyJSON
 import CryptoSwift
+import Logging
 
 // swiftlint:disable file_length
 public class WalletClient: WalletClientProtocol {
@@ -22,15 +23,13 @@ public class WalletClient: WalletClientProtocol {
 
     private let sjcl = SJCL()
 
-    private var applicationRepository: ApplicationRepository!
-    private var torClient: TorClient!
-    private var baseUrl: String = ""
-    private var urlSession: URLSession {
-        return self.torClient.session
-    }
-
-    private let network: Network
+    private let applicationRepository: ApplicationRepository
     private let credentials: Credentials
+    private let torClient: TorClient
+    private let log: Logger
+    private let network: Network
+
+    private var baseUrl: String = ""
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
@@ -38,12 +37,14 @@ public class WalletClient: WalletClientProtocol {
         appRepo: ApplicationRepository,
         credentials: Credentials,
         torClient: TorClient,
+        log: Logger,
         network: Network = .mainnetXVG
     ) {
         self.applicationRepository = appRepo
         self.baseUrl = appRepo.walletServiceUrl
         self.credentials = credentials
         self.torClient = torClient
+        self.log = log
         self.network = network
     }
 
@@ -68,9 +69,7 @@ public class WalletClient: WalletClientProtocol {
             return completion(nil, nil, error)
         }
 
-        print("Get request to: \(url)")
-        print("With signature: \(signature)")
-        print("And Copayer id: \(copayerId)")
+        self.logRequest(method: "GET", url: url.absoluteString, signature: signature, copayerId: copayerId)
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -78,7 +77,11 @@ public class WalletClient: WalletClientProtocol {
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("application/json", forHTTPHeaderField: "accept")
 
-        let task = urlSession.dataTask(with: request) { data, response, error in
+        let task = self.torClient.session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                self.log.error(LogMessage.WalletClientRequestError(error))
+            }
+
             DispatchQueue.main.sync {
                 completion(data, response, error)
             }
@@ -107,8 +110,7 @@ public class WalletClient: WalletClientProtocol {
             let copayerId = getCopayerId()
             let signature = try getSignature(url: uri, method: "post", arguments: argumentsString)
 
-            print("Post request to: \(url)")
-            print("With signature: \(signature)")
+            self.logRequest(method: "POST", url: url.absoluteString, signature: signature, copayerId: copayerId)
 
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -117,7 +119,11 @@ public class WalletClient: WalletClientProtocol {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = argumentsData
 
-            let task = urlSession.dataTask(with: request) { data, response, error in
+            let task = self.torClient.session.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    self.log.error(LogMessage.WalletClientRequestError(error))
+                }
+
                 DispatchQueue.main.sync {
                     completion(data, response, error)
                 }
@@ -146,9 +152,7 @@ public class WalletClient: WalletClientProtocol {
             return completion(nil, nil, error)
         }
 
-        print("Get request to: \(url)")
-        print("With signature: \(signature)")
-        print("And Copayer id: \(copayerId)")
+        self.logRequest(method: "DELETE", url: url.absoluteString, signature: signature, copayerId: copayerId)
 
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -156,7 +160,11 @@ public class WalletClient: WalletClientProtocol {
         request.setValue(signature, forHTTPHeaderField: "x-signature")
         request.setValue("application/json", forHTTPHeaderField: "accept")
 
-        let task = urlSession.dataTask(with: request) { data, response, error in
+        let task = self.torClient.session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                self.log.error(LogMessage.WalletClientRequestError(error))
+            }
+
             DispatchQueue.main.sync {
                 completion(data, response, error)
             }
@@ -172,6 +180,15 @@ public class WalletClient: WalletClientProtocol {
         let hash = sjcl.sha256Hash(data: "xvg\(xPubKey)")
 
         return sjcl.hexFromBits(hash: hash)
+    }
+
+    private func logRequest(method: String, url: String, signature: String, copayerId: String) {
+        self.log.notice(LogMessage.WalletClientRequestFired, metadata: [
+            "method": Logger.MetadataValue(stringLiteral: method),
+            "url": Logger.MetadataValue(stringLiteral: url),
+            "signature": Logger.MetadataValue(stringLiteral: signature),
+            "copayerId": Logger.MetadataValue(stringLiteral: copayerId)
+        ])
     }
 
 }
@@ -211,11 +228,9 @@ extension WalletClient {
 
                     completion(nil, walletId.identifier)
                 } catch {
-                    print(error)
                     completion(error, nil)
                 }
             } else {
-                print(error!)
                 completion(error, nil)
             }
         }
@@ -249,8 +264,6 @@ extension WalletClient {
                 return completion(error)
             }
 
-            print(jsonResponse)
-
             if jsonResponse["code"].stringValue == "WALLET_NOT_FOUND" {
                 return completion(NSError(domain: "Wallet not found", code: 404, userInfo: nil))
             }
@@ -271,14 +284,14 @@ extension WalletClient {
         getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, _, error in
             // TODO: Clean this up...
             guard let data = data else {
-                return print(error!)
+                return
             }
 
             guard let jsonResponse = try? JSON(data: data) else {
-                return print(error!)
+                return
             }
 
-            print(jsonResponse)
+            // TODO: what??
             completion(error)
         }
     }
@@ -350,7 +363,6 @@ extension WalletClient {
                 let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
                 completion(nil, addresses)
             } catch {
-                print(error)
                 completion(error, [])
             }
         }
@@ -376,7 +388,6 @@ extension WalletClient {
                 let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
                 completion(error, balanceInfo)
             } catch {
-                print(error)
                 completion(error, nil)
             }
         }
@@ -392,6 +403,7 @@ extension WalletClient {
             url = "\(url)&skip=\(skip!)&limit=\(limit!)"
         }
 
+        // TODO: do something with the possible errors...
         getRequest(url: url) { data, _, error in
             if let data = data {
                 do {
@@ -410,7 +422,6 @@ extension WalletClient {
 
                     completion(transformedTransactions)
                 } catch {
-                    print(error)
                     completion([])
                 }
             }
@@ -760,11 +771,11 @@ extension WalletClient {
 
             let keysOfUtxo: [PrivateKey] = keys.filter { $0.publicKey().pubkeyHash == pubkeyHash }
             guard let key = keysOfUtxo.first else {
-                print("No keys to this txout : \(utxo.output.value)")
+                //print("No keys to this txout : \(utxo.output.value)")
                 continue
             }
-            print("Value of signing txout : \(utxo.output.value)")
-            print(key.data.hex)
+            //print("Value of signing txout : \(utxo.output.value)")
+            //print(key.data.hex)
 
             let sighash: Data = transactionToSign.signatureHash(
                 for: utxo.output,

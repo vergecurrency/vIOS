@@ -4,11 +4,17 @@
 //
 
 import Foundation
+import Logging
 
 class WalletTicker: TickerProtocol {
-    private var client: WalletClientProtocol!
-    private var applicationRepository: ApplicationRepository!
-    private var transactionManager: TransactionManager!
+    enum Error: Swift.Error {
+        case NoWalletAmountInfo
+    }
+
+    private let client: WalletClientProtocol
+    private let applicationRepository: ApplicationRepository
+    private let transactionManager: TransactionManager
+    private let log: Logger
 
     private var started: Bool = false
     private var interval: Timer?
@@ -16,20 +22,22 @@ class WalletTicker: TickerProtocol {
     init(
         client: WalletClientProtocol,
         applicationRepository: ApplicationRepository,
-        transactionManager: TransactionManager
+        transactionManager: TransactionManager,
+        log: Logger
     ) {
         self.client = client
         self.applicationRepository = applicationRepository
         self.transactionManager = transactionManager
+        self.log = log
     }
 
     public func start() {
         if self.started {
-            return
+            return self.log.notice(LogMessage.WalletTickerStartTwice)
         }
 
         if !self.applicationRepository.setup {
-            return
+            return self.log.notice(LogMessage.WalletTickerStartBeforeSetup)
         }
 
         self.tick()
@@ -39,7 +47,7 @@ class WalletTicker: TickerProtocol {
         }
 
         self.started = true
-        print("Wallet ticker started...")
+        self.log.notice(LogMessage.WalletTickerStarted)
     }
 
     // Stop the price ticker.
@@ -48,7 +56,7 @@ class WalletTicker: TickerProtocol {
         interval = nil
         started = false
 
-        print("Wallet ticker stopped...")
+        self.log.notice(LogMessage.WalletTickerStopped)
     }
 
     func tick() {
@@ -57,21 +65,27 @@ class WalletTicker: TickerProtocol {
     }
 
     private func fetchWalletAmount() {
-        print("Fetching wallet amount")
+        self.log.notice(LogMessage.WalletTickerFetchingWalletAmount)
 
-        client.getBalance { _, info in
-            if let info = info {
-                self.applicationRepository.amount = info.availableAmountValue
+        client.getBalance { error, info in
+            guard let info = info else {
+                return self.log.error(LogMessage.WalletTickerWalletAmountError(error ?? Error.NoWalletAmountInfo))
             }
+
+            self.applicationRepository.amount = info.availableAmountValue
+
+            self.log.notice(LogMessage.WalletTickerSetWalletAmount)
         }
     }
 
-    // Fetch statistics from the API and notify all absorbers.
+    // Fetch statistics from the API and notify all observers.
     private func fetchTransactions() {
-        print("Fetching new transactions")
+        self.log.notice(LogMessage.WalletTickerFetchingTransactions)
 
         self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
+
+            self.log.notice(LogMessage.WalletTickerReceivedTransactions)
         }
     }
 }
