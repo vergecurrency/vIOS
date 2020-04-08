@@ -117,7 +117,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
         cell.addTapGestureRecognizer(taps: 2) {
             UIPasteboard.general.string = address.address
-            NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
+            NotificationBar.shared.showMessage("addresses.addressCopied".localized, duration: 3)
         }
 
         return cell
@@ -138,7 +138,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
         cell.addTapGestureRecognizer(taps: 2) {
             UIPasteboard.general.string = balanceAddress.address
-            NotificationManager.shared.showMessage("addresses.addressCopied".localized, duration: 3)
+            NotificationBar.shared.showMessage("addresses.addressCopied".localized, duration: 3)
         }
 
         return cell
@@ -211,7 +211,7 @@ class AddressesTableViewController: EdgedTableViewController {
 
     func toPasteboard(message: String, value: String?) {
         UIPasteboard.general.string = value
-        NotificationManager.shared.showMessage(message, duration: 3)
+        NotificationBar.shared.showMessage(message, duration: 3)
     }
 
     @IBAction func scanAddresses(_ sender: UIButton) {

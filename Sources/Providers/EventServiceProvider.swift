@@ -5,6 +5,7 @@
 
 import Foundation
 import Swinject
+import Logging
 
 class EventServiceProvider: ServiceProvider {
 
@@ -16,12 +17,21 @@ class EventServiceProvider: ServiceProvider {
     override func register() {
         self.nc = NotificationCenter.default
 
+        self.register(name: ConfigurationSubscriber.typeName) { r in
+            return ConfigurationSubscriber(
+                applicationRepository: r.resolve(ApplicationRepository.self)!,
+                walletClient: r.resolve(WalletClientProtocol.self)!,
+                walletManager: r.resolve(WalletManagerProtocol.self)!,
+                log: r.resolve(Logger.self)!
+            )
+        }
+
         self.register(name: WalletNotificationsSubscriber.typeName) { r in
-            WalletNotificationsSubscriber(walletClient: r.resolve(WalletClientProtocol.self)!)
+            return WalletNotificationsSubscriber(walletClient: r.resolve(WalletClientProtocol.self)!)
         }
 
         self.register(name: TorConnectionSubscriber.typeName) { r in
-            TorConnectionSubscriber(
+            return TorConnectionSubscriber(
                 fiatRateTicker: r.resolve(FiatRateTicker.self)!,
                 applicationRepository: r.resolve(ApplicationRepository.self)!,
                 walletTicker: r.resolve(WalletTicker.self)!
@@ -29,11 +39,11 @@ class EventServiceProvider: ServiceProvider {
         }
 
         self.register(name: WatchSubscriber.typeName) { r in
-            WatchSubscriber(watchSyncManager: r.resolve(WatchSyncManager.self)!)
+            return WatchSubscriber(watchSyncManager: r.resolve(WatchSyncManager.self)!)
         }
 
         self.register(name: WalletSubscriber.typeName) { r in
-            WalletSubscriber(
+            return WalletSubscriber(
                 walletTicker: r.resolve(WalletTicker.self)!,
                 walletClient: r.resolve(WalletClientProtocol.self)!,
                 fiatRateTicker: r.resolve(FiatRateTicker.self)!,
@@ -45,7 +55,7 @@ class EventServiceProvider: ServiceProvider {
         }
 
         self.register(name: CurrencySubscriber.typeName) { r in
-            CurrencySubscriber(fiatRateTicker: r.resolve(FiatRateTicker.self)!)
+            return CurrencySubscriber(fiatRateTicker: r.resolve(FiatRateTicker.self)!)
         }
     }
 

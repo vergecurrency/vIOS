@@ -11,7 +11,7 @@ import Foundation
 protocol TorClientProtocol {
     var session: URLSession { get }
 
-    func start(completion: @escaping () -> Void)
+    func start(completion: @escaping (Bool) -> Void)
     func restart()
     func resign()
     func turnedOff() -> Bool

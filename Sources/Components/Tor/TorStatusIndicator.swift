@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SystemConfiguration
 
 class TorStatusIndicator: UIWindow {
 
@@ -32,7 +31,7 @@ class TorStatusIndicator: UIWindow {
         self.torStatusIndicatorViewController?.view.frame = frame
         self.backgroundColor = .clear
 
-        self.windowLevel = UIWindow.Level.statusBar - 2
+        self.windowLevel = UIWindow.Level.torStatusIndicator
         self.rootViewController = self.torStatusIndicatorViewController
 
         self.frame = frame
@@ -46,7 +45,7 @@ class TorStatusIndicator: UIWindow {
         self.setStatus(self.defaultStatus)
     }
 
-    func hasNotch() -> Bool {
+    private func hasNotch() -> Bool {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return false
         }
@@ -60,7 +59,7 @@ class TorStatusIndicator: UIWindow {
         return false
     }
 
-    func frameHeight() -> CGFloat {
+    private func frameHeight() -> CGFloat {
         if UIDevice.current.userInterfaceIdiom == .pad {
             return UIScreen.main.bounds.size.height - 1
         }

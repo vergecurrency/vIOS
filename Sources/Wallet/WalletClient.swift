@@ -7,6 +7,7 @@ import Foundation
 import BitcoinKit
 import SwiftyJSON
 import CryptoSwift
+import Logging
 
 // swiftlint:disable file_length
 public class WalletClient: WalletClientProtocol {
@@ -18,19 +19,18 @@ public class WalletClient: WalletClientProtocol {
         case invalidWidHex(id: String)
         case invalidAddressReceived(address: AddressInfo?)
         case noOutputFound
+        case walletNotFound
     }
 
     private let sjcl = SJCL()
 
-    private var applicationRepository: ApplicationRepository!
-    private var torClient: TorClient!
-    private var baseUrl: String = ""
-    private var urlSession: URLSession {
-        return self.torClient.session
-    }
-
-    private let network: Network
+    private let applicationRepository: ApplicationRepository
     private let credentials: Credentials
+    private let torClient: TorClient
+    private let log: Logger
+    private let network: Network
+
+    private var baseUrl: String = ""
 
     private typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
 
@@ -38,12 +38,14 @@ public class WalletClient: WalletClientProtocol {
         appRepo: ApplicationRepository,
         credentials: Credentials,
         torClient: TorClient,
+        log: Logger,
         network: Network = .mainnetXVG
     ) {
         self.applicationRepository = appRepo
         self.baseUrl = appRepo.walletServiceUrl
         self.credentials = credentials
         self.torClient = torClient
+        self.log = log
         self.network = network
     }
 
@@ -51,7 +53,7 @@ public class WalletClient: WalletClientProtocol {
         self.baseUrl = baseUrl
     }
 
-    // MARK: Private methods
+    // MARK: Request methods
 
     private func getRequest(url: String, completion: @escaping URLCompletion) {
         let referencedUrl = url.addUrlReference()
@@ -60,32 +62,21 @@ public class WalletClient: WalletClientProtocol {
             return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
         }
 
-        let copayerId = getCopayerId()
-        var signature = ""
         do {
-            signature = try getSignature(url: referencedUrl, method: "get")
+            let signature = try getSignature(url: referencedUrl, method: "get")
+            let copayerId = self.getCopayerId()
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue(self.getCopayerId(), forHTTPHeaderField: "x-identity")
+            request.setValue(signature, forHTTPHeaderField: "x-signature")
+            request.setValue("application/json", forHTTPHeaderField: "accept")
+
+            self.log(request: request, signature: signature, copayerId: copayerId)
+
+            self.request(request, completion: completion)
         } catch {
             return completion(nil, nil, error)
-        }
-
-        print("Get request to: \(url)")
-        print("With signature: \(signature)")
-        print("And Copayer id: \(copayerId)")
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue(copayerId, forHTTPHeaderField: "x-identity")
-        request.setValue(signature, forHTTPHeaderField: "x-signature")
-        request.setValue("application/json", forHTTPHeaderField: "accept")
-
-        let task = urlSession.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.sync {
-                completion(data, response, error)
-            }
-        }
-
-        DispatchQueue.main.async {
-            task.resume()
         }
     }
 
@@ -104,28 +95,19 @@ public class WalletClient: WalletClientProtocol {
                 argumentsString = argumentsString.replacingOccurrences(of: "\\/", with: "/")
             }
 
-            let copayerId = getCopayerId()
             let signature = try getSignature(url: uri, method: "post", arguments: argumentsString)
-
-            print("Post request to: \(url)")
-            print("With signature: \(signature)")
+            let copayerId = self.getCopayerId()
 
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-            request.setValue(copayerId, forHTTPHeaderField: "x-identity")
+            request.setValue(self.getCopayerId(), forHTTPHeaderField: "x-identity")
             request.setValue(signature, forHTTPHeaderField: "x-signature")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = argumentsData
 
-            let task = urlSession.dataTask(with: request) { data, response, error in
-                DispatchQueue.main.sync {
-                    completion(data, response, error)
-                }
-            }
+            self.log(request: request, signature: signature, copayerId: copayerId)
 
-            DispatchQueue.main.async {
-                task.resume()
-            }
+            self.request(request, completion: completion)
         } catch {
             return completion(nil, nil, error)
         }
@@ -138,25 +120,30 @@ public class WalletClient: WalletClientProtocol {
             return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
         }
 
-        let copayerId = getCopayerId()
-        var signature = ""
         do {
-            signature = try getSignature(url: referencedUrl, method: "delete")
+            let signature = try getSignature(url: referencedUrl, method: "delete")
+            let copayerId = self.getCopayerId()
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "DELETE"
+            request.setValue(copayerId, forHTTPHeaderField: "x-identity")
+            request.setValue(signature, forHTTPHeaderField: "x-signature")
+            request.setValue("application/json", forHTTPHeaderField: "accept")
+
+            self.log(request: request, signature: signature, copayerId: copayerId)
+
+            self.request(request, completion: completion)
         } catch {
             return completion(nil, nil, error)
         }
+    }
 
-        print("Get request to: \(url)")
-        print("With signature: \(signature)")
-        print("And Copayer id: \(copayerId)")
+    private func request(_ request: URLRequest, completion: @escaping URLCompletion) {
+        let task = self.torClient.session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                self.log.error(LogMessage.WalletClientRequestError(error))
+            }
 
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        request.setValue(copayerId, forHTTPHeaderField: "x-identity")
-        request.setValue(signature, forHTTPHeaderField: "x-signature")
-        request.setValue("application/json", forHTTPHeaderField: "accept")
-
-        let task = urlSession.dataTask(with: request) { data, response, error in
             DispatchQueue.main.sync {
                 completion(data, response, error)
             }
@@ -168,10 +155,19 @@ public class WalletClient: WalletClientProtocol {
     }
 
     private func getCopayerId() -> String {
-        let xPubKey = credentials.publicKey.extended()
-        let hash = sjcl.sha256Hash(data: "xvg\(xPubKey)")
+        let xPubKey = self.credentials.publicKey.extended()
+        let hash = self.sjcl.sha256Hash(data: "xvg\(xPubKey)")
 
-        return sjcl.hexFromBits(hash: hash)
+        return self.sjcl.hexFromBits(hash: hash)
+    }
+
+    private func log(request: URLRequest, signature: String, copayerId: String) {
+        self.log.notice(LogMessage.WalletClientRequestFired, metadata: [
+            "method": Logger.MetadataValue(stringLiteral: request.httpMethod ?? ""),
+            "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? ""),
+            "signature": Logger.MetadataValue(stringLiteral: signature),
+            "copayerId": Logger.MetadataValue(stringLiteral: copayerId)
+        ])
     }
 
 }
@@ -190,44 +186,48 @@ extension WalletClient {
         completion: @escaping (_ error: Error?, _ secret: String?) -> Void
     ) {
         // swiftlint:enable function_parameter_count
-        let encWalletName = encryptMessage(plaintext: walletName, encryptingKey: credentials.sharedEncryptingKey)
+        let encWalletName = self.encryptMessage(
+            plaintext: walletName,
+            encryptingKey: self.credentials.sharedEncryptingKey
+        )
 
         var args = JSON()
         args["name"].stringValue = encWalletName
-        args["pubKey"].stringValue = credentials.walletPrivateKey.privateKey().publicKey().description
+        args["pubKey"].stringValue = self.credentials.walletPrivateKey.privateKey().publicKey().description
         args["m"].intValue = m
         args["n"].intValue = n
         args["coin"].stringValue = "xvg"
         args["network"].stringValue = "livenet"
 
-        postRequest(url: "/v2/wallets/", arguments: args) { data, _, error in
-            if let data = data {
-                do {
-                    let walletId = try JSONDecoder().decode(WalletID.self, from: data)
+        self.postRequest(url: "/v2/wallets/", arguments: args) { data, _, error in
+            guard let data = data else {
+                return completion(error, nil)
+            }
 
-                    self.applicationRepository.walletId = walletId.identifier
-                    self.applicationRepository.walletName = walletName
-                    self.applicationRepository.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
+            do {
+                let walletId = try JSONDecoder().decode(WalletID.self, from: data)
 
-                    completion(nil, walletId.identifier)
-                } catch {
-                    print(error)
-                    completion(error, nil)
-                }
-            } else {
-                print(error!)
+                self.applicationRepository.walletId = walletId.identifier
+                self.applicationRepository.walletName = walletName
+                self.applicationRepository.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
+
+                completion(nil, walletId.identifier)
+            } catch {
                 completion(error, nil)
             }
         }
     }
 
     public func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void) {
-        let xPubKey = credentials.publicKey.extended()
-        let requestPubKey = credentials.requestPrivateKey.extendedPublicKey().publicKey().description
+        let xPubKey = self.credentials.publicKey.extended()
+        let requestPubKey = self.credentials.requestPrivateKey.extendedPublicKey().publicKey().description
 
-        let encCopayerName = encryptMessage(plaintext: "ios-copayer", encryptingKey: credentials.sharedEncryptingKey)
+        let encCopayerName = self.encryptMessage(
+            plaintext: "ios-copayer",
+            encryptingKey: self.credentials.sharedEncryptingKey
+        )
         let copayerSignatureHash = [encCopayerName, xPubKey, requestPubKey].joined(separator: "|")
-        let customData = "{\"walletPrivKey\": \"\(credentials.walletPrivateKey.privateKey().description)\"}"
+        let customData = "{\"walletPrivKey\": \"\(self.credentials.walletPrivateKey.privateKey().description)\"}"
 
         var arguments = JSON()
         arguments["walletId"].stringValue = walletIdentifier
@@ -235,51 +235,62 @@ extension WalletClient {
         arguments["name"].stringValue = encCopayerName
         arguments["xPubKey"].stringValue = xPubKey
         arguments["requestPubKey"].stringValue = requestPubKey
-        arguments["customData"].stringValue = encryptMessage(plaintext: customData,
-                                                             encryptingKey: credentials.personalEncryptingKey)
-        arguments["copayerSignature"].stringValue = try! signMessage(copayerSignatureHash,
-                                                                     privateKey: credentials.walletPrivateKey)
+        arguments["customData"].stringValue = self.encryptMessage(
+            plaintext: customData,
+            encryptingKey: self.credentials.personalEncryptingKey
+        )
 
-        postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
+        do {
+            arguments["copayerSignature"].stringValue = try self.signMessage(
+                copayerSignatureHash,
+                privateKey: self.credentials.walletPrivateKey
+            )
+        } catch {
+            return completion(error)
+        }
+
+
+        self.postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
             guard let data = data else {
                 return completion(error)
             }
 
-            guard let jsonResponse = try? JSON(data: data) else {
-                return completion(error)
-            }
+            do {
+                // TODO: Put this logic somewhere else
+                let jsonResponse = try JSON(data: data)
 
-            print(jsonResponse)
-
-            if jsonResponse["code"].stringValue == "WALLET_NOT_FOUND" {
-                return completion(NSError(domain: "Wallet not found", code: 404, userInfo: nil))
-            }
-
-            if jsonResponse["code"].stringValue == "COPAYER_REGISTERED" {
-                self.openWallet { error in
-                    completion(error)
+                if jsonResponse["code"].stringValue == "WALLET_NOT_FOUND" {
+                    return completion(WalletClientError.walletNotFound)
                 }
-                return
-            }
 
-            completion(error)
+                if jsonResponse["code"].stringValue == "COPAYER_REGISTERED" {
+                    return self.openWallet { error in
+                        completion(error)
+                    }
+                }
+
+                completion(error)
+            } catch {
+                completion(error)
+            }
         }
     }
 
     public func openWallet(completion: @escaping (_ error: Error?) -> Void) {
         // COPAYER_REGISTERED
-        getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, _, error in
+        self.getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, _, error in
             // TODO: Clean this up...
             guard let data = data else {
-                return print(error!)
+                return completion(error)
             }
 
-            guard let jsonResponse = try? JSON(data: data) else {
-                return print(error!)
-            }
+            do {
+                let jsonResponse = try JSON(data: data)
 
-            print(jsonResponse)
-            completion(error)
+                completion(error)
+            } catch {
+                completion(error)
+            }
         }
     }
 
@@ -290,35 +301,41 @@ extension WalletClient {
 extension WalletClient {
 
     public func scanAddresses(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
-        postRequest(url: "/v1/addresses/scan", arguments: nil) { _, _, error in
+        self.postRequest(url: "/v1/addresses/scan", arguments: nil) { _, _, error in
             completion(error)
         }
     }
 
     public func createAddress(
-        completion: @escaping (_ error: Error?,
-                               _ address: AddressInfo?,
-                               _ createAddressErrorResponse: CreateAddressErrorResponse?) -> Void
+        completion: @escaping (
+            _ error: Error?,
+            _ address: AddressInfo?,
+            _ createAddressErrorResponse: CreateAddressErrorResponse?
+        ) -> Void
     ) {
-        postRequest(url: "/v4/addresses/", arguments: nil) { data, _, error in
+        self.postRequest(url: "/v4/addresses/", arguments: nil) { data, _, error in
             guard let data = data else {
                 return completion(error, nil, nil)
             }
 
-            let addressInfo = try? JSONDecoder().decode(AddressInfo.self, from: data)
-            let errorResponse = try? JSONDecoder().decode(CreateAddressErrorResponse.self, from: data)
+            do {
+                let addressInfo = try JSONDecoder().decode(AddressInfo.self, from: data)
+                let errorResponse = try JSONDecoder().decode(CreateAddressErrorResponse.self, from: data)
 
-            // Make sure the received address is really your address.
-            let addressByPath = try? self.credentials.privateKeyBy(
-                path: addressInfo?.path ?? "",
-                privateKey: self.credentials.bip44PrivateKey
-            ).publicKey().toLegacy().description
+                // Make sure the received address is really your address.
+                let addressByPath = try self.credentials.privateKeyBy(
+                    path: addressInfo.path,
+                    privateKey: self.credentials.bip44PrivateKey
+                ).publicKey().toLegacy().description
 
-            if addressInfo?.address != addressByPath {
-                return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
+                if addressInfo.address != addressByPath {
+                    return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
+                }
+
+                completion(nil, addressInfo, errorResponse)
+            } catch {
+                completion(error, nil, nil)
             }
-
-            completion(nil, addressInfo, errorResponse)
         }
     }
 
@@ -341,16 +358,14 @@ extension WalletClient {
             qs = "?\(args.joined(separator: "&"))"
         }
 
-        getRequest(url: "/v1/addresses/\(qs)") { data, _, error in
+        self.getRequest(url: "/v1/addresses/\(qs)") { data, _, error in
             guard let data = data else {
                 return completion(error, [])
             }
 
             do {
-                let addresses = try JSONDecoder().decode([AddressInfo].self, from: data)
-                completion(nil, addresses)
+                completion(nil, try JSONDecoder().decode([AddressInfo].self, from: data))
             } catch {
-                print(error)
                 completion(error, [])
             }
         }
@@ -363,20 +378,14 @@ extension WalletClient {
 extension WalletClient {
 
     public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void) {
-        getRequest(url: "/v1/balance/") { data, _, error in
+        self.getRequest(url: "/v1/balance/") { data, _, error in
             guard let data = data else {
-                if error != nil {
-                    completion(error, nil)
-                }
-
-                return
+                return completion(error, nil)
             }
 
             do {
-                let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
-                completion(error, balanceInfo)
+                completion(error, try JSONDecoder().decode(WalletBalanceInfo.self, from: data))
             } catch {
-                print(error)
                 completion(error, nil)
             }
         }
@@ -385,34 +394,36 @@ extension WalletClient {
     public func getTxHistory(
         skip: Int? = nil,
         limit: Int? = nil,
-        completion: @escaping (_ transactions: [TxHistory]) -> Void
+        completion: @escaping (_ transactions: [TxHistory], Error?) -> Void
     ) {
         var url = "/v1/txhistory/?includeExtendedInfo=1"
         if (skip != nil && limit != nil) {
             url = "\(url)&skip=\(skip!)&limit=\(limit!)"
         }
 
-        getRequest(url: url) { data, _, error in
-            if let data = data {
-                do {
-                    let transactions = try JSONDecoder().decode([TxHistory].self, from: data)
-                    var transformedTransactions: [TxHistory] = []
-                    for var transaction in transactions {
-                        if let message = transaction.message {
-                            transaction.message = self.decryptMessage(
-                                ciphertext: message,
-                                encryptingKey: self.credentials.sharedEncryptingKey
-                            )
-                        }
+        // TODO: do something with the possible errors...
+        self.getRequest(url: url) { data, _, error in
+            guard let data = data else {
+                return completion([], error)
+            }
 
-                        transformedTransactions.append(transaction)
+            do {
+                let transactions = try JSONDecoder().decode([TxHistory].self, from: data)
+                var transformedTransactions: [TxHistory] = []
+                for var transaction in transactions {
+                    if let message = transaction.message {
+                        transaction.message = self.decryptMessage(
+                            ciphertext: message,
+                            encryptingKey: self.credentials.sharedEncryptingKey
+                        )
                     }
 
-                    completion(transformedTransactions)
-                } catch {
-                    print(error)
-                    completion([])
+                    transformedTransactions.append(transaction)
                 }
+
+                completion(transformedTransactions, error)
+            } catch {
+                completion([], error)
             }
         }
     }
@@ -760,11 +771,11 @@ extension WalletClient {
 
             let keysOfUtxo: [PrivateKey] = keys.filter { $0.publicKey().pubkeyHash == pubkeyHash }
             guard let key = keysOfUtxo.first else {
-                print("No keys to this txout : \(utxo.output.value)")
+                //print("No keys to this txout : \(utxo.output.value)")
                 continue
             }
-            print("Value of signing txout : \(utxo.output.value)")
-            print(key.data.hex)
+            //print("Value of signing txout : \(utxo.output.value)")
+            //print(key.data.hex)
 
             let sighash: Data = transactionToSign.signatureHash(
                 for: utxo.output,

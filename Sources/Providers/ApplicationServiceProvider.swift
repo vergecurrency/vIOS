@@ -6,12 +6,13 @@
 import Foundation
 import UIKit
 import IQKeyboardManagerSwift
+import Logging
 
 class ApplicationServiceProvider: ServiceProvider {
 
     override func boot() {
         TorStatusIndicator.shared.initialize()
-        NotificationManager.shared.initialize()
+        NotificationBar.shared.initialize()
 
         IQKeyboardManager.shared.enable = true
 
@@ -43,6 +44,10 @@ class ApplicationServiceProvider: ServiceProvider {
 
             return WatchSyncManager(walletClient: walletClient)
         }.inObjectScope(.container)
+
+        container.register(Logger.self) { r in
+            Logger(label: "org.verge.wallet.main")
+        }
     }
 
     private func bootWatchSyncManager() {
