@@ -53,7 +53,11 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
     }
 
     @objc public func syncAmount() {
-        let balanceCredentials = self.walletClient.watchRequestCredentialsForMethodPath(path: "/v1/balance/")
+        guard let balanceCredentials = try? self.walletClient.watchRequestCredentialsForMethodPath(
+            path: "/v1/balance/"
+        ) else {
+            return // TODO: handle error
+        }
 
         if balanceCredentials.signature != nil &&
             balanceCredentials.url != nil &&

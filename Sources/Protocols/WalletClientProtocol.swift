@@ -43,15 +43,15 @@ protocol WalletClientProtocol {
     func getTxHistory(
         skip: Int?,
         limit: Int?,
-        completion: @escaping (_ transactions: [TxHistory], Error?) -> Void
+        completion: @escaping ([TxHistory], Error?) -> Void
     )
 
     func getUnspentOutputs(
         address: String?,
-        completion: @escaping (_ unspentOutputs: [UnspentOutput]) -> Void
+        completion: @escaping ([UnspentOutput], Error?) -> Void
     )
 
-    func getSendMaxInfo(completion: @escaping (_ sendMaxInfo: SendMaxInfo?) -> Void)
+    func getSendMaxInfo(completion: @escaping (SendMaxInfo?, Error?) -> Void)
 
     func createTxProposal(
         proposal: TxProposal,
@@ -93,7 +93,7 @@ protocol WalletClientProtocol {
     func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void)
     func getTxProposals(completion: @escaping (_ txps: [TxProposalResponse], _ error: Error?) -> Void)
     func resetServiceUrl(baseUrl: String)
-    func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials
+    func watchRequestCredentialsForMethodPath(path: String) throws -> WatchRequestCredentials
 }
 
 extension WalletClientProtocol {

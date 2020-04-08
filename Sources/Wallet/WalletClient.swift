@@ -394,14 +394,13 @@ extension WalletClient {
     public func getTxHistory(
         skip: Int? = nil,
         limit: Int? = nil,
-        completion: @escaping (_ transactions: [TxHistory], Error?) -> Void
+        completion: @escaping ([TxHistory], Error?) -> Void
     ) {
         var url = "/v1/txhistory/?includeExtendedInfo=1"
         if (skip != nil && limit != nil) {
             url = "\(url)&skip=\(skip!)&limit=\(limit!)"
         }
 
-        // TODO: do something with the possible errors...
         self.getRequest(url: url) { data, _, error in
             guard let data = data else {
                 return completion([], error)
@@ -430,39 +429,44 @@ extension WalletClient {
 
     public func getUnspentOutputs(
         address: String? = nil,
-        completion: @escaping (_ unspentOutputs: [UnspentOutput]) -> Void
+        completion: @escaping ([UnspentOutput], Error?) -> Void
     ) {
-        getRequest(url: "/v1/utxos/") { data, _, _ in
+        self.getRequest(url: "/v1/utxos/") { data, _, error in
             guard let data = data else {
-                return completion([])
+                return completion([], error)
             }
 
-            completion((try? JSONDecoder().decode([UnspentOutput].self, from: data)) ?? [])
+            do {
+                completion(try JSONDecoder().decode([UnspentOutput].self, from: data), error)
+            } catch {
+                completion([], error)
+            }
         }
     }
 
-    public func getSendMaxInfo(completion: @escaping (_ sendMaxInfo: SendMaxInfo?) -> Void) {
-        getRequest(url: "/v1/sendmaxinfo/") { data, _, _ in
+    public func getSendMaxInfo(completion: @escaping (SendMaxInfo?, Error?) -> Void) {
+        self.getRequest(url: "/v1/sendmaxinfo/") { data, _, error in
             guard let data = data else {
-                return completion(nil)
+                return completion(nil, error)
             }
 
-            completion(try? JSONDecoder().decode(SendMaxInfo.self, from: data))
+            do {
+                completion(try JSONDecoder().decode(SendMaxInfo.self, from: data), error)
+            } catch {
+                completion(nil, error)
+            }
         }
     }
 
-    public func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials {
+    public func watchRequestCredentialsForMethodPath(path: String) throws -> WatchRequestCredentials {
         var result = WatchRequestCredentials()
         let referencedUrl = path.addUrlReference()
 
-        let url = "\(baseUrl)\(referencedUrl)".urlify()
-        let copayerId = getCopayerId()
+        let url = "\(self.baseUrl)\(referencedUrl)".urlify()
+        let copayerId = self.getCopayerId()
 
         if referencedUrl.contains("/v1/balance/") {
-            var signature = ""
-            do {
-                signature = try getSignature(url: referencedUrl, method: "get")
-            } catch {}
+            let signature = try self.getSignature(url: referencedUrl, method: "get")
 
             result.url = url
             result.copayerId = copayerId
@@ -645,9 +649,9 @@ extension WalletClient {
 extension WalletClient {
 
     private func getSignature(url: String, method: String, arguments: String = "{}") throws -> String {
-        return try signMessage(
+        return try self.signMessage(
             [method, url, arguments].joined(separator: "|"),
-            privateKey: credentials.requestPrivateKey
+            privateKey: self.credentials.requestPrivateKey
         )
     }
 

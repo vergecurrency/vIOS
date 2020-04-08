@@ -259,7 +259,7 @@ class SendViewController: ThemeableViewController {
             ))
         }
 
-        self.walletClient.getSendMaxInfo { info in
+        self.walletClient.getSendMaxInfo { info, _ in
             guard let info = info else {
                 return self.present(UIAlertController.createSendMaxInfoAlert(), animated: true)
             }
