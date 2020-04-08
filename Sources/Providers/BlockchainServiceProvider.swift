@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Logging
 
 class BlockchainServiceProvider: ServiceProvider {
 
@@ -14,7 +15,8 @@ class BlockchainServiceProvider: ServiceProvider {
         container.register(BitcoreNodeClientProtocol.self) { r in
             BitcoreNodeClient(
                 baseUrl: Constants.bnEndpoint,
-                torClient: r.resolve(TorClientProtocol.self)!
+                torClient: r.resolve(TorClientProtocol.self)!,
+                log: r.resolve(Logger.self)!
             )
         }
 

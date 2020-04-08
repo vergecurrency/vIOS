@@ -67,4 +67,7 @@ struct LogMessage {
         return Log("wallet client request error: \(error.localizedDescription)")
     }
 
+    /// Bitcore node client
+    static let BitcoreNodeClientRequestFired: Log = "bitcore node client request fired"
+
 }

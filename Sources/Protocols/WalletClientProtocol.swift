@@ -43,7 +43,7 @@ protocol WalletClientProtocol {
     func getTxHistory(
         skip: Int?,
         limit: Int?,
-        completion: @escaping (_ transactions: [TxHistory]) -> Void
+        completion: @escaping (_ transactions: [TxHistory], Error?) -> Void
     )
 
     func getUnspentOutputs(

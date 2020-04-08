@@ -35,7 +35,7 @@ class TorSetup3View: UIView {
             "setup.tor.slide3.negativeButton".localized, for: .normal)
 
         if sender.isOn {
-            self.torClient.start { _ in 
+            self.torClient.start { _ in
                 self.updateIPAddress()
             }
         } else {
