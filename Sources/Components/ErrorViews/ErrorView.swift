@@ -51,7 +51,7 @@ class ErrorView: UIView {
     }
 
     @IBAction func askHelp(_ sender: UIButton) {
-        let supportTableViewController = UIStoryboard.createFromStoryboard(
+        let controller = UIStoryboard.createFromStoryboardWithNavigationController(
             name: "Settings",
             type: SupportTableViewController.self
         )
@@ -60,14 +60,11 @@ class ErrorView: UIView {
             fatalError("Couldn't find parent container view controller")
         }
 
-        let navigationController = UINavigationController(rootViewController: supportTableViewController)
-        let closeButton = UIBarButtonItem(image: UIImage(named: "Close"), style: .plain) { _ in
-            supportTableViewController.dismiss(animated: true)
-        }
-
-        supportTableViewController.navigationItem.setLeftBarButtonItems([closeButton], animated: false)
-
-        parent.present(navigationController, animated: true) {
+        parent.present(controller, animated: true) {
+            guard let supportTableViewController = controller.visibleViewController as? SupportTableViewController else {
+                fatalError("Didn't get support table ViewController")
+            }
+            
             supportTableViewController.scrollViewEdger.removeBottomShadow()
         }
     }

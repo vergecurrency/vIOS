@@ -50,18 +50,12 @@ class WalletNotificationsSubscriber: Subscriber {
             title: "wallet.notification.txpTitle".localized,
             message: String(format: "wallet.notification.txpMessage".localized, proposals.count)
         ) {
-            let controller = UIStoryboard.createFromStoryboard(
+            let controller = UIStoryboard.createFromStoryboardWithNavigationController(
                 name: "Settings",
                 type: TransactionProposalsTableViewController.self
             )
-            let navigationController = UINavigationController(rootViewController: controller)
-            let closeButton = UIBarButtonItem(image: UIImage(named: "Close"), style: .plain) { _ in
-                controller.dismiss(animated: true)
-            }
 
-            controller.navigationItem.setLeftBarButtonItems([closeButton], animated: false)
-
-            walletNotificationView.parentContainerViewController()?.present(navigationController, animated: true)
+            walletNotificationView.parentContainerViewController()?.present(controller, animated: true)
         }
     }
 

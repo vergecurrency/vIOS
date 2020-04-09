@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Inserire il PIN per sbloccare";
+"setup.pinCode.resetButton" = "Ripristina portafoglio";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Impostare un PIN";

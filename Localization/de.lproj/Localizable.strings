@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "PIN eingeben";
+"setup.pinCode.resetButton" = "Brieftasche zurücksetzen";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Wallet PIN einstellen";

@@ -54,6 +54,7 @@
 // Pin unlock
 
 "setup.pinCode.title"                       = "Введите Пин-код";
+"setup.pinCode.resetButton"                 = "Сбросить кошелек";
 
 // Set wallet pin
 

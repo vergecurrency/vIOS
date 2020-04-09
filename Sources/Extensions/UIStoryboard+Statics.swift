@@ -14,10 +14,25 @@ extension UIStoryboard {
             withIdentifier: String(describing: type)
         )
 
-        guard let controlle = controller as? T else {
+        guard let typedController = controller as? T else {
             fatalError("Can't create \(String(describing: type)) from the Storyboard")
         }
 
-        return controlle
+        return typedController
+    }
+
+    static func createFromStoryboardWithNavigationController<T>(name: String, type: T.Type) -> UINavigationController {
+        guard let controller = UIStoryboard.createFromStoryboard(name: name, type: type) as? UIViewController else {
+            fatalError("Can't create \(String(describing: type)) from the Storyboard")
+        }
+        
+        let navigationController = UINavigationController(rootViewController: controller)
+        let closeButton = UIBarButtonItem(image: UIImage(named: "Close"), style: .plain) { _ in
+            controller.dismiss(animated: true)
+        }
+
+        controller.navigationItem.setLeftBarButtonItems([closeButton], animated: false)
+
+        return navigationController
     }
 }

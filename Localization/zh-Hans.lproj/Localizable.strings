@@ -54,6 +54,7 @@
 // Pin unlock
 
 "setup.pinCode.title"                       = "输入PIN码来解锁";
+"setup.pinCode.resetButton"                 = "重置钱包";
 
 // Set wallet pin
 

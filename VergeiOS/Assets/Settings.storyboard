@@ -938,7 +938,7 @@
         <!--Disconnect Wallet View Controller-->
         <scene sceneID="cl0-4N-jbc">
             <objects>
-                <viewController id="aSs-cW-UuY" customClass="DisconnectWalletViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DisconnectWalletViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aSs-cW-UuY" customClass="DisconnectWalletViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yWC-6F-4Ky">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

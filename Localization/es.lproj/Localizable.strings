@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Ingrese PIN";
+"setup.pinCode.resetButton" = "Restablecer billetera";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Establezca un PIN";
