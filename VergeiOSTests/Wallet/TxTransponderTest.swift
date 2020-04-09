@@ -16,7 +16,7 @@ class TxTransponderTest: XCTestCase {
         let walletClient = TxTransponderTest1WalletClient()
         let transponder = TxTransponder(walletClient: walletClient)
         
-        let proposal = TxProposal(address: "DMTtEgS4JecxRhdTABPsgDJizPMAuTZFeU", amount: 10.0, message: "What a beauty")
+        let proposal = Vws.TxProposal(address: "DMTtEgS4JecxRhdTABPsgDJizPMAuTZFeU", amount: 10.0, message: "What a beauty")
         
         transponder.create(proposal: proposal) { txp, txerror, error in
             XCTAssertNotNil(txp)
@@ -43,7 +43,7 @@ class TxTransponderTest: XCTestCase {
         let walletClient = TxTransponderTest2WalletClient()
         let transponder = TxTransponder(walletClient: walletClient)
 
-        let proposal = TxProposal(address: "sdokdsoijdsoijsd", amount: 10.0, message: "What a beauty")
+        let proposal = Vws.TxProposal(address: "sdokdsoijdsoijsd", amount: 10.0, message: "What a beauty")
 
         transponder.create(proposal: proposal) { txp, txerror, error in
             XCTAssertNil(txp)
@@ -58,7 +58,7 @@ class TxTransponderTest: XCTestCase {
         let walletClient = TxTransponderTest3WalletClient()
         let transponder = TxTransponder(walletClient: walletClient)
         
-        let proposal = TxProposal(address: "DMTtEgS4JecxRhdTABPsgDJizPMAuTZFeU", amount: 10.0, message: "What a beauty")
+        let proposal = Vws.TxProposal(address: "DMTtEgS4JecxRhdTABPsgDJizPMAuTZFeU", amount: 10.0, message: "What a beauty")
 
         var didPublishTxEventFired = false
         var didSignTxEventFired = false
@@ -125,8 +125,8 @@ class TxTransponderTest: XCTestCase {
 
 class TxTransponderTest1WalletClient: WalletClientMock {
     override func createTxProposal(
-        proposal: TxProposal,
-        completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void
+        proposal: Vws.TxProposal,
+        completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void
     ) {
         let responseJson = "{\"walletM\":1,\"outputs\":[{\"message\":null,\"toAddress\":\"DMTtEgS4JecxRhdTABPsgDJizPMAuTZFeU\"," +
             "\"stealth\":false,\"amount\":10000000}],\"fee\":100000,\"coin\":\"xvg\",\"actions\":[],\"walletId\":\"fbd0c3d0-465c-4f4e-a890-d0e4bdb606e0\"," +
@@ -141,7 +141,7 @@ class TxTransponderTest1WalletClient: WalletClientMock {
             "\"coin\":\"xvg\",\"address\":\"D7RMYX9r7vfe7piGwFbe1artpmxcLRHz1y\",\"walletId\":\"fbd0c3d0-465c-4f4e-a890-d0e4bdb606e0\"},\"inputPaths\":[\"m\\/0\\/8\"],\"status\":\"temporary\"}"
 
         let jsonData: Data = responseJson.data(using: .utf8)!
-        let response = try? JSONDecoder().decode(TxProposalResponse.self, from: jsonData)
+        let response = try? JSONDecoder().decode(Vws.TxProposalResponse.self, from: jsonData)
 
         completion(response, nil, nil)
     }
@@ -149,12 +149,12 @@ class TxTransponderTest1WalletClient: WalletClientMock {
 
 class TxTransponderTest2WalletClient: WalletClientMock {
     override func createTxProposal(
-        proposal: TxProposal,
-        completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void
+        proposal: Vws.TxProposal,
+        completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void
     ) {
         let responseJson = "{\"message\":\"Invalid address\",\"code\":\"INVALID_ADDRESS\"}"
         let jsonData: Data = responseJson.data(using: .utf8)!
-        let response = try? JSONDecoder().decode(TxProposalErrorResponse.self, from: jsonData)
+        let response = try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: jsonData)
 
         completion(nil, response, nil)
     }
@@ -162,8 +162,8 @@ class TxTransponderTest2WalletClient: WalletClientMock {
 
 class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
     override func publishTxProposal(
-        txp: TxProposalResponse,
-        completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void
+        txp: Vws.TxProposalResponse,
+        completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void
     ) {
         let responseJson = "{\"walletM\":1,\"version\":3,\"fee\":100000,\"requiredRejections\":1,\"" +
             "creatorName\":\"{\\\"iv\\\":\\\"eB2o+MVCryZtGlx5DuXY9A==\\\",\\\"v\\\":1,\\\"iter\\\":1,\\\"ks\\\":128,\\\"ts\\\":64,\\\"mode\\\":\\\"ccm\\\",\\\"adata\\\":\\\"\\\",\\\"cipher\\\":\\\"aes\\\",\\\"ct\\\":\\\"1P2zc0PomM9GfWQDkZ4Aleyn4Q==\\\"}\"," +
@@ -182,14 +182,14 @@ class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
             "\"outputs\":[{\"toAddress\":\"D5L9sbg1RMPS8yuVpw6jA3Cc1CpYH1shgk\",\"message\":null,\"stealth\":false,\"amount\":10000000}],\"walletId\":\"3547a0ad-2273-4403-ae38-dd0ecdf86d4f\"}"
 
         let jsonData: Data = responseJson.data(using: .utf8)!
-        let response = try? JSONDecoder().decode(TxProposalResponse.self, from: jsonData)
+        let response = try? JSONDecoder().decode(Vws.TxProposalResponse.self, from: jsonData)
 
         completion(response, nil, nil)
     }
 
     override func signTxProposal(
-        txp: TxProposalResponse,
-        completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void
+        txp: Vws.TxProposalResponse,
+        completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void
     ) {
         let responseJson = "{\"payProUrl\":null,\"requiredRejections\":1,\"coin\":\"xvg\",\"excludeUnconfirmedUtxos\":false," +
             "\"creatorId\":\"8830a04d48c0dcded327806fc903b0f9b5ada46d9a12e0796da40b80e5a2b72c\",\"id\":\"e72711ed-4ada-4ee3-9d60-deb2ed052f39\"," +
@@ -212,14 +212,14 @@ class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
             "\"walletM\":1,\"feeLevel\":\"normal\",\"customData\":null,\"raw\":\"0100000022c1b15c01e05be838fb1d94e7eee8a3fa969cf80a190eb073529b34ab628f256c8c932c44000000006b4830450221008c222a0edf83275e5849d62cb09e57554d96ab643d9ab7af26021f3f9921f8ba02201247b030df5f8f734c679abf1a4e5cb26e3e2824b142a7792f0ed2dc5faf456d0121031a661e0ee71dc72abcfe37d069bcf41b88448f6955ac75fdc4c6c9ea44480098ffffffff0180969800000000001976a91402175bb34e8df3dd2644221a6df2c564c4ff90db88ac00000000\"}"
 
         let jsonData: Data = responseJson.data(using: .utf8)!
-        let response = try? JSONDecoder().decode(TxProposalResponse.self, from: jsonData)
+        let response = try? JSONDecoder().decode(Vws.TxProposalResponse.self, from: jsonData)
 
         completion(response, nil, nil)
     }
 
     override func broadcastTxProposal(
-        txp: TxProposalResponse,
-        completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void
+        txp: Vws.TxProposalResponse,
+        completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void
     ) {
         let responseJson = "{\"outputOrder\":[0,1],\"excludeUnconfirmedUtxos\":false,\"creatorName\":\"{\\\"iv\\\":\\\"eB2o+MVCryZtGlx5DuXY9A==\\\",\\\"v\\\":1,\\\"iter\\\":1,\\\"ks\\\":128,\\\"ts\\\":64,\\\"mode\\\":\\\"ccm\\\",\\\"adata\\\":\\\"\\\",\\\"cipher\\\":\\\"aes\\\",\\\"ct\\\":\\\"1P2zc0PomM9GfWQDkZ4Aleyn4Q==\\\"}\"," +
             "\"derivationStrategy\":\"BIP44\",\"requiredSignatures\":1,\"outputs\":[{\"amount\":10000000,\"toAddress\":\"D5L9sbg1RMPS8yuVpw6jA3Cc1CpYH1shgk\"," +
@@ -244,7 +244,7 @@ class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
             "\"type\":\"P2PKH\",\"createdOn\":1555153186,\"_id\":\"5cb1c122616c2628658f7d66\",\"path\":\"m\\/1\\/4\"}}"
 
         let jsonData: Data = responseJson.data(using: .utf8)!
-        let response = try? JSONDecoder().decode(TxProposalResponse.self, from: jsonData)
+        let response = try? JSONDecoder().decode(Vws.TxProposalResponse.self, from: jsonData)
 
         completion(response, nil, nil)
     }
@@ -255,7 +255,7 @@ class WalletClientMock: WalletClientProtocol {
     func joinWallet(walletIdentifier: String, completion: @escaping (Error?) -> Void) {}
     func openWallet(completion: @escaping (Error?) -> Void) {}
     func scanAddresses(completion: @escaping (Error?) -> Void) {}
-    func createAddress(completion: @escaping (Error?, Vws.AddressInfo?, Vws.CreateAddressErrorResponse?) -> Void) {}
+    func createAddress(completion: @escaping (Error?, Vws.AddressInfo?, Vws.CreateAddressError?) -> Void) {}
     func getBalance(completion: @escaping (Error?, Vws.WalletBalanceInfo?) -> Void) {}
     func getMainAddresses(options: Vws.WalletAddressesOptions?, completion: @escaping (Error?, [Vws.AddressInfo]) -> ()) {}
     func getTxHistory(skip: Int?, limit: Int?, completion: @escaping ([Vws.TxHistory], Error?) -> Void) {}
