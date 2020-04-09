@@ -19,6 +19,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
     @IBOutlet weak var pinKeyboard: PinKeyboard!
     @IBOutlet weak var pinTextField: PinTextField!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var resetWalletButton: UIButton!
 
     static var storyBoardView: PinUnlockViewController?
 
@@ -51,6 +52,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.resetWalletButton.isHidden = true
         self.pinKeyboard.delegate = self
 
         NotificationCenter.default.addObserver(
@@ -80,6 +82,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
 
         self.pinKeyboard.setShowLocalAuthKey(self.showLocalAuthentication)
         self.closeButton.isHidden = !self.cancelable
+        self.resetWalletButton.isHidden = true
         self.pinTextField.reset()
         self.pin = ""
     }
@@ -107,6 +110,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
                 self.pinTextField.shake()
                 self.pinTextField.reset()
                 self.pin = ""
+                self.toggleResetWalletButton()
             }
         }
     }
@@ -157,17 +161,42 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
         }
     }
 
-    @IBAction func closeButtonPushed(_ sender: Any) {
-        self.cancelView()
-    }
-
     func reset() {
         self.fillPinFor = nil
         self.cancelable = false
         self.showLocalAuthentication = false
         self.completion = nil
 
+        self.toggleResetWalletButton()
         self.pinTextField.reset()
         self.pin = ""
+    }
+
+    private func toggleResetWalletButton() {
+        self.resetWalletButton.alpha = self.resetWalletButton.isHidden ? 0 : 1
+
+        UIView.animate(withDuration: 0.3) {
+            self.resetWalletButton.isHidden = !self.resetWalletButton.isHidden
+            self.resetWalletButton.alpha = self.resetWalletButton.isHidden ? 0 : 1
+        }
+    }
+
+    @IBAction func closeButtonPushed(_ sender: Any) {
+        self.cancelView()
+    }
+
+    @IBAction func resetWallet(_ sender: Any) {
+        let controller = UIStoryboard.createFromStoryboardWithNavigationController(
+            name: "Settings",
+            type: DisconnectWalletViewController.self
+        )
+
+        guard let viewController = controller.visibleViewController as? DisconnectWalletViewController else {
+            return
+        }
+
+        viewController.unlockForDisconnect = false
+
+        self.present(controller, animated: true)
     }
 }

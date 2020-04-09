@@ -10,6 +10,8 @@ import UIKit
 
 class DisconnectWalletViewController: ThemeableViewController {
 
+    var unlockForDisconnect: Bool = true
+
     @IBAction func disconnectWallet(_ sender: Any) {
         let alert = UIAlertController(
             title: "settings.disconnect.alert.title".localized,
@@ -19,6 +21,10 @@ class DisconnectWalletViewController: ThemeableViewController {
 
         let cancel = UIAlertAction(title: "defaults.cancel".localized, style: .cancel)
         let confirm = UIAlertAction(title: "settings.disconnect.alert.disconnect".localized, style: .destructive) { _ in
+            if !self.unlockForDisconnect {
+                return NotificationCenter.default.post(name: .didDisconnectWallet, object: nil)
+            }
+
             // Show unlock view.
             let pinUnlockView = PinUnlockViewController.createFromStoryBoard()
             pinUnlockView.cancelable = true
@@ -39,7 +45,7 @@ class DisconnectWalletViewController: ThemeableViewController {
         alert.addAction(cancel)
         alert.addAction(confirm)
 
-        present(alert, animated: true)
+        self.present(alert, animated: true)
     }
 
 }

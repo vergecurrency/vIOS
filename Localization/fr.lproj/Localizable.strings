@@ -44,6 +44,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Entrez votre PIN";
+"setup.pinCode.resetButton" = "Réinitialiser le portefeuille";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Configurez le PIN";

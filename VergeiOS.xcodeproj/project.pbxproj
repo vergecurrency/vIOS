@@ -112,6 +112,7 @@
 		A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3408E4B217333B5009F0C9D /* NotificationViewController.xib */; };
 		A3408E56217687F9009F0C9D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E55217687F9009F0C9D /* Charts.framework */; };
 		A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3408E5721768AF4009F0C9D /* Date+Extensions.swift */; };
+		A341F792243FBF6B00F45BA9 /* UIStoryboard+Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A341F791243FBF6B00F45BA9 /* UIStoryboard+Statics.swift */; };
 		A3478B4923647FF20018149C /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3478B4823647FF20018149C /* WalletManager.swift */; };
 		A3478B4B236480230018149C /* WalletManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3478B4A236480230018149C /* WalletManagerProtocol.swift */; };
 		A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */; };
@@ -541,6 +542,7 @@
 		A3408E4B217333B5009F0C9D /* NotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		A3408E55217687F9009F0C9D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
 		A3408E5721768AF4009F0C9D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A341F791243FBF6B00F45BA9 /* UIStoryboard+Statics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Statics.swift"; sourceTree = "<group>"; };
 		A3478B4823647FF20018149C /* WalletManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		A3478B4A236480230018149C /* WalletManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerProtocol.swift; sourceTree = "<group>"; };
 		A3549DD421B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -882,6 +884,7 @@
 		A302D34B21260EE800EA8091 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A341F791243FBF6B00F45BA9 /* UIStoryboard+Statics.swift */,
 				A33DB6942231D2010070DBCE /* Array+Extensions.swift */,
 				B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */,
 				B2BD7E6BDB05995D9DB9E0D0 /* Data+Extensions.swift */,
@@ -2275,6 +2278,7 @@
 				B2BD734546C80289A73FBA46 /* WalletClient.swift in Sources */,
 				B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */,
 				B2BD7869FD89173E561FB9C8 /* WalletBalanceInfo.swift in Sources */,
+				A341F792243FBF6B00F45BA9 /* UIStoryboard+Statics.swift in Sources */,
 				A38D6F8021C06C2A00280FFE /* ServiceUrlTableViewController.swift in Sources */,
 				A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */,
 				B2BD7D7F67E3518871AC53E2 /* WalletInfo.swift in Sources */,

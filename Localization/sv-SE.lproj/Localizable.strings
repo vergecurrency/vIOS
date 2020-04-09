@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Slå in pinkod för att låsa upp";
+"setup.pinCode.resetButton" = "Återställ plånbok";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Ställ in pinkod för plånboken";

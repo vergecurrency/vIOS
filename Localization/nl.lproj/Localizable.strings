@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Ontgrendel met PIN";
+"setup.pinCode.resetButton" = "Wallet opnieuw instellen";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Stel je wallet PIN in";
@@ -231,7 +232,7 @@
 "sweeping.confirm.recipientLabel"           = "Jou Ontvangst Adres";
 
 /*Disconnect wallet*/
-"settings.disconnect.titleLabel" = "Verwijder dit toestel van uw huidige wallet";
+"settings.disconnect.titleLabel" = "Verwijder uw huidige wallet van dit toestel";
 "settings.disconnect.descLabel" = "U staat op het punt dit apparaat los te koppelen van uw huidige wallet. Zorg ervoor dat u uw paper key hebt genoteerd en weet wat uw wachtwoordzin is. Onthoud dat uw paper key + wachtwoordzin de enige manier is om je huidige wallet te herstellen.";
 "settings.disconnect.disconnectButton" = "Koppel los";
 

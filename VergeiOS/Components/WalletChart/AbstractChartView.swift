@@ -5,6 +5,7 @@
 
 import Foundation
 import Charts
+import UIKit
 
 class AbstractChartView: UIView {
 

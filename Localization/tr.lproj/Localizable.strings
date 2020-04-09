@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Kilidi açmak için PIN gir";
+"setup.pinCode.resetButton" = "Cüzdanı Sıfırla";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Cüzdanın PIN belirle";

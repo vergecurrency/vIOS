@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Za odklepanje vnesite PIN";
+"setup.pinCode.resetButton" = "Ponastavi denarnico";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Nastavite PIN denarnice";

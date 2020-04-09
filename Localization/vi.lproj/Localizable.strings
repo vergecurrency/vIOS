@@ -46,6 +46,7 @@
 
 /*Pin unlock*/
 "setup.pinCode.title" = "Nhập mã PIN để mở khoá";
+"setup.pinCode.resetButton" = "Đặt lại ví";
 
 /*Set wallet pin*/
 "setup.pinCode.setPinTitle" = "Đặt mã PIN cho ví";
