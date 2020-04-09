@@ -110,7 +110,7 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
                 self.pinTextField.shake()
                 self.pinTextField.reset()
                 self.pin = ""
-                self.toggleResetWalletButton()
+                self.toggleResetWalletButton(visible: true)
             }
         }
     }
@@ -172,7 +172,11 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
         self.pin = ""
     }
 
-    private func toggleResetWalletButton() {
+    private func toggleResetWalletButton(visible: Bool = false) {
+        if visible && !self.resetWalletButton.isHidden {
+            return
+        }
+
         self.resetWalletButton.alpha = self.resetWalletButton.isHidden ? 0 : 1
 
         UIView.animate(withDuration: 0.3) {
