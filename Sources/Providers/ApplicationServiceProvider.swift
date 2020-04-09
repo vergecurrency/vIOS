@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import IQKeyboardManagerSwift
+import Swinject
 import Logging
 
 class ApplicationServiceProvider: ServiceProvider {
@@ -24,34 +25,41 @@ class ApplicationServiceProvider: ServiceProvider {
     }
 
     override func register() {
-        container.register(ApplicationRepository.self) { _ in
+        self.container.register(ApplicationRepository.self) { _ in
             return ApplicationRepository()
         }.inObjectScope(.container)
 
-        container.register(ShortcutsManager.self) { r in
+        self.container.register(ShortcutsManager.self) { r in
             let applicationRepository = r.resolve(ApplicationRepository.self)!
 
             return ShortcutsManager(applicationRepository: applicationRepository)
         }.inObjectScope(.container)
 
-        container.storyboardInitCompleted (MainTabBarController.self) { r, c in
+        self.container.storyboardInitCompleted (MainTabBarController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.shortcutsManager = r.resolve(ShortcutsManager.self)
         }
 
-        container.register(WatchSyncManager.self) { r in
+        self.container.register(WatchSyncManager.self) { r in
             let walletClient = r.resolve(WalletClientProtocol.self)!
 
             return WatchSyncManager(walletClient: walletClient)
         }.inObjectScope(.container)
 
-        container.register(Logger.self) { r in
-            Logger(label: "org.verge.wallet.main")
+        self.container.register(Logger.self) { r in
+            var log = Logger(label: "org.verge.wallet.main")
+            log.logLevel = .info
+
+            Container.loggingFunction = { message in
+                log.debug(Logger.Message(stringLiteral: message))
+            }
+
+            return log
         }
     }
 
     private func bootWatchSyncManager() {
-        container.resolve(WatchSyncManager.self)?.startSession()
+        self.container.resolve(WatchSyncManager.self)?.startSession()
     }
 
 }

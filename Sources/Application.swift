@@ -5,6 +5,7 @@
 
 import Foundation
 import Swinject
+import Logging
 
 class Application {
 
@@ -42,7 +43,7 @@ class Application {
             return
         }
 
-        Container.loggingFunction = .none
+        Container.loggingFunction = nil
 
         // Initialize providers.
         for serviceProvider in self.serviceProviders {

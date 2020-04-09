@@ -162,7 +162,7 @@ public class WalletClient: WalletClientProtocol {
     }
 
     private func log(request: URLRequest, signature: String, copayerId: String) {
-        self.log.notice(LogMessage.WalletClientRequestFired, metadata: [
+        self.log.info(LogMessage.WalletClientRequestFired, metadata: [
             "method": Logger.MetadataValue(stringLiteral: request.httpMethod ?? ""),
             "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? ""),
             "signature": Logger.MetadataValue(stringLiteral: signature),

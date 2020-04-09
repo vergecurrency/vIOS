@@ -129,7 +129,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
     }
 
     private func log(request: URLRequest) {
-        self.log.notice(LogMessage.BitcoreNodeClientRequestFired, metadata: [
+        self.log.info(LogMessage.BitcoreNodeClientRequestFired, metadata: [
             "method": Logger.MetadataValue(stringLiteral: request.httpMethod ?? ""),
             "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? "")
         ])

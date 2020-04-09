@@ -47,7 +47,7 @@ class WalletTicker: TickerProtocol {
         }
 
         self.started = true
-        self.log.notice(LogMessage.WalletTickerStarted)
+        self.log.info(LogMessage.WalletTickerStarted)
     }
 
     // Stop the price ticker.
@@ -56,7 +56,7 @@ class WalletTicker: TickerProtocol {
         interval = nil
         started = false
 
-        self.log.notice(LogMessage.WalletTickerStopped)
+        self.log.info(LogMessage.WalletTickerStopped)
     }
 
     func tick() {
@@ -65,7 +65,7 @@ class WalletTicker: TickerProtocol {
     }
 
     private func fetchWalletAmount() {
-        self.log.notice(LogMessage.WalletTickerFetchingWalletAmount)
+        self.log.info(LogMessage.WalletTickerFetchingWalletAmount)
 
         client.getBalance { error, info in
             guard let info = info else {
@@ -74,18 +74,18 @@ class WalletTicker: TickerProtocol {
 
             self.applicationRepository.amount = info.availableAmountValue
 
-            self.log.notice(LogMessage.WalletTickerSetWalletAmount)
+            self.log.info(LogMessage.WalletTickerSetWalletAmount)
         }
     }
 
     // Fetch statistics from the API and notify all observers.
     private func fetchTransactions() {
-        self.log.notice(LogMessage.WalletTickerFetchingTransactions)
+        self.log.info(LogMessage.WalletTickerFetchingTransactions)
 
         self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
-            self.log.notice(LogMessage.WalletTickerReceivedTransactions)
+            self.log.info(LogMessage.WalletTickerReceivedTransactions)
         }
     }
 }
