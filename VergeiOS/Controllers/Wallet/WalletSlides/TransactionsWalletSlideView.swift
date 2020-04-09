@@ -16,7 +16,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     var transactionManager: TransactionManager!
     var addressBookManager: AddressBookRepository!
 
-    var items: [TxHistory] = []
+    var items: [Vws.TxHistory] = []
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()

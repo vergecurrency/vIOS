@@ -54,7 +54,7 @@ class SendingView: UIView {
         return alertController
     }
 
-    func showError(_ errorResponse: TxProposalErrorResponse) {
+    func showError(_ errorResponse: Vws.TxProposalErrorResponse) {
         statusLabel.text = errorResponse.message
     }
 

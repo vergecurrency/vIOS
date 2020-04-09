@@ -42,7 +42,7 @@ class WalletNotificationsSubscriber: Subscriber {
             return
         }
 
-        guard let proposals = notification.object as? [TxProposalResponse] else {
+        guard let proposals = notification.object as? [Vws.TxProposalResponse] else {
             return
         }
 

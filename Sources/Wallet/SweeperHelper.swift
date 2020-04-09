@@ -107,7 +107,7 @@ class SweeperHelper: SweeperHelperProtocol {
     }
 
     public func recipientAddress(completion: @escaping (Error?, String?) -> Void) {
-        var options = WalletAddressesOptions()
+        var options = Vws.WalletAddressesOptions()
         options.limit = 1
         options.reverse = true
 

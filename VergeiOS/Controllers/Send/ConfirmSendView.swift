@@ -54,7 +54,7 @@ class ConfirmSendView: UIView {
         return alertController
     }
 
-    func setup(_ txp: TxProposalResponse) {
+    func setup(_ txp: Vws.TxProposalResponse) {
         let amount = NSNumber(value: Double(txp.amount) / Constants.satoshiDivider)
         let fee = NSNumber(value: Double(txp.fee) / Constants.satoshiDivider)
         let total = NSNumber(value: amount.doubleValue + fee.doubleValue)

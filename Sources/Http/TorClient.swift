@@ -93,6 +93,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             NotificationCenter.default.post(name: .didStartTorThread, object: self)
         }
 
+        /**
         var progressObs: Any?
         progressObs = controller.addObserver(forStatusEvents: { type, severity, action, arguments in
             self.log.info("tor client received status update: \(action)")
@@ -100,6 +101,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
             return true
         })
+        */
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.connectController(self.controller) { success in
@@ -109,7 +111,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
                     NotificationCenter.default.post(name: .didFinishTorStart, object: self)
                 }
 
-                self.controller.removeObserver(progressObs)
+                // self.controller.removeObserver(progressObs)
 
                 completion(success)
             }

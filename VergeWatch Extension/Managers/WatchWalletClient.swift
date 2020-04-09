@@ -25,12 +25,12 @@ class WatchWalletClient: NSObject {
     
     // MARK: Public methods
     
-    public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void) {
+    public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: Vws.WalletBalanceInfo?) -> Void) {
         getBalanceRequest() { data, response, error in
             if let data = data {
                 do {
 //                    let dataString = String(data: data, encoding: String.Encoding.utf8)
-                    let balanceInfo = try JSONDecoder().decode(WalletBalanceInfo.self, from: data)
+                    let balanceInfo = try JSONDecoder().decode(Vws.WalletBalanceInfo.self, from: data)
                     completion(error, balanceInfo)
                 } catch {
                     print(error)

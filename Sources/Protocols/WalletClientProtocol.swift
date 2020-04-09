@@ -16,7 +16,7 @@ protocol WalletClientProtocol {
         copayerName: String,
         m: Int,
         n: Int,
-        options: WalletOptions?,
+        options: Vws.WalletOptions?,
         completion: @escaping (_ error: Error?, _ secret: String?) -> Void
     )
     // swiftlint:enable function_parameter_count
@@ -28,70 +28,70 @@ protocol WalletClientProtocol {
     func createAddress(
         completion: @escaping (
             _ error: Error?,
-            _ address: AddressInfo?,
-            _ createAddressErrorResponse: CreateAddressErrorResponse?
+            _ address: Vws.AddressInfo?,
+            _ createAddressErrorResponse: Vws.CreateAddressError?
         ) -> Void
     )
 
-    func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void)
+    func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: Vws.WalletBalanceInfo?) -> Void)
 
     func getMainAddresses(
-        options: WalletAddressesOptions?,
-        completion: @escaping (_ error: Error?, _ addresses: [AddressInfo]) -> Void
+        options: Vws.WalletAddressesOptions?,
+        completion: @escaping (_ error: Error?, _ addresses: [Vws.AddressInfo]) -> Void
     )
 
     func getTxHistory(
         skip: Int?,
         limit: Int?,
-        completion: @escaping ([TxHistory], Error?) -> Void
+        completion: @escaping ([Vws.TxHistory], Error?) -> Void
     )
 
     func getUnspentOutputs(
         address: String?,
-        completion: @escaping ([UnspentOutput], Error?) -> Void
+        completion: @escaping ([Vws.UnspentOutput], Error?) -> Void
     )
 
-    func getSendMaxInfo(completion: @escaping (SendMaxInfo?, Error?) -> Void)
+    func getSendMaxInfo(completion: @escaping (Vws.SendMaxInfo?, Error?) -> Void)
 
     func createTxProposal(
-        proposal: TxProposal,
+        proposal: Vws.TxProposal,
         completion: @escaping (
-            _ txp: TxProposalResponse?,
-            _ errorResponse: TxProposalErrorResponse?,
+            _ txp: Vws.TxProposalResponse?,
+            _ errorResponse: Vws.TxProposalErrorResponse?,
             _ error: Error?
         ) -> Void
     )
 
     func publishTxProposal(
-        txp: TxProposalResponse,
+        txp: Vws.TxProposalResponse,
         completion: @escaping (
-            _ txp: TxProposalResponse?,
-            _ errorResponse: TxProposalErrorResponse?,
+            _ txp: Vws.TxProposalResponse?,
+            _ errorResponse: Vws.TxProposalErrorResponse?,
             _ error: Error?
         ) -> Void
     )
 
     func signTxProposal(
-        txp: TxProposalResponse,
+        txp: Vws.TxProposalResponse,
         completion: @escaping (
-            _ txp: TxProposalResponse?,
-            _ errorResponse: TxProposalErrorResponse?,
+            _ txp: Vws.TxProposalResponse?,
+            _ errorResponse: Vws.TxProposalErrorResponse?,
             _ error: Error?
         ) -> Void
     )
 
     func broadcastTxProposal(
-        txp: TxProposalResponse,
+        txp: Vws.TxProposalResponse,
         completion: @escaping (
-            _ txp: TxProposalResponse?,
-            _ errorResponse: TxProposalErrorResponse?,
+            _ txp: Vws.TxProposalResponse?,
+            _ errorResponse: Vws.TxProposalErrorResponse?,
             _ error: Error?
         ) -> Void
     )
 
-    func rejectTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void)
-    func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void)
-    func getTxProposals(completion: @escaping (_ txps: [TxProposalResponse], _ error: Error?) -> Void)
+    func rejectTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (_ error: Error?) -> Void)
+    func deleteTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (_ error: Error?) -> Void)
+    func getTxProposals(completion: @escaping (_ txps: [Vws.TxProposalResponse], _ error: Error?) -> Void)
     func resetServiceUrl(baseUrl: String)
     func watchRequestCredentialsForMethodPath(path: String) throws -> WatchRequestCredentials
 }
@@ -101,7 +101,7 @@ extension WalletClientProtocol {
         self.scanAddresses(completion: completion)
     }
 
-    public func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+    public func deleteTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         self.deleteTxProposal(txp: txp, completion: completion)
     }
 }

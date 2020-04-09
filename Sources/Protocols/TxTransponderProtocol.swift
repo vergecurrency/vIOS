@@ -10,11 +10,11 @@ import Foundation
 
 protocol TxTransponderProtocol {
     typealias CompletionType = (
-        _ txp: TxProposalResponse?,
-        _ errorResponse: TxProposalErrorResponse?,
+        _ txp: Vws.TxProposalResponse?,
+        _ errorResponse: Vws.TxProposalErrorResponse?,
         _ error: Error?
     ) -> Void
 
-    func create(proposal: TxProposal, completion: @escaping CompletionType)
-    func send(txp: TxProposalResponse, completion: @escaping CompletionType)
+    func create(proposal: Vws.TxProposal, completion: @escaping CompletionType)
+    func send(txp: Vws.TxProposalResponse, completion: @escaping CompletionType)
 }

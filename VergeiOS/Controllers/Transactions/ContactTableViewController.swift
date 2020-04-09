@@ -15,7 +15,7 @@ class ContactTableViewController: EdgedFormViewController {
     var addressBookManager: AddressBookRepository!
 
     var contact: Contact?
-    var transactions: [TxHistory] = []
+    var transactions: [Vws.TxHistory] = []
     var trashButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {

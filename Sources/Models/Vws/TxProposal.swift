@@ -5,10 +5,10 @@
 
 import Foundation
 
-public struct TxProposal {
-
-    public var address: String
-    public var amount: NSNumber
-    public var message: String
-
+extension Vws {
+    struct TxProposal {
+        var address: String
+        var amount: NSNumber
+        var message: String
+    }
 }

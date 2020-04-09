@@ -25,8 +25,8 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
     var addressBookManager: AddressBookRepository!
     var scrollViewEdger: ScrollViewEdger!
 
-    var transaction: TxHistory?
-    var items: [TxHistory] = []
+    var transaction: Vws.TxHistory?
+    var items: [Vws.TxHistory] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         }
     }
 
-    func setTransaction(_ transaction: TxHistory) {
+    func setTransaction(_ transaction: Vws.TxHistory) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
@@ -98,7 +98,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
     }
 
-    func loadTransactions(_ transaction: TxHistory) {
+    func loadTransactions(_ transaction: Vws.TxHistory) {
         items = self.transactionManager.all(byAddress: transaction.address)
     }
 
@@ -244,7 +244,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         }
     }
 
-    func repeatTransaction(_ transaction: TxHistory) {
+    func repeatTransaction(_ transaction: Vws.TxHistory) {
         if self.navigationController?.popViewController(animated: true) == nil {
             self.closeViewController(self)
         }

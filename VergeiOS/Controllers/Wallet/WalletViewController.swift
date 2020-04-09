@@ -167,7 +167,7 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
         if segue.identifier == "TransactionTableViewController" {
             if let nc = segue.destination as? UINavigationController {
                 if let vc = nc.viewControllers.first as? TransactionTableViewController {
-                    vc.transaction = sender as? TxHistory
+                    vc.transaction = sender as? Vws.TxHistory
                 }
             }
         }

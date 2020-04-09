@@ -24,20 +24,20 @@ class TransactionTableViewCell: Cell<String>, CellType {
         accessoryView = amountLabel
     }
 
-    func setTransaction(_ transaction: TxHistory, address: Contact?) {
+    func setTransaction(_ transaction: Vws.TxHistory, address: Contact?) {
         setAccount(transaction, address: address)
         setDateTime(transaction)
         setAmount(transaction)
     }
 
-    func setTransaction(_ transaction: TxHistory) {
+    func setTransaction(_ transaction: Vws.TxHistory) {
         textLabel?.text = transaction.txid
         textLabel?.textColor = ThemeManager.shared.secondaryLight().withAlphaComponent(0.75)
         setDateTime(transaction)
         setAmount(transaction)
     }
 
-    fileprivate func setAccount(_ transaction: TxHistory, address: Contact?) {
+    fileprivate func setAccount(_ transaction: Vws.TxHistory, address: Contact?) {
         textLabel?.text = transaction.address.truncated(limit: 12, position: .tail, leader: "******")
 
         if transaction.memo != nil {
@@ -61,14 +61,14 @@ class TransactionTableViewCell: Cell<String>, CellType {
         }
     }
 
-    fileprivate func setDateTime(_ transaction: TxHistory) {
+    fileprivate func setDateTime(_ transaction: Vws.TxHistory) {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .short
         detailTextLabel?.text = df.string(from: transaction.timeReceived)
     }
 
-    fileprivate func setAmount(_ transaction: TxHistory) {
+    fileprivate func setAmount(_ transaction: Vws.TxHistory) {
         var prefix = ""
         if transaction.category == .Sent {
             amountLabel.textColor = ThemeManager.shared.vergeRed()

@@ -13,7 +13,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     var transactionManager: TransactionManager!
     var addressBookManager: AddressBookRepository!
 
-    var transactions: [[TxHistory]] = []
+    var transactions: [[Vws.TxHistory]] = []
     var dates: [Date] = []
     let searchController = UISearchController(searchResultsController: nil)
 
@@ -147,11 +147,11 @@ class TransactionsTableViewController: EdgedTableViewController {
         return dates[section]
     }
 
-    func transactions(bySection section: Int) -> [TxHistory] {
+    func transactions(bySection section: Int) -> [Vws.TxHistory] {
         return transactions[section]
     }
 
-    func transaction(byIndexpath indexPath: IndexPath) -> TxHistory {
+    func transaction(byIndexpath indexPath: IndexPath) -> Vws.TxHistory {
         let items = transactions(bySection: indexPath.section)
 
         return items[indexPath.row]

@@ -13,9 +13,9 @@ class TransactionRepository {
         self.dataStack = dataStack
     }
 
-    public func get(byAddress address: String) -> [TxHistory] {
+    func get(byAddress address: String) -> [Vws.TxHistory] {
         let entities = try? self.dataStack.fetchAll(From<TransactionType>().where(\.address == address))
-        var transactions: [TxHistory] = []
+        var transactions: [Vws.TxHistory] = []
 
         for entity in entities ?? [] {
             transactions.append(transform(entity: entity))
@@ -24,9 +24,9 @@ class TransactionRepository {
         return transactions
     }
 
-    func all() -> [TxHistory] {
+    func all() -> [Vws.TxHistory] {
         let entities = try? self.dataStack.fetchAll(From<TransactionType>())
-        var transactions: [TxHistory] = []
+        var transactions: [Vws.TxHistory] = []
 
         for entity in entities ?? [] {
             transactions.append(transform(entity: entity))
@@ -35,7 +35,7 @@ class TransactionRepository {
         return transactions
     }
 
-    func put(tx: TxHistory) {
+    func put(tx: Vws.TxHistory) {
         var entity: TransactionType?
         if let existingEntity =
             ((try? self.dataStack.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
@@ -69,7 +69,7 @@ class TransactionRepository {
         }
     }
 
-    func remove(tx: TxHistory) {
+    func remove(tx: Vws.TxHistory) {
         guard let entity =
             ((try? self.dataStack.fetchOne(From<TransactionType>().where(\.txid == tx.txid)))
                 as TransactionType??) else {
@@ -95,8 +95,8 @@ class TransactionRepository {
         }
     }
 
-    private func transform(entity: TransactionType?) -> TxHistory {
-        TxHistory(
+    private func transform(entity: TransactionType?) -> Vws.TxHistory {
+        Vws.TxHistory(
             txid: entity?.txid ?? "",
             action: entity?.action ?? "moved",
             amount: entity?.amount ?? 0,

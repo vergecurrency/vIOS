@@ -14,8 +14,8 @@ class AddressesTableViewController: EdgedTableViewController {
     var walletClient: WalletClientProtocol!
     var transactionManager: TransactionManager!
 
-    var addresses: [AddressInfo] = []
-    var balanceAddresses: [AddressBalance] = []
+    var addresses: [Vws.AddressInfo] = []
+    var balanceAddresses: [Vws.AddressBalance] = []
 
     var hasAddresses: Bool {
         return addresses.count > 0
@@ -44,7 +44,7 @@ class AddressesTableViewController: EdgedTableViewController {
     @objc func loadAddresses() {
         refreshControl?.beginRefreshing()
 
-        var options = WalletAddressesOptions()
+        var options = Vws.WalletAddressesOptions()
         options.limit = 25
         options.reverse = true
 

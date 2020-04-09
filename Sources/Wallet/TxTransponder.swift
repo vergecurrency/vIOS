@@ -16,17 +16,17 @@ class TxTransponder: TxTransponderProtocol {
     private var walletClient: WalletClientProtocol!
     private var completion: CompletionType!
     private var step: Step = .publish
-    private var previousTxp: TxProposalResponse?
+    private var previousTxp: Vws.TxProposalResponse?
 
-    public init(walletClient: WalletClientProtocol) {
+    init(walletClient: WalletClientProtocol) {
         self.walletClient = walletClient
     }
 
-    public func create(proposal: TxProposal, completion: @escaping CompletionType) {
+    func create(proposal: Vws.TxProposal, completion: @escaping CompletionType) {
         self.walletClient.createTxProposal(proposal: proposal, completion: completion)
     }
 
-    public func send(txp: TxProposalResponse, completion: @escaping CompletionType) {
+    func send(txp: Vws.TxProposalResponse, completion: @escaping CompletionType) {
         self.completion = completion
         self.step = .publish
 
@@ -34,7 +34,7 @@ class TxTransponder: TxTransponderProtocol {
         self.walletClient.publishTxProposal(txp: txp, completion: self.completionHandler)
     }
 
-    private func progress(txp: TxProposalResponse) {
+    private func progress(txp: Vws.TxProposalResponse) {
         previousTxp = txp
         switch step {
         case .sign:
@@ -58,8 +58,8 @@ class TxTransponder: TxTransponderProtocol {
     }
 
     private func completionHandler(
-        _ txp: TxProposalResponse?,
-        _ errorResponse: TxProposalErrorResponse?,
+        _ txp: Vws.TxProposalResponse?,
+        _ errorResponse: Vws.TxProposalErrorResponse?,
         _ error: Error?
     ) {
         if let errorResponse = errorResponse {

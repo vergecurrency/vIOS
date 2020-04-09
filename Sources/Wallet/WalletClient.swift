@@ -17,7 +17,7 @@ public class WalletClient: WalletClientProtocol {
         case invalidDeriver(value: String)
         case invalidMessageData(message: String)
         case invalidWidHex(id: String)
-        case invalidAddressReceived(address: AddressInfo?)
+        case invalidAddressReceived(address: Vws.AddressInfo?)
         case noOutputFound
         case walletNotFound
     }
@@ -49,7 +49,7 @@ public class WalletClient: WalletClientProtocol {
         self.network = network
     }
 
-    public func resetServiceUrl(baseUrl: String) {
+    func resetServiceUrl(baseUrl: String) {
         self.baseUrl = baseUrl
     }
 
@@ -123,7 +123,7 @@ public class WalletClient: WalletClientProtocol {
         do {
             let signature = try getSignature(url: referencedUrl, method: "delete")
             let copayerId = self.getCopayerId()
-            
+
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
@@ -177,12 +177,12 @@ public class WalletClient: WalletClientProtocol {
 extension WalletClient {
 
     // swiftlint:disable function_parameter_count
-    public func createWallet(
+    func createWallet(
         walletName: String,
         copayerName: String,
         m: Int,
         n: Int,
-        options: WalletOptions?,
+        options: Vws.WalletOptions?,
         completion: @escaping (_ error: Error?, _ secret: String?) -> Void
     ) {
         // swiftlint:enable function_parameter_count
@@ -205,7 +205,7 @@ extension WalletClient {
             }
 
             do {
-                let walletId = try JSONDecoder().decode(WalletID.self, from: data)
+                let walletId = try JSONDecoder().decode(Vws.WalletID.self, from: data)
 
                 self.applicationRepository.walletId = walletId.identifier
                 self.applicationRepository.walletName = walletName
@@ -218,7 +218,7 @@ extension WalletClient {
         }
     }
 
-    public func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void) {
+    func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void) {
         let xPubKey = self.credentials.publicKey.extended()
         let requestPubKey = self.credentials.requestPrivateKey.extendedPublicKey().publicKey().description
 
@@ -276,7 +276,7 @@ extension WalletClient {
         }
     }
 
-    public func openWallet(completion: @escaping (_ error: Error?) -> Void) {
+    func openWallet(completion: @escaping (_ error: Error?) -> Void) {
         // COPAYER_REGISTERED
         self.getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, _, error in
             // TODO: Clean this up...
@@ -300,17 +300,17 @@ extension WalletClient {
 
 extension WalletClient {
 
-    public func scanAddresses(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+    func scanAddresses(completion: @escaping (_ error: Error?) -> Void = { _ in }) {
         self.postRequest(url: "/v1/addresses/scan", arguments: nil) { _, _, error in
             completion(error)
         }
     }
 
-    public func createAddress(
+    func createAddress(
         completion: @escaping (
             _ error: Error?,
-            _ address: AddressInfo?,
-            _ createAddressErrorResponse: CreateAddressErrorResponse?
+            _ address: Vws.AddressInfo?,
+            _ createAddressErrorResponse: Vws.CreateAddressError?
         ) -> Void
     ) {
         self.postRequest(url: "/v4/addresses/", arguments: nil) { data, _, error in
@@ -319,8 +319,7 @@ extension WalletClient {
             }
 
             do {
-                let addressInfo = try JSONDecoder().decode(AddressInfo.self, from: data)
-                let errorResponse = try JSONDecoder().decode(CreateAddressErrorResponse.self, from: data)
+                let addressInfo = try JSONDecoder().decode(Vws.AddressInfo.self, from: data)
 
                 // Make sure the received address is really your address.
                 let addressByPath = try self.credentials.privateKeyBy(
@@ -332,16 +331,18 @@ extension WalletClient {
                     return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
                 }
 
-                completion(nil, addressInfo, errorResponse)
+                completion(nil, addressInfo, nil)
             } catch {
-                completion(error, nil, nil)
+                let errorResponse = try? JSONDecoder().decode(Vws.CreateAddressError.self, from: data)
+
+                completion(error, nil, errorResponse)
             }
         }
     }
 
-    public func getMainAddresses(
-        options: WalletAddressesOptions? = nil,
-        completion: @escaping (_ error: Error?, _ addresses: [AddressInfo]) -> Void
+    func getMainAddresses(
+        options: Vws.WalletAddressesOptions? = nil,
+        completion: @escaping (_ error: Error?, _ addresses: [Vws.AddressInfo]) -> Void
     ) {
         var args: [String] = []
         var qs = ""
@@ -364,7 +365,7 @@ extension WalletClient {
             }
 
             do {
-                completion(nil, try JSONDecoder().decode([AddressInfo].self, from: data))
+                completion(nil, try JSONDecoder().decode([Vws.AddressInfo].self, from: data))
             } catch {
                 completion(error, [])
             }
@@ -377,24 +378,24 @@ extension WalletClient {
 
 extension WalletClient {
 
-    public func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: WalletBalanceInfo?) -> Void) {
+    func getBalance(completion: @escaping (_ error: Error?, _ balanceInfo: Vws.WalletBalanceInfo?) -> Void) {
         self.getRequest(url: "/v1/balance/") { data, _, error in
             guard let data = data else {
                 return completion(error, nil)
             }
 
             do {
-                completion(error, try JSONDecoder().decode(WalletBalanceInfo.self, from: data))
+                completion(error, try JSONDecoder().decode(Vws.WalletBalanceInfo.self, from: data))
             } catch {
                 completion(error, nil)
             }
         }
     }
 
-    public func getTxHistory(
+    func getTxHistory(
         skip: Int? = nil,
         limit: Int? = nil,
-        completion: @escaping ([TxHistory], Error?) -> Void
+        completion: @escaping ([Vws.TxHistory], Error?) -> Void
     ) {
         var url = "/v1/txhistory/?includeExtendedInfo=1"
         if (skip != nil && limit != nil) {
@@ -407,8 +408,8 @@ extension WalletClient {
             }
 
             do {
-                let transactions = try JSONDecoder().decode([TxHistory].self, from: data)
-                var transformedTransactions: [TxHistory] = []
+                let transactions = try JSONDecoder().decode([Vws.TxHistory].self, from: data)
+                var transformedTransactions: [Vws.TxHistory] = []
                 for var transaction in transactions {
                     if let message = transaction.message {
                         transaction.message = self.decryptMessage(
@@ -427,9 +428,9 @@ extension WalletClient {
         }
     }
 
-    public func getUnspentOutputs(
+    func getUnspentOutputs(
         address: String? = nil,
-        completion: @escaping ([UnspentOutput], Error?) -> Void
+        completion: @escaping ([Vws.UnspentOutput], Error?) -> Void
     ) {
         self.getRequest(url: "/v1/utxos/") { data, _, error in
             guard let data = data else {
@@ -437,28 +438,28 @@ extension WalletClient {
             }
 
             do {
-                completion(try JSONDecoder().decode([UnspentOutput].self, from: data), error)
+                completion(try JSONDecoder().decode([Vws.UnspentOutput].self, from: data), error)
             } catch {
                 completion([], error)
             }
         }
     }
 
-    public func getSendMaxInfo(completion: @escaping (SendMaxInfo?, Error?) -> Void) {
+    func getSendMaxInfo(completion: @escaping (Vws.SendMaxInfo?, Error?) -> Void) {
         self.getRequest(url: "/v1/sendmaxinfo/") { data, _, error in
             guard let data = data else {
                 return completion(nil, error)
             }
 
             do {
-                completion(try JSONDecoder().decode(SendMaxInfo.self, from: data), error)
+                completion(try JSONDecoder().decode(Vws.SendMaxInfo.self, from: data), error)
             } catch {
                 completion(nil, error)
             }
         }
     }
 
-    public func watchRequestCredentialsForMethodPath(path: String) throws -> WatchRequestCredentials {
+    func watchRequestCredentialsForMethodPath(path: String) throws -> WatchRequestCredentials {
         var result = WatchRequestCredentials()
         let referencedUrl = path.addUrlReference()
 
@@ -482,13 +483,13 @@ extension WalletClient {
 
 extension WalletClient {
 
-    public typealias TxProposalCompletion = (
-        _ txp: TxProposalResponse?,
-        _ errorResponse: TxProposalErrorResponse?,
+    typealias TxProposalCompletion = (
+        _ txp: Vws.TxProposalResponse?,
+        _ errorResponse: Vws.TxProposalErrorResponse?,
         _ error: Error?
     ) -> Void
 
-    public func createTxProposal(proposal: TxProposal, completion: @escaping TxProposalCompletion) {
+    func createTxProposal(proposal: Vws.TxProposal, completion: @escaping TxProposalCompletion) {
         var arguments = JSON()
         var output = JSON()
         output["toAddress"].stringValue = proposal.address
@@ -510,9 +511,13 @@ extension WalletClient {
         postRequest(url: "/v3/txproposals/", arguments: arguments) { data, _, error in
             if let data = data {
                 do {
-                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
+                    return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
                 } catch {
-                    return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data), error)
+                    return completion(
+                        nil,
+                        try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: data),
+                        error
+                    )
                 }
             } else {
                 return completion(nil, nil, error)
@@ -520,7 +525,7 @@ extension WalletClient {
         }
     }
 
-    public func publishTxProposal(txp: TxProposalResponse, completion: @escaping TxProposalCompletion) {
+    func publishTxProposal(txp: Vws.TxProposalResponse, completion: @escaping TxProposalCompletion) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
 
@@ -538,11 +543,11 @@ extension WalletClient {
             ) { data, _, error in
                 if let data = data {
                     do {
-                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
+                        return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
                     } catch {
                         return completion(
                             nil,
-                            try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data),
+                            try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: data),
                             error
                         )
                     }
@@ -555,7 +560,7 @@ extension WalletClient {
         }
     }
 
-    public func signTxProposal(txp: TxProposalResponse, completion: @escaping TxProposalCompletion) {
+    func signTxProposal(txp: Vws.TxProposalResponse, completion: @escaping TxProposalCompletion) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
 
@@ -573,11 +578,11 @@ extension WalletClient {
             ) { data, _, error in
                 if let data = data {
                     do {
-                        return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
+                        return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
                     } catch {
                         return completion(
                             nil,
-                            try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data),
+                            try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: data),
                             error
                         )
                     }
@@ -590,16 +595,20 @@ extension WalletClient {
         }
     }
 
-    public func broadcastTxProposal(txp: TxProposalResponse, completion: @escaping TxProposalCompletion) {
+    func broadcastTxProposal(txp: Vws.TxProposalResponse, completion: @escaping TxProposalCompletion) {
         postRequest(
             url: "/v1/txproposals/\(txp.id)/broadcast/",
             arguments: nil
         ) { data, _, error in
             if let data = data {
                 do {
-                    return completion(try JSONDecoder().decode(TxProposalResponse.self, from: data), nil, nil)
+                    return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
                 } catch {
-                    return completion(nil, try? JSONDecoder().decode(TxProposalErrorResponse.self, from: data), error)
+                    return completion(
+                        nil,
+                        try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: data),
+                        error
+                    )
                 }
             } else {
                 return completion(nil, nil, error)
@@ -607,7 +616,10 @@ extension WalletClient {
         }
     }
 
-    public func rejectTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+    func rejectTxProposal(
+        txp: Vws.TxProposalResponse,
+        completion: @escaping (_ error: Error?) -> Void = { _ in }
+    ) {
         postRequest(
             url: "/v1/txproposals/\(txp.id)/rejections/",
             arguments: nil
@@ -616,13 +628,16 @@ extension WalletClient {
         }
     }
 
-    public func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (_ error: Error?) -> Void = { _ in }) {
+    func deleteTxProposal(
+        txp: Vws.TxProposalResponse,
+        completion: @escaping (_ error: Error?) -> Void = { _ in }
+    ) {
         deleteRequest(url: "/v1/txproposals/\(txp.id)/") { _, _, error in
             completion(error)
         }
     }
 
-    public func getTxProposals(completion: @escaping (_ txps: [TxProposalResponse], _ error: Error?) -> Void) {
+    func getTxProposals(completion: @escaping (_ txps: [Vws.TxProposalResponse], _ error: Error?) -> Void) {
         getRequest(url: "/v2/txproposals/") { data, _, error in
             if let error = error {
                 return completion([], error)
@@ -633,7 +648,7 @@ extension WalletClient {
             }
 
             do {
-                let txps = try JSONDecoder().decode([TxProposalResponse].self, from: data)
+                let txps = try JSONDecoder().decode([Vws.TxProposalResponse].self, from: data)
 
                 completion(txps, nil)
             } catch {
@@ -689,7 +704,7 @@ extension WalletClient {
         return "\(widBase58)\(credentials.privateKey.privateKey().toWIF())Lxvg"
     }
 
-    private func getUnsignedTx(txp: TxProposalResponse) throws -> UnsignedTransaction {
+    private func getUnsignedTx(txp: Vws.TxProposalResponse) throws -> UnsignedTransaction {
         guard let output = txp.outputs.first else {
             throw WalletClientError.noOutputFound
         }
@@ -775,11 +790,8 @@ extension WalletClient {
 
             let keysOfUtxo: [PrivateKey] = keys.filter { $0.publicKey().pubkeyHash == pubkeyHash }
             guard let key = keysOfUtxo.first else {
-                //print("No keys to this txout : \(utxo.output.value)")
                 continue
             }
-            //print("Value of signing txout : \(utxo.output.value)")
-            //print(key.data.hex)
 
             let sighash: Data = transactionToSign.signatureHash(
                 for: utxo.output,

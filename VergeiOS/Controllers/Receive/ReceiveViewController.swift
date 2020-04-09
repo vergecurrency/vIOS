@@ -132,7 +132,7 @@ class ReceiveViewController: ThemeableViewController {
         DispatchQueue.main.async {
             self.hideCard()
 
-            var options = WalletAddressesOptions()
+            var options = Vws.WalletAddressesOptions()
             options.limit = 1
             options.reverse = true
 

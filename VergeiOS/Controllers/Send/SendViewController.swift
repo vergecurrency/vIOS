@@ -250,9 +250,9 @@ class SendViewController: ThemeableViewController {
         }
     }
 
-    func getTxProposal(completion: @escaping (_ proposal: TxProposal) -> Void) {
+    func getTxProposal(completion: @escaping (_ proposal: Vws.TxProposal) -> Void) {
         if txFactory.amount.doubleValue < walletAmount.doubleValue {
-            return completion(TxProposal(
+            return completion(Vws.TxProposal(
                 address: txFactory.address,
                 amount: txFactory.amount,
                 message: txFactory.memo
@@ -269,7 +269,7 @@ class SendViewController: ThemeableViewController {
                 amount: NSNumber(value: Double(info.amount) / Constants.satoshiDivider)
             )
 
-            completion(TxProposal(
+            completion(Vws.TxProposal(
                 address: self.txFactory.address,
                 amount: self.txFactory.amount,
                 message: self.txFactory.memo
@@ -277,7 +277,7 @@ class SendViewController: ThemeableViewController {
         }
     }
 
-    func send(txp: TxProposalResponse) {
+    func send(txp: Vws.TxProposalResponse) {
         let unlockView = PinUnlockViewController.createFromStoryBoard()
         unlockView.fillPinFor = .sending
         unlockView.cancelable = true
@@ -298,9 +298,9 @@ class SendViewController: ThemeableViewController {
 
             self.present(actionSheet, animated: true) {
                 self.txTransponder.send(txp: txp) { txp, errorResponse, error  in
-                    var thrownError: TxProposalErrorResponse?
+                    var thrownError: Vws.TxProposalErrorResponse?
                     if let error = error {
-                        thrownError = TxProposalErrorResponse(code: "500", message: error.localizedDescription)
+                        thrownError = Vws.TxProposalErrorResponse(code: "500", message: error.localizedDescription)
                     } else if let errorResponse = errorResponse {
                         thrownError = errorResponse
                     }
@@ -326,7 +326,7 @@ class SendViewController: ThemeableViewController {
         present(unlockView, animated: true)
     }
 
-    func showTransactionError(_ errorResponse: TxProposalErrorResponse?, txp: TxProposalResponse?) {
+    func showTransactionError(_ errorResponse: Vws.TxProposalErrorResponse?, txp: Vws.TxProposalResponse?) {
         let error: String = errorResponse != nil ? errorResponse!.message : "send.noConnection".localized
 
         let actionSheet = UIAlertController(

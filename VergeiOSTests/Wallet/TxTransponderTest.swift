@@ -251,23 +251,23 @@ class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
 }
 
 class WalletClientMock: WalletClientProtocol {
-    func createWallet(walletName: String, copayerName: String, m: Int, n: Int, options: WalletOptions?, completion: @escaping (Error?, String?) -> Void) {}
+    func createWallet(walletName: String, copayerName: String, m: Int, n: Int, options: Vws.WalletOptions?, completion: @escaping (Error?, String?) -> Void) {}
     func joinWallet(walletIdentifier: String, completion: @escaping (Error?) -> Void) {}
     func openWallet(completion: @escaping (Error?) -> Void) {}
     func scanAddresses(completion: @escaping (Error?) -> Void) {}
-    func createAddress(completion: @escaping (Error?, AddressInfo?, CreateAddressErrorResponse?) -> Void) {}
-    func getBalance(completion: @escaping (Error?, WalletBalanceInfo?) -> Void) {}
-    func getMainAddresses(options: WalletAddressesOptions?, completion: @escaping (Error?, [AddressInfo]) -> ()) {}
-    func getTxHistory(skip: Int?, limit: Int?, completion: @escaping ([TxHistory], Error?) -> Void) {}
-    func getUnspentOutputs(address: String?, completion: @escaping ([UnspentOutput], Error?) -> Void) {}
-    func getSendMaxInfo(completion: @escaping (SendMaxInfo?, Error?) -> Void) {}
-    func createTxProposal(proposal: TxProposal, completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void) {}
-    func publishTxProposal(txp: TxProposalResponse, completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void) {}
-    func signTxProposal(txp: TxProposalResponse, completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void) {}
-    func broadcastTxProposal(txp: TxProposalResponse, completion: @escaping (TxProposalResponse?, TxProposalErrorResponse?, Error?) -> Void) {}
-    func rejectTxProposal(txp: TxProposalResponse, completion: @escaping (Error?) -> Void) {}
-    func deleteTxProposal(txp: TxProposalResponse, completion: @escaping (Error?) -> Void = {_ in }) {}
-    func getTxProposals(completion: @escaping ([TxProposalResponse], Error?) -> Void) {}
+    func createAddress(completion: @escaping (Error?, Vws.AddressInfo?, Vws.CreateAddressErrorResponse?) -> Void) {}
+    func getBalance(completion: @escaping (Error?, Vws.WalletBalanceInfo?) -> Void) {}
+    func getMainAddresses(options: Vws.WalletAddressesOptions?, completion: @escaping (Error?, [Vws.AddressInfo]) -> ()) {}
+    func getTxHistory(skip: Int?, limit: Int?, completion: @escaping ([Vws.TxHistory], Error?) -> Void) {}
+    func getUnspentOutputs(address: String?, completion: @escaping ([Vws.UnspentOutput], Error?) -> Void) {}
+    func getSendMaxInfo(completion: @escaping (Vws.SendMaxInfo?, Error?) -> Void) {}
+    func createTxProposal(proposal: Vws.TxProposal, completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void) {}
+    func publishTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void) {}
+    func signTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void) {}
+    func broadcastTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (Vws.TxProposalResponse?, Vws.TxProposalErrorResponse?, Error?) -> Void) {}
+    func rejectTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (Error?) -> Void) {}
+    func deleteTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (Error?) -> Void = {_ in }) {}
+    func getTxProposals(completion: @escaping ([Vws.TxProposalResponse], Error?) -> Void) {}
     func resetServiceUrl(baseUrl: String) {}
     func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials {
         return WatchRequestCredentials(url: "url", copayerId: "copayerid", signature: "signature")

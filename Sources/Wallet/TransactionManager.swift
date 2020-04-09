@@ -18,7 +18,7 @@ class TransactionManager {
         return transactionRepository.all().count > 0
     }
 
-    public func all(completion: @escaping (_ transactions: [TxHistory]) -> Void) {
+    public func all(completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
         if !hasTransactions {
             sync { transactions in
                 return completion(transactions)
@@ -30,13 +30,13 @@ class TransactionManager {
         })
     }
 
-    public func all(byAddress address: String) -> [TxHistory] {
+    public func all(byAddress address: String) -> [Vws.TxHistory] {
         return transactionRepository.get(byAddress: address).sorted { thule, thule2 in
             return thule.sortBy(txHistory: thule2)
         }
     }
 
-    public func sync(skip: Int = 0, limit: Int = 50, completion: @escaping (_ transactions: [TxHistory]) -> Void) {
+    public func sync(skip: Int = 0, limit: Int = 50, completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
         walletClient.getTxHistory(skip: skip, limit: limit) { transactions, _ in
             var txids = [String]()
             let transactions = transactions.filter { tx in
@@ -61,7 +61,7 @@ class TransactionManager {
         }
     }
 
-    public func remove(transaction: TxHistory) {
+    public func remove(transaction: Vws.TxHistory) {
         transactionRepository.remove(tx: transaction)
     }
 
