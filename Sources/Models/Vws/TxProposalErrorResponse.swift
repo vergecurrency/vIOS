@@ -18,4 +18,14 @@ extension Vws {
             return TxProposalErrorResponse.Error.init(rawValue: self.code)
         }
     }
+
+    // TODO: remove old error VWS response classes
+//    struct TxProposalErrorResponse: Decodable {
+//        enum Code: String, Decodable {
+//            case BadSignatures = "BAD_SIGNATURES"
+//        }
+//
+//        let code: Code
+//        let message: String
+//    }
 }

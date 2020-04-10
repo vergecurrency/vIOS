@@ -9,8 +9,10 @@ import Logging
 class HttpServiceProvider: ServiceProvider {
 
     override func boot() {
-        // Start the tor client
-        container.resolve(TorClient.self)?.start()
+        if container.resolve(ApplicationRepository.self)?.setup ?? false {
+            // Start the tor client
+            container.resolve(TorClient.self)?.start()
+        }
     }
 
     override func register() {

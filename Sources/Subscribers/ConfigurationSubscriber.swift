@@ -37,17 +37,20 @@ class ConfigurationSubscriber: Subscriber {
         self.walletClient.resetServiceUrl(baseUrl: self.applicationRepository.walletServiceUrl)
 
         // If the wallet is setup we check on the server if there is a wallet present.
-        if self.applicationRepository.setup {
-            self.walletManager.joinWallet(createWallet: true) { error in
-                if error != nil {
-                    return print(error ?? "Unresolved error")
-                }
-
-                self.walletManager.synchronizeWallet { error in
-                    print(error ?? "Unresolved error")
-                }
-            }
+        if !self.applicationRepository.setup {
+            return
         }
+
+        self.walletManager
+            .getWallet()
+            .then { walletStatus in
+                return self.walletManager.scanWallet()
+            }.then { scanningRequested in
+                self.log.info("boot server migration finished")
+            }.catch { error in
+                // TODO: raise user error
+                self.log.error("\(error.localizedDescription)")
+            }
     }
 
     override func getSubscribedEvents() -> [Notification.Name: Selector] {

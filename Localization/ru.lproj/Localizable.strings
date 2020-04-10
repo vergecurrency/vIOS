@@ -560,6 +560,9 @@
 "alerts.startTor.button2"                   = "Без Tor";
 "alerts.termsOfUse.title"                   = "Просмотр Правил использования";
 "alerts.restart.title"                      = "Перезагрузка...";
+"alerts.walletSetup.title"                  = "Не удалось настроить ваш кошелек";
+"alert.walletSetup.message"                 = "Что-то пошло с настройкой вашего кошелька";
+
 
 // ErrorView.xib
 

@@ -19,7 +19,6 @@ public class WalletClient: WalletClientProtocol {
         case invalidWidHex(id: String)
         case invalidAddressReceived(address: Vws.AddressInfo?)
         case noOutputFound
-        case walletNotFound
     }
 
     private let sjcl = SJCL()
@@ -183,7 +182,7 @@ extension WalletClient {
         m: Int,
         n: Int,
         options: Vws.WalletOptions?,
-        completion: @escaping (_ error: Error?, _ secret: String?) -> Void
+        completion: @escaping (Vws.WalletID?, Vws.WalletID.Error?, Error?) -> Void
     ) {
         // swiftlint:enable function_parameter_count
         let encWalletName = self.encryptMessage(
@@ -201,24 +200,31 @@ extension WalletClient {
 
         self.postRequest(url: "/v2/wallets/", arguments: args) { data, _, error in
             guard let data = data else {
-                return completion(error, nil)
+                return completion(nil, nil, error)
             }
 
             do {
                 let walletId = try JSONDecoder().decode(Vws.WalletID.self, from: data)
 
+                // TODO: remove from the client :'D
                 self.applicationRepository.walletId = walletId.identifier
                 self.applicationRepository.walletName = walletName
                 self.applicationRepository.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
 
-                completion(nil, walletId.identifier)
+                completion(walletId, nil, nil)
             } catch {
-                completion(error, nil)
+                let errorResponse = try? JSONDecoder().decode(Vws.WalletID.Error.self, from: data)
+                let returnError = errorResponse == nil ? error : nil
+
+                completion(nil, errorResponse, returnError)
             }
         }
     }
 
-    func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void) {
+    func joinWallet(
+        walletIdentifier: String,
+        completion: @escaping (Vws.WalletJoin?, Vws.WalletJoin.Error?, Error?) -> Void
+    ) {
         let xPubKey = self.credentials.publicKey.extended()
         let requestPubKey = self.credentials.requestPrivateKey.extendedPublicKey().publicKey().description
 
@@ -246,50 +252,39 @@ extension WalletClient {
                 privateKey: self.credentials.walletPrivateKey
             )
         } catch {
-            return completion(error)
+            return completion(nil, nil, error)
         }
 
 
         self.postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
             guard let data = data else {
-                return completion(error)
+                return completion(nil, nil, error)
             }
 
             do {
-                // TODO: Put this logic somewhere else
-                let jsonResponse = try JSON(data: data)
-
-                if jsonResponse["code"].stringValue == "WALLET_NOT_FOUND" {
-                    return completion(WalletClientError.walletNotFound)
-                }
-
-                if jsonResponse["code"].stringValue == "COPAYER_REGISTERED" {
-                    return self.openWallet { error in
-                        completion(error)
-                    }
-                }
-
-                completion(error)
+                completion(try JSONDecoder().decode(Vws.WalletJoin.self, from: data), nil, nil)
             } catch {
-                completion(error)
+                let joinWalletError = try? JSONDecoder().decode(Vws.WalletJoin.Error.self, from: data)
+                let returnError = joinWalletError == nil ? error : nil
+
+                completion(nil, joinWalletError, returnError)
             }
         }
     }
 
-    func openWallet(completion: @escaping (_ error: Error?) -> Void) {
-        // COPAYER_REGISTERED
+    func openWallet(completion: @escaping (Vws.WalletStatus?, Vws.WalletStatus.Error?, Error?) -> Void) {
         self.getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, _, error in
-            // TODO: Clean this up...
             guard let data = data else {
-                return completion(error)
+                return completion(nil, nil, error)
             }
 
             do {
-                let jsonResponse = try JSON(data: data)
-
-                completion(error)
+                completion(try JSONDecoder().decode(Vws.WalletStatus.self, from: data), nil, nil)
             } catch {
-                completion(error)
+                let walletError = try? JSONDecoder().decode(Vws.WalletStatus.Error.self, from: data)
+                let returnError = walletError == nil ? error : nil
+
+                completion(nil, walletError, returnError)
             }
         }
     }

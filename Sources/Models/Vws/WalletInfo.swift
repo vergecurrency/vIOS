@@ -7,6 +7,15 @@ import Foundation
 
 extension Vws {
     struct WalletInfo: Decodable {
+        struct Error: DecodableError {
+            enum Code: String, Decodable {
+                case WalletNotFound = "WALLET_NOT_FOUND"
+            }
+
+            let code: Code
+            let message: String
+        }
+
         let id: String
         let version: String
         let createdOn: UInt32?
@@ -23,12 +32,12 @@ extension Vws {
         let derivationStrategy: String
         let addressType: String
         let addressManager: AddressManager
-        let scanStatus: String
-        let beRegistered: String
-        let beAuthPrivateKey2: String
-        let beAuthPublicKey2: String
-        let nativeCashAddr: String
-        let isShared: String
+        let scanStatus: String?
+        let beRegistered: Bool
+        let beAuthPrivateKey2: String?
+        let beAuthPublicKey2: String?
+        let nativeCashAddr: String?
+        let isShared: String?
     }
 
     struct PublicKeyRing: Decodable {
@@ -37,10 +46,10 @@ extension Vws {
     }
 
     struct Copayer: Decodable {
+        let id: String
         let version: Int
         let createdOn: UInt32?
         let coin: String
-        let id: String
         let name: String
         let xPubKey: String
         let requestPubKey: String

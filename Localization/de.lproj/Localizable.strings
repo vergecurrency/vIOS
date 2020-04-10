@@ -483,6 +483,8 @@
 "alerts.startTor.button2" = "Ohne Tor";
 "alerts.termsOfUse.title" = "Nutzungsbedingungen für diese Wallet anzeigen";
 "alerts.restart.title" = "Neustart...";
+"alerts.walletSetup.title" = "Fehler beim Einrichten Ihrer Brieftasche";
+"alert.walletSetup.message" = "Beim Einrichten Ihrer Brieftasche ist etwas passiert";
 
 // ErrorView.xib
 

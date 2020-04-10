@@ -251,9 +251,19 @@ class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
 }
 
 class WalletClientMock: WalletClientProtocol {
-    func createWallet(walletName: String, copayerName: String, m: Int, n: Int, options: Vws.WalletOptions?, completion: @escaping (Error?, String?) -> Void) {}
-    func joinWallet(walletIdentifier: String, completion: @escaping (Error?) -> Void) {}
-    func openWallet(completion: @escaping (Error?) -> Void) {}
+    func createWallet(
+        walletName: String,
+        copayerName: String,
+        m: Int,
+        n: Int,
+        options: Vws.WalletOptions?,
+        completion: @escaping (Vws.WalletID?, Vws.WalletID.Error?, Error?) -> ()
+    ) {}
+    func joinWallet(
+        walletIdentifier: String,
+        completion: @escaping (Vws.WalletJoin?, Vws.WalletJoin.Error?, Error?) -> ()
+    ) {}
+    func openWallet(completion: @escaping (Vws.WalletStatus?, Vws.WalletStatus.Error?, Error?) -> ()) {}
     func scanAddresses(completion: @escaping (Error?) -> Void) {}
     func createAddress(completion: @escaping (Error?, Vws.AddressInfo?, Vws.CreateAddressError?) -> Void) {}
     func getBalance(completion: @escaping (Error?, Vws.WalletBalanceInfo?) -> Void) {}
@@ -269,7 +279,7 @@ class WalletClientMock: WalletClientProtocol {
     func deleteTxProposal(txp: Vws.TxProposalResponse, completion: @escaping (Error?) -> Void = {_ in }) {}
     func getTxProposals(completion: @escaping ([Vws.TxProposalResponse], Error?) -> Void) {}
     func resetServiceUrl(baseUrl: String) {}
-    func watchRequestCredentialsForMethodPath(path: String) -> WatchRequestCredentials {
+    func watchRequestCredentialsForMethodPath(path: String) throws -> WatchRequestCredentials {
         return WatchRequestCredentials(url: "url", copayerId: "copayerid", signature: "signature")
     }
 }

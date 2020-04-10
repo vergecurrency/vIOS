@@ -457,6 +457,12 @@
 /*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Aucune transaction reçue pour le moment.";
 
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.walletSetup.title" = "Impossible de configurer votre portefeuille";
+"alert.walletSetup.message" = "Quelque chose s'est passé avec la configuration de votre portefeuille";
+
 // ErrorView.xib
 
 "errorView.titleLabel"                      = "Oups! Quelque chose a mal tourné:";

@@ -456,6 +456,12 @@
 /*TransactionsPlaceholderTableViewCell.xib*/
 "wallet.slides.noTransactions.titleLabel" = "Nenhuma transação foi recebida ainda.";
 
+/*----------------------------------------
+ Alerts
+ ----------------------------------------*/
+"alerts.walletSetup.title" = "Falha ao configurar sua carteira";
+"alert.walletSetup.message" = "Ocorreu um problema ao configurar sua carteira";
+
 // ErrorView.xib
 
 "errorView.titleLabel"                      = "Ops! Algo deu errado:";

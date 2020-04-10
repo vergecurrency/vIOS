@@ -127,7 +127,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             return self.log.warning(LogMessage.TorClientNoRestartStillInOperation)
         }
 
-        while self.controller.isConnected ?? true {
+        while self.controller?.isConnected ?? false {
             self.log.notice(LogMessage.TorClientControllerIsStillConnected)
         }
 

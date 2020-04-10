@@ -483,6 +483,8 @@
 "alerts.startTor.button2" = "Không dùng Tor";
 "alerts.termsOfUse.title" = "Xem điều khoảng sử dụng ví";
 "alerts.restart.title" = "Đang khởi động lại...";
+"alerts.walletSetup.title" = "Không thể thiết lập ví của bạn";
+"alert.walletSetup.message" = "Một cái gì đó đã đi từ với thiết lập ví của bạn";
 
 // ErrorView.xib
 

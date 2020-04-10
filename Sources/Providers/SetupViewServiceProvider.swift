@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import Logging
 
 class SetupViewServiceProvider: ServiceProvider {
 
@@ -19,8 +20,9 @@ class SetupViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted (FinishSetupViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
-            c.walletClient = r.resolve(WalletClientProtocol.self)
             c.credentials = r.resolve(Credentials.self)
+            c.walletManager = r.resolve(WalletManagerProtocol.self)
+            c.log = r.resolve(Logger.self)
         }
 
         container.storyboardInitCompleted (PaperkeyShowViewController.self) { r, c in

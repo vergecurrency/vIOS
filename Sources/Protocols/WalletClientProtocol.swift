@@ -17,12 +17,15 @@ protocol WalletClientProtocol {
         m: Int,
         n: Int,
         options: Vws.WalletOptions?,
-        completion: @escaping (_ error: Error?, _ secret: String?) -> Void
+        completion: @escaping (Vws.WalletID?, Vws.WalletID.Error?, Error?) -> Void
     )
     // swiftlint:enable function_parameter_count
 
-    func joinWallet(walletIdentifier: String, completion: @escaping (_ error: Error?) -> Void)
-    func openWallet(completion: @escaping (_ error: Error?) -> Void)
+    func joinWallet(
+        walletIdentifier: String,
+        completion: @escaping (Vws.WalletJoin?, Vws.WalletJoin.Error?, Error?) -> Void
+    )
+    func openWallet(completion: @escaping (Vws.WalletStatus?, Vws.WalletStatus.Error?, Error?) -> Void)
     func scanAddresses(completion: @escaping (_ error: Error?) -> Void)
 
     func createAddress(

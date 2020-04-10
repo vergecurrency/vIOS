@@ -148,11 +148,12 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerWalletManager() {
         container.register(WalletManagerProtocol.self) { r in
-            WalletManager(
+            return WalletManager(
                 walletClient: r.resolve(WalletClientProtocol.self)!,
                 walletTicker: r.resolve(WalletTicker.self)!,
-                applicationRepository: r.resolve(ApplicationRepository.self)!
+                applicationRepository: r.resolve(ApplicationRepository.self)!,
+                log: r.resolve(Logger.self)!
             )
-        }.inObjectScope(.container)
+        }
     }
 }

@@ -630,6 +630,8 @@
 "alerts.unexpectedError.message"            = "Unexpected error thrown with message:";
 "alerts.restart.title"                      = "Restarting...";
 "alerts.loading.title"                      = "Loading...";
+"alerts.walletSetup.title"                  = "Failed to setup your wallet";
+"alert.walletSetup.message"                 = "Something went from with setup up your wallet";
 
 // ErrorView.xib
 

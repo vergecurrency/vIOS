@@ -483,6 +483,8 @@
 "alerts.startTor.button2" = "Torを利用しない";
 "alerts.termsOfUse.title" = "ウォレットの利用規約を確認する";
 "alerts.restart.title" = "再起動中...";
+"alerts.walletSetup.title" = "ウォレットをセットアップできませんでした";
+"alert.walletSetup.message" = "ウォレットのセットアップで何かが発生しました";
 
 // ErrorView.xib
 

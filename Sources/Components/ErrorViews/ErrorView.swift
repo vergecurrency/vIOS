@@ -60,12 +60,6 @@ class ErrorView: UIView {
             fatalError("Couldn't find parent container view controller")
         }
 
-        parent.present(controller, animated: true) {
-            guard let supportTableViewController = controller.visibleViewController as? SupportTableViewController else {
-                fatalError("Didn't get support table ViewController")
-            }
-            
-            supportTableViewController.scrollViewEdger.removeBottomShadow()
-        }
+        parent.present(controller, animated: true)
     }
 }

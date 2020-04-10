@@ -483,6 +483,8 @@
 "alerts.startTor.button2" = "Brez Tor";
 "alerts.termsOfUse.title" = "Ogled pogojev uporabe Denarnice";
 "alerts.restart.title" = "Ponovno zagon...";
+"alerts.walletSetup.title" = "Nastavitve denarnice ni bilo mogoče";
+"alert.walletSetup.message" = "Z nastavitvijo denarnice se je nekaj zgodilo";
 
 // ErrorView.xib
 

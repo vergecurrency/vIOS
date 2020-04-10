@@ -10,6 +10,33 @@ struct LogMessage {
 
     typealias Log = Logger.Message
 
+    /// Wallet Setup
+    static let WalletSetupNoMnemonicFound: Log = "wallet setup no mnemonic found"
+    static let WalletSetupNoPassphraseFound: Log = "wallet setup no passphrase found"
+
+    /// Wallet Manager
+    static let WalletManagerWalletAlreadyExists: Log = "wallet manager wallet already exists"
+    static let WalletManagerCreatedWallet: Log = "wallet manager successfully created wallet"
+    static let WalletManagerJoinedWallet: Log = "wallet manager successfully joined wallet"
+    static let WalletManagerOpenedWallet: Log = "wallet manager successfully opened wallet"
+    static let WalletManagerWalletScanRequested: Log = "wallet manager wallet scan requested"
+
+    static func WalletManagerCreatingWalletFailedWith(error: String) -> Log{
+        return Log("wallet manager creating wallet failed with: \(error)")
+    }
+
+    static func WalletManagerJoiningWalletFailedWith(error: String) -> Log{
+        return Log("wallet manager joining wallet failed with: \(error)")
+    }
+
+    static func WalletManagerOpeningWalletFailedWith(error: String) -> Log {
+        return Log("wallet manager opening wallet failed with: \(error)")
+    }
+
+    static func WalletManagerWalletScan(error: String) -> Log {
+        return Log("wallet manager wallet scan error: \(error)")
+    }
+
     /// Migrations
     static let NoDeprecatedVWSEndpointsFound: Log = "no deprecated VWS endpoints found"
 

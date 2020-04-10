@@ -13,8 +13,9 @@ class ServiceUrlTableViewController: EdgedTableViewController {
     @IBOutlet weak var serviceUrlTextField: UITextField!
 
     var applicationRepository: ApplicationRepository!
-    var walletTicker: WalletTicker!
     var walletClient: WalletClientProtocol!
+    var walletManager: WalletManagerProtocol!
+
     var previousServiceUrl: String = ""
 
     override func viewDidLoad() {
@@ -40,19 +41,23 @@ class ServiceUrlTableViewController: EdgedTableViewController {
         self.previousServiceUrl = self.applicationRepository.walletServiceUrl
         self.applicationRepository.walletServiceUrl = self.serviceUrlTextField.text!
 
-        self.walletTicker.stop()
         self.walletClient.resetServiceUrl(baseUrl: self.applicationRepository.walletServiceUrl)
-
-        self.joinWallet(alert: alert)
+        self.walletManager
+            .getWallet()
+            .then { walletStatus in
+                self.urlChanged(alert: alert)
+            }.catch { error in
+                self.errorDuringChange(alert: alert, error: error)
+            }
     }
 
-    func errorDuringChange(alert: UIAlertController) {
+    func errorDuringChange(alert: UIAlertController, error: Error) {
         alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
         alert.addAction(UIAlertAction(title: "settings.serviceUrl.alert.usePrevUrl".localized, style: .default) { _ in
             self.rollbackServiceUrl(serviceUrl: self.previousServiceUrl)
         })
         alert.title = "settings.serviceUrl.alert.errorChanging".localized
-        alert.message = "settings.serviceUrl.alert.errorChanging2".localized
+        alert.message = "\("settings.serviceUrl.alert.errorChanging2".localized): \(error.localizedDescription)"
     }
 
     func urlChanged(alert: UIAlertController) {
@@ -62,51 +67,13 @@ class ServiceUrlTableViewController: EdgedTableViewController {
     }
 
     func rollbackServiceUrl(serviceUrl: String) {
-        applicationRepository.walletServiceUrl = serviceUrl
-        serviceUrlTextField.text = serviceUrl
-        walletClient.resetServiceUrl(baseUrl: serviceUrl)
-        walletTicker.start()
-    }
-
-    private func joinWallet(alert: UIAlertController, create: Bool = true) {
-        self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
-            guard let error = error else {
-                return DispatchQueue.main.async {
-                    self.walletTicker.start()
-                    self.urlChanged(alert: alert)
-                }
+        self.applicationRepository.walletServiceUrl = serviceUrl
+        self.serviceUrlTextField.text = serviceUrl
+        self.walletClient.resetServiceUrl(baseUrl: serviceUrl)
+        self.walletManager
+            .getWallet()
+            .catch { error in
+                print(error)
             }
-
-            print(error)
-
-            if !create {
-                return
-            }
-
-            print("Joining wallet failed... trying to create a new wallet")
-
-            return self.createWallet(alert: alert)
-        }
-    }
-
-    private func createWallet(alert: UIAlertController) {
-        self.walletClient.createWallet(
-            walletName: "ioswallet",
-            copayerName: "iosuser",
-            m: 1,
-            n: 1,
-            options: nil
-        ) { error, secret in
-            if (error != nil || secret == nil) {
-                DispatchQueue.main.async {
-                    self.errorDuringChange(alert: alert)
-                }
-
-                print(error ?? "")
-                return
-            }
-
-            self.joinWallet(alert: alert, create: false)
-        }
     }
 }

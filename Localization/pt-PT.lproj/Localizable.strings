@@ -483,6 +483,8 @@
 "alerts.startTor.button2" = "Sem o Tor";
 "alerts.termsOfUse.title" = "Ver os Termos e Condições da Carteira";
 "alerts.restart.title" = "Reiniciando...";
+"alerts.walletSetup.title" = "Falha ao configurar sua carteira";
+"alert.walletSetup.message" = "Ocorreu um problema ao configurar sua carteira";
 
 // ErrorView.xib
 

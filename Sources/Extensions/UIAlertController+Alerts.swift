@@ -6,6 +6,22 @@
 import UIKit
 
 extension UIAlertController {
+    static func createWalletSetupErrorAlert(
+        error: String,
+        handler: @escaping (UIAlertAction) -> Void
+    ) -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alert.walletSetup.title".localized,
+            message: "\("alert.walletSetup.message".localized): \(error)",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
+        alert.addAction(UIAlertAction(title: "defaults.support", style: .default, handler: handler))
+
+        return alert
+    }
+
     static func createDeleteContactAlert(handler: ((UIAlertAction) -> Void)?) -> UIAlertController {
         let alert = UIAlertController(
             title: "alerts.removeContact.title".localized,

@@ -483,6 +483,8 @@
 "alerts.startTor.button2" = "Tor olmadan devam";
 "alerts.termsOfUse.title" = "Cüzdan Kullanım Koşullarını görüntüle";
 "alerts.restart.title" = "Yeniden başlıyor...";
+"alerts.walletSetup.title" = "Cüzdanınız ayarlanamadı";
+"alert.walletSetup.message" = "Cüzdanınızı kurmayla ilgili bir şey geldi";
 
 // ErrorView.xib
 

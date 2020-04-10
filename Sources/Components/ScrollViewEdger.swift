@@ -9,10 +9,9 @@
 import UIKit
 
 class ScrollViewEdger {
-
-    var scrollView: UIScrollView!
-    var topShadow: UIView!
-    var bottomShadow: UIView!
+    let scrollView: UIScrollView
+    var topShadow: UIView?
+    var bottomShadow: UIView?
 
     var hideTopShadow: Bool = false
     var hideBottomShadow: Bool = false
@@ -40,7 +39,8 @@ class ScrollViewEdger {
 
     func createShadowViews() {
         if topShadow == nil {
-            topShadow = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: shadowHeight))
+            let topShadow = UIView(frame: CGRect(x: 0, y: 0, width: scrollView.frame.size.width, height: shadowHeight))
+            self.topShadow = topShadow
 
             let gradientLayer = CAGradientLayer()
             gradientLayer.colors = [shadowColor.cgColor, UIColor.clear.cgColor]
@@ -53,12 +53,13 @@ class ScrollViewEdger {
         }
 
         if bottomShadow == nil {
-            bottomShadow = UIView(frame: CGRect(
+            let bottomShadow = UIView(frame: CGRect(
                 x: 0,
                 y: scrollView.bounds.size.height - scrollView.safeAreaInsets.bottom - shadowHeight,
                 width: scrollView.frame.size.width,
                 height: shadowHeight
             ))
+            self.bottomShadow = bottomShadow
 
             let gradientBottomLayer = CAGradientLayer()
             gradientBottomLayer.colors = [UIColor.clear.cgColor, shadowColor.cgColor]
@@ -76,11 +77,15 @@ class ScrollViewEdger {
     }
 
     func updateView() {
-        if topShadow == nil || bottomShadow == nil {
+        if self.topShadow == nil || self.bottomShadow == nil {
             return
         }
 
         if !hideTopShadow {
+            guard let topShadow = self.topShadow else {
+                return
+            }
+
             topShadow.frame = CGRect(
                 x: topShadow.frame.origin.x,
                 y: scrollView.contentOffset.y,
@@ -91,18 +96,22 @@ class ScrollViewEdger {
 
             if scrollView.contentOffset.y > shadowHeight / 2 {
                 UIView.animate(withDuration: animationDuration) {
-                    self.topShadow.alpha = self.shadowAlpha
+                    topShadow.alpha = self.shadowAlpha
                 }
             } else {
                 UIView.animate(withDuration: animationDuration) {
-                    self.topShadow.alpha = 0.0
+                    topShadow.alpha = 0.0
                 }
             }
         } else {
-            self.topShadow.alpha = 0.0
+            self.topShadow?.alpha = 0.0
         }
 
         if !hideBottomShadow {
+            guard let bottomShadow = self.bottomShadow else {
+                return
+            }
+
             bottomShadow.frame = CGRect(
                 x: bottomShadow.frame.origin.x,
                 y: scrollView.contentOffset.y,
@@ -115,11 +124,11 @@ class ScrollViewEdger {
                 >=
                 verticalOffsetForBottom + scrollView.safeAreaInsets.bottom {
                 UIView.animate(withDuration: animationDuration) {
-                    self.bottomShadow.alpha = 0.0
+                    bottomShadow.alpha = 0.0
                 }
             } else {
                 UIView.animate(withDuration: animationDuration) {
-                    self.bottomShadow.alpha = self.shadowAlpha
+                    bottomShadow.alpha = self.shadowAlpha
                 }
             }
         }
@@ -127,6 +136,6 @@ class ScrollViewEdger {
 
     func removeBottomShadow() {
         self.hideBottomShadow = true
-        self.bottomShadow.alpha = 0.0
+        self.bottomShadow?.alpha = 0.0
     }
 }

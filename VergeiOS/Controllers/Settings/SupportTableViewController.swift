@@ -28,6 +28,14 @@ class SupportTableViewController: EdgedTableViewController {
         SupportLink(name: "GitHub", link: "https://github.com/vergecurrency/vIOS")
     ]
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if tabBarController == nil {
+            self.scrollViewEdger.removeBottomShadow()
+        }
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

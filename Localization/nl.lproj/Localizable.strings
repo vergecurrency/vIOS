@@ -531,6 +531,9 @@
 "alerts.startTor.button2" = "Zonder Tor";
 "alerts.termsOfUse.title" = "Bekijk de Wallet Gebruiksvoorwaarden.";
 "alerts.restart.title" = "Opnieuw opstarten...";
+"alerts.walletSetup.title" = "Uw wallet opzetten is niet geslaagd";
+"alert.walletSetup.message" = "Er is iets misgegaan met het instellen van uw wallet";
+
 
 // ErrorView.xib
 

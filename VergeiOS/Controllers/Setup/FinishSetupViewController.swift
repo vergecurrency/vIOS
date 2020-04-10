@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Logging
 
 class FinishSetupViewController: AbstractPaperkeyViewController {
 
@@ -22,8 +23,9 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     @IBOutlet weak var openWalletButton: RoundedButton!
 
     var applicationRepository: ApplicationRepository!
-    var walletClient: WalletClientProtocol!
     var credentials: Credentials!
+    var walletManager: WalletManagerProtocol!
+    var log: Logger!
 
     var agreedWithTerms: Bool = false
     weak var interval: Timer?
@@ -51,7 +53,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     }
 
     @IBAction func showTermsOfUse(sender: Any) {
-        present(UIAlertController.createShowTermsOfUseAlert(), animated: true)
+        self.present(UIAlertController.createShowTermsOfUseAlert(), animated: true)
     }
 
     @IBAction func termSwitched(sender: Any) {
@@ -63,38 +65,33 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
     }
 
     @IBAction func setupWallet(sender: Any) {
-        termsView.isHidden = true
-        walletCreationView.isHidden = false
+        self.termsView.isHidden = true
+        self.walletCreationView.isHidden = false
 
-        let mnemonic = self.applicationRepository.mnemonic ?? []
-        let passphrase = self.applicationRepository.passphrase ?? ""
+        guard let mnemonic = self.applicationRepository.mnemonic else {
+            self.log.error(LogMessage.WalletSetupNoMnemonicFound)
+
+            return self.showSetupErrorAlert("No mnemonic found")
+        }
+
+        guard let passphrase = self.applicationRepository.passphrase else {
+            self.log.error(LogMessage.WalletSetupNoPassphraseFound)
+
+            return self.showSetupErrorAlert("No passphrase found")
+        }
 
         self.credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
 
-        self.walletClient.createWallet(
-            walletName: "ioswallet",
-            copayerName: "iosuser",
-            m: 1,
-            n: 1,
-            options: nil
-        ) { error, secret in
-
-            if (error != nil || secret == nil) {
-                self.navigationController?.popViewController(animated: true)
-                return
+        self.walletManager
+            .getWallet()
+            .then { _ in
+                self.animateProgress()
+            }.catch { error in
+                self.showSetupErrorAlert(error.localizedDescription)
             }
-
-            self.walletClient.joinWallet(walletIdentifier: self.applicationRepository.walletId!) { error in
-                print(error ?? "")
-
-                DispatchQueue.main.async {
-                    self.animateProgress()
-                }
-            }
-        }
     }
 
-    func animateProgress() {
+    private func animateProgress() {
         var selectedImage = 0
         let images = [
             "ChecklistTwoItem",
@@ -115,7 +112,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         }
     }
 
-    func showWalletButton(button: UIButton) {
+    private func showWalletButton(button: UIButton) {
         button.center.y += 30
         button.isEnabled = true
 
@@ -125,11 +122,30 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         }
     }
 
-    func hideWalletButton(button: UIButton) {
+    private func hideWalletButton(button: UIButton) {
         UIView.animate(withDuration: 0.3) {
             button.alpha = 0
             button.isEnabled = false
         }
+    }
+
+    private func showSetupErrorAlert(_ message: String) {
+        self.navigationController?.popViewController(animated: true)
+
+        guard let controller = self.navigationController?.visibleViewController else {
+            fatalError("Can't do anything with this")
+        }
+
+        let alert = UIAlertController.createWalletSetupErrorAlert(error: message) { action in
+            let supportController = UIStoryboard.createFromStoryboardWithNavigationController(
+                name: "Settings",
+                type: SupportTableViewController.self
+            )
+
+            controller.present(supportController, animated: true)
+        }
+
+        controller.present(alert, animated: true)
     }
 
     // MARK: - Navigation
