@@ -39,14 +39,14 @@ class WalletManager: WalletManagerProtocol {
         return self.create().then(self.join).then(self.open).then { walletStatus -> Promise<Vws.WalletStatus> in
             self.walletTicker.start()
 
-            return Promise<Vws.WalletStatus> {
+            return Promise {
                 return walletStatus
             }
         }
     }
 
     func scanWallet() -> Promise<Bool> {
-        return Promise<Bool> { fulfill, reject in
+        return Promise { fulfill, reject in
             self.walletClient.scanAddresses { error in
                 if let error = error {
                     self.log.error(LogMessage.WalletManagerWalletScan(error: error.localizedDescription))
@@ -62,7 +62,7 @@ class WalletManager: WalletManagerProtocol {
     }
 
     private func create() -> Promise<Vws.WalletID?> {
-        return Promise<Vws.WalletID?> { fulfill, reject in
+        return Promise { fulfill, reject in
             self.walletClient.createWallet(
                 walletName: self.walletName,
                 copayerName: self.copayerName,
@@ -94,7 +94,7 @@ class WalletManager: WalletManagerProtocol {
     }
 
     private func join(_ walletId: Vws.WalletID?) -> Promise<Vws.WalletJoin?> {
-        return Promise<Vws.WalletJoin?> { fulfill, reject in
+        return Promise { fulfill, reject in
             guard let walletIdentifier = walletId?.identifier else {
                 return fulfill(nil)
             }
@@ -125,7 +125,7 @@ class WalletManager: WalletManagerProtocol {
     }
 
     private func open(_ walletJoin: Vws.WalletJoin?) -> Promise<Vws.WalletStatus> {
-        return Promise<Vws.WalletStatus> { fulfill, reject in
+        return Promise { fulfill, reject in
             self.walletClient.openWallet { walletStatus, errorResponse, error in
                 if let walletStatus = walletStatus {
                     self.log.info(LogMessage.WalletManagerOpenedWallet, metadata: [

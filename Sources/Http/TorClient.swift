@@ -166,7 +166,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
     }
 
     func getURLSession() -> Promise<URLSession> {
-        return Promise<URLSession> { fulfill, reject in
+        return Promise { fulfill, reject in
             if self.isOperational || self.turnedOff() {
                 return fulfill(self.session)
             }
