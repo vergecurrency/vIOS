@@ -44,7 +44,7 @@ class ServiceUrlTableViewController: EdgedTableViewController {
         self.walletClient.resetServiceUrl(baseUrl: self.applicationRepository.walletServiceUrl)
         self.walletManager
             .getWallet()
-            .then { walletStatus in
+            .then { _ in
                 self.urlChanged(alert: alert)
             }.catch { error in
                 self.errorDuringChange(alert: alert, error: error)

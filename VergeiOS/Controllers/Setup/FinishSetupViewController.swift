@@ -136,7 +136,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             fatalError("Can't do anything with this")
         }
 
-        let alert = UIAlertController.createWalletSetupErrorAlert(error: message) { action in
+        let alert = UIAlertController.createWalletSetupErrorAlert(error: message) { _ in
             let supportController = UIStoryboard.createFromStoryboardWithNavigationController(
                 name: "Settings",
                 type: SupportTableViewController.self
