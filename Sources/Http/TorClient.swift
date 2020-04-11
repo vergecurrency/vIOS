@@ -15,8 +15,9 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
     enum Error: Swift.Error {
         case controllerNotSet
-        case waitedTooLongForConnection
         case notAuthenticated
+        case notOperational
+        case waitedTooLongForConnection
     }
 
     private let applicationRepository: ApplicationRepository
@@ -188,6 +189,18 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
                     return reject(Error.waitedTooLongForConnection)
                 }
+            }
+        }
+    }
+
+    func getCircuits() -> Promise<[TorCircuit]> {
+        return Promise { fulfill, reject in
+            if !self.isOperational {
+                return reject(Error.notOperational)
+            }
+            
+            self.controller.getCircuits { circuits in
+                fulfill(circuits)
             }
         }
     }

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Promises
+import Tor
 
 protocol TorClientProtocol {
     var session: URLSession { get }
@@ -15,4 +17,5 @@ protocol TorClientProtocol {
     func restart()
     func resign()
     func turnedOff() -> Bool
+    func getCircuits() -> Promise<[TorCircuit]>
 }
