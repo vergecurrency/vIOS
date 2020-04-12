@@ -8,27 +8,12 @@
 
 import Foundation
 import BitcoinKit
+import Promises
 
 protocol SweeperHelperProtocol: class {
-    typealias SweepCompletion = (_ error: Error?, _ txid: String?) -> Void
-
-    func sweep(
-        keyBalances: [KeyBalance],
-        destinationAddress: String,
-        completion: @escaping SweepCompletion
-    ) throws
-
-    func balance(
-        privateKey: PrivateKey,
-        completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    )
-
-    func balance(
-        byAddress address: String,
-        completion: @escaping (_ error: Error?, _ balance: BNBalance?) -> Void
-    )
-
-    func recipientAddress(completion: @escaping (_ error: Error?, _ address: String?) -> Void)
-
+    func sweep(keyBalances: [KeyBalance], destinationAddress: String) -> Promise<String>
+    func balance(privateKey: PrivateKey) -> Promise<BNBalance>
+    func balance(byAddress address: String) -> Promise<BNBalance>
+    func recipientAddress() -> Promise<String>
     func wifToPrivateKey(wif: String) throws -> PrivateKey
 }

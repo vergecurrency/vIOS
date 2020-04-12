@@ -71,18 +71,11 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
             return keyBalance.balance.confirmed > 0
         }
 
-        do {
-            try self.sweeperHelper.sweep(
-                keyBalances: filteredKeyBalances,
-                destinationAddress: address
-            ) { error, txid in
-                guard let txid = txid else {
-                    return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
-                }
-
+        self.sweeperHelper.sweep(keyBalances: filteredKeyBalances, destinationAddress: address)
+            .then { txid in
                 let alert = UIAlertController(
                     title: "sweeping.privateKey.swept.title".localized,
-                    message: "sweeping.privateKey.swept.description".localized + ":\n\n" + txid,
+                    message: "\("sweeping.privateKey.swept.description".localized):\n\n\(txid)",
                     preferredStyle: .alert
                 )
 
@@ -93,12 +86,14 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
                 self.dismissLoadingAlert().then { _ in
                     self.present(alert, animated: true)
                 }
+            }.catch { error in
+                switch error {
+                case PrivateKeyError.invalidFormat:
+                    self.showInvalidMnemonicAlert()
+                default:
+                    self.showUnexpectedErrorAlert(error: error)
+                }
             }
-        } catch PrivateKeyError.invalidFormat {
-            self.showInvalidMnemonicAlert()
-        } catch {
-            self.showUnexpectedErrorAlert(error: error)
-        }
     }
 
     private func prepareSweeping(mnemonic: String) {
@@ -116,6 +111,9 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
         self.loadingAlert.message = "Scanning balances 0/\(keys.count)"
         self.showLoadingAlert()
 
+        var savedKeyBalances: [KeyBalance] = []
+        var savedAmount: NSNumber?
+
         self.loadBalances(keys: keys)
             .then { keyBalances in
                 let amount = NSNumber(value: Double(keyBalances.reduce(0, { result, keyBalance in
@@ -123,35 +121,39 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
                 })) / Constants.satoshiDivider)
 
                 if amount == 0 {
-                    return self.showNotEnoughBalanceAlert()
+                    throw SweeperHelper.Error.notEnoughBalance
                 }
 
                 self.dismissLoadingAlert().then { _ in
                     self.present(alertController, animated: true)
                 }
 
-                self.sweeperHelper.recipientAddress { _, address in
-                    guard let address = address else {
-                        return
-                    }
+                savedKeyBalances = keyBalances
+                savedAmount = amount
+            }
+            .then { _ in
+                return self.sweeperHelper.recipientAddress()
+            }
+            .then { address in
+                confirmSweepView.setup(toAddress: address, amount: savedAmount!)
 
-                    confirmSweepView.setup(toAddress: address, amount: amount)
-
-                    let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
-                        self.sweep(keyBalances: keyBalances, toAddress: address)
-                    }
-                    sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
-
-                    alertController.addAction(sendAction)
-                    alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+                let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
+                    self.sweep(keyBalances: savedKeyBalances, toAddress: address)
                 }
+                sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
+
+                alertController.addAction(sendAction)
+                alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
             }
             .catch { error in
-                if error is PrivateKeyError {
-                    return self.showInvalidMnemonicAlert()
+                switch error {
+                case PrivateKeyError.invalidFormat:
+                    self.showInvalidMnemonicAlert()
+                case SweeperHelper.Error.notEnoughBalance:
+                    self.showNotEnoughBalanceAlert()
+                default:
+                    self.showUnexpectedErrorAlert(error: error)
                 }
-
-                self.showUnexpectedErrorAlert(error: error)
             }
     }
 
@@ -188,21 +190,17 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
 
         var promises: [Promise<KeyBalance>] = []
         for key in keys {
-            let promise = Promise<KeyBalance> { fulfill, reject in
-
+            let promise = Promise<KeyBalance>(on: .global(qos: .background)) { fulfill, reject in
                 do {
                     let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
+                    let balance = try await(self.sweeperHelper.balance(privateKey: privateKey))
 
-                    self.sweeperHelper.balance(privateKey: privateKey) { error, balance in
-                        guard let balance = balance else {
-                            return reject(error!)
-                        }
-
+                    DispatchQueue.main.async {
                         self.balancesLoaded += 1
                         self.loadingAlert.message = "Scanning balances \(self.balancesLoaded)/\(keys.count)"
-
-                        fulfill(KeyBalance(privateKey: privateKey, balance: balance))
                     }
+
+                    fulfill(KeyBalance(privateKey: privateKey, balance: balance))
                 } catch {
                     reject(error)
                 }
@@ -223,12 +221,6 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
     private func showInvalidMnemonicAlert() {
         self.dismissLoadingAlert().then { _ in
             self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
-        }
-    }
-
-    private func showNoTxIDAlert() {
-        self.dismissLoadingAlert().then { _ in
-            self.present(UIAlertController.createNoTxIDAlert(), animated: true)
         }
     }
 

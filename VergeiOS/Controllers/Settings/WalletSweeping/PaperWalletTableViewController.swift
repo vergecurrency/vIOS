@@ -11,7 +11,6 @@ import BitcoinKit
 import Promises
 
 class PaperWalletTableViewController: EdgedTableViewController {
-
     var sweeperHelper: SweeperHelperProtocol!
     var sections: [TableSection] = []
     var loadingAlert: UIAlertController = UIAlertController.loadingAlert()
@@ -105,17 +104,13 @@ class PaperWalletTableViewController: EdgedTableViewController {
         do {
             let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
 
-            try self.sweeperHelper.sweep(
+            self.sweeperHelper.sweep(
                 keyBalances: [KeyBalance(privateKey: privateKey, balance: balance)],
                 destinationAddress: address
-            ) { error, txid in
-                guard let txid = txid else {
-                    return error != nil ? self.showUnexpectedErrorAlert(error: error!) : self.showNoTxIDAlert()
-                }
-
+            ).then { txid in
                 let alert = UIAlertController(
                     title: "sweeping.privateKey.swept.title".localized,
-                    message: "sweeping.privateKey.swept.description".localized + ":\n\n" + txid,
+                    message: "\("sweeping.privateKey.swept.description".localized):\n\n\(txid)",
                     preferredStyle: .alert
                 )
 
@@ -124,6 +119,8 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 })
 
                 self.present(alert, animated: true)
+            }.catch { error in
+                self.showUnexpectedErrorAlert(error: error)
             }
         } catch PrivateKeyError.invalidFormat {
             self.showInvalidPrivateKeyAlert()
@@ -135,42 +132,55 @@ class PaperWalletTableViewController: EdgedTableViewController {
     private func prepareSweepingWithScannedValue(scannedValue: String) throws {
         let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: scannedValue)
 
-        self.sweeperHelper.balance(privateKey: privateKey) { _, balance in
-            guard let balance = balance, balance.balance > 0 else {
-                return self.showNotEnoughBalanceAlert()
-            }
+        let confirmSweepView = Bundle.main.loadNibNamed(
+            "ConfirmSweepView",
+            owner: self,
+            options: nil
+        )?.first as! ConfirmSweepView
 
-            let confirmSweepView = Bundle.main.loadNibNamed(
-                "ConfirmSweepView",
-                owner: self,
-                options: nil
-            )?.first as! ConfirmSweepView
+        let alertController = confirmSweepView.makeActionSheet()
+        alertController.centerPopoverController(to: self.view)
 
-            let alertController = confirmSweepView.makeActionSheet()
-            alertController.centerPopoverController(to: self.view)
+        var savedBalance: BNBalance?
+        var savedAmount: NSNumber?
 
-            self.dismissLoadingAlert().then { _ in
-                self.present(alertController, animated: true)
-            }
+        self.sweeperHelper
+            .balance(privateKey: privateKey)
+            .then { balance in
+                let amount = NSNumber(value: Double(balance.balance) / Constants.satoshiDivider)
 
-            let amount = NSNumber(value: Double(balance.balance) / Constants.satoshiDivider)
-
-            self.sweeperHelper.recipientAddress { _, address in
-                guard let address = address else {
-                    return
+                if amount == 0 {
+                    throw SweeperHelper.Error.notEnoughBalance
                 }
 
-                confirmSweepView.setup(toAddress: address, amount: amount)
+                self.dismissLoadingAlert().then { _ in
+                    self.present(alertController, animated: true)
+                }
+                savedBalance = balance
+                savedAmount = amount
+            }
+            .then { _ in
+                return self.sweeperHelper.recipientAddress()
+            }
+            .then { address in
+                confirmSweepView.setup(toAddress: address, amount: savedAmount!)
 
                 let sendAction = UIAlertAction(title: "settings.sweeping.sweep".localized, style: .default) { _ in
-                    self.sweep(balance: balance, toAddress: address, key: scannedValue)
+                    self.sweep(balance: savedBalance!, toAddress: address, key: scannedValue)
                 }
                 sendAction.setValue(UIImage(named: "Sweep"), forKey: "image")
 
                 alertController.addAction(sendAction)
                 alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
             }
-        }
+            .catch { error in
+                switch error {
+                case SweeperHelper.Error.notEnoughBalance:
+                    self.showNotEnoughBalanceAlert()
+                default:
+                    self.showUnexpectedErrorAlert(error: error)
+                }
+            }
     }
 
     private func showNotEnoughBalanceAlert() {
