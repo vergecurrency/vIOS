@@ -15,9 +15,9 @@ class TransactionFactory: TransactionFactoryProtocol {
     }
 
     public func getUnsignedTx(
-        balance: BNBalance,
+        balance: Bn.Balance,
         destinationAddress: String,
-        outputs: [BNTransaction]
+        outputs: [Bn.Transaction]
     ) throws -> UnsignedTransaction {
         let size: Double = Double(44 + (outputs.count * 180))
         let toAddress: Address = try AddressFactory.create(destinationAddress)

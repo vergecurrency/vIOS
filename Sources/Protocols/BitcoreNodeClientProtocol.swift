@@ -7,11 +7,11 @@ import Foundation
 import Promises
 
 protocol BitcoreNodeClientProtocol {
-    func send(rawTx: String) -> Promise<BNSendResponse>
+    func send(rawTx: String) -> Promise<Bn.SendResponse>
 
-    func block(byHash hash: String) -> Promise<BNBlock>
+    func block(byHash hash: String) -> Promise<Bn.Block>
 
-    func transactions(byAddress address: String) -> Promise<[BNTransaction]>
-    func unspendTransactions(byAddress address: String) -> Promise<[BNTransaction]>
-    func balance(byAddress address: String) -> Promise<BNBalance>
+    func transactions(byAddress address: String) -> Promise<[Bn.Transaction]>
+    func unspendTransactions(byAddress address: String) -> Promise<[Bn.Transaction]>
+    func balance(byAddress address: String) -> Promise<Bn.Balance>
 }

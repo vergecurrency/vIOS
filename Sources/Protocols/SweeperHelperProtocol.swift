@@ -12,8 +12,8 @@ import Promises
 
 protocol SweeperHelperProtocol: class {
     func sweep(keyBalances: [KeyBalance], destinationAddress: String) -> Promise<String>
-    func balance(privateKey: PrivateKey) -> Promise<BNBalance>
-    func balance(byAddress address: String) -> Promise<BNBalance>
+    func balance(privateKey: PrivateKey) -> Promise<Bn.Balance>
+    func balance(byAddress address: String) -> Promise<Bn.Balance>
     func recipientAddress() -> Promise<String>
     func wifToPrivateKey(wif: String) throws -> PrivateKey
 }

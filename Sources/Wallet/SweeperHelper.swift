@@ -10,8 +10,8 @@ import Logging
 
 private struct SweepCandidate {
     let privateKey: PrivateKey
-    let balance: BNBalance
-    let unspendTransactions: [BNTransaction]
+    let balance: Bn.Balance
+    let unspendTransactions: [Bn.Transaction]
 }
 
 class SweeperHelper: SweeperHelperProtocol {
@@ -49,9 +49,9 @@ class SweeperHelper: SweeperHelperProtocol {
             .then { sweepCandidates in
                 let transactions = sweepCandidates.map { $0.unspendTransactions }.flatMap { $0 }
                 let privateKeys = sweepCandidates.map { $0.privateKey }
-                let zeroBalance = BNBalance(confirmed: 0, unconfirmed: 0, balance: 0)
+                let zeroBalance = Bn.Balance(confirmed: 0, unconfirmed: 0, balance: 0)
                 let balance = sweepCandidates.map { $0.balance }.reduce(zeroBalance) { previous, next in
-                    return BNBalance(
+                    return Bn.Balance(
                         confirmed: previous.confirmed + next.confirmed,
                         unconfirmed: previous.unconfirmed + next.unconfirmed,
                         balance: previous.balance + previous.balance
@@ -68,18 +68,16 @@ class SweeperHelper: SweeperHelperProtocol {
 
                 self.log.info("sweeper helper created a signedTx: \(signedTx.serialized().hex)")
 
-                return Promise {
-                    return signedTx.serialized().hex
-                }
+                return Promise { signedTx.serialized().hex }
             }
             .then(self.sendRawTx)
     }
 
-    func balance(privateKey: PrivateKey) -> Promise<BNBalance> {
+    func balance(privateKey: PrivateKey) -> Promise<Bn.Balance> {
         return self.balance(byAddress: privateKey.publicKey().toLegacy().description)
     }
 
-    func balance(byAddress address: String) -> Promise<BNBalance> {
+    func balance(byAddress address: String) -> Promise<Bn.Balance> {
         return self.bitcoreNodeClient.balance(byAddress: address)
     }
 

@@ -11,9 +11,9 @@ import BitcoinKit
 
 protocol TransactionFactoryProtocol {
     func getUnsignedTx(
-        balance: BNBalance,
+        balance: Bn.Balance,
         destinationAddress: String,
-        outputs: [BNTransaction]
+        outputs: [Bn.Transaction]
     ) throws -> UnsignedTransaction
 
     func signTx(unsignedTx: UnsignedTransaction, keys: [PrivateKey]) throws -> Transaction

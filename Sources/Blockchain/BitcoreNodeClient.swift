@@ -29,7 +29,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         self.log = log
     }
 
-    func send(rawTx: String) -> Promise<BNSendResponse> {
+    func send(rawTx: String) -> Promise<Bn.SendResponse> {
         var body = JSON()
         body["rawTx"].stringValue = rawTx
 
@@ -40,7 +40,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
                 }
 
                 do {
-                    fulfill(try JSONDecoder().decode(BNSendResponse.self, from: data))
+                    fulfill(try JSONDecoder().decode(Bn.SendResponse.self, from: data))
                 } catch {
                     self.log.error("bitcore node client error decoding send response: \(error.localizedDescription)")
 
@@ -50,7 +50,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         }
     }
 
-    func block(byHash hash: String) -> Promise<BNBlock> {
+    func block(byHash hash: String) -> Promise<Bn.Block> {
         return Promise { fulfill, reject in
             try self.getRequest(url: "/block/\(hash)") { data, _, error in
                 guard let data = data else {
@@ -58,7 +58,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
                 }
 
                 do {
-                    fulfill(try JSONDecoder().decode(BNBlock.self, from: data))
+                    fulfill(try JSONDecoder().decode(Bn.Block.self, from: data))
                 } catch {
                     self.log.error("bitcore node client error decoding bloack: \(error.localizedDescription)")
 
@@ -68,7 +68,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         }
     }
 
-    func transactions(byAddress address: String) -> Promise<[BNTransaction]> {
+    func transactions(byAddress address: String) -> Promise<[Bn.Transaction]> {
         return Promise { fulfill, reject in
             try self.getRequest(url: "/address/\(address)/txs") { data, _, error in
                 guard let data = data else {
@@ -76,7 +76,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
                 }
 
                 do {
-                    fulfill(try JSONDecoder().decode([BNTransaction].self, from: data))
+                    fulfill(try JSONDecoder().decode([Bn.Transaction].self, from: data))
                 } catch {
                     self.log.error("bitcore node client error decoding transactions: \(error.localizedDescription)")
 
@@ -86,7 +86,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         }
     }
 
-    func unspendTransactions(byAddress address: String) -> Promise<[BNTransaction]> {
+    func unspendTransactions(byAddress address: String) -> Promise<[Bn.Transaction]> {
         return Promise { fulfill, reject in
             try self.getRequest(url: "/address/\(address)/?unspent=true") { data, _, error in
                 guard let data = data else {
@@ -94,7 +94,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
                 }
 
                 do {
-                    fulfill(try JSONDecoder().decode([BNTransaction].self, from: data))
+                    fulfill(try JSONDecoder().decode([Bn.Transaction].self, from: data))
                 } catch {
                     self.log.error("bitcore node client error decoding transactions: \(error.localizedDescription)")
 
@@ -104,7 +104,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         }
     }
 
-    func balance(byAddress address: String) -> Promise<BNBalance> {
+    func balance(byAddress address: String) -> Promise<Bn.Balance> {
         return Promise { fulfill, reject in
             try self.getRequest(url: "/address/\(address)/balance") { data, _, error in
                 guard let data = data else {
@@ -112,7 +112,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
                 }
 
                 do {
-                    fulfill(try JSONDecoder().decode(BNBalance.self, from: data))
+                    fulfill(try JSONDecoder().decode(Bn.Balance.self, from: data))
                 } catch {
                     self.log.error("bitcore node client error decoding balance: \(error.localizedDescription)")
 

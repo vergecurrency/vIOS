@@ -11,5 +11,5 @@ import BitcoinKit
 
 public struct KeyBalance {
     let privateKey: PrivateKey
-    let balance: BNBalance
+    let balance: Bn.Balance
 }

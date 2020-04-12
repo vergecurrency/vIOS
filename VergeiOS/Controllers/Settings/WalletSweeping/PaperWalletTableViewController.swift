@@ -100,7 +100,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
         return self.sections[section].footer
     }
 
-    private func sweep(balance: BNBalance, toAddress address: String, key: String) {
+    private func sweep(balance: Bn.Balance, toAddress address: String, key: String) {
         do {
             let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
 
@@ -141,7 +141,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
         let alertController = confirmSweepView.makeActionSheet()
         alertController.centerPopoverController(to: self.view)
 
-        var savedBalance: BNBalance?
+        var savedBalance: Bn.Balance?
         var savedAmount: NSNumber?
 
         self.sweeperHelper
