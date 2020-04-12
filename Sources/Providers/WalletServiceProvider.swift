@@ -141,7 +141,8 @@ class WalletServiceProvider: ServiceProvider {
                 bitcoreNodeClient: r.resolve(BitcoreNodeClientProtocol.self)!,
                 walletClient: r.resolve(WalletClientProtocol.self)!,
                 transactionFactory: r.resolve(TransactionFactoryProtocol.self)!,
-                transactionManager: r.resolve(TransactionManager.self)!
+                transactionManager: r.resolve(TransactionManager.self)!,
+                log: r.resolve(Logger.self)!
             )
         }
     }

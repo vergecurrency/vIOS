@@ -9,11 +9,15 @@
 import Foundation
 import SwiftyJSON
 import Logging
+import Promises
 
 class BitcoreNodeClient: BitcoreNodeClientProtocol {
-    enum BitcoreNodeClientError: Error {
+    enum Error: Swift.Error {
         case invalidUrl(url: String)
+        case noDataReturned
     }
+
+    typealias URLCompletion = (Data?, URLResponse?, Swift.Error?) -> Void
 
     private let baseUrl: String
     private let torClient: TorClientProtocol
@@ -25,66 +29,102 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         self.log = log
     }
 
-    func send(rawTx: String, completion: @escaping SendCompletion) {
+    func send(rawTx: String) -> Promise<BNSendResponse> {
         var body = JSON()
         body["rawTx"].stringValue = rawTx
 
-        try? self.postRequest(url: "/tx/send", body: body) { data, _, error in
-            guard let data = data else {
-                return completion(error, nil)
-            }
+        return Promise { fulfill, reject in
+            try self.postRequest(url: "/tx/send", body: body) { data, _, error in
+                guard let data = data else {
+                    return reject(error ?? Error.noDataReturned)
+                }
 
-            completion(error, try? JSONDecoder().decode(BNSendResponse.self, from: data))
+                do {
+                    fulfill(try JSONDecoder().decode(BNSendResponse.self, from: data))
+                } catch {
+                    self.log.error("bitcore node client error decoding send response: \(error.localizedDescription)")
+
+                    reject(error)
+                }
+            }
         }
     }
 
-    func block(byHash hash: String, completion: @escaping BlockCompletion) {
-        try? self.getRequest(url: "/block/\(hash)") { data, _, error in
-            guard let data = data else {
-                return completion(error, nil)
-            }
+    func block(byHash hash: String) -> Promise<BNBlock> {
+        return Promise { fulfill, reject in
+            try self.getRequest(url: "/block/\(hash)") { data, _, error in
+                guard let data = data else {
+                    return reject(error ?? Error.noDataReturned)
+                }
 
-            completion(error, try? JSONDecoder().decode(BNBlock.self, from: data))
+                do {
+                    fulfill(try JSONDecoder().decode(BNBlock.self, from: data))
+                } catch {
+                    self.log.error("bitcore node client error decoding bloack: \(error.localizedDescription)")
+
+                    reject(error)
+                }
+            }
         }
     }
 
-    func transactions(byAddress address: String, completion: @escaping TransactionCompletion) {
-        try? self.getRequest(url: "/address/\(address)/txs") { data, _, error in
-            guard let data = data else {
-                return completion(error, [])
+    func transactions(byAddress address: String) -> Promise<[BNTransaction]> {
+        return Promise { fulfill, reject in
+            try self.getRequest(url: "/address/\(address)/txs") { data, _, error in
+                guard let data = data else {
+                    return reject(error ?? Error.noDataReturned)
+                }
+
+                do {
+                    fulfill(try JSONDecoder().decode([BNTransaction].self, from: data))
+                } catch {
+                    self.log.error("bitcore node client error decoding transactions: \(error.localizedDescription)")
+
+                    reject(error)
+                }
             }
-
-            let transactions = try? JSONDecoder().decode([BNTransaction].self, from: data)
-
-            completion(error, transactions ?? [])
         }
     }
 
-    func unspendTransactions(byAddress address: String, completion: @escaping TransactionCompletion) {
-        try? self.getRequest(url: "/address/\(address)/?unspent=true") { data, _, error in
-            guard let data = data else {
-                return completion(error, [])
+    func unspendTransactions(byAddress address: String) -> Promise<[BNTransaction]> {
+        return Promise { fulfill, reject in
+            try self.getRequest(url: "/address/\(address)/?unspent=true") { data, _, error in
+                guard let data = data else {
+                    return reject(error ?? Error.noDataReturned)
+                }
+
+                do {
+                    fulfill(try JSONDecoder().decode([BNTransaction].self, from: data))
+                } catch {
+                    self.log.error("bitcore node client error decoding transactions: \(error.localizedDescription)")
+
+                    reject(error)
+                }
             }
-
-            let transactions = try? JSONDecoder().decode([BNTransaction].self, from: data)
-
-            completion(error, transactions ?? [])
         }
     }
 
-    func balance(byAddress address: String, completion: @escaping BalanceCompletion) {
-        try? self.getRequest(url: "/address/\(address)/balance") { data, _, error in
-            guard let data = data else {
-                return completion(error, nil)
-            }
+    func balance(byAddress address: String) -> Promise<BNBalance> {
+        return Promise { fulfill, reject in
+            try self.getRequest(url: "/address/\(address)/balance") { data, _, error in
+                guard let data = data else {
+                    return reject(error ?? Error.noDataReturned)
+                }
 
-            completion(error, try? JSONDecoder().decode(BNBalance.self, from: data))
+                do {
+                    fulfill(try JSONDecoder().decode(BNBalance.self, from: data))
+                } catch {
+                    self.log.error("bitcore node client error decoding balance: \(error.localizedDescription)")
+
+                    reject(error)
+                }
+            }
         }
     }
 
     private func getRequest(url: String, completion: @escaping URLCompletion) throws {
         guard let urlObject = URL(string: "\(self.baseUrl)\(url)") else {
-            throw BitcoreNodeClientError.invalidUrl(url: url)
+            throw Error.invalidUrl(url: url)
         }
 
         var request = URLRequest(url: urlObject)
@@ -94,19 +134,19 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         self.log(request: request)
 
         let task = self.torClient.session.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.sync {
-                completion(data, response, error)
+            if let error = error {
+                self.log.error("bitcore node client error occured on GET request: \(error.localizedDescription)")
             }
+
+            DispatchQueue.main.sync { completion(data, response, error) }
         }
 
-        DispatchQueue.main.async {
-            task.resume()
-        }
+        DispatchQueue.main.async { task.resume() }
     }
 
     private func postRequest(url: String, body: JSON, completion: @escaping URLCompletion) throws {
         guard let urlObject = URL(string: "\(self.baseUrl)\(url)") else {
-            throw BitcoreNodeClientError.invalidUrl(url: url)
+            throw Error.invalidUrl(url: url)
         }
 
         var request = URLRequest(url: urlObject)
@@ -118,18 +158,18 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         self.log(request: request)
 
         let task = self.torClient.session.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.sync {
-                completion(data, response, error)
+            if let error = error {
+                self.log.error("bitcore node client error occured on POST request: \(error.localizedDescription)")
             }
+
+            DispatchQueue.main.sync { completion(data, response, error) }
         }
 
-        DispatchQueue.main.async {
-            task.resume()
-        }
+        DispatchQueue.main.async { task.resume() }
     }
 
     private func log(request: URLRequest) {
-        self.log.info(LogMessage.BitcoreNodeClientRequestFired, metadata: [
+        self.log.info("bitcore node client request fired", metadata: [
             "method": Logger.MetadataValue(stringLiteral: request.httpMethod ?? ""),
             "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? "")
         ])

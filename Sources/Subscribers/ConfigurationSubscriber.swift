@@ -29,7 +29,7 @@ class ConfigurationSubscriber: Subscriber {
         if self.applicationRepository.isWalletServiceUrlSet && !Constants.deprecatedBwsEndpoints.contains(
             self.applicationRepository.walletServiceUrl
         ) {
-            return self.log.info(LogMessage.NoDeprecatedVWSEndpointsFound)
+            return self.log.info("no deprecated VWS endpoints found")
         }
 
         // If so replace them by the replacement VWS endpoint.

@@ -6,6 +6,7 @@
 import Foundation
 import BitcoinKit
 import Promises
+import Logging
 
 private struct SweepCandidate {
     let privateKey: PrivateKey
@@ -15,30 +16,33 @@ private struct SweepCandidate {
 
 class SweeperHelper: SweeperHelperProtocol {
     enum Error: Swift.Error {
-        case noBalanceReceived
         case notEnoughBalance
         case noAddressInfo
-        case sendingRawTxFailed
     }
 
     let bitcoreNodeClient: BitcoreNodeClientProtocol
     let walletClient: WalletClientProtocol
     let transactionFactory: TransactionFactoryProtocol
     let transactionManager: TransactionManager
+    let log: Logger
 
     init(
         bitcoreNodeClient: BitcoreNodeClientProtocol,
         walletClient: WalletClientProtocol,
         transactionFactory: TransactionFactoryProtocol,
-        transactionManager: TransactionManager
+        transactionManager: TransactionManager,
+        log: Logger
     ) {
         self.bitcoreNodeClient = bitcoreNodeClient
         self.walletClient = walletClient
         self.transactionFactory = transactionFactory
         self.transactionManager = transactionManager
+        self.log = log
     }
 
     func sweep(keyBalances: [KeyBalance], destinationAddress: String) -> Promise<String> {
+        self.log.info("sweeper helper start sweeping \(keyBalances.count) keys")
+
         let promises = self.unspendTransationsPer(keyBalances: keyBalances)
 
         return all(promises)
@@ -62,6 +66,8 @@ class SweeperHelper: SweeperHelperProtocol {
 
                 let signedTx = try self.transactionFactory.signTx(unsignedTx: unsignedTx, keys: privateKeys)
 
+                self.log.info("sweeper helper created a signedTx: \(signedTx.serialized().hex)")
+
                 return Promise {
                     return signedTx.serialized().hex
                 }
@@ -74,15 +80,7 @@ class SweeperHelper: SweeperHelperProtocol {
     }
 
     func balance(byAddress address: String) -> Promise<BNBalance> {
-        return Promise { fulfill, reject in
-            self.bitcoreNodeClient.balance(byAddress: address) { error, balance in
-                guard let balance = balance else {
-                    return reject(error ?? Error.noBalanceReceived)
-                }
-
-                fulfill(balance)
-            }
-        }
+        return self.bitcoreNodeClient.balance(byAddress: address)
     }
 
     func recipientAddress() -> Promise<String> {
@@ -126,36 +124,28 @@ class SweeperHelper: SweeperHelperProtocol {
     }
 
     private func sendRawTx(_ rawTxHex: String) -> Promise<String> {
-        return Promise { fulfill, reject in
-            self.bitcoreNodeClient.send(rawTx: rawTxHex) { error, response in
-                guard let response = response else {
-                    return reject(error ?? Error.sendingRawTxFailed)
-                }
+        return self.bitcoreNodeClient.send(rawTx: rawTxHex).then { response in
+            self.log.info("sweeper helper successfully send tx: \(response.txid)")
 
-                fulfill(response.txid)
-            }
+            return Promise { response.txid }
         }
     }
 
     private func unspendTransationsPer(keyBalances: [KeyBalance]) -> [Promise<SweepCandidate>] {
         return keyBalances.map { keyBalance in
-            let promise = Promise<SweepCandidate> { fulfill, reject in
-                let address = keyBalance.privateKey.publicKey().toLegacy().description
+            let address = keyBalance.privateKey.publicKey().toLegacy().description
 
-                self.bitcoreNodeClient.unspendTransactions(byAddress: address) { error, transactions in
-                    guard let error = error else {
-                        return fulfill(SweepCandidate(
+            return self.bitcoreNodeClient
+                .unspendTransactions(byAddress: address)
+                .then { transactions in
+                    return Promise {
+                        return SweepCandidate(
                             privateKey: keyBalance.privateKey,
                             balance: keyBalance.balance,
                             unspendTransactions: transactions
-                        ))
+                        )
                     }
-
-                    reject(error)
                 }
-            }
-
-            return promise
         }
     }
 }

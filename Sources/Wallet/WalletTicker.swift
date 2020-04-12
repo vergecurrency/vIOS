@@ -33,11 +33,11 @@ class WalletTicker: TickerProtocol {
 
     public func start() {
         if self.started {
-            return self.log.notice(LogMessage.WalletTickerStartTwice)
+            return self.log.notice("wallet ticker requested to start when already started")
         }
 
         if !self.applicationRepository.setup {
-            return self.log.notice(LogMessage.WalletTickerStartBeforeSetup)
+            return self.log.notice("wallet ticker requested to start before application received setup status")
         }
 
         self.tick()
@@ -47,7 +47,7 @@ class WalletTicker: TickerProtocol {
         }
 
         self.started = true
-        self.log.info(LogMessage.WalletTickerStarted)
+        self.log.info("wallet ticker started")
     }
 
     // Stop the price ticker.
@@ -56,7 +56,7 @@ class WalletTicker: TickerProtocol {
         interval = nil
         started = false
 
-        self.log.info(LogMessage.WalletTickerStopped)
+        self.log.info("wallet ticker stopped")
     }
 
     func tick() {
@@ -65,27 +65,28 @@ class WalletTicker: TickerProtocol {
     }
 
     private func fetchWalletAmount() {
-        self.log.info(LogMessage.WalletTickerFetchingWalletAmount)
+        self.log.info("wallet ticker fetching wallet amount")
 
         client.getBalance { error, info in
             guard let info = info else {
-                return self.log.error(LogMessage.WalletTickerWalletAmountError(error ?? Error.NoWalletAmountInfo))
+                let error = error ?? Error.NoWalletAmountInfo
+                return self.log.error("wallet ticker amount error: \(error.localizedDescription)")
             }
 
             self.applicationRepository.amount = info.availableAmountValue
 
-            self.log.info(LogMessage.WalletTickerSetWalletAmount)
+            self.log.info("wallet ticker set wallet amount")
         }
     }
 
     // Fetch statistics from the API and notify all observers.
     private func fetchTransactions() {
-        self.log.info(LogMessage.WalletTickerFetchingTransactions)
+        self.log.info("wallet ticker fetching transactions")
 
         self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
-            self.log.info(LogMessage.WalletTickerReceivedTransactions)
+            self.log.info("wallet ticker received transactions")
         }
     }
 }

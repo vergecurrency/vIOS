@@ -140,7 +140,7 @@ public class WalletClient: WalletClientProtocol {
     private func request(_ request: URLRequest, completion: @escaping URLCompletion) {
         let task = self.torClient.session.dataTask(with: request) { data, response, error in
             if let error = error {
-                self.log.error(LogMessage.WalletClientRequestError(error))
+                self.log.error("wallet client request error: \(error.localizedDescription)")
             }
 
             DispatchQueue.main.sync {
@@ -161,7 +161,7 @@ public class WalletClient: WalletClientProtocol {
     }
 
     private func log(request: URLRequest, signature: String, copayerId: String) {
-        self.log.info(LogMessage.WalletClientRequestFired, metadata: [
+        self.log.info("wallet client request fired", metadata: [
             "method": Logger.MetadataValue(stringLiteral: request.httpMethod ?? ""),
             "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? ""),
             "signature": Logger.MetadataValue(stringLiteral: signature),

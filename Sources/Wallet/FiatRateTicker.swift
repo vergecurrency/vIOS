@@ -26,11 +26,11 @@ class FiatRateTicker: TickerProtocol {
     // Start the fiat rate ticker.
     func start() {
         if self.started {
-            return self.log.notice(LogMessage.FiatRateTickerStartTwice)
+            return self.log.notice("fiat ticker requested to start when already started")
         }
 
         if !self.applicationRepository.setup {
-            return self.log.notice(LogMessage.FiatRateTickerStartBeforeSetup)
+            return self.log.notice("fiat ticker requested to start before application received setup status")
         }
 
         self.tick()
@@ -40,7 +40,7 @@ class FiatRateTicker: TickerProtocol {
         }
 
         self.started = true
-        self.log.info(LogMessage.FiatRateTickerStarted)
+        self.log.info("fiat ticker started")
     }
 
     // Stop the price ticker.
@@ -48,17 +48,17 @@ class FiatRateTicker: TickerProtocol {
         self.interval?.invalidate()
         self.started = false
 
-        self.log.info(LogMessage.FiatRateTickerStopped)
+        self.log.info("fiat ticker stopped")
     }
 
     // Fetch statistics from the API and notify all absorbers.
     func tick() {
-        self.log.info(LogMessage.FiatRateTickerFetchingRates)
+        self.log.info("fiat rate ticker fetching rates")
 
         self.statisicsClient.infoBy(currency: self.applicationRepository.currency) { info in
             self.applicationRepository.latestRateInfo = info
 
-            self.log.info(LogMessage.FiatRateTickerReceivedRates)
+            self.log.info("fiat rate ticker received rates")
 
             NotificationCenter.default.post(name: .didReceiveFiatRatings, object: info)
         }

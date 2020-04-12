@@ -1,25 +1,17 @@
 //
-//  BitcoreNodeClientProtocol.swift
-//  VergeiOS
-//
 //  Created by Swen van Zanten on 12/07/2019.
 //  Copyright © 2019 Verge Currency. All rights reserved.
 //
 
 import Foundation
+import Promises
 
 protocol BitcoreNodeClientProtocol {
-    typealias SendCompletion = (_ error: Error?, _ response: BNSendResponse?) -> Void
-    typealias BlockCompletion = (_ error: Error?, _ block: BNBlock?) -> Void
-    typealias TransactionCompletion = (_ error: Error?, _ transactions: [BNTransaction]) -> Void
-    typealias BalanceCompletion = (_ error: Error?, _ balance: BNBalance?) -> Void
-    typealias URLCompletion = (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void
+    func send(rawTx: String) -> Promise<BNSendResponse>
 
-    func send(rawTx: String, completion: @escaping SendCompletion)
+    func block(byHash hash: String) -> Promise<BNBlock>
 
-    func block(byHash hash: String, completion: @escaping BlockCompletion)
-
-    func transactions(byAddress address: String, completion: @escaping TransactionCompletion)
-    func unspendTransactions(byAddress address: String, completion: @escaping TransactionCompletion)
-    func balance(byAddress address: String, completion: @escaping BalanceCompletion)
+    func transactions(byAddress address: String) -> Promise<[BNTransaction]>
+    func unspendTransactions(byAddress address: String) -> Promise<[BNTransaction]>
+    func balance(byAddress address: String) -> Promise<BNBalance>
 }

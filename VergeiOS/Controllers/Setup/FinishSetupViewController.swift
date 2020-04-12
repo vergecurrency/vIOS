@@ -69,13 +69,13 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         self.walletCreationView.isHidden = false
 
         guard let mnemonic = self.applicationRepository.mnemonic else {
-            self.log.error(LogMessage.WalletSetupNoMnemonicFound)
+            self.log.error("wallet setup no mnemonic found")
 
             return self.showSetupErrorAlert("No mnemonic found")
         }
 
         guard let passphrase = self.applicationRepository.passphrase else {
-            self.log.error(LogMessage.WalletSetupNoPassphraseFound)
+            self.log.error("wallet setup no passphrase found")
 
             return self.showSetupErrorAlert("No passphrase found")
         }

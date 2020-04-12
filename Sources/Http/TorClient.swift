@@ -107,7 +107,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.connectController(self.controller) { success in
                 if success {
-                    self.log.info(LogMessage.TorClientConnected)
+                    self.log.info("tor client connected")
 
                     NotificationCenter.default.post(name: .didFinishTorStart, object: self)
                 }
@@ -121,15 +121,15 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
     // Resign the tor client.
     func restart() {
-        self.log.info(LogMessage.TorClientRestarting)
+        self.log.info("tor client is restarting")
         self.resign()
 
         if !self.isOperational {
-            return self.log.warning(LogMessage.TorClientNoRestartStillInOperation)
+            return self.log.warning("tor couldn't restart cause it's still operational")
         }
 
         while self.controller?.isConnected ?? false {
-            self.log.notice(LogMessage.TorClientControllerIsStillConnected)
+            self.log.notice("tor controller is still connected")
         }
 
         NotificationCenter.default.post(name: .didResignTorConnection, object: self)
@@ -140,23 +140,20 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
     }
 
     func resign() {
-        self.log.info(LogMessage.TorClientResigning)
+        self.log.info("tor client is resigning")
 
         if !self.isOperational {
-            return self.log.warning(LogMessage.TorClientNoResignStillInOperation)
+            return self.log.warning("tor couldn't resign cause it's still operational")
         }
 
-        self.log.info(LogMessage.TorClientDisconnectingController)
         self.controller.disconnect()
         self.controller = nil
-
-        self.log.info(LogMessage.TorClientCancellingThread)
         self.thread?.cancel()
         self.thread = nil
-
         self.isOperational = false
         self.sessionConfiguration = .default
-        self.log.info(LogMessage.TorClientResigned)
+
+        self.log.info("tor client resigned")
 
         NotificationCenter.default.post(name: .didTurnOffTor, object: self)
     }
@@ -185,7 +182,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
                 if DispatchTime.now().uptimeNanoseconds > (started.uptimeNanoseconds + (60 * 1000000000)) {
                     timer.invalidate()
 
-                    self.log.error(LogMessage.TorClientWaitedTooLongForURLSession)
+                    self.log.error("tor client waiting too for URL session")
 
                     return reject(Error.waitedTooLongForConnection)
                 }
@@ -214,7 +211,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
             try self.authenticateController(controller, completion: completion)
         } catch {
-            self.log.error(LogMessage.TorCLientErrorDuringConnection(error))
+            self.log.error("tor client error during connection: \(error.localizedDescription)")
 
             NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
 
@@ -230,7 +227,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
         controller.authenticate(with: cookie) { authenticated, error in
             if let error = error {
-                self.log.error(LogMessage.TorClientErrorDuringAuthentication(error))
+                self.log.error("tor client error during authentication: \(error.localizedDescription)")
 
                 NotificationCenter.default.post(name: .errorDuringTorConnection, object: error)
 
@@ -238,7 +235,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             }
 
             if !authenticated {
-                self.log.error(LogMessage.TorClientNotAuthenticated)
+                self.log.error("tor client not authenticated")
 
                 NotificationCenter.default.post(name: .errorDuringTorConnection, object: Error.notAuthenticated)
 
@@ -248,14 +245,14 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             var observer: Any?
             observer = controller.addObserver(forCircuitEstablished: { established in
                 if !established {
-                    return self.log.notice(LogMessage.TorClientNotConnected)
+                    return self.log.notice("tor client not connected")
                 }
 
-                self.log.info(LogMessage.TorClientCircuitEstablished)
+                self.log.info("tor client circuit established")
 
                 controller.getSessionConfiguration { sessionConfig in
                     guard let session = sessionConfig else {
-                        self.log.error(LogMessage.TorClientGotNoURLSession)
+                        self.log.error("tor client got no URL session")
 
                         return completion(false)
                     }
