@@ -40,6 +40,17 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
     // The tor client url session including the tor configuration.
     var session: URLSession {
         self.sessionConfiguration.httpAdditionalHeaders = ["User-Agent": UUID().uuidString]
+
+        if self.isOperational {
+            self.sessionConfiguration.connectionProxyDictionary = [
+                "SOCKSEnable": true,
+                kCFStreamPropertySOCKSProxyHost: "localhost",
+                kCFStreamPropertySOCKSProxyPort: 39050,
+                kCFStreamPropertySOCKSUser: "verge",
+                kCFStreamPropertySOCKSPassword: "verge"
+            ]
+        }
+
         return URLSession(configuration: self.sessionConfiguration)
     }
 
@@ -65,6 +76,8 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             "--SocksPort", "127.0.0.1:39050",
             "--ControlPort", "127.0.0.1:39060",
             "--Log", log_loc,
+            "--GeoIPFile", Bundle.main.path(forResource: "geoip", ofType: nil) ?? "",
+            "--GeoIPv6File", Bundle.main.path(forResource: "geoip6", ofType: nil) ?? "",
         ]
 
         self.thread = TorThread(configuration: self.config)
@@ -94,25 +107,13 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             NotificationCenter.default.post(name: .didStartTorThread, object: self)
         }
 
-        /**
-        var progressObs: Any?
-        progressObs = controller.addObserver(forStatusEvents: { type, severity, action, arguments in
-            self.log.info("tor client received status update: \(action)")
-            // print(type, severity, action, arguments)
-
-            return true
-        })
-        */
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.connectController(self.controller) { success in
                 if success {
                     self.log.info("tor client connected")
 
                     NotificationCenter.default.post(name: .didFinishTorStart, object: self)
                 }
-
-                // self.controller.removeObserver(progressObs)
 
                 completion(success)
             }
@@ -267,6 +268,22 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
                 }
 
                 self.controller?.removeObserver(observer)
+            })
+
+            var progressObs: Any?
+            progressObs = controller.addObserver(forStatusEvents: { type, severity, action, arguments in
+                if type == "STATUS_CLIENT" && action == "BOOTSTRAP" {
+                    let progress = Int(arguments!["PROGRESS"]!)!
+                    self.log.info("tor client startup progress: \(progress)")
+
+                    if progress >= 100 {
+                        self.controller.removeObserver(progressObs)
+                    }
+
+                    return true
+                }
+
+                return false
             })
         }
     }
