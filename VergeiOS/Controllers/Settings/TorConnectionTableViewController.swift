@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import Tor
+import Promises
 
 class TorConnectionTableViewController: EdgedTableViewController {
 
@@ -21,20 +23,20 @@ class TorConnectionTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        useTorSwitch.setOn(applicationRepository.useTor, animated: false)
+        self.useTorSwitch.setOn(self.applicationRepository.useTor, animated: false)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        updateIPAddress()
+        self.updateIPAddress()
     }
 
     @IBAction func changeTorUsage(_ sender: UISwitch) {
         applicationRepository.useTor = sender.isOn
 
         if sender.isOn {
-            setIpAddressLabel("settings.torConnection.loadingLabel".localized)
+            self.setIpAddressLabel("settings.torConnection.loadingLabel".localized)
 
             self.torClient.start { _ in
                 self.updateIPAddress()
@@ -43,31 +45,54 @@ class TorConnectionTableViewController: EdgedTableViewController {
             self.torClient.resign()
 
             self.updateIPAddress()
-
-            // Notify the whole application.
-            NotificationCenter.default.post(name: .didTurnOffTor, object: self)
         }
     }
 
     func updateIPAddress() {
-        setIpAddressLabel("settings.torConnection.loadingLabel".localized)
+        self.setIpAddressLabel("settings.torConnection.loadingLabel".localized)
 
-        let url = URL(string: Constants.ipCheckEndpoint)
-        let task = self.torClient.session.dataTask(with: url!) { data, _, error in
-            do {
-                if data != nil {
-                    let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)
+        self.torClient.getCircuits().then { circuits in
+            var candidates: [TorCircuit] = []
 
-                    self.setIpAddressLabel(ipAddress.ip)
-                    self.centerMapView(withIpLocation: ipAddress)
+            for circuit in circuits {
+                if circuit.purpose == TorCircuit.purposeGeneral
+                    && !(circuit.socksUsername?.isEmpty ?? true)
+                    && !(circuit.buildFlags?.contains(TorCircuit.buildFlagIsInternal) ?? false)
+                    && !(circuit.buildFlags?.contains(TorCircuit.buildFlagOneHopTunnel) ?? false) {
+
+                    candidates.append(circuit)
                 }
-            } catch {
-                self.setIpAddressLabel("settings.torConnection.notAvailable".localized)
-
-                print(error)
             }
+
+            candidates.sort {
+                $0.timeCreated ?? Date(timeIntervalSince1970: 0) < $1.timeCreated ?? Date(timeIntervalSince1970: 0)
+            }
+
+            let torNodes = candidates.first?.nodes ?? []
+
+            self.setupTorCircuitCells(nodes: torNodes)
+
+            if let lastNode = torNodes.last, let ip = lastNode.ipv4Address ?? lastNode.ipv6Address {
+                self.setIpAddressLabel(ip)
+            }
+        }.always {
+            let url = URL(string: Constants.ipCheckEndpoint)
+            let task = self.torClient.session.dataTask(with: url!) { data, _, error in
+                do {
+                    if data != nil {
+                        let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)
+
+                        self.setIpAddressLabel(ipAddress.ip)
+                        self.centerMapView(withIpLocation: ipAddress)
+                    }
+                } catch {
+                    self.setIpAddressLabel("settings.torConnection.notAvailable".localized)
+
+                    print(error)
+                }
+            }
+            task.resume()
         }
-        task.resume()
     }
 
     func setIpAddressLabel(_ label: String) {
@@ -88,6 +113,26 @@ class TorConnectionTableViewController: EdgedTableViewController {
         DispatchQueue.main.async {
             self.mapView.setCenter(coordinate, animated: true)
             self.mapView.setRegion(region, animated: true)
+        }
+    }
+
+    private func setupTorCircuitCells(nodes: [TorNode]) {
+        for (i, node) in nodes.enumerated() {
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "torCircuitCountryCell\(i)") else {
+                return
+            }
+
+            var label = node.localizedCountryName ?? node.countryCode ?? node.nickName ?? ""
+            let ip = node.ipv4Address?.isEmpty ?? true ? node.ipv6Address : node.ipv4Address
+
+            if i == 0 {
+                label = "\(label) (Guard)"
+            } else if i == 2 {
+                label = "\(label) (You)"
+            }
+
+            cell.textLabel?.text = label
+            cell.detailTextLabel?.text = ip
         }
     }
 

@@ -22,6 +22,11 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.torClient = r.resolve(TorClient.self)
         }
 
+        container.storyboardInitCompleted (TorSettingsTableViewController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.torClient = r.resolve(TorClient.self)
+        }
+
         container.storyboardInitCompleted (CurrencyTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }

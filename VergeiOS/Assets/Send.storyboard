@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aj0-hD-wgD">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aj0-hD-wgD">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -21,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eEw-RV-ID8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNH-AC-gCI">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -30,7 +28,7 @@
                                                 <rect key="frame" x="16" y="0.0" width="343" height="220"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SendCard" translatesAutoresizingMaskIntoConstraints="NO" id="5ud-Lk-l9g" customClass="SendCardImageView" customModule="VergeiOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343.00000000000011" height="220"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="220"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 XVG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="JLd-Rc-cv0" customClass="SecureLabel" customModule="VergeiOS" customModuleProvider="target">
                                                         <rect key="frame" x="28" y="138" width="287" height="33"/>
@@ -88,7 +86,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="moS-y5-INY">
-                                        <rect key="frame" x="0.0" y="260" width="375" height="294"/>
+                                        <rect key="frame" x="0.0" y="260" width="375" height="314"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="orP-g5-KpQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
@@ -125,7 +123,6 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="Qst-IT-9q3"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -193,7 +190,6 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="3WM-5g-1OH"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                     </textField>
@@ -265,7 +261,6 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="0Ji-qv-JTo"/>
                                                                         </constraints>
-                                                                        <nil key="textColor"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -304,7 +299,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t83-X2-mLR">
-                                                <rect key="frame" x="0.0" y="224" width="375" height="70"/>
+                                                <rect key="frame" x="0.0" y="244" width="375" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qT-5j-Srg" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                                                         <rect key="frame" x="40" y="0.0" width="295" height="50"/>
@@ -339,10 +334,10 @@
                                 </subviews>
                             </stackView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9p4-gg-a9I" customClass="BackgroundView" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NZZ-HO-kir">
-                                        <rect key="frame" x="37.5" y="76" width="300" height="382"/>
+                                        <rect key="frame" x="37.5" y="86" width="300" height="382"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoBalancePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="hgi-lO-m42" customClass="NoBalancePlaceholderImageView" customModule="VergeiOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
@@ -433,7 +428,7 @@ Please increase your balance.</string>
             <objects>
                 <tableViewController id="O5k-R1-zas" customClass="SelectRecipientTableViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qry-K4-eUB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -441,7 +436,7 @@ Please increase your balance.</string>
                                 <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nW3-Cq-3wT" id="nzV-FG-5mB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6GV-gi-Lfj">
@@ -491,7 +486,7 @@ Please increase your balance.</string>
             <objects>
                 <navigationController id="nOc-Rk-gcB" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uCi-F6-IyR">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
@@ -510,14 +505,14 @@ Please increase your balance.</string>
             <objects>
                 <viewController id="989-AL-BZZ" customClass="ScanQRCodeViewController" customModule="VergeiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="juj-h3-aDA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCP-My-zdT" customClass="MakeTransparentHoleOnOverlayView" customModule="VergeiOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgB-Qb-mJf">
-                                        <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                        <rect key="frame" x="67.5" y="203.5" width="240" height="240"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="240" id="ADd-of-7DR"/>
@@ -525,7 +520,7 @@ Please increase your balance.</string>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a XVG QR code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0WT-oX-zie">
-                                        <rect key="frame" x="106.5" y="159.5" width="162" height="24"/>
+                                        <rect key="frame" x="106.5" y="149.5" width="162" height="24"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -534,7 +529,7 @@ Please increase your balance.</string>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mal-rK-VF6">
-                                        <rect key="frame" x="147.5" y="601" width="80" height="50"/>
+                                        <rect key="frame" x="147.5" y="581" width="80" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="5sO-34-djg"/>
                                             <constraint firstAttribute="width" constant="80" id="d3i-ov-NAm"/>
@@ -548,7 +543,7 @@ Please increase your balance.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRE-oP-e5M">
-                                        <rect key="frame" x="8" y="601" width="70" height="50"/>
+                                        <rect key="frame" x="8" y="581" width="70" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="UNC-qP-So6"/>
                                             <constraint firstAttribute="width" constant="70" id="mLR-Bk-jJy"/>
@@ -560,7 +555,7 @@ Please increase your balance.</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljW-j8-pK7">
-                                        <rect key="frame" x="297" y="601" width="70" height="50"/>
+                                        <rect key="frame" x="297" y="581" width="70" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="2U5-is-OG1"/>
                                             <constraint firstAttribute="height" constant="50" id="qEa-f8-u3J"/>
@@ -621,19 +616,19 @@ Please increase your balance.</string>
         <image name="QRcode" width="30" height="30"/>
         <image name="SendCard" width="735" height="475"/>
         <namedColor name="BackgroundBlue">
-            <color red="0.86274509803921573" green="0.93725490196078431" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.86299997568130493" green="0.93699997663497925" blue="0.98799997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BackgroundGrey">
-            <color red="0.97254901960784312" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryDark">
             <color red="0.067000001668930054" green="0.125" blue="0.20399999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
-            <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21600000560283661" green="0.7369999885559082" blue="0.88200002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
-            <color red="0.38823529411764707" green="0.47058823529411764" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.47099998593330383" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
