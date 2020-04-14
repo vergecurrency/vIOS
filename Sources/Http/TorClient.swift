@@ -107,7 +107,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             NotificationCenter.default.post(name: .didStartTorThread, object: self)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.connectController(self.controller) { success in
                 if success {
                     self.log.info("tor client connected")
