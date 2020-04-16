@@ -127,6 +127,9 @@
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="errorView.helpLabel"/>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="askHelp:" destination="-1" eventType="touchUpInside" id="XFe-DL-g3x"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

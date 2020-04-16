@@ -22,4 +22,13 @@ class TorFixViewController: ThemeableViewController {
     @IBAction func restartClient(_ sender: Any) {
         self.delegate?.restartClient()
     }
+
+    @IBAction func askHelp(_ sender: UIButton) {
+        let controller = UIStoryboard.createFromStoryboardWithNavigationController(
+            name: "Settings",
+            type: SupportTableViewController.self
+        )
+
+        self.present(controller, animated: true)
+    }
 }
