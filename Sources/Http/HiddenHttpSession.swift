@@ -6,7 +6,8 @@
 import Foundation
 import Promises
 
-class HiddenHttpSession {
+class HiddenHttpSession: HttpSessionProtocol {
+
     private let hiddenClient: HiddenClientProtocol
 
     init(hiddenClient: HiddenClientProtocol) {
@@ -24,13 +25,7 @@ class HiddenHttpSession {
     }
 
     func dataTask(with url: URL) -> Promise<HttpResponse> {
-        return self.add { promise, session in
-            let task = session.dataTask(with: url) { data, urlResponse, error in
-                self.handleTaskCompletion(promise: promise, data: data, urlResponse: urlResponse, error: error)
-            }
-
-            task.resume()
-        }
+        return self.dataTask(with: URLRequest(url: url))
     }
 
     private func add(
@@ -77,6 +72,10 @@ class HiddenHttpSession {
     ) {
         if let error = error {
             return promise.reject(error)
+        }
+
+        guard let data = data else {
+            return promise.reject(HttpSessionError.nilDataReceived)
         }
 
         promise.fulfill(HttpResponse(data: data, urlResponse: urlResponse))

@@ -12,7 +12,7 @@ class HttpServiceProvider: ServiceProvider {
         if self.container.resolve(ApplicationRepository.self)?.setup ?? false {
             // Start the tor client
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.container.resolve(TorClient.self)?.start()
+                self.container.resolve(TorClientProtocol.self)?.start()
             }
         }
     }
@@ -26,8 +26,12 @@ class HttpServiceProvider: ServiceProvider {
             r.resolve(TorClientProtocol.self) as! TorClient
         }
 
+        self.container.register(HttpSessionProtocol.self) { r in
+            return HiddenHttpSession(hiddenClient: r.resolve(TorClient.self)!)
+        }
+
         self.container.register(RatesClient.self) { r in
-            return RatesClient(torClient: r.resolve(TorClient.self)!)
+            return RatesClient(httpSession: r.resolve(HttpSessionProtocol.self)!)
         }.inObjectScope(.container)
     }
 

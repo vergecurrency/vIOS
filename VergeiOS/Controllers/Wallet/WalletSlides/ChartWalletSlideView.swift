@@ -24,7 +24,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
     var initialized = false
 
-    var torClient: TorClient!
+    var httpSession: HttpSessionProtocol!
     var filter: ChartFilterToolbar.Filter = .oneDay
     var lastChangeFilter: TimeInterval?
 
@@ -41,7 +41,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         super.awakeFromNib()
         super.becomeThemeable()
 
-        self.torClient = Application.container.resolve(TorClient.self)!
+        self.httpSession = Application.container.resolve(HttpSessionProtocol.self)!
         self.filterToolbar.becomeThemeable()
 
         chartView.addSubview(volumeChartView)
@@ -147,35 +147,30 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             self.activityIndicator.startAnimating()
         }
 
-        self.torClient.session.dataTask(with: chartUrl()) { data, _, _ in
-            DispatchQueue.main.async {
-                self.placeholderView.isHidden = data != nil
-            }
+        self.httpSession.dataTask(with: self.chartUrl()).then { response in
+            self.placeholderView.isHidden = true
+            let chartData = try response.dataToJson(type: ChartInfo.self)
 
-            guard let data = try? JSONDecoder().decode(ChartInfo.self, from: data ?? Data()) else {
-                return
-            }
-
-            for entry in data.priceUsd {
+            for entry in chartData.priceUsd {
                 priceData.append(ChartDataEntry(x: entry[0], y: entry[1]))
             }
 
-            for (index, entry) in data.volumeUsd.enumerated() {
+            for (index, entry) in chartData.volumeUsd.enumerated() {
                 volumeData.append(BarChartDataEntry(x: Double(index), y: entry[1]))
             }
 
-            DispatchQueue.main.async {
-                self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
-                self.volumeChartView.set(chartData:
-                    self.nth(
-                        entries: volumeData,
-                        step: self.nthFilter[self.filter]! + 5
-                    ) as! [BarChartDataEntry]
-                )
-                self.setPriceLabels(withData: data.priceUsd)
-                self.activityIndicator.stopAnimating()
-            }
-        }.resume()
+            self.priceChartView.set(chartData: self.nth(entries: priceData, step: self.nthFilter[self.filter]!))
+            self.volumeChartView.set(chartData:
+            self.nth(
+                entries: volumeData,
+                step: self.nthFilter[self.filter]! + 5
+            ) as! [BarChartDataEntry]
+            )
+            self.setPriceLabels(withData: chartData.priceUsd)
+            self.activityIndicator.stopAnimating()
+        }.catch { error in
+            self.placeholderView.isHidden = false
+        }
     }
 
     func setPriceLabels(withData data: [[Double]]) {

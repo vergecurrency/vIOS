@@ -74,6 +74,15 @@
         }
       },
       {
+        "package": "SwifterSwift",
+        "repositoryURL": "https://github.com/SwifterSwift/SwifterSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "dc813f3aa92f904a009fe543b99d5649dce7c134",
+          "version": "5.2.0"
+        }
+      },
+      {
         "package": "SwiftyJSON",
         "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
         "state": {

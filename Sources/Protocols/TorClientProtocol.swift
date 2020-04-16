@@ -16,6 +16,11 @@ protocol TorClientProtocol {
     func start(completion: @escaping (Bool) -> Void)
     func restart()
     func resign()
-    func turnedOff() -> Bool
     func getCircuits() -> Promise<[TorCircuit]>
+}
+
+extension TorClientProtocol {
+    func start(completion: @escaping (Bool) -> Void = { bool in }) {
+        return self.start(completion: completion)
+    }
 }

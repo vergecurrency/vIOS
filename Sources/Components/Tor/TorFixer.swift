@@ -26,9 +26,29 @@ class TorFixer: UIWindow {
 
         self.presented = true
         self.makeKeyAndVisible()
+        self.torFixViewController.delegate = self
 
         UIView.transition(with: self, duration: 0.5, options: .transitionFlipFromRight, animations: {
             self.alpha = 1.0
         })
     }
+}
+
+extension TorFixer: TorFixerDelegate {
+    func restartApplication() {
+        fatalError("Restart the application because Tor isn't fixable")
+    }
+
+    func restartClient() {
+        guard let torClient = Application.container.resolve(TorClientProtocol.self) else {
+            return
+        }
+
+        torClient.restart()
+    }
+}
+
+protocol TorFixerDelegate {
+    func restartApplication()
+    func restartClient()
 }

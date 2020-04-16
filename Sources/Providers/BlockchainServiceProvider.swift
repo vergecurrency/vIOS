@@ -15,7 +15,7 @@ class BlockchainServiceProvider: ServiceProvider {
         container.register(BitcoreNodeClientProtocol.self) { r in
             BitcoreNodeClient(
                 baseUrl: Constants.bnEndpoint,
-                torClient: r.resolve(TorClientProtocol.self)!,
+                httpSession: r.resolve(HttpSessionProtocol.self)!,
                 log: r.resolve(Logger.self)!
             )
         }

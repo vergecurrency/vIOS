@@ -20,12 +20,12 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
     typealias URLCompletion = (Data?, URLResponse?, Swift.Error?) -> Void
 
     private let baseUrl: String
-    private let torClient: TorClientProtocol
+    private let httpSession: HttpSessionProtocol
     private let log: Logger
 
-    init(baseUrl: String, torClient: TorClientProtocol, log: Logger) {
+    init(baseUrl: String, httpSession: HttpSessionProtocol, log: Logger) {
         self.baseUrl = baseUrl
-        self.torClient = torClient
+        self.httpSession = httpSession
         self.log = log
     }
 
@@ -132,16 +132,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         request.setValue("application/json", forHTTPHeaderField: "accept")
 
         self.log(request: request)
-
-        let task = self.torClient.session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                self.log.error("bitcore node client error occured on GET request: \(error.localizedDescription)")
-            }
-
-            DispatchQueue.main.sync { completion(data, response, error) }
-        }
-
-        DispatchQueue.main.async { task.resume() }
+        self.request(request, completion: completion)
     }
 
     private func postRequest(url: String, body: JSON, completion: @escaping URLCompletion) throws {
@@ -156,16 +147,17 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         request.httpBody = try! body.rawData()
 
         self.log(request: request)
+        self.request(request, completion: completion)
+    }
 
-        let task = self.torClient.session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                self.log.error("bitcore node client error occured on POST request: \(error.localizedDescription)")
-            }
+    private func request(_ request: URLRequest, completion: @escaping URLCompletion) {
+        self.httpSession.dataTask(with: request).then { response in
+            completion(response.data, response.urlResponse, nil)
+        }.catch { error in
+            self.log.error("bitcore node client request error: \(error.localizedDescription)")
 
-            DispatchQueue.main.sync { completion(data, response, error) }
+            completion(nil, nil, error)
         }
-
-        DispatchQueue.main.async { task.resume() }
     }
 
     private func log(request: URLRequest) {

@@ -20,6 +20,7 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (TorConnectionTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.torClient = r.resolve(TorClient.self)
+            c.httpSession = r.resolve(HttpSessionProtocol.self)
         }
 
         container.storyboardInitCompleted (CurrencyTableViewController.self) { r, c in

@@ -10,26 +10,20 @@ import Foundation
 
 class RatesClient {
 
-    let torClient: TorClient!
+    let httpSession: HttpSessionProtocol!
 
-    init(torClient: TorClient) {
-        self.torClient = torClient
+    init(httpSession: HttpSessionProtocol) {
+        self.httpSession = httpSession
     }
 
     func infoBy(currency: String, completion: @escaping (_ data: FiatRate?) -> Void) {
         let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
 
-        let task = self.torClient.session.dataTask(with: url!) { data, _, _ in
-            guard let data = data else {
-                return completion(nil)
-            }
-
-            DispatchQueue.main.sync {
-                completion(try? JSONDecoder().decode(FiatRate.self, from: data))
-            }
+        self.httpSession.dataTask(with: url!).then { response in
+            completion(try response.dataToJson(type: FiatRate.self))
+        }.catch { error in
+            completion(nil)
         }
-
-        task.resume()
     }
 
 }

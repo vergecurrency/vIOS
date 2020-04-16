@@ -17,12 +17,14 @@ class TorSetup3View: UIView {
     var viewController: TorViewController!
     var applicationRepository: ApplicationRepository!
     var torClient: TorClient!
+    var httpSession: HttpSessionProtocol!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
         self.torClient = Application.container.resolve(TorClient.self)!
+        self.httpSession = Application.container.resolve(HttpSessionProtocol.self)!
 
         updateIPAddress()
     }
@@ -50,18 +52,12 @@ class TorSetup3View: UIView {
 
     func updateIPAddress() {
         let url = URL(string: Constants.ipCheckEndpoint)
-        let task = self.torClient.session.dataTask(with: url!) { data, _, error in
-            do {
-                if data != nil {
-                    let ipAddress = try JSONDecoder().decode(IpAddress.self, from: data!)
 
-                    self.centerMapView(withIpLocation: ipAddress)
-                }
-            } catch {
-                print(error)
-            }
+        self.httpSession.dataTask(with: url!).then { response in
+            self.centerMapView(withIpLocation: try response.dataToJson(type: IpAddress.self))
+        }.catch { error in
+            print(error)
         }
-        task.resume()
     }
 
     func centerMapView(withIpLocation ipAddress: IpAddress) {

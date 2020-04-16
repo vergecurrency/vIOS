@@ -25,7 +25,7 @@ public class WalletClient: WalletClientProtocol {
 
     private let applicationRepository: ApplicationRepository
     private let credentials: Credentials
-    private let torClient: TorClient
+    private let httpSession: HttpSessionProtocol
     private let log: Logger
     private let network: Network
 
@@ -36,14 +36,14 @@ public class WalletClient: WalletClientProtocol {
     init(
         appRepo: ApplicationRepository,
         credentials: Credentials,
-        torClient: TorClient,
+        httpSession: HttpSessionProtocol,
         log: Logger,
         network: Network = .mainnetXVG
     ) {
         self.applicationRepository = appRepo
         self.baseUrl = appRepo.walletServiceUrl
         self.credentials = credentials
-        self.torClient = torClient
+        self.httpSession = httpSession
         self.log = log
         self.network = network
     }
@@ -138,18 +138,12 @@ public class WalletClient: WalletClientProtocol {
     }
 
     private func request(_ request: URLRequest, completion: @escaping URLCompletion) {
-        let task = self.torClient.session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                self.log.error("wallet client request error: \(error.localizedDescription)")
-            }
+        self.httpSession.dataTask(with: request).then { response in
+            completion(response.data, response.urlResponse, nil)
+        }.catch { error in
+            self.log.error("wallet client request error: \(error.localizedDescription)")
 
-            DispatchQueue.main.sync {
-                completion(data, response, error)
-            }
-        }
-
-        DispatchQueue.main.async {
-            task.resume()
+            completion(nil, nil, error)
         }
     }
 

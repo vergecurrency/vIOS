@@ -229,6 +229,7 @@
 		B2BD736A7A645161F7FF846D /* PaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */; };
 		B2BD73C50F4BA27C71F772FB /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7E6BDB05995D9DB9E0D0 /* Data+Extensions.swift */; };
 		B2BD743A9D89A7DC359545E8 /* WalletID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD793ED093D34279FCD964 /* WalletID.swift */; };
+		B2BD743E6EB65712BC9237E5 /* HttpSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C34D2A6DB868075B636 /* HttpSessionProtocol.swift */; };
 		B2BD74BD3C95EAC92A854B40 /* TxProposalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7D301849297B02D436D9 /* TxProposalResponse.swift */; };
 		B2BD74DE4E82C67A765684E8 /* TxOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7E57A0DCA68B5D5DF025 /* TxOutput.swift */; };
 		B2BD74F4EC93C6025BE4DC28 /* VolumeChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2EDECD1C4C0462D84A /* VolumeChartView.swift */; };
@@ -280,7 +281,6 @@
 		B2BD7EF437ABA5F3917715CF /* ThemedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7D304253B3FA6268EB6C /* ThemedImageView.swift */; };
 		B2BD7EF5D0D09DBEFA55A277 /* InputOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7D159E515343D8A292D8 /* InputOutput.swift */; };
 		B2BD7F03C048C67FEC461DAE /* CreateAddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7717CEB5E3D87E197C1A /* CreateAddressError.swift */; };
-		B2BD7F20858381C0CA2E74A1 /* LogMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F59DAC558FB6DA83167 /* LogMessage.swift */; };
 		B2BD7F39EE96EB7B9E5A870A /* WalletTransactionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD780B0BE45F52AD3B526D /* WalletTransactionFactory.swift */; };
 		B2BD7F4CBE259B87285D79B1 /* Bn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C20DFFD4C97BEA61636 /* Bn.swift */; };
 		B2BD7F7547EA2B385CD74E57 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD74E5640073CDD7246E24 /* Collection+Extensions.swift */; };
@@ -713,6 +713,7 @@
 		B2BD7BE7344909C100B67E17 /* ChartFilterToolbarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartFilterToolbarDelegate.swift; sourceTree = "<group>"; };
 		B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperkeyViewController.swift; sourceTree = "<group>"; };
 		B2BD7C20DFFD4C97BEA61636 /* Bn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bn.swift; sourceTree = "<group>"; };
+		B2BD7C34D2A6DB868075B636 /* HttpSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpSessionProtocol.swift; sourceTree = "<group>"; };
 		B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletTicker.swift; sourceTree = "<group>"; };
 		B2BD7C69C0D3E46C64A77FA1 /* AddressInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressInfo.swift; sourceTree = "<group>"; };
 		B2BD7C6C14CE8CAEF740057E /* HiddenHttpSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenHttpSession.swift; sourceTree = "<group>"; };
@@ -728,7 +729,6 @@
 		B2BD7EF009F29B5AAA801A96 /* NotificationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBar.swift; sourceTree = "<group>"; };
 		B2BD7F15093A77EC78EEF525 /* WalletStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletStatus.swift; sourceTree = "<group>"; };
 		B2BD7F5703F1CEC52AAC784E /* AddressBookRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookRepository.swift; sourceTree = "<group>"; };
-		B2BD7F59DAC558FB6DA83167 /* LogMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogMessage.swift; sourceTree = "<group>"; };
 		B2BD7F6AC63621E982E0342E /* UIWindow+Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Levels.swift"; sourceTree = "<group>"; };
 		B2BD7F9EB70F3FC0BFEA893A /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		B2BD7FC724A50CB10ABBA3D1 /* HiddenClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenClientProtocol.swift; sourceTree = "<group>"; };
@@ -1071,6 +1071,7 @@
 				A3478B4A236480230018149C /* WalletManagerProtocol.swift */,
 				A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */,
 				B2BD7FC724A50CB10ABBA3D1 /* HiddenClientProtocol.swift */,
+				B2BD7C34D2A6DB868075B636 /* HttpSessionProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1344,7 +1345,6 @@
 			isa = PBXGroup;
 			children = (
 				B2BD74133C8DA2D5802055B3 /* Application.swift */,
-				B2BD7F59DAC558FB6DA83167 /* LogMessage.swift */,
 				A3A71C1422DA64C90098D861 /* Blockchain */,
 				A305DD9A21066AE600911B64 /* Components */,
 				A305DDB82107BB7F00911B64 /* Delegates */,
@@ -1871,6 +1871,7 @@
 				A3CE6400243CCA39006EE501 /* XCSwiftPackageProductDependency */,
 				A3CE6402243CCA39006EE501 /* XCSwiftPackageProductDependency */,
 				A3CCBACF2440B19B00311B9C /* XCSwiftPackageProductDependency */,
+				A39D5F402448AD7E0014B882 /* XCSwiftPackageProductDependency */,
 			);
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
@@ -2052,6 +2053,7 @@
 				A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */,
 				A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */,
 				A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference */,
+				A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference */,
 			);
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
 			projectDirPath = "";
@@ -2469,7 +2471,6 @@
 				B2BD7A53DC35E26AC1B8B030 /* HiddenHttpSessionRequest.swift in Sources */,
 				B2BD77F791F22F1B5570EF82 /* TorFixer.swift in Sources */,
 				B2BD7F7DCE0929291A5DCA2E /* UIWindow+Levels.swift in Sources */,
-				B2BD7F20858381C0CA2E74A1 /* LogMessage.swift in Sources */,
 				B2BD798B6F7162533DFB5C0E /* ConfigurationSubscriber.swift in Sources */,
 				B2BD7748DB81D0E5140066B8 /* AddressInfo.swift in Sources */,
 				B2BD7F03C048C67FEC461DAE /* CreateAddressError.swift in Sources */,
@@ -2497,6 +2498,7 @@
 				B2BD731FE91F17D3EFD3EBE4 /* Transaction.swift in Sources */,
 				B2BD76E01CF036F0D2435FED /* Block.swift in Sources */,
 				B2BD7265D9D0B63FFE8A6FE2 /* Balance.swift in Sources */,
+				B2BD743E6EB65712BC9237E5 /* HttpSessionProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3150,6 +3152,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
 		A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log.git";
@@ -3225,6 +3235,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A39D5F402448AD7E0014B882 /* XCSwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference */;
+			productName = SwifterSwift;
+		};
 		A3CCBACF2440B19B00311B9C /* XCSwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference */;

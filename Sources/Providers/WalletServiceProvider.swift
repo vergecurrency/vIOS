@@ -47,10 +47,6 @@ class WalletServiceProvider: ServiceProvider {
         self.registerAddressBookRepository()
         self.registerSweeperHelper()
         self.registerWalletManager()
-
-        self.container.register(HiddenHttpSession.self) { r in
-            return HiddenHttpSession(hiddenClient: r.resolve(TorClient.self)!)
-        }
     }
 
     func registerWalletCredentials() {
@@ -65,12 +61,12 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerWalletClient() {
         container.register(WalletClientProtocol.self) { r in
-            let appRepo = r.resolve(ApplicationRepository.self)!
-            let credentials = r.resolve(Credentials.self)!
-            let torClient = r.resolve(TorClient.self)!
-            let log = r.resolve(Logger.self)!
-
-            return WalletClient(appRepo: appRepo, credentials: credentials, torClient: torClient, log: log)
+            return WalletClient(
+                appRepo: r.resolve(ApplicationRepository.self)!,
+                credentials: r.resolve(Credentials.self)!,
+                httpSession: r.resolve(HttpSessionProtocol.self)!,
+                log: r.resolve(Logger.self)!
+            )
         }.inObjectScope(.container)
     }
 
