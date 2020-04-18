@@ -159,6 +159,19 @@
 		A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */; };
 		A398B21B212F91F0004ACB73 /* ConfirmSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B21A212F91F0004ACB73 /* ConfirmSendView.swift */; };
 		A398B21F21302DC5004ACB73 /* ConfirmSendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */; };
+		A39D5F5C2448F8480014B882 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63D8243CC0A1006EE501 /* IQKeyboardManagerSwift */; };
+		A39D5F5D2448F8480014B882 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63DB243CC0B3006EE501 /* SwiftyJSON */; };
+		A39D5F5E2448F8480014B882 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63DE243CC0C6006EE501 /* KeychainSwift */; };
+		A39D5F5F2448F8480014B882 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E1243CC0F6006EE501 /* Charts */; };
+		A39D5F602448F8480014B882 /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E4243CC110006EE501 /* CoreStore */; };
+		A39D5F612448F8480014B882 /* Eureka in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63E7243CC134006EE501 /* Eureka */; };
+		A39D5F622448F8480014B882 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63EA243CC151006EE501 /* CryptoSwift */; };
+		A39D5F632448F8480014B882 /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F2243CC190006EE501 /* Promises */; };
+		A39D5F642448F8480014B882 /* FBLPromises in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE63F4243CC190006EE501 /* FBLPromises */; };
+		A39D5F652448F8480014B882 /* FBLPromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */; };
+		A39D5F662448F8480014B882 /* PromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = A3CE6402243CCA39006EE501 /* PromisesTestHelpers */; };
+		A39D5F672448F8480014B882 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = A3CCBACF2440B19B00311B9C /* Logging */; };
+		A39D5F682448F8480014B882 /* SwifterSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A39D5F402448AD7E0014B882 /* SwifterSwift */; };
 		A3A71C0722D9092A0098D861 /* WalletSweepingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0622D9092A0098D861 /* WalletSweepingTableViewController.swift */; };
 		A3A71C0922D90A650098D861 /* BitcoreNodeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0822D90A650098D861 /* BitcoreNodeClient.swift */; };
 		A3A71C0B22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A71C0A22D90ADB0098D861 /* BitcoreNodeClientProtocol.swift */; };
@@ -815,12 +828,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A39D5F682448F8480014B882 /* SwifterSwift in Frameworks */,
+				A39D5F672448F8480014B882 /* Logging in Frameworks */,
+				A39D5F622448F8480014B882 /* CryptoSwift in Frameworks */,
+				A39D5F5E2448F8480014B882 /* KeychainSwift in Frameworks */,
+				A39D5F632448F8480014B882 /* Promises in Frameworks */,
+				A39D5F5C2448F8480014B882 /* IQKeyboardManagerSwift in Frameworks */,
 				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
+				A39D5F5D2448F8480014B882 /* SwiftyJSON in Frameworks */,
 				A3CE63F9243CC297006EE501 /* Swinject.framework in Frameworks */,
+				A39D5F5F2448F8480014B882 /* Charts in Frameworks */,
 				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
 				A3B2E25B214836B600C31719 /* HGPlaceholders.framework in Frameworks */,
 				A338E6CE21110A0A000D44EE /* QRCode.framework in Frameworks */,
+				A39D5F602448F8480014B882 /* CoreStore in Frameworks */,
+				A39D5F642448F8480014B882 /* FBLPromises in Frameworks */,
+				A39D5F662448F8480014B882 /* PromisesTestHelpers in Frameworks */,
 				A3E32B18225D52D9001A8B0E /* SwinjectStoryboard.framework in Frameworks */,
+				A39D5F612448F8480014B882 /* Eureka in Frameworks */,
+				A39D5F652448F8480014B882 /* FBLPromisesTestHelpers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,12 +1102,9 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		A31A99242208F3A800213F3E /* Assets */ = {
+		A31A99242208F3A800213F3E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				CAFB2B2322C8614B007960AE /* Theme Icons */,
-				A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */,
-				A386CA9C21A03C5200FBF465 /* VergeiOS.entitlements */,
 				CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */,
 				A305DD94210641C300911B64 /* MainTabbarNavigator.storyboard */,
 				A32566442113729C006FB08A /* Receive.storyboard */,
@@ -1093,7 +1116,7 @@
 				A325664A211373FF006FB08A /* Wallet.storyboard */,
 				CA2B4A16226B336100115B2D /* WelcomeGuide.storyboard */,
 			);
-			path = Assets;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		A31C2BD2242E4DCF004EDAEC /* ErrorViews */ = {
@@ -1317,11 +1340,13 @@
 			isa = PBXGroup;
 			children = (
 				A33F6A6F20EEE485001492C2 /* AppDelegate.swift */,
-				A33F6A7920EEE487001492C2 /* Assets.xcassets */,
 				A33F6A7E20EEE487001492C2 /* Info.plist */,
 				A3C5C3CD21985B11003B6C02 /* sjcl.js */,
-				A31A99242208F3A800213F3E /* Assets */,
+				A386CA9C21A03C5200FBF465 /* VergeiOS.entitlements */,
+				A33F6A7920EEE487001492C2 /* Assets.xcassets */,
 				A305DD9121052A6A00911B64 /* Controllers */,
+				A31A99242208F3A800213F3E /* Storyboards */,
+				CAFB2B2322C8614B007960AE /* Theme Icons */,
 			);
 			path = VergeiOS;
 			sourceTree = "<group>";
@@ -1789,6 +1814,7 @@
 		CAFB2B2322C8614B007960AE /* Theme Icons */ = {
 			isa = PBXGroup;
 			children = (
+				A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */,
 				CA8AEA2422CE88B200A0F087 /* AppIconFeather.png */,
 				CA8AEA2522CE88B200A0F087 /* AppIconMoon.png */,
 				CA8AEA2822CE88E200A0F087 /* AppIconMars.png */,
@@ -1859,19 +1885,19 @@
 			);
 			name = VergeiOS;
 			packageProductDependencies = (
-				A3CE63D8243CC0A1006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63DB243CC0B3006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63DE243CC0C6006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63E1243CC0F6006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63E4243CC110006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63E7243CC134006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63EA243CC151006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63F2243CC190006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE63F4243CC190006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE6400243CCA39006EE501 /* XCSwiftPackageProductDependency */,
-				A3CE6402243CCA39006EE501 /* XCSwiftPackageProductDependency */,
-				A3CCBACF2440B19B00311B9C /* XCSwiftPackageProductDependency */,
-				A39D5F402448AD7E0014B882 /* XCSwiftPackageProductDependency */,
+				A3CE63D8243CC0A1006EE501 /* IQKeyboardManagerSwift */,
+				A3CE63DB243CC0B3006EE501 /* SwiftyJSON */,
+				A3CE63DE243CC0C6006EE501 /* KeychainSwift */,
+				A3CE63E1243CC0F6006EE501 /* Charts */,
+				A3CE63E4243CC110006EE501 /* CoreStore */,
+				A3CE63E7243CC134006EE501 /* Eureka */,
+				A3CE63EA243CC151006EE501 /* CryptoSwift */,
+				A3CE63F2243CC190006EE501 /* Promises */,
+				A3CE63F4243CC190006EE501 /* FBLPromises */,
+				A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */,
+				A3CE6402243CCA39006EE501 /* PromisesTestHelpers */,
+				A3CCBACF2440B19B00311B9C /* Logging */,
+				A39D5F402448AD7E0014B882 /* SwifterSwift */,
 			);
 			productName = VergeCurrencyWallet;
 			productReference = A33F6A6C20EEE485001492C2 /* VergeiOS.app */;
@@ -2044,16 +2070,16 @@
 			);
 			mainGroup = A33F6A6320EEE485001492C2;
 			packageReferences = (
-				A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */,
-				A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference */,
-				A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference */,
+				A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference "Charts" */,
+				A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference "CoreStore" */,
+				A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference "Eureka" */,
+				A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+				A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */,
+				A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference "swift-log" */,
+				A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference "SwifterSwift" */,
 			);
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
 			projectDirPath = "";
@@ -3152,7 +3178,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference */ = {
+		A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference "SwifterSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwifterSwift/SwifterSwift.git";
 			requirement = {
@@ -3160,7 +3186,7 @@
 				minimumVersion = 5.2.0;
 			};
 		};
-		A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference */ = {
+		A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log.git";
 			requirement = {
@@ -3168,7 +3194,7 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
@@ -3176,7 +3202,7 @@
 				minimumVersion = 6.5.5;
 			};
 		};
-		A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
 			requirement = {
@@ -3184,7 +3210,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
 			requirement = {
@@ -3192,7 +3218,7 @@
 				minimumVersion = 19.0.0;
 			};
 		};
-		A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
@@ -3200,7 +3226,7 @@
 				minimumVersion = 3.4.0;
 			};
 		};
-		A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference "CoreStore" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnEstropia/CoreStore.git";
 			requirement = {
@@ -3208,7 +3234,7 @@
 				minimumVersion = 7.1.0;
 			};
 		};
-		A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference "Eureka" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
@@ -3216,7 +3242,7 @@
 				minimumVersion = 5.2.1;
 			};
 		};
-		A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
 			requirement = {
@@ -3224,7 +3250,7 @@
 				minimumVersion = 1.3.0;
 			};
 		};
-		A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */ = {
+		A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/promises.git";
 			requirement = {
@@ -3235,69 +3261,69 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		A39D5F402448AD7E0014B882 /* XCSwiftPackageProductDependency */ = {
+		A39D5F402448AD7E0014B882 /* SwifterSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference */;
+			package = A39D5F3F2448AD7E0014B882 /* XCRemoteSwiftPackageReference "SwifterSwift" */;
 			productName = SwifterSwift;
 		};
-		A3CCBACF2440B19B00311B9C /* XCSwiftPackageProductDependency */ = {
+		A3CCBACF2440B19B00311B9C /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference */;
+			package = A3CCBACE2440B19B00311B9C /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
 		};
-		A3CE63D8243CC0A1006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63D8243CC0A1006EE501 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63D7243CC0A1006EE501 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
 		};
-		A3CE63DB243CC0B3006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63DB243CC0B3006EE501 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63DA243CC0B3006EE501 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		A3CE63DE243CC0C6006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63DE243CC0C6006EE501 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63DD243CC0C6006EE501 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
 		};
-		A3CE63E1243CC0F6006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63E1243CC0F6006EE501 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E0243CC0F6006EE501 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
-		A3CE63E4243CC110006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63E4243CC110006EE501 /* CoreStore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E3243CC110006EE501 /* XCRemoteSwiftPackageReference "CoreStore" */;
 			productName = CoreStore;
 		};
-		A3CE63E7243CC134006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63E7243CC134006EE501 /* Eureka */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E6243CC134006EE501 /* XCRemoteSwiftPackageReference "Eureka" */;
 			productName = Eureka;
 		};
-		A3CE63EA243CC151006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63EA243CC151006EE501 /* CryptoSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63E9243CC151006EE501 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
 			productName = CryptoSwift;
 		};
-		A3CE63F2243CC190006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63F2243CC190006EE501 /* Promises */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = Promises;
 		};
-		A3CE63F4243CC190006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE63F4243CC190006EE501 /* FBLPromises */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = FBLPromises;
 		};
-		A3CE6400243CCA39006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE6400243CCA39006EE501 /* FBLPromisesTestHelpers */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = FBLPromisesTestHelpers;
 		};
-		A3CE6402243CCA39006EE501 /* XCSwiftPackageProductDependency */ = {
+		A3CE6402243CCA39006EE501 /* PromisesTestHelpers */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference */;
+			package = A3CE63EF243CC190006EE501 /* XCRemoteSwiftPackageReference "promises" */;
 			productName = PromisesTestHelpers;
 		};
 /* End XCSwiftPackageProductDependency section */

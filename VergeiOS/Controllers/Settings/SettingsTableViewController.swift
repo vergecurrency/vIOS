@@ -21,12 +21,20 @@ class SettingsTableViewController: EdgedTableViewController {
         super.viewWillAppear(animated)
 
         self.currencyLabel.text = self.applicationRepository.currency
+
+        if let indexPath = self.tableView.indexPathForSelectedRow,
+            let row = self.tableView.cellForRow(at: indexPath) {
+            if row.accessoryType == .none {
+                self.tableView.deselectRow(at: indexPath, animated: animated)
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //handle sections
         switch indexPath.section {
-        case 3: otherHandler(index: indexPath.row)
+        case 3:
+            self.otherHandler(index: indexPath.row)
         default: break
         }
     }
@@ -36,13 +44,13 @@ class SettingsTableViewController: EdgedTableViewController {
         case 2:
             SKStoreReviewController.requestReview()
         case 3:
-            loadWebsite(url: Constants.website)
+            self.loadWebsite(url: Constants.website)
         case 4:
-            loadWebsite(url: Constants.iOSRepo)
-        default: break
+            self.loadWebsite(url: Constants.iOSRepo)
+        default: return
         }
 
-        tableView.deselectRow(at: IndexPath(row: index, section: 3), animated: true)
+        self.tableView.deselectRow(at: IndexPath(row: index, section: 3), animated: true)
     }
 
     private func loadWebsite(url: String) {
@@ -63,7 +71,7 @@ class SettingsTableViewController: EdgedTableViewController {
                 pinUnlockView.dismiss(animated: true)
             }
 
-            present(pinUnlockView, animated: true)
+            self.present(pinUnlockView, animated: true)
         }
 
         if segue.identifier == "SelectPinViewController" {
@@ -76,7 +84,8 @@ class SettingsTableViewController: EdgedTableViewController {
 
                 pinUnlockView.dismiss(animated: true)
             }
-            present(pinUnlockView, animated: true)
+
+            self.present(pinUnlockView, animated: true)
 
             if let vc = segue.destination as? SelectPinViewController {
                 vc.navigationItem.leftBarButtonItem = nil
