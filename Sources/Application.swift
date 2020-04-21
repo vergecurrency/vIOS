@@ -33,15 +33,17 @@ class Application {
     private var booted: Bool = false
 
     // Init the application with a container.
-    public init(container: Container) {
+    init(container: Container) {
         Application.container = container
     }
 
     // Boot the service providers.
-    public func boot() {
-        if booted {
+    func boot() {
+        if self.booted {
             return
         }
+
+        let timeBeforeBoot = DispatchTime.now()
 
         Container.loggingFunction = nil
 
@@ -59,6 +61,10 @@ class Application {
         for serviceProvider in self.initializedServiceProviders {
             serviceProvider.boot()
         }
+        
+        Application.container.resolve(Logger.self)?.info(
+            "application booted in \(timeBeforeBoot.secondsElapsed(till: .now())) seconds"
+        )
 
         self.booted = true
     }
