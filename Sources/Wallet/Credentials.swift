@@ -7,10 +7,11 @@ import Foundation
 import BitcoinKit
 import CryptoSwift
 
-public class Credentials {
+class Credentials {
 
     enum CredentialsError: Error {
         case invalidDeriver(value: String)
+        case invalidWidHex(id: String)
     }
 
     var seed: Data = Data()
@@ -21,35 +22,35 @@ public class Credentials {
         self.network = network
     }
 
-    public func reset(mnemonic: [String], passphrase: String, network: Network = .mainnetXVG) {
+    func reset(mnemonic: [String], passphrase: String, network: Network = .mainnetXVG) {
         self.seed = Mnemonic.seed(mnemonic: mnemonic, passphrase: passphrase)
         self.network = network
     }
 
-    public var privateKey: HDPrivateKey {
+    var privateKey: HDPrivateKey {
         return HDPrivateKey(seed: seed, network: network)
     }
 
-    public var walletPrivateKey: HDPrivateKey {
+    var walletPrivateKey: HDPrivateKey {
         return try! privateKey.derived(at: 0, hardened: true)
     }
 
-    public var requestPrivateKey: HDPrivateKey {
+    var requestPrivateKey: HDPrivateKey {
         return try! privateKey.derived(at: 1, hardened: true).derived(at: 0)
     }
 
-    public var bip44PrivateKey: HDPrivateKey {
+    var bip44PrivateKey: HDPrivateKey {
         return try! privateKey
             .derived(at: 44, hardened: true)
             .derived(at: 0, hardened: true)
             .derived(at: 0, hardened: true)
     }
 
-    public var publicKey: HDPublicKey {
+    var publicKey: HDPublicKey {
         return bip44PrivateKey.extendedPublicKey()
     }
 
-    public var personalEncryptingKey: String {
+    var personalEncryptingKey: String {
         let data = Crypto.sha256(requestPrivateKey.privateKey().data)
         let key = "personalKey".data(using: .utf8)!
 
@@ -58,13 +59,13 @@ public class Credentials {
         return Data(b2[0..<16]).base64EncodedString()
     }
 
-    public var sharedEncryptingKey: String {
+    var sharedEncryptingKey: String {
         let sha256Data = walletPrivateKey.privateKey().data.sha256()
 
         return sha256Data[0..<16].base64EncodedString()
     }
 
-    public func privateKeyBy(path: String, privateKey: HDPrivateKey) throws -> PrivateKey {
+    func privateKeyBy(path: String, privateKey: HDPrivateKey) throws -> PrivateKey {
         var key = privateKey
         for deriver in path.replacingOccurrences(of: "m/", with: "").split(separator: "/") {
             guard let deriverInt32 = UInt32(deriver) else {
@@ -77,4 +78,13 @@ public class Credentials {
         return key.privateKey()
     }
 
+    func buildSecret(walletId: String) throws -> String {
+        guard let widHex = Data(fromHex: walletId.replacingOccurrences(of: "-", with: "")) else {
+            throw CredentialsError.invalidWidHex(id: walletId)
+        }
+
+        let widBase58 = Base58.encode(widHex).padding(toLength: 22, withPad: "0", startingAt: 0)
+
+        return "\(widBase58)\(self.privateKey.privateKey().toWIF())Lxvg"
+    }
 }

@@ -126,6 +126,7 @@ class WalletServiceProvider: ServiceProvider {
                 walletClient: r.resolve(WalletClientProtocol.self)!,
                 walletTicker: r.resolve(WalletTicker.self)!,
                 applicationRepository: r.resolve(ApplicationRepository.self)!,
+                credentials: r.resolve(Credentials.self)!,
                 log: r.resolve(Logger.self)!
             )
         }

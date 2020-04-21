@@ -14,6 +14,7 @@ class WalletManager: WalletManagerProtocol {
     private let walletClient: WalletClientProtocol
     private let walletTicker: TickerProtocol
     private let applicationRepository: ApplicationRepository
+    private let credentials: Credentials
     private let log: Logger
 
     private let walletName = "ioswallet"
@@ -25,24 +26,30 @@ class WalletManager: WalletManagerProtocol {
         walletClient: WalletClientProtocol,
         walletTicker: TickerProtocol,
         applicationRepository: ApplicationRepository,
+        credentials: Credentials,
         log: Logger
     ) {
         self.walletClient = walletClient
         self.walletTicker = walletTicker
         self.applicationRepository = applicationRepository
+        self.credentials = credentials
         self.log = log
     }
 
     func getWallet() -> Promise<Vws.WalletStatus> {
         self.walletTicker.stop()
 
-        return self.create().then(self.join).then(self.open).then { walletStatus -> Promise<Vws.WalletStatus> in
-            self.walletTicker.start()
+        return self.create()
+            .then(self.storeWalletCredentials)
+            .then(self.join)
+            .then(self.open)
+            .then { walletStatus -> Promise<Vws.WalletStatus> in
+                self.walletTicker.start()
 
-            return Promise {
-                return walletStatus
+                return Promise {
+                    return walletStatus
+                }
             }
-        }
     }
 
     func scanWallet() -> Promise<Bool> {
@@ -75,6 +82,8 @@ class WalletManager: WalletManagerProtocol {
                         "walletId": Logger.MetadataValue(stringLiteral: walletId.identifier)
                     ])
 
+                    self.applicationRepository.walletName = self.walletName
+
                     return fulfill(walletId)
                 }
 
@@ -91,6 +100,21 @@ class WalletManager: WalletManagerProtocol {
 
                 reject(error)
             }
+        }
+    }
+    
+    private func storeWalletCredentials(_ walletId: Vws.WalletID?) -> Promise<Vws.WalletID?>  {
+        return Promise { fulfill, _ in
+            guard let walletId = walletId else {
+                return fulfill(nil)
+            }
+            
+            self.applicationRepository.walletId = walletId.identifier
+            self.applicationRepository.walletSecret = try self.credentials.buildSecret(walletId: walletId.identifier)
+
+            self.log.info("wallet manager store wallet secret: \(self.applicationRepository.walletSecret!)")
+
+            fulfill(walletId)
         }
     }
 

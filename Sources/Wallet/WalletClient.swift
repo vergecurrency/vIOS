@@ -16,7 +16,6 @@ public class WalletClient: WalletClientProtocol {
         case addressToScriptError(address: Address)
         case invalidDeriver(value: String)
         case invalidMessageData(message: String)
-        case invalidWidHex(id: String)
         case invalidAddressReceived(address: Vws.AddressInfo?)
         case noOutputFound
     }
@@ -198,14 +197,7 @@ extension WalletClient {
             }
 
             do {
-                let walletId = try JSONDecoder().decode(Vws.WalletID.self, from: data)
-
-                // TODO: remove from the client :'D
-                self.applicationRepository.walletId = walletId.identifier
-                self.applicationRepository.walletName = walletName
-                self.applicationRepository.walletSecret = try? self.buildSecret(walletId: walletId.identifier)
-
-                completion(walletId, nil, nil)
+                completion(try JSONDecoder().decode(Vws.WalletID.self, from: data), nil, nil)
             } catch {
                 let errorResponse = try? JSONDecoder().decode(Vws.WalletID.Error.self, from: data)
                 let returnError = errorResponse == nil ? error : nil
@@ -681,16 +673,6 @@ extension WalletClient {
         let key = sjcl.base64ToBits(encryptingKey: encryptingKey)
 
         return sjcl.decrypt(password: key, ciphertext: ciphertext, params: [])
-    }
-
-    private func buildSecret(walletId: String) throws -> String {
-        guard let widHex = Data(fromHex: walletId.replacingOccurrences(of: "-", with: "")) else {
-            throw WalletClientError.invalidWidHex(id: walletId)
-        }
-
-        let widBase58 = Base58.encode(widHex).padding(toLength: 22, withPad: "0", startingAt: 0)
-
-        return "\(widBase58)\(credentials.privateKey.privateKey().toWIF())Lxvg"
     }
 
     private func getUnsignedTx(txp: Vws.TxProposalResponse) throws -> UnsignedTransaction {
