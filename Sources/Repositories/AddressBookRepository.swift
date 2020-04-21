@@ -8,12 +8,15 @@
 
 import Foundation
 import CoreStore
+import Logging
 
 class AddressBookRepository {
     private let dataStack: DataStack
+    private let log: Logger
 
-    init(dataStack: DataStack) {
+    init(dataStack: DataStack, log: Logger) {
         self.dataStack = dataStack
+        self.log = log
     }
 
     func name(byAddress address: String) -> String? {
@@ -79,7 +82,7 @@ class AddressBookRepository {
                 return transaction.hasChanges
             })
         } catch {
-            print(error.localizedDescription)
+            self.log.error("address book repository error while adding contact: \(error.localizedDescription)")
         }
     }
 
@@ -97,7 +100,7 @@ class AddressBookRepository {
                 return transaction.hasChanges
             })
         } catch {
-            print(error.localizedDescription)
+            self.log.error("address book repository error while removing contact: \(error.localizedDescription)")
         }
     }
 

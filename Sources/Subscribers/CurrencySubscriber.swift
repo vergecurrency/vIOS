@@ -7,17 +7,22 @@
 //
 
 import Foundation
+import Logging
 
 class CurrencySubscriber: Subscriber {
     private let fiatRateTicker: TickerProtocol
+    private let log: Logger
 
-    init(fiatRateTicker: TickerProtocol) {
+    init(fiatRateTicker: TickerProtocol, log: Logger) {
         self.fiatRateTicker = fiatRateTicker
+        self.log = log
     }
 
     @objc func didChangeCurrency(notification: Notification) {
         DispatchQueue.main.async {
-            print("Currency changed 💰")
+            let currencyName = (notification.object as? [String : String])?["name"] ?? "unknown"
+
+            self.log.info("application currency changed to: \(currencyName)")
 
             self.fiatRateTicker.tick()
         }

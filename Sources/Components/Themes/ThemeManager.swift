@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import Logging
 
 class ThemeManager {
 
@@ -39,13 +40,17 @@ class ThemeManager {
         }
 
         //Change the icon to a specific image with given name
-        UIApplication.shared.setAlternateIconName(name) { (error) in
-            //After app icon changed, print our error or success message
-            if let error = error {
-                print("App icon failed to due to \(error.localizedDescription)")
-            } else {
-                print("App icon changed successfully.")
+        UIApplication.shared.setAlternateIconName(name) { error in
+            //After app icon changed, log our error or success message
+            guard let log = Application.container.resolve(Logger.self) else {
+                return
             }
+
+            guard let error = error else {
+                return log.info("theme manager application icon changed successfully")
+            }
+            
+            log.error("theme manager application icon change failed: \(error.localizedDescription)")
         }
     }
 

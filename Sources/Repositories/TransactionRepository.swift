@@ -5,12 +5,15 @@
 
 import Foundation
 import CoreStore
+import Logging
 
 class TransactionRepository {
     private let dataStack: DataStack
+    private let log: Logger
 
-    init(dataStack: DataStack) {
+    init(dataStack: DataStack, log: Logger) {
         self.dataStack = dataStack
+        self.log = log
     }
 
     func get(byAddress address: String) -> [Vws.TxHistory] {
@@ -65,7 +68,7 @@ class TransactionRepository {
                 return transaction.hasChanges
             })
         } catch {
-            print(error.localizedDescription)
+            self.log.error("transaction repository error while adding tx: \(error.localizedDescription)")
         }
     }
 
@@ -83,7 +86,7 @@ class TransactionRepository {
                 return transaction.hasChanges
             })
         } catch {
-            print(error.localizedDescription)
+            self.log.error("transaction repository error while adding tx: \(error.localizedDescription)")
         }
     }
 

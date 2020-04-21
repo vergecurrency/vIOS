@@ -20,8 +20,8 @@ class BlockchainServiceProvider: ServiceProvider {
             )
         }
 
-        container.register(TransactionFactoryProtocol.self) { _ in
-            return TransactionFactory()
+        container.register(TransactionFactoryProtocol.self) { r in
+            return TransactionFactory(log: r.resolve(Logger.self)!)
         }
     }
 

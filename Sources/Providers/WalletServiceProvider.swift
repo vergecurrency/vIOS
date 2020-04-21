@@ -9,32 +9,9 @@
 import Foundation
 import Swinject
 import CoreStore
-import SwiftyJSON
 import Logging
 
 class WalletServiceProvider: ServiceProvider {
-    override func boot() {
-//        guard let hiddenHttpSession = self.container.resolve(HiddenHttpSession.self) else {
-//            return
-//        }
-//
-//        hiddenHttpSession.dataTask(
-//            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
-//        ).then { response in
-//            print(try? JSON(data: response.data ?? Data()))
-//        }.catch { error in
-//            print(error.localizedDescription)
-//        }
-//
-//        hiddenHttpSession.dataTask(
-//            with: URL(string: "https://api.vergecurrency.network/node/api/XVG/mainnet/block/tip")!
-//        ).then { response in
-//            print(try? JSON(data: response.data ?? Data()))
-//        }.catch { error in
-//            print(error.localizedDescription)
-//        }
-    }
-
     override func register() {
         self.registerWalletCredentials()
         self.registerWalletClient()
@@ -78,7 +55,7 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerTransactionRepository() {
         container.register(TransactionRepository.self) { r in
-            TransactionRepository(dataStack: r.resolve(DataStack.self)!)
+            TransactionRepository(dataStack: r.resolve(DataStack.self)!, log: r.resolve(Logger.self)!)
         }
     }
 
@@ -127,7 +104,7 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerAddressBookRepository() {
         container.register(AddressBookRepository.self) { r in
-            AddressBookRepository(dataStack: r.resolve(DataStack.self)!)
+            AddressBookRepository(dataStack: r.resolve(DataStack.self)!, log: r.resolve(Logger.self)!)
         }
     }
 

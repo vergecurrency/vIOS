@@ -8,10 +8,17 @@
 
 import Foundation
 import BitcoinKit
+import Logging
 
 class TransactionFactory: TransactionFactoryProtocol {
     enum TransactionFactoryError: Error {
         case addressToScriptError(address: Address)
+    }
+
+    private let log: Logger
+
+    init(log: Logger) {
+        self.log = log
     }
 
     public func getUnsignedTx(
@@ -74,7 +81,8 @@ class TransactionFactory: TransactionFactoryProtocol {
             guard let key = keysOfUtxo.first else {
                 continue
             }
-            print("Value of signing txout : \(utxo.output.value)")
+
+            self.log.info("transaction factory value of signing txout: \(utxo.output.value)")
 
             let sighash: Data = transactionToSign.signatureHash(
                 for: utxo.output,
@@ -97,6 +105,8 @@ class TransactionFactory: TransactionFactoryProtocol {
                 sequence: txin.sequence
             )
         }
+
+        self.log.info("transaction factory created signed transaction: \(transactionToSign.serialized().hex)")
 
         return transactionToSign
     }

@@ -5,6 +5,7 @@
 
 import Foundation
 import CoreStore
+import Logging
 
 class CoreStoreServiceProvider: ServiceProvider {
 
@@ -27,11 +28,13 @@ class CoreStoreServiceProvider: ServiceProvider {
                 SQLiteStore(fileName: "VergeiOS.sqlite", localStorageOptions: .allowSynchronousLightweightMigration)
             )
 
-            container.register(DataStack.self) { _ in
+            self.container.register(DataStack.self) { _ in
                 self.dataStack
             }
         } catch {
-            print(error.localizedDescription)
+            self.container.resolve(Logger.self)?.error(
+                "core store error during initialization: \(error.localizedDescription)"
+            )
         }
     }
 

@@ -55,7 +55,7 @@ class EventServiceProvider: ServiceProvider {
         }
 
         self.register(name: CurrencySubscriber.typeName) { r in
-            return CurrencySubscriber(fiatRateTicker: r.resolve(FiatRateTicker.self)!)
+            return CurrencySubscriber(fiatRateTicker: r.resolve(FiatRateTicker.self)!, log: r.resolve(Logger.self)!)
         }
     }
 
