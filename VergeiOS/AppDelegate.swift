@@ -20,11 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
 
     var log: Logger? {
-        guard let container = Application.container else {
-            return nil
-        }
-
-        return container.resolve(Logger.self)
+        return Application.container?.resolve(Logger.self)
     }
 
     func application(
