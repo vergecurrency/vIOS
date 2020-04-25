@@ -17,6 +17,7 @@ class Application {
         ApplicationServiceProvider.self,
         CoreStoreServiceProvider.self,
         EventServiceProvider.self,
+        UITestingServiceProvider.self,
         HttpServiceProvider.self,
         BlockchainServiceProvider.self,
         WalletServiceProvider.self,

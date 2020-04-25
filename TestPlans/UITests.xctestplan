@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "FE703683-AF5A-47B8-B246-BB04E90CDD31",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:VergeiOS.xcodeproj",
+        "identifier" : "A3256693211CBBE2006FB08A",
+        "name" : "VergeiOSUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
