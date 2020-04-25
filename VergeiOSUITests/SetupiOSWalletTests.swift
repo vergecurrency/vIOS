@@ -11,30 +11,23 @@ class SetupiOSWalletTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        // Since UI tests are more expensive to run, it's usually a good idea
-        // to exit if a failure was encountered
-        continueAfterFailure = false
+        self.continueAfterFailure = false
 
         self.app = XCUIApplication()
-
-        // We send a command line argument to our app,
-        // to enable it to reset its state
         self.app.launchArguments.append("--uitesting")
         self.app.launchArguments.append("--uitesting-reset")
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         self.app.launch()
     }
-    
+
     func testSetupWallet() {
         // Welcome view
         XCTAssertTrue(self.app.buttons["Create a new wallet"].exists)
         self.app.buttons["Create a new wallet"].tap()
-        
+
         self.setupPin()
-        
+
         // TODO: record paper key and perform validation
-        
+
         //self.setupPassphrase()
         //self.setupTor()
         //self.createWallet()

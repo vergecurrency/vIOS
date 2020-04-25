@@ -10,6 +10,10 @@ import Foundation
 
 class UITestingServiceProvider: ServiceProvider {
     override func boot() {
+        if !CommandLine.arguments.contains("--uitesting") {
+            return
+        }
+
         if CommandLine.arguments.contains("--uitesting-reset") {
             NotificationCenter.default.post(name: .didDisconnectWallet, object: nil)
         }
