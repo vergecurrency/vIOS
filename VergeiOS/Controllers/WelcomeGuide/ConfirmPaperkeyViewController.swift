@@ -1,12 +1,10 @@
 //
-//  ConfirmPaperkeyViewController.swift
-//  VergeiOS
-//
 //  Created by Swen van Zanten on 29-07-18.
 //  Copyright © 2018 Verge Currency. All rights reserved.
 //
 
 import UIKit
+import Logging
 
 class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
 
@@ -17,23 +15,20 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
     @IBOutlet weak var secondWordTextfield: UITextField!
 
     var applicationRepository: ApplicationRepository!
+    var log: Logger!
+
     var mnemonic: [String] = []
     var randomNumbers: [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(self.mnemonic)
+        self.log.debug("confirm paper key view loaded with mnemonic: \(mnemonic)")
 
         self.randomNumbers = self.selectRandomNumbers()
 
         self.firstWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.first!)"
         self.secondWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.last!)"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func selectRandomNumbers() -> [Int] {
@@ -55,18 +50,18 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
         self.firstWordTextfield.backgroundColor = .white
 
         // Add shake effect...
-        if (self.firstWordTextfield.text != self.mnemonic[self.randomNumbers.first! - 1]) {
+        if self.firstWordTextfield.text != self.mnemonic[self.randomNumbers.first! - 1] {
             self.firstWordTextfield.backgroundColor = ThemeManager.shared.vergeRed().withAlphaComponent(0.15)
             return
         }
 
-        if (self.secondWordTextfield.text != self.mnemonic[self.randomNumbers.last! - 1]) {
+        if self.secondWordTextfield.text != self.mnemonic[self.randomNumbers.last! - 1] {
             self.secondWordTextfield.backgroundColor = ThemeManager.shared.vergeRed().withAlphaComponent(0.15)
             return
         }
 
         // Save the mnemonic.
-        applicationRepository.mnemonic = mnemonic
+        self.applicationRepository.mnemonic = mnemonic
 
         // Finish the welcome guide.
         self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)

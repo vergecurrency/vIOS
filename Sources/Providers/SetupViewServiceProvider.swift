@@ -31,6 +31,7 @@ class SetupViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted (ConfirmPaperkeyViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.log = r.resolve(Logger.self)
         }
 
         container.storyboardInitCompleted (ConfirmPinViewController.self) { r, c in

@@ -117,12 +117,8 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
         return length && cases && specials
     }
 
-    @objc func nice() {
-        print("nice")
-    }
-
     @IBAction func closeView(_ sender: Any) {
-        dismiss(animated: true)
+        self.dismiss(animated: true)
     }
 
     // MARK: - Navigation
@@ -133,7 +129,7 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
         if segue.identifier == "proceed" {
             if let vc = segue.destination as? PassphraseConfirmationViewController {
-                vc.previousPassphrase = passphraseTextfield.text!
+                vc.previousPassphrase = self.passphraseTextfield.text!
             }
         }
     }

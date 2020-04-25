@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Logging
 
 class TorSetup3View: UIView {
 
@@ -18,6 +19,7 @@ class TorSetup3View: UIView {
     var applicationRepository: ApplicationRepository!
     var torClient: TorClient!
     var httpSession: HttpSessionProtocol!
+    var log: Logger!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,16 +27,20 @@ class TorSetup3View: UIView {
         self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
         self.torClient = Application.container.resolve(TorClient.self)!
         self.httpSession = Application.container.resolve(HttpSessionProtocol.self)!
+        self.log = Application.container.resolve(Logger.self)!
 
-        updateIPAddress()
+        self.updateIPAddress()
     }
 
     @IBAction func changeTorUsage(_ sender: UISwitch) {
         self.applicationRepository.useTor = sender.isOn
 
-        proceedButton.setTitle(sender.isOn ?
-            "setup.tor.slide3.positiveButton".localized :
-            "setup.tor.slide3.negativeButton".localized, for: .normal)
+        proceedButton.setTitle(
+            sender.isOn ?
+                "setup.tor.slide3.positiveButton".localized :
+                "setup.tor.slide3.negativeButton".localized,
+            for: .normal
+        )
 
         if sender.isOn {
             self.torClient.start { _ in
@@ -43,7 +49,7 @@ class TorSetup3View: UIView {
         } else {
             self.torClient.resign()
 
-            updateIPAddress()
+            self.updateIPAddress()
 
             // Notify the whole application.
             NotificationCenter.default.post(name: .didTurnOffTor, object: self)
@@ -56,7 +62,7 @@ class TorSetup3View: UIView {
         self.httpSession.dataTask(with: url!).then { response in
             self.centerMapView(withIpLocation: try response.dataToJson(type: IpAddress.self))
         }.catch { error in
-            print(error)
+            self.log.error("tor setup error while fetching your ip: \(error)")
         }
     }
 
@@ -76,7 +82,7 @@ class TorSetup3View: UIView {
     }
 
     @IBAction func proceed(_ sender: Any) {
-        viewController.performSegue(withIdentifier: "createWallet", sender: self)
+        self.viewController.performSegue(withIdentifier: "createWallet", sender: self)
     }
 
 }
