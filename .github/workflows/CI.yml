@@ -47,9 +47,9 @@ jobs:
           swift-version: '5.2.2'
       - name: Run Verge Wallet Service
         run: |
-            cd Docker
-            docker-compose up -d
-            cd ..
+          cd ./Docker
+          docker-compose up -d
+          cd ..
         env:
             TRUSTED_XVG_MAINNET_PEER: verged
             TRUSTED_XVG_MAINNET_PEER_PORT: 21102
