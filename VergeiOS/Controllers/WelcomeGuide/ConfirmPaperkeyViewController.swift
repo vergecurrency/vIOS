@@ -6,7 +6,7 @@
 import UIKit
 import Logging
 
-class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
+class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextFieldDelegate {
 
     @IBOutlet weak var firstWordLabel: UILabel!
     @IBOutlet weak var secondWordLabel: UILabel!
@@ -29,6 +29,9 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
 
         self.firstWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.first!)"
         self.secondWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.last!)"
+
+        self.firstWordTextfield.delegate = self
+        self.secondWordTextfield.delegate = self
     }
 
     func selectRandomNumbers() -> [Int] {
@@ -44,6 +47,18 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController {
         }
 
         return numbers.sorted()
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.firstWordTextfield {
+            self.secondWordTextfield.becomeFirstResponder()
+
+            return true
+        }
+
+        textField.resignFirstResponder()
+
+        return true
     }
 
     @IBAction func submitPaperkeyConfirmation(_ sender: Any) {

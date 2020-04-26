@@ -241,7 +241,6 @@ extension WalletClient {
             return completion(nil, nil, error)
         }
 
-
         self.postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
             guard let data = data else {
                 return completion(nil, nil, error)

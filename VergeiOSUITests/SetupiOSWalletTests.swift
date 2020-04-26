@@ -26,11 +26,36 @@ class SetupiOSWalletTests: XCTestCase {
 
         self.setupPin()
 
-        // TODO: record paper key and perform validation
+        self.app.buttons["Write down paper key"].tap()
 
-        //self.setupPassphrase()
-        //self.setupTor()
-        //self.createWallet()
+        var paperKey = [String]()
+        for _ in 0..<12 {
+            print(self.app.staticTexts["word"].label)
+
+            paperKey.append(self.app.staticTexts["word"].label)
+            if self.app.buttons["Next"].exists {
+                self.app.buttons["Next"].tap()
+            } else {
+                self.app.buttons["Done"].tap()
+            }
+        }
+
+        let firstWordNumber: Int = Int(self.app.staticTexts["firstWordLabel"].label.replacingOccurrences(of: "Word #", with: "")) ?? 0
+        self.app.textFields["firstWordTextField"].tap()
+        self.app.textFields["firstWordTextField"].typeText(paperKey[firstWordNumber - 1])
+        self.app.textFields["firstWordTextField"].typeText("\n")
+
+        let secondWordNumber = Int(self.app.staticTexts["secondWordLabel"].label.replacingOccurrences(of: "Word #", with: "")) ?? 0
+        self.app.textFields["secondWordTextField"].typeText(paperKey[secondWordNumber - 1])
+        self.app.textFields["secondWordTextField"].typeText("\n")
+
+        self.app.buttons["Submit"].tap()
+        
+        self.setupPassphrase()
+        self.setupTor()
+        
+        // Don't create a wallet until we have some stubbing.
+        // self.createWallet()
     }
 
     func testRestoreWallet() {
