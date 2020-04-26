@@ -55,26 +55,31 @@ class SetupiOSWalletTests: XCTestCase {
         self.setupTor()
         
         // Don't create a wallet until we have some stubbing.
-        // self.createWallet()
+        self.createWallet()
     }
 
     func testRestoreWallet() {
+        var words = [String]()
+        for _ in 0..<12 {
+            words.append(String(UUID().uuidString.prefix(4)))
+        }
+        
         // Welcome view
         XCTAssertTrue(self.app.buttons["Restore your wallet"].exists)
         self.app.buttons["Restore your wallet"].tap()
 
         self.setupPin()
-
+        
         // Restore enter paper key
         self.app.buttons["Start Restoring"].tap()
-        for _ in 0..<12 {
-            self.app.typeText("test")
+        for word in words {
+            self.app.typeText(word)
             self.app.typeText("\n")
         }
 
         // Check if paper key is correct
         XCTAssertTrue(self.app.staticTexts["Your paper key:"].exists)
-        let paperKey = self.app.staticTexts["test test test test test test test test test test test test"]
+        let paperKey = self.app.staticTexts[words.joined(separator: " ")]
         XCTAssertTrue(paperKey.waitForExistence(timeout: 5))
         self.app.buttons["Proceed"].tap()
 
@@ -118,9 +123,9 @@ class SetupiOSWalletTests: XCTestCase {
         XCTAssertTrue(self.app.staticTexts["Verge Currency\nHides your location"].waitForExistence(timeout: 5))
         self.app.swipeLeft()
         self.app.swipeLeft()
-        self.app.switches.element.tap()
+        // self.app.switches.element.tap()
 
-        let proceedWithTorButton = self.app.buttons["Proceed with Tor"]
+        let proceedWithTorButton = self.app.buttons["Proceed without Tor"]
         XCTAssertTrue(proceedWithTorButton.waitForExistence(timeout: 10))
         proceedWithTorButton.tap()
     }

@@ -1,0 +1,39 @@
+{
+  "bitcoreNode": {
+    "pruneSpentScripts": true,
+    "services": {
+      "api": {
+        "wallets": {
+          "allowCreationBeforeCompleteSync": true
+        },
+        "rateLimiter": {
+          "disabled": false,
+          "whitelist": [
+            "::ffff:127.0.0.1",
+            "::1",
+            "::ffff:172.30.0"
+          ]
+        }
+      }
+    },
+    "chains": {
+      "XVG": {
+        "mainnet": {
+          "chainSource": "p2p",
+          "trustedPeers": [
+            {
+              "host": "host.docker.internal",
+              "port": 21102
+            }
+          ],
+          "rpc": {
+            "host": "host.docker.internal",
+            "port": 20102,
+            "username": "RPCUSER",
+            "password": "RPCPASS"
+          }
+        }
+      }
+    }
+  }
+}

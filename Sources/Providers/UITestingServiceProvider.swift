@@ -17,5 +17,14 @@ class UITestingServiceProvider: ServiceProvider {
         if CommandLine.arguments.contains("--uitesting-reset") {
             NotificationCenter.default.post(name: .didDisconnectWallet, object: nil)
         }
+
+        let testVws = "http://localhost:3232/vws/api/"
+        let applicationRepository = container.resolve(ApplicationRepository.self)
+        let walletClient = container.resolve(WalletClientProtocol.self)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            applicationRepository?.walletServiceUrl = testVws
+            walletClient?.resetServiceUrl(baseUrl: testVws)
+        }
     }
 }

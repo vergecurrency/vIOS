@@ -1,0 +1,37 @@
+version: '3.7'
+networks:
+    default:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.30.0.0/16
+services:
+    database:
+        image: mongo:3.4-jessie
+        ports:
+            - "27017:27017"
+
+    bitcore-node:
+        image: hdsign/bitcore:latest
+        ports:
+            - "3000:3000"
+        environment:
+            - DB_HOST=${BN_MONGODB_HOST}
+            - DB_NAME=${BN_MONGODB_NAME}
+            - DB_PORT=${BN_MONGODB_PORT}
+        volumes:
+            - ./bitcore.config.json:/usr/src/app/bitcore.config.json
+        command: npm run node
+
+    bitcore-wallet-service:
+        image: hdsign/bitcore:latest
+        links:
+            - bitcore-node
+        ports:
+            - "3232:3232"
+        environment:
+            - BWS_MONGODB_URL=${BWS_MONGODB_URL}
+            - BWS_NODE_URL=${BWS_NODE_URL}
+        depends_on:
+            - bitcore-node
+        command: /usr/src/app/packages/bitcore-wallet-service/docker-cmd.sh
