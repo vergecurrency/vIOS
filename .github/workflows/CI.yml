@@ -49,6 +49,7 @@ jobs:
         run: |
           brew install docker-machine docker docker-compose
           sudo docker -v
+          brew services start docker-machine
           docker-compose -f ./Docker/docker-compose.yml up -d
         env:
             TRUSTED_XVG_MAINNET_PEER: verged
