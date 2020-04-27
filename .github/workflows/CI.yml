@@ -48,8 +48,8 @@ jobs:
       - name: Run Verge Wallet Service
         run: |
           brew install docker-machine docker docker-compose
-          sudo docker -v
-          docker-machine start
+          docker-machine create --driver virtualbox default
+          docker-machine env default
           sleep 30
           docker-compose -f ./Docker/docker-compose.yml up -d
         env:
