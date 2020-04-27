@@ -48,7 +48,7 @@ jobs:
       - name: Run Verge Wallet Service
         run: |
           brew install docker-machine docker docker-compose
-          sudo docker -version
+          sudo docker -v
           docker-compose -f ./Docker/docker-compose.yml up -d
         env:
             TRUSTED_XVG_MAINNET_PEER: verged
