@@ -47,10 +47,9 @@ jobs:
           swift-version: '5.2.2'
       - name: Run Verge Wallet Service
         run: |
-          brew install docker-machine docker docker-compose
-          curl -Lo ~/.docker/machine/cache/boot2docker.iso --create-dirs https://github.com/boot2docker/boot2docker/releases/latest/download/boot2docker.iso
-          docker-machine create --driver virtualbox default
-          docker-machine start default
+          brew cask install docker
+          open /Applications/Docker.app
+          sleep 10
           docker-compose -f ./Docker/docker-compose.yml up -d
         env:
             TRUSTED_XVG_MAINNET_PEER: verged
