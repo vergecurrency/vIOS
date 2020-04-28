@@ -55,7 +55,7 @@ class SetupiOSWalletTests: XCTestCase {
         self.setupTor()
         
         // Don't create a wallet until we have some stubbing.
-        self.createWallet()
+        // self.createWallet()
     }
 
     func testRestoreWallet() {
@@ -85,7 +85,7 @@ class SetupiOSWalletTests: XCTestCase {
 
         self.setupPassphrase()
         self.setupTor()
-        self.createWallet()
+        // self.createWallet()
     }
 
     private func setupPin() {

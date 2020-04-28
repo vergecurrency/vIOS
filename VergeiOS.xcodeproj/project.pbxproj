@@ -202,7 +202,6 @@
 		A3B2E2672148577000C31719 /* PlaceholderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E2662148577000C31719 /* PlaceholderTableView.swift */; };
 		A3B2E26A214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2E268214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift */; };
 		A3B2E26B214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B2E269214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib */; };
-		A3B69C58245627C100A7D1DA /* bitcore.config.json in Resources */ = {isa = PBXBuildFile; fileRef = A3B69C57245627C100A7D1DA /* bitcore.config.json */; };
 		A3B6B7092150234300E2F3DD /* ScrollViewEdger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */; };
 		A3B83F7824322F2000869E61 /* WalletNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B83F7724322F2000869E61 /* WalletNotificationView.swift */; };
 		A3B83F7A24322F2800869E61 /* WalletNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3B83F7924322F2800869E61 /* WalletNotificationView.xib */; };
@@ -654,9 +653,6 @@
 		A3B2E2662148577000C31719 /* PlaceholderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableView.swift; sourceTree = "<group>"; };
 		A3B2E268214857E600C31719 /* TransactionsPlaceholderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsPlaceholderTableViewCell.swift; sourceTree = "<group>"; };
 		A3B2E269214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionsPlaceholderTableViewCell.xib; sourceTree = "<group>"; };
-		A3B69C53245625BA00A7D1DA /* docker-compose.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "docker-compose.yml"; sourceTree = "<group>"; };
-		A3B69C57245627C100A7D1DA /* bitcore.config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bitcore.config.json; sourceTree = "<group>"; };
-		A3B69C5A24563B0400A7D1DA /* .env.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env.example; sourceTree = "<group>"; };
 		A3B6B7082150234300E2F3DD /* ScrollViewEdger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewEdger.swift; sourceTree = "<group>"; };
 		A3B83F7724322F2000869E61 /* WalletNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNotificationView.swift; sourceTree = "<group>"; };
 		A3B83F7924322F2800869E61 /* WalletNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletNotificationView.xib; sourceTree = "<group>"; };
@@ -1317,7 +1313,6 @@
 				A3215F012430CB9200F32436 /* PULL_REQUEST_TEMPLATE.md */,
 				A3215EFA2430CB9100F32436 /* readme-header.png */,
 				A305DDA6210694ED00911B64 /* README.md */,
-				A3B69C54245626EB00A7D1DA /* Docker */,
 				A37641112108E79800E04521 /* Frameworks */,
 				CA2B4A1E226B393300115B2D /* Localization */,
 				A33F6A6D20EEE485001492C2 /* Products */,
@@ -1505,16 +1500,6 @@
 				CAE81C0122ED750C00E11782 /* SecureLabel.swift */,
 			);
 			path = Labels;
-			sourceTree = "<group>";
-		};
-		A3B69C54245626EB00A7D1DA /* Docker */ = {
-			isa = PBXGroup;
-			children = (
-				A3B69C5A24563B0400A7D1DA /* .env.example */,
-				A3B69C53245625BA00A7D1DA /* docker-compose.yml */,
-				A3B69C57245627C100A7D1DA /* bitcore.config.json */,
-			);
-			path = Docker;
 			sourceTree = "<group>";
 		};
 		A3BB46D2244390C200C3EFEB /* Resources */ = {
@@ -2149,7 +2134,6 @@
 				A32F3C852439E9BB00474726 /* TorFixViewController.xib in Resources */,
 				A3EA38E622FA196900E89CF0 /* ConfirmSweepView.xib in Resources */,
 				CA93C6B3226EFF5A00A16B73 /* Setup.storyboard in Resources */,
-				A3B69C58245627C100A7D1DA /* bitcore.config.json in Resources */,
 				A38D6F7621BBFA6D00280FFE /* TorSetup1View.xib in Resources */,
 				07938404210DAD3800C3C799 /* RestoreGuide.storyboard in Resources */,
 				A3AA22022163F66B00160576 /* TorStatusIndicatorViewController.xib in Resources */,

@@ -1,4 +1,4 @@
-name: CI
+name: Default
 
 on: [push]
 
@@ -45,20 +45,6 @@ jobs:
         uses: YOCKOW/Action-setup-swift@master
         with:
           swift-version: '5.2.2'
-      - name: Run Verge Wallet Service
-        run: |
-          cd ./Docker
-          docker-compose up -d
-          cd ..
-        env:
-            TRUSTED_XVG_MAINNET_PEER: verged
-            TRUSTED_XVG_MAINNET_PEER_PORT: 21102
-            BITCORE_CONFIG_PATH: /usr/src/app/bitcore.config.json
-            BN_MONGODB_HOST: database
-            BN_MONGODB_NAME: bitcore
-            BN_MONGODB_PORT: 27017
-            BWS_NODE_URL: http://bitcore-node:3000
-            BWS_MONGODB_URL: mongodb://database:27017/vws
       - name: Run tests
         run: |
           fastlane test
