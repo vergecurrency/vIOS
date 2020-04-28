@@ -1,4 +1,4 @@
-name: CI
+name: Default
 
 on: [push]
 
@@ -50,8 +50,7 @@ jobs:
           brew install docker-machine docker docker-compose
           curl -Lo ~/.docker/machine/cache/boot2docker.iso --create-dirs https://github.com/boot2docker/boot2docker/releases/latest/download/boot2docker.iso
           docker-machine create --driver virtualbox default
-          eval "$(docker-machine env dev)"
-          sleep 30
+          docker-machine start default
           docker-compose -f ./Docker/docker-compose.yml up -d
         env:
             TRUSTED_XVG_MAINNET_PEER: verged
