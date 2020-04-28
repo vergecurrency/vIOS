@@ -49,7 +49,7 @@ jobs:
         run: |
           brew cask install docker
           sh ./Docker/startDocker.sh
-          docker-compose -f ./Docker/docker-compose.yml up -d
+          /usr/local/bin/docker-compose -f ./Docker/docker-compose.yml up -d
         env:
             TRUSTED_XVG_MAINNET_PEER: verged
             TRUSTED_XVG_MAINNET_PEER_PORT: 21102
