@@ -259,7 +259,7 @@
 
 // Themes
 
-"settings.themes.titleLabel"                = "Prachtige Thema's voor je walelt";
+"settings.themes.titleLabel"                = "Prachtige Thema's voor je wallet";
 "settings.themes.sectionHeaderTitle"        = "Kies een thema";
 "settings.themes.sectionFooterTitle"        = "Het veranderen van een thema zal de applicatie herstarten. Ook zul je je daarna super blij voelen omdat je wallet zo mooi is!";
 "settings.themes.iconsSectionHeaderTitle"   = "App icons";
