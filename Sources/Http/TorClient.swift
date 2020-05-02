@@ -71,6 +71,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
 
         self.config.cookieAuthentication = true
         self.config.dataDirectory = URL(fileURLWithPath: self.createDataDirectory())
+        self.config.controlSocket = self.config.dataDirectory?.appendingPathComponent("cp")
         self.config.arguments = [
             "--allow-missing-torrc",
             "--ignore-missing-torrc",
@@ -99,8 +100,16 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             self.setupThread()
         }
 
+        guard let controlSocket = self.config.controlSocket else {
+            self.log.error("tor client control socket not set")
+
+            NotificationCenter.default.post(name: .errorDuringTorConnection, object: nil)
+
+            return completion(false)
+        }
+
         // Initiate the controller.
-        self.controller = TorController(socketHost: "127.0.0.1", port: 39060)
+        self.controller = TorController(socketURL: controlSocket)
 
         // Start a tor thread.
         if (self.thread?.isExecuting ?? false) == false {
@@ -122,20 +131,15 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
         }
     }
 
-    func restart() {
+    func restart(completion: @escaping (Bool) -> Void = { bool in }) {
         self.log.info("tor client is restarting")
 
-        self.controller.disconnect()
-        self.isOperational = false
+        self.resign()
+
+        NotificationCenter.default.post(name: .didResignTorConnection, object: self)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.connectController(self.controller) { success in
-                if success {
-                    self.log.info("tor client connected")
-
-                    NotificationCenter.default.post(name: .didFinishTorStart, object: self)
-                }
-            }
+            self.start(completion: completion)
         }
     }
 
@@ -203,7 +207,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
     private func connectController(_ controller: TorController, completion: @escaping (Bool) -> Void) {
         do {
             if !controller.isConnected {
-                try self.controller?.connect()
+                try controller.connect()
                 NotificationCenter.default.post(name: .didConnectTorController, object: self)
             }
 

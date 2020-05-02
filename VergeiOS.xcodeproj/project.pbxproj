@@ -74,6 +74,7 @@
 		A32F3C7E2437231100474726 /* HiddenHttpSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F3C7D2437231100474726 /* HiddenHttpSessionTest.swift */; };
 		A32F3C842439E9BB00474726 /* TorFixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32F3C822439E9BB00474726 /* TorFixViewController.swift */; };
 		A32F3C852439E9BB00474726 /* TorFixViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A32F3C832439E9BB00474726 /* TorFixViewController.xib */; };
+		A338151E245E149200B896EA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A338151D245E149200B896EA /* .swiftlint.yml */; };
 		A338E698210CF725000D44EE /* LoadingTorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E697210CF725000D44EE /* LoadingTorViewController.swift */; };
 		A338E69A210D1FC4000D44EE /* PaperKeyWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */; };
 		A338E69C210D456D000D44EE /* ConfirmPaperkeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E69B210D456D000D44EE /* ConfirmPaperkeyViewController.swift */; };
@@ -534,6 +535,7 @@
 		A32F3C832439E9BB00474726 /* TorFixViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TorFixViewController.xib; sourceTree = "<group>"; };
 		A32F3CE4243CA5EC00474726 /* inputFile.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = inputFile.xcfilelist; sourceTree = "<group>"; };
 		A32F3CE5243CA5F700474726 /* outputFile.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = outputFile.xcfilelist; sourceTree = "<group>"; };
+		A338151D245E149200B896EA /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A338E697210CF725000D44EE /* LoadingTorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTorViewController.swift; sourceTree = "<group>"; };
 		A338E699210D1FC4000D44EE /* PaperKeyWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperKeyWordsViewController.swift; sourceTree = "<group>"; };
 		A338E69B210D456D000D44EE /* ConfirmPaperkeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPaperkeyViewController.swift; sourceTree = "<group>"; };
@@ -1346,6 +1348,7 @@
 		A33F6A6E20EEE485001492C2 /* VergeiOS */ = {
 			isa = PBXGroup;
 			children = (
+				A338151D245E149200B896EA /* .swiftlint.yml */,
 				A33F6A6F20EEE485001492C2 /* AppDelegate.swift */,
 				A33F6A7E20EEE487001492C2 /* Info.plist */,
 				A3C5C3CD21985B11003B6C02 /* sjcl.js */,
@@ -2167,6 +2170,7 @@
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
 				A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */,
 				CA8AEA2922CE88E200A0F087 /* AppIconMars.png in Resources */,
+				A338151E245E149200B896EA /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -86,9 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
 
-        // Resign Tor.
-        Application.container.resolve(TorClientProtocol.self)?.resign()
-
         // Show pincode
         self.showPinUnlockViewController(application)
     }
@@ -96,6 +93,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state;
         // here you can undo many of the changes made on entering the background.
+
+        // Restart Tor.
+        Application.container.resolve(TorClientProtocol.self)?.restart()
+
         self.log?.info("app delegate application will enter foreground")
     }
 
@@ -141,9 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.fillPinFor = .wallet
             vc.completion = { authenticated in
                 vc.dismiss(animated: true)
-
-                // Start the tor client
-                Application.container.resolve(TorClient.self)?.start()
             }
 
             self.log?.info("app delegate show unlock view")

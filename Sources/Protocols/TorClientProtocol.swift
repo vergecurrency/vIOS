@@ -14,7 +14,7 @@ protocol TorClientProtocol {
     var session: URLSession { get }
 
     func start(completion: @escaping (Bool) -> Void)
-    func restart()
+    func restart(completion: @escaping (Bool) -> Void)
     func resign()
     func getCircuits() -> Promise<[TorCircuit]>
 }
@@ -22,5 +22,9 @@ protocol TorClientProtocol {
 extension TorClientProtocol {
     func start(completion: @escaping (Bool) -> Void = { bool in }) {
         return self.start(completion: completion)
+    }
+
+    func restart(completion: @escaping (Bool) -> Void = { bool in }) {
+        return self.restart(completion: completion)
     }
 }
