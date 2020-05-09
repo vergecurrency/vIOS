@@ -8,17 +8,18 @@ import UIKit
 class TransactionProposalsTableViewController: EdgedTableViewController {
 
     var walletClient: WalletClientProtocol!
+    var txTransponder: TxTransponderProtocol!
     var proposals: [Vws.TxProposalResponse] = []
 
     var initialLoaded: Bool = false
     var hasProposals: Bool {
-        proposals.count > 0
+        return self.proposals.count > 0
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        refreshControl?.addTarget(
+        self.refreshControl?.addTarget(
             self,
             action: #selector(TransactionProposalsTableViewController.loadProposals),
             for: .valueChanged
@@ -28,7 +29,7 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
     }
 
     @objc func loadProposals() {
-        refreshControl?.beginRefreshing()
+        self.refreshControl?.beginRefreshing()
 
         self.walletClient.getTxProposals { proposals, error in
             self.initialLoaded = true
@@ -51,15 +52,15 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        1
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.hasProposals ? self.proposals.count : (self.initialLoaded ? 1 : 0)
+        return self.hasProposals ? self.proposals.count : (self.initialLoaded ? 1 : 0)
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        self.hasProposals ? "settings.transactions.removeProposal".localized : ""
+        return self.hasProposals ? "settings.wallet.cell.transactionsLabel".localized : ""
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +79,7 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
             return UITableViewCell()
         }
 
-        let proposal = proposals[indexPath.row]
+        let proposal = self.proposals[indexPath.row]
         let amount = NSNumber(value: Double(proposal.amount) / Constants.satoshiDivider).toXvgCurrency()
 
         cell.textLabel?.text = proposal.id
@@ -88,28 +89,61 @@ class TransactionProposalsTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if proposals.isEmpty {
+        if self.proposals.isEmpty {
             return
         }
 
-        let proposal = proposals[indexPath.row]
+        let proposal = self.proposals[indexPath.row]
 
         let sheet = UIAlertController(
-            title: "settings.transactions.removeProposal".localized,
-            message: "settings.transactions.releaseXvg".localized,
-            preferredStyle: .alert
+            title: "settings.transactions.resolveProposal".localized,
+            message: "settings.transactions.resolveOptions".localized,
+            preferredStyle: .actionSheet
         )
-        sheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
-        sheet.addAction(UIAlertAction(title: "defaults.remove".localized, style: .destructive) { _ in
-            self.refreshControl?.beginRefreshing()
 
-            self.walletClient.deleteTxProposal(txp: proposal) { _ in
+        sheet.addAction(UIAlertAction(title: "settings.transactions.retrySending".localized, style: .default) { _ in
+            self.txTransponder.send(txp: proposal) { _, errorResponse, error in
+                if let error = error {
+                    return self.showLoadingError(error: error)
+                }
+
+                if let errorResponse = errorResponse?.error as? Error {
+                    return self.showLoadingError(error: errorResponse)
+                }
+
+                self.showTxSent()
                 self.loadProposals()
             }
         })
 
+        sheet.addAction(UIAlertAction(
+            title: "settings.transactions.destroyTransaction".localized,
+            style: .destructive) { _ in
+                self.refreshControl?.beginRefreshing()
+
+                self.walletClient.deleteTxProposal(txp: proposal) { _ in
+                    self.loadProposals()
+                }
+            }
+        )
+
+        sheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+        sheet.centerPopoverController(to: self.view)
+
         self.present(sheet, animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+
+    private func showTxSent() {
+        let alert = UIAlertController(
+            title: "Transaction sent",
+            message: "The previously failed proposal successfully sent!",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.done".localized, style: .default))
+
+        self.present(alert, animated: true)
     }
 
     private func showLoadingError(error: Error) {

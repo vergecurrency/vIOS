@@ -285,7 +285,7 @@
 // Transaction Proposals
 
 "settings.transactions.title"               = "Transaction Proposals";
-"settings.transactions.descLabel"           = "All transaction proposals that failed during a transaction sequence are listed below. You need to delete them manually in order to release the funds.";
+"settings.transactions.descLabel"           = "All transaction proposals that failed during a transaction sequence are listed below. You can try to send a transaction again or destroy the transaction in order to release the funds.";
 
 // Service URL
 
@@ -499,9 +499,11 @@
 // TransactionProposalsTableViewController.swift
 // ----------------------------------------
 
-"settings.transactions.removeProposal"      = "Remove a proposal";
+"settings.transactions.resolveProposal"     = "Resolve failed proposal";
 "settings.transactions.noProposals"         = "No proposals";
-"settings.transactions.releaseXvg"          = "Release the XVG of this transaction proposal.";
+"settings.transactions.resolveOptions"      = "Choose one of the following options to resolve the failed transaction proposal.";
+"settings.transactions.retrySending"        = "Retry sending";
+"settings.transactions.destroyTransaction"  = "Destroy transaction";
 
 // ----------------------------------------
 // Tor Setup

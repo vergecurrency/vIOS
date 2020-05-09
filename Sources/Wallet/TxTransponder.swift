@@ -28,21 +28,21 @@ class TxTransponder: TxTransponderProtocol {
 
     func send(txp: Vws.TxProposalResponse, completion: @escaping CompletionType) {
         self.completion = completion
-        self.step = .publish
+        self.step = self.resolveTxpStatus(txp: txp)
 
         // Publish the tx proposal and start the sequence.
-        self.walletClient.publishTxProposal(txp: txp, completion: self.completionHandler)
+        self.progress(txp: txp)
     }
 
     private func progress(txp: Vws.TxProposalResponse) {
         previousTxp = txp
         switch step {
+        case .publish:
+            return self.walletClient.publishTxProposal(txp: txp, completion: self.completionHandler)
         case .sign:
             return self.walletClient.signTxProposal(txp: txp, completion: self.completionHandler)
         case .broadcast:
             return self.walletClient.broadcastTxProposal(txp: txp, completion: self.completionHandler)
-        default:
-            self.completionHandler(nil, nil, NSError(domain: "Whoops", code: 500))
         }
     }
 
@@ -89,5 +89,16 @@ class TxTransponder: TxTransponderProtocol {
         self.step = .publish
         self.previousTxp = nil
         self.completion(txp, errorResponse, error)
+    }
+    
+    private func resolveTxpStatus(txp: Vws.TxProposalResponse) -> Step {
+        switch txp.status {
+        case "pending":
+            return .sign
+        case "accepted":
+            return .broadcast
+        default:
+            return .publish
+        }
     }
 }
