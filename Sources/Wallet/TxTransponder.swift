@@ -35,7 +35,8 @@ class TxTransponder: TxTransponderProtocol {
     }
 
     private func progress(txp: Vws.TxProposalResponse) {
-        previousTxp = txp
+        self.previousTxp = txp
+
         switch step {
         case .publish:
             return self.walletClient.publishTxProposal(txp: txp, completion: self.completionHandler)
