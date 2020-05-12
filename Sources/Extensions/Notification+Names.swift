@@ -9,6 +9,7 @@
 import Foundation
 
 extension Notification.Name {
+    static let didBootApplication = Notification.Name("didBootApplication")
     static let didSetupWallet = Notification.Name("didSetupWallet")
     static let didDisconnectWallet = Notification.Name("didDisconnectWallet")
     static let themeChanged = Notification.Name("themeChanged")

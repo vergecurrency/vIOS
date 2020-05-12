@@ -34,7 +34,7 @@ class WalletSubscriber: Subscriber {
         self.transactionManager = transactionManager
         self.torClient = torClient
     }
-
+    
     @objc func didSetupWallet(notification: Notification) {
         self.walletTicker.start()
         self.fiatRateTicker.start()

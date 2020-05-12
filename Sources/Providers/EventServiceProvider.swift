@@ -57,6 +57,14 @@ class EventServiceProvider: ServiceProvider {
         self.register(name: CurrencySubscriber.typeName) { r in
             return CurrencySubscriber(fiatRateTicker: r.resolve(FiatRateTicker.self)!, log: r.resolve(Logger.self)!)
         }
+        
+        self.register(name: WalletStatusSubscriber.typeName) { r in
+            return WalletStatusSubscriber(
+                applicationRepository: r.resolve(ApplicationRepository.self)!,
+                walletManager: r.resolve(WalletManagerProtocol.self)!,
+                log: r.resolve(Logger.self)!
+            )
+        }
     }
 
     /// Boot all event subscribers

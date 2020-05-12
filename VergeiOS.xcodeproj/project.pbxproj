@@ -48,6 +48,7 @@
 		A316B0AF215454FB00FF5200 /* AddressValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A316B0AE215454FB00FF5200 /* AddressValidator.swift */; };
 		A31A99282208FA8C00213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
 		A31A99292208FB4200213F3E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E8FF32217B7ED700CB50ED /* Constants.swift */; };
+		A31AD7792469CAE300197ABC /* WalletStatusSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31AD7782469CAE300197ABC /* WalletStatusSubscriber.swift */; };
 		A31C2BCD242DF5B1004EDAEC /* EdgedFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */; };
 		A31C2BD4242E6174004EDAEC /* UIBarButtonItem+Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */; };
 		A3239D6422E60C2B00430F8B /* SweeperHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3239D6322E60C2B00430F8B /* SweeperHelper.swift */; };
@@ -487,6 +488,7 @@
 		A30D27972260D165000377F8 /* TxTransponderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TxTransponderTest.swift; sourceTree = "<group>"; };
 		A30D279A2260D2AD000377F8 /* WalletClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletClientProtocol.swift; sourceTree = "<group>"; };
 		A316B0AE215454FB00FF5200 /* AddressValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidator.swift; sourceTree = "<group>"; };
+		A31AD7782469CAE300197ABC /* WalletStatusSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStatusSubscriber.swift; sourceTree = "<group>"; };
 		A31C2BCC242DF5B1004EDAEC /* EdgedFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgedFormViewController.swift; sourceTree = "<group>"; };
 		A31C2BD3242E6174004EDAEC /* UIBarButtonItem+Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Completion.swift"; sourceTree = "<group>"; };
 		A3215EF82430CB9100F32436 /* install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = install.sh; sourceTree = "<group>"; };
@@ -1378,6 +1380,7 @@
 				A36B17CB243360FE00D327D8 /* ThemeSubscriber.swift */,
 				A36B17C3243350A600D327D8 /* TorConnectionSubscriber.swift */,
 				A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */,
+				A31AD7782469CAE300197ABC /* WalletStatusSubscriber.swift */,
 				A36B17C724335E5400D327D8 /* WalletSubscriber.swift */,
 				A36B17C524335D1300D327D8 /* WatchSubscriber.swift */,
 			);
@@ -2356,6 +2359,7 @@
 				A376412C210A500E00E04521 /* PaperKeyDescriptionViewController.swift in Sources */,
 				A305DDB02107889200911B64 /* UIColor+Default.swift in Sources */,
 				A3B186D522444DFC00B093C4 /* WalletContainerView.swift in Sources */,
+				A31AD7792469CAE300197ABC /* WalletStatusSubscriber.swift in Sources */,
 				A338E6AC210FD53E000D44EE /* WalletViewController.swift in Sources */,
 				A398B215212F0949004ACB73 /* DisconnectWalletViewController.swift in Sources */,
 				A38D6F7A21BBFA9700280FFE /* TorSetup3View.swift in Sources */,

@@ -8,5 +8,6 @@ import Promises
 
 protocol WalletManagerProtocol {
     func getWallet() -> Promise<Vws.WalletStatus>
+    func getStatus() -> Promise<Vws.WalletStatus>
     func scanWallet() -> Promise<Bool>
 }

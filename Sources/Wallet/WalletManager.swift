@@ -52,6 +52,10 @@ class WalletManager: WalletManagerProtocol {
             }
     }
 
+    func getStatus() -> Promise<Vws.WalletStatus> {
+        return self.open(nil)
+    }
+
     func scanWallet() -> Promise<Bool> {
         return Promise { fulfill, reject in
             self.walletClient.scanAddresses { error in

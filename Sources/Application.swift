@@ -68,6 +68,8 @@ class Application {
         )
 
         self.booted = true
+
+        NotificationCenter.default.post(name: .didBootApplication, object: self)
     }
 
 }
