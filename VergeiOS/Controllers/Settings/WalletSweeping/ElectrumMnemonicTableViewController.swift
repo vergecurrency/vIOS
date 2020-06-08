@@ -151,6 +151,8 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
                     self.showInvalidMnemonicAlert()
                 case SweeperHelper.Error.notEnoughBalance:
                     self.showNotEnoughBalanceAlert()
+                case BitcoreNodeClient.Error.txNotAccepted:
+                    self.showTxNotAcceptedAlert()
                 default:
                     self.showUnexpectedErrorAlert(error: error)
                 }
@@ -221,6 +223,12 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
     private func showInvalidMnemonicAlert() {
         self.dismissLoadingAlert().then { _ in
             self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
+        }
+    }
+    
+    private func showTxNotAcceptedAlert() {
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createTxNotAcceptedAlert(), animated: true)
         }
     }
 

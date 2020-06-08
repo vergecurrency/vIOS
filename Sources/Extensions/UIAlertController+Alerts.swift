@@ -150,6 +150,18 @@ extension UIAlertController {
 
         return alert
     }
+    
+    static func createTxNotAcceptedAlert() -> UIAlertController {
+        let alert = UIAlertController(
+            title: "alerts.txNotAccepted.title".localized,
+            message: "alerts.txNotAccepted.message".localized,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default))
+        
+        return alert
+    }
 
     static func createNoTxIDAlert() -> UIAlertController {
         let alert = UIAlertController(

@@ -177,6 +177,8 @@ class PaperWalletTableViewController: EdgedTableViewController {
                 switch error {
                 case SweeperHelper.Error.notEnoughBalance:
                     self.showNotEnoughBalanceAlert()
+                case BitcoreNodeClient.Error.txNotAccepted:
+                    self.showTxNotAcceptedAlert()
                 default:
                     self.showUnexpectedErrorAlert(error: error)
                 }
@@ -192,6 +194,12 @@ class PaperWalletTableViewController: EdgedTableViewController {
     private func showInvalidPrivateKeyAlert() {
         self.dismissLoadingAlert().then { _ in
             self.present(UIAlertController.createInvalidPrivateKeyAlert(), animated: true)
+        }
+    }
+    
+    private func showTxNotAcceptedAlert() {
+        self.dismissLoadingAlert().then { _ in
+            self.present(UIAlertController.createTxNotAcceptedAlert(), animated: true)
         }
     }
 

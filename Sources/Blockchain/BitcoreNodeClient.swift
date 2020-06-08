@@ -14,6 +14,7 @@ import Promises
 class BitcoreNodeClient: BitcoreNodeClientProtocol {
     enum Error: Swift.Error {
         case invalidUrl(url: String)
+        case txNotAccepted(rawTx: String)
         case noDataReturned
     }
 
@@ -44,7 +45,7 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
                 } catch {
                     self.log.error("bitcore node client error decoding send response: \(error.localizedDescription)")
 
-                    reject(error)
+                    reject(Error.txNotAccepted(rawTx: rawTx))
                 }
             }
         }
