@@ -78,7 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // to its current state in case it is terminated later.
         // If your application supports background execution, this method is called
         // instead of applicationWillTerminate: when the user quits.
-        self.log?.info("app delegate application did enter background")
+
+        // Show pincode
+        self.showPinUnlockViewController(application)
 
         // Stop wallet ticker.
         Application.container.resolve(WalletTicker.self)?.stop()
@@ -86,8 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Stop fiat rate ticker.
         Application.container.resolve(FiatRateTicker.self)?.stop()
 
-        // Show pincode
-        self.showPinUnlockViewController(application)
+        self.log?.info("app delegate application did enter background")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -127,7 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
 
-        if var topController = application.keyWindow?.rootViewController {
+        let keyWindow = application.windows.filter {$0.isKeyWindow}.first
+
+        if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
@@ -135,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let openedPinView = topController as? PinUnlockViewController {
                 openedPinView.closeButtonPushed(self)
 
-                return showPinUnlockViewController(application)
+                return self.showPinUnlockViewController(application)
             }
 
             let vc = PinUnlockViewController.createFromStoryBoard()
@@ -144,10 +147,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 vc.dismiss(animated: true)
             }
 
+            topController.present(vc, animated: false)
+
             self.log?.info("app delegate show unlock view")
 
-            topController.present(vc, animated: false)
+            return
         }
+
+        fatalError("No window found to present the pin unlock view over!")
     }
 
     /*

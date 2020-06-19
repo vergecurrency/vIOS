@@ -35,6 +35,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
         super.init(coder: aDecoder)
 
         self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
+        self.fiatRateTicker = Application.container.resolve(FiatRateTicker.self)!
 
         NotificationCenter.default.addObserver(
             self,

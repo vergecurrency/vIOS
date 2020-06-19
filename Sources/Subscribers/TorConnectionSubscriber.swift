@@ -42,6 +42,10 @@ class TorConnectionSubscriber: Subscriber {
 
     @objc func didStartTorThread(notification: Notification) {
         TorStatusIndicator.shared.setStatus(.disconnected)
+
+        if !self.applicationRepository.useTor {
+            TorStatusIndicator.shared.setStatus(.turnedOff)
+        }
     }
 
     @objc func didEstablishTorConnection(notification: Notification) {
@@ -50,6 +54,10 @@ class TorConnectionSubscriber: Subscriber {
 
     @objc func didResignTorConnection(notification: Notification) {
         TorStatusIndicator.shared.setStatus(.disconnected)
+
+        if !self.applicationRepository.useTor {
+            TorStatusIndicator.shared.setStatus(.turnedOff)
+        }
     }
 
     @objc func didTurnOffTor(notification: Notification) {
