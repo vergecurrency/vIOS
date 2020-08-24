@@ -25,6 +25,7 @@ DerivedData/
 Carthage/
 test_output/
 .DS_STORE
+.idea/
 
 # fastlane specific
 fastlane/report.xml
