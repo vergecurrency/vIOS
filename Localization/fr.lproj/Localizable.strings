@@ -166,6 +166,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Monnaie Fiat";
 "settings.settings.cell.changePinLabel" = "Changer le PIN du porte-monnaie";
 "settings.settings.cell.useFaceIdLabel" = "Utiliser Face ID";
+"settings.settings.cell.useNFCLabel" = "Utiliser NFC";
 "settings.settings.cell.torConnectionLabel" = "Connexion Tor";
 "settings.other.header.title" = "Autre";
 "settings.other.cell.supportLabel" = "Soutien";
@@ -220,6 +221,12 @@
 "settings.useFaceID.footer.title" = "Au lieu d’avoir besoin de saisir le code PIN de votre porte-monnaie, une invite vous fournira un autre moyen de vous authentifier.";
 "settings.useFaceID.unlockLabel" = "Déverrouiller votre porte-monnaie";
 "settings.useFaceID.sendingLabel" = "Envoyer des XVG";
+
+/*Use NFC*/
+"settings.useNFC.title" = "Use NFC";
+"settings.useNFC.header.title" = "Use for";
+"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel" = "NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor est là pour votre vie privée et cache votre emplacement";

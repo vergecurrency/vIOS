@@ -199,6 +199,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "Фиатная валюта";
 "settings.settings.cell.changePinLabel"     = "Сменить Пин-код";
 "settings.settings.cell.useFaceIdLabel"     = "Использование Face ID";
+"settings.settings.cell.useNFCLabel"        = "Использование NFC";
 "settings.settings.cell.torConnectionLabel" = "Tor-соединение";
 
 "settings.other.header.title"               = "Другое";
@@ -261,6 +262,13 @@
 "settings.useFaceID.footer.title"           = "Вместо того, чтобы вводить PIN-код Вашего кошелька, Вам будет предложен альтернативный способ аутентификации.";
 "settings.useFaceID.unlockLabel"            = "Разблокировки Вашего кошелька";
 "settings.useFaceID.sendingLabel"           = "При отправке XVG";
+
+// Use NFC
+
+"settings.useNFC.title"                     = "Use NFC";
+"settings.useNFC.header.title"              = "Use for";
+"settings.useNFC.footer.title"              = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel"               = "NFC";
 
 // Tor connection
 

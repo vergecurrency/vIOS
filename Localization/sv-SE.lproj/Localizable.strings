@@ -168,6 +168,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Ändra plånbokens pinkod";
 "settings.settings.cell.useFaceIdLabel" = "Använd ansiktsigenkänning";
+"settings.settings.cell.useNFCLabel" = "Använd NFC";
 "settings.settings.cell.torConnectionLabel" = "Tor anslutning";
 "settings.other.header.title" = "Andra";
 "settings.other.cell.supportLabel" = "Stöd";
@@ -222,6 +223,12 @@
 "settings.useFaceID.footer.title" = "Istället för att fylla i plånbokens pinkod i en prompt erbjuds alternativa sätt att identifiera dig själv.";
 "settings.useFaceID.unlockLabel" = "Låser upp din plånbok";
 "settings.useFaceID.sendingLabel" = "Skickar XVG";
+
+/*Use NFC*/
+"settings.useNFC.title" = "Use NFC";
+"settings.useNFC.header.title" = "Use for";
+"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel" = "NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor finns här för din integritet och döljer din platsposition";

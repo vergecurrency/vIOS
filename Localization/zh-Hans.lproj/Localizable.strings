@@ -199,6 +199,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "法定货币";
 "settings.settings.cell.changePinLabel"     = "更改钱包PIN码";
 "settings.settings.cell.useFaceIdLabel"     = "使用面容ID";
+"settings.settings.cell.useNFCLabel"        = "使用NFC";
 "settings.settings.cell.torConnectionLabel" = "Tor连接";
 
 "settings.other.header.title"               = "其它";
@@ -268,6 +269,13 @@
 "settings.useFaceID.footer.title"           = "相比较于提供你的钱包PIN码,面容ID提供了一种代替的验证方法.";
 "settings.useFaceID.unlockLabel"            = "解锁你的钱包";
 "settings.useFaceID.sendingLabel"           = "发送XVG";
+
+// Use NFC
+
+"settings.useNFC.title"                     = "Use NFC";
+"settings.useNFC.header.title"              = "Use for";
+"settings.useNFC.footer.title"              = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel"               = "NFC";
 
 // Tor connection
 

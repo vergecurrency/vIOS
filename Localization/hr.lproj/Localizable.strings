@@ -166,6 +166,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Promijeni PIN";
 "settings.settings.cell.useFaceIdLabel" = "Koristi Face ID";
+"settings.settings.cell.useNFCLabel" = "Koristi NFC";
 "settings.settings.cell.torConnectionLabel" = "TOR povezivost";
 "settings.other.header.title" = "Ostalo";
 "settings.other.cell.supportLabel" = "Podrška";
@@ -220,6 +221,12 @@
 "settings.useFaceID.footer.title" = "Pružit će vam se alternativni način provjere autentičnosti, umjesto potrebe za upisivanjem PIN-a novčanika.";
 "settings.useFaceID.unlockLabel" = "Otključavanje vašeg novčanika";
 "settings.useFaceID.sendingLabel" = "Šaljem XVG";
+
+/*Use NFC*/
+"settings.useNFC.title" = "Use NFC";
+"settings.useNFC.header.title" = "Use for";
+"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel" = "NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "TOR je ovdje zbog privatnosti, i on skriva Vašu lokaciju";

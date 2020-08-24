@@ -204,6 +204,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "Fiat currency";
 "settings.settings.cell.changePinLabel"     = "Change wallet PIN";
 "settings.settings.cell.useFaceIdLabel"     = "Use Face ID";
+"settings.settings.cell.useNFCLabel"        = "Use NFC";
 
 "settings.other.header.title"               = "Other";
 "settings.other.cell.supportLabel"          = "Support";
@@ -239,8 +240,8 @@
 
 // Support
 
-"settings.support.titleLabel"               = "Could you really use some support?";
-"settings.support.descLabel"                = "Do you experience problems with your wallet? Or do you simply have questions? The Verge Currency community is always available!";
+"settings.support.titleLabel"               = "Do you need some support?";
+"settings.support.descLabel"                = "Are you experiencing a problem with your wallet? Or do you simply have a question? The Verge Currency community is always available!";
 
 // Private key wallet sweeping
 
@@ -313,6 +314,14 @@
 "settings.useFaceID.footer.title"           = "Instead of having the need of filling in your wallet PIN a prompt will provide you with the alternative way of authenticating yourself.";
 "settings.useFaceID.unlockLabel"            = "Unlocking your wallet";
 "settings.useFaceID.sendingLabel"           = "Sending XVG";
+
+
+// Use NFC
+
+"settings.useNFC.title"                  = "Use NFC";
+"settings.useNFC.header.title"           = "Use for";
+"settings.useNFC.footer.title"           = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel"            = "NFC";
 
 // Tor connection
 

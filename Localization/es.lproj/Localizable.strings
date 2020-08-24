@@ -168,6 +168,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Moneda fiduciaria";
 "settings.settings.cell.changePinLabel" = "Cambiar el PIN del monedero";
 "settings.settings.cell.useFaceIdLabel" = "Utilizar ID facial";
+"settings.settings.cell.useNFCLabel" = "Utilizar NFC";
 "settings.settings.cell.torConnectionLabel" = "Conexión Tor";
 "settings.other.header.title" = "Otros";
 "settings.other.cell.supportLabel" = "Apoyo";
@@ -222,6 +223,12 @@
 "settings.useFaceID.footer.title" = "En lugar de tener la necesidad de ingresar el PIN del monedero, se desplegará una forma alternativa de autenticarse.";
 "settings.useFaceID.unlockLabel" = "Desbloquear monedero";
 "settings.useFaceID.sendingLabel" = "Enviando XVG";
+
+/*Use NFC*/
+"settings.useNFC.title" = "Use NFC";
+"settings.useNFC.header.title" = "Use for";
+"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
+"settings.useNFC.toggleLabel" = "NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor mantiene su privacidad y oculta su ubicación";
