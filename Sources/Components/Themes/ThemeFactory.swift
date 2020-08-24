@@ -24,7 +24,7 @@ class ThemeFactory: NSObject {
         var featherMode = Theme(
             name: "settings.themes.featherMode".localized,
             id: "featherMode",
-            icon: UIImage(named: "Feather")!,
+            icon: UIImage(named: "Feather") ?? UIImage(),
 
             primaryDark: UIColor(rgb: 0x112034),
             primaryLight: UIColor(rgb: 0x37BCE1),
@@ -71,7 +71,7 @@ class ThemeFactory: NSObject {
         let moonMode = Theme(
             name: "settings.themes.moonMode".localized,
             id: "moonMode",
-            icon: UIImage(named: "Moon")!,
+            icon: UIImage(named: "Moon") ?? UIImage(),
 
             primaryDark: UIColor(rgb: 0xDCEFFC),
             primaryLight: UIColor(rgb: 0x37BCE1),
@@ -114,7 +114,7 @@ class ThemeFactory: NSObject {
         let marsMode = Theme(
             name: "settings.themes.marsMode".localized,
             id: "marsMode",
-            icon: UIImage(named: "Mars")!,
+            icon: UIImage(named: "Mars") ?? UIImage(),
 
             primaryDark: UIColor(rgb: 0xDCEFFC),
             primaryLight: UIColor(rgb: 0xFF5A25),
@@ -157,7 +157,7 @@ class ThemeFactory: NSObject {
         let featherAppIcon = AppIcon(
             name: "Default",
             id: "AppIconFeather",
-            icon: UIImage(named: "AppIconFeather")!
+            icon: UIImage(named: "AppIconFeather") ?? UIImage()
         )
 
         return featherAppIcon
@@ -167,7 +167,7 @@ class ThemeFactory: NSObject {
         let moonAppIcon = AppIcon(
             name: "Moon",
             id: "AppIconMoon",
-            icon: UIImage(named: "AppIconMoon")!
+            icon: UIImage(named: "AppIconMoon") ?? UIImage()
         )
 
         return moonAppIcon
@@ -177,7 +177,7 @@ class ThemeFactory: NSObject {
         let marsAppIcon = AppIcon(
             name: "Mars",
             id: "AppIconMars",
-            icon: UIImage(named: "AppIconMars")!
+            icon: UIImage(named: "AppIconMars") ?? UIImage()
         )
 
         return marsAppIcon
