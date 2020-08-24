@@ -287,7 +287,11 @@ class SendViewController: ThemeableViewController {
             if !aunthenticated {
                 return
             }
-
+            
+            //Bundle.main.loadNibNamed(String(describing: SendingView.self, owner: self, options: nil))
+            //addsubview(SendingView)
+            //let SendingView = Bundle(for: SendingView.self) SendingView.loadNibNamed(String(describing: SendingView.Self), owner: self, options: nil)
+            
             let sendingView = Bundle.main.loadNibNamed(
                 "SendingView",
                 owner: self

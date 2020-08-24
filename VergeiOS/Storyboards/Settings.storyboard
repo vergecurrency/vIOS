@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -408,19 +408,50 @@
                                             <segue destination="9dK-qh-T3Q" kind="show" identifier="LocalAuthTableViewController" id="iuz-iB-hAd"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="xGN-3G-OQG" imageView="QNk-36-wfP" rowHeight="44" style="IBUITableViewCellStyleDefault" id="leG-nd-Ro0">
+                                        <rect key="frame" x="16" y="683" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="leG-nd-Ro0" id="xgA-QO-hZ4">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use NFC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGN-3G-OQG">
+                                                    <rect key="frame" x="60" y="0.0" width="268" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.settings.cell.useNFCLabel"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="NFCIcon-2" id="QNk-36-wfP">
+                                                    <rect key="frame" x="15" y="7" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="tintColor" name="PrimaryLight"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="settings.other.header.title" id="851-dY-3HQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="MRz-oI-DwF" imageView="0ce-JP-wCe" rowHeight="44" style="IBUITableViewCellStyleDefault" id="Alf-Kj-maP">
-                                        <rect key="frame" x="16" y="739" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="783" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Alf-Kj-maP" id="bT1-dJ-LyA">
-                                            <rect key="frame" x="0.0" y="0.0" width="317" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MRz-oI-DwF">
-                                                    <rect key="frame" x="60" y="0.0" width="249" height="44"/>
+                                                    <rect key="frame" x="53" y="0.0" width="263" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -430,7 +461,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="Help" id="0ce-JP-wCe">
-                                                    <rect key="frame" x="15" y="7" width="30" height="30"/>
+                                                    <rect key="frame" x="8" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
@@ -447,7 +478,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="GH3-fq-JmU" imageView="4Iw-QV-tpi" style="IBUITableViewCellStyleDefault" id="gI3-tG-yI1">
-                                        <rect key="frame" x="16" y="783" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="827" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gI3-tG-yI1" id="kPn-8m-d5l">
                                             <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
@@ -481,7 +512,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="fgj-Qr-47L" imageView="e4M-oV-doz" style="IBUITableViewCellStyleDefault" id="utf-xQ-5Db">
-                                        <rect key="frame" x="16" y="827" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="871" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="rate-app" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="utf-xQ-5Db" id="VUL-8Q-op7">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -512,7 +543,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="MTd-OH-Pk3" imageView="Evd-nQ-Tdg" style="IBUITableViewCellStyleDefault" id="KlG-qn-o8u">
-                                        <rect key="frame" x="16" y="871" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="915" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KlG-qn-o8u" id="bxO-vx-HfN">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -543,7 +574,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="xDW-yi-Zdc" imageView="wSj-ma-mnW" style="IBUITableViewCellStyleDefault" id="Hvr-kn-Utc">
-                                        <rect key="frame" x="16" y="915" width="343" height="44"/>
+                                        <rect key="frame" x="16" y="959" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hvr-kn-Utc" id="LYc-J3-CSD">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -1782,7 +1813,7 @@ But you can always turn Tor off.</string>
                             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Lets sweep a wallet into your iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8I-YO-b9c" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lets sweep a wallet into your iOS wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8I-YO-b9c" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="8" width="295" height="60.5"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="7G5-T2-zwO"/>
@@ -1835,7 +1866,7 @@ But you can always turn Tor off.</string>
                             <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could you really use some support?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E9-6f-Rqb" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you need some support?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E9-6f-Rqb" customClass="TitleLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="8" width="295" height="68"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="BxQ-6r-Xqe"/>
@@ -1847,11 +1878,12 @@ But you can always turn Tor off.</string>
                                         <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.support.titleLabel"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you expirience problems with your wallet? Or do you simply have questions? The Verge Currency community is always available!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n14-u8-2RT" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="n14-u8-2RT" customClass="TextLabel" customModule="VergeiOS" customModuleProvider="target">
                                     <rect key="frame" x="40" y="96" width="295" height="99"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="99" id="lbR-92-eDi"/>
                                     </constraints>
+                                    <string key="text">Are you experiencing a problem with your wallet? Or do you simply have a question? The Verge Currency community is always available!</string>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                     <color key="textColor" name="SecondaryDark"/>
                                     <nil key="highlightedColor"/>
@@ -1893,6 +1925,7 @@ But you can always turn Tor off.</string>
         <image name="GitHub" width="30" height="30"/>
         <image name="Help" width="30" height="30"/>
         <image name="Hero" width="30" height="30"/>
+        <image name="NFCIcon-2" width="30" height="30"/>
         <image name="PaperKeyAlt" width="30" height="30"/>
         <image name="PaperkeyPlaceholder" width="842" height="596"/>
         <image name="Pin" width="30" height="30"/>
