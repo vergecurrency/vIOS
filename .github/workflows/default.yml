@@ -18,7 +18,7 @@ jobs:
       - name: Bundle Install
         run: |
           bundle install
-      - name: Use Swift 5.2.2
+      - name: Use Swift 5.2.4
         uses: YOCKOW/Action-setup-swift@master
         with:
           swift-version: '5.2.4'
@@ -41,7 +41,7 @@ jobs:
         with:
           path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-      - name: Use Swift 5.2.2
+      - name: Use Swift 5.2.4
         uses: YOCKOW/Action-setup-swift@master
         with:
           swift-version: '5.2.4'
