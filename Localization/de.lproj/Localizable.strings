@@ -228,7 +228,8 @@
 "settings.useNFC.title" = "Use NFC";
 "settings.useNFC.header.title" = "Use for";
 "settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.toggleLabel" = "NFC";
+"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
+"settings.useNFC.nfcSendLabel" = "Populating Send Details";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor ist für deine Privatsphäre zuständig und versteckt deinen Standort.";
