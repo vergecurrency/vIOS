@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aj0-hD-wgD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aj0-hD-wgD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -85,7 +85,7 @@
                                             <constraint firstItem="dFl-JU-45f" firstAttribute="centerX" secondItem="zNH-AC-gCI" secondAttribute="centerX" id="lSp-hP-en0"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="moS-y5-INY">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="moS-y5-INY">
                                         <rect key="frame" x="0.0" y="260" width="375" height="314"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="orP-g5-KpQ">
@@ -118,7 +118,7 @@
                                                                             <userDefinedRuntimeAttribute type="string" keyPath="localizationLabelId" value="send.addressButtonLabel"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the recipient address" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="OF3-fl-QB1">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter the recipient address" textAlignment="natural" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OF3-fl-QB1">
                                                                         <rect key="frame" x="0.0" y="10" width="323" height="40"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="40" id="Qst-IT-9q3"/>
@@ -298,6 +298,35 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anb-D2-7Fd">
+                                                <rect key="frame" x="0.0" y="186" width="375" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvf-L7-lnU" userLabel="Initiate NFC">
+                                                        <rect key="frame" x="157.5" y="10" width="60" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="60" id="bxN-kU-390"/>
+                                                        </constraints>
+                                                        <color key="tintColor" name="PrimaryLight"/>
+                                                        <state key="normal" image="NFCIcon-2"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="0.0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="initiateNfc:" destination="aj0-hD-wgD" eventType="touchUpInside" id="yDd-Pn-h6O"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="wvf-L7-lnU" firstAttribute="centerY" secondItem="anb-D2-7Fd" secondAttribute="centerY" id="CL4-gh-FCU"/>
+                                                    <constraint firstItem="wvf-L7-lnU" firstAttribute="centerX" secondItem="anb-D2-7Fd" secondAttribute="centerX" id="bDb-Yc-fFl"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t83-X2-mLR">
                                                 <rect key="frame" x="0.0" y="244" width="375" height="70"/>
                                                 <subviews>
@@ -330,6 +359,10 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="anb-D2-7Fd" firstAttribute="centerX" secondItem="moS-y5-INY" secondAttribute="centerX" id="V1D-vi-dOw"/>
+                                            <constraint firstItem="t83-X2-mLR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="anb-D2-7Fd" secondAttribute="bottom" constant="5" id="aF0-KK-aOA"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -412,6 +445,7 @@ Please increase your balance.</string>
                         <outlet property="currencyLabel" destination="sIN-AK-ry6" id="mk4-2L-Ac8"/>
                         <outlet property="fiatWalletAmountLabel" destination="nNd-oW-MwN" id="X4c-as-cG9"/>
                         <outlet property="memoTextField" destination="dpu-X4-OV3" id="LYr-J5-e1B"/>
+                        <outlet property="nfcInitiator" destination="wvf-L7-lnU" id="wfp-5M-2Y5"/>
                         <outlet property="noBalanceView" destination="9p4-gg-a9I" id="CO0-mv-FxX"/>
                         <outlet property="recipientTextField" destination="OF3-fl-QB1" id="9cc-xT-hSP"/>
                         <outlet property="walletAmountLabel" destination="JLd-Rc-cv0" id="v14-yB-Q8U"/>
@@ -611,6 +645,7 @@ Please increase your balance.</string>
         <image name="FlashOn" width="30" height="30"/>
         <image name="HDWallet" width="93" height="55"/>
         <image name="Image" width="30" height="30"/>
+        <image name="NFCIcon-2" width="30" height="30"/>
         <image name="NoBalancePlaceholder" width="300" height="300"/>
         <image name="Payment" width="30" height="30"/>
         <image name="QRcode" width="30" height="30"/>

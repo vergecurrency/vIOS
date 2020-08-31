@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreNFC
 
 // swiftlint:disable file_length type_body_length
-class SendViewController: ThemeableViewController {
+class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate {
 
     enum CurrencySwitch {
         case XVG
@@ -25,6 +26,7 @@ class SendViewController: ThemeableViewController {
     @IBOutlet weak var amountTextField: CurrencyInput!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var nfcInitiator: UIButton!
 
     var currency = CurrencySwitch.XVG
     var txFactory: WalletTransactionFactory!
@@ -32,6 +34,19 @@ class SendViewController: ThemeableViewController {
     var applicationRepository: ApplicationRepository!
     var walletClient: WalletClientProtocol!
     var waitingForConfirmationPopover: Bool = false
+
+    var detectedNfcMessages = [NFCNDEFMessage]()
+    var nfcSession: NFCNDEFReaderSession?
+    var nfcAvailable = false
+    var nfcActive = false
+
+    var nfcIsVergeAddress = false
+    var nfcAddress = ""
+    var nfcLabel = ""
+    var nfcPaymentAmount = ""
+    var nfcPaymentCurrency = "XVG"
+    var nfcValidStandardAddress = false
+    var nfcValidStealthAddress = false
 
     weak var confirmButtonInterval: Timer?
 
@@ -85,6 +100,15 @@ class SendViewController: ThemeableViewController {
             name: .didChangeWalletAmount,
             object: nil
         )
+
+        if #available(iOS 13.0, *) {
+            if (NFCNDEFReaderSession.readingAvailable) {
+                nfcAvailable = true
+                if (applicationRepository.useNfc) {
+                    nfcActive = true
+                }
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +126,8 @@ class SendViewController: ThemeableViewController {
 
         self.updateWalletAmountLabel()
         self.updateAmountLabel()
+
+        self.checkNfcInitiator()
     }
 
     @objc func didReceiveFiatRatings(_ notification: Notification) {
@@ -169,6 +195,248 @@ class SendViewController: ThemeableViewController {
         }
 
         return nil
+    }
+
+    // MARK: - NFC Functions
+
+    func readerSession(_ nfcSession: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
+        // Processing Tag Data
+        DispatchQueue.main.async {
+            // Process detected NFCNDEFMessage object
+            self.detectedNfcMessages.append(contentsOf: messages)
+            //self.tableView.reloadData()
+        }
+    }
+
+    @available(iOS 13.0, *)
+    func readerSession(_ nfcSession: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
+        // Processing NDEF Tag
+        if tags.count > 1 {
+            // Restart polling in 500ms
+            let retryInterval = DispatchTimeInterval.milliseconds(500)
+            nfcSession.alertMessage = "More than 1 tag was detected, please try again."
+            DispatchQueue.global().asyncAfter(deadline: .now() + retryInterval, execute: {
+                nfcSession.restartPolling()
+            })
+            return
+        }
+
+        // Connect to the found tag and perform NDEF message reading
+        let tag = tags.first!
+        nfcSession.connect(to: tag, completionHandler: { (error: Error?) in
+            if nil != error {
+                nfcSession.alertMessage = "Unable to read Tag."
+                nfcSession.invalidate()
+                return
+            }
+
+            tag.queryNDEFStatus(completionHandler: { (ndefStatus: NFCNDEFStatus, _: Int, error: Error?) in
+                if .notSupported == ndefStatus {
+                    nfcSession.alertMessage = "Tag format is invalid or corrupted"
+                    // Tag is not NDEF compliant
+                    nfcSession.invalidate()
+                    return
+                } else if nil != error {
+                    nfcSession.alertMessage = "Tag format is invalid or corrupted"
+                    // Unable to query NDEF status of tag
+                    nfcSession.invalidate()
+                    return
+                }
+
+                tag.readNDEF(completionHandler: { (message: NFCNDEFMessage?, error: Error?) in
+                    var statusMessage: String
+                    if nil != error || nil == message {
+                        statusMessage = "Unable to read Tag"
+                    } else {
+                        statusMessage = "Tag read successfully!"
+                        DispatchQueue.main.async {
+                            self.processNfcMessage(message: message)
+                        }
+                    }
+
+                    nfcSession.alertMessage = statusMessage
+                    nfcSession.invalidate()
+                })
+            })
+        })
+    }
+
+    func readerSessionDidBecomeActive(_ nfcSession: NFCNDEFReaderSession) {
+        // Do nothing
+    }
+
+    func readerSession(_ nfcSession: NFCNDEFReaderSession, didInvalidateWithError error: Error) {
+        // End Scanning
+    }
+
+    @available(iOS 13.0, *)
+    func processNfcMessage(message: NFCNDEFMessage?) {
+        let payload = message!.records[0]
+
+        switch payload.typeNameFormat {
+
+        case .nfcWellKnown:
+            if String(data: payload.type, encoding: .utf8) != nil {
+                if let url = payload.wellKnownTypeURIPayload() {
+
+                    let rawNFCDataArr = url.absoluteString.split(separator: "?")
+
+                    // Validate Verge Address Type
+                    self.nfcIsVergeAddress = (rawNFCDataArr[0] == "https://tag.vergecurrency.business/")
+
+                    if (nfcIsVergeAddress) {
+                        self.processVergeDataTag(rawNFCDataArr: rawNFCDataArr[1])
+                    }
+                }
+            }
+
+        case .absoluteURI, .media, .nfcExternal, .empty, .unknown, .unchanged:
+            fallthrough
+        @unknown default:
+            ()
+        }
+
+    }
+
+    func processVergeDataTag(rawNFCDataArr: String.SubSequence) {
+        // Separate any Address Params into an array
+        let vergeNFCDataComponents = rawNFCDataArr.split(separator: "&")
+
+        // Grab the url params if they exist, and remove the urlparam itself
+        for eachUrlParam in vergeNFCDataComponents {
+
+            switch eachUrlParam {
+            case let urlParam where urlParam.contains("address="):
+                self.nfcAddress = String(eachUrlParam.replacingOccurrences(of: "address=", with: ""))
+
+                // Validate Standard Verge Address
+                // Reqd Length: 34
+                self.nfcValidStandardAddress = (nfcAddress.count == 34)
+                // Is there a function which can validate an address?
+
+                // Validate Stealth Address
+                // Reqd Length: 102
+                self.nfcValidStealthAddress = (nfcAddress.count == 102)
+                // Is there a function which can validate a Stealth address?
+
+            case let urlParam where urlParam.contains("label="):
+                self.nfcLabel = String(eachUrlParam.replacingOccurrences(of: "label=", with: ""))
+                self.nfcLabel = self.nfcLabel.removingPercentEncoding!
+
+            case let urlParam where urlParam.contains("amount="):
+                self.nfcPaymentAmount = String(eachUrlParam.replacingOccurrences(of: "amount=", with: ""))
+
+            case let urlParam where urlParam.contains("currency="):
+                self.nfcPaymentCurrency = String(eachUrlParam.replacingOccurrences(of: "currency=", with: ""))
+
+                switch self.nfcPaymentCurrency {
+                case "XVG",
+                     "AUD", "BRL", "CAD", "CHF", "CNY",
+                     "DKK", "EUR", "GBP", "HKD", "IDR",
+                     "NZD", "RUB", "SGD", "THB", "USD":
+                    () // OK - Supported Currencies
+                default:
+                    self.nfcPaymentCurrency = "XVG" // Unsupported - revert to XVG
+                }
+
+            default:
+                () // Ignore
+            }
+
+        }
+
+        if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
+            self.populateNfcDataToSendView()
+        }
+
+        /*if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
+            let alertController = UIAlertController(
+                title: "TESTING",
+                message: "Parsed NFC TAG Data:" +
+                "\n\nStandard Address? " + (nfcValidStandardAddress ? "Yes" : "No") +
+                "\nStealth Address? " + (nfcValidStealthAddress ? "Yes" : "No") +
+                (nfcAddress.count > 0 ? ("\n\nAddress: " + nfcAddress) : "") +
+                (nfcLabel.count > 0 ? ("\n\nLabel: " + nfcLabel) : "") +
+                (nfcPaymentAmount.count > 0 ? ("\n\nAmount: " + nfcPaymentAmount) : "") +
+                (nfcPaymentCurrency.count > 0 ? ("\n\nCurrency: " + nfcPaymentCurrency) : ""),
+                preferredStyle: .alert
+            )
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        */
+
+    }
+
+    func populateNfcDataToSendView() {
+        if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
+            // At this point we have all the data required to
+            // set the Address, Description, Amount and Currency of the transaction.
+
+            if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
+                recipientTextField.text = self.nfcAddress
+            }
+
+            if (self.nfcLabel.count > 0) {
+                memoTextField.text = self.nfcLabel
+            }
+
+            if (self.nfcPaymentAmount.count > 0) {
+                amountTextField.text = self.nfcPaymentAmount
+            }
+
+            if (self.nfcPaymentCurrency.count > 0) {
+                // This is where I mentioned we could auto convert the supplied
+                // fiat currency into XVG automatically, or use XVG if specified -
+                // instead of only allowing their currently selected fiat currency.
+                // target = self.nfcPaymentCurrency
+            }
+
+            self.resetNfcVariables()
+        }
+    }
+
+    func resetNfcVariables() {
+        self.nfcIsVergeAddress = false
+        self.nfcAddress = ""
+        self.nfcLabel = ""
+        self.nfcPaymentAmount = ""
+        self.nfcPaymentCurrency = "XVG"
+        self.nfcValidStandardAddress = false
+        self.nfcValidStealthAddress = false
+    }
+
+    @IBAction func initiateNfc(_ sender: Any) {
+        if (nfcActive) {
+            nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
+            nfcSession?.alertMessage = "Hold your iPhone near the Verge Tag." // Tap to Pay sticker
+            nfcSession?.begin()
+        }
+    }
+
+    func checkNfcInitiator () {
+        if (nfcActive) {
+            // Leave it alone
+            elementFadeInOut(view: nfcInitiator, delay: 0.5)
+        } else if (nfcAvailable) {
+            nfcInitiator.alpha = 0.5
+            nfcInitiator.tintColor = ThemeManager.shared.secondaryLight()
+        } else {
+            nfcInitiator.isHidden = true
+        }
+    }
+
+    func elementFadeInOut(view: UIView, delay: TimeInterval) {
+        let animationDuration = 2.0
+        UIView.animate(
+            withDuration: animationDuration,
+            delay: delay,
+            options: [UIView.AnimationOptions.allowUserInteraction, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat],
+            animations: {
+                view.alpha = 1
+            },
+            completion: nil
+        )
     }
 
     // MARK: - Navigation
@@ -287,11 +555,11 @@ class SendViewController: ThemeableViewController {
             if !aunthenticated {
                 return
             }
-            
+
             //Bundle.main.loadNibNamed(String(describing: SendingView.self, owner: self, options: nil))
             //addsubview(SendingView)
             //let SendingView = Bundle(for: SendingView.self) SendingView.loadNibNamed(String(describing: SendingView.Self), owner: self, options: nil)
-            
+
             let sendingView = Bundle.main.loadNibNamed(
                 "SendingView",
                 owner: self

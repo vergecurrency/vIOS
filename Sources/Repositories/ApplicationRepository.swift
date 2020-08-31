@@ -55,6 +55,16 @@ class ApplicationRepository {
             userDefaults.set(newValue, forKey: "wallet.useTor")
         }
     }
+    
+    // User wants to use NFC or not.
+    var useNfc: Bool {
+        get {
+            return userDefaults.bool(forKey: "wallet.useNfc")
+        }
+        set {
+            userDefaults.set(newValue, forKey: "wallet.useNfc")
+        }
+    }
 
     // Store the selected wallet currency. Defaults to USD.
     var currency: String {

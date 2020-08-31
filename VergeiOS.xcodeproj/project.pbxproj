@@ -12,6 +12,7 @@
 		0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */; };
 		0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView+Shake.swift */; };
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
+		311F108024F502A000D000FD /* NfcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311F107F24F502A000D000FD /* NfcTableViewController.swift */; };
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
@@ -451,6 +452,7 @@
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
+		311F107F24F502A000D000FD /* NfcTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcTableViewController.swift; sourceTree = "<group>"; };
 		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
@@ -1286,6 +1288,7 @@
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
 				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
+				311F107F24F502A000D000FD /* NfcTableViewController.swift */,
 				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
@@ -2469,6 +2472,7 @@
 				A38D6F8021C06C2A00280FFE /* ServiceUrlTableViewController.swift in Sources */,
 				A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */,
 				A36B17C624335D1300D327D8 /* WatchSubscriber.swift in Sources */,
+				311F108024F502A000D000FD /* NfcTableViewController.swift in Sources */,
 				A3EA38E022FA0E8700E89CF0 /* ConfirmSweepView.swift in Sources */,
 				B2BD711DC7A69C1F9F9C2875 /* TxAction.swift in Sources */,
 				A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */,

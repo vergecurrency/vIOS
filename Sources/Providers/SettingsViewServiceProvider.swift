@@ -31,6 +31,10 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
 
+        container.storyboardInitCompleted (NfcTableViewController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
+        }
+        
         container.storyboardInitCompleted (ServiceUrlTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
