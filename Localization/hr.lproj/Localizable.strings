@@ -135,6 +135,7 @@
 "send.confirmButton" = "Potvrdi";
 "send.noBalanceTitle" = "Prazan račun";
 "send.noBalanceDesc" = "Nemate ni jedan XVG za poslati.\nNadopunite svoj račun.";
+"send.closeButton" = "Zatvori";
 
 /*QR-code*/
 "send.qrcode.title" = "Skenirajte XVG QR kod";

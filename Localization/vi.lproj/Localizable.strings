@@ -137,6 +137,7 @@
 "send.confirmButton" = "Xác nhận";
 "send.noBalanceTitle" = "Không có số dư";
 "send.noBalanceDesc" = "Bạn không có xíu XVG nào để gửi. Làm ơn tăng số dư của bạn.";
+"send.closeButton" = "Đóng";
 
 /*QR-code*/
 "send.qrcode.title" = "Quét một mã QR XVG";
@@ -175,7 +176,7 @@
 "settings.other.cell.creditsLabel" = "Tín dụng";
 "settings.other.cell.donateLabel" = "Ủng hộ";
 "settings.other.cell.rateAppLabel" = "Xếp hạng ứng dụng";
-"settings.other.cell.websiteLabel" = "Trang quép";
+"settings.other.cell.websiteLabel" = "Trang web";
 "settings.other.cell.contributeLabel" = "Góp phần";
 
 /*Paper key*/
@@ -225,11 +226,11 @@
 "settings.useFaceID.sendingLabel" = "Đang gửi XVG";
 
 /*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+"settings.useNFC.title" = "Sử dụng NFC";
+"settings.useNFC.header.title" = "Sử dụng cho";
+"settings.useNFC.footer.title" = "Nếu thiết bị của bạn hỗ trợ được cho chức năng cần thiết để đọc NFC, bạn sẽ dễ dàng quét mã để gửi XVG";
+"settings.useNFC.footer.unsupported" = "Xin lỗi, thiết bị của bạn không hỗ trợ được cho chức năng cần thiết để đọc NFC nên không thực hiện được tính năng này";
+"settings.useNFC.nfcSendLabel" = "Xin điền chi tiết gửi";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor ở đầy để có sự riêng tư và che giấu vị trí của bạn";

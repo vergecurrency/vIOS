@@ -12,6 +12,7 @@
 		0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */; };
 		0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView+Shake.swift */; };
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
+		3101D74925034B6400A9885C /* SelectFiatCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101D74825034B6400A9885C /* SelectFiatCurrencyViewController.swift */; };
 		311F108024F502A000D000FD /* NfcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311F107F24F502A000D000FD /* NfcTableViewController.swift */; };
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
@@ -452,6 +453,7 @@
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
+		3101D74825034B6400A9885C /* SelectFiatCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFiatCurrencyViewController.swift; sourceTree = "<group>"; };
 		311F107F24F502A000D000FD /* NfcTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcTableViewController.swift; sourceTree = "<group>"; };
 		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
@@ -1266,6 +1268,7 @@
 				A398B21E21302DC5004ACB73 /* ConfirmSendView.xib */,
 				A386CA98219E28ED00FBF465 /* SendingView.swift */,
 				A386CA9A219E28FA00FBF465 /* SendingView.xib */,
+				3101D74825034B6400A9885C /* SelectFiatCurrencyViewController.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -2334,6 +2337,7 @@
 				A302D307212036B400EA8091 /* ScanQRCodeViewController.swift in Sources */,
 				A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */,
 				A3A71C1622DA66250098D861 /* TransactionFactory.swift in Sources */,
+				3101D74925034B6400A9885C /* SelectFiatCurrencyViewController.swift in Sources */,
 				A3AA2206216576BE00160576 /* IpAddress.swift in Sources */,
 				A3764131210AE1D500E04521 /* Platform.swift in Sources */,
 				A338E6C62110FB31000D44EE /* SendViewController.swift in Sources */,

@@ -137,6 +137,7 @@
 "send.confirmButton" = "Bevestig";
 "send.noBalanceTitle" = "Geen saldo";
 "send.noBalanceDesc" = "Je hebt geen XVG om te verzenden.\nVerhoog uw saldo.";
+"send.closeButton" = "Sluiten";
 
 /*QR-code*/
 "send.qrcode.title" = "Scan een XVG QR code";

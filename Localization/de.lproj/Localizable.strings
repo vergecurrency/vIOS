@@ -137,6 +137,7 @@
 "send.confirmButton" = "Bestätigen";
 "send.noBalanceTitle" = "Kein Guthaben";
 "send.noBalanceDesc" = "Du hast keine XVG zu versenden. Bitte erhöhe dein Guthaben.";
+"send.closeButton" = "Schließen";
 
 /*QR-code*/
 "send.qrcode.title" = "Scanne einen XVG QR Code";
@@ -225,11 +226,11 @@
 "settings.useFaceID.sendingLabel" = "Senden XVG";
 
 /*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+"settings.useNFC.title" = "Benutze NFC";
+"settings.useNFC.header.title" = "Benutze für";
+"settings.useNFC.footer.title" = "Wenn deine Hardware diese Funktion unterstützt, kannst du freischalten, dass NFC Tags gelesen werden, die spezifisch gekodet sind die Felder zu besetzten, um XVG zu senden.";
+"settings.useNFC.footer.unsupported" = "Leider scheint deine Hardware NFCnicht zu unterstütz, deswegen kannst du die Funktion nicht nutzen.";
+"settings.useNFC.nfcSendLabel" = "Populating schickt Details";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor ist für deine Privatsphäre zuständig und versteckt deinen Standort.";

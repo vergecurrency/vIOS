@@ -16,13 +16,15 @@ class NfcTableViewController: EdgedTableViewController {
     @IBOutlet weak var useNfcSwitch: UISwitch!
 
     var applicationRepository: ApplicationRepository!
-    var nfcNotSupported = false
+    var nfcNotSupported = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (!NFCNDEFReaderSession.readingAvailable) {
-            nfcNotSupported = true
+        if #available(iOS 13.0, *) {
+            if (NFCNDEFReaderSession.readingAvailable) {
+                nfcNotSupported = false
+            }
         }
 
         if (nfcNotSupported) {

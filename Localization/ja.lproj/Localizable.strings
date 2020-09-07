@@ -137,6 +137,7 @@
 "send.confirmButton" = "確認する";
 "send.noBalanceTitle" = "残高0";
 "send.noBalanceDesc" = "送信手数料に相当するXVGがありません。残高を増やしてください。";
+"send.closeButton" = "閉じる";
 
 /*QR-code*/
 "send.qrcode.title" = "XVGのQRコードを読み取る";

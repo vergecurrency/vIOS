@@ -161,6 +161,7 @@
 "send.confirmButton"                        = "Подтвердить";
 "send.noBalanceTitle"                       = "Недостаточно средств";
 "send.noBalanceDesc"                        = "У вас нет XVG для отправки.\nПожалуйста, пополните свой баланс.";
+"send.closeButton"                          = "Закрыть";
 
 // QR-code
 

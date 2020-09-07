@@ -17,6 +17,10 @@ class SendViewServiceProvider: ServiceProvider {
             c.txTransponder = r.resolve(TxTransponderProtocol.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
         }
+        
+        container.storyboardInitCompleted (SelectFiatCurrencyViewController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
+        }
     }
 
 }

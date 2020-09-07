@@ -137,6 +137,7 @@
 "send.confirmButton" = "Bekräfta";
 "send.noBalanceTitle" = "Inget saldo";
 "send.noBalanceDesc" = "Du har inga XVG att skicka.\nVänligen fyll på ditt saldo.";
+"send.closeButton" = "Stäng";
 
 /*QR-code*/
 "send.qrcode.title" = "Scanna en XVG QR kod";

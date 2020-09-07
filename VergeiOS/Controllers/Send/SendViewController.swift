@@ -23,6 +23,7 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
     @IBOutlet weak var fiatWalletAmountLabel: UILabel!
     @IBOutlet weak var recipientTextField: UITextField!
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var currencySwitchBtn: UIButton!
     @IBOutlet weak var amountTextField: CurrencyInput!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
@@ -35,11 +36,11 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
     var walletClient: WalletClientProtocol!
     var waitingForConfirmationPopover: Bool = false
 
+    // NFC
     var detectedNfcMessages = [NFCNDEFMessage]()
     var nfcSession: NFCNDEFReaderSession?
     var nfcAvailable = false
     var nfcActive = false
-
     var nfcIsVergeAddress = false
     var nfcAddress = ""
     var nfcLabel = ""
@@ -76,11 +77,18 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
         }
 
         self.amountTextField.delegate = self
-        self.amountTextField.addTarget(self, action: #selector(amountChanged), for: .editingDidEnd)
+        self.amountTextField.addTarget(
+            self,
+            action: #selector(amountChanged),
+            for: .editingDidEnd
+        )
 
         self.setupRecipientTextFieldKeyboardToolbar()
         self.setupAmountTextFieldKeyboardToolbar()
         self.setupMemoTextFieldKeyboardToolbar()
+
+        // Setup Currency Gestures
+        self.setupCurrencyGestures()
 
         DispatchQueue.main.async {
             self.updateAmountLabel()
@@ -101,14 +109,13 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
             object: nil
         )
 
-        if #available(iOS 13.0, *) {
-            if (NFCNDEFReaderSession.readingAvailable) {
-                nfcAvailable = true
-                if (applicationRepository.useNfc) {
-                    nfcActive = true
-                }
-            }
-        }
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(refreshCurrency),
+            name: .didChangeCurrency,
+            object: nil
+        )
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -126,6 +133,15 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
 
         self.updateWalletAmountLabel()
         self.updateAmountLabel()
+
+        if #available(iOS 13.0, *) {
+            if (NFCNDEFReaderSession.readingAvailable) {
+                nfcAvailable = true
+                if (applicationRepository.useNfc) {
+                    nfcActive = true
+                }
+            }
+        }
 
         self.checkNfcInitiator()
     }
@@ -145,6 +161,7 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
         }
     }
 
+    /*
     @IBAction func switchCurrency(_ sender: Any) {
         currency = (currency == .XVG) ? .FIAT : .XVG
         currencyLabel.text = currency == .XVG ? "XVG" : applicationRepository.currency
@@ -152,10 +169,90 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
         updateWalletAmountLabel()
         updateAmountLabel()
     }
+    */
+
+    @objc func switchCurrency(_ sender: Any) {
+        currency = (currency == .XVG) ? .FIAT : .XVG
+        currencyLabel.text = currency == .XVG ? "XVG" : applicationRepository.currency
+
+        updateWalletAmountLabel()
+        updateAmountLabel()
+    }
+
+    @objc func refreshCurrency(_ sender: Any) {
+        //DispatchQueue.main.async {
+            if (self.currency == .XVG) {
+
+                // nope - though why's this used elsewhere?
+                self.amountTextField.setAmount(self.currentAmount())
+                self.amountChanged(self.amountTextField)
+
+                // nope
+                //self.amountTextField.setAmount(self.currentAmount())
+
+                // nope
+                //self.amountTextField.setAmount(
+                //    NSNumber(value: Double(truncating: self.currentAmount()) + Double(0.00000001))
+                //)
+            } else {
+                // switch currency to fiat
+                self.switchCurrency(self)
+                
+                // refresh.. doesn't work either
+                self.amountChanged(self.amountTextField)
+                //self.amountTextField.setAmount(self.currentAmount())
+                //self.amountTextField.setAmount(
+                //    NSNumber(value: Double(truncating: self.currentAmount()) + Double(0.00000001))
+                //)
+
+                // switch back
+                self.switchCurrency(self)
+            }
+
+            //self.updateWalletAmountLabel()
+            //self.updateAmountLabel()
+        //}
+    }
+
+    @objc func handleLongCurrencySwitchPress(
+        sender: UILongPressGestureRecognizer
+    ) {
+        if (sender.state == .began) {
+            self.showFiatCurrencyViewController()
+        }
+    }
+
+    func setupCurrencyGestures() {
+        // When user taps on the button normally
+        let tapCurrencyGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector (switchCurrency)
+        )
+
+        // When user long presses on the button.
+        let longCurrencyGesture = UILongPressGestureRecognizer(
+            target: self,
+            action: #selector(handleLongCurrencySwitchPress)
+        )
+
+        tapCurrencyGesture.numberOfTapsRequired = 1
+        currencySwitchBtn.addGestureRecognizer(tapCurrencyGesture)
+        currencySwitchBtn.addGestureRecognizer(longCurrencyGesture)
+    }
+
+    func showFiatCurrencyViewController() {
+        let parent = UIStoryboard(name: "Send", bundle: nil)
+        let showFiatSelector = parent.instantiateViewController(
+            withIdentifier: "SelectFiatCurrencyViewController"
+        )
+        self.present(showFiatSelector, animated: true)
+    }
 
     func updateWalletAmountLabel() {
         let sendAmount = txFactory.amount.doubleValue
-        var amount = NSNumber(value: walletAmount.doubleValue - sendAmount)
+        var amount = NSNumber(
+            value: walletAmount.doubleValue - sendAmount
+        )
 
         if amount.decimalValue < 0.0 {
             amount = NSNumber(value: 0.0)
@@ -199,12 +296,15 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
 
     // MARK: - NFC Functions
 
+    // @objc func nfcScanSwitchCurrency(_ sender: Any) {
+    // // Change currency if the NFC scan changes the selected currency
+    // }
+
     func readerSession(_ nfcSession: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {
         // Processing Tag Data
         DispatchQueue.main.async {
             // Process detected NFCNDEFMessage object
             self.detectedNfcMessages.append(contentsOf: messages)
-            //self.tableView.reloadData()
         }
     }
 
@@ -309,15 +409,13 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
             case let urlParam where urlParam.contains("address="):
                 self.nfcAddress = String(eachUrlParam.replacingOccurrences(of: "address=", with: ""))
 
-                // Validate Standard Verge Address
+                // Validate Standard Address length
                 // Reqd Length: 34
                 self.nfcValidStandardAddress = (nfcAddress.count == 34)
-                // Is there a function which can validate an address?
 
-                // Validate Stealth Address
+                // Validate Stealth Address length
                 // Reqd Length: 102
                 self.nfcValidStealthAddress = (nfcAddress.count == 102)
-                // Is there a function which can validate a Stealth address?
 
             case let urlParam where urlParam.contains("label="):
                 self.nfcLabel = String(eachUrlParam.replacingOccurrences(of: "label=", with: ""))
@@ -349,7 +447,8 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
             self.populateNfcDataToSendView()
         }
 
-        /*if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
+        /*
+        if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
             let alertController = UIAlertController(
                 title: "TESTING",
                 message: "Parsed NFC TAG Data:" +
@@ -381,22 +480,25 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
                 memoTextField.text = self.nfcLabel
             }
 
-            if (self.nfcPaymentAmount.count > 0) {
-                amountTextField.text = self.nfcPaymentAmount
-            }
-
             if (self.nfcPaymentCurrency.count > 0) {
                 // This is where I mentioned we could auto convert the supplied
                 // fiat currency into XVG automatically, or use XVG if specified -
                 // instead of only allowing their currently selected fiat currency.
                 // target = self.nfcPaymentCurrency
+                // nfcScanSwitchCurrency(self.nfcPaymentCurrency)
+            }
+            
+            if (self.nfcPaymentAmount.count > 0) {
+                amountTextField.text = self.nfcPaymentAmount
+                //self.amountTextField.setAmount(Double(self.nfcPaymentAmount)! as NSNumber)
             }
 
-            self.resetNfcVariables()
+            self.resetNfcVariables() // Reset vars ready for next scan
         }
     }
 
     func resetNfcVariables() {
+        self.detectedNfcMessages = [NFCNDEFMessage]()
         self.nfcIsVergeAddress = false
         self.nfcAddress = ""
         self.nfcLabel = ""
@@ -406,17 +508,9 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
         self.nfcValidStealthAddress = false
     }
 
-    @IBAction func initiateNfc(_ sender: Any) {
-        if (nfcActive) {
-            nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
-            nfcSession?.alertMessage = "Hold your iPhone near the Verge Tag." // Tap to Pay sticker
-            nfcSession?.begin()
-        }
-    }
-
     func checkNfcInitiator () {
         if (nfcActive) {
-            // Leave it alone
+            nfcInitiator.alpha = 0.2
             elementFadeInOut(view: nfcInitiator, delay: 0.5)
         } else if (nfcAvailable) {
             nfcInitiator.alpha = 0.5
@@ -426,12 +520,25 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
         }
     }
 
+    @IBAction func initiateNfc(_ sender: Any) {
+        if (nfcActive) {
+            // Should we clear all send screen details before populating with a scan?
+            nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
+            nfcSession?.alertMessage = "Hold your iPhone near the Verge Tag." // Tap to Pay sticker
+            nfcSession?.begin()
+        }
+    }
+
     func elementFadeInOut(view: UIView, delay: TimeInterval) {
         let animationDuration = 2.0
         UIView.animate(
             withDuration: animationDuration,
             delay: delay,
-            options: [UIView.AnimationOptions.allowUserInteraction, UIView.AnimationOptions.autoreverse, UIView.AnimationOptions.repeat],
+            options: [
+                UIView.AnimationOptions.allowUserInteraction,
+                UIView.AnimationOptions.autoreverse,
+                UIView.AnimationOptions.repeat
+            ],
             animations: {
                 view.alpha = 1
             },
@@ -637,7 +744,6 @@ class SendViewController: ThemeableViewController, NFCNDEFReaderSessionDelegate 
 
     @objc func amountChanged(_ textField: CurrencyInput) {
         let amount = textField.getNumber().doubleValue
-
         txFactory.setBy(currency: currentCurrency(), amount: NSNumber(value: amount))
         self.didChangeSendTransaction(txFactory)
     }

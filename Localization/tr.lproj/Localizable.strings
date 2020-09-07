@@ -137,6 +137,7 @@
 "send.confirmButton" = "Onayla";
 "send.noBalanceTitle" = "Bakiye yok";
 "send.noBalanceDesc" = "Gönderilecek XVG'niz yok.\nLütfen bakiyenizi artırın.";
+"send.closeButton" = "Kapat";
 
 /*QR-code*/
 "send.qrcode.title" = "XVG QR kodunu okutun";

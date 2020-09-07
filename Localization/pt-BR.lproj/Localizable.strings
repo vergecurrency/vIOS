@@ -135,6 +135,7 @@
 "send.confirmButton" = "Confirmar";
 "send.noBalanceTitle" = "Sem saldo";
 "send.noBalanceDesc" = "Você não tem moedas para enviar. Aumente seu saldo.";
+"send.closeButton" = "Fechar";
 
 /*QR-code*/
 "send.qrcode.title" = "Escanear o código QR XVG";

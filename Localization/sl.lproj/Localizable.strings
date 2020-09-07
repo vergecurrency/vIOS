@@ -137,6 +137,7 @@
 "send.confirmButton" = "Potrdi";
 "send.noBalanceTitle" = "Ni stanja";
 "send.noBalanceDesc" = "Ste brez XVG za pošiljanje.\nProsimo, povečajte svoje stanje.";
+"send.closeButton" = "Zapri";
 
 /*QR-code*/
 "send.qrcode.title" = "Skenirajte XVG QR črtno kodo";

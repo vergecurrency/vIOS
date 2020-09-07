@@ -161,6 +161,7 @@
 "send.confirmButton"                        = "确认";
 "send.noBalanceTitle"                       = "没有余额";
 "send.noBalanceDesc"                        = "你没有任何XVG去发送.\n请增加你的余额.";
+"send.closeButton"                          = "关闭";
 
 // QR-code
 

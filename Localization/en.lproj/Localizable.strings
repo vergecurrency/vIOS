@@ -161,10 +161,11 @@
 "send.confirmButton"                        = "Confirm";
 "send.noBalanceTitle"                       = "No balance";
 "send.noBalanceDesc"                        = "You don't have any XVG to send.\nPlease increase your balance.";
+"send.closeButton"                          = "Close";
 
 // QR-code
 
-"send.qrcode.title"                         = "Scan a XVG QR code";
+"send.qrcode.title"                         = "Scan an XVG QR code";
 "send.qrcode.closeButton"                   = "Close";
 
 // Select recipient

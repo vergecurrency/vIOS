@@ -137,6 +137,7 @@
 "send.confirmButton" = "Conferma";
 "send.noBalanceTitle" = "Niente saldo disponibile";
 "send.noBalanceDesc" = "Non hai nessun XVG da spendere. Per favore aumenta il tuo saldo";
+"send.closeButton" = "Chiudi";
 
 /*QR-code*/
 "send.qrcode.title" = "Scansiona un QR Code XVG";
