@@ -20,7 +20,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
     }
 
     private let applicationRepository: ApplicationRepository
-    private let log: Logger
+    private let log: Logging.Logger
 
     private var config: TorConfiguration = TorConfiguration()
     private var thread: TorThread?
@@ -57,7 +57,7 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
         return URLSession(configuration: self.sessionConfiguration)
     }
 
-    public init(applicationRepository: ApplicationRepository, log: Logger) {
+    public init(applicationRepository: ApplicationRepository, log: Logging.Logger) {
         self.applicationRepository = applicationRepository
         self.log = log
     }
