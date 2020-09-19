@@ -10,13 +10,23 @@ class ThemeManager {
 
     static let shared = ThemeManager()
 
-    let appRepo = Application.container.resolve(ApplicationRepository.self)!
+    let appRepo: ApplicationRepository? = {
+        guard let container = Application.container else {
+            return nil
+        }
+
+        guard let repo = container.resolve(ApplicationRepository.self) else {
+            return nil
+        }
+
+        return repo
+    }()
 
     var currentTheme: Theme {
         let themes = ThemeFactory.shared.themes
-        if appRepo.currentTheme != nil {
+        if appRepo?.currentTheme != nil {
             let index = themes.firstIndex(where: { (theme) -> Bool in
-                theme.id == appRepo.currentTheme
+                theme.id == appRepo!.currentTheme
             }) ?? 0
 
             return themes[index]
@@ -26,7 +36,7 @@ class ThemeManager {
     }
 
     func switchTheme(theme: Theme) {
-        appRepo.currentTheme = theme.id
+        appRepo?.currentTheme = theme.id
     }
 
     func switchAppIcon(appIcon: AppIcon) {

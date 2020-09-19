@@ -742,7 +742,7 @@ extension WalletClient {
     }
 
     private func signTx(unsignedTx: UnsignedTransaction, keys: [PrivateKey]) throws -> [String] {
-        var inputsToSign = unsignedTx.tx.inputs
+        let inputsToSign = unsignedTx.tx.inputs
         var transactionToSign: Transaction {
             return Transaction(
                 version: unsignedTx.tx.version,

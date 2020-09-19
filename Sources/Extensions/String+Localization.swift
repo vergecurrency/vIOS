@@ -20,12 +20,11 @@ extension String {
         return bundle?.localizedString(forKey: self, value: nil, table: nil) ?? self
     }
 
-    private func bundleForLanguage(language code: String!) -> Bundle? {
-        if (code == nil) {
+    private func bundleForLanguage(language code: String) -> Bundle? {
+        guard let path = Bundle.main.path(forResource: code, ofType: "lproj") else {
             return nil
         }
 
-        let path = Bundle.main.path(forResource: code, ofType: "lproj")
-        return Bundle(path: path!)
+        return Bundle(path: path)
     }
 }
