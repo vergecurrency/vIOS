@@ -1,4 +1,3 @@
-github "gmotzespina/QRCode" "master"
 github "HamzaGhazouani/HGPlaceholders"
 binary "https://icepa.github.io/Tor.framework/Tor.json" == 400.6.3
 binary "https://vergecurrency.github.io/BitcoinKit/BitcoinKit.json" == 1.2.2

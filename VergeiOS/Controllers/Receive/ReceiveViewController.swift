@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import QRCode
 
 @IBDesignable
 class ReceiveViewController: ThemeableViewController {
