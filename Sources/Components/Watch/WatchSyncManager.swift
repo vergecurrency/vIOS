@@ -8,7 +8,6 @@
 
 import UIKit
 import WatchConnectivity
-import QRCode
 
 class WatchSyncManager: NSObject, WCSessionDelegate {
 
@@ -49,7 +48,7 @@ class WatchSyncManager: NSObject, WCSessionDelegate {
 
     @objc public func syncCurrency() {
         let currency = ApplicationRepository().currency
-        _ = self.transferMessage(message: ["currency": currency as AnyObject])
+        self.transferMessage(message: ["currency": currency as AnyObject])
     }
 
     @objc public func syncAmount() {

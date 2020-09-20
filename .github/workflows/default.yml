@@ -18,10 +18,10 @@ jobs:
       - name: Bundle Install
         run: |
           bundle install
-      - name: Use Swift 5.2.2
+      - name: Use Swift 5.2.4
         uses: YOCKOW/Action-setup-swift@master
         with:
-          swift-version: '5.2.2'
+          swift-version: '5.2.4'
       - name: Carthage update
         if: steps.carthage-cache.outputs.cache-hit != 'true'
         run: |
@@ -41,10 +41,10 @@ jobs:
         with:
           path: Carthage
           key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-      - name: Use Swift 5.2.2
+      - name: Use Swift 5.2.4
         uses: YOCKOW/Action-setup-swift@master
         with:
-          swift-version: '5.2.2'
+          swift-version: '5.2.4'
       - name: Run tests
         run: |
           fastlane test
