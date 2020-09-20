@@ -14,6 +14,11 @@
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
 		3101D74925034B6400A9885C /* SelectFiatCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101D74825034B6400A9885C /* SelectFiatCurrencyViewController.swift */; };
 		311F108024F502A000D000FD /* NfcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311F107F24F502A000D000FD /* NfcTableViewController.swift */; };
+		3169E5212516EEF1006E00F8 /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
+		3169E5242516EEF4006E00F8 /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
+		3169E5262516EEF6006E00F8 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
+		3169E5282516EEF8006E00F8 /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */; };
+		3169E52A2516EEFA006E00F8 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E492171FE0B009F0C9D /* Tor.framework */; };
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
@@ -100,11 +105,7 @@
 		A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */; };
 		A339393621B877750010CC4A /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393521B877750010CC4A /* PassphraseViewController.swift */; };
 		A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393921B877AE0010CC4A /* TorViewController.swift */; };
-		A33B38F82516909200E9E30C /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */; };
-		A33B38FB2516909400E9E30C /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
 		A33B39272516958900E9E30C /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = A33B39262516958900E9E30C /* Logging */; };
-		A33B39542516B2EC00E9E30C /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
-		A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
 		A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B75BF21A61A3500030CCF /* CurrencyInput.swift */; };
 		A33B75C421A8917700030CCF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33B75C321A8917700030CCF /* Settings.storyboard */; };
 		A33DB6952231D2010070DBCE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33DB6942231D2010070DBCE /* Array+Extensions.swift */; };
@@ -112,7 +113,6 @@
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
-		A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E492171FE0B009F0C9D /* Tor.framework */; };
 		A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3408E4B217333B5009F0C9D /* NotificationViewController.xib */; };
 		A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3408E5721768AF4009F0C9D /* Date+Extensions.swift */; };
 		A341F78E243F99B600F45BA9 /* Vws.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C928A701BC212214052 /* Vws.swift */; };
@@ -851,20 +851,20 @@
 				A33B39272516958900E9E30C /* Logging in Frameworks */,
 				A39D5F682448F8480014B882 /* SwifterSwift in Frameworks */,
 				A39D5F622448F8480014B882 /* CryptoSwift in Frameworks */,
-				A33B38FB2516909400E9E30C /* HGPlaceholders.framework in Frameworks */,
+				3169E5242516EEF4006E00F8 /* HGPlaceholders.framework in Frameworks */,
 				A39D5F5E2448F8480014B882 /* KeychainSwift in Frameworks */,
 				A39D5F632448F8480014B882 /* Promises in Frameworks */,
-				A33B38F82516909200E9E30C /* SwinjectStoryboard.framework in Frameworks */,
 				A39D5F5C2448F8480014B882 /* IQKeyboardManagerSwift in Frameworks */,
-				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
 				A39D5F5D2448F8480014B882 /* SwiftyJSON in Frameworks */,
 				A39D5F5F2448F8480014B882 /* Charts in Frameworks */,
-				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
 				A39D5F602448F8480014B882 /* CoreStore in Frameworks */,
 				A39D5F642448F8480014B882 /* FBLPromises in Frameworks */,
 				A39D5F662448F8480014B882 /* PromisesTestHelpers in Frameworks */,
-				A33B39542516B2EC00E9E30C /* Swinject.framework in Frameworks */,
+				3169E52A2516EEFA006E00F8 /* Tor.framework in Frameworks */,
 				A39D5F612448F8480014B882 /* Eureka in Frameworks */,
+				3169E5282516EEF8006E00F8 /* SwinjectStoryboard.framework in Frameworks */,
+				3169E5262516EEF6006E00F8 /* Swinject.framework in Frameworks */,
+				3169E5212516EEF1006E00F8 /* BitcoinKit.framework in Frameworks */,
 				A39D5F652448F8480014B882 /* FBLPromisesTestHelpers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2697,7 +2697,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2721,7 +2721,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2744,7 +2744,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2763,7 +2763,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
