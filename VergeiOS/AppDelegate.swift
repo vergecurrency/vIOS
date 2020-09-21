@@ -153,7 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         completionHandler(handledShortCutItem)
     }
-    
+
     func application(
         _ app: UIApplication,
         open url: URL,
@@ -184,14 +184,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
 
-        guard let payload = ndefMessage.records.first, payload.typeNameFormat != .nfcWellKnown else {
+        guard let payload = ndefMessage.records.first, payload.typeNameFormat == .nfcWellKnown else {
             return false
         }
 
         guard let url = payload.wellKnownTypeURIPayload()?.absoluteString else {
             return false
         }
-        
+
         self.log?.info("app delegate application opened associated domain")
 
         self.sendTxRequest(address: url)
@@ -200,7 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func sendTxRequest(address: String) {
-        AddressValidator().validate(string: address) { (valid, address, amount) in
+        AddressValidator().validate(string: address) { (valid, address, amount, label, currency) in
             if !valid {
                 return
             }
@@ -208,6 +208,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let transaction = Application.container.resolve(WalletTransactionFactory.self)!
             transaction.address = address!
             transaction.amount = amount ?? 0.0
+            transaction.memo = label ?? ""
+
+            if currency != nil {
+                transaction.update(currency: currency!)
+            }
 
             self.sendRequest = transaction
         }

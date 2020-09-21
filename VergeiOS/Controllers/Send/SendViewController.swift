@@ -606,7 +606,7 @@ extension SendViewController: UITextFieldDelegate {
             return
         }
 
-        AddressValidator().validate(string: address) { valid, address, _ in
+        AddressValidator().validate(string: address) { valid, address, _, _, _  in
             if !valid {
                 return self.showInvalidAddressAlert()
             }

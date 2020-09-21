@@ -137,6 +137,7 @@ class WalletServiceProvider: ServiceProvider {
         container.register(NFCWalletTransactionFactory.self) { r, sendTransactionDelegate in
             return NFCWalletTransactionFactory(
                 sendTransactionDelegate: sendTransactionDelegate,
+                addressValidator: AddressValidator(),
                 logger: r.resolve(Logger.self)!
             )
         }

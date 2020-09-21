@@ -7,27 +7,24 @@
 //
 
 import Foundation
-import CoreNFC
 import Logging
+import CoreNFC
 
 class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
     private let sendTransactionDelegate: SendTransactionDelegate
+    private let addressValidator: AddressValidator
     private let logger: Logger
 
     private var detectedNfcMessages = [NFCNDEFMessage]()
     private var nfcSession: NFCNDEFReaderSession?
-    private var nfcAvailable = false
-    private var nfcActive = false
-    private var nfcIsVergeAddress = false
-    private var nfcAddress = ""
-    private var nfcLabel = ""
-    private var nfcPaymentAmount = ""
-    private var nfcPaymentCurrency = "XVG"
-    private var nfcValidStandardAddress = false
-    private var nfcValidStealthAddress = false
 
-    init(sendTransactionDelegate: SendTransactionDelegate, logger: Logger) {
+    init(
+        sendTransactionDelegate: SendTransactionDelegate,
+        addressValidator: AddressValidator,
+        logger: Logger
+    ) {
         self.sendTransactionDelegate = sendTransactionDelegate
+        self.addressValidator = addressValidator
         self.logger = logger
     }
 
@@ -111,117 +108,45 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
 
     @available(iOS 13.0, *)
     private func processNfcMessage(message: NFCNDEFMessage?) {
-        let payload = message!.records[0]
-
-        switch payload.typeNameFormat {
-
-        case .nfcWellKnown:
-            if String(data: payload.type, encoding: .utf8) != nil {
-                if let url = payload.wellKnownTypeURIPayload() {
-
-                    let rawNFCDataArr = url.absoluteString.split(separator: "?")
-
-                    // Validate Verge Address Type
-                    self.nfcIsVergeAddress = (rawNFCDataArr[0] == "https://tag.vergecurrency.business/")
-
-                    if (nfcIsVergeAddress) {
-                        self.processVergeDataTag(rawNFCDataArr: rawNFCDataArr[1])
-                    }
-                }
-            }
-
-        case .absoluteURI, .media, .nfcExternal, .empty, .unknown, .unchanged:
-            fallthrough
-        @unknown default:
-            ()
+        guard let message = message else {
+            return
+        }
+        
+        guard
+            message.records.count > 0,
+            message.records[0].typeNameFormat != .empty
+        else {
+            return
         }
 
-    }
-
-    private func processVergeDataTag(rawNFCDataArr: String.SubSequence) {
-        // Separate any Address Params into an array
-        let vergeNFCDataComponents = rawNFCDataArr.split(separator: "&")
-
-        // Grab the url params if they exist, and remove the urlparam itself
-        for eachUrlParam in vergeNFCDataComponents {
-
-            switch eachUrlParam {
-            case let urlParam where urlParam.contains("address="):
-                self.nfcAddress = String(eachUrlParam.replacingOccurrences(of: "address=", with: ""))
-
-                // Validate Standard Address length
-                // Reqd Length: 34
-                self.nfcValidStandardAddress = (nfcAddress.count == 34)
-
-                // Validate Stealth Address length
-                // Reqd Length: 102
-                self.nfcValidStealthAddress = (nfcAddress.count == 102)
-
-            case let urlParam where urlParam.contains("label="):
-                self.nfcLabel = String(eachUrlParam.replacingOccurrences(of: "label=", with: ""))
-                self.nfcLabel = self.nfcLabel.removingPercentEncoding!
-
-            case let urlParam where urlParam.contains("amount="):
-                self.nfcPaymentAmount = String(eachUrlParam.replacingOccurrences(of: "amount=", with: ""))
-
-            case let urlParam where urlParam.contains("currency="):
-                self.nfcPaymentCurrency = String(eachUrlParam.replacingOccurrences(of: "currency=", with: ""))
-
-                switch self.nfcPaymentCurrency {
-                case "XVG",
-                     "AUD", "BRL", "CAD", "CHF", "CNY",
-                     "DKK", "EUR", "GBP", "HKD", "IDR",
-                     "NZD", "RUB", "SGD", "THB", "USD":
-                    () // OK - Supported Currencies
-                default:
-                    self.nfcPaymentCurrency = "XVG" // Unsupported - revert to XVG
-                }
-
-            default:
-                () // Ignore
-            }
-
+        guard let payload = message.records.first, payload.typeNameFormat == .nfcWellKnown else {
+            return
         }
 
-        if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
-            self.populateNfcDataToSendView()
+        guard let url = payload.wellKnownTypeURIPayload()?.absoluteString else {
+            return
         }
-    }
-
-    private func populateNfcDataToSendView() {
-        if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
-            // At this point we have all the data required to
-            // set the Address, Description, Amount and Currency of the transaction.
+        
+        self.addressValidator.validate(string: url) { isValid, address, amount, label, currency in
             let txFactory = self.sendTransactionDelegate.getSendTransaction()
 
-            if (self.nfcValidStandardAddress || self.nfcValidStealthAddress) {
-                txFactory.address = self.nfcAddress
+            if let address = address, isValid {
+                txFactory.address = address
             }
 
-            if (self.nfcLabel.count > 0) {
-                txFactory.memo = self.nfcLabel
+            if let amount = amount {
+                txFactory.amount = amount
             }
 
-            if (self.nfcPaymentAmount.count > 0) {
-                txFactory.setBy(
-                    currency: self.nfcPaymentCurrency,
-                    amount: Double(self.nfcPaymentAmount)! as NSNumber
-                )
+            if let label = label {
+                txFactory.memo = label
+            }
+
+            if let currency = currency {
+                txFactory.update(currency: currency)
             }
 
             self.sendTransactionDelegate.didChangeSendTransaction(txFactory)
-            self.resetNfcVariables() // Reset vars ready for next scan
         }
-    }
-
-    private func resetNfcVariables() {
-        self.detectedNfcMessages = [NFCNDEFMessage]()
-        self.nfcIsVergeAddress = false
-        self.nfcAddress = ""
-        self.nfcLabel = ""
-        self.nfcPaymentAmount = ""
-        self.nfcPaymentCurrency = "XVG"
-        self.nfcValidStandardAddress = false
-        self.nfcValidStealthAddress = false
     }
 }
