@@ -125,6 +125,8 @@
 		A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */; };
 		A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364727D217C7787001B1B18 /* ContactTableViewController.swift */; };
 		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
+		A3654D8B2517677C007E13B2 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3654D8A2517677C007E13B2 /* CoreNFC.framework */; };
+		A3654D9425180B3B007E13B2 /* NFCWalletTransactionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */; };
 		A3670CBA2454F5C100B2D9FC /* UITestingServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3670CB92454F5C100B2D9FC /* UITestingServiceProvider.swift */; };
 		A36B17BE2432A15800D327D8 /* WalletNotificationsSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */; };
 		A36B17C02432A17C00D327D8 /* SubscriberProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */; };
@@ -589,6 +591,8 @@
 		A364727D217C7787001B1B18 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A3647FA32454D0A1006FE068 /* UITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UITests.xctestplan; sourceTree = "<group>"; };
+		A3654D8A2517677C007E13B2 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCWalletTransactionFactory.swift; sourceTree = "<group>"; };
 		A3670CB92454F5C100B2D9FC /* UITestingServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingServiceProvider.swift; sourceTree = "<group>"; };
 		A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNotificationsSubscriber.swift; sourceTree = "<group>"; };
 		A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberProtocol.swift; sourceTree = "<group>"; };
@@ -854,6 +858,7 @@
 				3169E5242516EEF4006E00F8 /* HGPlaceholders.framework in Frameworks */,
 				A39D5F5E2448F8480014B882 /* KeychainSwift in Frameworks */,
 				A39D5F632448F8480014B882 /* Promises in Frameworks */,
+				A3654D8B2517677C007E13B2 /* CoreNFC.framework in Frameworks */,
 				A39D5F5C2448F8480014B882 /* IQKeyboardManagerSwift in Frameworks */,
 				A39D5F5D2448F8480014B882 /* SwiftyJSON in Frameworks */,
 				A39D5F5F2448F8480014B882 /* Charts in Frameworks */,
@@ -1432,6 +1437,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3654D8A2517677C007E13B2 /* CoreNFC.framework */,
 				A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */,
 				A33B759D21A5CDD400030CCF /* BitcoinKit.framework */,
 				A3408E492171FE0B009F0C9D /* Tor.framework */,
@@ -1609,6 +1615,7 @@
 				A3478B4823647FF20018149C /* WalletManager.swift */,
 				B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */,
 				A3239D6322E60C2B00430F8B /* SweeperHelper.swift */,
+				A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2580,6 +2587,7 @@
 				B2BD731FE91F17D3EFD3EBE4 /* Transaction.swift in Sources */,
 				B2BD76E01CF036F0D2435FED /* Block.swift in Sources */,
 				B2BD7265D9D0B63FFE8A6FE2 /* Balance.swift in Sources */,
+				A3654D9425180B3B007E13B2 /* NFCWalletTransactionFactory.swift in Sources */,
 				B2BD743E6EB65712BC9237E5 /* HttpSessionProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

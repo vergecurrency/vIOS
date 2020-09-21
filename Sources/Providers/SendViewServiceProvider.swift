@@ -14,6 +14,7 @@ class SendViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted(SendViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.txFactory = r.resolve(WalletTransactionFactory.self)
+            c.nfcTxFactory = r.resolve(NFCWalletTransactionFactory.self, argument: c as SendTransactionDelegate)
             c.txTransponder = r.resolve(TxTransponderProtocol.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
         }
