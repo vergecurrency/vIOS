@@ -136,7 +136,13 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
                     self.closeController(self)
                 }
 
-                self.handleValidatedScan(isValid: valid, address: address, amount: amount, label: label, currency: currency)
+                self.handleValidatedScan(
+                    isValid: valid,
+                    address: address,
+                    amount: amount,
+                    label: label,
+                    currency: currency
+                )
             }
         }
     }
@@ -171,14 +177,20 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
 
     @IBAction func toggleFlash(_ sender: Any) {
-        flash()
+        self.flash()
     }
 
     @IBAction func openImage(_ sender: Any) {
         present(imagePicker, animated: true)
     }
-    
-    fileprivate func handleValidatedScan(isValid: Bool, address: String?, amount: NSNumber?, label: String?, currency: String?) {
+
+    fileprivate func handleValidatedScan(
+        isValid: Bool,
+        address: String?,
+        amount: NSNumber?,
+        label: String?,
+        currency: String?
+    ) {
         if !isValid {
             return
         }
@@ -238,7 +250,13 @@ extension ScanQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
                     self.closeController(self)
                 }
 
-                self.handleValidatedScan(isValid: valid, address: address, amount: amount, label: label, currency: currency)
+                self.handleValidatedScan(
+                    isValid: valid,
+                    address: address,
+                    amount: amount,
+                    label: label,
+                    currency: currency
+                )
             }
         }
 
