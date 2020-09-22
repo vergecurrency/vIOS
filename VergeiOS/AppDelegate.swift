@@ -215,6 +215,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
             self.sendRequest = transaction
+
+            NotificationCenter.default.post(name: .demandSendView, object: transaction)
         }
     }
 }
