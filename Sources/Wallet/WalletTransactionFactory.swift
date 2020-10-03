@@ -11,30 +11,41 @@ class WalletTransactionFactory {
     var fiatAmount: NSNumber = 0.0
     var address: String = ""
     var memo: String = ""
+    var fiatCurrency: String? = nil
 
-    private let applicationRepository: ApplicationRepository!
+    private let ratesClient: RatesClient!
 
-    init(applicationRepository: ApplicationRepository) {
-        self.applicationRepository = applicationRepository
+    init(ratesClient: RatesClient) {
+        self.ratesClient = ratesClient
     }
 
-    func setBy(currency: String, amount: NSNumber) {
+    func setBy(currency: String, fiatCurrency: String, amount: NSNumber) {
+        self.fiatCurrency = fiatCurrency
+
         if currency == "XVG" {
             self.amount = amount
         } else {
-            fiatAmount = amount
+            self.fiatAmount = amount
         }
 
-        update(currency: currency)
+        self.update(currency: currency, fiatCurrency: fiatCurrency)
     }
 
-    func update(currency: String) {
-        if let xvgInfo = self.applicationRepository.latestRateInfo {
+    func update(currency: String, fiatCurrency: String? = nil) {
+        self.fiatCurrency = fiatCurrency
+
+        if fiatCurrency == nil {
+            self.fiatCurrency = currency == "XVG" ? nil : currency
+        }
+
+        self.ratesClient.infoBy(currency: self.fiatCurrency ?? currency).then { rate in
             if currency == "XVG" {
-                fiatAmount = NSNumber(value: amount.doubleValue * xvgInfo.price)
-            } else {
-                amount = NSNumber(value: fiatAmount.doubleValue / xvgInfo.price)
+                self.fiatAmount = NSNumber(value: self.amount.doubleValue * rate.price)
+
+                return
             }
+
+            self.amount = NSNumber(value: self.fiatAmount.doubleValue / rate.price)
         }
     }
 

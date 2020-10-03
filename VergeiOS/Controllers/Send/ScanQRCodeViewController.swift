@@ -198,7 +198,11 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         self.sendTransaction?.address = address ?? ""
 
         if let amount = amount {
-            self.sendTransaction?.amount = amount
+            if (currency == "XVG" || currency == nil) {
+                self.sendTransaction?.amount = amount
+            } else {
+                self.sendTransaction?.fiatAmount = amount
+            }
         }
 
         if let label = label {
@@ -213,7 +217,9 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return
         }
 
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         self.sendTransactionDelegate.didChangeSendTransaction(sendTransaction)
+//        }
     }
 
     // MARK: - Navigation

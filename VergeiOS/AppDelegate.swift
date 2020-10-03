@@ -207,8 +207,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let transaction = Application.container.resolve(WalletTransactionFactory.self)!
             transaction.address = address!
-            transaction.amount = amount ?? 0.0
             transaction.memo = label ?? ""
+
+            if (currency == "XVG" || currency == nil) {
+                transaction.amount = amount ?? 0.0
+            } else {
+                transaction.fiatAmount = amount ?? 0.0
+            }
 
             if currency != nil {
                 transaction.update(currency: currency!)

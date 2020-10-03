@@ -13,14 +13,11 @@ class SendViewServiceProvider: ServiceProvider {
     override func register() {
         container.storyboardInitCompleted(SendViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.ratesClient = r.resolve(RatesClient.self)
             c.txFactory = r.resolve(WalletTransactionFactory.self)
             c.nfcTxFactory = r.resolve(NFCWalletTransactionFactory.self, argument: c as SendTransactionDelegate)
             c.txTransponder = r.resolve(TxTransponderProtocol.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
-        }
-        
-        container.storyboardInitCompleted (SelectFiatCurrencyViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
     }
 

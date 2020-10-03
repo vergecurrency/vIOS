@@ -32,7 +32,6 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
         return NFCNDEFReaderSession.readingAvailable
     }
 
-    @available(iOS 13.0, *)
     func initiateScan() {
         self.nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
         self.nfcSession?.alertMessage = "Hold your iPhone near the Verge Tag."
@@ -49,7 +48,6 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
         }
     }
 
-    @available(iOS 13.0, *)
     internal func readerSession(_ nfcSession: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         // Processing NDEF Tag
         if tags.count > 1 {
@@ -106,7 +104,6 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
         self.logger.error("Nfc tx factory error: \(error.localizedDescription)")
     }
 
-    @available(iOS 13.0, *)
     private func processNfcMessage(message: NFCNDEFMessage?) {
         guard let message = message else {
             return
@@ -135,7 +132,11 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
             }
 
             if let amount = amount {
-                txFactory.amount = amount
+                if (currency == "XVG" || currency == nil) {
+                    txFactory.amount = amount
+                } else {
+                    txFactory.fiatAmount = amount
+                }
             }
 
             if let label = label {

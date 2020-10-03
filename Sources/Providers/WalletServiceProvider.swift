@@ -62,9 +62,9 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerTransactionFactory() {
         container.register(WalletTransactionFactory.self) { r in
-            let applicationRepository = r.resolve(ApplicationRepository.self)!
+            let ratesClient = r.resolve(RatesClient.self)!
 
-            return WalletTransactionFactory(applicationRepository: applicationRepository)
+            return WalletTransactionFactory(ratesClient: ratesClient)
         }
     }
 
