@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Promises
 
 class RatesClient {
 
@@ -23,6 +24,18 @@ class RatesClient {
             completion(try response.dataToJson(type: FiatRate.self))
         }.catch { error in
             completion(nil)
+        }
+    }
+
+    func infoBy(currency: String) -> Promise<FiatRate> {
+        let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
+
+        return self.httpSession.dataTask(with: url!).then { response in
+            let rate = try response.dataToJson(type: FiatRate.self)
+
+            return Promise {
+                return rate
+            }
         }
     }
 

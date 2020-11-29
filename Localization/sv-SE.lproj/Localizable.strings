@@ -137,6 +137,7 @@
 "send.confirmButton" = "Bekräfta";
 "send.noBalanceTitle" = "Inget saldo";
 "send.noBalanceDesc" = "Du har inga XVG att skicka.\nVänligen fyll på ditt saldo.";
+"send.closeButton" = "Stäng";
 
 /*QR-code*/
 "send.qrcode.title" = "Scanna en XVG QR kod";
@@ -168,6 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Ändra plånbokens pinkod";
 "settings.settings.cell.useFaceIdLabel" = "Använd ansiktsigenkänning";
+"settings.settings.cell.useBgReadingLabel" = "Bakgrundsavläsning";
 "settings.settings.cell.torConnectionLabel" = "Tor anslutning";
 "settings.other.header.title" = "Andra";
 "settings.other.cell.supportLabel" = "Stöd";
@@ -222,6 +224,12 @@
 "settings.useFaceID.footer.title" = "Istället för att fylla i plånbokens pinkod i en prompt erbjuds alternativa sätt att identifiera dig själv.";
 "settings.useFaceID.unlockLabel" = "Låser upp din plånbok";
 "settings.useFaceID.sendingLabel" = "Skickar XVG";
+
+/*Background Reading (NFC)*/
+"settings.br.title" = "Bakgrundsavläsning";
+"settings.br.footer.title" = "Om den är aktiverad startar plånboken automatiskt när du trycker på en Verge NFC-tagg.";
+"settings.br.footer.unsupported" = "Tyvärr verkar din hårdvara inte stödja NFC, så den här funktionen kan inte aktiveras.";
+"settings.br.nfcSendLabel" = "Aktivera NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor finns här för din integritet och döljer din platsposition";

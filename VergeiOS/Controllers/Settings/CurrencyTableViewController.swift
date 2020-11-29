@@ -10,11 +10,9 @@ import UIKit
 
 class CurrencyTableViewController: EdgedTableViewController {
 
+    var delegate: CurrencyDelegate?
     var applicationRepository: ApplicationRepository!
-
-    var selectedCurrency: String {
-        return applicationRepository.currency
-    }
+    var selectedCurrency: String = ""
 
     var currencies = [
         [
@@ -82,16 +80,17 @@ class CurrencyTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if self.selectedCurrency == "" {
+            self.selectedCurrency = self.applicationRepository.currency
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if tabBarController == nil {
+            self.scrollViewEdger.removeBottomShadow()
+        }
     }
 
     // MARK: - Table view data source
@@ -125,11 +124,16 @@ class CurrencyTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        applicationRepository.currency = currencies[indexPath.row]["currency"]!
+        guard let delegate = self.delegate else {
+            self.applicationRepository.currency = currencies[indexPath.row]["currency"]!
 
-        NotificationCenter.default.post(name: .didChangeCurrency, object: currencies[indexPath.row])
+            NotificationCenter.default.post(name: .didChangeCurrency, object: self.currencies[indexPath.row])
 
-        self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
+
+            return
+        }
+
+        delegate.didSelectCurrency(currency: currencies[indexPath.row]["currency"]!, sender: self)
     }
-
 }

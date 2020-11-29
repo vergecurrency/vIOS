@@ -137,6 +137,7 @@
 "send.confirmButton" = "Conferma";
 "send.noBalanceTitle" = "Niente saldo disponibile";
 "send.noBalanceDesc" = "Non hai nessun XVG da spendere. Per favore aumenta il tuo saldo";
+"send.closeButton" = "Chiudi";
 
 /*QR-code*/
 "send.qrcode.title" = "Scansiona un QR Code XVG";
@@ -168,6 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Valuta FIAT";
 "settings.settings.cell.changePinLabel" = "Cambia il PIN del portafogli";
 "settings.settings.cell.useFaceIdLabel" = "Usa Face ID";
+"settings.settings.cell.useBgReadingLabel" = "Lettura in background";
 "settings.settings.cell.torConnectionLabel" = "Connessione Tor";
 "settings.other.header.title" = "Altro";
 "settings.other.cell.supportLabel" = "Supporto";
@@ -222,6 +224,12 @@
 "settings.useFaceID.footer.title" = "Invece di dover inserire il tuo PIN, un prompt ti fornirà il modo alternativo di autenticarti.";
 "settings.useFaceID.unlockLabel" = "Sblocca il portafogli";
 "settings.useFaceID.sendingLabel" = "Inviando XVG";
+
+/*Background Reading (NFC)*/
+"settings.br.title" = "Lettura in background";
+"settings.br.footer.title" = "Se abilitato, il portafoglio verrà avviato automaticamente quando tocchi un tag NFC di Verge.";
+"settings.br.footer.unsupported" = "Sfortunatamente il tuo hardware non sembra supportare NFC, quindi questa funzione non può essere abilitata.";
+"settings.br.nfcSendLabel" = "Abilita NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor è qui per la tua privacy e nasconde la tua localizzazione";

@@ -41,28 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return shouldPerformAdditionalDelegateHandling
     }
 
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-    ) -> Bool {
-        self.log?.info("app delegate application open url")
-
-        AddressValidator().validate(string: url.absoluteString) { (valid, address, amount) in
-            if !valid {
-                return
-            }
-
-            let transaction = Application.container.resolve(WalletTransactionFactory.self)!
-            transaction.address = address!
-            transaction.amount = amount ?? 0.0
-
-            self.sendRequest = transaction
-        }
-
-        return true
-    }
-
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state.
         // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message)
@@ -174,5 +152,76 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let handledShortCutItem = shortcutsManager.handleShortCutItem(shortcutItem)
 
         completionHandler(handledShortCutItem)
+    }
+
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+    ) -> Bool {
+        self.log?.info("app delegate application open url")
+
+        self.sendTxRequest(address: url.absoluteString)
+
+        return true
+    }
+
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?
+    ) -> Void) -> Bool {
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
+            return false
+        }
+
+        let ndefMessage = userActivity.ndefMessagePayload
+        guard
+            #available(iOS 13.0, *),
+            ndefMessage.records.count > 0,
+            ndefMessage.records[0].typeNameFormat != .empty
+        else {
+            return false
+        }
+
+        guard let payload = ndefMessage.records.first, payload.typeNameFormat == .nfcWellKnown else {
+            return false
+        }
+
+        guard let url = payload.wellKnownTypeURIPayload()?.absoluteString else {
+            return false
+        }
+
+        self.log?.info("app delegate application opened associated domain")
+
+        self.sendTxRequest(address: url)
+
+        return true
+    }
+
+    private func sendTxRequest(address: String) {
+        AddressValidator().validate(string: address) { (valid, address, amount, label, currency) in
+            if !valid {
+                return
+            }
+
+            let transaction = Application.container.resolve(WalletTransactionFactory.self)!
+            transaction.address = address!
+            transaction.memo = label ?? ""
+
+            if (currency == "XVG" || currency == nil) {
+                transaction.amount = amount ?? 0.0
+            } else {
+                transaction.fiatAmount = amount ?? 0.0
+            }
+
+            if currency != nil {
+                transaction.update(currency: currency!)
+            }
+
+            self.sendRequest = transaction
+
+            NotificationCenter.default.post(name: .demandSendView, object: transaction)
+        }
     }
 }

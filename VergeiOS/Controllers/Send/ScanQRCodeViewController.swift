@@ -109,9 +109,11 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
         // Dispose of any resources that can be recreated.
     }
 
-    func metadataOutput(_ output: AVCaptureMetadataOutput,
-                        didOutput metadataObjects: [AVMetadataObject],
-                        from connection: AVCaptureConnection) {
+    func metadataOutput(
+        _ output: AVCaptureMetadataOutput,
+        didOutput metadataObjects: [AVMetadataObject],
+        from connection: AVCaptureConnection
+    ) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
@@ -127,24 +129,20 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            AddressValidator().validate(metadataObject: metadataObj) { (valid, address, amount) in
+            AddressValidator().validate(metadataObject: metadataObj) { valid, address, amount, label, currency in
                 self.captureSession?.stopRunning()
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)
                 }
 
-                if !valid {
-                    return
-                }
-
-                self.sendTransaction?.address = address!
-
-                if amount != nil {
-                    self.sendTransaction?.amount = amount!
-                }
-
-                self.sendTransactionDelegate.didChangeSendTransaction(self.sendTransaction!)
+                self.handleValidatedScan(
+                    isValid: valid,
+                    address: address,
+                    amount: amount,
+                    label: label,
+                    currency: currency
+                )
             }
         }
     }
@@ -179,11 +177,49 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
     }
 
     @IBAction func toggleFlash(_ sender: Any) {
-        flash()
+        self.flash()
     }
 
     @IBAction func openImage(_ sender: Any) {
         present(imagePicker, animated: true)
+    }
+
+    fileprivate func handleValidatedScan(
+        isValid: Bool,
+        address: String?,
+        amount: NSNumber?,
+        label: String?,
+        currency: String?
+    ) {
+        if !isValid {
+            return
+        }
+
+        self.sendTransaction?.address = address ?? ""
+
+        if let amount = amount {
+            if (currency == "XVG" || currency == nil) {
+                self.sendTransaction?.amount = amount
+            } else {
+                self.sendTransaction?.fiatAmount = amount
+            }
+        }
+
+        if let label = label {
+            self.sendTransaction?.memo = label
+        }
+
+        if let currency = currency {
+            self.sendTransaction?.update(currency: currency)
+        }
+
+        guard let sendTransaction = self.sendTransaction else {
+            return
+        }
+
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        self.sendTransactionDelegate.didChangeSendTransaction(sendTransaction)
+//        }
     }
 
     // MARK: - Navigation
@@ -215,22 +251,18 @@ extension ScanQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
                 qrCode += feature.messageString!
             }
 
-            AddressValidator().validate(string: qrCode) { (valid, address, amount) in
+            AddressValidator().validate(string: qrCode) { (valid, address, amount, label, currency) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)
                 }
 
-                if !valid {
-                    return
-                }
-
-                self.sendTransaction?.address = address!
-
-                if amount != nil {
-                    self.sendTransaction?.amount = amount!
-                }
-
-                self.sendTransactionDelegate.didChangeSendTransaction(self.sendTransaction!)
+                self.handleValidatedScan(
+                    isValid: valid,
+                    address: address,
+                    amount: amount,
+                    label: label,
+                    currency: currency
+                )
             }
         }
 

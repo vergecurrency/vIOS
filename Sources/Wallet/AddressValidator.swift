@@ -11,8 +11,13 @@ import AVFoundation
 import BitcoinKit
 
 class AddressValidator {
-
-    typealias ValidationCompletion = (_ valid: Bool, _ address: String?, _ amount: NSNumber?) -> Void
+    typealias ValidationCompletion = (
+        _ valid: Bool,
+        _ address: String?,
+        _ amount: NSNumber?,
+        _ label: String?,
+        _ currency: String?
+    ) -> Void
 
     static func validate(address: String) -> Bool {
         let legacyAddress = try? LegacyAddress(address)
@@ -32,39 +37,37 @@ class AddressValidator {
         var valid = false
         var address: String?
         var amount: NSNumber?
+        var label: String?
+        var currency: String?
+
+        let parameters = self.normalizeUrl(url: string)
 
         if AddressValidator.validate(address: string) {
             valid = true
             address = string
         }
 
-        let splittedRequest: [Substring] = string
-            .replacingOccurrences(of: "verge://", with: "")
-            .replacingOccurrences(of: "verge:", with: "")
-            .split(separator: "?")
+        if let addressParam = parameters["address"] {
+            address = addressParam
+        }
 
-        let parametersString: [Substring] = splittedRequest.last?.split(separator: "&") ?? []
+        if let amountParam = parameters["amount"], amountParam != nil {
+            amount = amountToNumber(stringAmount: amountParam!)
+        }
 
-        if AddressValidator.validate(address: splittedRequest.first?.description ?? "") {
+        if let labelParam = parameters["label"], labelParam != nil {
+            label = labelParam!.removingPercentEncoding
+        }
+
+        if let currencyParam = parameters["currency"] {
+            currency = currencyParam
+        }
+
+        if AddressValidator.validate(address: address ?? "") {
             valid = true
-            address = splittedRequest.first!.description
-        } else {
-            return completion(valid, address, amount)
         }
 
-        let splittedParameters = parametersString.last?.split(separator: "&") ?? []
-        var parameters = [String: String]()
-
-        for param in splittedParameters {
-            let splittedParam = param.split(separator: "=")
-            parameters[splittedParam.first!.description] = splittedParam.last!.description
-        }
-
-        if let amountParam = parameters["amount"] {
-            amount = amountToNumber(stringAmount: amountParam)
-        }
-
-        completion(valid, address, amount)
+        completion(valid, address, amount, label, currency)
     }
 
     fileprivate func amountToNumber(stringAmount: String) -> NSNumber? {
@@ -73,5 +76,27 @@ class AddressValidator {
         }
 
         return nil
+    }
+
+    fileprivate func normalizeUrl(url: String) -> [String: String?] {
+        let splittedRequest: [Substring] = url
+            .replacingOccurrences(of: "verge://", with: "")
+            .replacingOccurrences(of: "verge:", with: "")
+            .replacingOccurrences(of: "https://tag.vergecurrency.business/", with: "")
+            .split(separator: "?")
+
+        let parametersString: [Substring] = splittedRequest.last?.split(separator: "&") ?? []
+        var parameters = [String: String]()
+
+        for param in parametersString {
+            let splittedParam = param.split(separator: "=")
+            parameters[splittedParam.first!.description] = splittedParam.last!.description
+        }
+
+        if (parameters.index(forKey: "address") == nil) {
+            parameters["address"] = String(splittedRequest.first ?? "")
+        }
+
+        return parameters
     }
 }

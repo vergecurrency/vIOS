@@ -161,6 +161,7 @@
 "send.confirmButton"                        = "确认";
 "send.noBalanceTitle"                       = "没有余额";
 "send.noBalanceDesc"                        = "你没有任何XVG去发送.\n请增加你的余额.";
+"send.closeButton"                          = "关闭";
 
 // QR-code
 
@@ -199,6 +200,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "法定货币";
 "settings.settings.cell.changePinLabel"     = "更改钱包PIN码";
 "settings.settings.cell.useFaceIdLabel"     = "使用面容ID";
+"settings.settings.cell.useBgReadingLabel"  = "背景阅读";
 "settings.settings.cell.torConnectionLabel" = "Tor连接";
 
 "settings.other.header.title"               = "其它";
@@ -268,6 +270,13 @@
 "settings.useFaceID.footer.title"           = "相比较于提供你的钱包PIN码,面容ID提供了一种代替的验证方法.";
 "settings.useFaceID.unlockLabel"            = "解锁你的钱包";
 "settings.useFaceID.sendingLabel"           = "发送XVG";
+
+// Background Reading (NFC)
+
+"settings.br.title"                         = "背景阅读";
+"settings.br.footer.title"                  = "如果启用，当您点击边缘NFC标签时，钱包将自动启动。";
+"settings.br.footer.unsupported"            = "不幸的是，您的硬件似乎不支持NFC，因此无法启用此功能。";
+"settings.br.nfcSendLabel"                  = "启用NFC";
 
 // Tor connection
 

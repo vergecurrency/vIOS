@@ -84,7 +84,7 @@ class MainTabBarController: UITabBarController {
 
     @objc func demandSendView(notification: Notification) {
         if let sendTransaction = notification.object as? WalletTransactionFactory {
-            prepareSendView(transaction: sendTransaction)
+            self.prepareSendView(transaction: sendTransaction)
         }
     }
 

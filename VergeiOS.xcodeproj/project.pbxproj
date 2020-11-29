@@ -12,6 +12,12 @@
 		0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */; };
 		0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView+Shake.swift */; };
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
+		311F108024F502A000D000FD /* NfcTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311F107F24F502A000D000FD /* NfcTableViewController.swift */; };
+		3169E5212516EEF1006E00F8 /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
+		3169E5242516EEF4006E00F8 /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
+		3169E5262516EEF6006E00F8 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
+		3169E5282516EEF8006E00F8 /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */; };
+		3169E52A2516EEFA006E00F8 /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E492171FE0B009F0C9D /* Tor.framework */; };
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
@@ -98,11 +104,7 @@
 		A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */; };
 		A339393621B877750010CC4A /* PassphraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393521B877750010CC4A /* PassphraseViewController.swift */; };
 		A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A339393921B877AE0010CC4A /* TorViewController.swift */; };
-		A33B38F82516909200E9E30C /* SwinjectStoryboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */; };
-		A33B38FB2516909400E9E30C /* HGPlaceholders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B2E25A214836B500C31719 /* HGPlaceholders.framework */; };
 		A33B39272516958900E9E30C /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = A33B39262516958900E9E30C /* Logging */; };
-		A33B39542516B2EC00E9E30C /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CE63F8243CC297006EE501 /* Swinject.framework */; };
-		A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B759D21A5CDD400030CCF /* BitcoinKit.framework */; };
 		A33B75C021A61A3500030CCF /* CurrencyInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B75BF21A61A3500030CCF /* CurrencyInput.swift */; };
 		A33B75C421A8917700030CCF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A33B75C321A8917700030CCF /* Settings.storyboard */; };
 		A33DB6952231D2010070DBCE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33DB6942231D2010070DBCE /* Array+Extensions.swift */; };
@@ -110,7 +112,6 @@
 		A33F6A7220EEE485001492C2 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7120EEE485001492C2 /* WelcomeViewController.swift */; };
 		A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A33F6A7620EEE485001492C2 /* CoreData.xcdatamodeld */; };
 		A33F6A7A20EEE487001492C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A33F6A7920EEE487001492C2 /* Assets.xcassets */; };
-		A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408E492171FE0B009F0C9D /* Tor.framework */; };
 		A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3408E4B217333B5009F0C9D /* NotificationViewController.xib */; };
 		A3408E5821768AF4009F0C9D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3408E5721768AF4009F0C9D /* Date+Extensions.swift */; };
 		A341F78E243F99B600F45BA9 /* Vws.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C928A701BC212214052 /* Vws.swift */; };
@@ -123,6 +124,8 @@
 		A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */; };
 		A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364727D217C7787001B1B18 /* ContactTableViewController.swift */; };
 		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
+		A3654D8B2517677C007E13B2 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3654D8A2517677C007E13B2 /* CoreNFC.framework */; };
+		A3654D9425180B3B007E13B2 /* NFCWalletTransactionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */; };
 		A3670CBA2454F5C100B2D9FC /* UITestingServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3670CB92454F5C100B2D9FC /* UITestingServiceProvider.swift */; };
 		A36B17BE2432A15800D327D8 /* WalletNotificationsSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */; };
 		A36B17C02432A17C00D327D8 /* SubscriberProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */; };
@@ -156,6 +159,7 @@
 		A38D6F7E21BDCC0200280FFE /* PaperkeyQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */; };
 		A38D6F8021C06C2A00280FFE /* ServiceUrlTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */; };
 		A38D6F8221C17EFB00280FFE /* AddressesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */; };
+		A39422972522894200CE2ED3 /* CurrencyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39422962522894200CE2ED3 /* CurrencyDelegate.swift */; };
 		A398B204212AFAD6004ACB73 /* LocalAuthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */; };
 		A398B208212B0103004ACB73 /* LAContext+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B207212B0103004ACB73 /* LAContext+Type.swift */; };
 		A398B20B212B01F6004ACB73 /* LocalAuthTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A398B20A212B01F6004ACB73 /* LocalAuthTableViewCell.swift */; };
@@ -454,6 +458,7 @@
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
+		311F107F24F502A000D000FD /* NfcTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NfcTableViewController.swift; sourceTree = "<group>"; };
 		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
@@ -585,6 +590,8 @@
 		A364727D217C7787001B1B18 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A3647FA32454D0A1006FE068 /* UITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UITests.xctestplan; sourceTree = "<group>"; };
+		A3654D8A2517677C007E13B2 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
+		A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCWalletTransactionFactory.swift; sourceTree = "<group>"; };
 		A3670CB92454F5C100B2D9FC /* UITestingServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingServiceProvider.swift; sourceTree = "<group>"; };
 		A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNotificationsSubscriber.swift; sourceTree = "<group>"; };
 		A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberProtocol.swift; sourceTree = "<group>"; };
@@ -621,6 +628,7 @@
 		A38D6F7D21BDCC0200280FFE /* PaperkeyQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperkeyQRViewController.swift; sourceTree = "<group>"; };
 		A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrlTableViewController.swift; sourceTree = "<group>"; };
 		A38D6F8121C17EFB00280FFE /* AddressesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewController.swift; sourceTree = "<group>"; };
+		A39422962522894200CE2ED3 /* CurrencyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDelegate.swift; sourceTree = "<group>"; };
 		A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthTableViewController.swift; sourceTree = "<group>"; };
 		A398B205212AFF71004ACB73 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		A398B207212B0103004ACB73 /* LAContext+Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+Type.swift"; sourceTree = "<group>"; };
@@ -847,20 +855,21 @@
 				A33B39272516958900E9E30C /* Logging in Frameworks */,
 				A39D5F682448F8480014B882 /* SwifterSwift in Frameworks */,
 				A39D5F622448F8480014B882 /* CryptoSwift in Frameworks */,
-				A33B38FB2516909400E9E30C /* HGPlaceholders.framework in Frameworks */,
+				3169E5242516EEF4006E00F8 /* HGPlaceholders.framework in Frameworks */,
 				A39D5F5E2448F8480014B882 /* KeychainSwift in Frameworks */,
 				A39D5F632448F8480014B882 /* Promises in Frameworks */,
-				A33B38F82516909200E9E30C /* SwinjectStoryboard.framework in Frameworks */,
+				A3654D8B2517677C007E13B2 /* CoreNFC.framework in Frameworks */,
 				A39D5F5C2448F8480014B882 /* IQKeyboardManagerSwift in Frameworks */,
-				A3408E4A2171FE0B009F0C9D /* Tor.framework in Frameworks */,
 				A39D5F5D2448F8480014B882 /* SwiftyJSON in Frameworks */,
 				A39D5F5F2448F8480014B882 /* Charts in Frameworks */,
-				A33B759E21A5CDD400030CCF /* BitcoinKit.framework in Frameworks */,
 				A39D5F602448F8480014B882 /* CoreStore in Frameworks */,
 				A39D5F642448F8480014B882 /* FBLPromises in Frameworks */,
 				A39D5F662448F8480014B882 /* PromisesTestHelpers in Frameworks */,
-				A33B39542516B2EC00E9E30C /* Swinject.framework in Frameworks */,
+				3169E52A2516EEFA006E00F8 /* Tor.framework in Frameworks */,
 				A39D5F612448F8480014B882 /* Eureka in Frameworks */,
+				3169E5282516EEF8006E00F8 /* SwinjectStoryboard.framework in Frameworks */,
+				3169E5262516EEF6006E00F8 /* Swinject.framework in Frameworks */,
+				3169E5212516EEF1006E00F8 /* BitcoinKit.framework in Frameworks */,
 				A39D5F652448F8480014B882 /* FBLPromisesTestHelpers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1058,6 +1067,7 @@
 			isa = PBXGroup;
 			children = (
 				B2BD788873F8343FD7DB3E2C /* AmountDelegate.swift */,
+				A39422962522894200CE2ED3 /* CurrencyDelegate.swift */,
 				A305DDB92107BB8B00911B64 /* KeyboardDelegate.swift */,
 				B2BD74068BD3DBE015E9B35E /* RecipientDelegate.swift */,
 				A373E6EB2154601D00C67390 /* SendTransactionDelegate.swift */,
@@ -1293,6 +1303,7 @@
 				A325664E2113B504006FB08A /* CurrencyTableViewController.swift */,
 				A398B214212F0949004ACB73 /* DisconnectWalletViewController.swift */,
 				A398B203212AFAD6004ACB73 /* LocalAuthTableViewController.swift */,
+				311F107F24F502A000D000FD /* NfcTableViewController.swift */,
 				A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */,
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
@@ -1426,6 +1437,7 @@
 		A37641112108E79800E04521 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3654D8A2517677C007E13B2 /* CoreNFC.framework */,
 				A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */,
 				A33B759D21A5CDD400030CCF /* BitcoinKit.framework */,
 				A3408E492171FE0B009F0C9D /* Tor.framework */,
@@ -1603,6 +1615,7 @@
 				A3478B4823647FF20018149C /* WalletManager.swift */,
 				B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */,
 				A3239D6322E60C2B00430F8B /* SweeperHelper.swift */,
+				A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2490,6 +2503,7 @@
 				A38D6F8021C06C2A00280FFE /* ServiceUrlTableViewController.swift in Sources */,
 				A3549DD521B9DB5A0091EAC3 /* PassphraseConfirmationViewController.swift in Sources */,
 				A36B17C624335D1300D327D8 /* WatchSubscriber.swift in Sources */,
+				311F108024F502A000D000FD /* NfcTableViewController.swift in Sources */,
 				A3EA38E022FA0E8700E89CF0 /* ConfirmSweepView.swift in Sources */,
 				B2BD711DC7A69C1F9F9C2875 /* TxAction.swift in Sources */,
 				A3239D6922E8ED1300430F8B /* WalletSweepingScannerViewController.swift in Sources */,
@@ -2503,6 +2517,7 @@
 				A3D98EE524269A7800A2BBEB /* KeyBalance.swift in Sources */,
 				B2BD7BC57336DE95804E4B72 /* TxTransponder.swift in Sources */,
 				A339393A21B877AE0010CC4A /* TorViewController.swift in Sources */,
+				A39422972522894200CE2ED3 /* CurrencyDelegate.swift in Sources */,
 				A3AB0FA7244FA45D008D991F /* DispatchTime+Extensions.swift in Sources */,
 				A35EFA9B22EA48F30064D3E0 /* TableHeaderView.swift in Sources */,
 				A339393421B352B50010CC4A /* PaperkeyShowViewController.swift in Sources */,
@@ -2572,6 +2587,7 @@
 				B2BD731FE91F17D3EFD3EBE4 /* Transaction.swift in Sources */,
 				B2BD76E01CF036F0D2435FED /* Block.swift in Sources */,
 				B2BD7265D9D0B63FFE8A6FE2 /* Balance.swift in Sources */,
+				A3654D9425180B3B007E13B2 /* NFCWalletTransactionFactory.swift in Sources */,
 				B2BD743E6EB65712BC9237E5 /* HttpSessionProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2689,7 +2705,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2713,7 +2729,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2736,7 +2752,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2755,7 +2771,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S7743EWR3C;
+				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2826,7 +2842,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2886,7 +2902,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2910,7 +2926,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2939,7 +2955,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/VergeiOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2960,7 +2976,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				INFOPLIST_FILE = VergeSiriUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2983,7 +2999,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UYBJ6FYLGU;
 				INFOPLIST_FILE = VergeSiriUI/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3015,7 +3031,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -3035,7 +3051,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -3065,7 +3081,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -3094,7 +3110,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -3109,7 +3125,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = VergeSiri/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3136,7 +3152,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = VergeSiri/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

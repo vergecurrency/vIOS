@@ -137,6 +137,7 @@
 "send.confirmButton" = "Potrdi";
 "send.noBalanceTitle" = "Ni stanja";
 "send.noBalanceDesc" = "Ste brez XVG za pošiljanje.\nProsimo, povečajte svoje stanje.";
+"send.closeButton" = "Zapri";
 
 /*QR-code*/
 "send.qrcode.title" = "Skenirajte XVG QR črtno kodo";
@@ -168,6 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Spremeni PIN denarnice";
 "settings.settings.cell.useFaceIdLabel" = "Uporabi Face ID";
+"settings.settings.cell.useBgReadingLabel" = "Branje v ozadju";
 "settings.settings.cell.torConnectionLabel" = "Tor povezava";
 "settings.other.header.title" = "Ostalo";
 "settings.other.cell.supportLabel" = "Podpora";
@@ -222,6 +224,12 @@
 "settings.useFaceID.footer.title" = "Namesto, da bi morali vnašati vašo PIN kodo, vam bodo ponujeni alternativni načini avtentikacije.";
 "settings.useFaceID.unlockLabel" = "Odklepanje vaše denarnice";
 "settings.useFaceID.sendingLabel" = "Pošiljanje XVG";
+
+/*Background Reading (NFC)*/
+"settings.br.title" = "Branje v ozadju";
+"settings.br.footer.title" = "Če je omogočena, se denarnica samodejno zažene, ko tapnete oznako NFC Verge.";
+"settings.br.footer.unsupported" = "Zdi se, da vaša strojna oprema ne podpira NFC, zato te funkcije ni mogoče omogočiti.";
+"settings.br.nfcSendLabel" = "Omogoči NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor je tu zaradi vaše zasebnosti in skrije vašo trenutno lokacijo";
