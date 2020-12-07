@@ -200,7 +200,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "法定货币";
 "settings.settings.cell.changePinLabel"     = "更改钱包PIN码";
 "settings.settings.cell.useFaceIdLabel"     = "使用面容ID";
-"settings.settings.cell.useNFCLabel"        = "使用NFC";
+"settings.settings.cell.useBgReadingLabel"  = "背景阅读";
 "settings.settings.cell.torConnectionLabel" = "Tor连接";
 
 "settings.other.header.title"               = "其它";
@@ -271,13 +271,12 @@
 "settings.useFaceID.unlockLabel"            = "解锁你的钱包";
 "settings.useFaceID.sendingLabel"           = "发送XVG";
 
-// Use NFC
+// Background Reading (NFC)
 
-"settings.useNFC.title"                     = "Use NFC";
-"settings.useNFC.header.title"              = "Use for";
-"settings.useNFC.footer.title"              = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported"        = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel"              = "Populating Send Details";
+"settings.br.title"                         = "背景阅读";
+"settings.br.footer.title"                  = "如果启用，当您点击边缘NFC标签时，钱包将自动启动。";
+"settings.br.footer.unsupported"            = "不幸的是，您的硬件似乎不支持NFC，因此无法启用此功能。";
+"settings.br.nfcSendLabel"                  = "启用NFC";
 
 // Tor connection
 

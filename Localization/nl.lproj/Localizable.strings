@@ -169,7 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Verander wallet PIN";
 "settings.settings.cell.useFaceIdLabel" = "Gebruik Face ID";
-"settings.settings.cell.useNFCLabel" = "Gebruik NFC";
+"settings.settings.cell.useBgReadingLabel" = "Achtergrondlezing";
 "settings.settings.cell.torConnectionLabel" = "Tor verbinding";
 "settings.other.header.title" = "Anders";
 "settings.other.cell.supportLabel" = "Ondersteuning";
@@ -273,12 +273,11 @@
 "settings.useFaceID.unlockLabel" = "Het openen van uw wallet";
 "settings.useFaceID.sendingLabel" = "Verzenden van XVG";
 
-/*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+/*Background Reading (NFC)*/
+"settings.br.title" = "Achtergrondlezing";
+"settings.br.footer.title" = "Indien ingeschakeld, wordt de wallet automatisch geopend wanneer u een Verge NFC-tag scant.";
+"settings.br.footer.unsupported" = "Helaas lijkt uw hardware NFC niet te ondersteunen, dus deze functie kan niet worden ingeschakeld.";
+"settings.br.nfcSendLabel" = "Schakel NFC in";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor is er voor uw privacy en beschermd uw locatie";

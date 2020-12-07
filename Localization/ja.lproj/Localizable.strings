@@ -169,7 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "法定通貨";
 "settings.settings.cell.changePinLabel" = "ウォレットPINを変更する";
 "settings.settings.cell.useFaceIdLabel" = "Face IDを使用する";
-"settings.settings.cell.useNFCLabel" = "NFCを使用する";
+"settings.settings.cell.useBgReadingLabel" = "背景の読書";
 "settings.settings.cell.torConnectionLabel" = "Tor接続";
 "settings.other.header.title" = "その他";
 "settings.other.cell.supportLabel" = "サポート";
@@ -225,12 +225,11 @@
 "settings.useFaceID.unlockLabel" = "ウォレットをアンロックする";
 "settings.useFaceID.sendingLabel" = "XVGの送信中";
 
-/*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+/*Background Reading (NFC)*/
+"settings.br.title" = "背景の読書";
+"settings.br.footer.title" = "有効にすると、VergeNFCタグをタップするとウォレットが自動的に起動します。";
+"settings.br.footer.unsupported" = "残念ながら、ハードウェアはNFCをサポートしていないようであるため、この機能を有効にすることはできません。";
+"settings.br.nfcSendLabel" = "NFCを有効にする";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Torはプライバシーのために使用し、現在地も匿名化されます";

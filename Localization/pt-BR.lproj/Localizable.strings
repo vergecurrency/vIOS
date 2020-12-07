@@ -166,7 +166,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Moedas FIAT";
 "settings.settings.cell.changePinLabel" = "Trocar o PIN da carteira";
 "settings.settings.cell.useFaceIdLabel" = "Usar Desbloqueio de Face";
-"settings.settings.cell.useNFCLabel" = "Usar NFC";
+"settings.settings.cell.useBgReadingLabel" = "Leitura de fundo";
 "settings.settings.cell.torConnectionLabel" = "Conexão Tor";
 "settings.other.header.title" = "Outros";
 "settings.other.cell.supportLabel" = "Apoio, suporte";
@@ -222,12 +222,11 @@
 "settings.useFaceID.unlockLabel" = "Desbloquear sua carteira";
 "settings.useFaceID.sendingLabel" = "Enviando XVG";
 
-/*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+/*Background Reading (NFC)*/
+"settings.br.title" = "Leitura de fundo";
+"settings.br.footer.title" = "Se ativada, a carteira será iniciada automaticamente quando você tocar em uma etiqueta NFC da Verge.";
+"settings.br.footer.unsupported" = "Infelizmente, seu hardware parece não oferecer suporte a NFC, portanto, esse recurso não pode ser ativado.";
+"settings.br.nfcSendLabel" = "Habilitar NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor está aqui para sua privacidade e esconde sua localização";

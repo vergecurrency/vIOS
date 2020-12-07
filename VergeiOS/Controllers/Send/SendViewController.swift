@@ -112,6 +112,7 @@ class SendViewController: ThemeableViewController {
         super.viewWillAppear(animated)
 
         self.noBalanceView.isHidden = (walletAmount.doubleValue > 0)
+        self.nfcInitiator.isHidden = !self.nfcTxFactory.isNfcAvailable()
 
         self.xvgCardContainer.alpha = 0.0
         self.xvgCardContainer.center.y += 20.0
@@ -246,9 +247,7 @@ class SendViewController: ThemeableViewController {
     }
 
     @IBAction func initiateNfc(_ sender: Any) {
-        if #available(iOS 13.0, *) {
-            self.nfcTxFactory.initiateScan()
-        }
+        self.nfcTxFactory.initiateScan()
     }
 
     // MARK: - Navigation
@@ -712,5 +711,4 @@ extension SendViewController: CurrencyDelegate {
         controller.dismiss(animated: true)
     }
 }
-
 // swiftlint:enable file_length type_body_length

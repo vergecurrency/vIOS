@@ -200,7 +200,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "Фиатная валюта";
 "settings.settings.cell.changePinLabel"     = "Сменить Пин-код";
 "settings.settings.cell.useFaceIdLabel"     = "Использование Face ID";
-"settings.settings.cell.useNFCLabel"        = "Использование NFC";
+"settings.settings.cell.useBgReadingLabel"  = "Фоновое чтение";
 "settings.settings.cell.torConnectionLabel" = "Tor-соединение";
 
 "settings.other.header.title"               = "Другое";
@@ -264,13 +264,12 @@
 "settings.useFaceID.unlockLabel"            = "Разблокировки Вашего кошелька";
 "settings.useFaceID.sendingLabel"           = "При отправке XVG";
 
-// Use NFC
+// Background Reading (NFC)
 
-"settings.useNFC.title"                     = "Use NFC";
-"settings.useNFC.header.title"              = "Use for";
-"settings.useNFC.footer.title"              = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported"        = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel"              = "Populating Send Details";
+"settings.br.title"                     = "Фоновое чтение";
+"settings.br.footer.title"              = "Если этот параметр включен, кошелек будет автоматически запускаться при нажатии тега Verge NFC.";
+"settings.br.footer.unsupported"        = "К сожалению, ваше оборудование не поддерживает NFC, поэтому эту функцию нельзя включить.";
+"settings.br.nfcSendLabel"              = "Включить NFC";
 
 // Tor connection
 

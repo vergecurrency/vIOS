@@ -169,7 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Tiền pháp định";
 "settings.settings.cell.changePinLabel" = "Thay số PIN ví";
 "settings.settings.cell.useFaceIdLabel" = "Sử dụng nhận diện khuôn mặt";
-"settings.settings.cell.useNFCLabel" = "Sử dụng NFC";
+"settings.settings.cell.useBgReadingLabel" = "Đọc nền";
 "settings.settings.cell.torConnectionLabel" = "Kết nối qua mạng Tor";
 "settings.other.header.title" = "Khác";
 "settings.other.cell.supportLabel" = "Ủng hộ";
@@ -225,12 +225,11 @@
 "settings.useFaceID.unlockLabel" = "Mở khóa ví bạn";
 "settings.useFaceID.sendingLabel" = "Đang gửi XVG";
 
-/*Use NFC*/
-"settings.useNFC.title" = "Sử dụng NFC";
-"settings.useNFC.header.title" = "Sử dụng cho";
-"settings.useNFC.footer.title" = "Nếu thiết bị của bạn hỗ trợ được cho chức năng cần thiết để đọc NFC, bạn sẽ dễ dàng quét mã để gửi XVG";
-"settings.useNFC.footer.unsupported" = "Xin lỗi, thiết bị của bạn không hỗ trợ được cho chức năng cần thiết để đọc NFC nên không thực hiện được tính năng này";
-"settings.useNFC.nfcSendLabel" = "Xin điền chi tiết gửi";
+/*Background Reading (NFC)*/
+"settings.br.title" = "Đọc nền";
+"settings.br.footer.title" = "Nếu được bật, ví sẽ tự động khởi chạy khi bạn quét vào thẻ Verge NFC.";
+"settings.br.footer.unsupported" = "Xin lỗi, thiết bị của bạn không hỗ trợ được cho chức năng cần thiết để đọc NFC nên không thực hiện được tính năng này";
+"settings.br.nfcSendLabel" = "Sử dụng NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor ở đầy để có sự riêng tư và che giấu vị trí của bạn";

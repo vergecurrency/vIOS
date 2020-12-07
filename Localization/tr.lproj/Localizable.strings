@@ -169,7 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Para Birimi";
 "settings.settings.cell.changePinLabel" = "Cüzdan PIN'ini değiştir";
 "settings.settings.cell.useFaceIdLabel" = "Face ID kullan";
-"settings.settings.cell.useNFCLabel" = "NFC kullan";
+"settings.settings.cell.useBgReadingLabel" = "Arka planda okuma";
 "settings.settings.cell.torConnectionLabel" = "Tor Bağlantısı";
 "settings.other.header.title" = "Diğerleri";
 "settings.other.cell.supportLabel" = "Destek";
@@ -225,12 +225,11 @@
 "settings.useFaceID.unlockLabel" = "Cüzdanınızın kilidini açın";
 "settings.useFaceID.sendingLabel" = "XVG Gönderiliyor";
 
-/*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+/*Background Reading (NFC)*/
+"settings.br.title" = "Arka planda okuma";
+"settings.br.footer.title" = "Etkinleştirilirse, bir Verge NFC etiketine dokunduğunuzda cüzdan otomatik olarak başlayacaktır.";
+"settings.br.footer.unsupported" = "Maalesef donanımınız NFC'yi desteklemiyor gibi göründüğü için bu özellik etkinleştirilemez.";
+"settings.br.nfcSendLabel" = "NFC'yi etkinleştir";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor, gizliliğiniz için burada ve lokasyonunuzu gizliyor!";

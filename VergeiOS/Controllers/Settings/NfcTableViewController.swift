@@ -21,10 +21,8 @@ class NfcTableViewController: EdgedTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 13.0, *) {
-            if (NFCNDEFReaderSession.readingAvailable) {
-                nfcNotSupported = false
-            }
+        if (NFCNDEFReaderSession.readingAvailable) {
+            nfcNotSupported = false
         }
 
         if (nfcNotSupported) {
@@ -38,7 +36,7 @@ class NfcTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         if (nfcNotSupported) {
             guard let footer = view as? UITableViewHeaderFooterView else { return }
-            footer.textLabel?.text = "settings.useNFC.footer.unsupported".localized
+            footer.textLabel?.text = "settings.br.footer.unsupported".localized
         }
     }
 

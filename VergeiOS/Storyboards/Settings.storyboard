@@ -415,14 +415,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use NFC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGN-3G-OQG">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Background Reading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGN-3G-OQG">
                                                     <rect key="frame" x="61" y="0.0" width="266" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.settings.cell.useNFCLabel"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="settings.settings.cell.useBgReadingLabel"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="NFCIcon-2" id="QNk-36-wfP">
@@ -750,7 +750,7 @@
                             <color key="tintColor" name="PrimaryLight"/>
                         </imageView>
                         <sections>
-                            <tableViewSection headerTitle="settings.br.header.title" footerTitle="settings.br.footer.title" id="ugs-Uh-2rV">
+                            <tableViewSection footerTitle="settings.br.footer.title" id="ugs-Uh-2rV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="UNY-5U-va6">
                                         <rect key="frame" x="16" y="175.5" width="343" height="43.5"/>

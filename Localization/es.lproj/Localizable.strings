@@ -169,7 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Moneda fiduciaria";
 "settings.settings.cell.changePinLabel" = "Cambiar el PIN del monedero";
 "settings.settings.cell.useFaceIdLabel" = "Utilizar ID facial";
-"settings.settings.cell.useNFCLabel" = "Utilizar NFC";
+"settings.settings.cell.useBgReadingLabel" = "Lectura de antecedentes";
 "settings.settings.cell.torConnectionLabel" = "Conexión Tor";
 "settings.other.header.title" = "Otros";
 "settings.other.cell.supportLabel" = "Apoyo";
@@ -225,12 +225,11 @@
 "settings.useFaceID.unlockLabel" = "Desbloquear monedero";
 "settings.useFaceID.sendingLabel" = "Enviando XVG";
 
-/*Use NFC*/
-"settings.useNFC.title" = "Use NFC";
-"settings.useNFC.header.title" = "Use for";
-"settings.useNFC.footer.title" = "If your hardware supports this functionality, you can enable reading of NFC tags specifically coded to populate the fields required for sending XVG.";
-"settings.useNFC.footer.unsupported" = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
-"settings.useNFC.nfcSendLabel" = "Populating Send Details";
+/*Background Reading (NFC)*/
+"settings.br.title" = "Lectura de antecedentes";
+"settings.br.footer.title" = "Si está habilitado, la billetera se iniciará automáticamente cuando toque una etiqueta Verge NFC.";
+"settings.br.footer.unsupported" = "Desafortunadamente, su hardware no parece ser compatible con NFC, por lo que esta función no se puede habilitar.";
+"settings.br.nfcSendLabel" = "Habilitar NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor mantiene su privacidad y oculta su ubicación";

@@ -368,7 +368,7 @@
                                     <constraint firstItem="moS-y5-INY" firstAttribute="centerX" secondItem="eEw-RV-ID8" secondAttribute="centerX" id="9jO-99-laX"/>
                                 </constraints>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9p4-gg-a9I" customClass="BackgroundView" customModule="VergeiOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9p4-gg-a9I" customClass="BackgroundView" customModule="VergeiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NZZ-HO-kir">
