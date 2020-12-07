@@ -316,7 +316,6 @@
 "settings.useFaceID.unlockLabel"            = "Unlocking your wallet";
 "settings.useFaceID.sendingLabel"           = "Sending XVG";
 
-
 // Background Reading (NFC)
 
 "settings.br.title"                         = "Background Reading";

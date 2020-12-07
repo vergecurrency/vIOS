@@ -275,7 +275,7 @@
 
 /*Background Reading (NFC)*/
 "settings.br.title" = "Achtergrondlezing";
-"settings.br.footer.title" = "Indien ingeschakeld, wordt de portemonnee automatisch gestart wanneer u op een Verge NFC-tag tikt.";
+"settings.br.footer.title" = "Indien ingeschakeld, wordt de wallet automatisch geopend wanneer u een Verge NFC-tag scant.";
 "settings.br.footer.unsupported" = "Helaas lijkt uw hardware NFC niet te ondersteunen, dus deze functie kan niet worden ingeschakeld.";
 "settings.br.nfcSendLabel" = "Schakel NFC in";
 
