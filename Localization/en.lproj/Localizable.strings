@@ -157,7 +157,7 @@
 "send.addressPlaceholder"                   = "Enter the recipient address";
 "send.amountButtonLabel"                    = "Amount";
 "send.memoButtonLabel"                      = "Internal Memo (optional)";
-"send.memoPlaceholder"                      = "Memo (optional)";
+"send.memoPlaceholder"                      = "Gift to Swen";
 "send.confirmButton"                        = "Confirm";
 "send.noBalanceTitle"                       = "No balance";
 "send.noBalanceDesc"                        = "You don't have any XVG to send.\nPlease increase your balance.";
