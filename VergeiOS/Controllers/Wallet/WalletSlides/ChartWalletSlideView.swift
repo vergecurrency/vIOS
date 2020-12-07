@@ -168,7 +168,7 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
             )
             self.setPriceLabels(withData: chartData.priceUsd)
             self.activityIndicator.stopAnimating()
-        }.catch { error in
+        }.catch { _ in
             self.placeholderView.isHidden = false
         }
     }

@@ -161,6 +161,7 @@
 "send.confirmButton"                        = "Подтвердить";
 "send.noBalanceTitle"                       = "Недостаточно средств";
 "send.noBalanceDesc"                        = "У вас нет XVG для отправки.\nПожалуйста, пополните свой баланс.";
+"send.closeButton"                          = "Закрыть";
 
 // QR-code
 
@@ -199,6 +200,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "Фиатная валюта";
 "settings.settings.cell.changePinLabel"     = "Сменить Пин-код";
 "settings.settings.cell.useFaceIdLabel"     = "Использование Face ID";
+"settings.settings.cell.useBgReadingLabel"  = "Фоновое чтение";
 "settings.settings.cell.torConnectionLabel" = "Tor-соединение";
 
 "settings.other.header.title"               = "Другое";
@@ -261,6 +263,13 @@
 "settings.useFaceID.footer.title"           = "Вместо того, чтобы вводить PIN-код Вашего кошелька, Вам будет предложен альтернативный способ аутентификации.";
 "settings.useFaceID.unlockLabel"            = "Разблокировки Вашего кошелька";
 "settings.useFaceID.sendingLabel"           = "При отправке XVG";
+
+// Background Reading (NFC)
+
+"settings.br.title"                     = "Фоновое чтение";
+"settings.br.footer.title"              = "Если этот параметр включен, кошелек будет автоматически запускаться при нажатии тега Verge NFC.";
+"settings.br.footer.unsupported"        = "К сожалению, ваше оборудование не поддерживает NFC, поэтому эту функцию нельзя включить.";
+"settings.br.nfcSendLabel"              = "Включить NFC";
 
 // Tor connection
 

@@ -161,10 +161,11 @@
 "send.confirmButton"                        = "Confirm";
 "send.noBalanceTitle"                       = "No balance";
 "send.noBalanceDesc"                        = "You don't have any XVG to send.\nPlease increase your balance.";
+"send.closeButton"                          = "Close";
 
 // QR-code
 
-"send.qrcode.title"                         = "Scan a XVG QR code";
+"send.qrcode.title"                         = "Scan an XVG QR code";
 "send.qrcode.closeButton"                   = "Close";
 
 // Select recipient
@@ -204,6 +205,7 @@
 "settings.settings.cell.fiatCurrencyLabel"  = "Fiat currency";
 "settings.settings.cell.changePinLabel"     = "Change wallet PIN";
 "settings.settings.cell.useFaceIdLabel"     = "Use Face ID";
+"settings.settings.cell.useBgReadingLabel"  = "Background Reading";
 
 "settings.other.header.title"               = "Other";
 "settings.other.cell.supportLabel"          = "Support";
@@ -239,8 +241,8 @@
 
 // Support
 
-"settings.support.titleLabel"               = "Could you really use some support?";
-"settings.support.descLabel"                = "Do you experience problems with your wallet? Or do you simply have questions? The Verge Currency community is always available!";
+"settings.support.titleLabel"               = "Do you need some support?";
+"settings.support.descLabel"                = "Are you experiencing a problem with your wallet? Or do you simply have a question? The Verge Currency community is always available!";
 
 // Private key wallet sweeping
 
@@ -313,6 +315,13 @@
 "settings.useFaceID.footer.title"           = "Instead of having the need of filling in your wallet PIN a prompt will provide you with the alternative way of authenticating yourself.";
 "settings.useFaceID.unlockLabel"            = "Unlocking your wallet";
 "settings.useFaceID.sendingLabel"           = "Sending XVG";
+
+// Background Reading (NFC)
+
+"settings.br.title"                         = "Background Reading";
+"settings.br.footer.title"                  = "If enabled, the wallet will automatically launch when you tap a Verge NFC tag.";
+"settings.br.footer.unsupported"            = "Unfortunately your hardware doesn't seem to support NFC, so this feature can't be enabled.";
+"settings.br.nfcSendLabel"                  = "Enable NFC";
 
 // Tor connection
 

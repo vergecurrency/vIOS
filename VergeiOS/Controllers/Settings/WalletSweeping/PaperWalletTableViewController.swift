@@ -196,7 +196,7 @@ class PaperWalletTableViewController: EdgedTableViewController {
             self.present(UIAlertController.createInvalidPrivateKeyAlert(), animated: true)
         }
     }
-    
+
     private func showTxNotAcceptedAlert() {
         self.dismissLoadingAlert().then { _ in
             self.present(UIAlertController.createTxNotAcceptedAlert(), animated: true)

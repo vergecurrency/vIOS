@@ -137,6 +137,7 @@
 "send.confirmButton" = "Bestätigen";
 "send.noBalanceTitle" = "Kein Guthaben";
 "send.noBalanceDesc" = "Du hast keine XVG zu versenden. Bitte erhöhe dein Guthaben.";
+"send.closeButton" = "Schließen";
 
 /*QR-code*/
 "send.qrcode.title" = "Scanne einen XVG QR Code";
@@ -168,6 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiatgeld";
 "settings.settings.cell.changePinLabel" = "Wallet PIN ändern";
 "settings.settings.cell.useFaceIdLabel" = "Face ID verwenden";
+"settings.settings.cell.useBgReadingLabel" = "Hintergrund Lesen";
 "settings.settings.cell.torConnectionLabel" = "Tor Verbindung";
 "settings.other.header.title" = "andere";
 "settings.other.cell.supportLabel" = "Unterstützung";
@@ -222,6 +224,12 @@
 "settings.useFaceID.footer.title" = "Anstatt Ihren Wallet PIN eingeben zu müssen, erhalten Sie über eine Eingabeaufforderung die Möglichkeit, sich alternativ zu authentifizieren.";
 "settings.useFaceID.unlockLabel" = "Dein Wallet entsperren";
 "settings.useFaceID.sendingLabel" = "Senden XVG";
+
+/*Background Reading (NFC)*/
+"settings.br.title" = "Hintergrund Lesen";
+"settings.br.footer.title" = "Wenn diese Option aktiviert ist, wird die Brieftasche automatisch gestartet, wenn Sie auf ein Verge NFC-Tag tippen.";
+"settings.br.footer.unsupported" = "Leider scheint deine Hardware NFCnicht zu unterstütz, deswegen kannst du die Funktion nicht nutzen.";
+"settings.br.nfcSendLabel" = "Aktivieren sie NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor ist für deine Privatsphäre zuständig und versteckt deinen Standort.";

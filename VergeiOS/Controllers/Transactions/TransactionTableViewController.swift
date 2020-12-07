@@ -20,7 +20,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
 
     @IBOutlet weak var tableView: PlaceholderTableView!
 
-    var applicationRepository: ApplicationRepository!
+    var ratesClient: RatesClient!
     var transactionManager: TransactionManager!
     var addressBookManager: AddressBookRepository!
     var scrollViewEdger: ScrollViewEdger!
@@ -251,7 +251,7 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
 
         DispatchQueue.main.async {
             // Create a send transaction.
-            let sendTransaction = WalletTransactionFactory(applicationRepository: self.applicationRepository)
+            let sendTransaction = WalletTransactionFactory(ratesClient: self.ratesClient)
             sendTransaction.address = transaction.address
             sendTransaction.amount = transaction.amountValue
 

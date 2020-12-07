@@ -225,7 +225,7 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
             self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
         }
     }
-    
+
     private func showTxNotAcceptedAlert() {
         self.dismissLoadingAlert().then { _ in
             self.present(UIAlertController.createTxNotAcceptedAlert(), animated: true)

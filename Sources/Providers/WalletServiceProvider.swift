@@ -24,6 +24,7 @@ class WalletServiceProvider: ServiceProvider {
         self.registerAddressBookRepository()
         self.registerSweeperHelper()
         self.registerWalletManager()
+        self.registerNFCWalletTransactionFactory()
     }
 
     func registerWalletCredentials() {
@@ -61,9 +62,9 @@ class WalletServiceProvider: ServiceProvider {
 
     func registerTransactionFactory() {
         container.register(WalletTransactionFactory.self) { r in
-            let applicationRepository = r.resolve(ApplicationRepository.self)!
+            let ratesClient = r.resolve(RatesClient.self)!
 
-            return WalletTransactionFactory(applicationRepository: applicationRepository)
+            return WalletTransactionFactory(ratesClient: ratesClient)
         }
     }
 
@@ -128,6 +129,16 @@ class WalletServiceProvider: ServiceProvider {
                 applicationRepository: r.resolve(ApplicationRepository.self)!,
                 credentials: r.resolve(Credentials.self)!,
                 log: r.resolve(Logger.self)!
+            )
+        }
+    }
+
+    func registerNFCWalletTransactionFactory() {
+        container.register(NFCWalletTransactionFactory.self) { r, sendTransactionDelegate in
+            return NFCWalletTransactionFactory(
+                sendTransactionDelegate: sendTransactionDelegate,
+                addressValidator: AddressValidator(),
+                logger: r.resolve(Logger.self)!
             )
         }
     }

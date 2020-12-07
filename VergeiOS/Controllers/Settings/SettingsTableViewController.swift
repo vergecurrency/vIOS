@@ -15,6 +15,7 @@ class SettingsTableViewController: EdgedTableViewController {
     @IBOutlet weak var currencyLabel: UILabel!
 
     let localAuthIndexPath = IndexPath(row: 3, section: 2)
+    let bgReadingIndexPath = IndexPath(row: 4, section: 2)
     var applicationRepository: ApplicationRepository!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,12 +109,30 @@ class SettingsTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let number = super.tableView(tableView, numberOfRowsInSection: section)
+        var number = super.tableView(tableView, numberOfRowsInSection: section)
 
-        if section == localAuthIndexPath.section && !LAContext.anyAvailable() {
-            return number - 1
+        if section == self.localAuthIndexPath.section && !LAContext.anyAvailable() {
+            number -= 1
+        }
+
+        if section == self.bgReadingIndexPath.section && !self.bgReadingSupported {
+            number -= 1
         }
 
         return number
+    }
+
+    var bgReadingSupported: Bool {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        guard let deviceModel = (withUnsafePointer(to: &systemInfo.machine) {
+            $0.withMemoryRebound(to: CChar.self, capacity: 1) { ptr in String.init(validatingUTF8: ptr) }
+        }) else {
+            return false
+        }
+
+        return deviceModel.contains("iPhone") && Float(
+            deviceModel.replacingOccurrences(of: "iPhone", with: "").replacingOccurrences(of: ",", with: ".")
+        ) ?? 0 >= 11
     }
 }

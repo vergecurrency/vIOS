@@ -20,7 +20,8 @@ class AbstractPaperkeyViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.tintColor = .white
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 
     override func viewWillAppear(_ animated: Bool) {

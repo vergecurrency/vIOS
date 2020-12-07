@@ -137,6 +137,7 @@
 "send.confirmButton" = "確認する";
 "send.noBalanceTitle" = "残高0";
 "send.noBalanceDesc" = "送信手数料に相当するXVGがありません。残高を増やしてください。";
+"send.closeButton" = "閉じる";
 
 /*QR-code*/
 "send.qrcode.title" = "XVGのQRコードを読み取る";
@@ -168,6 +169,7 @@
 "settings.settings.cell.fiatCurrencyLabel" = "法定通貨";
 "settings.settings.cell.changePinLabel" = "ウォレットPINを変更する";
 "settings.settings.cell.useFaceIdLabel" = "Face IDを使用する";
+"settings.settings.cell.useBgReadingLabel" = "背景の読書";
 "settings.settings.cell.torConnectionLabel" = "Tor接続";
 "settings.other.header.title" = "その他";
 "settings.other.cell.supportLabel" = "サポート";
@@ -222,6 +224,12 @@
 "settings.useFaceID.footer.title" = "ウォレットのPINを入力する代わりに、一時的に認証する方法を提供します";
 "settings.useFaceID.unlockLabel" = "ウォレットをアンロックする";
 "settings.useFaceID.sendingLabel" = "XVGの送信中";
+
+/*Background Reading (NFC)*/
+"settings.br.title" = "背景の読書";
+"settings.br.footer.title" = "有効にすると、VergeNFCタグをタップするとウォレットが自動的に起動します。";
+"settings.br.footer.unsupported" = "残念ながら、ハードウェアはNFCをサポートしていないようであるため、この機能を有効にすることはできません。";
+"settings.br.nfcSendLabel" = "NFCを有効にする";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Torはプライバシーのために使用し、現在地も匿名化されます";
