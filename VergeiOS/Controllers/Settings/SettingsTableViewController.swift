@@ -105,61 +105,34 @@ class SettingsTableViewController: EdgedTableViewController {
             cell.imageView?.image = UIImage(named: "TouchID")
         }
 
-        if indexPath == self.localAuthIndexPath && !LAContext.anyAvailable() {
-            cell.isHidden = true
-        }
-
-        if indexPath == self.bgReadingIndexPath && !isSupportedIphone {
-            cell.isHidden = true
-        }
-
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var rowHeight: CGFloat = 0.0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var number = super.tableView(tableView, numberOfRowsInSection: section)
 
-        if indexPath == self.localAuthIndexPath && !LAContext.anyAvailable() {
-            rowHeight = 0.0
-
-        } else if indexPath == self.bgReadingIndexPath && !isSupportedIphone {
-            rowHeight = 0.0
-
-        } else {
-            rowHeight = 44.0
+        if section == self.localAuthIndexPath.section && !LAContext.anyAvailable() {
+            number -= 1
         }
 
-        return rowHeight
+        if section == self.bgReadingIndexPath.section && !self.bgReadingSupported {
+            number -= 1
+        }
+
+        return number
     }
 
-    var isSupportedIphone: Bool {
-        var supportedVersion = false
-
+    var bgReadingSupported: Bool {
         var systemInfo = utsname()
         uname(&systemInfo)
-        let modelCode = withUnsafePointer(to: &systemInfo.machine) {
+        guard let deviceModel = (withUnsafePointer(to: &systemInfo.machine) {
             $0.withMemoryRebound(to: CChar.self, capacity: 1) { ptr in String.init(validatingUTF8: ptr) }
+        }) else {
+            return false
         }
 
-        let deviceModel = String.init(validatingUTF8: modelCode!)!
-
-        switch deviceModel {
-
-        case let decodedModelCode where decodedModelCode.contains("iPhone11"),
-             let decodedModelCode where decodedModelCode.contains("iPhone12"),
-             let decodedModelCode where decodedModelCode.contains("iPhone13"),
-             let decodedModelCode where decodedModelCode.contains("iPhone14"),
-             let decodedModelCode where decodedModelCode.contains("iPhone15"),
-             let decodedModelCode where decodedModelCode.contains("iPhone16"),
-             let decodedModelCode where decodedModelCode.contains("iPhone17"),
-             let decodedModelCode where decodedModelCode.contains("iPhone18")
-             //, let decodedModelCode where decodedModelCode.contains("x86_64") // Simulator
-        :
-            supportedVersion = true
-        default:
-            () // Ignore
-        }
-
-        return supportedVersion
+        return deviceModel.contains("iPhone") && Float(
+            deviceModel.replacingOccurrences(of: "iPhone", with: "").replacingOccurrences(of: ",", with: ".")
+        ) ?? 0 >= 11
     }
 }
