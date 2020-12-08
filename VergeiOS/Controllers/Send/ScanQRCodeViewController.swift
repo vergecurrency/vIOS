@@ -195,31 +195,30 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             return
         }
 
-        self.sendTransaction?.address = address ?? ""
-
-        if let amount = amount {
-            if (currency == "XVG" || currency == nil) {
-                self.sendTransaction?.amount = amount
-            } else {
-                self.sendTransaction?.fiatAmount = amount
-            }
-        }
-
-        if let label = label {
-            self.sendTransaction?.memo = label
-        }
-
-        if let currency = currency {
-            self.sendTransaction?.update(currency: currency)
-        }
-
         guard let sendTransaction = self.sendTransaction else {
             return
         }
 
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        sendTransaction.address = address ?? ""
+
+        if let amount = amount {
+            if (currency == "XVG" || currency == nil) {
+                sendTransaction.amount = amount
+            } else {
+                sendTransaction.fiatAmount = amount
+            }
+        }
+
+        if let label = label {
+            sendTransaction.memo = label
+        }
+
+        if let currency = currency {
+            sendTransaction.fiatCurrency = currency
+            sendTransaction.currency = .FIAT
+        }
+
         self.sendTransactionDelegate.didChangeSendTransaction(sendTransaction)
-//        }
     }
 
     // MARK: - Navigation

@@ -11,6 +11,4 @@ import Foundation
 protocol SendTransactionDelegate: class {
     func didChangeSendTransaction(_ transaction: WalletTransactionFactory)
     func getSendTransaction() -> WalletTransactionFactory
-    func currentAmount() -> NSNumber
-    func currentCurrency() -> String
 }

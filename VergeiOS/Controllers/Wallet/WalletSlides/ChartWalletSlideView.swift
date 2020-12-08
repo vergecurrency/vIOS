@@ -179,9 +179,9 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
         }
 
         let duration = 1.0
-        self.highestPriceLabel.countFromCurrentValueTo(CGFloat(prices.max()!), withDuration: duration)
+        self.highestPriceLabel.countFromCurrentValueTo(CGFloat(prices.max() ?? 0), withDuration: duration)
         self.averagePriceLabel.countFromCurrentValueTo(CGFloat(prices.average), withDuration: duration)
-        self.lowestPriceLabel.countFromCurrentValueTo(CGFloat(prices.min()!), withDuration: duration)
+        self.lowestPriceLabel.countFromCurrentValueTo(CGFloat(prices.min() ?? 0), withDuration: duration)
     }
 
     func chartUrl() -> URL {

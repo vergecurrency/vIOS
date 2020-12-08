@@ -171,6 +171,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?
     ) -> Void) -> Bool {
+        guard let appRepo = Application.container.resolve(ApplicationRepository.self), appRepo.useNfc else {
+            return false
+        }
+
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
             return false
         }
@@ -215,8 +219,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 transaction.fiatAmount = amount ?? 0.0
             }
 
-            if currency != nil {
-                transaction.update(currency: currency!)
+            if let currency = currency {
+                transaction.fiatCurrency = currency
+                transaction.currency = .FIAT
             }
 
             self.sendRequest = transaction
