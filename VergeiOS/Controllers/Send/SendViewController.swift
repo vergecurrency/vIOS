@@ -11,11 +11,6 @@ import UIKit
 // swiftlint:disable file_length type_body_length
 class SendViewController: ThemeableViewController {
 
-    enum CurrencySwitch {
-        case XVG
-        case FIAT
-    }
-
     @IBOutlet weak var xvgCardContainer: UIView!
     @IBOutlet weak var noBalanceView: UIView!
     @IBOutlet weak var walletAmountLabel: UILabel!
@@ -28,8 +23,6 @@ class SendViewController: ThemeableViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var nfcInitiator: UIButton!
 
-    var currency = CurrencySwitch.XVG
-    var selectedFiatCurrency: String!
     var txFactory: WalletTransactionFactory!
     var nfcTxFactory: NFCWalletTransactionFactory!
     var txTransponder: TxTransponderProtocol!
@@ -60,8 +53,6 @@ class SendViewController: ThemeableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.selectedFiatCurrency = self.applicationRepository.currency
-
         self.confirmButton.backgroundColor = ThemeManager.shared.vergeGrey()
         self.confirmButtonInterval = setInterval(1) {
             self.isSendable()
@@ -86,6 +77,10 @@ class SendViewController: ThemeableViewController {
             self.updateWalletAmountLabel()
         }
 
+        self.txFactory.updated { tx in
+            self.txUpdated(tx: tx)
+        }
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didReceiveFiatRatings),
@@ -97,13 +92,6 @@ class SendViewController: ThemeableViewController {
             self,
             selector: #selector(didChangeWalletAmount),
             name: .didChangeWalletAmount,
-            object: nil
-        )
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(refreshCurrency),
-            name: .didChangeCurrency,
             object: nil
         )
     }
@@ -127,7 +115,6 @@ class SendViewController: ThemeableViewController {
     }
 
     @objc func didReceiveFiatRatings(_ notification: Notification) {
-        self.updateAmountLabel()
         self.updateWalletAmountLabel()
     }
 
@@ -142,22 +129,10 @@ class SendViewController: ThemeableViewController {
     }
 
     @objc func switchCurrency(_ sender: Any) {
-        self.currency = (self.currency == .XVG) ? .FIAT : .XVG
-        self.currencyLabel.text = self.currency == .XVG ? "XVG" : self.selectedFiatCurrency
+        self.txFactory.currency = (self.txFactory.currency == .XVG) ? .FIAT : .XVG
+        self.currencyLabel.text = self.txFactory.currency == .XVG ? "XVG" : self.txFactory.fiatCurrency
 
-        if self.currency == .XVG {
-            self.getSendTransaction().fiatCurrency = nil
-        }
-
-        self.updateWalletAmountLabel()
-        self.updateAmountLabel()
-    }
-
-    @objc func refreshCurrency(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.updateWalletAmountLabel()
-            self.updateAmountLabel()
-        }
+        self.txFactory.update().then { _ in }
     }
 
     @objc func handleLongCurrencySwitchPress(
@@ -175,7 +150,7 @@ class SendViewController: ThemeableViewController {
                 return
             }
 
-            currencyController.selectedCurrency = self.selectedFiatCurrency
+            currencyController.selectedCurrency = self.txFactory.fiatCurrency
             currencyController.delegate = self
 
             self.present(navController, animated: true)
@@ -200,6 +175,42 @@ class SendViewController: ThemeableViewController {
         currencySwitchBtn.addGestureRecognizer(longCurrencyGesture)
     }
 
+    func txUpdated(tx: WalletTransactionFactory) {
+        print("updated")
+        print(tx.address)
+        print(tx.amount)
+        print(tx.fiatAmount)
+        print(tx.fiatCurrency)
+        print(tx.memo)
+
+        let clearable = self.txFactory.amount.doubleValue > 0.0
+            || self.txFactory.address != ""
+            || self.txFactory.memo != ""
+
+        if clearable {
+            let clearButton = UIBarButtonItem(
+                image: UIImage(named: "ClearTextField")!,
+                style: .plain,
+                target: self,
+                action: #selector(SendViewController.clearTransactionDetails)
+            )
+
+            self.navigationItem.setRightBarButton(clearButton, animated: true)
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+
+        self.recipientTextField.text = tx.address
+        self.memoTextField.text = tx.memo
+
+        if tx.currency == .FIAT {
+            self.currencyLabel.text = tx.fiatCurrency
+        }
+
+        self.updateAmountLabel()
+        self.updateWalletAmountLabel()
+    }
+
     func updateWalletAmountLabel() {
         let sendAmount = txFactory.amount.doubleValue
         var amount = NSNumber(
@@ -222,13 +233,13 @@ class SendViewController: ThemeableViewController {
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
-            self.amountTextField.setAmount(self.currentAmount())
+            self.amountTextField.setAmount(self.txFactory.currentAmount())
 
             if self.walletAmount.doubleValue == 0.0 {
                 return
             }
 
-            if (self.currentAmount().doubleValue > self.walletAmount.doubleValue) {
+            if (self.txFactory.amount.doubleValue > self.walletAmount.doubleValue) {
                 self.amountTextField.textColor = ThemeManager.shared.vergeRed()
 
                 self.notifySelectedToMuchAmount()
@@ -344,16 +355,14 @@ class SendViewController: ThemeableViewController {
             }
 
             self.txFactory.setBy(
-                currency: "XVG",
-                fiatCurrency: self.selectedFiatCurrency,
                 amount: NSNumber(value: Double(info.amount) / Constants.satoshiDivider)
-            )
-
-            completion(Vws.TxProposal(
-                address: self.txFactory.address,
-                amount: self.txFactory.amount,
-                message: self.txFactory.memo
-            ))
+            ).then { _ in
+                completion(Vws.TxProposal(
+                    address: self.txFactory.address,
+                    amount: self.txFactory.amount,
+                    message: self.txFactory.memo
+                ))
+            }
         }
     }
 
@@ -392,18 +401,16 @@ class SendViewController: ThemeableViewController {
                         return
                     }
 
-                    self.didChangeSendTransaction(
-                        WalletTransactionFactory(ratesClient: self.ratesClient)
-                    )
-
-                    _ = setTimeout(3.0) {
-                        actionSheet.dismiss(animated: true)
+                    self.txFactory.reset().then { _ in
+                        _ = setTimeout(3.0) {
+                            actionSheet.dismiss(animated: true)
+                        }
                     }
                 }
             }
         }
 
-        present(unlockView, animated: true)
+        self.present(unlockView, animated: true)
     }
 
     func showTransactionError(_ errorResponse: Vws.TxProposalErrorResponse?, txp: Vws.TxProposalResponse?) {
@@ -446,20 +453,16 @@ class SendViewController: ThemeableViewController {
     @objc func amountChanged(_ textField: CurrencyInput) {
         let amount = textField.getNumber().doubleValue
         self.txFactory.setBy(
-            currency: self.currentCurrency(),
-            fiatCurrency: self.selectedFiatCurrency,
             amount: NSNumber(value: amount)
-        )
-        self.didChangeSendTransaction(txFactory)
+        ).then { _ in }
     }
 
     @objc func setMaximumAmount() {
-        self.txFactory.setBy(currency: "XVG", fiatCurrency: self.selectedFiatCurrency, amount: walletAmount)
-        self.didChangeSendTransaction(txFactory)
+        self.txFactory.setBy(amount: self.walletAmount).then { _ in }
     }
 
     @objc func clearTransactionDetails() {
-        self.didChangeSendTransaction(WalletTransactionFactory(ratesClient: self.ratesClient))
+        self.txFactory.reset().then { _ in }
     }
 }
 
@@ -512,8 +515,8 @@ extension SendViewController: UITextFieldDelegate {
             doneBarButton
         ]
 
-        recipientTextField.inputAccessoryView = keyboardToolbar
-        recipientTextField.delegate = self
+        self.recipientTextField.inputAccessoryView = keyboardToolbar
+        self.recipientTextField.delegate = self
     }
 
     func setupAmountTextFieldKeyboardToolbar() {
@@ -542,7 +545,7 @@ extension SendViewController: UITextFieldDelegate {
             doneBarButton
         ]
 
-        amountTextField.inputAccessoryView = keyboardToolbar
+        self.amountTextField.inputAccessoryView = keyboardToolbar
     }
 
     func setupMemoTextFieldKeyboardToolbar() {
@@ -563,21 +566,21 @@ extension SendViewController: UITextFieldDelegate {
             doneBarButton
         ]
 
-        memoTextField.inputAccessoryView = keyboardToolbar
-        memoTextField.delegate = self
+        self.memoTextField.inputAccessoryView = keyboardToolbar
+        self.memoTextField.delegate = self
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dismissKeyboard()
+        self.dismissKeyboard()
 
         return false
     }
 
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == self.amountTextField {
-            txFactory.amount = 0.0
-            txFactory.fiatAmount = 0.0
-            didChangeSendTransaction(txFactory)
+            self.txFactory.amount = 0.0
+            self.txFactory.fiatAmount = 0.0
+            self.didChangeSendTransaction(self.txFactory)
         }
         return true
     }
@@ -607,15 +610,15 @@ extension SendViewController: UITextFieldDelegate {
     }
 
     @objc func clearRecipient() {
-        txFactory.address = ""
+        self.txFactory.address = ""
 
-        didChangeSendTransaction(txFactory)
+        self.didChangeSendTransaction(txFactory)
     }
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
 
-        didChangeSendTransaction(txFactory)
+        self.didChangeSendTransaction(txFactory)
     }
 
     func showInvalidAddressAlert() {
@@ -651,64 +654,36 @@ extension SendViewController: SendTransactionDelegate {
     // MARK: - Send Transaction Delegate
 
     func didChangeSendTransaction(_ transaction: WalletTransactionFactory) {
-        self.txFactory = transaction
+        self.txFactory.address = transaction.address
+        self.txFactory.memo = transaction.memo
+        self.txFactory.currency = transaction.currency
+        self.txFactory.amount = transaction.amount
+        self.txFactory.fiatAmount = transaction.fiatAmount
+        self.txFactory.fiatCurrency = transaction.fiatCurrency
 
-        self.recipientTextField.text = self.txFactory.address
-        self.memoTextField.text = self.txFactory.memo
-
-        let clearable = self.txFactory.amount.doubleValue > 0.0
-            || self.txFactory.address != ""
-            || self.txFactory.memo != ""
-
-        if clearable {
-            let clearButton = UIBarButtonItem(
-                image: UIImage(named: "ClearTextField")!,
-                style: .plain,
-                target: self,
-                action: #selector(SendViewController.clearTransactionDetails)
-            )
-
-            self.navigationItem.setRightBarButton(clearButton, animated: true)
-        } else {
-            self.navigationItem.rightBarButtonItem = nil
-        }
-
-        if let currency = transaction.fiatCurrency {
-            self.didSelectCurrency(currency: currency, sender: nil)
-        } else {
-            self.updateAmountLabel()
-            self.updateWalletAmountLabel()
-        }
+        self.txFactory.update().then { _ in }
     }
 
     func getSendTransaction() -> WalletTransactionFactory {
         return self.txFactory
     }
-
-    func currentAmount() -> NSNumber {
-        return self.currency == .FIAT ? self.txFactory.fiatAmount : self.txFactory.amount
-    }
-
-    func currentCurrency() -> String {
-        return self.currency == .XVG ? "XVG" : self.applicationRepository.currency
-    }
 }
 
 extension SendViewController: CurrencyDelegate {
     func didSelectCurrency(currency: String, sender: Any?) {
-        self.selectedFiatCurrency = currency
-        self.currency = .FIAT
         self.currencyLabel.text = currency
 
-        self.txFactory.update(currency: currency)
-        self.updateWalletAmountLabel()
-        self.updateAmountLabel()
+        self.txFactory.setBy(fiatCurrency: currency).then { tx in
+            if tx.currency == .XVG {
+                self.switchCurrency(self)
+            }
 
-        guard let controller = sender as? UIViewController else {
-            return
+            guard let controller = sender as? UIViewController else {
+                return
+            }
+
+            controller.dismiss(animated: true)
         }
-
-        controller.dismiss(animated: true)
     }
 }
 // swiftlint:enable file_length type_body_length

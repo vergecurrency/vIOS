@@ -123,7 +123,7 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
         guard let url = payload.wellKnownTypeURIPayload()?.absoluteString else {
             return
         }
-        
+
         self.addressValidator.validate(string: url) { isValid, address, amount, label, currency in
             let txFactory = self.sendTransactionDelegate.getSendTransaction()
 
@@ -144,7 +144,8 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
             }
 
             if let currency = currency {
-                txFactory.update(currency: currency)
+                txFactory.fiatCurrency = currency
+                txFactory.currency = .FIAT
             }
 
             self.sendTransactionDelegate.didChangeSendTransaction(txFactory)

@@ -18,6 +18,7 @@ class WalletViewServiceProvider: ServiceProvider {
         }
 
         container.storyboardInitCompleted (TransactionTableViewController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.ratesClient = r.resolve(RatesClient.self)
             c.transactionManager = r.resolve(TransactionManager.self)
             c.addressBookManager = r.resolve(AddressBookRepository.self)

@@ -215,8 +215,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 transaction.fiatAmount = amount ?? 0.0
             }
 
-            if currency != nil {
-                transaction.update(currency: currency!)
+            if let currency = currency {
+                transaction.fiatCurrency = currency
+                transaction.currency = .FIAT
             }
 
             self.sendRequest = transaction
