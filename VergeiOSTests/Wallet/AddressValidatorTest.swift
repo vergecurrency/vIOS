@@ -117,14 +117,14 @@ class AddressValidatorTest: XCTestCase {
         let validator = AddressValidator()
         
         let metadata = AddressValidatorAVMetaData()
-        metadata.returnStringValue = "https://tag.vergecurrency.business/?address=DJvRAkFBpexFPTBNic1ha8z3X4sqxsT46K&amount=332&currency=XVG"
+        metadata.returnStringValue = "https://tag.vergecurrency.business/?address=DJvRAkFBpexFPTBNic1ha8z3X4sqxsT46K&amount=332&currency=xvg"
         
         validator.validate(metadataObject: metadata) { (valid, address, amount, label, currency) in
             XCTAssertTrue(valid)
             XCTAssertTrue(address == "DJvRAkFBpexFPTBNic1ha8z3X4sqxsT46K")
             XCTAssertTrue(amount == 332)
             XCTAssertTrue(label == nil)
-            XCTAssertTrue(currency == "XVG")
+            XCTAssertTrue(currency == nil)
         }
     }
     

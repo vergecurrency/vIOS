@@ -58,7 +58,7 @@ class AddressValidator {
         }
 
         if let currencyParam = parameters["currency"] {
-            currency = currencyParam
+            currency = currencyParam?.uppercased() == "XVG" ? nil : currencyParam
         }
 
         completion(valid, address, amount, label, currency)
