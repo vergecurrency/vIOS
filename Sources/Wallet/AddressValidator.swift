@@ -42,17 +42,15 @@ class AddressValidator {
 
         let parameters = self.normalizeUrl(url: string)
 
-        if AddressValidator.validate(address: string) {
-            valid = true
-            address = string
+        guard let addressParam = parameters["address"], AddressValidator.validate(address: addressParam ?? "") else {
+            return completion(valid, address, amount, label, currency)
         }
 
-        if let addressParam = parameters["address"] {
-            address = addressParam
-        }
+        address = addressParam
+        valid = true
 
         if let amountParam = parameters["amount"], amountParam != nil {
-            amount = amountToNumber(stringAmount: amountParam!)
+            amount = self.amountToNumber(stringAmount: amountParam!)
         }
 
         if let labelParam = parameters["label"], labelParam != nil {
@@ -61,10 +59,6 @@ class AddressValidator {
 
         if let currencyParam = parameters["currency"] {
             currency = currencyParam
-        }
-
-        if AddressValidator.validate(address: address ?? "") {
-            valid = true
         }
 
         completion(valid, address, amount, label, currency)
