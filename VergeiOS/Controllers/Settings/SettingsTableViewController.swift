@@ -123,6 +123,9 @@ class SettingsTableViewController: EdgedTableViewController {
     }
 
     var bgReadingSupported: Bool {
+        return false
+        /// Right now there is no need to turn off background reading, cause devices will still read NFC chips
+        /*
         var systemInfo = utsname()
         uname(&systemInfo)
         guard let deviceModel = (withUnsafePointer(to: &systemInfo.machine) {
@@ -134,5 +137,6 @@ class SettingsTableViewController: EdgedTableViewController {
         return deviceModel.contains("iPhone") && Float(
             deviceModel.replacingOccurrences(of: "iPhone", with: "").replacingOccurrences(of: ",", with: ".")
         ) ?? 0 >= 11
+        */
     }
 }
