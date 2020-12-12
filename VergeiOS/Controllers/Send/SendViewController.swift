@@ -130,9 +130,10 @@ class SendViewController: ThemeableViewController {
 
     @objc func switchCurrency(_ sender: Any) {
         self.txFactory.currency = (self.txFactory.currency == .XVG) ? .FIAT : .XVG
-        self.currencyLabel.text = self.txFactory.currency == .XVG ? "XVG" : self.txFactory.fiatCurrency
 
-        self.txFactory.update().then { _ in }
+        self.txFactory.update().then { _ in
+            self.currencyLabel.text = self.txFactory.currency == .XVG ? "XVG" : self.txFactory.fiatCurrency
+        }
     }
 
     @objc func handleLongCurrencySwitchPress(
@@ -673,12 +674,10 @@ extension SendViewController: SendTransactionDelegate {
 
 extension SendViewController: CurrencyDelegate {
     func didSelectCurrency(currency: String, sender: Any?) {
-        self.currencyLabel.text = currency
+        self.txFactory.currency = .FIAT
 
         self.txFactory.setBy(fiatCurrency: currency).then { tx in
-            if tx.currency == .XVG {
-                self.switchCurrency(self)
-            }
+            self.currencyLabel.text = currency
 
             guard let controller = sender as? UIViewController else {
                 return

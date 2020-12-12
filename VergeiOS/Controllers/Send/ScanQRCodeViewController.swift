@@ -220,6 +220,9 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             sendTransaction.currency = .XVG
         }
 
+        sendTransaction.fiatRate = nil
+        sendTransaction.fiatRateFetchedAt = nil
+
         self.sendTransactionDelegate.didChangeSendTransaction(sendTransaction)
     }
 

@@ -19,6 +19,8 @@ class WalletTransactionFactory {
     var address: String = ""
     var memo: String = ""
     var fiatCurrency: String
+    var fiatRate: FiatRate? = nil
+    var fiatRateFetchedAt: DispatchTime? = nil
 
     internal typealias ListernerCallback = (WalletTransactionFactory) -> Void
     
@@ -35,6 +37,8 @@ class WalletTransactionFactory {
     }
     
     func setBy(fiatCurrency: String) -> Promise<WalletTransactionFactory> {
+        self.fiatRate = nil
+        self.fiatRateFetchedAt = nil
         self.fiatCurrency = fiatCurrency
 
         return self.update()
@@ -53,7 +57,7 @@ class WalletTransactionFactory {
     }
 
     func updateAmount() -> Promise<WalletTransactionFactory> {
-        return self.ratesClient.infoBy(currency: self.fiatCurrency).then { rate in
+        return self.fetchRating().then { rate in
             self.amount = NSNumber(value: self.fiatAmount.doubleValue / rate.price)
 
             self.callListeners()
@@ -69,7 +73,7 @@ class WalletTransactionFactory {
             return self.updateAmount()
         }
 
-        return self.ratesClient.infoBy(currency: self.fiatCurrency).then { rate in
+        return self.fetchRating().then { rate in
             self.fiatAmount = NSNumber(value: self.amount.doubleValue * rate.price)
 
             self.callListeners()
@@ -97,5 +101,24 @@ class WalletTransactionFactory {
         for listener in self.listeners {
             listener(self)
         }
+    }
+
+    internal func fetchRating() -> Promise<FiatRate> {
+        let promise = Promise<FiatRate>.pending()
+
+        if self.fiatRate != nil && self.fiatRateFetchedAt != nil && self.fiatRateFetchedAt! <= .now() + 30 {
+            promise.fulfill(self.fiatRate!)
+
+            return promise
+        }
+
+        self.ratesClient.infoBy(currency: self.fiatCurrency).then { rate in
+            self.fiatRate = rate
+            self.fiatRateFetchedAt = .now()
+            
+            promise.fulfill(rate)
+        }
+
+        return promise
     }
 }
