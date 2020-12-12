@@ -167,7 +167,6 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Promijeni PIN";
 "settings.settings.cell.useFaceIdLabel" = "Koristi Face ID";
-"settings.settings.cell.useBgReadingLabel" = "Čitanje u pozadini";
 "settings.settings.cell.torConnectionLabel" = "TOR povezivost";
 "settings.other.header.title" = "Ostalo";
 "settings.other.cell.supportLabel" = "Podrška";
@@ -222,12 +221,6 @@
 "settings.useFaceID.footer.title" = "Pružit će vam se alternativni način provjere autentičnosti, umjesto potrebe za upisivanjem PIN-a novčanika.";
 "settings.useFaceID.unlockLabel" = "Otključavanje vašeg novčanika";
 "settings.useFaceID.sendingLabel" = "Šaljem XVG";
-
-/*Background Reading (NFC)*/
-"settings.br.title" = "Čitanje u pozadini";
-"settings.br.footer.title" = "Ako je omogućeno, novčanik će se automatski pokrenuti kada dodirnete Verge NFC oznaku.";
-"settings.br.footer.unsupported" = "Nažalost, čini se da vaš hardver ne podržava NFC, pa ovu značajku nije moguće omogućiti.";
-"settings.br.nfcSendLabel" = "Omogući NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "TOR je ovdje zbog privatnosti, i on skriva Vašu lokaciju";

@@ -169,7 +169,6 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Fiat valuta";
 "settings.settings.cell.changePinLabel" = "Verander wallet PIN";
 "settings.settings.cell.useFaceIdLabel" = "Gebruik Face ID";
-"settings.settings.cell.useBgReadingLabel" = "Achtergrondlezing";
 "settings.settings.cell.torConnectionLabel" = "Tor verbinding";
 "settings.other.header.title" = "Anders";
 "settings.other.cell.supportLabel" = "Ondersteuning";
@@ -272,12 +271,6 @@
 "settings.useFaceID.footer.title" = "In plaats van de portemonnee PIN in te vullen, biedt een prompt u een alternatieve manier om uzelf te authenticeren.";
 "settings.useFaceID.unlockLabel" = "Het openen van uw wallet";
 "settings.useFaceID.sendingLabel" = "Verzenden van XVG";
-
-/*Background Reading (NFC)*/
-"settings.br.title" = "Achtergrondlezing";
-"settings.br.footer.title" = "Indien ingeschakeld, wordt de wallet automatisch geopend wanneer u een Verge NFC-tag scant.";
-"settings.br.footer.unsupported" = "Helaas lijkt uw hardware NFC niet te ondersteunen, dus deze functie kan niet worden ingeschakeld.";
-"settings.br.nfcSendLabel" = "Schakel NFC in";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor is er voor uw privacy en beschermd uw locatie";

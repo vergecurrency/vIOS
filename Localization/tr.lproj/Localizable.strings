@@ -169,7 +169,6 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Para Birimi";
 "settings.settings.cell.changePinLabel" = "Cüzdan PIN'ini değiştir";
 "settings.settings.cell.useFaceIdLabel" = "Face ID kullan";
-"settings.settings.cell.useBgReadingLabel" = "Arka planda okuma";
 "settings.settings.cell.torConnectionLabel" = "Tor Bağlantısı";
 "settings.other.header.title" = "Diğerleri";
 "settings.other.cell.supportLabel" = "Destek";
@@ -224,12 +223,6 @@
 "settings.useFaceID.footer.title" = "Cüzdan PIN'inizi doldurma ihtiyacı duymak yerine, doğrulama için alternatif bir yol sunar.";
 "settings.useFaceID.unlockLabel" = "Cüzdanınızın kilidini açın";
 "settings.useFaceID.sendingLabel" = "XVG Gönderiliyor";
-
-/*Background Reading (NFC)*/
-"settings.br.title" = "Arka planda okuma";
-"settings.br.footer.title" = "Etkinleştirilirse, bir Verge NFC etiketine dokunduğunuzda cüzdan otomatik olarak başlayacaktır.";
-"settings.br.footer.unsupported" = "Maalesef donanımınız NFC'yi desteklemiyor gibi göründüğü için bu özellik etkinleştirilemez.";
-"settings.br.nfcSendLabel" = "NFC'yi etkinleştir";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor, gizliliğiniz için burada ve lokasyonunuzu gizliyor!";

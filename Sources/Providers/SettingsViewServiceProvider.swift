@@ -30,10 +30,6 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.storyboardInitCompleted (LocalAuthTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }
-
-        container.storyboardInitCompleted (NfcTableViewController.self) { r, c in
-            c.applicationRepository = r.resolve(ApplicationRepository.self)
-        }
         
         container.storyboardInitCompleted (ServiceUrlTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)

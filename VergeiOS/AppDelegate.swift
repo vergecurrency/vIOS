@@ -171,10 +171,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?
     ) -> Void) -> Bool {
-        guard let appRepo = Application.container.resolve(ApplicationRepository.self), appRepo.useNfc else {
-            return false
-        }
-
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else {
             return false
         }
