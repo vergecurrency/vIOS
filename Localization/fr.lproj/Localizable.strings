@@ -167,7 +167,6 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Monnaie Fiat";
 "settings.settings.cell.changePinLabel" = "Changer le PIN du porte-monnaie";
 "settings.settings.cell.useFaceIdLabel" = "Utiliser Face ID";
-"settings.settings.cell.useBgReadingLabel" = "Lecture de fond";
 "settings.settings.cell.torConnectionLabel" = "Connexion Tor";
 "settings.other.header.title" = "Autre";
 "settings.other.cell.supportLabel" = "Soutien";
@@ -222,12 +221,6 @@
 "settings.useFaceID.footer.title" = "Au lieu d’avoir besoin de saisir le code PIN de votre porte-monnaie, une invite vous fournira un autre moyen de vous authentifier.";
 "settings.useFaceID.unlockLabel" = "Déverrouiller votre porte-monnaie";
 "settings.useFaceID.sendingLabel" = "Envoyer des XVG";
-
-/*Background Reading (NFC)*/
-"settings.br.title" = "Lecture de fond";
-"settings.br.footer.title" = "S'il est activé, le portefeuille se lancera automatiquement lorsque vous appuyez sur une balise Verge NFC.";
-"settings.br.footer.unsupported" = "Malheureusement, votre matériel ne semble pas prendre en charge NFC, cette fonctionnalité ne peut donc pas être activée.";
-"settings.br.nfcSendLabel" = "Activer NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor est là pour votre vie privée et cache votre emplacement";

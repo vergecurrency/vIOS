@@ -169,7 +169,6 @@
 "settings.settings.cell.fiatCurrencyLabel" = "Moneda fiduciaria";
 "settings.settings.cell.changePinLabel" = "Cambiar el PIN del monedero";
 "settings.settings.cell.useFaceIdLabel" = "Utilizar ID facial";
-"settings.settings.cell.useBgReadingLabel" = "Lectura de antecedentes";
 "settings.settings.cell.torConnectionLabel" = "Conexión Tor";
 "settings.other.header.title" = "Otros";
 "settings.other.cell.supportLabel" = "Apoyo";
@@ -224,12 +223,6 @@
 "settings.useFaceID.footer.title" = "En lugar de tener la necesidad de ingresar el PIN del monedero, se desplegará una forma alternativa de autenticarse.";
 "settings.useFaceID.unlockLabel" = "Desbloquear monedero";
 "settings.useFaceID.sendingLabel" = "Enviando XVG";
-
-/*Background Reading (NFC)*/
-"settings.br.title" = "Lectura de antecedentes";
-"settings.br.footer.title" = "Si está habilitado, la billetera se iniciará automáticamente cuando toque una etiqueta Verge NFC.";
-"settings.br.footer.unsupported" = "Desafortunadamente, su hardware no parece ser compatible con NFC, por lo que esta función no se puede habilitar.";
-"settings.br.nfcSendLabel" = "Habilitar NFC";
 
 /*Tor connection*/
 "settings.torConnection.titleLabel" = "Tor mantiene su privacidad y oculta su ubicación";
