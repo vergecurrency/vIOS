@@ -146,6 +146,8 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
             if let currency = currency {
                 txFactory.fiatCurrency = currency
                 txFactory.currency = .FIAT
+            } else {
+                txFactory.currency = .XVG
             }
 
             self.sendTransactionDelegate.didChangeSendTransaction(txFactory)

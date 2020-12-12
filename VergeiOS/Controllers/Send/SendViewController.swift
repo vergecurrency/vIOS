@@ -661,7 +661,9 @@ extension SendViewController: SendTransactionDelegate {
         self.txFactory.fiatAmount = transaction.fiatAmount
         self.txFactory.fiatCurrency = transaction.fiatCurrency
 
-        self.txFactory.update().then { _ in }
+        self.txFactory.update().then { tx in
+            self.currencyLabel.text = tx.currency == .XVG ? "XVG" : tx.fiatCurrency
+        }
     }
 
     func getSendTransaction() -> WalletTransactionFactory {
