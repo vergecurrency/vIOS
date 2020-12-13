@@ -30,6 +30,7 @@ class SendViewController: ThemeableViewController {
     var ratesClient: RatesClient!
     var walletClient: WalletClientProtocol!
     var waitingForConfirmationPopover: Bool = false
+    var loadingAlert: UIAlertController = UIAlertController.loadingAlert()
 
     weak var confirmButtonInterval: Timer?
 
@@ -78,6 +79,7 @@ class SendViewController: ThemeableViewController {
         }
 
         self.txFactory.updated { tx in
+            self.loadingAlert.dismiss(animated: true)
             self.txUpdated(tx: tx)
         }
 
@@ -177,13 +179,6 @@ class SendViewController: ThemeableViewController {
     }
 
     func txUpdated(tx: WalletTransactionFactory) {
-        print("updated")
-        print(tx.address)
-        print(tx.amount)
-        print(tx.fiatAmount)
-        print(tx.fiatCurrency)
-        print(tx.memo)
-
         let clearable = self.txFactory.amount.doubleValue > 0.0
             || self.txFactory.address != ""
             || self.txFactory.memo != ""
@@ -655,6 +650,8 @@ extension SendViewController: SendTransactionDelegate {
     // MARK: - Send Transaction Delegate
 
     func didChangeSendTransaction(_ transaction: WalletTransactionFactory) {
+        self.present(self.loadingAlert, animated: true)
+
         self.txFactory.address = transaction.address
         self.txFactory.memo = transaction.memo
         self.txFactory.currency = transaction.currency
@@ -674,9 +671,10 @@ extension SendViewController: SendTransactionDelegate {
 
 extension SendViewController: CurrencyDelegate {
     func didSelectCurrency(currency: String, sender: Any?) {
+        self.present(self.loadingAlert, animated: true)
         self.txFactory.currency = .FIAT
 
-        self.txFactory.setBy(fiatCurrency: currency).then { tx in
+        self.txFactory.setBy(fiatCurrency: currency).then { _ in
             self.currencyLabel.text = currency
 
             guard let controller = sender as? UIViewController else {
