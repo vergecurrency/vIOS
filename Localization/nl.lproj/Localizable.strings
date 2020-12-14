@@ -545,7 +545,7 @@
 "alerts.unexpectedError.message" = "Er wordt een onverwachte fout gegenereerd met het bericht:";
 "alerts.restart.title" = "Opnieuw opstarten...";
 "alerts.loading.title" = "Bezig met laden...";
-"alerts.refreshRates.title" = "Verfrissende tarieven...";
+"alerts.refreshRates.title" = "Tarief ophalen...";
 "alerts.walletSetup.title" = "Uw wallet opzetten is niet geslaagd";
 "alert.walletSetup.message" = "Er is iets misgegaan met het instellen van uw wallet";
 
