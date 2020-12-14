@@ -30,7 +30,7 @@ class SendViewController: ThemeableViewController {
     var ratesClient: RatesClient!
     var walletClient: WalletClientProtocol!
     var waitingForConfirmationPopover: Bool = false
-    var loadingAlert: UIAlertController = UIAlertController.loadingAlert()
+    var loadingAlert: UIAlertController = UIAlertController.loadingAlert(title: "alerts.refreshRates.title".localized)
 
     weak var confirmButtonInterval: Timer?
 

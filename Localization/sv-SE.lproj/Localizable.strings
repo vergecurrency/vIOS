@@ -484,6 +484,8 @@
 "alerts.startTor.button2" = "Utan Tor";
 "alerts.termsOfUse.title" = "Se användarvillkor för plånbok";
 "alerts.restart.title" = "Omstartar...";
+"alerts.loading.title" = "Laddar vänta...";
+"alerts.refreshRates.title" = "Uppfriskande priser...";
 "alerts.walletSetup.title" = "Det gick inte att konfigurera din plånbok";
 "alert.walletSetup.message" = "Någonting gick från med installationen av din plånbok";
 

@@ -484,6 +484,8 @@
 "alerts.startTor.button2" = "Senza Tor";
 "alerts.termsOfUse.title" = "Visualizza i termini d'uso del portafogli";
 "alerts.restart.title" = "Riavviando...";
+"alerts.loading.title" = "Caricamento in corso...";
+"alerts.refreshRates.title" = "Tariffe rinfrescanti...";
 "alerts.walletSetup.title" = "Impossibile configurare il tuo portafoglio";
 "alert.walletSetup.message" = "Qualcosa è successo con l'installazione del tuo portafoglio";
 

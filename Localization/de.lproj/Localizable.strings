@@ -483,7 +483,21 @@
 "alerts.startTor.button1" = "Tor starten";
 "alerts.startTor.button2" = "Ohne Tor";
 "alerts.termsOfUse.title" = "Nutzungsbedingungen für diese Wallet anzeigen";
+"alerts.notEnoughBalance.title"             = "Nicht genug Gleichgewicht";
+"alerts.notEnoughBalance.message"           = "Ihr gescannter privater Schlüssel scheint nicht genügend Guthaben zu haben.";
+"alerts.invalidPrivateKey.title"            = "Ungültiger privater Schlüssel";
+"alerts.invalidPrivateKey.message"          = "Sie haben einen ungültigen privaten Schlüssel angegeben, da dieser nicht aufgelöst werden konnte. Bitte stellen Sie sicher, dass Sie den richtigen Schlüssel gescannt oder eingegeben haben.";
+"alerts.invalidMnemonic.title"              = "Ungültige Mnemonik";
+"alerts.invalidMnemonic.message"            = "Sie haben eine ungültige Mnemonik angegeben, da diese nicht behoben werden konnte. Bitte stellen Sie sicher, dass Sie die richtige Mnemonik eingegeben haben.";
+"alerts.txNotAccepted.title"                = "Transaktion fehlgeschlagen";
+"alerts.txNotAccepted.message"              = "Die erstellte Transaktion wurde nicht akzeptiert. Dieser Fehler ist derzeit nicht behebbar. Versuchen Sie es mit einer anderen Sweeping-Methode oder prüfen Sie, ob die angegebenen Daten korrekt sind. Andernfalls bitten Sie die Verge-Community um Hilfe!";
+"alerts.noTxID.title"                       = "Es wurde keine TXID zurückgegeben";
+"alerts.noTxID.message"                     = "Es wurde keine TXID zurückgegeben. Wir können also nicht sicher sein, ob die Brieftasche gekehrt wurde. \nÜberprüfen Sie, ob die Brieftasche gekehrt wurde, oder versuchen Sie es erneut.";
+"alerts.unexpectedError.title"              = "Unerwarteter Fehler";
+"alerts.unexpectedError.message"            = "Unerwarteter Fehler mit Meldung ausgelöst:";
 "alerts.restart.title" = "Neustart...";
+"alerts.loading.title" = "Wird geladen...";
+"alerts.refreshRates.title" = "Erfrischende Wechselkurse...";
 "alerts.walletSetup.title" = "Fehler beim Einrichten Ihrer Brieftasche";
 "alert.walletSetup.message" = "Beim Einrichten Ihrer Brieftasche ist etwas passiert";
 
