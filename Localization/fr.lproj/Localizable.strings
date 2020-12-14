@@ -461,6 +461,38 @@
 /*----------------------------------------
  Alerts
  ----------------------------------------*/
+
+"alerts.removeContact.title"                = "Supprimer contact";
+"alerts.removeContact.message"              = "Voulez-vous vraiment supprimer le contact?";
+"alerts.invalidContact.title"               = "Données de contact non valides";
+"alerts.invalidContact.message"             = "Veuillez fournir un nom et une adresse XVG valides";
+"alerts.removeTransaction.title"            = "Supprimer la transaction";
+"alerts.removeTransaction.message"          = "Voulez-vous vraiment supprimer cette transaction?";
+"alerts.createAddress.title"                = "Impossible de créer l'adresse";
+"alerts.createAddress.message"              = "Le maximum d'adresses inactives a été atteint.\nUtilisez l'une des adresses déjà générées pour en créer une nouvelle.";
+"alerts.sendMaxInfo.title"                  = "Échec de la récupération des données";
+"alerts.sendMaxInfo.message"                = "Échec de la récupération des informations d'envoi maximum du serveur, veuillez réessayer.";
+"alerts.startTor.title"                     = "Tor n'est pas activé";
+"alerts.startTor.message"                   = "Voulez-vous envoyer cette transaction sans que Tor obscurcisse votre adresse IP?\nOu voulez-vous démarrer Tor et cacher votre identité?";
+"alerts.startTor.button1"                   = "Démarrer Tor";
+"alerts.startTor.button2"                   = "Sans Tor";
+"alerts.termsOfUse.title"                   = "Afficher les conditions d'utilisation du portefeuille";
+"alerts.notEnoughBalance.title"             = "Pas assez d'équilibre";
+"alerts.notEnoughBalance.message"           = "Votre clé privée numérisée ne semble pas avoir un solde suffisant.";
+"alerts.invalidPrivateKey.title"            = "Clé privée non valide";
+"alerts.invalidPrivateKey.message"          = "Vous avez fourni une clé privée non valide, car elle n'a pas pu être résolue. Veuillez vous assurer que vous avez scanné ou rempli la bonne clé.";
+"alerts.invalidMnemonic.title"              = "Invalid Mnemonic";
+"alerts.invalidMnemonic.message"            = "Vous avez fourni un mnémonique non valide car il n'a pas pu être résolu. Veuillez vous assurer que vous avez rempli le bon mnémonique.";
+"alerts.txNotAccepted.title"                = "La transaction a échoué";
+"alerts.txNotAccepted.message"              = "La transaction créée n'a pas été acceptée. Cette erreur est pour le moment insoluble. Essayez une autre méthode de balayage ou vérifiez si les données fournies sont correctes. Sinon, demandez de l'aide à la communauté Verge!";
+"alerts.noTxID.title"                       = "Aucun TXID retourné";
+"alerts.noTxID.message"                     = "Aucun TXID n'a été renvoyé. Nous ne pouvons donc pas être sûrs que le portefeuille a été balayé.\nVous vérifiez rapidement si le portefeuille est balayé, vous pouvez essayer de le balayer à nouveau.";
+"alerts.unexpectedError.title"              = "Erreur inattendue";
+"alerts.unexpectedError.message"            = "Erreur inattendue générée avec le message:";
+"alerts.restart.title"                      = "Redémarrage...";
+"alerts.loading.title"                      = "Chargement...";
+"alerts.refreshRates.title"                 = "Tarifs rafraîchissants...";
+
 "alerts.walletSetup.title" = "Impossible de configurer votre portefeuille";
 "alert.walletSetup.message" = "Quelque chose s'est passé avec la configuration de votre portefeuille";
 

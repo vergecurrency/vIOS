@@ -531,7 +531,21 @@
 "alerts.startTor.button1" = "Start Tor";
 "alerts.startTor.button2" = "Zonder Tor";
 "alerts.termsOfUse.title" = "Bekijk de Wallet Gebruiksvoorwaarden.";
+"alerts.notEnoughBalance.title" = "Niet genoeg balans";
+"alerts.notEnoughBalance.message" = "Uw gescande privésleutel lijkt onvoldoende saldo te hebben.";
+"alerts.invalidPrivateKey.title" = "Ongeldige privésleutel";
+"alerts.invalidPrivateKey.message" = "U heeft een ongeldige privésleutel opgegeven omdat deze niet kon worden opgelost. Zorg ervoor dat u de juiste sleutel heeft gescand of ingevuld.";
+"alerts.invalidMnemonic.title" = "Ongeldig ezelsbruggetje";
+"alerts.invalidMnemonic.message" = "U heeft een ongeldig geheugensteuntje opgegeven omdat het niet kon worden opgelost. Zorg ervoor dat u het juiste geheugensteuntje heeft ingevuld.";
+"alerts.txNotAccepted.title" = "Transactie mislukt";
+"alerts.txNotAccepted.message" = "The created transaction was not accepted. This error is at the moment unresolvable. Try another sweeping method or check if the given data is correct. Otherwise ask the Verge community for help!";
+"alerts.noTxID.title" = "Geen TXID geretourneerd";
+"alerts.noTxID.message" = "Er is geen TXID geretourneerd. We weten dus niet zeker of de portemonnee is geveegd.\nControleer of de portemonnee is geveegd, of probeer hem opnieuw te vegen.";
+"alerts.unexpectedError.title" = "Onverwachte fout";
+"alerts.unexpectedError.message" = "Er wordt een onverwachte fout gegenereerd met het bericht:";
 "alerts.restart.title" = "Opnieuw opstarten...";
+"alerts.loading.title" = "Bezig met laden...";
+"alerts.refreshRates.title" = "Verfrissende tarieven...";
 "alerts.walletSetup.title" = "Uw wallet opzetten is niet geslaagd";
 "alert.walletSetup.message" = "Er is iets misgegaan met het instellen van uw wallet";
 

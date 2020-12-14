@@ -484,8 +484,10 @@
 "alerts.startTor.button2" = "Sin Tor";
 "alerts.termsOfUse.title" = "Ver los Términos de Uso del monedero";
 "alerts.restart.title" = "Reiniciando...";
+"alerts.loading.title" = "Carregando...";
+"alerts.refreshRates.title" = "Taxas de atualização...";
 "alerts.walletSetup.title" = "No se pudo configurar tu billetera";
-"alert.walletSetup.message" = "Algo pasó con la configuración de su billetera";
+"alert.walletSetup.message" = "Algo salió mal al configurar tu billetera";
 
 // ErrorView.xib
 

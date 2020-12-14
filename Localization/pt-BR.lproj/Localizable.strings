@@ -460,6 +460,36 @@
 /*----------------------------------------
  Alerts
  ----------------------------------------*/
+"alerts.removeContact.title" = "Eliminar contacto";
+"alerts.removeContact.message" = "Tem a certeza que deseja eliminar o contacto?";
+"alerts.invalidContact.title" = "Dados de contacto inválidos";
+"alerts.invalidContact.message" = "Por favor forneça um nome e endereço XVG válidos";
+"alerts.removeTransaction.title" = "Eliminar transação";
+"alerts.removeTransaction.message" = "Tem a certeza que deseja eliminar esta transação?";
+"alerts.createAddress.title" = "Não é possível criar endereço";
+"alerts.createAddress.message" = "O máximo de endereços inativos foi atingido.\nUse um dos endereços já gerados para criar um novo.";
+"alerts.sendMaxInfo.title" = "Falha ao buscar dados";
+"alerts.sendMaxInfo.message" = "Falha ao buscar informações de envio máximo do servidor, tente novamente.";
+"alerts.startTor.title" = "O Tor não está ativo";
+"alerts.startTor.message" = "Quer enviar esta transação sem ofuscar o seu IP?\nOu quer iniciar o Tor e esconder a sua identidade?";
+"alerts.startTor.button1" = "Iniciar o Tor";
+"alerts.startTor.button2" = "Sem o Tor";
+"alerts.termsOfUse.title" = "Ver os Termos e Condições da Carteira";
+"alerts.notEnoughBalance.title" = "Equilíbrio insuficiente";
+"alerts.notEnoughBalance.message" = "Sua chave privada digitalizada não parece ter saldo suficiente.";
+"alerts.invalidPrivateKey.title" = "Chave Privada Inválida";
+"alerts.invalidPrivateKey.message" = "Você forneceu uma chave privada inválida porque não foi possível resolver. Certifique-se de que digitalizou ou preencheu a chave correta.";
+"alerts.invalidMnemonic.title" = "Mnemônico inválido";
+"alerts.invalidMnemonic.message" = "Você forneceu um mnemônico inválido porque não foi possível resolver. Certifique-se de ter preenchido o mnemônico correto.";
+"alerts.txNotAccepted.title" = "Falha na transação";
+"alerts.txNotAccepted.message" = "A transação criada não foi aceita. No momento, esse erro não tem solução. Tente outro método de varredura ou verifique se os dados fornecidos estão corretos. Caso contrário, peça ajuda à comunidade Verge!";
+"alerts.noTxID.title" = "Nenhum TXID retornado";
+"alerts.noTxID.message" = "Nenhum TXID foi devolvido. Portanto, não podemos ter certeza de que a carteira foi varrida. Verifique se a carteira foi varrida ou você pode tentar varrê-la novamente.";
+"alerts.unexpectedError.title" = "Erro inesperado";
+"alerts.unexpectedError.message" = "Erro inesperado gerado com mensagem:";
+"alerts.restart.title" = "Reiniciando...";
+"alerts.loading.title" = "Carregando...";
+"alerts.refreshRates.title" = "Taxas de atualização...";
 "alerts.walletSetup.title" = "Falha ao configurar sua carteira";
 "alert.walletSetup.message" = "Ocorreu um problema ao configurar sua carteira";
 

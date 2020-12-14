@@ -461,6 +461,38 @@
 /*----------------------------------------
  Alerts
  ----------------------------------------*/
+
+"alerts.removeContact.title"                = "Ukloni Kontakt";
+"alerts.removeContact.message"              = "Jeste li sigurni da želite ukloniti kontakt?";
+"alerts.invalidContact.title"               = "Nevažeći podaci o kontaktima";
+"alerts.invalidContact.message"             = "Navedite valjano ime i XVG adresu";
+"alerts.removeTransaction.title"            = "Ukloni transakciju";
+"alerts.removeTransaction.message"          = "Jeste li sigurni da želite ukloniti ovu transakciju?";
+"alerts.createAddress.title"                = "Nije moguće stvoriti adresu";
+"alerts.createAddress.message"              = "Dosegnut je maksimalan broj neaktivnih adresa.\nUpotrijebite jednu od već generiranih adresa za izradu nove.";
+"alerts.sendMaxInfo.title"                  = "Dohvaćanje podataka nije uspjelo";
+"alerts.sendMaxInfo.message"                = "Dohvaćanje maksimalnog broja podataka s poslužitelja nije uspjelo, pokušajte ponovo.";
+"alerts.startTor.title"                     = "Tor nije aktiviran";
+"alerts.startTor.message"                   = "Želite li poslati ovu transakciju, a da Tor ne zamuti vaš IP?\nIli želite pokrenuti Tor i sakriti svoj identitet?";
+"alerts.startTor.button1"                   = "Pokrenite Tor";
+"alerts.startTor.button2"                   = "Bez Tor";
+"alerts.termsOfUse.title"                   = "Pogledajte Uvjete upotrebe novčanika";
+"alerts.notEnoughBalance.title"             = "Nije dovoljno ravnoteže";
+"alerts.notEnoughBalance.message"           = "Čini se da vaš skenirani privatni ključ nema dovoljno ravnoteže.";
+"alerts.invalidPrivateKey.title"            = "Nevažeći privatni ključ";
+"alerts.invalidPrivateKey.message"          = "Naveli ste nevažeći privatni ključ jer ga nije bilo moguće riješiti. Molimo provjerite jeste li skenirali ili popunili ispravan ključ.";
+"alerts.invalidMnemonic.title"              = "Nevaljana mnemonika";
+"alerts.invalidMnemonic.message"            = "Naveli ste neispravnu mnemotehniku jer je nije bilo moguće riješiti. Molimo provjerite jeste li ispunili točnu mnemotehniku.";
+"alerts.txNotAccepted.title"                = "Transakcija nije uspjela";
+"alerts.txNotAccepted.message"              = "Stvorena transakcija nije prihvaćena. Ova je pogreška trenutno nerješiva. Pokušajte s drugom metodom čišćenja ili provjerite jesu li navedeni podaci točni. U suprotnom zatražite pomoć zajednice Verge!";
+"alerts.noTxID.title"                       = "Nije vraćen TXID";
+"alerts.noTxID.message"                     = "Nije vraćen TXID. Dakle, ne možemo biti sigurni da je novčanik pometen. Provjerite je li novčanik pometen ili ga možete pokušati ponovo očistiti.";
+"alerts.unexpectedError.title"              = "Neočekivana greška";
+"alerts.unexpectedError.message"            = "Neočekivana pogreška bačena s porukom:";
+"alerts.restart.title"                      = "Ponovno pokretanje...";
+"alerts.loading.title"                      = "Učitavam...";
+"alerts.refreshRates.title"                 = "Stope osvježavanja...";
+
 "alerts.walletSetup.title" = "Nije uspjelo postavljanje vašeg novčanika";
 "alert.walletSetup.message" = "Nešto se dogodilo s postavljanjem vašeg novčanika";
 

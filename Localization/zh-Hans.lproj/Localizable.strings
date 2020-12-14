@@ -575,8 +575,10 @@
 "alerts.startTor.button2"                   = "不使用Tor";
 "alerts.termsOfUse.title"                   = "查看钱包使用条款";
 "alerts.restart.title"                      = "重启中...";
+"alerts.loading.title"                      = "载入中...";
+"alerts.refreshRates.title"                 = "刷新汇率...";
 "alerts.walletSetup.title"                  = "无法设置您的钱包";
-"alert.walletSetup.message"                 = "设置钱包后发生了什么";
+"alert.walletSetup.message"                 = "设置钱包时发生了什么事";
 
 // ErrorView.xib
 
