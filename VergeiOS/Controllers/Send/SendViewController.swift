@@ -650,7 +650,9 @@ extension SendViewController: SendTransactionDelegate {
     // MARK: - Send Transaction Delegate
 
     func didChangeSendTransaction(_ transaction: WalletTransactionFactory) {
-        self.present(self.loadingAlert, animated: true)
+        if !self.loadingAlert.isBeingPresented {
+            self.present(self.loadingAlert, animated: true)
+        }
 
         self.txFactory.address = transaction.address
         self.txFactory.memo = transaction.memo
@@ -671,7 +673,10 @@ extension SendViewController: SendTransactionDelegate {
 
 extension SendViewController: CurrencyDelegate {
     func didSelectCurrency(currency: String, sender: Any?) {
-        self.present(self.loadingAlert, animated: true)
+        if !self.loadingAlert.isBeingPresented {
+            self.present(self.loadingAlert, animated: true)
+        }
+
         self.txFactory.currency = .FIAT
 
         self.txFactory.setBy(fiatCurrency: currency).then { _ in
