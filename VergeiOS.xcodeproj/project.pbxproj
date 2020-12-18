@@ -2031,7 +2031,7 @@
 					rateapp,
 				);
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Verge Currency";
 				TargetAttributes = {
 					A3256677211CBA9A006FB08A = {
