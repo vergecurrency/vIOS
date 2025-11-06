@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import Charts
+import DGCharts
 
 class AbstractChartView: UIView {
 

@@ -22,35 +22,36 @@ class ConfigurationSubscriber: Subscriber {
         self.walletClient = walletClient
         self.walletManager = walletManager
         self.log = log
+        super.init()
     }
 
     @objc func bootServerMigration(notification: Notification) {
-        // Check if the deprecated VWS endpoints are in the users memory.
-        if self.applicationRepository.isWalletServiceUrlSet && !Constants.deprecatedBwsEndpoints.contains(
-            self.applicationRepository.walletServiceUrl
-        ) {
+        // Check if the deprecated VWS endpoints are in the user's memory.
+        if self.applicationRepository.isWalletServiceUrlSet &&
+            !Constants.deprecatedBwsEndpoints.contains(self.applicationRepository.walletServiceUrl) {
             return self.log.info("no deprecated VWS endpoints found")
         }
 
-        // If so replace them by the replacement VWS endpoint.
+        // Replace with the new endpoint
         self.applicationRepository.walletServiceUrl = Constants.bwsEndpoint
         self.walletClient.resetServiceUrl(baseUrl: self.applicationRepository.walletServiceUrl)
 
-        // If the wallet is setup we check on the server if there is a wallet present.
-        if !self.applicationRepository.setup {
+        // If wallet isn't set up, skip migration check
+        guard self.applicationRepository.setup else {
             return
         }
 
-        self.walletManager
-            .getWallet()
-            .then { walletStatus in
-                return self.walletManager.scanWallet()
-            }.then { scanningRequested in
+        // Perform async wallet migration check
+        Task {
+            do {
+                let walletStatus = try await self.walletManager.getWallet()
+                let scanningRequested = try await self.walletManager.scanWallet()
                 self.log.info("boot server migration finished")
-            }.catch { error in
-                // TODO: raise user error
-                self.log.error("\(error.localizedDescription)")
+            } catch {
+                self.log.error("Server migration failed: \(error.localizedDescription)")
+                // TODO: raise user error (e.g., show alert on main thread)
             }
+        }
     }
 
     override func getSubscribedEvents() -> [Notification.Name: Selector] {

@@ -8,7 +8,7 @@
 
 import UIKit
 import Charts
-
+import DGCharts
 class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolbarDelegate {
     @IBOutlet weak var highestPriceLabel: EFCountingLabel!
     @IBOutlet weak var averagePriceLabel: EFCountingLabel!

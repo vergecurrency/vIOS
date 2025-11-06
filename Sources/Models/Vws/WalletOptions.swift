@@ -6,5 +6,5 @@
 import Foundation
 
 extension Vws {
-    struct WalletOptions: Decodable {}
+    struct WalletOptions: Encodable {}
 }

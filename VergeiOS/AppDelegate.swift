@@ -32,13 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.log?.info("app delegate application did finish launching")
 
-        let shortcutsManager = Application.container.resolve(ShortcutsManager.self)!
+        // Resolve ShortcutsManager safely
+        guard let shortcutsManager = Application.container.resolve(ShortcutsManager.self) else {
+            print("❌ ShortcutsManager not registered in container")
+            return false // or true depending on your app logic
+        }
+
+        // Now it's safe to use
         let shouldPerformAdditionalDelegateHandling = shortcutsManager.proceedAppDidFinishLaunch(
             application,
             withOptions: launchOptions
         )
 
         return shouldPerformAdditionalDelegateHandling
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -74,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // here you can undo many of the changes made on entering the background.
 
         // Restart Tor.
-        Application.container.resolve(TorClientProtocol.self)?.restart()
+//        Application.container.resolve(TorClientProtocol.self)?.restart()
 
         self.log?.info("app delegate application will enter foreground")
     }

@@ -25,6 +25,17 @@ class ApplicationServiceProvider: ServiceProvider {
     }
 
     override func register() {
+
+        container.register(SubscriberProtocol.self, name: "WalletSubscriber") { r in
+            WalletSubscriber(
+                walletTicker: r.resolve(WalletTicker.self)!,
+                walletClient: r.resolve(WalletClientProtocol.self)!,
+                fiatRateTicker: r.resolve(FiatRateTicker.self)!,
+                shortcutsManager: r.resolve(ShortcutsManager.self)!,
+                applicationRepository: r.resolve(ApplicationRepository.self)!,
+                transactionManager: r.resolve(TransactionManager.self)!
+            )
+        }
         self.container.register(ApplicationRepository.self) { _ in
             return ApplicationRepository()
         }.inObjectScope(.container)
@@ -62,4 +73,11 @@ class ApplicationServiceProvider: ServiceProvider {
         self.container.resolve(WatchSyncManager.self)?.startSession()
     }
 
+}
+extension Container {
+    static var loggingFunction: ((String) -> Void)?
+
+    func log(_ message: String) {
+        Self.loggingFunction?(message)
+    }
 }

@@ -5,6 +5,7 @@
 
 import UIKit
 import Charts
+import DGCharts
 
 class PriceChartView: AbstractChartView {
 
@@ -38,7 +39,7 @@ class PriceChartView: AbstractChartView {
         chart.rightAxis.enabled = false
         chart.leftAxis.enabled = false
         chart.legend.enabled = false
-        chart.chartDescription?.text = ""
+        chart.chartDescription.text = ""
         chart.highlightPerTapEnabled = false
 
         addSubview(chart)
@@ -73,7 +74,9 @@ class PriceChartView: AbstractChartView {
         priceSet.highlightLineWidth = 1.0
         priceSet.fillAlpha = 1
         priceSet.highlightColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.9)
-        priceSet.fill = Fill(linearGradient: gradient, angle: 90)
+        let fill = LinearGradientFill(gradient: gradient, angle: 90)
+        priceSet.fill = fill
+
         priceSet.setColor(ThemeManager.shared.primaryLight())
     }
 }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaceholderCollectionViewCell" id="gTV-IL-0wX" customClass="PlaceholderCollectionViewCell" customModule="HGPlaceholders" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="367"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="305" height="367"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MXU-dt-vhe">
+                        <rect key="frame" x="16" y="60" width="273" height="233"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="253" image="halloween-loading" translatesAutoresizingMaskIntoConstraints="NO" id="c7U-EM-TGb">
+                                <rect key="frame" x="76.5" y="0.0" width="120" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="100" id="Zn5-rH-3Dz"/>
+                                    <constraint firstAttribute="width" secondItem="c7U-EM-TGb" secondAttribute="height" priority="100" id="sgm-6z-Mtd"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cIN-cg-xzD">
+                                <rect key="frame" x="0.0" y="148" width="273" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Subtitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B15-GK-QdK">
+                                <rect key="frame" x="0.0" y="176" width="273" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="999" verticalCompressionResistancePriority="999" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="JMg-2S-oJM">
+                                <rect key="frame" x="126.5" y="213" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JMg-2S-oJM" firstAttribute="centerX" secondItem="MXU-dt-vhe" secondAttribute="centerX" id="CDE-W8-xKr"/>
+                            <constraint firstItem="JMg-2S-oJM" firstAttribute="top" secondItem="B15-GK-QdK" secondAttribute="bottom" constant="20" id="JIy-gO-e1Z">
+                                <variation key="heightClass=compact-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="cIN-cg-xzD" secondAttribute="trailing" id="Mbz-ja-elz"/>
+                            <constraint firstItem="c7U-EM-TGb" firstAttribute="top" secondItem="MXU-dt-vhe" secondAttribute="top" id="VUf-a0-cyN"/>
+                            <constraint firstItem="cIN-cg-xzD" firstAttribute="leading" secondItem="MXU-dt-vhe" secondAttribute="leading" id="c4v-Mv-v6l"/>
+                            <constraint firstItem="B15-GK-QdK" firstAttribute="leading" secondItem="MXU-dt-vhe" secondAttribute="leading" id="eRc-ZI-twI"/>
+                            <constraint firstItem="B15-GK-QdK" firstAttribute="top" secondItem="cIN-cg-xzD" secondAttribute="bottom" constant="5" id="r1S-93-P3F"/>
+                            <constraint firstItem="cIN-cg-xzD" firstAttribute="top" secondItem="c7U-EM-TGb" secondAttribute="bottom" constant="20" id="rzs-td-AeQ">
+                                <variation key="heightClass=compact-widthClass=compact" constant="10"/>
+                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="JMg-2S-oJM" secondAttribute="bottom" id="xeX-gS-fSh"/>
+                            <constraint firstItem="c7U-EM-TGb" firstAttribute="centerX" secondItem="MXU-dt-vhe" secondAttribute="centerX" id="yuy-NU-Jqt"/>
+                            <constraint firstAttribute="trailing" secondItem="B15-GK-QdK" secondAttribute="trailing" id="zb8-PG-fta"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sn-za-oDj">
+                        <rect key="frame" x="104.5" y="303" width="96" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="jgb-0c-2h7">
+                                <variation key="heightClass=compact-widthClass=compact" constant="40"/>
+                            </constraint>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="sendPlaceholderAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gn1-xf-Tuq"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="MXU-dt-vhe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="3rF-DX-Ipu"/>
+                <constraint firstAttribute="bottom" secondItem="2sn-za-oDj" secondAttribute="bottom" constant="20" id="IuB-zj-UQA"/>
+                <constraint firstItem="2sn-za-oDj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="MXU-dt-vhe" secondAttribute="bottom" constant="10" id="NjB-8k-iQn"/>
+                <constraint firstItem="MXU-dt-vhe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="XGd-TL-aub"/>
+                <constraint firstItem="2sn-za-oDj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="m4y-Q7-xpV"/>
+                <constraint firstAttribute="trailingMargin" secondItem="MXU-dt-vhe" secondAttribute="trailing" id="vJh-iC-MCx"/>
+                <constraint firstItem="MXU-dt-vhe" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" priority="250" id="zVD-Qe-9GU"/>
+            </constraints>
+            <size key="customSize" width="141" height="112"/>
+            <connections>
+                <outlet property="actionButton" destination="2sn-za-oDj" id="kQW-q1-oK2"/>
+                <outlet property="activityIndicator" destination="JMg-2S-oJM" id="xcA-Qs-V89"/>
+                <outlet property="placeholderImageView" destination="c7U-EM-TGb" id="BTM-z4-sxN"/>
+                <outlet property="subtitleLabel" destination="B15-GK-QdK" id="qCM-Yc-nav"/>
+                <outlet property="titleLabel" destination="cIN-cg-xzD" id="fBh-V1-fkO"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="97.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="halloween-loading" width="120" height="128"/>
+    </resources>
+</document>

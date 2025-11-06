@@ -16,7 +16,8 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.verge.wallet</string>
+		<string>group.apple.DualityExtension</string>
+		<string>group.apple.VPNapp</string>
 	</array>
 </dict>
 </plist>

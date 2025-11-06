@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import BitcoinKit
+//import BitcoinKit
 
 class AddressValidator {
     typealias ValidationCompletion = (
@@ -19,12 +20,22 @@ class AddressValidator {
         _ currency: String?
     ) -> Void
 
+   
     static func validate(address: String) -> Bool {
-        let legacyAddress = try? LegacyAddress(address)
-        let stealthAddress = try? StealthAddress(address)
+        // Try legacy first
+        if let _ = try? BitcoinAddress(legacy: address) {
+            return true
+        }
 
-        return legacyAddress != nil || stealthAddress != nil
+        // Try cashaddr (if relevant)
+        if let _ = try? BitcoinAddress(cashaddr: address) {
+            return true
+        }
+
+        return false
     }
+
+
 
     func validate(
         metadataObject: AVMetadataMachineReadableCodeObject,

@@ -1,0 +1,6 @@
+framework module Pods_VergeiOS_VergeiOSUITests {
+  umbrella header "Pods-VergeiOS-VergeiOSUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -30,13 +30,13 @@ class EventServiceProvider: ServiceProvider {
             return WalletNotificationsSubscriber(walletClient: r.resolve(WalletClientProtocol.self)!)
         }
 
-        self.register(name: TorConnectionSubscriber.typeName) { r in
-            return TorConnectionSubscriber(
-                fiatRateTicker: r.resolve(FiatRateTicker.self)!,
-                applicationRepository: r.resolve(ApplicationRepository.self)!,
-                walletTicker: r.resolve(WalletTicker.self)!
-            )
-        }
+//        self.register(name: TorConnectionSubscriber.typeName) { r in
+//            return TorConnectionSubscriber(
+//                fiatRateTicker: r.resolve(FiatRateTicker.self)!,
+//                applicationRepository: r.resolve(ApplicationRepository.self)!,
+//                walletTicker: r.resolve(WalletTicker.self)!
+//            )
+//        }
 
         self.register(name: WatchSubscriber.typeName) { r in
             return WatchSubscriber(watchSyncManager: r.resolve(WatchSyncManager.self)!)
@@ -49,8 +49,7 @@ class EventServiceProvider: ServiceProvider {
                 fiatRateTicker: r.resolve(FiatRateTicker.self)!,
                 shortcutsManager: r.resolve(ShortcutsManager.self)!,
                 applicationRepository: r.resolve(ApplicationRepository.self)!,
-                transactionManager: r.resolve(TransactionManager.self)!,
-                torClient: r.resolve(TorClient.self)!
+                transactionManager: r.resolve(TransactionManager.self)!
             )
         }
 
@@ -73,14 +72,16 @@ class EventServiceProvider: ServiceProvider {
             guard let resolvedSubscriber = self.container.resolve(SubscriberProtocol.self, name: subscriber) else {
                 fatalError("Couldn't resolve \(subscriber)")
             }
-
+//            print("resolvedSubscriber--\(resolvedSubscriber.getSubscribedEvents())")
             for event in resolvedSubscriber.getSubscribedEvents() {
                 let resolvedObserver = self.nc.addObserver(
                     forName: event.key,
                     object: nil,
                     queue: .main
                 ) { notification in
-                    resolvedSubscriber.perform(event.value, with: notification)
+                    (resolvedSubscriber as? NSObject)?.perform(event.value, with: notification)
+
+//                    resolvedSubscriber.perform(event.value, with: notification)
                 }
 
                 self.resolvedObservers.append(resolvedObserver)

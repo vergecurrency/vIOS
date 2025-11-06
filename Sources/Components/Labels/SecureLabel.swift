@@ -10,7 +10,7 @@ import UIKit
 
 class SecureLabel: UILabel {
 
-    let appRepo = Application.container.resolve(ApplicationRepository.self)!
+    let appRepo =  Application.container.resolve(ApplicationRepository.self)!
 
     @IBInspectable var tapToToggle: Bool = false
 

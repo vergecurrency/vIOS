@@ -14,8 +14,10 @@ class CurrencySubscriber: Subscriber {
     private let log: Logger
 
     init(fiatRateTicker: TickerProtocol, log: Logger) {
+       
         self.fiatRateTicker = fiatRateTicker
         self.log = log
+        super.init()
     }
 
     @objc func didChangeCurrency(notification: Notification) {

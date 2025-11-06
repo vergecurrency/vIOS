@@ -1,0 +1,6 @@
+framework module Pods_VergeSiriUI {
+  umbrella header "Pods-VergeSiriUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

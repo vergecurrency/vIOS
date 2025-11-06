@@ -67,6 +67,12 @@ class WalletTicker: TickerProtocol {
     private func fetchWalletAmount() {
         self.log.info("wallet ticker fetching wallet amount")
 
+//        // ✅ Check if copayerId is available before making request
+//        guard applicationRepository.copayerId != nil else {
+//            self.log.info("wallet ticker skipping amount fetch - copayerId not available yet")
+//            return
+//        }
+
         client.getBalance { error, info in
             guard let info = info else {
                 let error = error ?? Error.NoWalletAmountInfo
@@ -82,6 +88,12 @@ class WalletTicker: TickerProtocol {
     // Fetch statistics from the API and notify all observers.
     private func fetchTransactions() {
         self.log.info("wallet ticker fetching transactions")
+
+        // ✅ Check if copayerId is available before making request
+//        guard applicationRepository.copayerId != nil else {
+//            self.log.info("wallet ticker skipping transaction fetch - copayerId not available yet")
+//            return
+//        }
 
         self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)

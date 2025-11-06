@@ -11,7 +11,6 @@ import XCTest
 
 class BitcoreNodeClientTest: XCTestCase {
 
-    var torClient: TorClientProtocol?
     var client: BitcoreNodeClient?
     
     override func setUpWithError() throws {
@@ -21,7 +20,7 @@ class BitcoreNodeClientTest: XCTestCase {
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        self.torClient = nil
+       
         self.client = nil
     }
 

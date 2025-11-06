@@ -5,7 +5,6 @@
 
 import Foundation
 import Logging
-import Promises
 
 class WalletStatusSubscriber: Subscriber {
     
@@ -24,39 +23,74 @@ class WalletStatusSubscriber: Subscriber {
     }
     
     @objc func didBootApplication(notification: Notification) {
-        if !self.applicationRepository.setup {
+        guard self.applicationRepository.setup else {
             return
         }
 
-        // Check if wallet is setup correctly on every app boot.
-        // If not we try to fix an users connection to the configured server.
-        // If the connection isn't valid and can't be fixed we raise an error.
-        Promise<Bool>(on: .global()) { () -> Bool in
-            var status = try? await(self.walletManager.getStatus())
-            var walletStatus = status?.wallet.status ?? "none"
+        Task.detached { [weak self] in
+            guard let self = self else { return }
 
-            self.log.info("wallet status fetched status: \(walletStatus)")
+            do {
+                let status = try await withCheckedThrowingContinuation { continuation in
+                    self.walletManager.getStatus()
+                        .then { walletStatus in
+                            continuation.resume(returning: walletStatus)
+                        }
+                        .catch { error in
+                            continuation.resume(throwing: error)
+                        }
+                }
+                var walletStatus = status.wallet?.status
 
-            if walletStatus == "none" || walletStatus != "complete" {
-                self.log.info("wallet status not completed")
+                self.log.info("wallet status fetched: \(walletStatus)")
 
-                status = try await(self.walletManager.getWallet())
-                walletStatus = status!.wallet.status
+                if walletStatus == "none" || walletStatus != "complete" {
+                    self.log.info("wallet status not completed")
+                    let walletStatusResult = try await withCheckedThrowingContinuation { continuation in
+                        self.walletManager.getWallet()
+                            .then { walletStatus in
+                                continuation.resume(returning: walletStatus)
+                            }
+                            .catch { error in
+                                continuation.resume(throwing: error)
+                            }
+                    }
+                    walletStatus = walletStatusResult.wallet?.status
+                    
+                    if walletStatusResult.wallet?.scanStatus != "success" {
+                        self.log.info("wallet scan status not succeeded: \(walletStatus)")
+                        _ = try await withCheckedThrowingContinuation { continuation in
+                            self.walletManager.scanWallet()
+                                .then { result in
+                                    continuation.resume(returning: result)
+                                }
+                                .catch { error in
+                                    continuation.resume(throwing: error)
+                                }
+                        }
+                    }
+                } else {
+                    if status.wallet?.scanStatus != "success" {
+                        self.log.info("wallet scan status not succeeded: \(walletStatus)")
+                        _ = try await withCheckedThrowingContinuation { continuation in
+                            self.walletManager.scanWallet()
+                                .then { result in
+                                    continuation.resume(returning: result)
+                                }
+                                .catch { error in
+                                    continuation.resume(throwing: error)
+                                }
+                        }
+                    }
+                }
+
+                self.log.info("wallet status final: \(walletStatus)")
+            } catch {
+                self.log.error("wallet status unexpected error: \(error.localizedDescription)")
             }
-
-            if status!.wallet.scanStatus != "success" {
-                self.log.info("wallet status scan status not succeeded: \(walletStatus)")
-
-                let _ = try await(self.walletManager.scanWallet())
-            }
-
-            self.log.info("wallet status final status: \(walletStatus)")
-
-            return true
-        }.catch { error in
-            self.log.error("wallet status unexpected error thrown while getting wallet status: \(error.localizedDescription)")
         }
     }
+
 
     override func getSubscribedEvents() -> [Notification.Name: Selector] {
         return [

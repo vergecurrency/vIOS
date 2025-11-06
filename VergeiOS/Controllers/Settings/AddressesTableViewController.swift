@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import _CryptoExtras
+import secp256k1
+import BitcoinKit
 
 class AddressesTableViewController: EdgedTableViewController {
 
@@ -159,12 +162,19 @@ class AddressesTableViewController: EdgedTableViewController {
 
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let balanceAddress = balanceAddresses[indexPath.row]
-        let privateKey = try? credentials.privateKeyBy(
-            path: balanceAddress.path!,
-            privateKey: credentials.bip44PrivateKey
-        )
-        let publicKey = privateKey?.publicKey()
 
+        // Attempt to derive private key
+        var publicKey: PublicKey? = nil
+        if let path = balanceAddress.path {
+            do {
+                let privateKey = try credentials.privateKeyBy(path: path, privateKey: credentials.walletPrivateKey1)
+                publicKey = privateKey.publicKey()
+            } catch {
+                print("Failed to derive private key: \(error)")
+            }
+        }
+
+        // Create action sheet
         let sheet = UIAlertController(
             title: "addresses.addressOptions".localized,
             message: "addresses.informationTypeMessage".localized,
@@ -172,40 +182,68 @@ class AddressesTableViewController: EdgedTableViewController {
         )
         sheet.centerPopoverController(to: self.view)
 
+        // Address copy action
         sheet.addAction(UIAlertAction(title: "addresses.address".localized, style: .default) { _ in
-            self.toPasteboard(message: "addresses.addressCopied".localized,
-                              value: balanceAddress.address)
+            self.toPasteboard(message: "addresses.addressCopied".localized, value: balanceAddress.address)
         })
 
+        // Balance copy action
         sheet.addAction(UIAlertAction(title: "addresses.balance".localized, style: .default) { _ in
             self.toPasteboard(message: "addresses.balanceCopied".localized,
                               value: "\(Double(balanceAddress.amount) / Constants.satoshiDivider)")
         })
 
+        // Public key copy action
         sheet.addAction(UIAlertAction(title: "addresses.publicKey".localized, style: .default) { _ in
             self.toPasteboard(message: "addresses.publicKeyCopied".localized,
-                              value: publicKey?.description)
+                              value: publicKey?.description ?? "N/A")
         })
 
+        // Private key copy action
         sheet.addAction(UIAlertAction(title: "addresses.privateKey".localized, style: .destructive) { _ in
             let unlockView = PinUnlockViewController.createFromStoryBoard()
             unlockView.cancelable = true
-            unlockView.completion = { aunthenticated in
+
+            unlockView.completion = { authenticated in
                 unlockView.dismiss(animated: true)
 
-                if !aunthenticated {
-                    return
-                }
+                guard authenticated else { return }
 
-                self.toPasteboard(message: "addresses.privateKeyCopied".localized,
-                                  value: privateKey?.toWIF())
+                do {
+                    // Derive HD private key
+                    let hdPrivateKey: HDPrivateKey1 = try self.credentials.wallet.privateKey(account: 0)
+                    let rawKey = hdPrivateKey.raw
+
+                    // Convert to BitcoinKit PrivateKey
+                    let bitcoinPrivateKey = try PrivateKey(
+                        data: rawKey,
+                        network: .mainnetXVG,
+                        isPublicKeyCompressed: true
+                    )
+
+                    // Get WIF and copy to pasteboard
+                    let wif = bitcoinPrivateKey.toWIF()
+                    self.toPasteboard(message: "addresses.privateKeyCopied".localized, value: wif)
+
+                } catch {
+                    print("Failed to get private key: \(error)")
+                    let alert = UIAlertController(
+                        title: "Error",
+                        message: "Failed to retrieve private key.",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
             }
 
             self.present(unlockView, animated: true)
         })
 
+        // Cancel action
         sheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
 
+        // Present action sheet
         present(sheet, animated: true)
     }
 

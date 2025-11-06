@@ -13,6 +13,7 @@ class WalletNotificationsSubscriber: Subscriber {
 
     init(walletClient: WalletClientProtocol) {
         self.walletClient = walletClient
+        super.init()
     }
 
     @objc func checkTransactionProposalError(notification: Notification) {

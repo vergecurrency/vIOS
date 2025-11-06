@@ -51,7 +51,7 @@ class TransactionFactory: TransactionFactoryProtocol {
 
         let tx = Transaction(
             version: 1,
-            timestamp: UInt32(NSDate().timeIntervalSince1970),
+          //  timestamp: UInt32(NSDate().timeIntervalSince1970),
             inputs: unsignedInputs,
             outputs: outputs,
             lockTime: 0
@@ -65,7 +65,7 @@ class TransactionFactory: TransactionFactoryProtocol {
         var transactionToSign: Transaction {
             return Transaction(
                 version: unsignedTx.tx.version,
-                timestamp: unsignedTx.tx.timestamp,
+              //  timestamp: unsignedTx.tx.timestamp,
                 inputs: inputsToSign,
                 outputs: unsignedTx.tx.outputs,
                 lockTime: unsignedTx.tx.lockTime
@@ -89,7 +89,7 @@ class TransactionFactory: TransactionFactoryProtocol {
                 inputIndex: i,
                 hashType: hashType
             )
-            let signature: Data = try! Crypto.sign(sighash, privateKey: key)
+            let signature: Data = (try? Crypto.sign(sighash, privateKey: key)) ?? Data()
             let txin = inputsToSign[i]
             let pubkey = key.publicKey()
 

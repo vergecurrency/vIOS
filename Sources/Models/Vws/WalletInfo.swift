@@ -37,7 +37,7 @@ extension Vws {
         let beAuthPrivateKey2: String?
         let beAuthPublicKey2: String?
         let nativeCashAddr: String?
-        let isShared: String?
+        let isShared: Bool?
     }
 
     struct PublicKeyRing: Decodable {
@@ -69,5 +69,7 @@ extension Vws {
         let receiveAddressIndex: Int
         let changeAddressIndex: Int
         let copayerIndex: Int
+        let skippedPaths: [String]?
+
     }
 }
