@@ -39,18 +39,25 @@ class ServiceUrlTableViewController: EdgedTableViewController {
         self.present(alert, animated: true)
 
         self.previousServiceUrl = self.applicationRepository.walletServiceUrl
-        self.applicationRepository.walletServiceUrl = self.serviceUrlTextField.text!
+        // ⚠️ Avoid force-unwrapping; use nil-coalescing
+        self.applicationRepository.walletServiceUrl = self.serviceUrlTextField.text ?? ""
 
         self.walletClient.resetServiceUrl(baseUrl: self.applicationRepository.walletServiceUrl)
-        self.walletManager
-            .getWallet()
-            .then { _ in
-                self.urlChanged(alert: alert)
-            }.catch { error in
-                self.errorDuringChange(alert: alert, error: error)
-            }
-    }
 
+        // Launch async task
+        Task {
+            do {
+                _ = try await self.walletManager.getWallet()
+                await MainActor.run {
+                    self.urlChanged(alert: alert)
+                }
+            } catch {
+                await MainActor.run {
+                    self.errorDuringChange(alert: alert, error: error)
+                }
+            }
+        }
+    }
     func errorDuringChange(alert: UIAlertController, error: Error) {
         alert.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
         alert.addAction(UIAlertAction(title: "settings.serviceUrl.alert.usePrevUrl".localized, style: .default) { _ in
@@ -66,14 +73,29 @@ class ServiceUrlTableViewController: EdgedTableViewController {
         alert.message = "settings.serviceUrl.alert.message2".localized
     }
 
+//    func rollbackServiceUrl(serviceUrl: String) {
+//        self.applicationRepository.walletServiceUrl = serviceUrl
+//        self.serviceUrlTextField.text = serviceUrl
+//        self.walletClient.resetServiceUrl(baseUrl: serviceUrl)
+//        self.walletManager
+//            .getWallet()
+//            .catch { error in
+//                print(error)
+//            }
+//    }
     func rollbackServiceUrl(serviceUrl: String) {
         self.applicationRepository.walletServiceUrl = serviceUrl
         self.serviceUrlTextField.text = serviceUrl
         self.walletClient.resetServiceUrl(baseUrl: serviceUrl)
-        self.walletManager
-            .getWallet()
-            .catch { error in
-                print(error)
+
+        Task {
+            do {
+                _ = try await self.walletManager.getWallet()
+                // Optionally: handle success (e.g., refresh UI)
+            } catch {
+                print("Error during rollback getWallet: \(error)")
+                // Optionally: show error to user, log, etc.
             }
+        }
     }
 }

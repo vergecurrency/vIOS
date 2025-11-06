@@ -24,4 +24,15 @@ extension Vws {
             return Date(timeIntervalSince1970: TimeInterval(self.createdOn))
         }
     }
+    struct AddressResponse: Decodable {
+           let addresses: [AddressInfo]
+       }
+    struct APIErrorResponse: Decodable {
+        let code: String
+        let message: String
+    }
+    struct ErrorResponse: Decodable {
+        let code: String
+        let message: String
+    }
 }

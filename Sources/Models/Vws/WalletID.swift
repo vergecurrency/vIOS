@@ -8,6 +8,8 @@ import Foundation
 extension Vws {
     struct WalletID: Decodable {
         struct Error: DecodableError {
+            var status: String
+            
             enum Code: String, Decodable {
                 case WalletAlreadyExists = "WALLET_ALREADY_EXISTS"
             }

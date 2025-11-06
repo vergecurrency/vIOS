@@ -6,6 +6,6 @@
 //  Copyright © 2018 Verge Currency. All rights reserved.
 //
 
-import HGPlaceholders
+//import HGPlaceholders
 
 class PlaceholderTableView: TableView {}

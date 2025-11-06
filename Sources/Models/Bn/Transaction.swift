@@ -27,11 +27,11 @@ extension Bn {
         let confirmations: Int64
 
         func asUnspentTransaction() throws -> UnspentTransaction {
-            guard let lockingScript = Data(fromHex: self.script) else {
+            guard let lockingScript = Data(hex: self.script) else {
                 throw UnspentOutputError.invalidScriptPubKeyHex(hex: self.script)
             }
 
-            guard let txid = Data(fromHex: self.mintTxid) else {
+            guard let txid = Data(hex: self.mintTxid) else {
                 throw UnspentOutputError.invalidTxIdHex(hex: self.mintTxid)
             }
 
@@ -43,7 +43,7 @@ extension Bn {
         }
 
         func asInputTransaction() throws -> TransactionInput {
-            guard let txid = Data(fromHex: self.mintTxid) else {
+            guard let txid = Data(hex: self.mintTxid) else {
                 throw UnspentOutputError.invalidTxIdHex(hex: self.mintTxid)
             }
 

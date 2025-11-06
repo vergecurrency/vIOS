@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HGPlaceholders
+//import HGPlaceholders
 
 class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITableViewDelegate {
 

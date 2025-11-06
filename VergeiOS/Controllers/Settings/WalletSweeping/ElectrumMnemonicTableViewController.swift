@@ -10,6 +10,11 @@ import UIKit
 import BitcoinKit
 import Promises
 import Eureka
+import CryptoKit
+import Logging
+import CoreStore
+import CoreMedia
+import CryptoSwift
 
 class ElectrumMnemonicTableViewController: EdgedFormViewController {
 
@@ -165,50 +170,71 @@ class ElectrumMnemonicTableViewController: EdgedFormViewController {
     }
 
     private func getKeysFromMnemonic(mnemonic: String) -> [String] {
+        // Derive seed from mnemonic
         let mnemonicData = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8)!
-        let salt = ("electrum" + "").decomposedStringWithCompatibilityMapping.data(using: .utf8)!
-        let seed = _Key.deriveKey(mnemonicData, salt: salt, iterations: 2048, keyLength: 64)
-
-        let privateKey = HDPrivateKey(seed: seed, network: .mainnetXVG)
-
-        let m0prv = try! privateKey.derived(at: 0)
-        let m1prv = try! privateKey.derived(at: 1)
-
+        let salt = "electrum".decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+        
+        let seed: Data = (try? Data(
+            PKCS5.PBKDF2(
+                password: [UInt8](mnemonicData),
+                salt: [UInt8](salt),
+                iterations: 2048,
+                keyLength: 64,
+                variant: .sha2(.sha512)
+            ).calculate()
+        )) ?? Data()
+        
+        // Create root HD wallet
+        let wallet = HDWallet(seed: seed, coinType: 77, xPrivKey: HDExtendedKeyVersion.xprv.rawValue)
+        let rootKey = wallet.masterKey
+        
+        // Derive m/0 and m/1 (non-hardened)
+        let m0prv = try! rootKey.derived(at: 0, hardened: false)
+        let m1prv = try! rootKey.derived(at: 1, hardened: false)
+        
         var keys: [String] = []
-
+        
+        // Derive external (m/0/i)
         for i in 0..<20 {
-            keys.append(try! m0prv.derived(at: UInt32(i)).privateKey().toWIF())
+            let derived = try! m0prv.derived(at: UInt32(i), hardened: false)
+            let wif = try! PrivateKey(data: derived.raw, network: .mainnetXVG, isPublicKeyCompressed: true).toWIF()
+            keys.append(wif)
         }
-
+        
+        // Derive internal (m/1/i)
         for i in 0..<6 {
-            keys.append(try! m1prv.derived(at: UInt32(i)).privateKey().toWIF())
+            let derived = try! m1prv.derived(at: UInt32(i), hardened: false)
+            let wif = try! PrivateKey(data: derived.raw, network: .mainnetXVG, isPublicKeyCompressed: true).toWIF()
+            keys.append(wif)
         }
-
+        
         return keys
     }
 
     private func loadBalances(keys: [String]) -> Promise<[KeyBalance]> {
         self.balancesLoaded = 0
 
-        var promises: [Promise<KeyBalance>] = []
-        for key in keys {
-            let promise = Promise<KeyBalance>(on: .global(qos: .background)) { fulfill, reject in
+        let promises = keys.map { key -> Promise<KeyBalance> in
+            return Promise<KeyBalance>(on: .global(qos: .background)) { fulfill, reject in
                 do {
                     let privateKey = try self.sweeperHelper.wifToPrivateKey(wif: key)
-                    let balance = try await(self.sweeperHelper.balance(privateKey: privateKey))
-
-                    DispatchQueue.main.async {
-                        self.balancesLoaded += 1
-                        self.loadingAlert.message = "Scanning balances \(self.balancesLoaded)/\(keys.count)"
-                    }
-
-                    fulfill(KeyBalance(privateKey: privateKey, balance: balance))
+                    
+                    // Use the Promises library style for async balance
+                    self.sweeperHelper.balance(privateKey: privateKey)
+                        .then { balance in
+                            DispatchQueue.main.async {
+                                self.balancesLoaded += 1
+                                self.loadingAlert.message = "Scanning balances \(self.balancesLoaded)/\(keys.count)"
+                            }
+                            fulfill(KeyBalance(privateKey: privateKey, balance: balance))
+                        }
+                        .catch { error in
+                            reject(error)
+                        }
                 } catch {
                     reject(error)
                 }
             }
-
-            promises.append(promise)
         }
 
         return all(promises)

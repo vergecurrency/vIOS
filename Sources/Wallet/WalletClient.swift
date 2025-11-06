@@ -62,11 +62,16 @@ public class WalletClient: WalletClientProtocol {
 
         do {
             let signature = try getSignature(url: referencedUrl, method: "get")
-            let copayerId = self.getCopayerId()
-
+            var copayerId = ""
+            if self.applicationRepository.copayerId == "" {
+                copayerId = self.getCopayerId()
+            }
+            else {
+                copayerId = self.applicationRepository.copayerId ?? ""
+            }
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
-            request.setValue(self.getCopayerId(), forHTTPHeaderField: "x-identity")
+            request.setValue(copayerId, forHTTPHeaderField: "x-identity")
             request.setValue(signature, forHTTPHeaderField: "x-signature")
             request.setValue("application/json", forHTTPHeaderField: "accept")
 
@@ -94,11 +99,17 @@ public class WalletClient: WalletClientProtocol {
             }
 
             let signature = try getSignature(url: uri, method: "post", arguments: argumentsString)
-            let copayerId = self.getCopayerId()
-
+            var copayerId = ""
+            if self.applicationRepository.copayerId == "" {
+                copayerId = self.getCopayerId()
+            }
+            else {
+                copayerId = self.applicationRepository.copayerId ?? ""
+            }
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-            request.setValue(self.getCopayerId(), forHTTPHeaderField: "x-identity")
+//            request.setValue("bwc-8.1.1",forHTTPHeaderField: "x-client-version")
+            request.setValue(copayerId, forHTTPHeaderField: "x-identity")
             request.setValue(signature, forHTTPHeaderField: "x-signature")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = argumentsData
@@ -110,7 +121,6 @@ public class WalletClient: WalletClientProtocol {
             return completion(nil, nil, error)
         }
     }
-
     private func deleteRequest(url: String, completion: @escaping URLCompletion) {
         let referencedUrl = url.addUrlReference()
 
@@ -120,8 +130,13 @@ public class WalletClient: WalletClientProtocol {
 
         do {
             let signature = try getSignature(url: referencedUrl, method: "delete")
-            let copayerId = self.getCopayerId()
-
+            var copayerId = ""
+            if self.applicationRepository.copayerId == "" {
+                copayerId = self.getCopayerId()
+            }
+            else {
+                copayerId = self.applicationRepository.copayerId ?? ""
+            }
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
@@ -145,13 +160,18 @@ public class WalletClient: WalletClientProtocol {
             completion(nil, nil, error)
         }
     }
-
     private func getCopayerId() -> String {
         let xPubKey = self.credentials.publicKey.extended()
         let hash = self.sjcl.sha256Hash(data: "xvg\(xPubKey)")
 
         return self.sjcl.hexFromBits(hash: hash)
     }
+//    private func getCopayerId() -> String {
+//        let xPubKey = self.credentials.bip32ExtenedPublicKey
+//        let hash = self.sjcl.sha256Hash(data: "xvg\(xPubKey ?? "")")
+//
+//        return self.sjcl.hexFromBits(hash: hash)
+//    }
 
     private func log(request: URLRequest, signature: String, copayerId: String) {
         self.log.info("wallet client request fired", metadata: [
@@ -190,8 +210,9 @@ extension WalletClient {
         args["n"].intValue = n
         args["coin"].stringValue = "xvg"
         args["network"].stringValue = "livenet"
-
+print("create wallet--\(args)")
         self.postRequest(url: "/v2/wallets/", arguments: args) { data, _, error in
+            if let jsonString = String(data: data!, encoding: .utf8) { print("create wallet response: \(jsonString)") }
             guard let data = data else {
                 return completion(nil, nil, error)
             }
@@ -211,7 +232,15 @@ extension WalletClient {
         walletIdentifier: String,
         completion: @escaping (Vws.WalletJoin?, Vws.WalletJoin.Error?, Error?) -> Void
     ) {
-        let xPubKey = self.credentials.publicKey.extended()
+        // MARK: - Safe keys to send
+     //   let xPubKey = self.credentials.publicKey.extended()
+//        let xPubKey = self.credentials.bip32ExtenedPublicKey ?? ""
+        let xPubKey = self.credentials.customExtendedPublicKey ?? ""
+        
+//        if let xPubKey = credentials.xPubKey {
+//            print("xPubKey: \(xPubKey)")
+//        }
+//        credentials.printAllKeys()
         let requestPubKey = self.credentials.requestPrivateKey.extendedPublicKey().publicKey().description
 
         let encCopayerName = self.encryptMessage(
@@ -220,7 +249,6 @@ extension WalletClient {
         )
         let copayerSignatureHash = [encCopayerName, xPubKey, requestPubKey].joined(separator: "|")
         let customData = "{\"walletPrivKey\": \"\(self.credentials.walletPrivateKey.privateKey().description)\"}"
-
         var arguments = JSON()
         arguments["walletId"].stringValue = walletIdentifier
         arguments["coin"].stringValue = "xvg"
@@ -241,21 +269,29 @@ extension WalletClient {
             return completion(nil, nil, error)
         }
 
+        // POST request to join wallet
         self.postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
+            print("wallet join arguments--\(arguments)")
             guard let data = data else {
+                print("error---\(error)")
                 return completion(nil, nil, error)
             }
 
             do {
-                completion(try JSONDecoder().decode(Vws.WalletJoin.self, from: data), nil, nil)
+                if let jsonString = String(data: data, encoding: .utf8) { print("Raw wallet join response: \(jsonString)") }
+
+                let walletJoin = try JSONDecoder().decode(Vws.WalletJoin.self, from: data)
+
+                completion(walletJoin, nil, nil)
             } catch {
+                // Try to decode server-side WalletJoin error
                 let joinWalletError = try? JSONDecoder().decode(Vws.WalletJoin.Error.self, from: data)
                 let returnError = joinWalletError == nil ? error : nil
-
                 completion(nil, joinWalletError, returnError)
             }
         }
     }
+
 
     func openWallet(completion: @escaping (Vws.WalletStatus?, Vws.WalletStatus.Error?, Error?) -> Void) {
         self.getRequest(url: "/v2/wallets/?includeExtendedInfo=1") { data, _, error in
@@ -302,12 +338,21 @@ extension WalletClient {
                 let addressInfo = try JSONDecoder().decode(Vws.AddressInfo.self, from: data)
 
                 // Make sure the received address is really your address.
-                let addressByPath = try self.credentials.privateKeyBy(
+//                let addressByPath = try self.credentials.privateKeyBy(
+//                    path: addressInfo.path,
+//    privateKey: self.credentials.bip44PrivateKey
+//                ).publicKey().toLegacy().description
+                let hdPrivateKey = try self.credentials.privateKeyBy(
                     path: addressInfo.path,
                     privateKey: self.credentials.bip44PrivateKey
-                ).publicKey().toLegacy().description
+                )
+                let hdPublicKey = hdPrivateKey.publicKey()
+                let bitcoinPubKey = PublicKey(bytes: hdPublicKey.data, network: .mainnetXVG)
+                let legacyAddress = bitcoinPubKey.toBitcoinAddress()
 
-                if addressInfo.address != addressByPath {
+                print("Legacy Address: \(legacyAddress)")
+
+                if addressInfo.address != legacyAddress.description {
                     return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
                 }
 
@@ -444,7 +489,15 @@ extension WalletClient {
         let referencedUrl = path.addUrlReference()
 
         let url = "\(self.baseUrl)\(referencedUrl)".urlify()
-        let copayerId = self.getCopayerId()
+        
+        var copayerId = ""
+         
+        if self.applicationRepository.copayerId == "" {
+            copayerId = self.getCopayerId()
+        }
+        else {
+            copayerId = self.applicationRepository.copayerId ?? ""
+        }
 
         if referencedUrl.contains("/v1/balance/") {
             let signature = try self.getSignature(url: referencedUrl, method: "get")
@@ -650,17 +703,23 @@ extension WalletClient {
         )
     }
 
-    private func signMessage(_ message: String, privateKey: HDPrivateKey) throws -> String {
+    private func signMessage(_ message: String, privateKey: HDPrivateKey1) throws -> String {
         guard let messageData = message.data(using: .utf8) else {
             throw WalletClientError.invalidMessageData(message: message)
         }
 
-        var ret = Crypto.sha256sha256(messageData)
-        ret.reverse()
-        ret.reverse()
+        // Electrum / Bitcore uses SINGLE SHA-256 (not double)
+        let hash = Crypto.sha256(messageData)
 
-        return try Crypto.sign(ret, privateKey: privateKey.privateKey()).hex
+        // Compact 64-byte signature
+        let compact = try Crypto.sign(hash, privateKey: privateKey.privateKey())
+
+        // Convert to DER
+        let der = try convertCompactToDER(compact)
+
+        return der.hex
     }
+
 
     private func encryptMessage(plaintext: String, encryptingKey: String) -> String {
         let key = sjcl.base64ToBits(encryptingKey: encryptingKey)
@@ -732,7 +791,7 @@ extension WalletClient {
 
         let tx = Transaction(
             version: 1,
-            timestamp: txp.createdOn,
+          //  timestamp: txp.createdOn,
             inputs: unsignedInputs,
             outputs: outputs,
             lockTime: 0
@@ -746,7 +805,7 @@ extension WalletClient {
         var transactionToSign: Transaction {
             return Transaction(
                 version: unsignedTx.tx.version,
-                timestamp: unsignedTx.tx.timestamp,
+             //   timestamp: unsignedTx.tx.timestamp,
                 inputs: inputsToSign,
                 outputs: unsignedTx.tx.outputs,
                 lockTime: unsignedTx.tx.lockTime
@@ -775,6 +834,56 @@ extension WalletClient {
         }
 
         return hexes
+    }
+    // Converts 64-byte compact (r||s) ECDSA signature → DER format
+    func convertCompactToDER(_ compactSig: Data) throws -> Data {
+        guard compactSig.count == 64 else {
+            throw NSError(domain: "SignatureError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Compact signature must be 64 bytes"])
+        }
+
+        let r = Data(compactSig.prefix(32))
+        let s = Data(compactSig.suffix(32))
+        let derR = derInt(r)
+        let derS = derInt(s)
+        var sequence = Data()
+        sequence.append(contentsOf: derR)
+        sequence.append(contentsOf: derS)
+        var der = Data()
+        der.append(0x30)
+        der.append(UInt8(sequence.count))
+        der.append(sequence)
+
+        return der
+    }
+    func derInt(_ data: Data) -> Data {
+        // Make sure to fully copy the underlying bytes
+        var raw = Data(Array(data)) // ✅ Forces real copy, safe for mutation
+        
+        // Remove leading zeros, but keep at least 1 byte
+        while raw.count > 1 && raw.first == 0 {
+            raw.removeFirst()
+        }
+
+        // If MSB is 1, prepend 0x00
+        if let first = raw.first, first & 0x80 != 0 {
+            raw.insert(0x00, at: 0)
+        }
+
+        var result = Data([0x02]) // INTEGER tag
+
+        // DER length encoding
+        if raw.count < 0x80 {
+            result.append(UInt8(raw.count))
+        } else {
+            let lengthBytes = withUnsafeBytes(of: UInt32(raw.count).bigEndian) {
+                Data($0).drop { $0 == 0 }
+            }
+            result.append(UInt8(0x80 | lengthBytes.count))
+            result.append(lengthBytes)
+        }
+
+        result.append(raw)
+        return result
     }
 
 }

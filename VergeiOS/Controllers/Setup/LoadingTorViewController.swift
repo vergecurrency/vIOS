@@ -17,13 +17,29 @@ class LoadingTorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let applicationRepository = Application.container.resolve(ApplicationRepository.self)!
-        let identifier = applicationRepository.setup ? "showWallet" : "showWelcomeView"
+        // Safely resolve the repository
+        guard let applicationRepository = Application.container.resolve(ApplicationRepository.self) else {
+            fatalError("ApplicationRepository is not registered in the container")
+        }
 
+        // ✅ Debug: Check setup status
+        print("🔍 LoadingTorViewController: Checking setup status")
+        print("  - Mnemonic count: \(applicationRepository.mnemonic?.count ?? 0)")
+        print("  - Passphrase length: \(applicationRepository.passphrase?.count ?? 0)")
+        print("  - PIN length: \(applicationRepository.pin.count)")
+        print("  - Wallet ID: \(applicationRepository.walletId ?? "nil")")
+        print("  - Setup status: \(applicationRepository.setup)")
+
+        // Determine which segue to perform
+        let identifier = applicationRepository.setup ? "showWallet" : "showWelcomeView"
+        print("🔍 LoadingTorViewController: Navigating to \(identifier)")
+
+        // Perform segue on the main thread
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: identifier, sender: self)
         }
 
+        // Add observer for wallet disconnect
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didDisconnectWallet),
@@ -31,6 +47,7 @@ class LoadingTorViewController: UIViewController {
             object: nil
         )
     }
+
 
     // MARK: - Navigation
 

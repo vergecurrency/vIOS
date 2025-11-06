@@ -145,7 +145,12 @@ class BitcoreNodeClient: BitcoreNodeClientProtocol {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "accept")
         request.setValue("application/json", forHTTPHeaderField: "content-type")
-        request.httpBody = try! body.rawData()
+        if let data = try? body.rawData() {
+            request.httpBody = data
+        } else {
+            print("⚠️ Failed to encode request body")
+            request.httpBody = nil
+        }
 
         self.log(request: request)
         self.request(request, completion: completion)

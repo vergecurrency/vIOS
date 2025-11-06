@@ -31,7 +31,20 @@ class ApplicationRepository {
             keychain.set(newValue, forKey: "wallet.pin")
         }
     }
-
+    
+    
+    var copayerId: String? {
+        get {
+            return keychain.get("wallet.copayerId")
+        }
+        set {
+            if let copayerId = newValue {
+                keychain.set(copayerId, forKey: "wallet.copayerId")
+            } else {
+                keychain.delete("wallet.copayerId")
+            }
+        }
+    }
     var pinCount: Int {
         get {
             if self.pin.count > 0 {

@@ -46,8 +46,8 @@ class WalletManager: WalletManagerProtocol {
             .then { walletStatus -> Promise<Vws.WalletStatus> in
                 self.walletTicker.start()
 
-                return Promise {
-                    return walletStatus
+                return Promise { fulfill, _ in
+                    fulfill(walletStatus)
                 }
             }
     }
@@ -100,7 +100,7 @@ class WalletManager: WalletManagerProtocol {
                 let error = errorResponse?.error ?? error ?? NSError("??")
                 let errorMessage = errorResponse?.message ?? error.localizedDescription
 
-                self.log.error("wallet manager creating wallet failed with: \(errorMessage)")
+                self.log.error("wallet manager creating wallet failed with: \(errorMessage.debugDescription)")
 
                 reject(error)
             }
@@ -130,6 +130,7 @@ class WalletManager: WalletManagerProtocol {
 
             self.walletClient.joinWallet(walletIdentifier: walletIdentifier) { walletJoin, errorResponse, error in
                 if let walletJoin = walletJoin {
+                    self.applicationRepository.copayerId = walletJoin.copayerId
                     self.log.info("wallet manager successfully joined wallet", metadata: [
                         "copayerId": Logger.MetadataValue(stringLiteral: walletJoin.copayerId),
                         "walletId": Logger.MetadataValue(stringLiteral: walletJoin.wallet.id)
@@ -153,13 +154,65 @@ class WalletManager: WalletManagerProtocol {
             }
         }
     }
-
+    func errorToDictionaryRecursive(_ error: Error, responseMessage: String? = nil) -> [String: Any] {
+        var dict: [String: Any] = [
+            "domain": (error as NSError).domain,
+            "code": (error as NSError).code,
+            "description": error.localizedDescription,
+            "responseMessage": responseMessage ?? NSNull()
+        ]
+        
+        // Include underlying error recursively if exists
+        if let nsError = error as NSError?, let underlying = nsError.userInfo[NSUnderlyingErrorKey] as? Error {
+            dict["underlyingError"] = errorToDictionaryRecursive(underlying)
+        } else {
+            dict["underlyingError"] = NSNull()
+        }
+        
+        // Handle DecodingError specifically
+        if let decodingError = error as? DecodingError {
+            switch decodingError {
+            case .typeMismatch(let type, let context):
+                dict["decodingError"] = [
+                    "typeMismatch": "\(type)",
+                    "codingPath": context.codingPath.map { $0.stringValue },
+                    "debugDescription": context.debugDescription,
+                    "underlyingError": context.underlyingError.map { errorToDictionaryRecursive($0) } ?? NSNull()
+                ]
+            case .valueNotFound(let type, let context):
+                dict["decodingError"] = [
+                    "valueNotFound": "\(type)",
+                    "codingPath": context.codingPath.map { $0.stringValue },
+                    "debugDescription": context.debugDescription,
+                    "underlyingError": context.underlyingError.map { errorToDictionaryRecursive($0) } ?? NSNull()
+                ]
+            case .keyNotFound(let key, let context):
+                dict["decodingError"] = [
+                    "keyNotFound": key.stringValue,
+                    "codingPath": context.codingPath.map { $0.stringValue },
+                    "debugDescription": context.debugDescription,
+                    "underlyingError": context.underlyingError.map { errorToDictionaryRecursive($0) } ?? NSNull()
+                ]
+            case .dataCorrupted(let context):
+                dict["decodingError"] = [
+                    "dataCorrupted": context.debugDescription,
+                    "codingPath": context.codingPath.map { $0.stringValue },
+                    "underlyingError": context.underlyingError.map { errorToDictionaryRecursive($0) } ?? NSNull()
+                ]
+            @unknown default:
+                dict["decodingError"] = "Unknown DecodingError"
+            }
+        }
+        
+        return dict
+    }
     private func open(_ walletJoin: Vws.WalletJoin?) -> Promise<Vws.WalletStatus> {
         return Promise { fulfill, reject in
             self.walletClient.openWallet { walletStatus, errorResponse, error in
                 if let walletStatus = walletStatus {
+                    let walletId = walletStatus.wallet?.id ?? ""
                     self.log.info("wallet manager successfully opened wallet", metadata: [
-                        "walletId": Logger.MetadataValue(stringLiteral: walletStatus.wallet.id)
+                        "walletId": Logger.MetadataValue(stringLiteral: walletId)
                     ])
 
                     return fulfill(walletStatus)

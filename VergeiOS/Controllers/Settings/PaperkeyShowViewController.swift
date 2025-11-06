@@ -21,7 +21,6 @@ class PaperkeyShowViewController: ThemeableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         wordsLabel.text = mnemonic
     }
 

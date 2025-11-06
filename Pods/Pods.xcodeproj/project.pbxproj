@@ -1,0 +1,1285 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02EA712660711278E0203AC934AC08ED /* Pods-VergeiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C8522EBB54A7D5CF4DBD0FFE95320EBE /* Pods-VergeiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02EF0B6A0A7BE506B1B2142B23D66DEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E621E336003FBC52FC840E50C1DCF9E /* Foundation.framework */; };
+		0547D5EBEB1D4F3D225A89FB4C0F9318 /* Pods-VergeSiri-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8EEDD2BFEDF94D5827E3DC854AAD276 /* Pods-VergeSiri-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D73CB84C732F64D54E886738A705575 /* Pods-VergeSiriUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC9A73CF9BB2C47FC7CBDF2A1307014 /* Pods-VergeSiriUI-dummy.m */; };
+		1D787F45F848B7584A4AE7B1D4EF0A85 /* Pods-VergeiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C1C74C2C39094920BA7B2D0966763F /* Pods-VergeiOS-dummy.m */; };
+		1E28E8E9A56F5F10617DE22FC712750A /* Pods-VergeSiriUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8085BC704354B837B138FB3CECD8F8AC /* Pods-VergeSiriUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27AA460AD99B77A473FD3E886A240684 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		59CA70F859DEEA8366275335AAC787A5 /* Pods-VergeSiri-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C53778EAA329B9B3A1D6698CCFAF51C8 /* Pods-VergeSiri-dummy.m */; };
+		7B6AF3E393587EA5C4C7FAEE93610EED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		93C7C4FEB8EC354B82ACCB9ADF6743BA /* Pods-VergeiOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE4934E889A594E29C3698882FAADB1A /* Pods-VergeiOSTests-dummy.m */; };
+		C4DAE1BBF19B938CE26F2253861A1CD1 /* Pods-VergeiOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E80F036DC724FA6CC5ACEE72BB0AB5BF /* Pods-VergeiOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF851F6199C72BF6B7D2B174E6886140 /* Pods-VergeiOS-VergeiOSUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACD87D47C3E601E08AB0747BBC9C073 /* Pods-VergeiOS-VergeiOSUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1D1B8BB4B60E9358468AB319FA3F154 /* Pods-VergeWatch Extension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79EB85C5BC61D2578AC79B6E75EEDFD2 /* Pods-VergeWatch Extension-dummy.m */; };
+		D28C73D39290CCE7DEA2777ACA8BDE00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		DCE7010C9845B760C72A3468D066BA70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		EC2EC602CB65D542974BC495A40D8F9E /* Pods-VergeiOS-VergeiOSUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23AF56AF8EBAAED70243392F12DF6EF1 /* Pods-VergeiOS-VergeiOSUITests-dummy.m */; };
+		F2545E00B7EA8466488CE35904CE525E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		F67B498C2F6054873D7FDB0FC0349E5A /* Pods-VergeWatch Extension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB814993A27441FF5F4FD3BE6F1B3E27 /* Pods-VergeWatch Extension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8EDC0296FDBAE9221FCA45ED8D35AD76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49F76280D01F6770953838910CA0FCD2;
+			remoteInfo = "Pods-VergeiOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		051BD4573D18D610BA9F15207C6321EE /* Pods-VergeWatch Extension-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeWatch Extension-acknowledgements.plist"; sourceTree = "<group>"; };
+		0873935878D9BD1BFF6289FF622DD962 /* Pods-VergeiOSTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VergeiOSTests"; path = Pods_VergeiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08DDF77FD004564045EDF99AE6067DDB /* Pods-VergeiOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeiOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		0930131B0CC5F0B6265CCF51359D7B4D /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS-VergeiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0A14C0C891E1ECC191616D48B1F5505A /* Pods-VergeSiri.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeSiri.modulemap"; sourceTree = "<group>"; };
+		0E604DEE2A1E9AA25169C785D7392672 /* Pods-VergeWatch Extension */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VergeWatch Extension"; path = Pods_VergeWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		115FFD52D4EA8DF49A5D327A34E44CEB /* Pods-VergeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		14427A5C79F1D20DB4086F5D876A3D01 /* Pods-VergeiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1689810A586F70C7574CAAD856A522E4 /* Pods-VergeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS.release.xcconfig"; sourceTree = "<group>"; };
+		17B2FB3E60BBC675707B7849D7E28809 /* Pods-VergeiOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeiOS.modulemap"; sourceTree = "<group>"; };
+		1C57AAE72F76FACFF256867111398C14 /* Pods-VergeSiriUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeSiriUI.modulemap"; sourceTree = "<group>"; };
+		23AF56AF8EBAAED70243392F12DF6EF1 /* Pods-VergeiOS-VergeiOSUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeiOS-VergeiOSUITests-dummy.m"; sourceTree = "<group>"; };
+		25B656997DD59E714100CBC23AB4134E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		2BD4070059EC683F133353CF0DEBE022 /* Pods-VergeWatch Extension-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeWatch Extension-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3C7F1E42A761A6603DEDE9910BCE2683 /* Pods-VergeSiri-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeSiri-acknowledgements.plist"; sourceTree = "<group>"; };
+		4969818B55337D08C3FE4D25962440B7 /* Pods-VergeSiri-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeSiri-Info.plist"; sourceTree = "<group>"; };
+		5062757CCAEFC64EE46996CC4402B79C /* Pods-VergeSiri-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeSiri-acknowledgements.markdown"; sourceTree = "<group>"; };
+		506C2DCBE33944061E4C69154CF8B463 /* Pods-VergeiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOS-Info.plist"; sourceTree = "<group>"; };
+		5F99FCF44B8197D8E79E855A525AF0BB /* Pods-VergeSiri */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VergeSiri"; path = Pods_VergeSiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61042FCD4FBF58FECC771A51F7192C47 /* Pods-VergeiOS */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VergeiOS"; path = Pods_VergeiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66F9EA428107F3D34B851F422907DD75 /* Pods-VergeSiriUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeSiriUI.debug.xcconfig"; sourceTree = "<group>"; };
+		79EB85C5BC61D2578AC79B6E75EEDFD2 /* Pods-VergeWatch Extension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeWatch Extension-dummy.m"; sourceTree = "<group>"; };
+		7D83A9C44B04C989B3AFD4B43646FF4E /* Pods-VergeWatch Extension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeWatch Extension.modulemap"; sourceTree = "<group>"; };
+		7E621E336003FBC52FC840E50C1DCF9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8085BC704354B837B138FB3CECD8F8AC /* Pods-VergeSiriUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeSiriUI-umbrella.h"; sourceTree = "<group>"; };
+		844F6CA9B529F427827DBD9D9DE8F1CF /* Pods-VergeiOS-VergeiOSUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeiOS-VergeiOSUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8ACD87D47C3E601E08AB0747BBC9C073 /* Pods-VergeiOS-VergeiOSUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeiOS-VergeiOSUITests-umbrella.h"; sourceTree = "<group>"; };
+		8E8C25DA3DAD21B7BBCBCFD6A5A96DBF /* Pods-VergeSiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeSiri.release.xcconfig"; sourceTree = "<group>"; };
+		90963245D845469A8CFF3581742B5572 /* Pods-VergeWatch Extension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeWatch Extension-Info.plist"; sourceTree = "<group>"; };
+		9100B7DFF7F5B375B025284B9CFCF0D7 /* Pods-VergeiOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeiOSTests.modulemap"; sourceTree = "<group>"; };
+		91B026E4AE493ACB7741447192D8FA12 /* Pods-VergeSiriUI-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeSiriUI-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9403B4727C6DBD7420CCDA5C713A3B89 /* Pods-VergeiOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeiOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		98C29BF9D168EED4AD513DEFEAF4ECE0 /* Pods-VergeSiriUI-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeSiriUI-acknowledgements.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FA6609F5435A22DB6D7C003E9280D95 /* Pods-VergeWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		A020CBDE013E638CFE99A887B38FA62A /* Pods-VergeiOS-VergeiOSUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOS-VergeiOSUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A1520C17C5184BC864A67B1AE643B5A4 /* Pods-VergeWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		A8EEDD2BFEDF94D5827E3DC854AAD276 /* Pods-VergeSiri-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeSiri-umbrella.h"; sourceTree = "<group>"; };
+		A9CD10285F2C63FB75F22570C17499EA /* Pods-VergeiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD3F30638F7C375A3812757791DF99E3 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS-VergeiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B07DFB52DACC75D18CF25AD886120DC6 /* Pods-VergeiOS-VergeiOSUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeiOS-VergeiOSUITests.modulemap"; sourceTree = "<group>"; };
+		B3C1C74C2C39094920BA7B2D0966763F /* Pods-VergeiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeiOS-dummy.m"; sourceTree = "<group>"; };
+		B77A937CC970460214496DDBEAD02A38 /* Pods-VergeiOS-VergeiOSUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOS-VergeiOSUITests-Info.plist"; sourceTree = "<group>"; };
+		BBC9A73CF9BB2C47FC7CBDF2A1307014 /* Pods-VergeSiriUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeSiriUI-dummy.m"; sourceTree = "<group>"; };
+		BBD159B53F9B26BB98E88B44D80FE38D /* Pods-VergeiOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		C0B5A7A90F38D0275EB33298F3C7C347 /* Pods-VergeiOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		C53778EAA329B9B3A1D6698CCFAF51C8 /* Pods-VergeSiri-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeSiri-dummy.m"; sourceTree = "<group>"; };
+		C6C6E8035DA84FF95AAFEDC9D9492F2F /* Pods-VergeSiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeSiri.debug.xcconfig"; sourceTree = "<group>"; };
+		C8522EBB54A7D5CF4DBD0FFE95320EBE /* Pods-VergeiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeiOS-umbrella.h"; sourceTree = "<group>"; };
+		CB814993A27441FF5F4FD3BE6F1B3E27 /* Pods-VergeWatch Extension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeWatch Extension-umbrella.h"; sourceTree = "<group>"; };
+		D74FC3CC9C10E8C92A2CBE8C1E1AF02B /* Pods-VergeSiriUI */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VergeSiriUI"; path = Pods_VergeSiriUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D84E701A795CDCC5ECB599C3BE51874D /* Pods-VergeiOS-VergeiOSUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-VergeiOS-VergeiOSUITests"; path = Pods_VergeiOS_VergeiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D947EFCC2A98EAAFE8F2104297297871 /* Pods-VergeSiriUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeSiriUI.release.xcconfig"; sourceTree = "<group>"; };
+		DE4934E889A594E29C3698882FAADB1A /* Pods-VergeiOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeiOSTests-dummy.m"; sourceTree = "<group>"; };
+		E7697835918AAE5CF7E5E4225510749D /* Pods-VergeSiriUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeSiriUI-Info.plist"; sourceTree = "<group>"; };
+		E80F036DC724FA6CC5ACEE72BB0AB5BF /* Pods-VergeiOSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeiOSTests-umbrella.h"; sourceTree = "<group>"; };
+		EB4BC6258309A408F27B8B6B048B04D9 /* Pods-VergeiOSTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOSTests-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		11D8ED2CABFBEBF16533B340D74BB98D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02EF0B6A0A7BE506B1B2142B23D66DEF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		823D75687CDA0BC4CADE44D494F4A66C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27AA460AD99B77A473FD3E886A240684 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91E218BDEA666700AC4CA1AFB4B5BD77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B6AF3E393587EA5C4C7FAEE93610EED /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A770C57D9ED13B6CA755EE31885DB599 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D28C73D39290CCE7DEA2777ACA8BDE00 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA2A50A30B4614906B6A014AF5F6F9CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCE7010C9845B760C72A3468D066BA70 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8775A0D54CCDA54F7CE85C4E838F23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2545E00B7EA8466488CE35904CE525E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00C3BF41480BC9F7ADD16E92F0222D49 /* Pods-VergeSiriUI */ = {
+			isa = PBXGroup;
+			children = (
+				1C57AAE72F76FACFF256867111398C14 /* Pods-VergeSiriUI.modulemap */,
+				91B026E4AE493ACB7741447192D8FA12 /* Pods-VergeSiriUI-acknowledgements.markdown */,
+				98C29BF9D168EED4AD513DEFEAF4ECE0 /* Pods-VergeSiriUI-acknowledgements.plist */,
+				BBC9A73CF9BB2C47FC7CBDF2A1307014 /* Pods-VergeSiriUI-dummy.m */,
+				E7697835918AAE5CF7E5E4225510749D /* Pods-VergeSiriUI-Info.plist */,
+				8085BC704354B837B138FB3CECD8F8AC /* Pods-VergeSiriUI-umbrella.h */,
+				66F9EA428107F3D34B851F422907DD75 /* Pods-VergeSiriUI.debug.xcconfig */,
+				D947EFCC2A98EAAFE8F2104297297871 /* Pods-VergeSiriUI.release.xcconfig */,
+			);
+			name = "Pods-VergeSiriUI";
+			path = "Target Support Files/Pods-VergeSiriUI";
+			sourceTree = "<group>";
+		};
+		1EB35E9E318DEC3598397BB944F7BF70 /* Pods-VergeSiri */ = {
+			isa = PBXGroup;
+			children = (
+				0A14C0C891E1ECC191616D48B1F5505A /* Pods-VergeSiri.modulemap */,
+				5062757CCAEFC64EE46996CC4402B79C /* Pods-VergeSiri-acknowledgements.markdown */,
+				3C7F1E42A761A6603DEDE9910BCE2683 /* Pods-VergeSiri-acknowledgements.plist */,
+				C53778EAA329B9B3A1D6698CCFAF51C8 /* Pods-VergeSiri-dummy.m */,
+				4969818B55337D08C3FE4D25962440B7 /* Pods-VergeSiri-Info.plist */,
+				A8EEDD2BFEDF94D5827E3DC854AAD276 /* Pods-VergeSiri-umbrella.h */,
+				C6C6E8035DA84FF95AAFEDC9D9492F2F /* Pods-VergeSiri.debug.xcconfig */,
+				8E8C25DA3DAD21B7BBCBCFD6A5A96DBF /* Pods-VergeSiri.release.xcconfig */,
+			);
+			name = "Pods-VergeSiri";
+			path = "Target Support Files/Pods-VergeSiri";
+			sourceTree = "<group>";
+		};
+		3742687C928984EED6F84089D06F7A94 /* Pods-VergeiOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				9100B7DFF7F5B375B025284B9CFCF0D7 /* Pods-VergeiOSTests.modulemap */,
+				08DDF77FD004564045EDF99AE6067DDB /* Pods-VergeiOSTests-acknowledgements.markdown */,
+				C0B5A7A90F38D0275EB33298F3C7C347 /* Pods-VergeiOSTests-acknowledgements.plist */,
+				DE4934E889A594E29C3698882FAADB1A /* Pods-VergeiOSTests-dummy.m */,
+				EB4BC6258309A408F27B8B6B048B04D9 /* Pods-VergeiOSTests-Info.plist */,
+				E80F036DC724FA6CC5ACEE72BB0AB5BF /* Pods-VergeiOSTests-umbrella.h */,
+				14427A5C79F1D20DB4086F5D876A3D01 /* Pods-VergeiOSTests.debug.xcconfig */,
+				A9CD10285F2C63FB75F22570C17499EA /* Pods-VergeiOSTests.release.xcconfig */,
+			);
+			name = "Pods-VergeiOSTests";
+			path = "Target Support Files/Pods-VergeiOSTests";
+			sourceTree = "<group>";
+		};
+		54CCD06893F300F5B2C02DAFD57093E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5628AB901A7312D6D7DB50258F846B4 /* iOS */,
+				C8EB97685ED026C24AE2CF55F8F7CD30 /* watchOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		745FE991B45D1440F16A509BA2D44A49 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61042FCD4FBF58FECC771A51F7192C47 /* Pods-VergeiOS */,
+				D84E701A795CDCC5ECB599C3BE51874D /* Pods-VergeiOS-VergeiOSUITests */,
+				0873935878D9BD1BFF6289FF622DD962 /* Pods-VergeiOSTests */,
+				5F99FCF44B8197D8E79E855A525AF0BB /* Pods-VergeSiri */,
+				D74FC3CC9C10E8C92A2CBE8C1E1AF02B /* Pods-VergeSiriUI */,
+				0E604DEE2A1E9AA25169C785D7392672 /* Pods-VergeWatch Extension */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9077F1B645151B843B0ADCCA2BD52D90 /* Pods-VergeWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7D83A9C44B04C989B3AFD4B43646FF4E /* Pods-VergeWatch Extension.modulemap */,
+				2BD4070059EC683F133353CF0DEBE022 /* Pods-VergeWatch Extension-acknowledgements.markdown */,
+				051BD4573D18D610BA9F15207C6321EE /* Pods-VergeWatch Extension-acknowledgements.plist */,
+				79EB85C5BC61D2578AC79B6E75EEDFD2 /* Pods-VergeWatch Extension-dummy.m */,
+				90963245D845469A8CFF3581742B5572 /* Pods-VergeWatch Extension-Info.plist */,
+				CB814993A27441FF5F4FD3BE6F1B3E27 /* Pods-VergeWatch Extension-umbrella.h */,
+				A1520C17C5184BC864A67B1AE643B5A4 /* Pods-VergeWatch Extension.debug.xcconfig */,
+				9FA6609F5435A22DB6D7C003E9280D95 /* Pods-VergeWatch Extension.release.xcconfig */,
+			);
+			name = "Pods-VergeWatch Extension";
+			path = "Target Support Files/Pods-VergeWatch Extension";
+			sourceTree = "<group>";
+		};
+		A29E3A46275453E129960F0601B08DFF /* Pods-VergeiOS */ = {
+			isa = PBXGroup;
+			children = (
+				17B2FB3E60BBC675707B7849D7E28809 /* Pods-VergeiOS.modulemap */,
+				9403B4727C6DBD7420CCDA5C713A3B89 /* Pods-VergeiOS-acknowledgements.markdown */,
+				BBD159B53F9B26BB98E88B44D80FE38D /* Pods-VergeiOS-acknowledgements.plist */,
+				B3C1C74C2C39094920BA7B2D0966763F /* Pods-VergeiOS-dummy.m */,
+				506C2DCBE33944061E4C69154CF8B463 /* Pods-VergeiOS-Info.plist */,
+				C8522EBB54A7D5CF4DBD0FFE95320EBE /* Pods-VergeiOS-umbrella.h */,
+				115FFD52D4EA8DF49A5D327A34E44CEB /* Pods-VergeiOS.debug.xcconfig */,
+				1689810A586F70C7574CAAD856A522E4 /* Pods-VergeiOS.release.xcconfig */,
+			);
+			name = "Pods-VergeiOS";
+			path = "Target Support Files/Pods-VergeiOS";
+			sourceTree = "<group>";
+		};
+		C5628AB901A7312D6D7DB50258F846B4 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				25B656997DD59E714100CBC23AB4134E /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C8EB97685ED026C24AE2CF55F8F7CD30 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				7E621E336003FBC52FC840E50C1DCF9E /* Foundation.framework */,
+			);
+			name = watchOS;
+			sourceTree = "<group>";
+		};
+		CE166662141D94DEAFE1AAED66543968 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A29E3A46275453E129960F0601B08DFF /* Pods-VergeiOS */,
+				DA17636725F6340ECAF17641EF3EC90C /* Pods-VergeiOS-VergeiOSUITests */,
+				3742687C928984EED6F84089D06F7A94 /* Pods-VergeiOSTests */,
+				1EB35E9E318DEC3598397BB944F7BF70 /* Pods-VergeSiri */,
+				00C3BF41480BC9F7ADD16E92F0222D49 /* Pods-VergeSiriUI */,
+				9077F1B645151B843B0ADCCA2BD52D90 /* Pods-VergeWatch Extension */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				54CCD06893F300F5B2C02DAFD57093E1 /* Frameworks */,
+				745FE991B45D1440F16A509BA2D44A49 /* Products */,
+				CE166662141D94DEAFE1AAED66543968 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		DA17636725F6340ECAF17641EF3EC90C /* Pods-VergeiOS-VergeiOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B07DFB52DACC75D18CF25AD886120DC6 /* Pods-VergeiOS-VergeiOSUITests.modulemap */,
+				844F6CA9B529F427827DBD9D9DE8F1CF /* Pods-VergeiOS-VergeiOSUITests-acknowledgements.markdown */,
+				A020CBDE013E638CFE99A887B38FA62A /* Pods-VergeiOS-VergeiOSUITests-acknowledgements.plist */,
+				23AF56AF8EBAAED70243392F12DF6EF1 /* Pods-VergeiOS-VergeiOSUITests-dummy.m */,
+				B77A937CC970460214496DDBEAD02A38 /* Pods-VergeiOS-VergeiOSUITests-Info.plist */,
+				8ACD87D47C3E601E08AB0747BBC9C073 /* Pods-VergeiOS-VergeiOSUITests-umbrella.h */,
+				AD3F30638F7C375A3812757791DF99E3 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */,
+				0930131B0CC5F0B6265CCF51359D7B4D /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */,
+			);
+			name = "Pods-VergeiOS-VergeiOSUITests";
+			path = "Target Support Files/Pods-VergeiOS-VergeiOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1777F1A2739ABA18F92B12591DD3EB58 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02EA712660711278E0203AC934AC08ED /* Pods-VergeiOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F748327D57083CBB065F4BD7F36C95A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E28E8E9A56F5F10617DE22FC712750A /* Pods-VergeSiriUI-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4621161FAA78BAAEBE42A93710F6338F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F67B498C2F6054873D7FDB0FC0349E5A /* Pods-VergeWatch Extension-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4EA4DB93B604E114937BECCA1DABA60B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4DAE1BBF19B938CE26F2253861A1CD1 /* Pods-VergeiOSTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C97E2D006D67A7F0D0D9C4C3D20E01A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0547D5EBEB1D4F3D225A89FB4C0F9318 /* Pods-VergeSiri-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D190C2ED96D5BB7A89C590902A05DDF2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF851F6199C72BF6B7D2B174E6886140 /* Pods-VergeiOS-VergeiOSUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0B9BD17DBD114AFD98A27782025B87C8 /* Pods-VergeiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAAC9042E0A129C75B3B6A64BBD7650C /* Build configuration list for PBXNativeTarget "Pods-VergeiOSTests" */;
+			buildPhases = (
+				4EA4DB93B604E114937BECCA1DABA60B /* Headers */,
+				CB7EF79B209475F9E937FD9366D9E243 /* Sources */,
+				BA2A50A30B4614906B6A014AF5F6F9CE /* Frameworks */,
+				955D84F1254EF071268038DCCE6317A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFA18C37DDBF664D686A63AD5D62E8F1 /* PBXTargetDependency */,
+			);
+			name = "Pods-VergeiOSTests";
+			productName = Pods_VergeiOSTests;
+			productReference = 0873935878D9BD1BFF6289FF622DD962 /* Pods-VergeiOSTests */;
+			productType = "com.apple.product-type.framework";
+		};
+		0D2EB44C318350EDEC0EF5517571A08A /* Pods-VergeSiri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C51779EF22D5A311824A66575FC181DC /* Build configuration list for PBXNativeTarget "Pods-VergeSiri" */;
+			buildPhases = (
+				6C97E2D006D67A7F0D0D9C4C3D20E01A /* Headers */,
+				7D90D0575AF82B016BB6795634CDB950 /* Sources */,
+				FA8775A0D54CCDA54F7CE85C4E838F23 /* Frameworks */,
+				1D5367AE3B733E8D33068FF4566A5FE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VergeSiri";
+			productName = Pods_VergeSiri;
+			productReference = 5F99FCF44B8197D8E79E855A525AF0BB /* Pods-VergeSiri */;
+			productType = "com.apple.product-type.framework";
+		};
+		49F76280D01F6770953838910CA0FCD2 /* Pods-VergeiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 701DF495F28B24014D5F1A1275B9D03C /* Build configuration list for PBXNativeTarget "Pods-VergeiOS" */;
+			buildPhases = (
+				1777F1A2739ABA18F92B12591DD3EB58 /* Headers */,
+				50B7B8045920F20594E385DCD87D2DB3 /* Sources */,
+				823D75687CDA0BC4CADE44D494F4A66C /* Frameworks */,
+				64F00F7F634B6754D0BCDC81654FB56D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VergeiOS";
+			productName = Pods_VergeiOS;
+			productReference = 61042FCD4FBF58FECC771A51F7192C47 /* Pods-VergeiOS */;
+			productType = "com.apple.product-type.framework";
+		};
+		7E9DE47C4065D3B0520BE8ED329D625D /* Pods-VergeSiriUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E611F97F666CADD2B25258B440046277 /* Build configuration list for PBXNativeTarget "Pods-VergeSiriUI" */;
+			buildPhases = (
+				2F748327D57083CBB065F4BD7F36C95A /* Headers */,
+				DCFCFA483369F455857C3A09B6A77C19 /* Sources */,
+				A770C57D9ED13B6CA755EE31885DB599 /* Frameworks */,
+				4535357660148266587465D2C000FF9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VergeSiriUI";
+			productName = Pods_VergeSiriUI;
+			productReference = D74FC3CC9C10E8C92A2CBE8C1E1AF02B /* Pods-VergeSiriUI */;
+			productType = "com.apple.product-type.framework";
+		};
+		A3CEE0C4936299C2B49B875828FC954B /* Pods-VergeiOS-VergeiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAE13A9D08F2EDEDF06DA6B17674FA89 /* Build configuration list for PBXNativeTarget "Pods-VergeiOS-VergeiOSUITests" */;
+			buildPhases = (
+				D190C2ED96D5BB7A89C590902A05DDF2 /* Headers */,
+				AE04663330C0637C66DF9C5AD9FFC7EB /* Sources */,
+				91E218BDEA666700AC4CA1AFB4B5BD77 /* Frameworks */,
+				790567026247519834A9AB8119F2F5F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VergeiOS-VergeiOSUITests";
+			productName = Pods_VergeiOS_VergeiOSUITests;
+			productReference = D84E701A795CDCC5ECB599C3BE51874D /* Pods-VergeiOS-VergeiOSUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+		AA7407CE7F72A72D2C4730BB9270E115 /* Pods-VergeWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00FD27C2CEF7FD593BA1F6869B7D74D3 /* Build configuration list for PBXNativeTarget "Pods-VergeWatch Extension" */;
+			buildPhases = (
+				4621161FAA78BAAEBE42A93710F6338F /* Headers */,
+				CCCDC323EF86CDA11A5AFE0272DDA568 /* Sources */,
+				11D8ED2CABFBEBF16533B340D74BB98D /* Frameworks */,
+				FB0E06AA95B7A3E09DF87FF0B225E784 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VergeWatch Extension";
+			productName = Pods_VergeWatch_Extension;
+			productReference = 0E604DEE2A1E9AA25169C785D7392672 /* Pods-VergeWatch Extension */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			minimizedProjectReferenceProxies = 0;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 745FE991B45D1440F16A509BA2D44A49 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49F76280D01F6770953838910CA0FCD2 /* Pods-VergeiOS */,
+				A3CEE0C4936299C2B49B875828FC954B /* Pods-VergeiOS-VergeiOSUITests */,
+				0B9BD17DBD114AFD98A27782025B87C8 /* Pods-VergeiOSTests */,
+				0D2EB44C318350EDEC0EF5517571A08A /* Pods-VergeSiri */,
+				7E9DE47C4065D3B0520BE8ED329D625D /* Pods-VergeSiriUI */,
+				AA7407CE7F72A72D2C4730BB9270E115 /* Pods-VergeWatch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D5367AE3B733E8D33068FF4566A5FE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4535357660148266587465D2C000FF9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64F00F7F634B6754D0BCDC81654FB56D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		790567026247519834A9AB8119F2F5F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		955D84F1254EF071268038DCCE6317A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB0E06AA95B7A3E09DF87FF0B225E784 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50B7B8045920F20594E385DCD87D2DB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D787F45F848B7584A4AE7B1D4EF0A85 /* Pods-VergeiOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7D90D0575AF82B016BB6795634CDB950 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59CA70F859DEEA8366275335AAC787A5 /* Pods-VergeSiri-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE04663330C0637C66DF9C5AD9FFC7EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC2EC602CB65D542974BC495A40D8F9E /* Pods-VergeiOS-VergeiOSUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB7EF79B209475F9E937FD9366D9E243 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93C7C4FEB8EC354B82ACCB9ADF6743BA /* Pods-VergeiOSTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCCDC323EF86CDA11A5AFE0272DDA568 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1D1B8BB4B60E9358468AB319FA3F154 /* Pods-VergeWatch Extension-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCFCFA483369F455857C3A09B6A77C19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D73CB84C732F64D54E886738A705575 /* Pods-VergeSiriUI-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFA18C37DDBF664D686A63AD5D62E8F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-VergeiOS";
+			target = 49F76280D01F6770953838910CA0FCD2 /* Pods-VergeiOS */;
+			targetProxy = 8EDC0296FDBAE9221FCA45ED8D35AD76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		298D88DFEC7B02B2BDE603AB6BB538C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1689810A586F70C7574CAAD856A522E4 /* Pods-VergeiOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4626F11282D9197AF29973E07DE918DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14427A5C79F1D20DB4086F5D876A3D01 /* Pods-VergeiOSTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5E20E80BD606FC39B829925879A2AF24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD3F30638F7C375A3812757791DF99E3 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		642E1C693E3E1CEB4C1DC69FF369AD04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0930131B0CC5F0B6265CCF51359D7B4D /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		66716DFB3C989C3FAE3D8ECD051663DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FA6609F5435A22DB6D7C003E9280D95 /* Pods-VergeWatch Extension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		8B154E76F1248F52FFCB1F197F4E0249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66F9EA428107F3D34B851F422907DD75 /* Pods-VergeSiriUI.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		96287F2F1435476C7E711DCBBCAAB3D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1520C17C5184BC864A67B1AE643B5A4 /* Pods-VergeWatch Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		B13F5089C35AE63C4D9FF13FB045EFAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9CD10285F2C63FB75F22570C17499EA /* Pods-VergeiOSTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BACE6057E5BD2958E6FF350E663B2BDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E8C25DA3DAD21B7BBCBCFD6A5A96DBF /* Pods-VergeSiri.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BE0ECED8410F87705876CE36F783B137 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D947EFCC2A98EAAFE8F2104297297871 /* Pods-VergeSiriUI.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D66D06D6071259D479DDEA2A8FD1EF33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6C6E8035DA84FF95AAFEDC9D9492F2F /* Pods-VergeSiri.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D7899472162424B3BD87B0ACA2AAF067 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		EA8245FD564BCB159AEB4408B48E9616 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		FF3586B5612DC5345EA02E20E239E7D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 115FFD52D4EA8DF49A5D327A34E44CEB /* Pods-VergeiOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00FD27C2CEF7FD593BA1F6869B7D74D3 /* Build configuration list for PBXNativeTarget "Pods-VergeWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96287F2F1435476C7E711DCBBCAAB3D7 /* Debug */,
+				66716DFB3C989C3FAE3D8ECD051663DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7899472162424B3BD87B0ACA2AAF067 /* Debug */,
+				EA8245FD564BCB159AEB4408B48E9616 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		701DF495F28B24014D5F1A1275B9D03C /* Build configuration list for PBXNativeTarget "Pods-VergeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF3586B5612DC5345EA02E20E239E7D9 /* Debug */,
+				298D88DFEC7B02B2BDE603AB6BB538C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C51779EF22D5A311824A66575FC181DC /* Build configuration list for PBXNativeTarget "Pods-VergeSiri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D66D06D6071259D479DDEA2A8FD1EF33 /* Debug */,
+				BACE6057E5BD2958E6FF350E663B2BDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E611F97F666CADD2B25258B440046277 /* Build configuration list for PBXNativeTarget "Pods-VergeSiriUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B154E76F1248F52FFCB1F197F4E0249 /* Debug */,
+				BE0ECED8410F87705876CE36F783B137 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAAC9042E0A129C75B3B6A64BBD7650C /* Build configuration list for PBXNativeTarget "Pods-VergeiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4626F11282D9197AF29973E07DE918DA /* Debug */,
+				B13F5089C35AE63C4D9FF13FB045EFAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAE13A9D08F2EDEDF06DA6B17674FA89 /* Build configuration list for PBXNativeTarget "Pods-VergeiOS-VergeiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E20E80BD606FC39B829925879A2AF24 /* Debug */,
+				642E1C693E3E1CEB4C1DC69FF369AD04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

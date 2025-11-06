@@ -8,6 +8,8 @@ import Foundation
 extension Vws {
     struct WalletStatus: Decodable {
         struct Error: DecodableError {
+            var status: String
+            
             enum Code: String, Decodable {
                 case WalletNotFound = "WALLET_NOT_FOUND"
             }
@@ -16,8 +18,8 @@ extension Vws {
             let message: String
         }
 
-        let pendingTxps: [TxProposalResponse]
-        let wallet: WalletInfo
-        let balance: WalletBalanceInfo
+        let pendingTxps: [TxProposalResponse]?
+        let wallet: WalletInfo?
+        let balance: WalletBalanceInfo?
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's turn Tor on" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTQ-u6-pQ5">
-                    <rect key="frame" x="40" y="0.0" width="295" height="38.5"/>
+                    <rect key="frame" x="40" y="20" width="295" height="38.5"/>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="28"/>
                     <color key="textColor" name="SecondaryDark"/>
                     <nil key="highlightedColor"/>
@@ -26,16 +26,16 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ny-Gh-19i">
-                    <rect key="frame" x="0.0" y="62.5" width="375" height="390"/>
+                    <rect key="frame" x="0.0" y="82.5" width="375" height="370"/>
                     <subviews>
                         <mapView clipsSubviews="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-Ty-MG9">
-                            <rect key="frame" x="0.0" y="45" width="375" height="300"/>
+                            <rect key="frame" x="0.0" y="35" width="375" height="300"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="7dA-eQ-AUw"/>
                             </constraints>
                         </mapView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TorMapOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="qQX-vg-zUR">
-                            <rect key="frame" x="0.0" y="45" width="375" height="300"/>
+                            <rect key="frame" x="0.0" y="35" width="375" height="300"/>
                             <color key="tintColor" name="BackgroundGrey"/>
                         </imageView>
                     </subviews>
@@ -68,9 +68,6 @@
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kXB-TG-Moz">
                             <rect key="frame" x="95.5" y="0.0" width="51" height="31"/>
                             <color key="onTintColor" name="VergeGreen"/>
-                            <connections>
-                                <action selector="changeTorUsage:" destination="iN0-l3-epB" eventType="valueChanged" id="5B8-GZ-d2P"/>
-                            </connections>
                         </switch>
                     </subviews>
                 </stackView>
@@ -83,24 +80,25 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.tor.slide3.descLabel"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cw8-ye-Hxh" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cw8-ye-Hxh" customClass="RoundedButton" customModule="VergeiOS" customModuleProvider="target">
                     <rect key="frame" x="40" y="617" width="295" height="50"/>
                     <color key="backgroundColor" name="PrimaryLight"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="aVd-GI-8Pt"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                    <state key="normal" title="Proceed without Tor">
+                    <state key="normal" title="Proceed">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="setup.tor.slide3.negativeButton"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="proceed:" destination="iN0-l3-epB" eventType="touchUpInside" id="bWr-hg-dxT"/>
+                        <action selector="proceed:" destination="iN0-l3-epB" eventType="touchUpInside" id="ufj-9d-tFS"/>
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" name="BackgroundGrey"/>
             <constraints>
                 <constraint firstItem="HHZ-tl-8A4" firstAttribute="top" secondItem="JGl-d4-D5U" secondAttribute="bottom" constant="24" id="Cdw-Dt-Kce"/>
@@ -119,30 +117,25 @@
                 <constraint firstItem="0Ny-Gh-19i" firstAttribute="top" secondItem="VTQ-u6-pQ5" secondAttribute="bottom" constant="24" id="qsl-EL-Rke"/>
                 <constraint firstItem="JGl-d4-D5U" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xOz-t4-35V"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <connections>
-                <outlet property="mapView" destination="4GY-Ty-MG9" id="P8f-As-7MF"/>
-                <outlet property="proceedButton" destination="Cw8-ye-Hxh" id="JBo-WV-Qm5"/>
-            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="54.872563718140931"/>
         </view>
     </objects>
     <resources>
         <image name="TorMapOverlay" width="562" height="431"/>
         <namedColor name="BackgroundGrey">
-            <color red="0.97254901960784312" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryLight">
-            <color red="0.21568627450980393" green="0.73725490196078436" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21600000560283661" green="0.7369999885559082" blue="0.88200002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryDark">
-            <color red="0.094117647058823528" green="0.23529411764705882" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.093999996781349182" green="0.23499999940395355" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryLight">
-            <color red="0.38823529411764707" green="0.47058823529411764" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.47099998593330383" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="VergeGreen">
-            <color red="0.0" green="0.52156862745098043" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.5220000147819519" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -8,12 +8,15 @@
 
 import Foundation
 
-protocol SubscriberProtocol: Subscriber {
+/// Protocol defining subscriber behavior
+protocol SubscriberProtocol: AnyObject {
+    /// Must return all Notification.Name → Selector mappings
     func getSubscribedEvents() -> [Notification.Name: Selector]
 }
 
+/// Default extension gives each subscriber a unique typeName
 extension SubscriberProtocol {
     static var typeName: String {
-        String(describing: self)
+        String(describing: Self.self)
     }
 }

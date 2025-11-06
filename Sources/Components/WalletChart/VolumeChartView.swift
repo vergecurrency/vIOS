@@ -5,6 +5,7 @@
 
 import UIKit
 import Charts
+import DGCharts
 
 class VolumeChartView: AbstractChartView {
 
@@ -38,7 +39,7 @@ class VolumeChartView: AbstractChartView {
         chart.rightAxis.enabled = false
         chart.leftAxis.enabled = false
         chart.legend.enabled = false
-        chart.chartDescription?.text = ""
+        chart.chartDescription.text = ""
         chart.highlightPerTapEnabled = false
 
         addSubview(chart)

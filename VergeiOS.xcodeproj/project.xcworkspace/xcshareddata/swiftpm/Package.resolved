@@ -1,97 +1,177 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Charts",
-        "repositoryURL": "https://github.com/danielgindi/Charts.git",
-        "state": {
-          "branch": null,
-          "revision": "7ac4a05e83d279bac305a472af9128c2a0eca3d7",
-          "version": "3.5.0"
-        }
-      },
-      {
-        "package": "CoreStore",
-        "repositoryURL": "https://github.com/JohnEstropia/CoreStore.git",
-        "state": {
-          "branch": null,
-          "revision": "d6eae8c0912aafdcfdd6e97ccd39922b6a6b83e9",
-          "version": "7.3.0"
-        }
-      },
-      {
-        "package": "CryptoSwift",
-        "repositoryURL": "https://github.com/krzyzanowskim/CryptoSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "af1b58fc569bfde777462349b9f7314b61762be0",
-          "version": "1.3.2"
-        }
-      },
-      {
-        "package": "Eureka",
-        "repositoryURL": "https://github.com/xmartlabs/Eureka.git",
-        "state": {
-          "branch": null,
-          "revision": "9fe153d2be663621d4f53196bf1b7effb83d7017",
-          "version": "5.3.0"
-        }
-      },
-      {
-        "package": "IQKeyboardManagerSwift",
-        "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
-        "state": {
-          "branch": null,
-          "revision": "4dc6bc7d1c9747bd0c261c8c055903f9fdef91f7",
-          "version": "6.5.6"
-        }
-      },
-      {
-        "package": "KeychainSwift",
-        "repositoryURL": "https://github.com/evgenyneu/keychain-swift.git",
-        "state": {
-          "branch": null,
-          "revision": "96fb84f45a96630e7583903bd7e08cf095c7a7ef",
-          "version": "19.0.0"
-        }
-      },
-      {
-        "package": "Promises",
-        "repositoryURL": "https://github.com/google/promises.git",
-        "state": {
-          "branch": null,
-          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
-          "version": "1.2.10"
-        }
-      },
-      {
-        "package": "swift-log",
-        "repositoryURL": "https://github.com/apple/swift-log.git",
-        "state": {
-          "branch": null,
-          "revision": "173f567a2dfec11d74588eea82cecea555bdc0bc",
-          "version": "1.4.0"
-        }
-      },
-      {
-        "package": "SwifterSwift",
-        "repositoryURL": "https://github.com/SwifterSwift/SwifterSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "dc813f3aa92f904a009fe543b99d5649dce7c134",
-          "version": "5.2.0"
-        }
-      },
-      {
-        "package": "SwiftyJSON",
-        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
-        "state": {
-          "branch": null,
-          "revision": "2b6054efa051565954e1d2b9da831680026cd768",
-          "version": "5.0.0"
-        }
+  "originHash" : "2ecc102e843b5e0e6fc3883222b40b8efba00b8ef9f470e6c4c9894c576386a8",
+  "pins" : [
+    {
+      "identity" : "bitcoinkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yenom/BitcoinKit.git",
+      "state" : {
+        "revision" : "5f1fe9253071aeb845fa1cc40a338f32c6e34a66",
+        "version" : "1.1.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "bits",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor/bits.git",
+      "state" : {
+        "revision" : "03079476b04139a8b744ad96f975176df5ae12bc",
+        "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielgindi/Charts.git",
+      "state" : {
+        "revision" : "dd9c72e3d7e751e769971092a6bd72d39198ae63",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "copenssl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/copenssl.git",
+      "state" : {
+        "revision" : "a347e9ec038b134aecf42e0c21f2deb9035adf3f",
+        "version" : "1.0.0-rc.1"
+      }
+    },
+    {
+      "identity" : "core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor/core.git",
+      "state" : {
+        "revision" : "aa15871311b497a24a7f0e96b1ae6865dd600818",
+        "version" : "2.2.1"
+      }
+    },
+    {
+      "identity" : "corestore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnEstropia/CoreStore.git",
+      "state" : {
+        "revision" : "a40df37192622b093321fc2003f4a5cbe3860ffb",
+        "version" : "7.3.1"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "e45a26384239e028ec87fbcc788f513b67e10d8f",
+        "version" : "1.9.0"
+      }
+    },
+    {
+      "identity" : "debugging",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor/debugging.git",
+      "state" : {
+        "revision" : "fc5a27d6eb236141dc24e5f14eedaa2e035ae7b3",
+        "version" : "1.1.1"
+      }
+    },
+    {
+      "identity" : "eureka",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/xmartlabs/Eureka.git",
+      "state" : {
+        "revision" : "028ef8e3191a256b8f6b8bb6b9496efcb0762dbc",
+        "version" : "5.5.0"
+      }
+    },
+    {
+      "identity" : "iqkeyboardmanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
+      "state" : {
+        "revision" : "c00b1ae9fa1ad8af4465bb6ca901f6943fc98eba",
+        "version" : "6.5.16"
+      }
+    },
+    {
+      "identity" : "keychain-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/evgenyneu/keychain-swift.git",
+      "state" : {
+        "revision" : "96fb84f45a96630e7583903bd7e08cf095c7a7ef",
+        "version" : "19.0.0"
+      }
+    },
+    {
+      "identity" : "promises",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/promises.git",
+      "state" : {
+        "revision" : "afa9a1ace74e116848d4f743599ab83e584ff8cb",
+        "version" : "1.2.12"
+      }
+    },
+    {
+      "identity" : "random",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vapor-community/random.git",
+      "state" : {
+        "revision" : "d7c4397d125caba795d14d956efacfe2a27a63d0",
+        "version" : "1.2.0"
+      }
+    },
+    {
+      "identity" : "secp256k1.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Boilertalk/secp256k1.swift",
+      "state" : {
+        "revision" : "cd187c632fb812fd93711a9f7e644adb7e5f97f0",
+        "version" : "0.1.7"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+        "version" : "1.6.4"
+      }
+    },
+    {
+      "identity" : "swifterswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwifterSwift/SwifterSwift.git",
+      "state" : {
+        "revision" : "933f27d8e7fa0bf8200a5d6235e0de383b801126",
+        "version" : "5.3.0"
+      }
+    },
+    {
+      "identity" : "swiftyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyJSON/SwiftyJSON.git",
+      "state" : {
+        "revision" : "af76cf3ef710b6ca5f8c05f3a31307d44a3c5828",
+        "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "swinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/Swinject.git",
+      "state" : {
+        "revision" : "b685b549fe4d8ae265fc7a2f27d0789720425d69",
+        "version" : "2.10.0"
+      }
+    },
+    {
+      "identity" : "swinjectstoryboard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/SwinjectStoryboard.git",
+      "state" : {
+        "revision" : "e4498ce2dfe37e1ca9d2d20af06fcc087507561c",
+        "version" : "2.2.3"
+      }
+    }
+  ],
+  "version" : 3
 }

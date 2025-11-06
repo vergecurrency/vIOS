@@ -13,6 +13,7 @@ class WatchSubscriber: Subscriber {
 
     init(watchSyncManager: WatchSyncManager) {
         self.watchSyncManager = watchSyncManager
+        super.init()
     }
 
     @objc func syncWatchCurrency(notification: Notification) {

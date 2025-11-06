@@ -6,29 +6,29 @@
 //  Copyright © 2020 Verge Currency. All rights reserved.
 //
 
-import UIKit
-
-class TorFixViewController: ThemeableViewController {
-    var delegate: TorFixerDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    @IBAction func restartApplication(_ sender: Any) {
-        self.delegate?.restartApplication()
-    }
-
-    @IBAction func restartClient(_ sender: Any) {
-        self.delegate?.restartClient()
-    }
-
-    @IBAction func askHelp(_ sender: UIButton) {
-        let controller = UIStoryboard.createFromStoryboardWithNavigationController(
-            name: "Settings",
-            type: SupportTableViewController.self
-        )
-
-        self.present(controller, animated: true)
-    }
-}
+//import UIKit
+//
+//class TorFixViewController: ThemeableViewController {
+//    var delegate: TorFixerDelegate?
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//    @IBAction func restartApplication(_ sender: Any) {
+//        self.delegate?.restartApplication()
+//    }
+//
+//    @IBAction func restartClient(_ sender: Any) {
+//        self.delegate?.restartClient()
+//    }
+//
+//    @IBAction func askHelp(_ sender: UIButton) {
+//        let controller = UIStoryboard.createFromStoryboardWithNavigationController(
+//            name: "Settings",
+//            type: SupportTableViewController.self
+//        )
+//
+//        self.present(controller, animated: true)
+//    }
+//}

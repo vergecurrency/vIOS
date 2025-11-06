@@ -1,0 +1,6 @@
+framework module Pods_VergeWatch_Extension {
+  umbrella header "Pods-VergeWatch Extension-umbrella.h"
+
+  export *
+  module * { export * }
+}

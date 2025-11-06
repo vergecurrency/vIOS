@@ -36,11 +36,11 @@ extension Vws {
         }
 
         func asUnspentTransaction() throws -> UnspentTransaction {
-            guard let lockingScript = Data(fromHex: self.scriptPubKey) else {
+            guard let lockingScript = Data(hex: self.scriptPubKey) else {
                 throw UnspentOutputError.invalidScriptPubKeyHex(hex: self.scriptPubKey)
             }
 
-            guard let txid = Data(fromHex: self.txID) else {
+            guard let txid = Data(hex: self.txID) else {
                 throw UnspentOutputError.invalidTxIdHex(hex: self.txID)
             }
 
@@ -52,7 +52,7 @@ extension Vws {
         }
 
         func asInputTransaction() throws -> TransactionInput {
-            guard let txid = Data(fromHex: self.txID) else {
+            guard let txid = Data(hex: self.txID) else {
                 throw UnspentOutputError.invalidTxIdHex(hex: self.txID)
             }
 
