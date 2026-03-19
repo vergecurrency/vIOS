@@ -12,7 +12,9 @@
 		0793840C210DC8A000C3C799 /* EnterRecoveryKeyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */; };
 		0793840E210DD2ED00C3C799 /* UIView+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840D210DD2ED00C3C799 /* UIView+Shake.swift */; };
 		07938410210DD73900C3C799 /* FinalRecoveryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0793840F210DD73900C3C799 /* FinalRecoveryController.swift */; };
-		3DC628367A19988EFDE49845 /* Pods_VergeiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853A5FC462BF5240AFC66555 /* Pods_VergeiOS.framework */; };
+		52D7802696EA5CD49A917A25 /* Pods_VergeSiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520C9F8038DC087E1693369D /* Pods_VergeSiri.framework */; };
+		68216545EA73C9F8BC303F9E /* Pods_VergeWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5995B38557C190BE59802531 /* Pods_VergeWatch_Extension.framework */; };
+		883DBE699B626FBDAF154CA6 /* Pods_VergeSiriUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218EC7DB2931543F54D7BDD8 /* Pods_VergeSiriUI.framework */; };
 		933743512EBDFD1600E8201F /* BitcoinKit in Frameworks */ = {isa = PBXBuildFile; productRef = 933743502EBDFD1600E8201F /* BitcoinKit */; };
 		933743532EBDFD1600E8201F /* HdWalletKit in Frameworks */ = {isa = PBXBuildFile; productRef = 933743522EBDFD1600E8201F /* HdWalletKit */; };
 		936099E62E8653300045CAF9 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 936099E52E8653300045CAF9 /* Swinject */; };
@@ -41,6 +43,7 @@
 		93DA191D2EBE1F69009A50DD /* TorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA191C2EBE1F69009A50DD /* TorClient.swift */; };
 		93FDEEA22E904F4900B583A0 /* BIP32ManualDerivator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FDEEA12E904F4900B583A0 /* BIP32ManualDerivator.swift */; };
 		93FDEEA52E90561A00B583A0 /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = 93FDEEA42E90561A00B583A0 /* BigInt */; };
+		A16F58F0B7458F1052E82C7A /* Pods_VergeiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4AAE6D94E4E20F70706C /* Pods_VergeiOS.framework */; };
 		A302D2E9211F01CB00EA8091 /* BorderPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */; };
 		A302D2EB211F047800EA8091 /* SelectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EA211F047800EA8091 /* SelectorButton.swift */; };
 		A302D2EF211F2E4900EA8091 /* SelectRecipientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */; };
@@ -244,6 +247,7 @@
 		A3D3A069215661C20018599A /* AddressValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D3A068215661C20018599A /* AddressValidatorTest.swift */; };
 		A3D68365213F34E50067E0B9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */; };
 		A3D68366213F34E50067E0B9 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */; };
+		A3D8981EF7A1C9E7E061DDC5 /* Pods_VergeiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 439431277C33EAE76E613F72 /* Pods_VergeiOSTests.framework */; };
 		A3D98EE124263D6500A2BBEB /* SupportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */; };
 		A3D98EE524269A7800A2BBEB /* KeyBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D98EE424269A7800A2BBEB /* KeyBalance.swift */; };
 		A3E32B1C225D56D9001A8B0E /* WalletServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E32B1B225D56D9001A8B0E /* WalletServiceProvider.swift */; };
@@ -331,6 +335,7 @@
 		B2BD7F7DCE0929291A5DCA2E /* UIWindow+Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7F6AC63621E982E0342E /* UIWindow+Levels.swift */; };
 		B2BD7F92879CA014877FA526 /* Vws.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7C928A701BC212214052 /* Vws.swift */; };
 		B2BD7FCE5B75C5C1D6DE3F70 /* SJCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */; };
+		B5BC3E8339ADE66DDCA1F5C3 /* Pods_VergeiOS_VergeiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6371115D10C5FDFB4C827602 /* Pods_VergeiOS_VergeiOSUITests.framework */; };
 		CA101BAE224629590058B84C /* ShortcutsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA101BAD224629590058B84C /* ShortcutsManager.swift */; };
 		CA1E3BC622D176F800210562 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1E3BC522D176F800210562 /* SecondaryButton.swift */; };
 		CA2B4A17226B336100115B2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A15226B336100115B2D /* LaunchScreen.storyboard */; };
@@ -442,26 +447,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		040CF93C33D89AF69CEBBDC8 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS-VergeiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
-		052F09E604075F100BD51145 /* Pods-VergeSiriUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiriUI.release.xcconfig"; path = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.release.xcconfig"; sourceTree = "<group>"; };
 		07938403210DAD3800C3C799 /* RestoreGuide.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestoreGuide.storyboard; sourceTree = "<group>"; };
 		07938406210DB46C00C3C799 /* RestoreWalletController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreWalletController.swift; sourceTree = "<group>"; };
 		0793840B210DC8A000C3C799 /* EnterRecoveryKeyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterRecoveryKeyController.swift; sourceTree = "<group>"; };
 		0793840D210DD2ED00C3C799 /* UIView+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shake.swift"; sourceTree = "<group>"; };
 		0793840F210DD73900C3C799 /* FinalRecoveryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRecoveryController.swift; sourceTree = "<group>"; };
-		16ADC8DAAE4389BFBBF7D17B /* Pods_VergeSiriUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeSiriUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BDCD219A03AD5D0A6FAFA4B /* Pods-VergeWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
-		2486D73F9AA51069901DE250 /* Pods-VergeSiriUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiriUI.debug.xcconfig"; path = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.debug.xcconfig"; sourceTree = "<group>"; };
-		2E97FCEBFC222CB83EC856E0 /* Pods-VergeSiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiri.release.xcconfig"; path = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.release.xcconfig"; sourceTree = "<group>"; };
+		218EC7DB2931543F54D7BDD8 /* Pods_VergeSiriUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeSiriUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		393088EC79FB153DBE9A7476 /* Pods-VergeWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		3B5F4AAE6D94E4E20F70706C /* Pods_VergeiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		439431277C33EAE76E613F72 /* Pods_VergeiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EACE108110EB9642824D419 /* Pods-VergeWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		520C9F8038DC087E1693369D /* Pods_VergeSiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeSiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		596CFB60D8B8AEF01FBF5E3C /* Pods_VergeiOS_VergeiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOS_VergeiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A67FC8952B78AB0E8CC99EB /* Pods_VergeWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BF5BA4DD382CEAED4961D4C /* Pods-VergeSiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiri.debug.xcconfig"; path = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.debug.xcconfig"; sourceTree = "<group>"; };
-		810E805999C1C39E261D8A0F /* Pods-VergeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS.release.xcconfig"; path = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.release.xcconfig"; sourceTree = "<group>"; };
-		853A5FC462BF5240AFC66555 /* Pods_VergeiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		864500D6A9D66774DD5861E5 /* Pods-VergeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.debug.xcconfig"; sourceTree = "<group>"; };
-		894E682F5B20D06B1B8C775B /* Pods_VergeSiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeSiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		92714455730BCF59886CC868 /* Pods-VergeiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOSTests.release.xcconfig"; path = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		5995B38557C190BE59802531 /* Pods_VergeWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6371115D10C5FDFB4C827602 /* Pods_VergeiOS_VergeiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOS_VergeiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71F8DD501AEBB841F51891AB /* Pods-VergeSiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiri.debug.xcconfig"; path = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.debug.xcconfig"; sourceTree = "<group>"; };
+		7C0B3633C9DE38ECEE77FD8A /* Pods-VergeSiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiri.release.xcconfig"; path = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.release.xcconfig"; sourceTree = "<group>"; };
+		8FF6DE8C35C2285FA032F657 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS-VergeiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		936099E32E864B2A0045CAF9 /* VergeiOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VergeiOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		936099E72E8654720045CAF9 /* HGPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HGPlaceholderView.swift; sourceTree = "<group>"; };
 		93871CEA2EBF2004006B8CCA /* Tor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Tor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -474,6 +476,7 @@
 		93A0E75A2E87B1DE00CA0875 /* libssl-iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libssl-iOS.a"; sourceTree = "<group>"; };
 		93A0E75B2E87B1DE00CA0875 /* libssl-iOS-Sim.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libssl-iOS-Sim.a"; sourceTree = "<group>"; };
 		93A0E7602E87BD3C00CA0875 /* RIPEMD160.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIPEMD160.swift; sourceTree = "<group>"; };
+		93A774722F6C18A000675E46 /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = openssl.xcframework; sourceTree = "<group>"; };
 		93CE5A5C2E98C3A500A0D168 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		93CE5A5D2E98C3A500A0D168 /* HDAccountWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDAccountWallet.swift; sourceTree = "<group>"; };
 		93CE5A5E2E98C3A500A0D168 /* HDExtendedKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDExtendedKey.swift; sourceTree = "<group>"; };
@@ -490,7 +493,8 @@
 		93CE5A692E98C3A500A0D168 /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
 		93DA191C2EBE1F69009A50DD /* TorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
 		93FDEEA12E904F4900B583A0 /* BIP32ManualDerivator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP32ManualDerivator.swift; sourceTree = "<group>"; };
-		991AB1E77A21D637E3D39CC6 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS-VergeiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A030BE231C831D876E8DAB24 /* Pods-VergeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS.release.xcconfig"; path = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.release.xcconfig"; sourceTree = "<group>"; };
+		A11690AD6E9A035F1BEBB8FB /* Pods-VergeiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A302D2E8211F01CB00EA8091 /* BorderPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderPanelView.swift; sourceTree = "<group>"; };
 		A302D2EA211F047800EA8091 /* SelectorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorButton.swift; sourceTree = "<group>"; };
 		A302D2EE211F2E4900EA8091 /* SelectRecipientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecipientTableViewController.swift; sourceTree = "<group>"; };
@@ -594,11 +598,9 @@
 		A338E6C22110F9CB000D44EE /* StringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKey.swift; sourceTree = "<group>"; };
 		A338E6C52110FB31000D44EE /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		A338E6C92110FC2D000D44EE /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
-		A338E6CD21110A09000D44EE /* QRCode.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QRCode.framework; path = Carthage/Build/iOS/QRCode.framework; sourceTree = "<group>"; };
 		A339393321B352B50010CC4A /* PaperkeyShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperkeyShowViewController.swift; sourceTree = "<group>"; };
 		A339393521B877750010CC4A /* PassphraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassphraseViewController.swift; sourceTree = "<group>"; };
 		A339393921B877AE0010CC4A /* TorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorViewController.swift; sourceTree = "<group>"; };
-		A33B759D21A5CDD400030CCF /* BitcoinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitcoinKit.framework; path = Carthage/Build/iOS/BitcoinKit.framework; sourceTree = "<group>"; };
 		A33B75BF21A61A3500030CCF /* CurrencyInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInput.swift; sourceTree = "<group>"; };
 		A33B75C321A8917700030CCF /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		A33DB6942231D2010070DBCE /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -688,7 +690,6 @@
 		A3AF9A5E21D8F02C00B5CDF6 /* NoContactsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContactsPlaceholderView.swift; sourceTree = "<group>"; };
 		A3AF9A6021D8F03900B5CDF6 /* NoContactsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoContactsPlaceholderView.xib; sourceTree = "<group>"; };
 		A3B186D422444DFC00B093C4 /* WalletContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletContainerView.swift; sourceTree = "<group>"; };
-		A3B2E25A214836B500C31719 /* HGPlaceholders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HGPlaceholders.framework; path = Carthage/Build/iOS/HGPlaceholders.framework; sourceTree = "<group>"; };
 		A3B2E2622148421300C31719 /* NoTransactionsPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTransactionsPlaceholderView.swift; sourceTree = "<group>"; };
 		A3B2E2632148421300C31719 /* NoTransactionsPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoTransactionsPlaceholderView.xib; sourceTree = "<group>"; };
 		A3B2E2662148577000C31719 /* PlaceholderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTableView.swift; sourceTree = "<group>"; };
@@ -705,13 +706,11 @@
 		A3C2555E25168AA100AD6596 /* CIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CIColorExtension.swift; sourceTree = "<group>"; };
 		A3C2555F25168AA100AD6596 /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		A3C5C3CD21985B11003B6C02 /* sjcl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjcl.js; sourceTree = "<group>"; };
-		A3CE63F8243CC297006EE501 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		A3D3A068215661C20018599A /* AddressValidatorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressValidatorTest.swift; sourceTree = "<group>"; };
 		A3D68363213F34E50067E0B9 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		A3D68364213F34E50067E0B9 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTableViewController.swift; sourceTree = "<group>"; };
 		A3D98EE424269A7800A2BBEB /* KeyBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBalance.swift; sourceTree = "<group>"; };
-		A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwinjectStoryboard.framework; path = Carthage/Build/iOS/SwinjectStoryboard.framework; sourceTree = "<group>"; };
 		A3E32B1B225D56D9001A8B0E /* WalletServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletServiceProvider.swift; sourceTree = "<group>"; };
 		A3E32B1D225D56FB001A8B0E /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
 		A3E32B1F225D5983001A8B0E /* SendViewServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewServiceProvider.swift; sourceTree = "<group>"; };
@@ -721,7 +720,6 @@
 		A3EA38E522FA196900E89CF0 /* ConfirmSweepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmSweepView.xib; sourceTree = "<group>"; };
 		A3EA38E722FB58CE00E89CF0 /* WalletSweepingScannerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSweepingScannerViewDelegate.swift; sourceTree = "<group>"; };
 		A3EA38E922FB619F00E89CF0 /* SweeperHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweeperHelperProtocol.swift; sourceTree = "<group>"; };
-		AFEF2C2C83148AAC920DD8F0 /* Pods-VergeiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B2BD705EE6FF53E105142D8E /* HiddenClientMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenClientMock.swift; sourceTree = "<group>"; };
 		B2BD707FF14AA2915590755F /* ApplicationServiceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServiceProvider.swift; sourceTree = "<group>"; };
 		B2BD709F30B9516F1A745E7A /* RatesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesClient.swift; sourceTree = "<group>"; };
@@ -856,8 +854,11 @@
 		CAFB2007228AC9170096623D /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CAFC45E6228C169700D4F287 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAFC45E7228C189100D4F287 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		F12E880B0F9F10194A4FAFE8 /* Pods-VergeWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
-		F92D18C27517F6A90F459E94 /* Pods_VergeiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D524D1325C449337815830C4 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS-VergeiOSUITests.release.xcconfig"; path = "Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E70C304C83078953EC360A5E /* Pods-VergeSiriUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiriUI.release.xcconfig"; path = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.release.xcconfig"; sourceTree = "<group>"; };
+		E7CB91FC058E29983C2DB774 /* Pods-VergeiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F0127FAC0BFF8E186F711F7A /* Pods-VergeiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOSTests.release.xcconfig"; path = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		FF0D7ABB4DA9ACF7C6D1B987 /* Pods-VergeSiriUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiriUI.debug.xcconfig"; path = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -873,6 +874,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D8981EF7A1C9E7E061DDC5 /* Pods_VergeiOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +882,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BC3E8339ADE66DDCA1F5C3 /* Pods_VergeiOS_VergeiOSUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,7 +913,7 @@
 				A39D5F612448F8480014B882 /* Eureka in Frameworks */,
 				A39D5F652448F8480014B882 /* FBLPromisesTestHelpers in Frameworks */,
 				936636422E8D63BF000F8BFA /* DGCharts in Frameworks */,
-				3DC628367A19988EFDE49845 /* Pods_VergeiOS.framework in Frameworks */,
+				A16F58F0B7458F1052E82C7A /* Pods_VergeiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,6 +922,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */,
+				883DBE699B626FBDAF154CA6 /* Pods_VergeSiriUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,6 +930,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68216545EA73C9F8BC303F9E /* Pods_VergeWatch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,6 +938,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52D7802696EA5CD49A917A25 /* Pods_VergeSiri.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,18 +963,18 @@
 		788A60138FFD64ED7759EC09 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7BF5BA4DD382CEAED4961D4C /* Pods-VergeSiri.debug.xcconfig */,
-				2E97FCEBFC222CB83EC856E0 /* Pods-VergeSiri.release.xcconfig */,
-				2486D73F9AA51069901DE250 /* Pods-VergeSiriUI.debug.xcconfig */,
-				052F09E604075F100BD51145 /* Pods-VergeSiriUI.release.xcconfig */,
-				1BDCD219A03AD5D0A6FAFA4B /* Pods-VergeWatch Extension.debug.xcconfig */,
-				F12E880B0F9F10194A4FAFE8 /* Pods-VergeWatch Extension.release.xcconfig */,
-				864500D6A9D66774DD5861E5 /* Pods-VergeiOS.debug.xcconfig */,
-				810E805999C1C39E261D8A0F /* Pods-VergeiOS.release.xcconfig */,
-				991AB1E77A21D637E3D39CC6 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */,
-				040CF93C33D89AF69CEBBDC8 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */,
-				AFEF2C2C83148AAC920DD8F0 /* Pods-VergeiOSTests.debug.xcconfig */,
-				92714455730BCF59886CC868 /* Pods-VergeiOSTests.release.xcconfig */,
+				71F8DD501AEBB841F51891AB /* Pods-VergeSiri.debug.xcconfig */,
+				7C0B3633C9DE38ECEE77FD8A /* Pods-VergeSiri.release.xcconfig */,
+				FF0D7ABB4DA9ACF7C6D1B987 /* Pods-VergeSiriUI.debug.xcconfig */,
+				E70C304C83078953EC360A5E /* Pods-VergeSiriUI.release.xcconfig */,
+				393088EC79FB153DBE9A7476 /* Pods-VergeWatch Extension.debug.xcconfig */,
+				4EACE108110EB9642824D419 /* Pods-VergeWatch Extension.release.xcconfig */,
+				E7CB91FC058E29983C2DB774 /* Pods-VergeiOS.debug.xcconfig */,
+				A030BE231C831D876E8DAB24 /* Pods-VergeiOS.release.xcconfig */,
+				8FF6DE8C35C2285FA032F657 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */,
+				D524D1325C449337815830C4 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */,
+				A11690AD6E9A035F1BEBB8FB /* Pods-VergeiOSTests.debug.xcconfig */,
+				F0127FAC0BFF8E186F711F7A /* Pods-VergeiOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1401,6 +1407,7 @@
 			children = (
 				93A0E7582E87B1DE00CA0875 /* libcrypto-iOS.a */,
 				93A0E7592E87B1DE00CA0875 /* libcrypto-iOS-Sim.a */,
+				93A774722F6C18A000675E46 /* openssl.xcframework */,
 				93A0E75A2E87B1DE00CA0875 /* libssl-iOS.a */,
 				93A0E75B2E87B1DE00CA0875 /* libssl-iOS-Sim.a */,
 				93A0E7542E87AE8F00CA0875 /* libcrypto.xcframework */,
@@ -1527,19 +1534,14 @@
 				93871CEC2EBF202B006B8CCA /* tor.xcframework */,
 				93871CEA2EBF2004006B8CCA /* Tor.framework */,
 				A3654D8A2517677C007E13B2 /* CoreNFC.framework */,
-				A3E32B16225D52D9001A8B0E /* SwinjectStoryboard.framework */,
-				A33B759D21A5CDD400030CCF /* BitcoinKit.framework */,
-				A3B2E25A214836B500C31719 /* HGPlaceholders.framework */,
 				A398B205212AFF71004ACB73 /* LocalAuthentication.framework */,
-				A338E6CD21110A09000D44EE /* QRCode.framework */,
 				CA522EA6220318B000331B0F /* IntentsUI.framework */,
-				A3CE63F8243CC297006EE501 /* Swinject.framework */,
-				894E682F5B20D06B1B8C775B /* Pods_VergeSiri.framework */,
-				16ADC8DAAE4389BFBBF7D17B /* Pods_VergeSiriUI.framework */,
-				5A67FC8952B78AB0E8CC99EB /* Pods_VergeWatch_Extension.framework */,
-				853A5FC462BF5240AFC66555 /* Pods_VergeiOS.framework */,
-				596CFB60D8B8AEF01FBF5E3C /* Pods_VergeiOS_VergeiOSUITests.framework */,
-				F92D18C27517F6A90F459E94 /* Pods_VergeiOSTests.framework */,
+				520C9F8038DC087E1693369D /* Pods_VergeSiri.framework */,
+				218EC7DB2931543F54D7BDD8 /* Pods_VergeSiriUI.framework */,
+				5995B38557C190BE59802531 /* Pods_VergeWatch_Extension.framework */,
+				3B5F4AAE6D94E4E20F70706C /* Pods_VergeiOS.framework */,
+				6371115D10C5FDFB4C827602 /* Pods_VergeiOS_VergeiOSUITests.framework */,
+				439431277C33EAE76E613F72 /* Pods_VergeiOSTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1977,7 +1979,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A325667D211CBA9A006FB08A /* Build configuration list for PBXNativeTarget "VergeiOSTests" */;
 			buildPhases = (
-				F1C7DAD77472DCD2ED17C1A2 /* [CP] Check Pods Manifest.lock */,
+				3BC4C325D89AEFA1FE831141 /* [CP] Check Pods Manifest.lock */,
 				A3256674211CBA9A006FB08A /* Sources */,
 				A3256675211CBA9A006FB08A /* Frameworks */,
 				A3256676211CBA9A006FB08A /* Resources */,
@@ -1996,11 +1998,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3256699211CBBE2006FB08A /* Build configuration list for PBXNativeTarget "VergeiOSUITests" */;
 			buildPhases = (
-				11820C0A007090154D7BB3F3 /* [CP] Check Pods Manifest.lock */,
+				7A8FD8BE37AEB419FDE8DB09 /* [CP] Check Pods Manifest.lock */,
 				A3256690211CBBE2006FB08A /* Sources */,
 				A3256691211CBBE2006FB08A /* Frameworks */,
 				A3256692211CBBE2006FB08A /* Resources */,
-				991EEEBF5B4E3A7EFB736B69 /* [CP] Embed Pods Frameworks */,
+				08D6557DEF42718389FBA84F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2016,15 +2018,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A33F6A9720EEE487001492C2 /* Build configuration list for PBXNativeTarget "VergeiOS" */;
 			buildPhases = (
-				7958106C867296BDA42F1C1D /* [CP] Check Pods Manifest.lock */,
+				15FE4867541F8CDE9AB63F10 /* [CP] Check Pods Manifest.lock */,
 				A33F6A6820EEE485001492C2 /* Sources */,
 				A33F6A6920EEE485001492C2 /* Frameworks */,
 				A33F6A6A20EEE485001492C2 /* Resources */,
 				CAD929FD21E7DFA300CD5EBA /* Embed App Extensions */,
 				CA8FCF6C21F7C3A40069D150 /* Embed Watch Content */,
-				A32F3D05243CA98E00474726 /* ShellScript */,
 				CAC5842B22D360E9003FACB2 /* ShellScript */,
-				D7AB2FC83E1BC642964E0C87 /* [CP] Embed Pods Frameworks */,
+				F2E4AF1D1D1617A8CC9213A8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2064,7 +2065,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA522EB2220318B000331B0F /* Build configuration list for PBXNativeTarget "VergeSiriUI" */;
 			buildPhases = (
-				F3EE78BE98E674C5096B0CBF /* [CP] Check Pods Manifest.lock */,
+				89527E023B22BCF8397A07F4 /* [CP] Check Pods Manifest.lock */,
 				CA522EA1220318B000331B0F /* Sources */,
 				CA522EA2220318B000331B0F /* Frameworks */,
 				CA522EA3220318B000331B0F /* Resources */,
@@ -2082,7 +2083,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA8FCF6921F7C3A40069D150 /* Build configuration list for PBXNativeTarget "VergeWatch Extension" */;
 			buildPhases = (
-				6078B176FEFEA641F4F166DE /* [CP] Check Pods Manifest.lock */,
+				CB316FD9150E45A174C52D8B /* [CP] Check Pods Manifest.lock */,
 				CA8FCF4F21F7C3A30069D150 /* Sources */,
 				CA8FCF5021F7C3A30069D150 /* Frameworks */,
 				CA8FCF5121F7C3A30069D150 /* Resources */,
@@ -2101,7 +2102,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAD929FA21E7DFA300CD5EBA /* Build configuration list for PBXNativeTarget "VergeSiri" */;
 			buildPhases = (
-				50594C9F96105DC31C44035E /* [CP] Check Pods Manifest.lock */,
+				13A05C05CC62F58D99972270 /* [CP] Check Pods Manifest.lock */,
 				CAD929EE21E7DFA200CD5EBA /* Sources */,
 				CAD929EF21E7DFA200CD5EBA /* Frameworks */,
 				CAD929F021E7DFA200CD5EBA /* Resources */,
@@ -2329,29 +2330,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11820C0A007090154D7BB3F3 /* [CP] Check Pods Manifest.lock */ = {
+		08D6557DEF42718389FBA84F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VergeiOS-VergeiOSUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		50594C9F96105DC31C44035E /* [CP] Check Pods Manifest.lock */ = {
+		13A05C05CC62F58D99972270 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2373,29 +2373,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6078B176FEFEA641F4F166DE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VergeWatch Extension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7958106C867296BDA42F1C1D /* [CP] Check Pods Manifest.lock */ = {
+		15FE4867541F8CDE9AB63F10 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2411,6 +2389,72 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-VergeiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BC4C325D89AEFA1FE831141 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VergeiOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A8FD8BE37AEB419FDE8DB09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VergeiOS-VergeiOSUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89527E023B22BCF8397A07F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VergeSiriUI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2434,44 +2478,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nset -e  # Exit immediately if any command fails\n\necho \"🚀 Running VergeiOS Phase Script (Simulator & Device aware)...\"\n\n# Root of the project\nSRC_ROOT=\"${SRCROOT}\"\n\n# Build output directory\nBUILD_DIR=\"${BUILT_PRODUCTS_DIR}\"\n\n# Determine platform\nif [[ \"$EFFECTIVE_PLATFORM_NAME\" == *simulator* ]]; then\n    PLATFORM_OUTPUT=\"$BUILD_DIR/verge_output_simulator.txt\"\n    echo \"💻 Simulator build detected\"\nelse\n    PLATFORM_OUTPUT=\"$BUILD_DIR/verge_output_device.txt\"\n    echo \"📱 Device build detected\"\nfi\n\n# Example task: write build timestamp\necho \"Build ran at: $(date)\" > \"$PLATFORM_OUTPUT\"\n\n# Optional: let Xcode track the output for incremental builds\necho \"$PLATFORM_OUTPUT\" > \"${SCRIPT_OUTPUT_FILE_0:-$PLATFORM_OUTPUT}\"\n\necho \"✅ VergeiOS Phase Script finished successfully for platform: $EFFECTIVE_PLATFORM_NAME\"\n";
 		};
-		991EEEBF5B4E3A7EFB736B69 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A32F3D05243CA98E00474726 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$ARCHS\" == *\"x86_64\"* ]] || [[ \"$ARCHS\" == *\"arm64-simulator\"* ]] || [[ \"$PLATFORM_NAME\" == *\"simulator\"* ]]; then\n    echo \"Skipping framework thinning for SIMULATOR build\"\n    exit 0\nfi\n\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
-		};
+
 		CAC5842B22D360E9003FACB2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2489,7 +2496,29 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --path \"$SRCROOT\"/VergeiOS\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		D7AB2FC83E1BC642964E0C87 /* [CP] Embed Pods Frameworks */ = {
+		CB316FD9150E45A174C52D8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VergeWatch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2E4AF1D1D1617A8CC9213A8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2508,50 +2537,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F1C7DAD77472DCD2ED17C1A2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VergeiOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3EE78BE98E674C5096B0CBF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VergeSiriUI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2959,11 +2944,11 @@
 /* Begin XCBuildConfiguration section */
 		A325667E211CBA9A006FB08A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFEF2C2C83148AAC920DD8F0 /* Pods-VergeiOSTests.debug.xcconfig */;
+			baseConfigurationReference = A11690AD6E9A035F1BEBB8FB /* Pods-VergeiOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -2985,11 +2970,11 @@
 		};
 		A325667F211CBA9A006FB08A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92714455730BCF59886CC868 /* Pods-VergeiOSTests.release.xcconfig */;
+			baseConfigurationReference = F0127FAC0BFF8E186F711F7A /* Pods-VergeiOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3011,10 +2996,10 @@
 		};
 		A325669A211CBBE2006FB08A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 991AB1E77A21D637E3D39CC6 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */;
+			baseConfigurationReference = 8FF6DE8C35C2285FA032F657 /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3032,10 +3017,10 @@
 		};
 		A325669B211CBBE2006FB08A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 040CF93C33D89AF69CEBBDC8 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */;
+			baseConfigurationReference = D524D1325C449337815830C4 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				INFOPLIST_FILE = VergeiOSUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3178,7 +3163,7 @@
 		};
 		A33F6A9820EEE487001492C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 864500D6A9D66774DD5861E5 /* Pods-VergeiOS.debug.xcconfig */;
+			baseConfigurationReference = E7CB91FC058E29983C2DB774 /* Pods-VergeiOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
@@ -3186,7 +3171,7 @@
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3195,8 +3180,6 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"-Objc",
-					"\"$(SRCROOT)/libcrypto.xcframework\"",
-					"\"$(SRCROOT)/libssl.xcframework\"",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/Classes/Core/**",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/**",
 				);
@@ -3206,7 +3189,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/libcrypto.xcframework\"/**",
+					"\"$(SRCROOT)/libssl.xcframework\"/**",
+					"\"$(SRCROOT)/libcrypto-iOS.a\"",
+					"\"$(SRCROOT)/libcrypto-iOS-Sim.a\"",
+					"\"$(SRCROOT)/libssl-iOS.a\"",
+					"\"$(SRCROOT)/libssl-iOS-Sim.a\"",
+					"\"$(SRCROOT)/openssl.xcframework\"",
+				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
@@ -3220,7 +3211,7 @@
 		};
 		A33F6A9920EEE487001492C2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 810E805999C1C39E261D8A0F /* Pods-VergeiOS.release.xcconfig */;
+			baseConfigurationReference = A030BE231C831D876E8DAB24 /* Pods-VergeiOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
@@ -3228,7 +3219,7 @@
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3237,8 +3228,8 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"-Objc",
-					"\"$(SRCROOT)/libcrypto.xcframework\"",
-					"\"$(SRCROOT)/libssl.xcframework\"",
+					"\"$(SRCROOT)/libcrypto.xcframework\"/**",
+					"\"$(SRCROOT)/libssl.xcframework\"/**",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/Classes/Core/**",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/**",
 				);
@@ -3248,7 +3239,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/libcrypto.xcframework\"/**",
+					"\"$(SRCROOT)/libssl.xcframework\"/**",
+					"\"$(SRCROOT)/libcrypto-iOS.a\"",
+					"\"$(SRCROOT)/libcrypto-iOS-Sim.a\"",
+					"\"$(SRCROOT)/libssl-iOS.a\"",
+					"\"$(SRCROOT)/libssl-iOS-Sim.a\"",
+					"\"$(SRCROOT)/openssl.xcframework\"",
+				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
@@ -3262,12 +3261,12 @@
 		};
 		CA522EB3220318B000331B0F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2486D73F9AA51069901DE250 /* Pods-VergeSiriUI.debug.xcconfig */;
+			baseConfigurationReference = FF0D7ABB4DA9ACF7C6D1B987 /* Pods-VergeSiriUI.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiriUI/Assets/VergeSiriUI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				INFOPLIST_FILE = VergeSiriUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3288,11 +3287,11 @@
 		};
 		CA522EB4220318B000331B0F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 052F09E604075F100BD51145 /* Pods-VergeSiriUI.release.xcconfig */;
+			baseConfigurationReference = E70C304C83078953EC360A5E /* Pods-VergeSiriUI.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiriUI/Assets/VergeSiriUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				INFOPLIST_FILE = VergeSiriUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3311,12 +3310,12 @@
 		};
 		CA8FCF6721F7C3A40069D150 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BDCD219A03AD5D0A6FAFA4B /* Pods-VergeWatch Extension.debug.xcconfig */;
+			baseConfigurationReference = 393088EC79FB153DBE9A7476 /* Pods-VergeWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2S67AX93WQ;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3342,12 +3341,12 @@
 		};
 		CA8FCF6821F7C3A40069D150 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F12E880B0F9F10194A4FAFE8 /* Pods-VergeWatch Extension.release.xcconfig */;
+			baseConfigurationReference = 4EACE108110EB9642824D419 /* Pods-VergeWatch Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2S67AX93WQ;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3372,11 +3371,11 @@
 		};
 		CAD929FB21E7DFA300CD5EBA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BF5BA4DD382CEAED4961D4C /* Pods-VergeSiri.debug.xcconfig */;
+			baseConfigurationReference = 71F8DD501AEBB841F51891AB /* Pods-VergeSiri.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiri/VergeSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3400,11 +3399,11 @@
 		};
 		CAD929FC21E7DFA300CD5EBA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E97FCEBFC222CB83EC856E0 /* Pods-VergeSiri.release.xcconfig */;
+			baseConfigurationReference = 7C0B3633C9DE38ECEE77FD8A /* Pods-VergeSiri.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiri/VergeSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B88XFKB847;
+				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

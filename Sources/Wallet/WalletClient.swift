@@ -55,19 +55,20 @@ public class WalletClient: WalletClientProtocol {
 
     private func getRequest(url: String, completion: @escaping URLCompletion) {
         let referencedUrl = url.addUrlReference()
+
         guard let url = URL(string: "\(baseUrl)\(referencedUrl)".urlify()) else {
             return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
         }
 
         do {
             let signature = try getSignature(url: referencedUrl, method: "get")
-            let copayerId: String
-            if let stored = self.applicationRepository.copayerId, !stored.isEmpty {
-                copayerId = stored
-            } else {
+            var copayerId = ""
+            if self.applicationRepository.copayerId == "" {
                 copayerId = self.getCopayerId()
             }
-
+            else {
+                copayerId = self.applicationRepository.copayerId ?? ""
+            }
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
@@ -75,6 +76,7 @@ public class WalletClient: WalletClientProtocol {
             request.setValue("application/json", forHTTPHeaderField: "accept")
 
             self.log(request: request, signature: signature, copayerId: copayerId)
+
             self.request(request, completion: completion)
         } catch {
             return completion(nil, nil, error)
@@ -92,25 +94,28 @@ public class WalletClient: WalletClientProtocol {
             var argumentsString = "{}"
             if argumentsData != nil {
                 argumentsString = String(data: argumentsData!, encoding: .utf8) ?? "{}"
+                // Remove escaped slashes.
                 argumentsString = argumentsString.replacingOccurrences(of: "\\/", with: "/")
             }
 
             let signature = try getSignature(url: uri, method: "post", arguments: argumentsString)
-            let copayerId: String
-            if let stored = self.applicationRepository.copayerId, !stored.isEmpty {
-                copayerId = stored
-            } else {
+            var copayerId = ""
+            if self.applicationRepository.copayerId == "" {
                 copayerId = self.getCopayerId()
+            }
+            else {
+                copayerId = self.applicationRepository.copayerId ?? ""
             }
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-
+//            request.setValue("bwc-8.1.1",forHTTPHeaderField: "x-client-version")
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
             request.setValue(signature, forHTTPHeaderField: "x-signature")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = argumentsData
 
             self.log(request: request, signature: signature, copayerId: copayerId)
+
             self.request(request, completion: completion)
         } catch {
             return completion(nil, nil, error)
@@ -118,19 +123,20 @@ public class WalletClient: WalletClientProtocol {
     }
     private func deleteRequest(url: String, completion: @escaping URLCompletion) {
         let referencedUrl = url.addUrlReference()
+
         guard let url = URL(string: "\(baseUrl)\(referencedUrl)".urlify()) else {
             return completion(nil, nil, NSError(domain: "Wrong URL", code: 500))
         }
 
         do {
             let signature = try getSignature(url: referencedUrl, method: "delete")
-            let copayerId: String
-            if let stored = self.applicationRepository.copayerId, !stored.isEmpty {
-                copayerId = stored
-            } else {
+            var copayerId = ""
+            if self.applicationRepository.copayerId == "" {
                 copayerId = self.getCopayerId()
             }
-
+            else {
+                copayerId = self.applicationRepository.copayerId ?? ""
+            }
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
@@ -138,6 +144,7 @@ public class WalletClient: WalletClientProtocol {
             request.setValue("application/json", forHTTPHeaderField: "accept")
 
             self.log(request: request, signature: signature, copayerId: copayerId)
+
             self.request(request, completion: completion)
         } catch {
             return completion(nil, nil, error)
@@ -154,18 +161,9 @@ public class WalletClient: WalletClientProtocol {
         }
     }
     private func getCopayerId() -> String {
-        // When wallet data has been reset, avoid using stale credentials.
-        // Return empty x-identity so the server does not associate with previous wallet.
-        if applicationRepository.mnemonic == nil ||
-           applicationRepository.walletId == nil ||
-           applicationRepository.walletSecret == nil ||
-           applicationRepository.copayerId == nil {
-            return ""
-        }
-
-        // Derive copayerId from the same xPubKey used during joinWallet to avoid mismatches.
-        let xPubKey = self.credentials.customExtendedPublicKey ?? self.credentials.publicKey.extended().description
+        let xPubKey = self.credentials.publicKey.extended()
         let hash = self.sjcl.sha256Hash(data: "xvg\(xPubKey)")
+
         return self.sjcl.hexFromBits(hash: hash)
     }
 //    private func getCopayerId() -> String {
@@ -290,7 +288,6 @@ print("create wallet--\(args)")
                 let joinWalletError = try? JSONDecoder().decode(Vws.WalletJoin.Error.self, from: data)
                 let returnError = joinWalletError == nil ? error : nil
                 completion(nil, joinWalletError, returnError)
-                
             }
         }
     }
@@ -340,7 +337,11 @@ extension WalletClient {
             do {
                 let addressInfo = try JSONDecoder().decode(Vws.AddressInfo.self, from: data)
 
-
+                // Make sure the received address is really your address.
+//                let addressByPath = try self.credentials.privateKeyBy(
+//                    path: addressInfo.path,
+//    privateKey: self.credentials.bip44PrivateKey
+//                ).publicKey().toLegacy().description
                 let hdPrivateKey = try self.credentials.privateKeyBy(
                     path: addressInfo.path,
                     privateKey: self.credentials.bip44PrivateKey
@@ -351,9 +352,9 @@ extension WalletClient {
 
                 print("Legacy Address: \(legacyAddress)")
 
-                if addressInfo.address != legacyAddress.description {
-                    return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
-                }
+//                if addressInfo.address != legacyAddress.description {
+//                    return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
+//                }
 
                 completion(nil, addressInfo, nil)
             } catch {
@@ -489,13 +490,14 @@ extension WalletClient {
 
         let url = "\(self.baseUrl)\(referencedUrl)".urlify()
         
-        let copayerId: String
-        if let stored = self.applicationRepository.copayerId, !stored.isEmpty {
-            copayerId = stored
-        } else {
+        var copayerId = ""
+         
+        if self.applicationRepository.copayerId == "" {
             copayerId = self.getCopayerId()
         }
-
+        else {
+            copayerId = self.applicationRepository.copayerId ?? ""
+        }
 
         if referencedUrl.contains("/v1/balance/") {
             let signature = try self.getSignature(url: referencedUrl, method: "get")
@@ -839,7 +841,6 @@ extension WalletClient {
             throw NSError(domain: "SignatureError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Compact signature must be 64 bytes"])
         }
 
-
         let r = Data(compactSig.prefix(32))
         let s = Data(compactSig.suffix(32))
         let derR = derInt(r)
@@ -855,48 +856,35 @@ extension WalletClient {
         return der
     }
     func derInt(_ data: Data) -> Data {
-        // 1. Trim leading zeros safely
-        var i = 0
-        while i < data.count - 1 && data[i] == 0 {
-            i += 1
-        }
-        let trimmed = data.subdata(in: i..<data.count)
+        // Make sure to fully copy the underlying bytes
+        var raw = Data(Array(data)) // ✅ Forces real copy, safe for mutation
         
-        // 2. Prepend 0x00 if MSB is set
-        var finalRaw = trimmed
-        if let first = finalRaw.first, (first & 0x80) != 0 {
-            finalRaw = Data([0x00]) + finalRaw
+        // Remove leading zeros, but keep at least 1 byte
+        while raw.count > 1 && raw.first == 0 {
+            raw.removeFirst()
         }
-        
-        // 3. DER INTEGER encoding
+
+        // If MSB is 1, prepend 0x00
+        if let first = raw.first, first & 0x80 != 0 {
+            raw.insert(0x00, at: 0)
+        }
+
         var result = Data([0x02]) // INTEGER tag
-        
-        // Fixed length encoding (inline implementation)
-        let length = finalRaw.count
-        if length < 0x80 {
-            result.append(UInt8(length))
+
+        // DER length encoding
+        if raw.count < 0x80 {
+            result.append(UInt8(raw.count))
         } else {
-            // Calculate required byte count for length
-            var tempLength = length
-            var byteCount = 0
-            while tempLength > 0 {
-                byteCount += 1
-                tempLength >>= 8
+            let lengthBytes = withUnsafeBytes(of: UInt32(raw.count).bigEndian) {
+                Data($0).drop { $0 == 0 }
             }
-            
-            // Add prefix indicating multi-byte length
-            result.append(UInt8(0x80 | byteCount))
-            
-            // Append actual length in big-endian
-            var bigEndianLength = CFSwapInt32HostToBig(UInt32(length))
-            let lengthBytes = withUnsafeBytes(of: &bigEndianLength) {
-                Data($0.suffix(byteCount))
-            }
+            result.append(UInt8(0x80 | lengthBytes.count))
             result.append(lengthBytes)
         }
-        
-        result.append(finalRaw)
+
+        result.append(raw)
         return result
     }
+
 }
 // swiftlint:enable file_length

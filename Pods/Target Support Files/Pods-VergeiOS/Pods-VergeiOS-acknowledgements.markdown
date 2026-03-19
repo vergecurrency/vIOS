@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## Tor
 
-Copyright (c) 2015-2025 The iCepa Contributors:
+Copyright (c) 2015-2026 The iCepa Contributors:
 
 - Conrad Kramer (https://conradkramer.com)
 - Chris Ballinger (http://chatsecure.org)

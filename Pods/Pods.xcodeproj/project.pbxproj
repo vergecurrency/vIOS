@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02EF0B6A0A7BE506B1B2142B23D66DEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E621E336003FBC52FC840E50C1DCF9E /* Foundation.framework */; };
 		0547D5EBEB1D4F3D225A89FB4C0F9318 /* Pods-VergeSiri-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 39A73F1F716215F5D38EF4DD39B05DC2 /* Pods-VergeSiri-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D554E20847233A197786E8743AB501D /* TOROnionAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EB02C904B9E3CB62CC910FE75B08365 /* TOROnionAuth.m */; };
 		0D73CB84C732F64D54E886738A705575 /* Pods-VergeSiriUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA3FDBC2E19504242316CB650273D31 /* Pods-VergeSiriUI-dummy.m */; };
@@ -20,7 +19,7 @@
 		2B5CEFD45B669E0F49562ABF6A0BD9BC /* TORConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = D851357D3DAACE5B6B797A382119E0DD /* TORConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CC3D1E877E2378BB439910FF0FF0330 /* TORController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EBAC1B4CC93D8D9CCEB1594A88760E /* TORController.m */; };
 		47441A4F2880F80D860CFB5901198789 /* TORAuthKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 614E8B547BF849381FA597F820C9EA34 /* TORAuthKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4A5BF053360A34B0EE24828613028045 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		4A5BF053360A34B0EE24828613028045 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		4B4A444B2EA6BFE22359F60E61690957 /* TORX25519KeyPair.h in Headers */ = {isa = PBXBuildFile; fileRef = 642C2BA7C4437FA0117ECDD4BAD1A11A /* TORX25519KeyPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58AACF2650234E3D23957C08C8677A37 /* TORAuthKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA2E13EAB5684E453D47BCC7ABDE98F /* TORAuthKey.m */; };
 		59CA70F859DEEA8366275335AAC787A5 /* Pods-VergeSiri-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F225DDD10BA1C1D56F3E4D7D203332BF /* Pods-VergeSiri-dummy.m */; };
@@ -36,26 +35,27 @@
 		A2BB749165F2EF78EF6DF97AC9433729 /* TORThread.h in Headers */ = {isa = PBXBuildFile; fileRef = B1694CF6E383426DBAA97EC912BC3952 /* TORThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2F10941E1700852E1BE326D22351243 /* TORThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E85EC4B3AC9E1345D6ECBF49D577E3 /* TORThread.m */; };
 		A5D12BD8FA5C813F8E1BC23E8E775359 /* TORCircuit.m in Sources */ = {isa = PBXBuildFile; fileRef = 745F50A2B79624348DC575DD2331C63A /* TORCircuit.m */; };
-		AA2388895887269B0DA45CC5BC314DE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		AA2388895887269B0DA45CC5BC314DE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		AE8159A9CBE4290E7B31AA9D2A8FEEFB /* TORX25519KeyPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 5844C38B6EBFC4BF93A83D5EFD7E44BB /* TORX25519KeyPair.m */; };
 		B4821C5566BE3BE9E137670020B9473F /* Pods-VergeiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 929D2A96DEB9813322711A2E20459BEA /* Pods-VergeiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA7453236F723ADE0270EBA831FCD12A /* TORCircuit.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AB13A2E123932B5F38BAE59277EACF8 /* TORCircuit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC6B7442B597292FD43E65AD55553776 /* NSBundle+GeoIP.h in Headers */ = {isa = PBXBuildFile; fileRef = 52838632C00CC3F2FFFCD761083BE9C5 /* NSBundle+GeoIP.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BE4F9181A73AFD726D82DD0829A4E2C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		BE4F9181A73AFD726D82DD0829A4E2C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		C4DAE1BBF19B938CE26F2253861A1CD1 /* Pods-VergeiOSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D634FA84FA4CD1992F614DF72A1F44C2 /* Pods-VergeiOSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5A998A7272E28A490F4E91A5B0D3CA1 /* Tor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 504BB971CC5580E0D79C72EBCAE25DDD /* Tor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D19707873FC67AF0445753F0C9227405 /* Pods-VergeiOS-VergeiOSUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CCE844B4852B9F183C3486F1AF2A7BBD /* Pods-VergeiOS-VergeiOSUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1D1B8BB4B60E9358468AB319FA3F154 /* Pods-VergeWatch Extension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAC0B7EF3AA70B7DBC7449C9BE5FCC9 /* Pods-VergeWatch Extension-dummy.m */; };
-		D28C73D39290CCE7DEA2777ACA8BDE00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
-		DCE7010C9845B760C72A3468D066BA70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		D28C73D39290CCE7DEA2777ACA8BDE00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		DCE7010C9845B760C72A3468D066BA70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		E432F739F8D4517504C09872444B1C90 /* TORLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D9C760AFCF510E7E5720B81A17C4F77 /* TORLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6AC9B30AC023D330E4518A2B57C1370 /* NSBundle+GeoIP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6895056F40CAF7C9B40F24158488687E /* NSBundle+GeoIP.m */; };
-		F2545E00B7EA8466488CE35904CE525E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B656997DD59E714100CBC23AB4134E /* Foundation.framework */; };
+		F2545E00B7EA8466488CE35904CE525E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		F658B3C1AC796CA4CABB61F7524AC122 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
 		F67B498C2F6054873D7FDB0FC0349E5A /* Pods-VergeWatch Extension-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9937821ACD4B4969458FA9AB57AF8286 /* Pods-VergeWatch Extension-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		48A450340022275BA7F32659D1C01829 /* PBXContainerItemProxy */ = {
+		3DCC426E455D93BEEFB3DDDFEDBB4C03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -92,7 +92,6 @@
 		192C7AB778C605F9B460C21B203EC861 /* Pods-VergeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS.release.xcconfig"; sourceTree = "<group>"; };
 		1F6DD16505E835DF13979344723E7980 /* Pods-VergeiOSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeiOSTests.modulemap"; sourceTree = "<group>"; };
 		1FC3E8ABA807590DA77D9AFBFECAF3AB /* Pods-VergeiOS-VergeiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS-VergeiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		25B656997DD59E714100CBC23AB4134E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		28198A622AB32DE9F4B05FD43208CD30 /* Pods-VergeiOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeiOSTests-dummy.m"; sourceTree = "<group>"; };
 		2A36D54C821C0052F269FE804AC165BC /* Pods-VergeWatch Extension.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeWatch Extension.modulemap"; sourceTree = "<group>"; };
 		2D0676C2B8CF7E44D9F79AC86BA4F715 /* Pods-VergeSiriUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-VergeSiriUI.modulemap"; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		31166FB737AAE15CC99A5A9845911868 /* Pods-VergeSiriUI-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VergeSiriUI-acknowledgements.markdown"; sourceTree = "<group>"; };
 		35A4F4D0ABB76F4FFB28BD16D8523EC5 /* Pods-VergeiOS-VergeiOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeiOS-VergeiOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		36F159B1B905483ACEFC174C3EB4E2FC /* Pods-VergeiOS-VergeiOSUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VergeiOS-VergeiOSUITests-Info.plist"; sourceTree = "<group>"; };
+		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		39A73F1F716215F5D38EF4DD39B05DC2 /* Pods-VergeSiri-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-VergeSiri-umbrella.h"; sourceTree = "<group>"; };
 		3AB13A2E123932B5F38BAE59277EACF8 /* TORCircuit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TORCircuit.h; path = Tor/Classes/Core/TORCircuit.h; sourceTree = "<group>"; };
 		3CCFFBD33E5A793203E2468B904D290F /* Tor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Tor.modulemap; sourceTree = "<group>"; };
@@ -129,7 +129,6 @@
 		775F285CDF69178038E8B92C825F6DFF /* Pods-VergeiOS-VergeiOSUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VergeiOS-VergeiOSUITests-dummy.m"; sourceTree = "<group>"; };
 		77D03218AE3A6F4931CA5CC0D8DEFA65 /* Pods-VergeWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		79E85EC4B3AC9E1345D6ECBF49D577E3 /* TORThread.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TORThread.m; path = Tor/Classes/CTor/TORThread.m; sourceTree = "<group>"; };
-		7E621E336003FBC52FC840E50C1DCF9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		853186BFD2C714E76FF3918A024A7632 /* Tor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Tor.debug.xcconfig; sourceTree = "<group>"; };
 		86946D53E1967580B4465C2917A15F2A /* Pods-VergeSiriUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VergeSiriUI.release.xcconfig"; sourceTree = "<group>"; };
 		88D87D734750FAC6F11519B245BE9BCB /* NSCharacterSet+PredefinedSets.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCharacterSet+PredefinedSets.m"; path = "Tor/Classes/Core/NSCharacterSet+PredefinedSets.m"; sourceTree = "<group>"; };
@@ -187,7 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				02EF0B6A0A7BE506B1B2142B23D66DEF /* Foundation.framework in Frameworks */,
+				F658B3C1AC796CA4CABB61F7524AC122 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,15 +290,6 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		54CCD06893F300F5B2C02DAFD57093E1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C5628AB901A7312D6D7DB50258F846B4 /* iOS */,
-				C8EB97685ED026C24AE2CF55F8F7CD30 /* watchOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		556391968A0320113B39DAFB3C29055A /* Pods-VergeiOSTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,27 +352,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C5628AB901A7312D6D7DB50258F846B4 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				25B656997DD59E714100CBC23AB4134E /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		C8EB97685ED026C24AE2CF55F8F7CD30 /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				7E621E336003FBC52FC840E50C1DCF9E /* Foundation.framework */,
-			);
-			name = watchOS;
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				54CCD06893F300F5B2C02DAFD57093E1 /* Frameworks */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				B110661C02232F698AA437FADB68073C /* Pods */,
 				7CF522A4A28D5C94CEC8925C169FB5FB /* Products */,
 				DFCF8873F2FDB242F49C2177E9C15006 /* Targets Support Files */,
@@ -404,6 +378,14 @@
 			);
 			name = "Pods-VergeiOS-VergeiOSUITests";
 			path = "Target Support Files/Pods-VergeiOS-VergeiOSUITests";
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4801F62A6B08CD9B5410329F1A18FDE /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DE1BFCF4085FC3B26D9A74EF6B46E2A3 /* CTor */ = {
@@ -431,6 +413,14 @@
 				FC7A02CB00EB69B2D368E74817149F16 /* Pods-VergeWatch Extension */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E4801F62A6B08CD9B5410329F1A18FDE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		E606FDE2CADBCB68AF934EE8106F7E13 /* Tor */ = {
@@ -564,7 +554,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				6B68300F2DCA0CE9AADCED01B4DE0972 /* PBXTargetDependency */,
+				F0577990366D5373A796900BDD6C3B54 /* PBXTargetDependency */,
 			);
 			name = "Pods-VergeiOSTests";
 			productName = Pods_VergeiOSTests;
@@ -860,12 +850,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6B68300F2DCA0CE9AADCED01B4DE0972 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-VergeiOS";
-			target = 49F76280D01F6770953838910CA0FCD2 /* Pods-VergeiOS */;
-			targetProxy = 48A450340022275BA7F32659D1C01829 /* PBXContainerItemProxy */;
-		};
 		92E21998861BCDCDF2CF34CF6C5BD19C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Tor;
@@ -878,9 +862,172 @@
 			target = AFA4383E7CE3B1B637884AC967B81A0E /* Tor */;
 			targetProxy = 8C03EBA612C293375DB5BD5600AFAA40 /* PBXContainerItemProxy */;
 		};
+		F0577990366D5373A796900BDD6C3B54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-VergeiOS";
+			target = 49F76280D01F6770953838910CA0FCD2 /* Pods-VergeiOS */;
+			targetProxy = 3DCC426E455D93BEEFB3DDDFEDBB4C03 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		02D70E4657E424DA151D8A127946775B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBC62201039D4CA818476398A9BF49FF /* Pods-VergeSiriUI.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0EFC68CFF6A8A442A6E9B900EAC9554F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86946D53E1967580B4465C2917A15F2A /* Pods-VergeSiriUI.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		30435A7C0781CBCA0B3C1401399B6722 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A30A6F3A4669267EF1F64A62F4BF145 /* Pods-VergeSiri.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3C331A288E4D1102B306EDD5501B59C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77D03218AE3A6F4931CA5CC0D8DEFA65 /* Pods-VergeWatch Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		4626F11282D9197AF29973E07DE918DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A1DD591CE8E9708CCD496F6AE8B2DBD0 /* Pods-VergeiOSTests.debug.xcconfig */;
@@ -960,12 +1107,12 @@
 			};
 			name = Release;
 		};
-		66716DFB3C989C3FAE3D8ECD051663DC /* Release */ = {
+		6DAFF8174F0ADD73DE139914654DF494 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 74F691CC90379EF2DA553027873C7D70 /* Pods-VergeWatch Extension.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -978,6 +1125,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -990,19 +1138,146 @@
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = watchos;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
-		82F85E5941843C6E9C4D9D54356019F5 /* Release */ = {
+		90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1132BEAC9AAEFFD591602A5BF61DA55 /* Tor.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9553C89E183877A5CB2F3C6801BEC129 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		9D5FDC5F62A92CF70905AC68CE511255 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 853186BFD2C714E76FF3918A024A7632 /* Tor.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1019,7 +1294,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Target Support Files/Tor/Tor-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1034,87 +1309,8 @@
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		8B154E76F1248F52FFCB1F197F4E0249 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBC62201039D4CA818476398A9BF49FF /* Pods-VergeSiriUI.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		96287F2F1435476C7E711DCBBCAAB3D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77D03218AE3A6F4931CA5CC0D8DEFA65 /* Pods-VergeWatch Extension.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -1151,6 +1347,46 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A73F0711017426C4468E18956A1FC58A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1132BEAC9AAEFFD591602A5BF61DA55 /* Tor.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREFIX_HEADER = "Target Support Files/Tor/Tor-prefix.pch";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Target Support Files/Tor/Tor-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Tor/Tor.modulemap";
+				PRODUCT_MODULE_NAME = Tor;
+				PRODUCT_NAME = Tor;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1237,7 +1473,7 @@
 			};
 			name = Debug;
 		};
-		BACE6057E5BD2958E6FF350E663B2BDD /* Release */ = {
+		CE98E9B66BF9BAF61CC4FE383040462A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C645DFBCBECF6A83FBB3BD076CFF644 /* Pods-VergeSiri.release.xcconfig */;
 			buildSettings = {
@@ -1255,7 +1491,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1276,191 +1512,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		BE0ECED8410F87705876CE36F783B137 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86946D53E1967580B4465C2917A15F2A /* Pods-VergeSiriUI.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiriUI/Pods-VergeSiriUI.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CAABFD6C3471DBD37F50984E6DBCBE6B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 853186BFD2C714E76FF3918A024A7632 /* Tor.debug.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_PREFIX_HEADER = "Target Support Files/Tor/Tor-prefix.pch";
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Target Support Files/Tor/Tor-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/Tor/Tor.modulemap";
-				PRODUCT_MODULE_NAME = Tor;
-				PRODUCT_NAME = Tor;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D66D06D6071259D479DDEA2A8FD1EF33 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A30A6F3A4669267EF1F64A62F4BF145 /* Pods-VergeSiri.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D7899472162424B3BD87B0ACA2AAF067 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
-			};
-			name = Debug;
 		};
 		DE285BD4C36A8E128F0CA52EFB86D461 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1501,77 +1552,14 @@
 			};
 			name = Debug;
 		};
-		EA8245FD564BCB159AEB4408B48E9616 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				SYMROOT = "${SRCROOT}/../build";
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		00FD27C2CEF7FD593BA1F6869B7D74D3 /* Build configuration list for PBXNativeTarget "Pods-VergeWatch Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				96287F2F1435476C7E711DCBBCAAB3D7 /* Debug */,
-				66716DFB3C989C3FAE3D8ECD051663DC /* Release */,
+				3C331A288E4D1102B306EDD5501B59C1 /* Debug */,
+				6DAFF8174F0ADD73DE139914654DF494 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1588,8 +1576,8 @@
 		34F27269F68D3F56B3C811A00B286A8A /* Build configuration list for PBXNativeTarget "Tor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CAABFD6C3471DBD37F50984E6DBCBE6B /* Debug */,
-				82F85E5941843C6E9C4D9D54356019F5 /* Release */,
+				9D5FDC5F62A92CF70905AC68CE511255 /* Debug */,
+				A73F0711017426C4468E18956A1FC58A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1597,8 +1585,8 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7899472162424B3BD87B0ACA2AAF067 /* Debug */,
-				EA8245FD564BCB159AEB4408B48E9616 /* Release */,
+				90D4D09BCB6A4660E43ACBE9ECB6FE9A /* Debug */,
+				9553C89E183877A5CB2F3C6801BEC129 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1615,8 +1603,8 @@
 		C51779EF22D5A311824A66575FC181DC /* Build configuration list for PBXNativeTarget "Pods-VergeSiri" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D66D06D6071259D479DDEA2A8FD1EF33 /* Debug */,
-				BACE6057E5BD2958E6FF350E663B2BDD /* Release */,
+				30435A7C0781CBCA0B3C1401399B6722 /* Debug */,
+				CE98E9B66BF9BAF61CC4FE383040462A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1624,8 +1612,8 @@
 		E611F97F666CADD2B25258B440046277 /* Build configuration list for PBXNativeTarget "Pods-VergeSiriUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B154E76F1248F52FFCB1F197F4E0249 /* Debug */,
-				BE0ECED8410F87705876CE36F783B137 /* Release */,
+				02D70E4657E424DA151D8A127946775B /* Debug */,
+				0EFC68CFF6A8A442A6E9B900EAC9554F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
