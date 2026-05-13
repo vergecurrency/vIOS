@@ -108,15 +108,24 @@ class WalletManager: WalletManagerProtocol {
     }
     
     private func storeWalletCredentials(_ walletId: Vws.WalletID?) -> Promise<Vws.WalletID?>  {
-        return Promise { fulfill, _ in
+        return Promise { fulfill, reject in
             guard let walletId = walletId else {
                 return fulfill(nil)
             }
-            
-            self.applicationRepository.walletId = walletId.identifier
-            self.applicationRepository.walletSecret = try self.credentials.buildSecret(walletId: walletId.identifier)
 
-            self.log.info("wallet manager store wallet secret: \(self.applicationRepository.walletSecret!)")
+            do {
+                let walletSecret = try self.credentials.buildSecret(walletId: walletId.identifier)
+                self.applicationRepository.walletId = walletId.identifier
+                self.applicationRepository.walletSecret = walletSecret
+
+                self.log.info("wallet manager stored wallet secret", metadata: [
+                    "walletId": Logger.MetadataValue(stringLiteral: walletId.identifier)
+                ])
+            } catch {
+                self.log.error("wallet manager failed to build wallet secret: \(error.localizedDescription)")
+
+                return reject(error)
+            }
 
             fulfill(walletId)
         }
@@ -139,14 +148,9 @@ class WalletManager: WalletManagerProtocol {
                 }
     
                 if errorResponse?.code == .CopayerRegistered {
-                    let sjcl = SJCL()
-                    let xPubKey = self.credentials.customExtendedPublicKey ?? self.credentials.publicKey.extended().description
-                    let hash = sjcl.sha256Hash(data: "xvg\(xPubKey)")
-                    let derivedCopayerId = sjcl.hexFromBits(hash: hash)
-                    self.applicationRepository.copayerId = derivedCopayerId
-    
-                    self.log.notice("wallet manager copayer already registered; using existing copayerId", metadata: [
-                        "copayerId": Logger.MetadataValue(stringLiteral: derivedCopayerId),
+                    self.applicationRepository.copayerId = nil
+
+                    self.log.notice("wallet manager copayer already registered; cleared local copayer id guess", metadata: [
                         "walletId": Logger.MetadataValue(stringLiteral: walletIdentifier)
                     ])
     

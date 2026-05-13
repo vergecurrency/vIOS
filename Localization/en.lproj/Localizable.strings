@@ -637,7 +637,7 @@
 "alerts.loading.title"                      = "Loading...";
 "alerts.refreshRates.title"                 = "Refreshing rates...";
 "alerts.walletSetup.title"                  = "Failed to setup your wallet";
-"alert.walletSetup.message"                 = "Something went wrong with the setup up of your your wallet";
+"alerts.walletSetup.message"                = "Something went wrong with the setup of your wallet";
 
 // ErrorView.xib
 

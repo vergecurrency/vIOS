@@ -16,6 +16,9 @@ class ApplicationRepository {
 
     // Store the latest fiat rate on application level.
     var latestRateInfo: FiatRate?
+    var pendingRestoreMnemonic: [String]?
+    var pendingSetupPassphrase: String?
+    var pendingWalletSecret: String?
 
     // Is the wallet already setup?
     var setup: Bool {
@@ -130,7 +133,7 @@ class ApplicationRepository {
 
             for index in 0..<12 {
                 guard let word = keychain.get("mnemonic.word.\(index)") else {
-                    return nil
+                    return pendingRestoreMnemonic
                 }
                 mnemonic.append(word)
             }
@@ -139,13 +142,20 @@ class ApplicationRepository {
         }
         set {
             guard let mnemonic = newValue else {
+                pendingRestoreMnemonic = nil
                 for index in 0..<12 {
                     keychain.delete("mnemonic.word.\(index)")
                 }
                 return
             }
 
-            for (index, word) in mnemonic.enumerated() {
+            pendingRestoreMnemonic = Array(mnemonic.prefix(12))
+
+            for index in 0..<12 {
+                keychain.delete("mnemonic.word.\(index)")
+            }
+
+            for (index, word) in mnemonic.prefix(12).enumerated() {
                 keychain.set(word, forKey: "mnemonic.word.\(index)")
             }
         }
@@ -157,8 +167,10 @@ class ApplicationRepository {
         }
         set {
             if let passphrase = newValue {
+                pendingSetupPassphrase = passphrase
                 keychain.set(passphrase, forKey: "wallet.passphrase")
             } else {
+                pendingSetupPassphrase = nil
                 keychain.delete("wallet.passphrase")
             }
         }
@@ -205,12 +217,14 @@ class ApplicationRepository {
 
     var walletSecret: String? {
         get {
-            return keychain.get("wallet.secret")
+            return keychain.get("wallet.secret") ?? pendingWalletSecret
         }
         set {
             if let walletSecret = newValue {
+                pendingWalletSecret = walletSecret
                 keychain.set(walletSecret, forKey: "wallet.secret")
             } else {
+                pendingWalletSecret = nil
                 keychain.delete("wallet.secret")
             }
         }

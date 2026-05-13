@@ -51,6 +51,14 @@ public class WalletClient: WalletClientProtocol {
         self.baseUrl = baseUrl
     }
 
+    private func currentCopayerId() -> String {
+        if let stored = self.applicationRepository.copayerId, !stored.isEmpty {
+            return stored
+        }
+
+        return self.getCopayerId()
+    }
+
     // MARK: Request methods
 
     private func getRequest(url: String, completion: @escaping URLCompletion) {
@@ -62,13 +70,7 @@ public class WalletClient: WalletClientProtocol {
 
         do {
             let signature = try getSignature(url: referencedUrl, method: "get")
-            var copayerId = ""
-            if self.applicationRepository.copayerId == "" {
-                copayerId = self.getCopayerId()
-            }
-            else {
-                copayerId = self.applicationRepository.copayerId ?? ""
-            }
+            let copayerId = self.currentCopayerId()
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
@@ -99,13 +101,7 @@ public class WalletClient: WalletClientProtocol {
             }
 
             let signature = try getSignature(url: uri, method: "post", arguments: argumentsString)
-            var copayerId = ""
-            if self.applicationRepository.copayerId == "" {
-                copayerId = self.getCopayerId()
-            }
-            else {
-                copayerId = self.applicationRepository.copayerId ?? ""
-            }
+            let copayerId = self.currentCopayerId()
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
 //            request.setValue("bwc-8.1.1",forHTTPHeaderField: "x-client-version")
@@ -130,13 +126,7 @@ public class WalletClient: WalletClientProtocol {
 
         do {
             let signature = try getSignature(url: referencedUrl, method: "delete")
-            var copayerId = ""
-            if self.applicationRepository.copayerId == "" {
-                copayerId = self.getCopayerId()
-            }
-            else {
-                copayerId = self.applicationRepository.copayerId ?? ""
-            }
+            let copayerId = self.currentCopayerId()
             var request = URLRequest(url: url)
             request.httpMethod = "DELETE"
             request.setValue(copayerId, forHTTPHeaderField: "x-identity")
@@ -161,7 +151,7 @@ public class WalletClient: WalletClientProtocol {
         }
     }
     private func getCopayerId() -> String {
-        let xPubKey = self.credentials.publicKey.extended()
+        let xPubKey = self.credentials.customExtendedPublicKey ?? self.credentials.publicKey.extended().description
         let hash = self.sjcl.sha256Hash(data: "xvg\(xPubKey)")
 
         return self.sjcl.hexFromBits(hash: hash)
@@ -329,28 +319,51 @@ extension WalletClient {
             _ createAddressErrorResponse: Vws.CreateAddressError?
         ) -> Void
     ) {
-        self.postRequest(url: "/v4/addresses/", arguments: nil) { data, _, error in
+        self.postRequest(url: "/v4/addresses/", arguments: nil) { data, response, error in
             guard let data = data else {
                 return completion(error, nil, nil)
             }
 
+            if let httpResponse = response as? HTTPURLResponse, !(200..<300).contains(httpResponse.statusCode) {
+                self.log.notice("wallet client create address returned non-success status", metadata: [
+                    "status": Logger.MetadataValue(stringLiteral: "\(httpResponse.statusCode)"),
+                    "response": Logger.MetadataValue(stringLiteral: String(data: data, encoding: .utf8) ?? "")
+                ])
+            }
+
             do {
-                let addressInfo = try JSONDecoder().decode(Vws.AddressInfo.self, from: data)
+                let decoder = JSONDecoder()
+                let addressInfo: Vws.AddressInfo
+
+                do {
+                    addressInfo = try decoder.decode(Vws.AddressInfo.self, from: data)
+                } catch {
+                    addressInfo = try decoder.decode(Vws.AddressWrappedResponse.self, from: data).address
+                }
 
                 // Make sure the received address is really your address.
 //                let addressByPath = try self.credentials.privateKeyBy(
 //                    path: addressInfo.path,
 //    privateKey: self.credentials.bip44PrivateKey
 //                ).publicKey().toLegacy().description
-                let hdPrivateKey = try self.credentials.privateKeyBy(
-                    path: addressInfo.path,
-                    privateKey: self.credentials.bip44PrivateKey
-                )
-                let hdPublicKey = hdPrivateKey.publicKey()
-                let bitcoinPubKey = PublicKey(bytes: hdPublicKey.data, network: .mainnetXVG)
-                let legacyAddress = bitcoinPubKey.toBitcoinAddress()
+                if !addressInfo.path.isEmpty {
+                    do {
+                        let hdPrivateKey = try self.credentials.privateKeyBy(
+                            path: addressInfo.path,
+                            privateKey: self.credentials.bip44PrivateKey
+                        )
+                        let hdPublicKey = hdPrivateKey.publicKey()
+                        let bitcoinPubKey = PublicKey(bytes: hdPublicKey.data, network: .mainnetXVG)
+                        let legacyAddress = bitcoinPubKey.toBitcoinAddress()
 
-                print("Legacy Address: \(legacyAddress)")
+                        print("Legacy Address: \(legacyAddress)")
+                    } catch {
+                        self.log.notice("wallet client skipped local address verification", metadata: [
+                            "error": Logger.MetadataValue(stringLiteral: error.localizedDescription),
+                            "path": Logger.MetadataValue(stringLiteral: addressInfo.path)
+                        ])
+                    }
+                }
 
 //                if addressInfo.address != legacyAddress.description {
 //                    return completion(WalletClientError.invalidAddressReceived(address: addressInfo), nil, nil)
@@ -359,6 +372,10 @@ extension WalletClient {
                 completion(nil, addressInfo, nil)
             } catch {
                 let errorResponse = try? JSONDecoder().decode(Vws.CreateAddressError.self, from: data)
+                self.log.error("wallet client failed to decode create address response", metadata: [
+                    "error": Logger.MetadataValue(stringLiteral: error.localizedDescription),
+                    "response": Logger.MetadataValue(stringLiteral: String(data: data, encoding: .utf8) ?? "")
+                ])
 
                 completion(error, nil, errorResponse)
             }
@@ -384,15 +401,35 @@ extension WalletClient {
             qs = "?\(args.joined(separator: "&"))"
         }
 
-        self.getRequest(url: "/v1/addresses/\(qs)") { data, _, error in
+        self.getRequest(url: "/v1/addresses/\(qs)") { data, response, error in
             guard let data = data else {
                 return completion(error, [])
             }
 
+            if let httpResponse = response as? HTTPURLResponse, !(200..<300).contains(httpResponse.statusCode) {
+                self.log.notice("wallet client get addresses returned non-success status", metadata: [
+                    "status": Logger.MetadataValue(stringLiteral: "\(httpResponse.statusCode)"),
+                    "response": Logger.MetadataValue(stringLiteral: String(data: data, encoding: .utf8) ?? "")
+                ])
+
+                return completion(nil, [])
+            }
+
             do {
-                completion(nil, try JSONDecoder().decode([Vws.AddressInfo].self, from: data))
+                let decoder = JSONDecoder()
+
+                do {
+                    completion(nil, try decoder.decode([Vws.AddressInfo].self, from: data))
+                } catch {
+                    completion(nil, try decoder.decode(Vws.AddressResponse.self, from: data).addresses)
+                }
             } catch {
-                completion(error, [])
+                self.log.notice("wallet client failed to decode get addresses response; creating a new address instead", metadata: [
+                    "error": Logger.MetadataValue(stringLiteral: error.localizedDescription),
+                    "response": Logger.MetadataValue(stringLiteral: String(data: data, encoding: .utf8) ?? "")
+                ])
+
+                completion(nil, [])
             }
         }
     }
@@ -490,14 +527,7 @@ extension WalletClient {
 
         let url = "\(self.baseUrl)\(referencedUrl)".urlify()
         
-        var copayerId = ""
-         
-        if self.applicationRepository.copayerId == "" {
-            copayerId = self.getCopayerId()
-        }
-        else {
-            copayerId = self.applicationRepository.copayerId ?? ""
-        }
+        let copayerId = self.currentCopayerId()
 
         if referencedUrl.contains("/v1/balance/") {
             let signature = try self.getSignature(url: referencedUrl, method: "get")
@@ -671,7 +701,7 @@ extension WalletClient {
     }
 
     func getTxProposals(completion: @escaping (_ txps: [Vws.TxProposalResponse], _ error: Error?) -> Void) {
-        getRequest(url: "/v2/txproposals/") { data, _, error in
+        getRequest(url: "/v2/txproposals/") { data, response, error in
             if let error = error {
                 return completion([], error)
             }
@@ -680,12 +710,26 @@ extension WalletClient {
                 return completion([], nil)
             }
 
+            if let httpResponse = response as? HTTPURLResponse, !(200..<300).contains(httpResponse.statusCode) {
+                self.log.notice("wallet client tx proposals request returned non-success status", metadata: [
+                    "status": Logger.MetadataValue(stringLiteral: "\(httpResponse.statusCode)"),
+                    "response": Logger.MetadataValue(stringLiteral: String(data: data, encoding: .utf8) ?? "")
+                ])
+
+                return completion([], nil)
+            }
+
             do {
                 let txps = try JSONDecoder().decode([Vws.TxProposalResponse].self, from: data)
 
                 completion(txps, nil)
             } catch {
-                completion([], error)
+                self.log.notice("wallet client tx proposals response was not a proposal array", metadata: [
+                    "error": Logger.MetadataValue(stringLiteral: error.localizedDescription),
+                    "response": Logger.MetadataValue(stringLiteral: String(data: data, encoding: .utf8) ?? "")
+                ])
+
+                completion([], nil)
             }
         }
     }
@@ -856,8 +900,7 @@ extension WalletClient {
         return der
     }
     func derInt(_ data: Data) -> Data {
-        // Make sure to fully copy the underlying bytes
-        var raw = Data(Array(data)) // ✅ Forces real copy, safe for mutation
+        var raw = Data(data)
         
         // Remove leading zeros, but keep at least 1 byte
         while raw.count > 1 && raw.first == 0 {
@@ -866,7 +909,7 @@ extension WalletClient {
 
         // If MSB is 1, prepend 0x00
         if let first = raw.first, first & 0x80 != 0 {
-            raw.insert(0x00, at: 0)
+            raw = Data([0x00]) + raw
         }
 
         var result = Data([0x02]) // INTEGER tag

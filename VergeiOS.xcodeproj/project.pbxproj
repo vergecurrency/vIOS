@@ -864,6 +864,8 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		93A0E5AE2E868AE900CA0875 /* HGPlaceholders */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = HGPlaceholders;
 			sourceTree = "<group>";
 		};
@@ -2338,13 +2340,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2478,7 +2476,6 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nset -e  # Exit immediately if any command fails\n\necho \"🚀 Running VergeiOS Phase Script (Simulator & Device aware)...\"\n\n# Root of the project\nSRC_ROOT=\"${SRCROOT}\"\n\n# Build output directory\nBUILD_DIR=\"${BUILT_PRODUCTS_DIR}\"\n\n# Determine platform\nif [[ \"$EFFECTIVE_PLATFORM_NAME\" == *simulator* ]]; then\n    PLATFORM_OUTPUT=\"$BUILD_DIR/verge_output_simulator.txt\"\n    echo \"💻 Simulator build detected\"\nelse\n    PLATFORM_OUTPUT=\"$BUILD_DIR/verge_output_device.txt\"\n    echo \"📱 Device build detected\"\nfi\n\n# Example task: write build timestamp\necho \"Build ran at: $(date)\" > \"$PLATFORM_OUTPUT\"\n\n# Optional: let Xcode track the output for incremental builds\necho \"$PLATFORM_OUTPUT\" > \"${SCRIPT_OUTPUT_FILE_0:-$PLATFORM_OUTPUT}\"\n\necho \"✅ VergeiOS Phase Script finished successfully for platform: $EFFECTIVE_PLATFORM_NAME\"\n";
 		};
-
 		CAC5842B22D360E9003FACB2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2526,13 +2523,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3179,7 +3172,7 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"-Objc",
+					"$(inherited)",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/Classes/Core/**",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/**",
 				);
@@ -3190,19 +3183,18 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/libcrypto.xcframework\"/**",
-					"\"$(SRCROOT)/libssl.xcframework\"/**",
-					"\"$(SRCROOT)/libcrypto-iOS.a\"",
-					"\"$(SRCROOT)/libcrypto-iOS-Sim.a\"",
-					"\"$(SRCROOT)/libssl-iOS.a\"",
-					"\"$(SRCROOT)/libssl-iOS-Sim.a\"",
-					"\"$(SRCROOT)/openssl.xcframework\"",
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(SRCROOT)/libcrypto.xcframework/ios-arm64_x86_64-simulator",
+					"$(SRCROOT)/libssl.xcframework/ios-arm64_x86_64-simulator",
+					"$(SRCROOT)/libcrypto.xcframework/ios-arm64",
+					"$(SRCROOT)/libssl.xcframework/ios-arm64",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/shamikapoor/Documents/vIOS/VergeiOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/VergeiOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -3227,9 +3219,9 @@
 					"$(PROJECT_DIR)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"-Objc",
-					"\"$(SRCROOT)/libcrypto.xcframework\"/**",
-					"\"$(SRCROOT)/libssl.xcframework\"/**",
+					"$(inherited)",
+					"$(SRCROOT)/libcrypto.xcframework/**",
+					"$(SRCROOT)/libssl.xcframework/**",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/Classes/Core/**",
 					"$(PROJECT_DIR)/vIOS/Tor.framework/Tor/**",
 				);
@@ -3240,19 +3232,18 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/libcrypto.xcframework\"/**",
-					"\"$(SRCROOT)/libssl.xcframework\"/**",
-					"\"$(SRCROOT)/libcrypto-iOS.a\"",
-					"\"$(SRCROOT)/libcrypto-iOS-Sim.a\"",
-					"\"$(SRCROOT)/libssl-iOS.a\"",
-					"\"$(SRCROOT)/libssl-iOS-Sim.a\"",
-					"\"$(SRCROOT)/openssl.xcframework\"",
+					"$(inherited)",
+					"$(SRCROOT)",
+					"$(SRCROOT)/libcrypto.xcframework/ios-arm64_x86_64-simulator",
+					"$(SRCROOT)/libssl.xcframework/ios-arm64_x86_64-simulator",
+					"$(SRCROOT)/libcrypto.xcframework/ios-arm64",
+					"$(SRCROOT)/libssl.xcframework/ios-arm64",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/shamikapoor/Documents/vIOS/VergeiOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/VergeiOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

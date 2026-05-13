@@ -43,3 +43,24 @@ target 'VergeWatch Extension' do
   # Pods for VergeWatch Extension
 
 end
+
+post_install do |installer|
+  # Xcode 26 can resolve `-framework "tor"` to the generated `Tor.framework`
+  # while building the Tor pod itself. Link the vendored lowercase framework
+  # binary directly so the pod does not try to link with itself.
+  installer.pods_project.targets.each do |target|
+    next unless target.name == 'Tor'
+
+    target.build_configurations.each do |config|
+      config.build_settings.delete('OTHER_LDFLAGS')
+
+      xcconfig_path = config.base_configuration_reference.real_path
+      xcconfig = File.read(xcconfig_path)
+      xcconfig.gsub!(
+        /OTHER_LDFLAGS = .*/,
+        'OTHER_LDFLAGS = $(inherited) -l"z" "$(PODS_XCFRAMEWORKS_BUILD_DIR)/Tor/CTor/tor.framework/tor"'
+      )
+      File.write(xcconfig_path, xcconfig)
+    end
+  end
+end

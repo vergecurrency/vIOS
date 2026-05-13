@@ -11,13 +11,13 @@ extension UIAlertController {
         handler: @escaping (UIAlertAction) -> Void
     ) -> UIAlertController {
         let alert = UIAlertController(
-            title: "alert.walletSetup.title".localized,
-            message: "\("alert.walletSetup.message".localized): \(error)",
+            title: "alerts.walletSetup.title".localized,
+            message: "\("alerts.walletSetup.message".localized): \(error)",
             preferredStyle: .alert
         )
 
         alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
-        alert.addAction(UIAlertAction(title: "defaults.support", style: .default, handler: handler))
+        alert.addAction(UIAlertAction(title: "settings.other.cell.supportLabel".localized, style: .default, handler: handler))
 
         return alert
     }

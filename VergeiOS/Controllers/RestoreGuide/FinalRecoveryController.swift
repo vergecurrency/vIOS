@@ -22,7 +22,12 @@ class FinalRecoveryController: AbstractRestoreViewController {
     }
 
     @IBAction func restoreWallet(_ sender: Any) {
+        guard let keys = keys, keys.count == 12 else {
+            return self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
+        }
+
         // Save the mnemonic.
+        applicationRepository.pendingRestoreMnemonic = keys
         applicationRepository.mnemonic = keys
 
         DispatchQueue.main.async {

@@ -54,6 +54,7 @@ class PassphraseConfirmationViewController: UIViewController, UITextFieldDelegat
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "proceed" {
+            applicationRepository.pendingSetupPassphrase = previousPassphrase
             applicationRepository.passphrase = previousPassphrase
         }
     }
