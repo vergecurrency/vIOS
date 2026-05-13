@@ -1,50 +1,40 @@
-name: Default
+name: iOS Build
 
-on: [push]
+on:
+  push:
+  pull_request:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    name: Compile app
+    runs-on: macos-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Cache Carthage modules
-        uses: actions/cache@v1
-        id: carthage-cache
-        with:
-          path: Carthage
-          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-      - name: Bundle Install
-        run: |
-          bundle install
-      - name: Use Swift 5.2.4
-        uses: YOCKOW/Action-setup-swift@master
-        with:
-          swift-version: '5.2.4'
-      - name: Carthage update
-        if: steps.carthage-cache.outputs.cache-hit != 'true'
-        run: |
-          brew install automake autoconf libtool gettext libevent openssl
-          ln -s /usr/local/bin/glibtoolize /usr/local/bin/libtoolize
-          carthage bootstrap --platform iOS --cache-builds --toolchain org.swift.520202003241a
+        uses: actions/checkout@v4
 
-  test:
-    needs: [build]
-    runs-on: macOS-latest
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Cache Carthage modules
-        uses: actions/cache@v1
-        with:
-          path: Carthage
-          key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-      - name: Use Swift 5.2.4
-        uses: YOCKOW/Action-setup-swift@master
-        with:
-          swift-version: '5.2.4'
-      - name: Run tests
+      - name: Install CocoaPods
+        run: sudo gem install cocoapods
+
+      - name: Install pods
+        run: pod install
+
+      - name: Build for simulator without signing
         run: |
-          fastlane test
+          set -o pipefail
+          xcodebuild \
+            -workspace VergeiOS.xcworkspace \
+            -scheme VergeiOS \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath .build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" \
+            COMPILER_INDEX_STORE_ENABLE=NO \
+            build
