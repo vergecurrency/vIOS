@@ -22,17 +22,22 @@ class FinalRecoveryController: AbstractRestoreViewController {
     }
 
     @IBAction func restoreWallet(_ sender: Any) {
-        guard let keys = keys, keys.count == 12 else {
+        guard let keys = keys, ApplicationRepository.supportedMnemonicWordCounts.contains(keys.count) else {
             return self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
         }
 
         // Save the mnemonic.
         applicationRepository.pendingRestoreMnemonic = keys
         applicationRepository.mnemonic = keys
+        applicationRepository.passphrase = nil
 
         DispatchQueue.main.async {
-            // Finish the welcome guide.
-            self.performSegue(withIdentifier: "finishRestoreGuide", sender: self)
+            if self.applicationRepository.requiresSetupPassphrase(mnemonic: keys) {
+                self.performSegue(withIdentifier: "finishRestoreGuide", sender: self)
+            } else {
+                let controller = UIStoryboard.createFromStoryboard(name: "Setup", type: FinishSetupViewController.self)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
 }

@@ -10,32 +10,9 @@ import Foundation
 import Swinject
 import CoreStore
 import Logging
-import KeychainSwift
 
 class WalletServiceProvider: ServiceProvider {
-    
-//    private let keychain = KeychainSwift(keyPrefix: "verge_")
-//
-//    var mnemonic: [String]? {
-//           get {
-//               var mnemonic = [String]()
-//               for index in 0..<12 {
-//                   guard let word = keychain.get("mnemonic.word.\(index)") else { return nil }
-//                   mnemonic.append(word)
-//               }
-//               return mnemonic
-//           }
-//           set {
-//               guard let mnemonic = newValue else {
-//                   for index in 0..<12 { keychain.delete("mnemonic.word.\(index)") }
-//                   return
-//               }
-//               for (index, word) in mnemonic.enumerated() {
-//                   keychain.set(word, forKey: "mnemonic.word.\(index)")
-//               }
-//           }
-//       }
-    
+
     override func register() {
         registerLogger()               // Must come first
         registerHttpSession()          // HttpSessionProtocol
@@ -231,7 +208,13 @@ class WalletServiceProvider: ServiceProvider {
                 fatalError("Dependencies for WalletClient not registered")
             }
 
-            return WalletClient(appRepo: appRepo, credentials: credentials, httpSession: httpSession, log: log)
+            let vwsClient = WalletClient(appRepo: appRepo, credentials: credentials, httpSession: httpSession, log: log)
+
+            return RoutingWalletClient(
+                applicationRepository: appRepo,
+                vwsClient: vwsClient,
+                electrumXClient: ElectrumXClient(applicationRepository: appRepo)
+            )
         }.inObjectScope(.container)
     }
 

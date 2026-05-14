@@ -32,6 +32,12 @@ class SettingsTableViewController: EdgedTableViewController {
             target: self,
             action: #selector(showWalletProfiles)
         )
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+            title: "ElectrumX",
+            style: .plain,
+            target: self,
+            action: #selector(showElectrumXServers)
+        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +80,14 @@ class SettingsTableViewController: EdgedTableViewController {
         if let path: URL = URL(string: url) {
             UIApplication.shared.open(path, options: [:])
         }
+    }
+
+    @objc private func showElectrumXServers() {
+        guard let controller = Application.container.resolve(ElectrumXServersTableViewController.self) else {
+            return
+        }
+
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     @objc private func showWalletProfiles() {

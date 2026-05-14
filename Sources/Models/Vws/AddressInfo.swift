@@ -35,6 +35,34 @@ extension Vws {
             case hasActivity
         }
 
+        init(
+            network: String,
+            path: String,
+            isChange: Bool,
+            coin: String,
+            _id: String?,
+            type: String,
+            createdOn: Int,
+            version: String,
+            publicKeys: [String],
+            address: String,
+            walletId: String,
+            hasActivity: Bool?
+        ) {
+            self.network = network
+            self.path = path
+            self.isChange = isChange
+            self.coin = coin
+            self._id = _id
+            self.type = type
+            self.createdOn = createdOn
+            self.version = version
+            self.publicKeys = publicKeys
+            self.address = address
+            self.walletId = walletId
+            self.hasActivity = hasActivity
+        }
+
         init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
 

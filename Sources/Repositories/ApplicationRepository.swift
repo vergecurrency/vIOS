@@ -17,6 +17,13 @@ struct WalletProfile: Codable, Equatable {
 }
 
 class ApplicationRepository {
+    static let createdWalletMnemonicWordCount = 18
+    static let supportedMnemonicWordCounts: Set<Int> = [12, 18]
+    static let maxMnemonicWordCount = 18
+    static let defaultElectrumXServers = [
+        ElectrumXServer(host: "electrumx-verge.cloud", port: 50002, useTLS: true),
+        ElectrumXServer(host: "electrum-verge.cloud", port: 50002, useTLS: true)
+    ]
 
     private let keychain = KeychainSwift(keyPrefix: "verge_")
     private let userDefaults = UserDefaults.standard
@@ -24,6 +31,8 @@ class ApplicationRepository {
     private let activeWalletProfileIdKey = "wallet.activeProfileId"
     private let pendingSetupWalletProfileIdKey = "wallet.pendingSetupProfileId"
     private let walletProfilesKey = "wallet.profiles"
+    private let electrumXServersKey = "wallet.electrumx.servers"
+    private let activeElectrumXServerKey = "wallet.electrumx.activeServer"
 
     // Store the latest fiat rate on application level.
     var latestRateInfo: FiatRate?
@@ -37,11 +46,22 @@ class ApplicationRepository {
     }
 
     var hasActiveWalletMaterial: Bool {
-        return self.mnemonic?.count == 12 && (self.passphrase?.count ?? 0) > 7 && self.walletId != nil
+        guard let mnemonic = self.mnemonic else {
+            return false
+        }
+
+        return isSupportedMnemonic(mnemonic)
+            && (!requiresSetupPassphrase(mnemonic: mnemonic) || (self.passphrase?.count ?? 0) > 7)
+            && self.walletId != nil
     }
 
     var hasActiveWalletRecoveryMaterial: Bool {
-        return self.mnemonic?.count == 12 && (self.passphrase?.count ?? 0) > 7
+        guard let mnemonic = self.mnemonic else {
+            return false
+        }
+
+        return isSupportedMnemonic(mnemonic)
+            && (!requiresSetupPassphrase(mnemonic: mnemonic) || (self.passphrase?.count ?? 0) > 7)
     }
 
     var activeWalletProfileId: String {
@@ -151,15 +171,35 @@ class ApplicationRepository {
     private func mnemonic(profileId: String) -> [String]? {
         var mnemonic = [String]()
 
-        for index in 0..<12 {
-            guard let word = keychain.get(keychainKey("mnemonic.word.\(index)", profileId: profileId))
-                ?? userDefaults.string(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId)) else {
-                return profileId == activeWalletProfileId ? pendingRestoreMnemonic : nil
+        for index in 0..<Self.maxMnemonicWordCount {
+            guard let word = storedMnemonicWord(index: index, profileId: profileId) else {
+                break
             }
             mnemonic.append(word)
         }
 
-        return mnemonic
+        if isSupportedMnemonic(mnemonic) {
+            return mnemonic
+        }
+
+        return profileId == activeWalletProfileId ? pendingRestoreMnemonic : nil
+    }
+
+    private func storedMnemonicWord(index: Int, profileId: String) -> String? {
+        return keychain.get(keychainKey("mnemonic.word.\(index)", profileId: profileId))
+            ?? userDefaults.string(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
+    }
+
+    private func isSupportedMnemonic(_ mnemonic: [String]?) -> Bool {
+        guard let mnemonic = mnemonic else {
+            return false
+        }
+
+        return Self.supportedMnemonicWordCounts.contains(mnemonic.count)
+    }
+
+    func requiresSetupPassphrase(mnemonic: [String]) -> Bool {
+        return mnemonic.count != Self.createdWalletMnemonicWordCount
     }
 
     private func passphrase(profileId: String) -> String? {
@@ -181,19 +221,23 @@ class ApplicationRepository {
     }
 
     func hasWalletRecoveryMaterial(profileId: String) -> Bool {
-        return mnemonic(profileId: profileId)?.count == 12
-            && (passphrase(profileId: profileId)?.count ?? 0) > 7
+        guard let mnemonic = mnemonic(profileId: profileId) else {
+            return false
+        }
+
+        return isSupportedMnemonic(mnemonic)
+            && (!requiresSetupPassphrase(mnemonic: mnemonic) || (passphrase(profileId: profileId)?.count ?? 0) > 7)
     }
 
     private func hasAnyWalletData(profileId: String) -> Bool {
-        return mnemonic(profileId: profileId)?.count == 12
+        return mnemonic(profileId: profileId) != nil
             || passphrase(profileId: profileId) != nil
             || walletId(profileId: profileId) != nil
             || copayerId(profileId: profileId) != nil
     }
 
     func walletMaterialSummary(profileId: String) -> String {
-        let mnemonicStatus = mnemonic(profileId: profileId)?.count == 12 ? "words" : "no words"
+        let mnemonicStatus = mnemonic(profileId: profileId).map { "\($0.count) words" } ?? "no words"
         let passphraseStatus = (passphrase(profileId: profileId)?.count ?? 0) > 7 ? "passphrase" : "no passphrase"
         let walletStatus = walletId(profileId: profileId).map { String($0.prefix(8)) } ?? "no wallet"
         let copayerStatus = copayerId(profileId: profileId).map { String($0.prefix(8)) } ?? "no copayer"
@@ -373,7 +417,7 @@ class ApplicationRepository {
         pendingSetupPassphrase = nil
         pendingWalletSecret = nil
 
-        for index in 0..<12 {
+        for index in 0..<Self.maxMnemonicWordCount {
             keychain.delete(keychainKey("mnemonic.word.\(index)", profileId: profileId))
             userDefaults.removeObject(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
         }
@@ -516,36 +560,35 @@ class ApplicationRepository {
             let profileId = pendingSetupWalletProfileId ?? activeWalletProfileId
             var mnemonic = [String]()
 
-            for index in 0..<12 {
-                guard let word = keychain.get(keychainKey("mnemonic.word.\(index)", profileId: profileId))
-                    ?? userDefaults.string(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId)) else {
-                    return pendingRestoreMnemonic
+            for index in 0..<Self.maxMnemonicWordCount {
+                guard let word = storedMnemonicWord(index: index, profileId: profileId) else {
+                    break
                 }
                 mnemonic.append(word)
             }
 
-            return mnemonic
+            return isSupportedMnemonic(mnemonic) ? mnemonic : pendingRestoreMnemonic
         }
         set {
             guard let mnemonic = newValue else {
                 pendingRestoreMnemonic = nil
                 let profileId = setupWriteWalletProfileId
-                for index in 0..<12 {
+                for index in 0..<Self.maxMnemonicWordCount {
                     keychain.delete(keychainKey("mnemonic.word.\(index)", profileId: profileId))
                     userDefaults.removeObject(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
                 }
                 return
             }
 
-            pendingRestoreMnemonic = Array(mnemonic.prefix(12))
+            pendingRestoreMnemonic = mnemonic
             let profileId = setupWriteWalletProfileId
 
-            for index in 0..<12 {
+            for index in 0..<Self.maxMnemonicWordCount {
                 keychain.delete(keychainKey("mnemonic.word.\(index)", profileId: profileId))
                 userDefaults.removeObject(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
             }
 
-            for (index, word) in mnemonic.prefix(12).enumerated() {
+            for (index, word) in mnemonic.prefix(Self.maxMnemonicWordCount).enumerated() {
                 keychain.set(word, forKey: keychainKey("mnemonic.word.\(index)", profileId: profileId))
                 userDefaults.set(word, forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
             }
@@ -581,6 +624,84 @@ class ApplicationRepository {
 
     var isWalletServiceUrlSet: Bool {
         return !(keychain.get("wallet.service.url")?.isEmpty ?? true)
+    }
+
+    var electrumXServers: [ElectrumXServer] {
+        get {
+            guard let data = userDefaults.data(forKey: electrumXServersKey),
+                  let servers = try? JSONDecoder().decode([ElectrumXServer].self, from: data),
+                  !servers.isEmpty else {
+                return Self.defaultElectrumXServers
+            }
+
+            return servers.map { server in
+                guard server.port == 443,
+                      Self.defaultElectrumXServers.contains(where: { $0.host == server.host }) else {
+                    return server
+                }
+
+                return ElectrumXServer(host: server.host, port: 50002, useTLS: server.useTLS)
+            }
+        }
+        set {
+            guard let data = try? JSONEncoder().encode(newValue) else {
+                return
+            }
+
+            userDefaults.set(data, forKey: electrumXServersKey)
+        }
+    }
+
+    func addElectrumXServer(_ server: ElectrumXServer) {
+        var servers = electrumXServers
+        guard !servers.contains(server) else {
+            return
+        }
+
+        servers.append(server)
+        electrumXServers = servers
+    }
+
+    func removeElectrumXServer(at index: Int) {
+        var servers = electrumXServers
+        guard servers.indices.contains(index) else {
+            return
+        }
+
+        servers.remove(at: index)
+        electrumXServers = servers
+    }
+
+    func resetElectrumXServers() {
+        userDefaults.removeObject(forKey: electrumXServersKey)
+        userDefaults.removeObject(forKey: activeElectrumXServerKey)
+    }
+
+    var activeElectrumXServer: ElectrumXServer {
+        get {
+            if let data = userDefaults.data(forKey: activeElectrumXServerKey),
+               let server = try? JSONDecoder().decode(ElectrumXServer.self, from: data),
+               electrumXServers.contains(server) {
+                return server
+            }
+
+            return electrumXServers.first ?? Self.defaultElectrumXServers[0]
+        }
+        set {
+            guard let data = try? JSONEncoder().encode(newValue) else {
+                return
+            }
+
+            userDefaults.set(data, forKey: activeElectrumXServerKey)
+        }
+    }
+
+    var orderedElectrumXServers: [ElectrumXServer] {
+        let active = activeElectrumXServer
+        var servers = electrumXServers.filter { $0 != active }
+        servers.insert(active, at: 0)
+
+        return servers
     }
 
     var walletId: String? {

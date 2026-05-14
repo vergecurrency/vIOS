@@ -49,9 +49,7 @@ class TransactionsTableViewController: EdgedTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        getTransactions()
 
         if searchController.isActive {
             TorStatusIndicator.shared.hide()
@@ -105,9 +103,6 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     func getTransactions(_ searchText: String = "", scope: String = "transactions.search.all".localized) {
-        transactions.removeAll()
-        dates.removeAll()
-
         let categories = [
             "transactions.search.sent".localized: TxAction.Sent,
             "transactions.search.received".localized: TxAction.Received
@@ -133,21 +128,38 @@ class TransactionsTableViewController: EdgedTableViewController {
             let items = Dictionary(grouping: ftransactions, by: { cal.startOfDay(for: $0.timeReceived) }).sorted(
                 by: { $0.key > $1.key }
             )
+            var newDates = [Date]()
+            var newTransactions = [[Vws.TxHistory]]()
 
             for item in items {
-                self.dates.append(item.key)
-                self.transactions.append(item.value.sorted { thule, thule2 in
+                newDates.append(item.key)
+                newTransactions.append(item.value.sorted { thule, thule2 in
                     return thule.sortBy(txHistory: thule2)
                 })
+            }
+
+            DispatchQueue.main.async {
+                self.dates = newDates
+                self.transactions = newTransactions
+                self.setupView()
+                self.tableView.reloadData()
             }
         }
     }
 
     func sectionDate(bySection section: Int) -> Date {
+        guard dates.indices.contains(section) else {
+            return Date()
+        }
+
         return dates[section]
     }
 
     func transactions(bySection section: Int) -> [Vws.TxHistory] {
+        guard transactions.indices.contains(section) else {
+            return []
+        }
+
         return transactions[section]
     }
 
@@ -192,6 +204,11 @@ class TransactionsTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard transactions.indices.contains(indexPath.section),
+              transactions[indexPath.section].indices.contains(indexPath.row) else {
+            return
+        }
+
         performSegue(withIdentifier: "TransactionTableViewController", sender: self)
     }
 
@@ -223,8 +240,11 @@ class TransactionsTableViewController: EdgedTableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "TransactionTableViewController" {
             if let nc = segue.destination as? UINavigationController {
-                if let vc = nc.viewControllers.first as? TransactionTableViewController {
-                    vc.transaction = transaction(byIndexpath: tableView.indexPathForSelectedRow!)
+                if let vc = nc.viewControllers.first as? TransactionTableViewController,
+                   let indexPath = tableView.indexPathForSelectedRow,
+                   transactions.indices.contains(indexPath.section),
+                   transactions[indexPath.section].indices.contains(indexPath.row) {
+                    vc.transaction = transaction(byIndexpath: indexPath)
                 }
             }
         }
@@ -240,8 +260,6 @@ class TransactionsTableViewController: EdgedTableViewController {
                 "transactions.search.all".localized
 
             self.getTransactions(searchText, scope: scope)
-
-            self.tableView.reloadData()
         }
     }
 }
@@ -250,7 +268,6 @@ extension TransactionsTableViewController: UISearchBarDelegate {
     // MARK: - UISearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         getTransactions(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
-        tableView.reloadData()
     }
 }
 
@@ -261,7 +278,6 @@ extension TransactionsTableViewController: UISearchResultsUpdating, UISearchCont
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
 
         getTransactions(searchBar.text!, scope: scope)
-        tableView.reloadData()
     }
 
     public func willPresentSearchController(_ searchController: UISearchController) {

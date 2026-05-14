@@ -8,6 +8,8 @@ import Foundation
 class TransactionManager {
     private var walletClient: WalletClientProtocol!
     private var transactionRepository: TransactionRepository!
+    private var isSyncing = false
+    private var pendingSyncCompletions = [([Vws.TxHistory]) -> Void]()
 
     public init (walletClient: WalletClientProtocol, transactionRepository: TransactionRepository) {
         self.walletClient = walletClient
@@ -39,6 +41,17 @@ class TransactionManager {
     }
 
     public func sync(skip: Int = 0, limit: Int = 50, completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
+        let isRootSync = skip == 0
+
+        if isRootSync && isSyncing {
+            pendingSyncCompletions.append(completion)
+            return
+        }
+
+        if isRootSync {
+            isSyncing = true
+        }
+
         walletClient.getTxHistory(skip: skip, limit: limit) { transactions, _ in
             if skip == 0 {
                 self.transactionRepository.removeAll()
@@ -60,11 +73,29 @@ class TransactionManager {
             }
 
             if transactions.count == 50 {
-                return self.sync(skip: skip + 50, completion: completion)
+                return self.sync(skip: skip + 50, completion: { sorted in
+                    if isRootSync {
+                        self.finishSync(sortedTransactions: sorted, completion: completion)
+                    } else {
+                        completion(sorted)
+                    }
+                })
             }
 
-            completion(self.sortedTransactions())
+            let sorted = self.sortedTransactions()
+            if isRootSync {
+                self.finishSync(sortedTransactions: sorted, completion: completion)
+            } else {
+                completion(sorted)
+            }
         }
+    }
+
+    private func finishSync(sortedTransactions: [Vws.TxHistory], completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
+        isSyncing = false
+        let completions = [completion] + pendingSyncCompletions
+        pendingSyncCompletions.removeAll()
+        completions.forEach { $0(sortedTransactions) }
     }
 
     public func remove(transaction: Vws.TxHistory) {

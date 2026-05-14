@@ -114,11 +114,11 @@ class PaperkeyQRViewController: UIViewController, AVCaptureMetadataOutputObjects
             }
 
             let mnemonic = metadataObj.stringValue?.split(separator: " ")
-            if mnemonic?.count == 12 {
+            if let mnemonic = mnemonic, ApplicationRepository.supportedMnemonicWordCounts.contains(mnemonic.count) {
                 capturedMnemonic = true
 
                 var newMnemonic: [String] = []
-                for word in mnemonic ?? [] {
+                for word in mnemonic {
                     newMnemonic.append(String(word))
                 }
 

@@ -3,6 +3,8 @@ import CryptoSwift
 import BitcoinKit
 
 class Credentials {
+    static let vergeCoinType: UInt32 = 77
+    static let defaultAccount: UInt32 = 0
 
     enum CredentialsError: Error {
         case invalidDeriver(value: String)
@@ -29,7 +31,7 @@ class Credentials {
 
     // MARK: - Master Wallet (Verge coin type 77)
     var wallet: HDWallet {
-        return HDWallet(seed: seed, coinType: 77, xPrivKey: HDExtendedKeyVersion.xprv.rawValue)
+        return HDWallet(seed: seed, coinType: Self.vergeCoinType, xPrivKey: HDExtendedKeyVersion.xprv.rawValue)
     }
     
     var privateKey1: HDPrivateKey1 {
@@ -41,8 +43,8 @@ class Credentials {
         do {
             let accountPrivateKey = try privateKey1
                 .derived(at: 44, hardened: true)
-                .derived(at: 77, hardened: true)
-                .derived(at: 0, hardened: true)
+                .derived(at: Self.vergeCoinType, hardened: true)
+                .derived(at: Self.defaultAccount, hardened: true)
             
             let pubKey = accountPrivateKey.extendedPublicKey()
             
@@ -77,8 +79,8 @@ class Credentials {
         do {
             let accountPrivateKey = try privateKey1
                 .derived(at: 44, hardened: true)
-                .derived(at: 77, hardened: true)
-                .derived(at: 0, hardened: true)
+                .derived(at: Self.vergeCoinType, hardened: true)
+                .derived(at: Self.defaultAccount, hardened: true)
             
             let pubKey = accountPrivateKey.extendedPublicKey()
             let publicKeyData = pubKey.raw
@@ -127,8 +129,8 @@ class Credentials {
         do {
             return try privateKey1
                 .derived(at: 44, hardened: true)
-                .derived(at: 77, hardened: true)
-                .derived(at: 0, hardened: true)
+                .derived(at: Self.vergeCoinType, hardened: true)
+                .derived(at: Self.defaultAccount, hardened: true)
         } catch {
             print("❌ Failed to derive BIP44 private key: \(error)")
             return privateKey1

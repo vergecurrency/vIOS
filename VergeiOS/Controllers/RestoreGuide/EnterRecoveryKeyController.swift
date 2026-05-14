@@ -14,9 +14,15 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     @IBOutlet weak var keyTextField: UITextField!
     @IBOutlet weak var keyProgressLabel: UILabel!
 
-    private let numberOfWords = 12
+    private let numberOfWords = ApplicationRepository.maxMnemonicWordCount
     private var index: Int = 0
     private var keys: [String] = []
+    private lazy var doneButton = UIBarButtonItem(
+        title: "defaults.done".localized,
+        style: .done,
+        target: self,
+        action: #selector(EnterRecoveryKeyController.doneClick)
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +40,7 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if self.keys.count == self.numberOfWords {
+        if ApplicationRepository.supportedMnemonicWordCounts.contains(self.keys.count) {
             self.keys = []
             self.index = 0
             self.updateView(index: self.index)
@@ -67,6 +73,8 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
 
         self.keyTextField.inputAccessoryView = keyboardToolbar
         self.keyTextField.delegate = self
+        self.navigationItem.rightBarButtonItem = doneButton
+        self.updateDoneButton()
     }
 
     private func createLabelText(index: Int) -> String {
@@ -94,6 +102,8 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         if let previousButton = toolbar.items?.first {
             previousButton.isEnabled = (index > 0)
         }
+
+        updateDoneButton()
     }
 
     private func addKeyToList(text: String?) -> Bool {
@@ -101,8 +111,18 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             return false
         }
 
-        self.keys.insert(text!, at: index)
+        if self.keys.indices.contains(index) {
+            self.keys[index] = text!
+        } else {
+            self.keys.insert(text!, at: index)
+        }
+
+        updateDoneButton()
         return true
+    }
+
+    private func updateDoneButton() {
+        doneButton.isEnabled = ApplicationRepository.supportedMnemonicWordCounts.contains(keys.count)
     }
 
     @objc func previousClick() {
@@ -126,9 +146,21 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         }
 
         if self.keys.count == self.numberOfWords {
-            print(self.keys)
             self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
         }
+    }
+
+    @objc func doneClick() {
+        if let text = self.keyTextField.text, !text.isEmpty, !self.keys.indices.contains(index) {
+            _ = self.addKeyToList(text: text)
+        }
+
+        guard ApplicationRepository.supportedMnemonicWordCounts.contains(self.keys.count) else {
+            self.keyTextField.shake()
+            return
+        }
+
+        self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
     }
 
     func setMnemonicAndProceed(_ mnemonic: [String]) {

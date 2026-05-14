@@ -75,14 +75,27 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
         }
         self.applicationRepository.mnemonic = mnemonic
 
-        guard let passphrase = self.applicationRepository.passphrase ?? self.applicationRepository.pendingSetupPassphrase else {
-            self.log.error("wallet setup no passphrase found")
+        let passphrase: String
+        if self.applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
+            guard let storedPassphrase = self.applicationRepository.passphrase ?? self.applicationRepository.pendingSetupPassphrase else {
+                self.log.error("wallet setup no passphrase found")
 
-            return self.showSetupErrorAlert("No passphrase found")
+                return self.showSetupErrorAlert("No passphrase found")
+            }
+
+            passphrase = storedPassphrase
+            self.applicationRepository.saveSetupPassphrase(passphrase)
+        } else {
+            passphrase = ""
+            self.applicationRepository.passphrase = nil
         }
-        self.applicationRepository.saveSetupPassphrase(passphrase)
 
         self.credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
+
+        if !self.applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
+            self.applicationRepository.finishWalletProfileSetup()
+            return self.animateProgress()
+        }
 
         self.walletManager
             .getWallet()

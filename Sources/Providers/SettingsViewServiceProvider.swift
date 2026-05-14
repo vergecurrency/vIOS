@@ -43,6 +43,14 @@ class SettingsViewServiceProvider: ServiceProvider {
             c.walletManager = r.resolve(WalletManagerProtocol.self)
         }
 
+        container.register(ElectrumXServersTableViewController.self) { r in
+            let controller = ElectrumXServersTableViewController(style: tableViewStyle)
+            controller.applicationRepository = r.resolve(ApplicationRepository.self)
+            controller.electrumXClient = ElectrumXClient(applicationRepository: controller.applicationRepository)
+
+            return controller
+        }
+
         container.storyboardInitCompleted (TransactionProposalsTableViewController.self) { r, c in
             c.walletClient = r.resolve(WalletClientProtocol.self)
             c.txTransponder = r.resolve(TxTransponderProtocol.self)

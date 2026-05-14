@@ -23,8 +23,6 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextField
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.log.debug("confirm paper key view loaded with mnemonic: \(mnemonic)")
-
         self.randomNumbers = self.selectRandomNumbers()
 
         self.firstWordLabel.text = "paperKey.word".localized + " #\(randomNumbers.first!)"
@@ -36,11 +34,12 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextField
 
     func selectRandomNumbers() -> [Int] {
         var numbers: [Int] = []
+        let wordCount = UInt32(max(mnemonic.count, 1))
 
         for _ in 1...2 {
-            var number = Int(arc4random_uniform(11) + 1)
+            var number = Int(arc4random_uniform(wordCount) + 1)
             while numbers.contains(number) {
-                number = Int(arc4random_uniform(11) + 1)
+                number = Int(arc4random_uniform(wordCount) + 1)
             }
 
             numbers.append(number)
@@ -77,9 +76,14 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextField
 
         // Save the mnemonic.
         self.applicationRepository.mnemonic = mnemonic
+        self.applicationRepository.passphrase = nil
 
-        // Finish the welcome guide.
-        self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
+        if self.applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
+            self.performSegue(withIdentifier: "finishWelcomeGuide", sender: self)
+        } else {
+            let controller = UIStoryboard.createFromStoryboard(name: "Setup", type: FinishSetupViewController.self)
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 
 }

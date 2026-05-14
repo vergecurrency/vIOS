@@ -25,7 +25,7 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
 
         // Generate a new mnemonic.
         do {
-            let newMnemonic = try Mnemonic.generate()
+            let newMnemonic = try Mnemonic.generate(wordCount: .eighteen)
             self.mnemonic = self.applicationRepository.mnemonic ?? newMnemonic
         } catch {
             self.present(UIAlertController.createUnexpectedErrorAlert(error: error), animated: true)
@@ -94,7 +94,6 @@ class PaperKeyWordsViewController: AbstractPaperkeyViewController {
         } else {
             self.showNextButton()
         }
-        print("mnemonic==\(mnemonic)")
     }
 
     func hideButton(_ button: UIButton) {

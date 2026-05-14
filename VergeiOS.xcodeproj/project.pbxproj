@@ -41,6 +41,10 @@
 		93CE5A762E98C3A500A0D168 /* ReadOnlyHDWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE5A682E98C3A500A0D168 /* ReadOnlyHDWallet.swift */; };
 		93CE5A772E98C3A500A0D168 /* HDWatchAccountWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE5A652E98C3A500A0D168 /* HDWatchAccountWallet.swift */; };
 		93DA191D2EBE1F69009A50DD /* TorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DA191C2EBE1F69009A50DD /* TorClient.swift */; };
+		93E100012EC0000000000001 /* ElectrumXServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E100002EC0000000000001 /* ElectrumXServer.swift */; };
+		93E100032EC0000000000003 /* ElectrumXClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E100022EC0000000000002 /* ElectrumXClient.swift */; };
+		93E100052EC0000000000005 /* ElectrumXServersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E100042EC0000000000004 /* ElectrumXServersTableViewController.swift */; };
+		93E100072EC0000000000007 /* ElectrumXWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E100062EC0000000000006 /* ElectrumXWalletClient.swift */; };
 		93FDEEA22E904F4900B583A0 /* BIP32ManualDerivator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FDEEA12E904F4900B583A0 /* BIP32ManualDerivator.swift */; };
 		93FDEEA52E90561A00B583A0 /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = 93FDEEA42E90561A00B583A0 /* BigInt */; };
 		A16F58F0B7458F1052E82C7A /* Pods_VergeiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4AAE6D94E4E20F70706C /* Pods_VergeiOS.framework */; };
@@ -555,6 +559,7 @@
 		A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCardImageView.swift; sourceTree = "<group>"; };
 		A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		A32566402112588D006FB08A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		93E100042EC0000000000004 /* ElectrumXServersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXServersTableViewController.swift; sourceTree = "<group>"; };
 		A32566442113729C006FB08A /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
 		A3256646211372A7006FB08A /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
 		A3256648211372B3006FB08A /* Transactions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transactions.storyboard; sourceTree = "<group>"; };
@@ -563,6 +568,9 @@
 		A325664E2113B504006FB08A /* CurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewController.swift; sourceTree = "<group>"; };
 		A3256664211A3B61006FB08A /* FiatRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatRate.swift; sourceTree = "<group>"; };
 		A3256667211B8E1A006FB08A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
+		93E100002EC0000000000001 /* ElectrumXServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXServer.swift; sourceTree = "<group>"; };
+		93E100022EC0000000000002 /* ElectrumXClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXClient.swift; sourceTree = "<group>"; };
+		93E100062EC0000000000006 /* ElectrumXWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXWalletClient.swift; sourceTree = "<group>"; };
 		A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A325667C211CBA9A006FB08A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -952,6 +960,7 @@
 			children = (
 				B2BD74F46B6A7DA606BCB794 /* ChartInfo.swift */,
 				A302D2FA211F64FB00EA8091 /* Contact.swift */,
+				93E100002EC0000000000001 /* ElectrumXServer.swift */,
 				A3256664211A3B61006FB08A /* FiatRate.swift */,
 				A3AA2205216576BE00160576 /* IpAddress.swift */,
 				A3D98EE424269A7800A2BBEB /* KeyBalance.swift */,
@@ -1396,6 +1405,7 @@
 				B2BD7BF3055148691DE401AD /* PaperkeyViewController.swift */,
 				A38D6F7F21C06C2A00280FFE /* ServiceUrlTableViewController.swift */,
 				A32566402112588D006FB08A /* SettingsTableViewController.swift */,
+				93E100042EC0000000000004 /* ElectrumXServersTableViewController.swift */,
 				A3D98EE024263D6500A2BBEB /* SupportTableViewController.swift */,
 				A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */,
 				A3AA22032165706C00160576 /* TorConnectionTableViewController.swift */,
@@ -1704,6 +1714,8 @@
 				A316B0AE215454FB00FF5200 /* AddressValidator.swift */,
 				B2BD775F084C79E938322ACD /* Credentials.swift */,
 				93FDEEA12E904F4900B583A0 /* BIP32ManualDerivator.swift */,
+				93E100022EC0000000000002 /* ElectrumXClient.swift */,
+				93E100062EC0000000000006 /* ElectrumXWalletClient.swift */,
 				A302D3402122053300EA8091 /* FiatRateTicker.swift */,
 				B2BD7B2AFFB4647DEE6C6A8E /* SJCL.swift */,
 				B2BD780B0BE45F52AD3B526D /* WalletTransactionFactory.swift */,
@@ -2575,6 +2587,7 @@
 				A398B20D212B0F47004ACB73 /* LocalAuthKey.swift in Sources */,
 				A338E6A4210DDAED000D44EE /* AbstractPaperkeyViewController.swift in Sources */,
 				A32566412112588D006FB08A /* SettingsTableViewController.swift in Sources */,
+				93E100052EC0000000000005 /* ElectrumXServersTableViewController.swift in Sources */,
 				A305DD9D21066B1100911B64 /* TransparantNavigationBar.swift in Sources */,
 				07938407210DB46C00C3C799 /* RestoreWalletController.swift in Sources */,
 				A3C2556125168AA100AD6596 /* UIImageViewExtension.swift in Sources */,
@@ -2582,6 +2595,9 @@
 				A302D30C2120466C00EA8091 /* MakeTransparentHoleOnOverlayView.swift in Sources */,
 				A3670CBA2454F5C100B2D9FC /* UITestingServiceProvider.swift in Sources */,
 				A3256668211B8E1A006FB08A /* ApplicationRepository.swift in Sources */,
+				93E100012EC0000000000001 /* ElectrumXServer.swift in Sources */,
+				93E100032EC0000000000003 /* ElectrumXClient.swift in Sources */,
+				93E100072EC0000000000007 /* ElectrumXWalletClient.swift in Sources */,
 				CABF1482221061FD00F92CBC /* UIView+Actions.swift in Sources */,
 				A33F6A7820EEE485001492C2 /* CoreData.xcdatamodeld in Sources */,
 				A398B213212EBDD7004ACB73 /* CreditsTableViewController.swift in Sources */,
