@@ -61,6 +61,13 @@ class ReceiveViewController: ThemeableViewController {
 
         self.setAddress()
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didSwitchWalletProfile(notification:)),
+            name: .didSwitchWalletProfile,
+            object: nil
+        )
+
         self.qrCodeContainerView.layer.cornerRadius = 10.0
         self.qrCodeContainerView.clipsToBounds = true
 
@@ -130,6 +137,10 @@ class ReceiveViewController: ThemeableViewController {
     func setAddress() {
         DispatchQueue.main.async {
             self.hideCard()
+            self.address = ""
+            self.cardAddress.text = ""
+            self.addressTextField.valueLabel?.text = ""
+            self.qrCodeImageView.image = nil
 
             var options = Vws.WalletAddressesOptions()
             options.limit = 1
@@ -151,6 +162,10 @@ class ReceiveViewController: ThemeableViewController {
                 self.getNewAddress()
             }
         }
+    }
+
+    @objc func didSwitchWalletProfile(notification: Notification? = nil) {
+        setAddress()
     }
 
     func getNewAddress() {

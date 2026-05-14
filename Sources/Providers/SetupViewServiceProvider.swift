@@ -14,6 +14,10 @@ class SetupViewServiceProvider: ServiceProvider {
             c.transactionManager = r.resolve(TransactionManager.self)
         }
 
+        container.storyboardInitCompleted (PassphraseViewController.self) { r, c in
+            c.applicationRepository = r.resolve(ApplicationRepository.self)
+        }
+
         container.storyboardInitCompleted (PassphraseConfirmationViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
         }

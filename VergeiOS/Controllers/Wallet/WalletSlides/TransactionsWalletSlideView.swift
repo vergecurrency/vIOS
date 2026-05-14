@@ -53,6 +53,13 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             name: .didReceiveTransaction,
             object: nil
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didSwitchWalletProfile(notification:)),
+            name: .didSwitchWalletProfile,
+            object: nil
+        )
     }
 
     override func layoutSubviews() {
@@ -82,6 +89,14 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
+        }
+    }
+
+    @objc func didSwitchWalletProfile(notification: Notification? = nil) {
+        self.items = []
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 

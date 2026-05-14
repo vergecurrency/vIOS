@@ -40,7 +40,6 @@ class WalletServiceProvider: ServiceProvider {
         registerLogger()               // Must come first
         registerHttpSession()          // HttpSessionProtocol
         registerRatesClient()          // Must be before FiatRateTicker
-        registerApplicationRepository()// Needed for Credentials & FiatRateTicker
         registerWalletCredentials()    // Depends on ApplicationRepository
         registerWalletClient()         // Depends on Credentials & HttpSession
         registerTransactionRepository()
@@ -168,13 +167,6 @@ class WalletServiceProvider: ServiceProvider {
             return RatesClient(httpSession: httpSession)
         }.inObjectScope(.container)
     }
-
-    // MARK: - ApplicationRepository
-    private func registerApplicationRepository() {
-        container.register(ApplicationRepository.self) { _ in ApplicationRepository() }
-            .inObjectScope(.container)
-    }
-
 
     // MARK: - Wallet Credentials
     func registerWalletCredentials() {

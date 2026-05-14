@@ -80,13 +80,14 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
             return self.showSetupErrorAlert("No passphrase found")
         }
-        self.applicationRepository.passphrase = passphrase
+        self.applicationRepository.saveSetupPassphrase(passphrase)
 
         self.credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
 
         self.walletManager
             .getWallet()
             .then { _ in
+                self.applicationRepository.finishWalletProfileSetup()
                 self.animateProgress()
             }.catch { error in
                 self.showSetupErrorAlert(error.localizedDescription)

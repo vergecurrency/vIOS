@@ -16,6 +16,8 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var caseImage: UIImageView!
     @IBOutlet weak var specialsImage: UIImageView!
 
+    var applicationRepository: ApplicationRepository!
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         if (UIDevice.current.userInterfaceIdiom != .pad) {
             return .default
@@ -128,8 +130,12 @@ class PassphraseViewController: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "proceed" {
+            let passphrase = self.passphraseTextfield.text!
+            applicationRepository.pendingSetupPassphrase = passphrase
+            applicationRepository.passphrase = passphrase
+
             if let vc = segue.destination as? PassphraseConfirmationViewController {
-                vc.previousPassphrase = self.passphraseTextfield.text!
+                vc.previousPassphrase = passphrase
             }
         }
     }

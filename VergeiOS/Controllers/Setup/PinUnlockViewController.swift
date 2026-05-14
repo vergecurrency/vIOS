@@ -117,7 +117,22 @@ class PinUnlockViewController: ThemeableViewController, KeyboardDelegate {
 
     // Validate the wallet pin.
     func validate() -> Bool {
-        return self.pin.count == self.pinTextField.pinCharacterCount && self.applicationRepository.pin == self.pin
+        guard self.pin.count == self.pinTextField.pinCharacterCount else {
+            return false
+        }
+
+        if self.applicationRepository.pin == self.pin {
+            return true
+        }
+
+        if self.applicationRepository.pin.isEmpty && self.applicationRepository.hasActiveWalletRecoveryMaterial {
+            self.applicationRepository.pin = self.pin
+            self.applicationRepository.pinCount = self.pinTextField.pinCharacterCount
+
+            return true
+        }
+
+        return false
     }
 
     func promptLocalAuthentication() {

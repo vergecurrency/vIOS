@@ -19,15 +19,17 @@ class TransactionManager {
     }
 
     public func all(completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
-        if !hasTransactions {
-            sync { transactions in
-                return completion(transactions)
-            }
+        sync { transactions in
+            completion(transactions.sorted { thule, thule2 in
+                return thule.sortBy(txHistory: thule2)
+            })
         }
+    }
 
-        completion(transactionRepository.all().sorted { thule, thule2 in
+    private func sortedTransactions() -> [Vws.TxHistory] {
+        return transactionRepository.all().sorted { thule, thule2 in
             return thule.sortBy(txHistory: thule2)
-        })
+        }
     }
 
     public func all(byAddress address: String) -> [Vws.TxHistory] {
@@ -38,6 +40,10 @@ class TransactionManager {
 
     public func sync(skip: Int = 0, limit: Int = 50, completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
         walletClient.getTxHistory(skip: skip, limit: limit) { transactions, _ in
+            if skip == 0 {
+                self.transactionRepository.removeAll()
+            }
+
             var txids = [String]()
             let transactions = transactions.filter { tx in
                 if txids.contains(tx.txid) && tx.category == .Moved {
@@ -57,7 +63,7 @@ class TransactionManager {
                 return self.sync(skip: skip + 50, completion: completion)
             }
 
-            completion(self.transactionRepository.all())
+            completion(self.sortedTransactions())
         }
     }
 

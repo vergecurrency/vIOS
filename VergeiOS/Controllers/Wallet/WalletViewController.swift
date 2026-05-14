@@ -50,6 +50,13 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
             name: .didChangeWalletAmount,
             object: nil
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didSwitchWalletProfile(notification:)),
+            name: .didSwitchWalletProfile,
+            object: nil
+        )
     }
 
     override func viewWillLayoutSubviews() {
@@ -145,6 +152,11 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
 
     @objc func didChangeWalletAmount(notification: Notification? = nil) {
         setStats()
+    }
+
+    @objc func didSwitchWalletProfile(notification: Notification? = nil) {
+        setStats()
+        NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
     }
 
     func setStats() {

@@ -51,7 +51,7 @@ public class WalletClient: WalletClientProtocol {
         self.baseUrl = baseUrl
     }
 
-    private func currentCopayerId() -> String {
+    func currentCopayerId() -> String {
         if let stored = self.applicationRepository.copayerId, !stored.isEmpty {
             return stored
         }

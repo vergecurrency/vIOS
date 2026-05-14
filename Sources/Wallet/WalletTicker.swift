@@ -18,6 +18,7 @@ class WalletTicker: TickerProtocol {
 
     private var started: Bool = false
     private var interval: Timer?
+    private var activeProfileId: String?
 
     init(
         client: WalletClientProtocol,
@@ -40,6 +41,7 @@ class WalletTicker: TickerProtocol {
             return self.log.notice("wallet ticker requested to start before application received setup status")
         }
 
+        self.activeProfileId = self.applicationRepository.activeWalletProfileId
         self.tick()
 
         interval = Timer.scheduledTimer(withTimeInterval: Constants.fetchWalletTimeout, repeats: true) { _ in
@@ -55,6 +57,7 @@ class WalletTicker: TickerProtocol {
         interval?.invalidate()
         interval = nil
         started = false
+        activeProfileId = nil
 
         self.log.info("wallet ticker stopped")
     }
@@ -74,6 +77,10 @@ class WalletTicker: TickerProtocol {
 //        }
 
         client.getBalance { error, info in
+            guard self.activeProfileId == self.applicationRepository.activeWalletProfileId else {
+                return self.log.notice("wallet ticker ignored stale amount response")
+            }
+
             guard let info = info else {
                 let error = error ?? Error.NoWalletAmountInfo
                 return self.log.error("wallet ticker amount error: \(error.localizedDescription)")
@@ -96,6 +103,10 @@ class WalletTicker: TickerProtocol {
 //        }
 
         self.transactionManager.sync(limit: 10) { _ in
+            guard self.activeProfileId == self.applicationRepository.activeWalletProfileId else {
+                return self.log.notice("wallet ticker ignored stale transaction response")
+            }
+
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
             self.log.info("wallet ticker received transactions")

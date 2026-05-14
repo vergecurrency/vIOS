@@ -26,6 +26,7 @@ protocol WalletClientProtocol {
         completion: @escaping (Vws.WalletJoin?, Vws.WalletJoin.Error?, Error?) -> Void
     )
     func openWallet(completion: @escaping (Vws.WalletStatus?, Vws.WalletStatus.Error?, Error?) -> Void)
+    func currentCopayerId() -> String
     func scanAddresses(completion: @escaping (_ error: Error?) -> Void)
 
     func createAddress(

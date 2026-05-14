@@ -19,6 +19,7 @@ extension Notification.Name {
     static let didChangeCurrency = Notification.Name("didChangeCurrency")
     static let didChangeWalletAmount = Notification.Name("didChangeWalletAmount")
     static let didChangeReceiveAddress = Notification.Name("didChangeReceiveAddress")
+    static let didSwitchWalletProfile = Notification.Name("didSwitchWalletProfile")
 
     static let didFinishTorStart = Notification.Name("didFinishTorStart")
     static let didStartTorThread = Notification.Name("didStartTorThread")

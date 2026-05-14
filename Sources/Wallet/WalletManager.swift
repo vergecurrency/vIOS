@@ -221,6 +221,10 @@ class WalletManager: WalletManagerProtocol {
             self.walletClient.openWallet { walletStatus, errorResponse, error in
                 if let walletStatus = walletStatus {
                     let walletId = walletStatus.wallet?.id ?? ""
+                    if !walletId.isEmpty {
+                        self.applicationRepository.walletId = walletId
+                    }
+                    self.applicationRepository.copayerId = self.walletClient.currentCopayerId()
                     self.log.info("wallet manager successfully opened wallet", metadata: [
                         "walletId": Logger.MetadataValue(stringLiteral: walletId)
                     ])

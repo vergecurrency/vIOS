@@ -15,6 +15,12 @@ class SettingsViewServiceProvider: ServiceProvider {
 
         container.storyboardInitCompleted (SettingsTableViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.credentials = r.resolve(Credentials.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
+            c.walletManager = r.resolve(WalletManagerProtocol.self)
+            c.walletTicker = r.resolve(WalletTicker.self)
+            c.fiatRateTicker = r.resolve(FiatRateTicker.self)
+            c.transactionManager = r.resolve(TransactionManager.self)
         }
 
         container.storyboardInitCompleted (TorConnectionTableViewController.self) { r, c in

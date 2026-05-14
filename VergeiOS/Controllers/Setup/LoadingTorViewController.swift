@@ -23,7 +23,7 @@ class LoadingTorViewController: UIViewController {
         }
 
 
-        let identifier = applicationRepository.setup ? "showWallet" : "showWelcomeView"
+        let identifier = applicationRepository.selectFirstUsableWalletProfileIfNeeded() ? "showWallet" : "showWelcomeView"
         print("🔍 LoadingTorViewController: Navigating to \(identifier)")
 
         // Perform segue on the main thread
@@ -60,7 +60,14 @@ class LoadingTorViewController: UIViewController {
                 return self.didDisconnectWallet(animated: true)
             }
 
-            self.performSegue(withIdentifier: "showWelcomeView", sender: self)
+            DispatchQueue.main.async {
+                let applicationRepository = Application.container.resolve(ApplicationRepository.self)
+                let identifier = applicationRepository?.selectFirstUsableWalletProfileIfNeeded() == true ?
+                    "showWallet" :
+                    "showWelcomeView"
+
+                self.performSegue(withIdentifier: identifier, sender: self)
+            }
         }
     }
 }
