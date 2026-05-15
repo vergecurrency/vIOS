@@ -20,16 +20,21 @@ class PriceChartView: AbstractChartView {
 
     var chart: LineChartView = LineChartView()
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        chart.frame = CGRect(
+            x: -10,
+            y: -10,
+            width: bounds.width + 20,
+            height: bounds.height + 10
+        )
+    }
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        chart.frame = CGRect(
-            x: rect.origin.x + -10,
-            y: rect.origin.y + -10,
-            width: rect.size.width + 20,
-            height: rect.size.height
-        )
-
+        chart.backgroundColor = UIColor(rgb: 0x05020B)
         chart.noDataTextColor = ThemeManager.shared.secondaryDark()
         chart.dragEnabled = false
         chart.setScaleEnabled(false)
@@ -41,15 +46,24 @@ class PriceChartView: AbstractChartView {
         chart.legend.enabled = false
         chart.chartDescription.text = ""
         chart.highlightPerTapEnabled = false
+        chart.drawGridBackgroundEnabled = false
+        chart.layer.shadowColor = UIColor(rgb: 0xFF3DF2).cgColor
+        chart.layer.shadowOpacity = 0.45
+        chart.layer.shadowRadius = 18
+        chart.layer.shadowOffset = CGSize(width: 0, height: 0)
 
-        addSubview(chart)
+        if chart.superview == nil {
+            addSubview(chart)
+        }
     }
 
     func set(chartData: [ChartDataEntry]) {
         let priceSet = LineChartDataSet(entries: chartData, label: "chart.price.historyTitle".localized)
+        let glowSet = LineChartDataSet(entries: chartData, label: "chart.price.historyTitle".localized)
         style(priceSet: priceSet)
+        styleGlow(priceSet: glowSet)
 
-        let data = LineChartData(dataSet: priceSet)
+        let data = LineChartData(dataSets: [glowSet, priceSet])
         data.setDrawValues(false)
 
         DispatchQueue.main.async {
@@ -60,9 +74,11 @@ class PriceChartView: AbstractChartView {
     }
 
     fileprivate func style(priceSet: LineChartDataSet) {
+        let neonGreen = UIColor(rgb: 0x57F287)
+        let neonCyan = UIColor(rgb: 0x20DFC8)
         let gradientColors = [
-            ThemeManager.shared.priceChartColor().cgColor,
-            ThemeManager.shared.primaryLight().withAlphaComponent(0.5).cgColor
+            neonGreen.withAlphaComponent(0.3).cgColor,
+            neonCyan.withAlphaComponent(0.05).cgColor
         ]
         let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
 
@@ -73,10 +89,21 @@ class PriceChartView: AbstractChartView {
         priceSet.lineWidth = 1.5
         priceSet.highlightLineWidth = 1.0
         priceSet.fillAlpha = 1
-        priceSet.highlightColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.9)
+        priceSet.highlightColor = neonCyan.withAlphaComponent(0.9)
         let fill = LinearGradientFill(gradient: gradient, angle: 90)
         priceSet.fill = fill
 
-        priceSet.setColor(ThemeManager.shared.primaryLight())
+        priceSet.setColor(neonGreen)
+    }
+
+    fileprivate func styleGlow(priceSet: LineChartDataSet) {
+        priceSet.mode = .cubicBezier
+        priceSet.drawCirclesEnabled = false
+        priceSet.drawFilledEnabled = false
+        priceSet.drawHorizontalHighlightIndicatorEnabled = false
+        priceSet.drawVerticalHighlightIndicatorEnabled = false
+        priceSet.lineWidth = 7
+        priceSet.highlightEnabled = false
+        priceSet.setColor(UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.35))
     }
 }

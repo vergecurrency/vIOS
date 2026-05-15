@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "originHash" : "19cfeeffbd208fcf369e193d3246d1423ca914e9d06385af89caec410a9eceb2",
   "pins" : [
     {
@@ -12,29 +11,6 @@
       }
     },
     {
-=======
-  "originHash" : "2ecc102e843b5e0e6fc3883222b40b8efba00b8ef9f470e6c4c9894c576386a8",
-  "pins" : [
-    {
-      "identity" : "bitcoinkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/yenom/BitcoinKit.git",
-      "state" : {
-        "revision" : "5f1fe9253071aeb845fa1cc40a338f32c6e34a66",
-        "version" : "1.1.0"
-      }
-    },
-    {
-      "identity" : "bits",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vapor/bits.git",
-      "state" : {
-        "revision" : "03079476b04139a8b744ad96f975176df5ae12bc",
-        "version" : "1.1.1"
-      }
-    },
-    {
->>>>>>> upstream/master
       "identity" : "charts",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/danielgindi/Charts.git",
@@ -53,18 +29,6 @@
       }
     },
     {
-<<<<<<< HEAD
-=======
-      "identity" : "core",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vapor/core.git",
-      "state" : {
-        "revision" : "aa15871311b497a24a7f0e96b1ae6865dd600818",
-        "version" : "2.2.1"
-      }
-    },
-    {
->>>>>>> upstream/master
       "identity" : "corestore",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JohnEstropia/CoreStore.git",
@@ -83,21 +47,12 @@
       }
     },
     {
-<<<<<<< HEAD
       "identity" : "custombitcoinkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/shami123/CustomBitcoinKit.git",
       "state" : {
         "branch" : "xvgChnages",
         "revision" : "84233eccfb38369419369e4f5b54b14d3c7bb434"
-=======
-      "identity" : "debugging",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vapor/debugging.git",
-      "state" : {
-        "revision" : "fc5a27d6eb236141dc24e5f14eedaa2e035ae7b3",
-        "version" : "1.1.1"
->>>>>>> upstream/master
       }
     },
     {
@@ -110,7 +65,6 @@
       }
     },
     {
-<<<<<<< HEAD
       "identity" : "hscryptokit.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/horizontalsystems/HsCryptoKit.Swift.git",
@@ -129,8 +83,6 @@
       }
     },
     {
-=======
->>>>>>> upstream/master
       "identity" : "iqkeyboardmanager",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/hackiftekhar/IQKeyboardManager.git",
@@ -158,7 +110,6 @@
       }
     },
     {
-<<<<<<< HEAD
       "identity" : "secp256k1.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/GigaBitcoin/secp256k1.swift.git",
@@ -174,23 +125,6 @@
       "state" : {
         "revision" : "60f13f60c4d093691934dc6cfdf5f508ada1f894",
         "version" : "2.6.0"
-=======
-      "identity" : "random",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vapor-community/random.git",
-      "state" : {
-        "revision" : "d7c4397d125caba795d14d956efacfe2a27a63d0",
-        "version" : "1.2.0"
-      }
-    },
-    {
-      "identity" : "secp256k1.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Boilertalk/secp256k1.swift",
-      "state" : {
-        "revision" : "cd187c632fb812fd93711a9f7e644adb7e5f97f0",
-        "version" : "0.1.7"
->>>>>>> upstream/master
       }
     },
     {

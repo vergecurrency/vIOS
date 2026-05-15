@@ -27,9 +27,10 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     var httpSession: HttpSessionProtocol!
     var filter: ChartFilterToolbar.Filter = .oneDay
     var lastChangeFilter: TimeInterval?
+    private let filterToolbarHeight: CGFloat = 44.0
 
     var nthFilter = [
-        ChartFilterToolbar.Filter.all: 3,
+        ChartFilterToolbar.Filter.all: 8,
         ChartFilterToolbar.Filter.oneYear: 1,
         ChartFilterToolbar.Filter.threeMonths: 3,
         ChartFilterToolbar.Filter.oneMonth: 3,
@@ -59,17 +60,12 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        let filterToolbarHeight: CGFloat = 44.0
-        self.filterToolbar.frame = CGRect(
-            x: rect.origin.x,
-            y: self.chartView.bounds.height - filterToolbarHeight,
-            width: self.chartView.bounds.width,
-            height: filterToolbarHeight
-        )
-
         self.chartView.layer.cornerRadius = self.panelView.cornerRadius
         self.chartView.clipsToBounds = true
-        self.layoutSubviews()
+        self.chartView.backgroundColor = UIColor(rgb: 0x05020B)
+        self.chartView.layer.borderWidth = 1
+        self.chartView.layer.borderColor = UIColor(rgb: 0x20DFC8).withAlphaComponent(0.25).cgColor
+        self.layoutChartSubviews()
 
         self.initialize()
     }
@@ -77,22 +73,36 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        let filterToolbarHeight: CGFloat = 44.0
+        self.layoutChartSubviews()
+    }
+
+    private func layoutChartSubviews() {
+        let chartBounds = self.chartView.bounds
+        let chartHeight = max(0, chartBounds.height - filterToolbarHeight)
+
+        self.filterToolbar.frame = CGRect(
+            x: 0,
+            y: chartHeight,
+            width: chartBounds.width,
+            height: filterToolbarHeight
+        )
+
         self.priceChartView.frame = CGRect(
             x: 0,
             y: 0,
-            width: self.chartView.bounds.width,
-            height: self.chartView.bounds.height - filterToolbarHeight
+            width: chartBounds.width,
+            height: chartHeight
         )
         self.volumeChartView.frame = CGRect(
             x: 0,
-            y: self.chartView.frame.height - (self.chartView.bounds.height * 0.5),
-            width: self.chartView.bounds.width,
-            height: (self.chartView.bounds.height * 0.5) - filterToolbarHeight
+            y: chartHeight * 0.55,
+            width: chartBounds.width,
+            height: chartHeight * 0.45
         )
 
         self.priceChartView.setNeedsDisplay()
         self.volumeChartView.setNeedsDisplay()
+        self.filterToolbar.setNeedsDisplay()
     }
 
     func initialize() {
@@ -149,13 +159,13 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
 
         self.httpSession.dataTask(with: self.chartUrl()).then { response in
             self.placeholderView.isHidden = true
-            let chartData = try response.dataToJson(type: ChartInfo.self)
+            let chartData = try response.dataToJson(type: CoinGeckoMarketChart.self)
 
-            for entry in chartData.priceUsd {
+            for entry in chartData.prices {
                 priceData.append(ChartDataEntry(x: entry[0], y: entry[1]))
             }
 
-            for (index, entry) in chartData.volumeUsd.enumerated() {
+            for (index, entry) in chartData.totalVolumes.enumerated() {
                 volumeData.append(BarChartDataEntry(x: Double(index), y: entry[1]))
             }
 
@@ -166,10 +176,14 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
                 step: self.nthFilter[self.filter]! + 5
             ) as! [BarChartDataEntry]
             )
-            self.setPriceLabels(withData: chartData.priceUsd)
+            self.setPriceLabels(withData: chartData.prices)
             self.activityIndicator.stopAnimating()
         }.catch { _ in
-            self.placeholderView.isHidden = false
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.placeholderView.isHidden = false
+                self.layoutChartSubviews()
+            }
         }
     }
 
@@ -185,34 +199,29 @@ class ChartWalletSlideView: WalletSlideView, ChartViewDelegate, ChartFilterToolb
     }
 
     func chartUrl() -> URL {
-        let fromInterval = timeInterval(byFilter: self.filter)
+        var components = URLComponents(string: Constants.chartDataEndpoint)!
+        components.queryItems = [
+            URLQueryItem(name: "vs_currency", value: "usd"),
+            URLQueryItem(name: "days", value: coinGeckoDays(byFilter: self.filter))
+        ]
 
-        if fromInterval == nil {
-            return URL(string: Constants.chartDataEndpoint)!
-        }
-
-        let now = Int(Date().timeIntervalSince1970)
-        let from = Int(fromInterval!)
-
-        let filter = "\(from)000/\(now)000/"
-
-        return URL(string: "\(Constants.chartDataEndpoint)\(filter)")!
+        return components.url!
     }
 
-    func timeInterval(byFilter filter: ChartFilterToolbar.Filter) -> TimeInterval? {
+    func coinGeckoDays(byFilter filter: ChartFilterToolbar.Filter) -> String {
         switch filter {
         case .oneDay:
-            return Date().yesterday.timeIntervalSince1970
+            return "1"
         case .oneWeek:
-            return Date().weekAgo.timeIntervalSince1970
+            return "7"
         case .oneMonth:
-            return Date().oneMonthAgo.timeIntervalSince1970
+            return "30"
         case .threeMonths:
-            return Date().threeMonthsAgo.timeIntervalSince1970
+            return "90"
         case .oneYear:
-            return Date().yearAgo.timeIntervalSince1970
+            return "365"
         case .all:
-            return nil
+            return "3650"
         }
     }
 

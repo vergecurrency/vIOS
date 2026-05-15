@@ -27,6 +27,7 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     ]
 
     private var interval: Timer?
+    private var lastRefresh: TimeInterval = 0
     private var fiatRateInfo: FiatRate? {
         return self.applicationRepository.latestRateInfo
     }
@@ -46,6 +47,14 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
         interval = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.didReceiveStats()
+        }
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+
+        if window != nil {
+            refreshStatistics()
         }
     }
 
@@ -133,7 +142,17 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
     }
 
     @IBAction func refreshData(sender: Any) {
-        self.fiatRateTicker.tick()
+        refreshStatistics(force: true)
+    }
+
+    func refreshStatistics(force: Bool = false) {
+        let now = Date.timeIntervalSinceReferenceDate
+        guard force || now - lastRefresh > Constants.fetchRateTimeout else {
+            return
+        }
+
+        lastRefresh = now
+        fiatRateTicker.tick()
     }
 
     override func updateColors() {

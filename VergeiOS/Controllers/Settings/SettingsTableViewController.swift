@@ -229,16 +229,30 @@ class SettingsTableViewController: EdgedTableViewController {
         fiatRateTicker.stop()
         applicationRepository.switchWalletProfile(id: profile.id)
 
-        if let mnemonic = applicationRepository.mnemonic,
-           let passphrase = applicationRepository.passphrase {
-            credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
-        } else {
+        guard let mnemonic = applicationRepository.mnemonic else {
             applicationRepository.switchWalletProfile(id: originalProfileId)
             walletTicker.start()
             fiatRateTicker.start()
             showWalletSwitchError("The selected wallet is missing its recovery data.")
             return
         }
+
+        let passphrase: String
+        if applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
+            guard let storedPassphrase = applicationRepository.passphrase else {
+                applicationRepository.switchWalletProfile(id: originalProfileId)
+                walletTicker.start()
+                fiatRateTicker.start()
+                showWalletSwitchError("The selected wallet is missing its recovery data.")
+                return
+            }
+
+            passphrase = storedPassphrase
+        } else {
+            passphrase = ""
+        }
+
+        credentials.reset(mnemonic: mnemonic, passphrase: passphrase)
 
         walletClient.resetServiceUrl(baseUrl: applicationRepository.walletServiceUrl)
         transactionManager.removeAll()

@@ -19,9 +19,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     var electrumXClient: ElectrumXClient!
 
     var items: [Vws.TxHistory] = []
-    private let electrumXStatusDot = UIView()
-    private let electrumXStatusLabel = UILabel()
-    private var didSetupElectrumXStatusHeader = false
+    private let serverStatusDot = UIView()
+    private let serverStatusLabel = UILabel()
+    private var didSetupServerStatusHeader = false
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -73,7 +73,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         super.layoutSubviews()
 
         installTableViewPlaceholder()
-        setupElectrumXStatusHeader()
+        setupServerStatusHeader()
         getTransactions()
 
         tableView.layer.cornerRadius = 5.0
@@ -102,7 +102,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
 
     @objc func didSwitchWalletProfile(notification: Notification? = nil) {
         self.items = []
-        refreshElectrumXStatus()
+        refreshServerStatus()
 
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -148,7 +148,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshElectrumXStatus()
+        refreshServerStatus()
         self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
@@ -158,36 +158,40 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         }
     }
 
-    private func setupElectrumXStatusHeader() {
-        guard !didSetupElectrumXStatusHeader else {
+    private func setupServerStatusHeader() {
+        guard !didSetupServerStatusHeader else {
             return
         }
 
-        didSetupElectrumXStatusHeader = true
+        didSetupServerStatusHeader = true
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 48))
         header.backgroundColor = ThemeManager.shared.backgroundWhite()
 
         let pill = UIView()
         pill.translatesAutoresizingMaskIntoConstraints = false
-        pill.backgroundColor = UIColor.white
+        pill.backgroundColor = ThemeManager.shared.backgroundGrey().withAlphaComponent(0.86)
         pill.layer.cornerRadius = 16
         pill.layer.borderWidth = 1
-        pill.layer.borderColor = UIColor(white: 0.88, alpha: 1).cgColor
+        pill.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.38).cgColor
+        pill.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        pill.layer.shadowOpacity = 0.18
+        pill.layer.shadowRadius = 10
+        pill.layer.shadowOffset = CGSize(width: 0, height: 0)
 
-        electrumXStatusDot.translatesAutoresizingMaskIntoConstraints = false
-        electrumXStatusDot.layer.cornerRadius = 5
-        electrumXStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+        serverStatusDot.translatesAutoresizingMaskIntoConstraints = false
+        serverStatusDot.layer.cornerRadius = 5
+        serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
 
-        electrumXStatusLabel.translatesAutoresizingMaskIntoConstraints = false
-        electrumXStatusLabel.font = UIFont.avenir(size: 12)
-        electrumXStatusLabel.textColor = ThemeManager.shared.secondaryDark()
-        electrumXStatusLabel.text = "ElectrumX: checking..."
-        electrumXStatusLabel.adjustsFontSizeToFitWidth = true
-        electrumXStatusLabel.minimumScaleFactor = 0.75
+        serverStatusLabel.translatesAutoresizingMaskIntoConstraints = false
+        serverStatusLabel.font = UIFont.avenir(size: 12)
+        serverStatusLabel.textColor = ThemeManager.shared.secondaryLight()
+        serverStatusLabel.text = "Server: checking..."
+        serverStatusLabel.adjustsFontSizeToFitWidth = true
+        serverStatusLabel.minimumScaleFactor = 0.75
 
         header.addSubview(pill)
-        pill.addSubview(electrumXStatusDot)
-        pill.addSubview(electrumXStatusLabel)
+        pill.addSubview(serverStatusDot)
+        pill.addSubview(serverStatusLabel)
 
         NSLayoutConstraint.activate([
             pill.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 12),
@@ -195,23 +199,45 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             pill.topAnchor.constraint(equalTo: header.topAnchor, constant: 6),
             pill.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -8),
 
-            electrumXStatusDot.leadingAnchor.constraint(equalTo: pill.leadingAnchor, constant: 12),
-            electrumXStatusDot.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
-            electrumXStatusDot.widthAnchor.constraint(equalToConstant: 10),
-            electrumXStatusDot.heightAnchor.constraint(equalToConstant: 10),
+            serverStatusDot.leadingAnchor.constraint(equalTo: pill.leadingAnchor, constant: 12),
+            serverStatusDot.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
+            serverStatusDot.widthAnchor.constraint(equalToConstant: 10),
+            serverStatusDot.heightAnchor.constraint(equalToConstant: 10),
 
-            electrumXStatusLabel.leadingAnchor.constraint(equalTo: electrumXStatusDot.trailingAnchor, constant: 8),
-            electrumXStatusLabel.trailingAnchor.constraint(equalTo: pill.trailingAnchor, constant: -12),
-            electrumXStatusLabel.centerYAnchor.constraint(equalTo: pill.centerYAnchor)
+            serverStatusLabel.leadingAnchor.constraint(equalTo: serverStatusDot.trailingAnchor, constant: 8),
+            serverStatusLabel.trailingAnchor.constraint(equalTo: pill.trailingAnchor, constant: -12),
+            serverStatusLabel.centerYAnchor.constraint(equalTo: pill.centerYAnchor)
         ])
 
         tableView.tableHeaderView = header
-        refreshElectrumXStatus()
+        refreshServerStatus()
+    }
+
+    private func refreshServerStatus() {
+        guard let mnemonic = applicationRepository.mnemonic else {
+            setServerStatus(name: "Server", host: nil, connected: false)
+            return
+        }
+
+        if applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
+            setVwsStatus()
+        } else {
+            refreshElectrumXStatus()
+        }
+    }
+
+    private func setVwsStatus() {
+        guard let host = URL(string: applicationRepository.walletServiceUrl)?.host else {
+            setServerStatus(name: "VWS", host: nil, connected: false)
+            return
+        }
+
+        setServerStatus(name: "VWS", host: host, connected: true)
     }
 
     private func refreshElectrumXStatus() {
-        electrumXStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
-        electrumXStatusLabel.text = "ElectrumX: checking..."
+        serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+        serverStatusLabel.text = "ElectrumX: checking..."
 
         electrumXClient.checkConnection { [weak self] status in
             DispatchQueue.main.async {
@@ -220,13 +246,21 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
                 }
 
                 if status.connected, let server = status.server {
-                    self.electrumXStatusDot.backgroundColor = ThemeManager.shared.vergeGreen()
-                    self.electrumXStatusLabel.text = "ElectrumX: connected to \(server.host)"
+                    self.setServerStatus(name: "ElectrumX", host: server.host, connected: true)
                 } else {
-                    self.electrumXStatusDot.backgroundColor = ThemeManager.shared.vergeRed()
-                    self.electrumXStatusLabel.text = "ElectrumX: not connected"
+                    self.setServerStatus(name: "ElectrumX", host: nil, connected: false)
                 }
             }
+        }
+    }
+
+    private func setServerStatus(name: String, host: String?, connected: Bool) {
+        serverStatusDot.backgroundColor = connected ? ThemeManager.shared.vergeGreen() : ThemeManager.shared.vergeRed()
+
+        if connected, let host = host {
+            serverStatusLabel.text = "\(name): connected to \(host)"
+        } else {
+            serverStatusLabel.text = "\(name): not connected"
         }
     }
 

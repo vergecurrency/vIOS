@@ -90,8 +90,14 @@ extension UITextField {
     }
 
     override func updateColors() {
+        self.backgroundColor = ThemeManager.shared.backgroundGrey()
         self.textColor = ThemeManager.shared.secondaryDark()
+        self.tintColor = ThemeManager.shared.primaryLight()
         self.keyboardAppearance = ThemeManager.shared.currentTheme.keyboardAppearance
+        self.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.5).cgColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 6
+        self.clipsToBounds = true
 
         guard let placeholder = self.placeholder else {
             self.attributedPlaceholder = nil
@@ -130,6 +136,12 @@ extension UIImageView {
 extension RoundedButton {
     override func updateColors() {
         self.backgroundColor = ThemeManager.shared.primaryLight()
+        self.setTitleColor(ThemeManager.shared.backgroundGrey(), for: .normal)
+        self.tintColor = ThemeManager.shared.backgroundGrey()
+        self.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowRadius = 12
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
 }
 
@@ -158,10 +170,11 @@ extension UITableViewCell {
         colorView.backgroundColor = ThemeManager.shared.backgroundBlue()
         self.selectedBackgroundView = colorView
         self.backgroundColor = ThemeManager.shared.backgroundWhite()
+        self.tintColor = ThemeManager.shared.primaryLight()
 
         self.textLabel?.textColor = ThemeManager.shared.secondaryDark()
         self.textLabel?.backgroundColor = .clear
-        self.detailTextLabel?.textColor = ThemeManager.shared.primaryLight()
+        self.detailTextLabel?.textColor = ThemeManager.shared.secondaryLight()
         self.detailTextLabel?.backgroundColor = .clear
 
         self.textLabel?.setNeedsDisplay()
@@ -220,12 +233,55 @@ extension UITabBar {
         self.layer.borderColor = UIColor.clear.cgColor
         self.clipsToBounds = true
 
-        self.tintColor = ThemeManager.shared.primaryLight()
-        self.unselectedItemTintColor = ThemeManager.shared.vergeGrey()
+        let selectedGlowColor = UIColor(rgb: 0xFF3DF2)
+        self.tintColor = selectedGlowColor
+        self.unselectedItemTintColor = ThemeManager.shared.vergeGreen()
         self.barTintColor = ThemeManager.shared.backgroundGrey()
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
+        self.layer.shadowColor = selectedGlowColor.cgColor
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowRadius = 18
+        self.layer.shadowOffset = CGSize(width: 0, height: -2)
         self.barStyle = ThemeManager.shared.barStyle()
         self.isTranslucent = ThemeManager.shared.currentTheme.isTranslucent
+        self.items?.forEach { item in
+            item.image = item.image?.withRenderingMode(.alwaysTemplate)
+            item.selectedImage = item.selectedImage?.withRenderingMode(.alwaysTemplate)
+        }
+
+        if #available(iOS 13.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = ThemeManager.shared.backgroundGrey()
+            appearance.shadowColor = .clear
+
+            let selectedAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: selectedGlowColor
+            ]
+            let normalAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: ThemeManager.shared.vergeGreen()
+            ]
+
+            appearance.stackedLayoutAppearance.selected.iconColor = selectedGlowColor
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+            appearance.stackedLayoutAppearance.normal.iconColor = ThemeManager.shared.vergeGreen()
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
+
+            appearance.inlineLayoutAppearance.selected.iconColor = selectedGlowColor
+            appearance.inlineLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+            appearance.inlineLayoutAppearance.normal.iconColor = ThemeManager.shared.vergeGreen()
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = normalAttributes
+
+            appearance.compactInlineLayoutAppearance.selected.iconColor = selectedGlowColor
+            appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = selectedAttributes
+            appearance.compactInlineLayoutAppearance.normal.iconColor = ThemeManager.shared.vergeGreen()
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = normalAttributes
+
+            self.standardAppearance = appearance
+            if #available(iOS 15.0, *) {
+                self.scrollEdgeAppearance = appearance
+            }
+        }
 
         self.setNeedsDisplay()
     }
@@ -298,6 +354,10 @@ extension UINavigationBar {
         self.tintColor = ThemeManager.shared.primaryLight()
         self.barTintColor = ThemeManager.shared.backgroundGrey()
         self.backgroundColor = ThemeManager.shared.backgroundGrey()
+        self.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        self.layer.shadowOpacity = 0.18
+        self.layer.shadowRadius = 12
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.barStyle = ThemeManager.shared.barStyle()
         self.isTranslucent = false
         self.titleTextAttributes = [

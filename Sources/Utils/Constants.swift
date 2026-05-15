@@ -80,7 +80,7 @@ public struct Constants {
     /**
      * Chart data endpoint.
      */
-    public static let chartDataEndpoint: String = "https://api.vergecurrency.network/price/api/v1/chart/"
+    public static let chartDataEndpoint: String = "https://api.coingecko.com/api/v3/coins/verge/market_chart"
 
     /**
      * IP Address endpoint.

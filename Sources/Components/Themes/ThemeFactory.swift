@@ -22,33 +22,33 @@ class ThemeFactory: NSObject {
 
     lazy var featherMode: Theme = {
         var featherMode = Theme(
-            name: "settings.themes.featherMode".localized,
+            name: "Retrowave",
             id: "featherMode",
             icon: UIImage(named: "Feather") ?? UIImage(),
 
-            primaryDark: UIColor(rgb: 0x112034),
-            primaryLight: UIColor(rgb: 0x37BCE1),
-            secondaryDark: UIColor(rgb: 0x183C54),
-            secondaryLight: UIColor(rgb: 0x637885),
-            backgroundBlue: UIColor(rgb: 0xDCEFFC),
-            backgroundGrey: UIColor(rgb: 0xF8F7F7),
-            backgroundWhite: UIColor(rgb: 0xFFFFFF),
+            primaryDark: UIColor(rgb: 0xF6F3FF),
+            primaryLight: UIColor(rgb: 0x20DFC8),
+            secondaryDark: UIColor(rgb: 0xF6F3FF),
+            secondaryLight: UIColor(rgb: 0xB9ADD8),
+            backgroundBlue: UIColor(rgb: 0x26153B),
+            backgroundGrey: UIColor(rgb: 0x030207),
+            backgroundWhite: UIColor(rgb: 0x181126),
 
-            separatorColor: UIColor(red: 0.85, green: 0.85, blue: 0.9, alpha: 1),
-            placeholderColor: UIColor(rgb: 0x000000).withAlphaComponent(0.3),
-            backgroundTopColor: UIColor(red: 0.39, green: 0.80, blue: 0.86, alpha: 1.0),
-            backgroundBottomColor: UIColor(rgb: 0x37BCE1),
-            qrCodeColor: UIColor(red: 0.11, green: 0.62, blue: 0.83, alpha: 1.0),
-            priceChartColor: UIColor.white.withAlphaComponent(0),
+            separatorColor: UIColor(rgb: 0x4A3680).withAlphaComponent(0.55),
+            placeholderColor: UIColor(rgb: 0x897DA7),
+            backgroundTopColor: UIColor(rgb: 0x120B1D),
+            backgroundBottomColor: UIColor(rgb: 0x030207),
+            qrCodeColor: UIColor(rgb: 0x120B1D),
+            priceChartColor: UIColor(rgb: 0x20DFC8).withAlphaComponent(0.18),
 
-            vergeGrey: UIColor(rgb: 0x9B9B9B),
-            vergeGreen: UIColor(rgb: 0x008570),
-            vergeRed: UIColor(rgb: 0xFF5252),
+            vergeGrey: UIColor(rgb: 0x897DA7),
+            vergeGreen: UIColor(rgb: 0x57F287),
+            vergeRed: UIColor(rgb: 0xFF8A80),
 
-            barStyle: .default,
-            statusBarStyle: .default,
-            isTranslucent: true,
-            keyboardAppearance: .default,
+            barStyle: .black,
+            statusBarStyle: .lightContent,
+            isTranslucent: false,
+            keyboardAppearance: .dark,
 
             unlockBackgroundImage: "UnlockBackground",
             noBalancePlaceholderImage: "NoBalancePlaceholder",
@@ -59,10 +59,6 @@ class ThemeFactory: NSObject {
             creditsImage: "Hero",
             appIconName: "AppIconFeather"
         )
-
-        if #available(iOS 13.0, *) {
-            featherMode.statusBarStyle = .darkContent
-        }
 
         return featherMode
     }()

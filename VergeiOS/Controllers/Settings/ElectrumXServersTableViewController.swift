@@ -63,7 +63,7 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
             cell.accessoryType = server == applicationRepository.activeElectrumXServer ? .checkmark : .none
             cell.textLabel?.font = UIFont.avenir(size: 17)
             cell.detailTextLabel?.font = UIFont.avenir(size: 12)
-            cell.detailTextLabel?.textColor = .gray
+            cell.detailTextLabel?.textColor = ThemeManager.shared.secondaryLight()
         } else {
             cell.textLabel?.text = "Restore default servers"
             cell.textLabel?.font = UIFont.avenir(size: 17)
@@ -161,12 +161,17 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
 
     private func setupStatusPill() {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 58))
+        header.backgroundColor = ThemeManager.shared.backgroundGrey()
         let pill = UIView()
         pill.translatesAutoresizingMaskIntoConstraints = false
-        pill.backgroundColor = UIColor.white
+        pill.backgroundColor = ThemeManager.shared.backgroundWhite()
         pill.layer.cornerRadius = 18
         pill.layer.borderWidth = 1
-        pill.layer.borderColor = UIColor(white: 0.88, alpha: 1).cgColor
+        pill.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.38).cgColor
+        pill.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        pill.layer.shadowOpacity = 0.18
+        pill.layer.shadowRadius = 10
+        pill.layer.shadowOffset = CGSize(width: 0, height: 0)
 
         statusDot.translatesAutoresizingMaskIntoConstraints = false
         statusDot.layer.cornerRadius = 5
@@ -174,7 +179,7 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
 
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.font = UIFont.avenir(size: 13)
-        statusLabel.textColor = ThemeManager.shared.secondaryDark()
+        statusLabel.textColor = ThemeManager.shared.secondaryLight()
         statusLabel.text = "ElectrumX: checking..."
         statusLabel.adjustsFontSizeToFitWidth = true
         statusLabel.minimumScaleFactor = 0.8

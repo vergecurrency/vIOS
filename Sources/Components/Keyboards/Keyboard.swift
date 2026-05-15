@@ -50,14 +50,22 @@ class Keyboard: UIView {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5.0).cgPath
             shadowLayer.fillColor = ThemeManager.shared.backgroundWhite().cgColor
+            shadowLayer.strokeColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.28).cgColor
+            shadowLayer.lineWidth = 1
 
-            shadowLayer.shadowColor = UIColor.darkGray.cgColor
+            shadowLayer.shadowColor = ThemeManager.shared.primaryLight().cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize.zero
             shadowLayer.shadowOpacity = 0.15
             shadowLayer.shadowRadius = 15
 
             layer.insertSublayer(shadowLayer, at: 0)
+        } else {
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 5.0).cgPath
+            shadowLayer.fillColor = ThemeManager.shared.backgroundWhite().cgColor
+            shadowLayer.strokeColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.28).cgColor
+            shadowLayer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+            shadowLayer.shadowPath = shadowLayer.path
         }
 
         layer.cornerRadius = 5.0

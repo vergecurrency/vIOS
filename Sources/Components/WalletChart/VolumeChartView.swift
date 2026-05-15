@@ -20,16 +20,21 @@ class VolumeChartView: AbstractChartView {
         self.setNeedsDisplay()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        chart.frame = CGRect(
+            x: -10,
+            y: -10,
+            width: bounds.width + 20,
+            height: bounds.height + 20
+        )
+    }
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
-        chart.frame = CGRect(
-            x: rect.origin.x + -10,
-            y: rect.origin.y + -10,
-            width: rect.size.width + 20,
-            height: rect.size.height + 20
-        )
-
+        chart.backgroundColor = UIColor(rgb: 0x05020B)
         chart.noDataTextColor = ThemeManager.shared.secondaryDark()
         chart.dragEnabled = false
         chart.setScaleEnabled(false)
@@ -41,8 +46,15 @@ class VolumeChartView: AbstractChartView {
         chart.legend.enabled = false
         chart.chartDescription.text = ""
         chart.highlightPerTapEnabled = false
+        chart.drawGridBackgroundEnabled = false
+        chart.layer.shadowColor = UIColor(rgb: 0x57F287).cgColor
+        chart.layer.shadowOpacity = 0.25
+        chart.layer.shadowRadius = 14
+        chart.layer.shadowOffset = CGSize(width: 0, height: 0)
 
-        addSubview(chart)
+        if chart.superview == nil {
+            addSubview(chart)
+        }
     }
 
     func set(chartData: [BarChartDataEntry]) {
@@ -60,8 +72,12 @@ class VolumeChartView: AbstractChartView {
 
     fileprivate func style(priceSet: BarChartDataSet) {
         priceSet.drawValuesEnabled = false
-        priceSet.colors = [ThemeManager.shared.backgroundBlue()]
+        priceSet.colors = [
+            UIColor(rgb: 0x57F287).withAlphaComponent(0.28),
+            UIColor(rgb: 0x20DFC8).withAlphaComponent(0.2),
+            UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.16)
+        ]
         priceSet.barBorderWidth = 2.0
-        priceSet.barBorderColor = ThemeManager.shared.backgroundBlue()
+        priceSet.barBorderColor = UIColor(rgb: 0x57F287).withAlphaComponent(0.22)
     }
 }

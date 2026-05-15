@@ -24,7 +24,9 @@ public class HGPlaceholderView: UIView {
     }
 
     private func setup(text: String, image: UIImage?) {
-        backgroundColor = UIColor.systemGray6
+        backgroundColor = ThemeManager.shared.backgroundWhite()
+        layer.borderWidth = 1
+        layer.borderColor = ThemeManager.shared.separatorColor().cgColor
         layer.cornerRadius = 8
         clipsToBounds = true
 
@@ -36,7 +38,7 @@ public class HGPlaceholderView: UIView {
         }
 
         label.text = text
-        label.textColor = .gray
+        label.textColor = ThemeManager.shared.secondaryLight()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 0

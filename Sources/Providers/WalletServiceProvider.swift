@@ -151,9 +151,6 @@ class WalletServiceProvider: ServiceProvider {
             let appRepo = resolver.resolve(ApplicationRepository.self)
             let mnemonic = appRepo?.mnemonic ?? []
             let passphrase = appRepo?.passphrase ?? ""
-            print("🔍 Credentials initialization:")
-            print("   Mnemonic: \(mnemonic)")
-            print("   Passphrase: '\(passphrase)' (length: \(passphrase.count))")
 
             // Use a fallback dummy mnemonic if empty
             let safeMnemonic: [String]
@@ -164,7 +161,6 @@ class WalletServiceProvider: ServiceProvider {
                     "abandon", "abandon", "abandon", "abandon",
                     "abandon", "abandon", "abandon", "about"
                 ]
-                print("Using dummy mnemonic for safe credentials initialization.")
             } else {
                 safeMnemonic = mnemonic
             }

@@ -20,6 +20,8 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        applyRetrowaveTabStyling()
+
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(demandSendView(notification:)),
@@ -38,6 +40,8 @@ class MainTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        applyRetrowaveTabStyling()
+
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
             if let sendTransaction = delegate.sendRequest {
                 // Prepare the send view with the transaction.
@@ -48,6 +52,65 @@ class MainTabBarController: UITabBarController {
             } else if self.shortcutsManager.needHandleShortcut {
                 proceedShortcut()
                 self.shortcutsManager.needHandleShortcut = false
+            }
+        }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        applyRetrowaveTabStyling()
+    }
+
+    private func applyRetrowaveTabStyling() {
+        let normalColor = ThemeManager.shared.vergeGreen()
+        let selectedColor = UIColor(rgb: 0xFF3DF2)
+
+        tabBar.tintColor = selectedColor
+        tabBar.unselectedItemTintColor = normalColor
+        tabBar.barTintColor = ThemeManager.shared.backgroundGrey()
+        tabBar.backgroundColor = ThemeManager.shared.backgroundGrey()
+        tabBar.layer.shadowColor = selectedColor.cgColor
+        tabBar.layer.shadowOpacity = 0.25
+        tabBar.layer.shadowRadius = 18
+        tabBar.layer.shadowOffset = CGSize(width: 0, height: -2)
+
+        tabBar.items?.forEach { item in
+            if let image = item.image {
+                item.image = image
+                    .withRenderingMode(.alwaysTemplate)
+                    .withTintColor(normalColor, renderingMode: .alwaysOriginal)
+            }
+            if let selectedImage = item.selectedImage ?? item.image {
+                item.selectedImage = selectedImage
+                    .withRenderingMode(.alwaysTemplate)
+                    .withTintColor(selectedColor, renderingMode: .alwaysOriginal)
+            }
+            item.setTitleTextAttributes([.foregroundColor: normalColor], for: .normal)
+            item.setTitleTextAttributes([.foregroundColor: selectedColor], for: .selected)
+        }
+
+        if #available(iOS 13.0, *) {
+            let selectedAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: selectedColor]
+            let normalAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: normalColor]
+            let appearance = tabBar.standardAppearance.copy() as! UITabBarAppearance
+
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = ThemeManager.shared.backgroundGrey()
+            appearance.shadowColor = .clear
+
+            [appearance.stackedLayoutAppearance, appearance.inlineLayoutAppearance, appearance.compactInlineLayoutAppearance].forEach { itemAppearance in
+                itemAppearance.normal.iconColor = normalColor
+                itemAppearance.normal.titleTextAttributes = normalAttributes
+                itemAppearance.selected.iconColor = selectedColor
+                itemAppearance.selected.titleTextAttributes = selectedAttributes
+                itemAppearance.focused.iconColor = selectedColor
+                itemAppearance.focused.titleTextAttributes = selectedAttributes
+            }
+
+            tabBar.standardAppearance = appearance
+            if #available(iOS 15.0, *) {
+                tabBar.scrollEdgeAppearance = appearance
             }
         }
     }

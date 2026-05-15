@@ -32,8 +32,10 @@ import UIKit
         self.shadowLayer = CAShapeLayer()
         self.shadowLayer!.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.cornerRadius).cgPath
         self.shadowLayer!.fillColor = self.backgroundColor?.cgColor
+        self.shadowLayer!.strokeColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.32).cgColor
+        self.shadowLayer!.lineWidth = 1
 
-        self.shadowLayer!.shadowColor = UIColor.darkGray.cgColor
+        self.shadowLayer!.shadowColor = ThemeManager.shared.primaryLight().cgColor
         self.shadowLayer!.shadowPath = self.shadowLayer!.path
         self.shadowLayer!.shadowOffset = CGSize.zero
         self.shadowLayer!.shadowOpacity = self.shadowOpacity
@@ -42,6 +44,8 @@ import UIKit
         self.layer.insertSublayer(self.shadowLayer!, at: 0)
 
         self.layer.cornerRadius = self.cornerRadius
+        self.layer.borderWidth = 1
+        self.layer.borderColor = ThemeManager.shared.separatorColor().cgColor
     }
 
     override func updateColors() {

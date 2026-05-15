@@ -18,9 +18,23 @@ import UIKit
     @IBInspectable var left: Bool = true
     @IBInspectable var right: Bool = true
 
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.becomeThemeable()
+    }
+
+    override func updateColors() {
+        self.borderColor = ThemeManager.shared.separatorColor()
+        self.layer.sublayers?.removeAll(where: { $0.name == "BorderPanelViewBorder" })
+        self.setNeedsDisplay()
+    }
+
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
+        self.layer.sublayers?.removeAll(where: { $0.name == "BorderPanelViewBorder" })
+
         if top {
             addTopBorder(rect)
         }
@@ -43,6 +57,7 @@ import UIKit
             height: width
         )
         let border: CALayer = CALayer(layer: self.layer)
+        border.name = "BorderPanelViewBorder"
         border.frame = borderRect
         border.backgroundColor = self.borderColor.cgColor
 
@@ -57,6 +72,7 @@ import UIKit
             height: width
         )
         let border: CALayer = CALayer(layer: self.layer)
+        border.name = "BorderPanelViewBorder"
         border.frame = borderRect
         border.backgroundColor = self.borderColor.cgColor
 
@@ -71,6 +87,7 @@ import UIKit
             height: rect.height
         )
         let border: CALayer = CALayer(layer: self.layer)
+        border.name = "BorderPanelViewBorder"
         border.frame = borderRect
         border.backgroundColor = self.borderColor.cgColor
 
@@ -85,6 +102,7 @@ import UIKit
             height: rect.height
         )
         let border: CALayer = CALayer(layer: self.layer)
+        border.name = "BorderPanelViewBorder"
         border.frame = borderRect
         border.backgroundColor = self.borderColor.cgColor
 

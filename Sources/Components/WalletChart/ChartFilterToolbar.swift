@@ -29,7 +29,6 @@ class ChartFilterToolbar: UIToolbar {
         Filter.oneDay,
         Filter.oneWeek,
         Filter.oneMonth,
-        Filter.threeMonths,
         Filter.oneYear,
         Filter.all
     ]
@@ -38,7 +37,6 @@ class ChartFilterToolbar: UIToolbar {
         items = []
 
         for index in buttons {
-            let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
             let button = UIBarButtonItem(
                 title: names[index],
                 style: .plain,
@@ -46,12 +44,15 @@ class ChartFilterToolbar: UIToolbar {
                 action: #selector(didSelectFilter(sender:))
             )
 
+            button.width = 30
             button.tintColor = ThemeManager.shared.vergeGrey()
 
             items?.append(button)
 
             if buttons.last != index {
-                items?.append(flexibleSpace)
+                let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+                spacer.width = 3
+                items?.append(spacer)
             }
         }
     }

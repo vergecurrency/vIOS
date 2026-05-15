@@ -496,6 +496,10 @@
 		93CE5A682E98C3A500A0D168 /* ReadOnlyHDWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyHDWallet.swift; sourceTree = "<group>"; };
 		93CE5A692E98C3A500A0D168 /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
 		93DA191C2EBE1F69009A50DD /* TorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorClient.swift; sourceTree = "<group>"; };
+		93E100002EC0000000000001 /* ElectrumXServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXServer.swift; sourceTree = "<group>"; };
+		93E100022EC0000000000002 /* ElectrumXClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXClient.swift; sourceTree = "<group>"; };
+		93E100042EC0000000000004 /* ElectrumXServersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXServersTableViewController.swift; sourceTree = "<group>"; };
+		93E100062EC0000000000006 /* ElectrumXWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXWalletClient.swift; sourceTree = "<group>"; };
 		93FDEEA12E904F4900B583A0 /* BIP32ManualDerivator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP32ManualDerivator.swift; sourceTree = "<group>"; };
 		A030BE231C831D876E8DAB24 /* Pods-VergeiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOS.release.xcconfig"; path = "Target Support Files/Pods-VergeiOS/Pods-VergeiOS.release.xcconfig"; sourceTree = "<group>"; };
 		A11690AD6E9A035F1BEBB8FB /* Pods-VergeiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeiOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VergeiOSTests/Pods-VergeiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -559,7 +563,6 @@
 		A324DAF122A43AE800EF12D7 /* ReceiveCardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCardImageView.swift; sourceTree = "<group>"; };
 		A324DAF322A83C6000EF12D7 /* ThemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewController.swift; sourceTree = "<group>"; };
 		A32566402112588D006FB08A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		93E100042EC0000000000004 /* ElectrumXServersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXServersTableViewController.swift; sourceTree = "<group>"; };
 		A32566442113729C006FB08A /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
 		A3256646211372A7006FB08A /* Send.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Send.storyboard; sourceTree = "<group>"; };
 		A3256648211372B3006FB08A /* Transactions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transactions.storyboard; sourceTree = "<group>"; };
@@ -568,9 +571,6 @@
 		A325664E2113B504006FB08A /* CurrencyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewController.swift; sourceTree = "<group>"; };
 		A3256664211A3B61006FB08A /* FiatRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiatRate.swift; sourceTree = "<group>"; };
 		A3256667211B8E1A006FB08A /* ApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationRepository.swift; sourceTree = "<group>"; };
-		93E100002EC0000000000001 /* ElectrumXServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXServer.swift; sourceTree = "<group>"; };
-		93E100022EC0000000000002 /* ElectrumXClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXClient.swift; sourceTree = "<group>"; };
-		93E100062EC0000000000006 /* ElectrumXWalletClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrumXWalletClient.swift; sourceTree = "<group>"; };
 		A3256678211CBA9A006FB08A /* VergeiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A325667C211CBA9A006FB08A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3256694211CBBE2006FB08A /* VergeiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VergeiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -872,8 +872,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		93A0E5AE2E868AE900CA0875 /* HGPlaceholders */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = HGPlaceholders;
 			sourceTree = "<group>";
 		};
@@ -2352,9 +2350,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS-VergeiOSUITests/Pods-VergeiOS-VergeiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2535,9 +2537,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-VergeiOS/Pods-VergeiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3180,7 +3186,7 @@
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3227,7 +3233,7 @@
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3273,7 +3279,7 @@
 				CODE_SIGN_ENTITLEMENTS = VergeSiriUI/Assets/VergeSiriUI.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				INFOPLIST_FILE = VergeSiriUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3298,7 +3304,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiriUI/Assets/VergeSiriUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				INFOPLIST_FILE = VergeSiriUI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3322,7 +3328,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3353,7 +3359,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3382,7 +3388,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiri/VergeSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3410,7 +3416,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VergeSiri/VergeSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MPKBKE3UQ;
+				DEVELOPMENT_TEAM = B88XFKB847;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

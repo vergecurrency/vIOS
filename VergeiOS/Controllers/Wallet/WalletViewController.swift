@@ -146,6 +146,29 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
         }
     }
 
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        refreshCurrentSlideIfNeeded(scrollView)
+    }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        refreshCurrentSlideIfNeeded(scrollView)
+    }
+
+    private func refreshCurrentSlideIfNeeded(_ scrollView: UIScrollView) {
+        guard scrollView == walletSlideScrollView else {
+            return
+        }
+
+        let currentPage = Int(round(walletSlideScrollView.contentOffset.x / walletSlideScrollView.frame.width))
+        guard walletSlides.indices.contains(currentPage) else {
+            return
+        }
+
+        if let summarySlide = walletSlides[currentPage] as? SummaryWalletSlideView {
+            summarySlide.refreshStatistics()
+        }
+    }
+
     @objc func didReceiveStats(notification: Notification? = nil) {
         setStats()
     }

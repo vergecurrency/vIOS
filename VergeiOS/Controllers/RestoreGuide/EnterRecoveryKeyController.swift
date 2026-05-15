@@ -14,7 +14,34 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     @IBOutlet weak var keyTextField: UITextField!
     @IBOutlet weak var keyProgressLabel: UILabel!
 
-    private let numberOfWords = ApplicationRepository.maxMnemonicWordCount
+    private enum RestoreType {
+        case legacyVws
+        case electrumX
+
+        var wordCount: Int {
+            switch self {
+            case .legacyVws:
+                return 12
+            case .electrumX:
+                return 18
+            }
+        }
+
+        var title: String {
+            switch self {
+            case .legacyVws:
+                return "Legacy 12-word wallet"
+            case .electrumX:
+                return "ElectrumX 18-word wallet"
+            }
+        }
+    }
+
+    private var restoreType: RestoreType?
+    private var didPresentRestoreTypeChooser = false
+    private var numberOfWords: Int {
+        return restoreType?.wordCount ?? ApplicationRepository.createdWalletMnemonicWordCount
+    }
     private var index: Int = 0
     private var keys: [String] = []
     private lazy var doneButton = UIBarButtonItem(
@@ -34,13 +61,17 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.keyTextField.becomeFirstResponder()
+        if restoreType == nil && !didPresentRestoreTypeChooser {
+            self.presentRestoreTypeChooser()
+        } else {
+            self.keyTextField.becomeFirstResponder()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if ApplicationRepository.supportedMnemonicWordCounts.contains(self.keys.count) {
+        if self.restoreType == nil || ApplicationRepository.supportedMnemonicWordCounts.contains(self.keys.count) {
             self.keys = []
             self.index = 0
             self.updateView(index: self.index)
@@ -75,6 +106,38 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         self.keyTextField.delegate = self
         self.navigationItem.rightBarButtonItem = doneButton
         self.updateDoneButton()
+    }
+
+    private func presentRestoreTypeChooser() {
+        didPresentRestoreTypeChooser = true
+
+        let alert = UIAlertController(
+            title: "Restore wallet type",
+            message: "Choose the recovery phrase type for the wallet you are restoring.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: RestoreType.legacyVws.title, style: .default) { _ in
+            self.setRestoreType(.legacyVws)
+        })
+        alert.addAction(UIAlertAction(title: RestoreType.electrumX.title, style: .default) { _ in
+            self.setRestoreType(.electrumX)
+        })
+
+        self.present(alert, animated: true)
+    }
+
+    private func setRestoreType(_ restoreType: RestoreType) {
+        self.restoreType = restoreType
+        self.title = restoreType.title
+
+        if keys.count > restoreType.wordCount {
+            keys = Array(keys.prefix(restoreType.wordCount))
+        }
+
+        index = min(index, restoreType.wordCount - 1)
+        updateView(index: index)
+        keyTextField.becomeFirstResponder()
     }
 
     private func createLabelText(index: Int) -> String {
@@ -122,11 +185,18 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
 
     private func updateDoneButton() {
-        doneButton.isEnabled = ApplicationRepository.supportedMnemonicWordCounts.contains(keys.count)
+        guard let restoreType = restoreType else {
+            doneButton.isEnabled = false
+            return
+        }
+
+        doneButton.isEnabled = keys.count == restoreType.wordCount
     }
 
     @objc func previousClick() {
-        self.keys.removeLast()
+        if !self.keys.isEmpty {
+            self.keys.removeLast()
+        }
         self.index -= 1
         updateView(index: self.index)
     }
@@ -140,22 +210,28 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
             return
         }
 
+        if self.keys.count == self.numberOfWords {
+            self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
+            return
+        }
+
         if self.index < self.numberOfWords - 1 {
             self.index += 1
             self.updateView(index: self.index)
         }
-
-        if self.keys.count == self.numberOfWords {
-            self.performSegue(withIdentifier: "showFinalRecovery", sender: self)
-        }
     }
 
     @objc func doneClick() {
+        guard let restoreType = restoreType else {
+            self.presentRestoreTypeChooser()
+            return
+        }
+
         if let text = self.keyTextField.text, !text.isEmpty, !self.keys.indices.contains(index) {
             _ = self.addKeyToList(text: text)
         }
 
-        guard ApplicationRepository.supportedMnemonicWordCounts.contains(self.keys.count) else {
+        guard self.keys.count == restoreType.wordCount else {
             self.keyTextField.shake()
             return
         }
@@ -164,6 +240,12 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
 
     func setMnemonicAndProceed(_ mnemonic: [String]) {
+        if mnemonic.count == RestoreType.legacyVws.wordCount {
+            self.restoreType = .legacyVws
+        } else if mnemonic.count == RestoreType.electrumX.wordCount {
+            self.restoreType = .electrumX
+        }
+
         self.keys = mnemonic
 
         self.performSegue(withIdentifier: "showFinalRecovery", sender: self)

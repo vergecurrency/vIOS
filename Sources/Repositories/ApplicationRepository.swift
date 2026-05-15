@@ -168,6 +168,16 @@ class ApplicationRepository {
         return "wallet.profiles.\(profileId).\(key)"
     }
 
+    @discardableResult
+    private func saveSecureValue(_ value: String, forKey key: String) -> Bool {
+        let saved = keychain.set(value, forKey: key, withAccess: .accessibleAfterFirstUnlock)
+        if !saved {
+            print("Keychain save failed for \(key): \(keychain.lastResultCode)")
+        }
+
+        return saved && keychain.get(key) == value
+    }
+
     private func mnemonic(profileId: String) -> [String]? {
         var mnemonic = [String]()
 
@@ -186,8 +196,21 @@ class ApplicationRepository {
     }
 
     private func storedMnemonicWord(index: Int, profileId: String) -> String? {
-        return keychain.get(keychainKey("mnemonic.word.\(index)", profileId: profileId))
-            ?? userDefaults.string(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
+        let secureKey = keychainKey("mnemonic.word.\(index)", profileId: profileId)
+        if let word = keychain.get(secureKey) {
+            return word
+        }
+
+        let legacyDefaultsKey = defaultsKey("mnemonic.word.\(index)", profileId: profileId)
+        guard let word = userDefaults.string(forKey: legacyDefaultsKey) else {
+            return nil
+        }
+
+        if saveSecureValue(word, forKey: secureKey) {
+            userDefaults.removeObject(forKey: legacyDefaultsKey)
+        }
+
+        return word
     }
 
     private func isSupportedMnemonic(_ mnemonic: [String]?) -> Bool {
@@ -203,8 +226,21 @@ class ApplicationRepository {
     }
 
     private func passphrase(profileId: String) -> String? {
-        return keychain.get(keychainKey("wallet.passphrase", profileId: profileId))
-            ?? userDefaults.string(forKey: defaultsKey("wallet.passphrase", profileId: profileId))
+        let secureKey = keychainKey("wallet.passphrase", profileId: profileId)
+        if let passphrase = keychain.get(secureKey) {
+            return passphrase
+        }
+
+        let legacyDefaultsKey = defaultsKey("wallet.passphrase", profileId: profileId)
+        guard let passphrase = userDefaults.string(forKey: legacyDefaultsKey) else {
+            return nil
+        }
+
+        if saveSecureValue(passphrase, forKey: secureKey) {
+            userDefaults.removeObject(forKey: legacyDefaultsKey)
+        }
+
+        return passphrase
     }
 
     private func walletId(profileId: String) -> String? {
@@ -295,13 +331,15 @@ class ApplicationRepository {
         pendingSetupPassphrase = passphrase
 
         if let profileId = pendingSetupWalletProfileId {
-            keychain.set(passphrase, forKey: keychainKey("wallet.passphrase", profileId: profileId))
-            userDefaults.set(passphrase, forKey: defaultsKey("wallet.passphrase", profileId: profileId))
+            if saveSecureValue(passphrase, forKey: keychainKey("wallet.passphrase", profileId: profileId)) {
+                userDefaults.removeObject(forKey: defaultsKey("wallet.passphrase", profileId: profileId))
+            }
             upsertWalletProfile(id: profileId)
         }
 
-        keychain.set(passphrase, forKey: keychainKey("wallet.passphrase", profileId: activeWalletProfileId))
-        userDefaults.set(passphrase, forKey: defaultsKey("wallet.passphrase", profileId: activeWalletProfileId))
+        if saveSecureValue(passphrase, forKey: keychainKey("wallet.passphrase", profileId: activeWalletProfileId)) {
+            userDefaults.removeObject(forKey: defaultsKey("wallet.passphrase", profileId: activeWalletProfileId))
+        }
         upsertActiveWalletProfile()
     }
 
@@ -589,8 +627,9 @@ class ApplicationRepository {
             }
 
             for (index, word) in mnemonic.prefix(Self.maxMnemonicWordCount).enumerated() {
-                keychain.set(word, forKey: keychainKey("mnemonic.word.\(index)", profileId: profileId))
-                userDefaults.set(word, forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
+                if saveSecureValue(word, forKey: keychainKey("mnemonic.word.\(index)", profileId: profileId)) {
+                    userDefaults.removeObject(forKey: defaultsKey("mnemonic.word.\(index)", profileId: profileId))
+                }
             }
 
             upsertSetupWalletProfile()
