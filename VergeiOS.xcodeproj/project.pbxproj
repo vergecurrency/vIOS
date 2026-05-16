@@ -2236,7 +2236,7 @@
 				93609A122E8671A20045CAF9 /* XCRemoteSwiftPackageReference "SwinjectStoryboard" */,
 				936636402E8D63BF000F8BFA /* XCRemoteSwiftPackageReference "Charts" */,
 				93FDEEA32E90561A00B583A0 /* XCRemoteSwiftPackageReference "BigInt" */,
-				9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "CustomBitcoinKit" */,
+				9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "BitcoinKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A33F6A6D20EEE485001492C2 /* Products */;
@@ -3506,11 +3506,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "CustomBitcoinKit" */ = {
+		9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "BitcoinKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/shami123/CustomBitcoinKit.git";
+			repositoryURL = "https://github.com/vergecurrency/BitcoinKit.git";
 			requirement = {
-				branch = xvgChnages;
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -3623,12 +3623,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		933743502EBDFD1600E8201F /* BitcoinKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "CustomBitcoinKit" */;
+			package = 9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "BitcoinKit" */;
 			productName = BitcoinKit;
 		};
 		933743522EBDFD1600E8201F /* HdWalletKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "CustomBitcoinKit" */;
+			package = 9337434F2EBDFD1600E8201F /* XCRemoteSwiftPackageReference "BitcoinKit" */;
 			productName = HdWalletKit;
 		};
 		936099E52E8653300045CAF9 /* Swinject */ = {

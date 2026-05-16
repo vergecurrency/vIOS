@@ -1,5 +1,5 @@
 {
-  "originHash" : "19cfeeffbd208fcf369e193d3246d1423ca914e9d06385af89caec410a9eceb2",
+  "originHash" : "f7fa77e54ae96e254b49b2bc028c0c61c995f6a0d303c3a1f2ecc594c2d74dea",
   "pins" : [
     {
       "identity" : "bigint",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "e07e00fa1fd435143a2dcf8b7eec9a7710b2fdfe",
         "version" : "5.7.0"
+      }
+    },
+    {
+      "identity" : "bitcoinkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vergecurrency/BitcoinKit.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "088950fb54b00838fd90cd3dfa5fac7ece3caaed"
       }
     },
     {
@@ -47,15 +56,6 @@
       }
     },
     {
-      "identity" : "custombitcoinkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/shami123/CustomBitcoinKit.git",
-      "state" : {
-        "branch" : "xvgChnages",
-        "revision" : "8c504c40622a2d92fac958d0c700916fffdd726e"
-      }
-    },
-    {
       "identity" : "eureka",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/xmartlabs/Eureka.git",
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/horizontalsystems/HsCryptoKit.Swift.git",
       "state" : {
-        "revision" : "e0238a7609df9701aac63c6237a819a462c89ab8",
-        "version" : "1.3.1"
+        "revision" : "7c11ad0e690cbb178a70f3b9d1116d0a37a51a41",
+        "version" : "1.3.2"
       }
     },
     {
