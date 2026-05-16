@@ -21,6 +21,7 @@ class WalletServiceProvider: ServiceProvider {
         registerWalletClient()         // Depends on Credentials & HttpSession
         registerTransactionRepository()
         registerTransactionFactory()   // Depends on RatesClient & ApplicationRepository
+        registerTxTransponder()
         registerTransactionManager()
         registerWalletTicker()         // Depends on WalletClient & TransactionManager
         registerFiatRateTicker()       // Depends on RatesClient & ApplicationRepository
@@ -49,6 +50,12 @@ class WalletServiceProvider: ServiceProvider {
                 ratesClient: ratesClient,
                 fiatCurrency: appRepo.currency
             )
+        }
+    }
+
+    func registerTxTransponder() {
+        container.register(TxTransponderProtocol.self) { r in
+            TxTransponder(walletClient: r.resolve(WalletClientProtocol.self)!)
         }
     }
 

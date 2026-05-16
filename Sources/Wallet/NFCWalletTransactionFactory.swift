@@ -124,7 +124,7 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
             return
         }
 
-        self.addressValidator.validate(string: url) { isValid, address, amount, label, currency in
+        self.addressValidator.validateOrResolve(string: url) { isValid, address, amount, label, currency in
             let txFactory = self.sendTransactionDelegate.getSendTransaction()
 
             if let address = address, isValid {
@@ -153,7 +153,9 @@ class NFCWalletTransactionFactory: NSObject, NFCNDEFReaderSessionDelegate {
             txFactory.fiatRate = nil
             txFactory.fiatRateFetchedAt = nil
 
-            self.sendTransactionDelegate.didChangeSendTransaction(txFactory)
+            DispatchQueue.main.async {
+                self.sendTransactionDelegate.didChangeSendTransaction(txFactory)
+            }
         }
     }
 }

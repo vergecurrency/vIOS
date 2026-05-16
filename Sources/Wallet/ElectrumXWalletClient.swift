@@ -548,6 +548,17 @@ final class ElectrumXWalletClient: WalletClientProtocol {
     }
 }
 
+extension ElectrumXWalletClient.ElectrumXWalletClientError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .unsupportedOperation:
+            return "Sending from 18-word ElectrumX wallets is not implemented yet."
+        case .addressDerivationFailed:
+            return "Could not derive an ElectrumX wallet address."
+        }
+    }
+}
+
 final class RoutingWalletClient: WalletClientProtocol {
     private let applicationRepository: ApplicationRepository
     private let vwsClient: WalletClientProtocol

@@ -58,7 +58,9 @@ class CurrencyInput: UITextField {
     }
 
     public func setAmount(_ amount: NSNumber) {
-        text = amount.toBlankCurrency(fractDigits: Constants.maximumFractionDigits)
+        let safeAmount = amount.doubleValue.isFinite ? amount : NSNumber(value: 0.0)
+
+        text = safeAmount.toBlankCurrency(fractDigits: Constants.maximumFractionDigits)
         text = text?.replacingOccurrences(of: " ", with: "")
 
         format()

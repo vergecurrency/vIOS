@@ -17,6 +17,10 @@ extension NSNumber {
     }
 
     func toCurrency(currency: String? = nil, fractDigits: Int = 2, floating: Bool = true) -> String {
+        guard doubleValue.isFinite else {
+            return currency == "XVG" ? "0 XVG" : "0"
+        }
+
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if floating == false {
@@ -33,7 +37,7 @@ extension NSNumber {
         }
 
         // Remove extra symbol space
-        return "\(formatter.string(from: self)!)\(suffix)"
+        return "\(formatter.string(from: self) ?? "0")\(suffix)"
     }
 
     func toPairCurrency(fractDigits: Int = 2) -> String {
@@ -63,6 +67,10 @@ extension NSNumber {
     }
 
     func toBlankCurrency(fractDigits: Int = 2, floating: Bool = true) -> String {
+        guard doubleValue.isFinite else {
+            return "0"
+        }
+
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         if floating == false { // Freeze fractDigits number
@@ -73,6 +81,6 @@ extension NSNumber {
         formatter.currencySymbol = ""
 
         // Remove extra symbol space
-        return "\(formatter.string(from: self)!)"
+        return formatter.string(from: self) ?? "0"
     }
 }

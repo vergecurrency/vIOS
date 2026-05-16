@@ -207,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func sendTxRequest(address: String) {
-        AddressValidator().validate(string: address) { (valid, address, amount, label, currency) in
+        AddressValidator().validateOrResolve(string: address) { (valid, address, amount, label, currency) in
             if !valid {
                 return
             }
@@ -229,7 +229,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             self.sendRequest = transaction
 
-            NotificationCenter.default.post(name: .demandSendView, object: transaction)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .demandSendView, object: transaction)
+            }
         }
     }
 }

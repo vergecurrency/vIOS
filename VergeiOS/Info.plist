@@ -153,5 +153,7 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>UNSTOPPABLE_DOMAINS_API_TOKEN</key>
+	<string>ri7h_ailrqgaxtfqaqsenkknxnv8zjwmokc6majxsdsxc4eg</string>
 </dict>
 </plist>

@@ -8,6 +8,7 @@ import BitcoinKit
 import SwiftyJSON
 import CryptoSwift
 import Logging
+import secp256k1
 
 // swiftlint:disable file_length
 public class WalletClient: WalletClientProtocol {
@@ -18,6 +19,7 @@ public class WalletClient: WalletClientProtocol {
         case invalidMessageData(message: String)
         case invalidAddressReceived(address: Vws.AddressInfo?)
         case noOutputFound
+        case noSigningKeyFound(path: String, address: String)
     }
 
     private let sjcl = SJCL()
@@ -542,6 +544,26 @@ extension WalletClient {
 
 }
 
+extension WalletClient.WalletClientError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .addressToScriptError(let address):
+            return "Could not create a transaction script for address \(address.description)."
+        case .invalidDeriver(let value):
+            return "The wallet derivation path is invalid: \(value)."
+        case .invalidMessageData(let message):
+            return "Could not sign wallet service message: \(message)."
+        case .invalidAddressReceived(let addressInfo):
+            let address = addressInfo?.address ?? "unknown"
+            return "The wallet service returned an invalid address: \(address)."
+        case .noOutputFound:
+            return "The wallet service returned a transaction proposal without a spend output."
+        case .noSigningKeyFound(let path, let address):
+            return "No signing key was found for input \(path) at address \(address)."
+        }
+    }
+}
+
 // MARK: Tx proposals methods
 
 extension WalletClient {
@@ -551,6 +573,150 @@ extension WalletClient {
         _ errorResponse: Vws.TxProposalErrorResponse?,
         _ error: Error?
     ) -> Void
+
+    private struct VergeUnsignedTransaction {
+        let tx: Transaction
+        let utxos: [UnspentTransaction]
+        let timestamp: UInt32?
+        let inputPaths: [String]
+        let inputAddresses: [String]
+        let inputPublicKeys: [[String]]
+    }
+
+    private struct WrappedTxProposalResponse: Decodable {
+        let txp: Vws.TxProposalResponse?
+        let txProposal: Vws.TxProposalResponse?
+    }
+
+    private struct TxProposalDecodeError: LocalizedError {
+        let stage: String
+        let underlying: Error
+
+        var errorDescription: String? {
+            return "VWS \(stage) response decode failed: \(Self.describe(underlying))"
+        }
+
+        private static func describe(_ error: Error) -> String {
+            guard case let DecodingError.keyNotFound(key, context) = error else {
+                return error.localizedDescription
+            }
+
+            let codingPath = context.codingPath.map { $0.stringValue }.joined(separator: ".")
+            let path = codingPath.isEmpty ? "root" : codingPath
+
+            return "missing key '\(key.stringValue)' at \(path)"
+        }
+    }
+
+    private func decodeTxProposalResponse(
+        from data: Data,
+        stage: String,
+        fallback txp: Vws.TxProposalResponse? = nil
+    ) throws -> Vws.TxProposalResponse {
+        let decoder = JSONDecoder()
+
+        do {
+            let response = try decoder.decode(Vws.TxProposalResponse.self, from: data)
+            if let txp = txp {
+                return mergeTxProposalResponse(response, into: txp)
+            }
+            return response
+        } catch {
+            do {
+                let wrapped = try decoder.decode(WrappedTxProposalResponse.self, from: data)
+                if let response = wrapped.txp ?? wrapped.txProposal {
+                    if let txp = txp {
+                        return mergeTxProposalResponse(response, into: txp)
+                    }
+                    return response
+                }
+            } catch {
+                // Keep the original root decode failure; it usually has the useful missing-key path.
+            }
+
+            if (try? decoder.decode(Vws.TxProposalErrorResponse.self, from: data)) != nil {
+                throw TxProposalDecodeError(stage: stage, underlying: error)
+            }
+
+            if let txp = txp {
+                guard let partial = self.mergePartialTxProposalResponse(from: data, into: txp) else {
+                    return txp
+                }
+
+                return partial
+            }
+
+            throw TxProposalDecodeError(stage: stage, underlying: error)
+        }
+    }
+
+    private func mergeTxProposalResponse(
+        _ response: Vws.TxProposalResponse,
+        into txp: Vws.TxProposalResponse
+    ) -> Vws.TxProposalResponse {
+        return Vws.TxProposalResponse(
+            createdOn: response.createdOn ?? txp.createdOn,
+            coin: response.coin,
+            id: response.id,
+            network: response.network,
+            message: response.message ?? txp.message,
+            inputs: response.inputs.isEmpty ? txp.inputs : response.inputs,
+            fee: response.fee,
+            status: response.status,
+            creatorId: response.creatorId,
+            walletN: response.walletN,
+            walletM: response.walletM,
+            outputs: response.outputs.isEmpty ? txp.outputs : response.outputs,
+            amount: response.amount == 0 ? txp.amount : response.amount,
+            changeAddress: response.changeAddress,
+            walletId: response.walletId,
+            requiredSignatures: response.requiredSignatures,
+            version: response.version,
+            excludeUnconfirmedUtxos: response.excludeUnconfirmedUtxos,
+            addressType: response.addressType,
+            requiredRejections: response.requiredRejections,
+            outputOrder: response.outputOrder.isEmpty ? txp.outputOrder : response.outputOrder,
+            inputPaths: response.inputPaths.isEmpty ? txp.inputPaths : response.inputPaths
+        )
+    }
+
+    private func mergePartialTxProposalResponse(
+        from data: Data,
+        into txp: Vws.TxProposalResponse
+    ) -> Vws.TxProposalResponse? {
+        let json = JSON(data)
+        let response = json["txp"].exists() ? json["txp"] : json
+        let status = response["status"].string ?? txp.status
+
+        guard response["status"].exists() || response["txid"].exists() || response["broadcastedOn"].exists() else {
+            return nil
+        }
+
+        return Vws.TxProposalResponse(
+            createdOn: txp.createdOn,
+            coin: txp.coin,
+            id: response["id"].string ?? txp.id,
+            network: txp.network,
+            message: txp.message,
+            inputs: txp.inputs,
+            fee: txp.fee,
+            status: status,
+            creatorId: txp.creatorId,
+            walletN: txp.walletN,
+            walletM: txp.walletM,
+            outputs: txp.outputs,
+            amount: txp.amount,
+            changeAddress: txp.changeAddress,
+            walletId: txp.walletId,
+            requiredSignatures: txp.requiredSignatures,
+            version: txp.version,
+            excludeUnconfirmedUtxos: txp.excludeUnconfirmedUtxos,
+            addressType: txp.addressType,
+            requiredRejections: txp.requiredRejections,
+            outputOrder: txp.outputOrder,
+            inputPaths: txp.inputPaths
+        )
+    }
 
     func createTxProposal(proposal: Vws.TxProposal, completion: @escaping TxProposalCompletion) {
         var arguments = JSON()
@@ -574,7 +740,7 @@ extension WalletClient {
         postRequest(url: "/v3/txproposals/", arguments: arguments) { data, _, error in
             if let data = data {
                 do {
-                    return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
+                    return completion(try self.decodeTxProposalResponse(from: data, stage: "create transaction"), nil, nil)
                 } catch {
                     return completion(
                         nil,
@@ -592,7 +758,7 @@ extension WalletClient {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
 
-            let transactionHash = unsignedTx.tx.serialized().hex
+            let transactionHash = serializeTransaction(unsignedTx.tx, timestamp: unsignedTx.timestamp).hex
 
             var arguments = JSON()
             arguments["proposalSignature"].stringValue = try signMessage(
@@ -606,7 +772,11 @@ extension WalletClient {
             ) { data, _, error in
                 if let data = data {
                     do {
-                        return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
+                        return completion(
+                            try self.decodeTxProposalResponse(from: data, stage: "publish transaction", fallback: txp),
+                            nil,
+                            nil
+                        )
                     } catch {
                         return completion(
                             nil,
@@ -626,35 +796,102 @@ extension WalletClient {
     func signTxProposal(txp: Vws.TxProposalResponse, completion: @escaping TxProposalCompletion) {
         do {
             let unsignedTx = try getUnsignedTx(txp: txp)
+            let signatures = try signTx(unsignedTx: unsignedTx, keys: try privateKeys(for: txp), includeTimestamp: true)
 
-            let privateKeys: [PrivateKey] = try txp.inputs.map { output in
-                return try credentials.privateKeyBy(path: output.path, privateKey: credentials.bip44PrivateKey)
-            }
+            postSignatures(signatures, txp: txp) { txpResponse, errorResponse, error in
+                guard errorResponse?.error == .BadSignatures else {
+                    return completion(txpResponse, errorResponse, error)
+                }
 
-            var arguments = JSON()
-            let signatures = JSON(try signTx(unsignedTx: unsignedTx, keys: privateKeys))
-            arguments["signatures"] = signatures
-
-            postRequest(
-                url: "/v1/txproposals/\(txp.id)/signatures/",
-                arguments: arguments
-            ) { data, _, error in
-                if let data = data {
-                    do {
-                        return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
-                    } catch {
-                        return completion(
-                            nil,
-                            try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: data),
-                            error
-                        )
-                    }
-                } else {
-                    return completion(nil, nil, error)
+                do {
+                    let legacySignatures = try self.signTx(
+                        unsignedTx: unsignedTx,
+                        keys: try self.privateKeys(for: txp),
+                        includeTimestamp: false
+                    )
+                    self.postSignatures(legacySignatures, txp: txp, completion: completion)
+                } catch {
+                    completion(nil, nil, error)
                 }
             }
         } catch {
             completion(nil, nil, error)
+        }
+    }
+
+    private func privateKeys(for txp: Vws.TxProposalResponse) throws -> [PrivateKey] {
+        var keys = [PrivateKey]()
+        var seen = Set<String>()
+        let roots = [
+            credentials.legacyVwsBip44PrivateKey,
+            credentials.bip44PrivateKey,
+            credentials.walletPrivateKey1,
+            credentials.privateKey1
+        ]
+
+        for output in txp.inputs {
+            for root in roots {
+                do {
+                    let key = try credentials.privateKeyBy(path: output.path, privateKey: root)
+                    let candidates = [
+                        key,
+                        PrivateKey(
+                            data: key.data,
+                            network: .mainnetXVG,
+                            isPublicKeyCompressed: false
+                        )
+                    ]
+
+                    for candidate in candidates {
+                        let id = "\(candidate.data.hex):\(candidate.isPublicKeyCompressed)"
+                        guard !seen.contains(id) else {
+                            continue
+                        }
+
+                        keys.append(candidate)
+                        seen.insert(id)
+                    }
+                } catch {
+                    self.log.notice("wallet client skipped signing key candidate", metadata: [
+                        "path": Logger.MetadataValue(stringLiteral: output.path),
+                        "error": Logger.MetadataValue(stringLiteral: error.localizedDescription)
+                    ])
+                }
+            }
+        }
+
+        return keys
+    }
+
+    private func postSignatures(
+        _ signatures: [String],
+        txp: Vws.TxProposalResponse,
+        completion: @escaping TxProposalCompletion
+    ) {
+        var arguments = JSON()
+        arguments["signatures"] = JSON(signatures)
+
+        postRequest(
+            url: "/v1/txproposals/\(txp.id)/signatures/",
+            arguments: arguments
+        ) { data, _, error in
+            if let data = data {
+                do {
+                    return completion(
+                        try self.decodeTxProposalResponse(from: data, stage: "sign transaction", fallback: txp),
+                        nil,
+                        nil
+                    )
+                } catch {
+                    return completion(
+                        nil,
+                        try? JSONDecoder().decode(Vws.TxProposalErrorResponse.self, from: data),
+                        error
+                    )
+                }
+            } else {
+                return completion(nil, nil, error)
+            }
         }
     }
 
@@ -665,7 +902,11 @@ extension WalletClient {
         ) { data, _, error in
             if let data = data {
                 do {
-                    return completion(try JSONDecoder().decode(Vws.TxProposalResponse.self, from: data), nil, nil)
+                    return completion(
+                        try self.decodeTxProposalResponse(from: data, stage: "broadcast transaction", fallback: txp),
+                        nil,
+                        nil
+                    )
                 } catch {
                     return completion(
                         nil,
@@ -777,13 +1018,13 @@ extension WalletClient {
         return sjcl.decrypt(password: key, ciphertext: ciphertext, params: [])
     }
 
-    private func getUnsignedTx(txp: Vws.TxProposalResponse) throws -> UnsignedTransaction {
+    private func getUnsignedTx(txp: Vws.TxProposalResponse) throws -> VergeUnsignedTransaction {
         guard let output = txp.outputs.first else {
             throw WalletClientError.noOutputFound
         }
 
-        let changeAddress: Address = try AddressFactory.create(txp.changeAddress.address)
-        let toAddress: Address = try AddressFactory.create(output.toAddress)
+        let changeAddress: Address = try self.createAddress(txp.changeAddress.address)
+        let toAddress: Address = try self.createAddress(output.toAddress)
 
         let unspentOutputs = txp.inputs
         let unspentTransactions: [UnspentTransaction] = try unspentOutputs.map { output in
@@ -835,21 +1076,30 @@ extension WalletClient {
 
         let tx = Transaction(
             version: 1,
-          //  timestamp: txp.createdOn,
             inputs: unsignedInputs,
             outputs: outputs,
             lockTime: 0
         )
 
-        return UnsignedTransaction(tx: tx, utxos: unspentTransactions)
+        return VergeUnsignedTransaction(
+            tx: tx,
+            utxos: unspentTransactions,
+            timestamp: txp.createdOn,
+            inputPaths: unspentOutputs.map { $0.path },
+            inputAddresses: unspentOutputs.map { $0.address },
+            inputPublicKeys: unspentOutputs.map { $0.publicKeys }
+        )
     }
 
-    private func signTx(unsignedTx: UnsignedTransaction, keys: [PrivateKey]) throws -> [String] {
+    private func signTx(
+        unsignedTx: VergeUnsignedTransaction,
+        keys: [PrivateKey],
+        includeTimestamp: Bool
+    ) throws -> [String] {
         let inputsToSign = unsignedTx.tx.inputs
         var transactionToSign: Transaction {
             return Transaction(
                 version: unsignedTx.tx.version,
-             //   timestamp: unsignedTx.tx.timestamp,
                 inputs: inputsToSign,
                 outputs: unsignedTx.tx.outputs,
                 lockTime: unsignedTx.tx.lockTime
@@ -860,25 +1110,132 @@ extension WalletClient {
         // Signing
         for (i, utxo) in unsignedTx.utxos.enumerated() {
             let pubkeyHash: Data = Script.getPublicKeyHash(from: utxo.output.lockingScript)
+            let publicKeys = unsignedTx.inputPublicKeys.indices.contains(i)
+                ? Set(unsignedTx.inputPublicKeys[i].map { $0.lowercased() })
+                : Set<String>()
 
-            let keysOfUtxo: [PrivateKey] = keys.filter { $0.publicKey().pubkeyHash == pubkeyHash }
+            let keysOfUtxo: [PrivateKey] = keys.filter { key in
+                let publicKey = key.publicKey()
+                return publicKey.pubkeyHash == pubkeyHash
+                    || publicKeys.contains(publicKey.description.lowercased())
+            }
             guard let key = keysOfUtxo.first else {
-                continue
+                throw WalletClientError.noSigningKeyFound(
+                    path: unsignedTx.inputPaths.indices.contains(i) ? unsignedTx.inputPaths[i] : "",
+                    address: unsignedTx.inputAddresses.indices.contains(i) ? unsignedTx.inputAddresses[i] : ""
+                )
             }
 
-            let sighash: Data = transactionToSign.signatureHash(
+            let sighash = signatureHash(
+                transactionToSign,
+                timestamp: includeTimestamp ? unsignedTx.timestamp : nil,
                 for: utxo.output,
                 inputIndex: i,
                 hashType: SighashType.BTC.ALL
             )
 
-            let signature: Data = try Crypto.sign(sighash, privateKey: key)
+            let signature: Data = try convertCompactToDER(signDigest(sighash, privateKey: key))
 
             hexes.append(signature.hex)
         }
 
         return hexes
     }
+
+    private func serializeTransaction(_ transaction: Transaction, timestamp: UInt32?) -> Data {
+        var data = Data()
+        data += transaction.version.data
+        if let timestamp = timestamp {
+            data += timestamp.data
+        }
+        data += transaction.txInCount.serialized()
+        data += transaction.inputs.flatMap { $0.serialized() }
+        data += transaction.txOutCount.serialized()
+        data += transaction.outputs.flatMap { $0.serialized() }
+        data += transaction.lockTime.data
+        return data
+    }
+
+    private func signatureHash(
+        _ transaction: Transaction,
+        timestamp: UInt32?,
+        for utxoOutput: TransactionOutput,
+        inputIndex: Int,
+        hashType: SighashType.BTC
+    ) -> Data {
+        let helper = BTCSignatureHashHelper(hashType: hashType)
+        guard inputIndex < transaction.inputs.count else {
+            return helper.one
+        }
+
+        guard !(hashType.isSingle && inputIndex < transaction.outputs.count) else {
+            return helper.one
+        }
+
+        let rawTransaction = Transaction(
+            version: transaction.version,
+            inputs: helper.createInputs(of: transaction, for: utxoOutput, inputIndex: inputIndex),
+            outputs: helper.createOutputs(of: transaction, inputIndex: inputIndex),
+            lockTime: transaction.lockTime
+        )
+        var data = serializeTransaction(rawTransaction, timestamp: timestamp)
+        data += hashType.uint32.data
+
+        return Crypto.sha256sha256(data)
+    }
+
+    private func signDigest(_ digest: Data, privateKey: PrivateKey) throws -> Data {
+        guard digest.count == 32 else {
+            throw NSError(
+                domain: "SignatureError",
+                code: -2,
+                userInfo: [NSLocalizedDescriptionKey: "Transaction digest must be 32 bytes"]
+            )
+        }
+
+        guard let context = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN)) else {
+            throw NSError(
+                domain: "SignatureError",
+                code: -3,
+                userInfo: [NSLocalizedDescriptionKey: "Could not create secp256k1 signing context"]
+            )
+        }
+        defer { secp256k1_context_destroy(context) }
+
+        var signature = secp256k1_ecdsa_signature()
+        let signResult = digest.withUnsafeBytes { digestPtr in
+            privateKey.data.withUnsafeBytes { privateKeyPtr in
+                secp256k1_ecdsa_sign(
+                    context,
+                    &signature,
+                    digestPtr.bindMemory(to: UInt8.self).baseAddress!,
+                    privateKeyPtr.bindMemory(to: UInt8.self).baseAddress!,
+                    nil,
+                    nil
+                )
+            }
+        }
+
+        guard signResult == 1 else {
+            throw NSError(
+                domain: "SignatureError",
+                code: -4,
+                userInfo: [NSLocalizedDescriptionKey: "Could not sign transaction digest"]
+            )
+        }
+
+        var compactSignature = Data(repeating: 0, count: 64)
+        compactSignature.withUnsafeMutableBytes { signaturePtr in
+            secp256k1_ecdsa_signature_serialize_compact(
+                context,
+                signaturePtr.bindMemory(to: UInt8.self).baseAddress!,
+                &signature
+            )
+        }
+
+        return compactSignature
+    }
+
     // Converts 64-byte compact (r||s) ECDSA signature → DER format
     func convertCompactToDER(_ compactSig: Data) throws -> Data {
         guard compactSig.count == 64 else {
@@ -927,6 +1284,34 @@ extension WalletClient {
 
         result.append(raw)
         return result
+    }
+
+    private func createAddress(_ plainAddress: String) throws -> Address {
+        do {
+            return try AddressFactory.create(plainAddress)
+        } catch {
+            guard let payload = Base58Check.decode(plainAddress), payload.count == 21 else {
+                throw error
+            }
+
+            let versionByte = payload[0]
+            let hashType: BitcoinAddress.HashType
+
+            switch versionByte {
+            case Network.mainnetXVG.pubkeyhash:
+                hashType = .pubkeyHash
+            case Network.mainnetXVG.scripthash:
+                hashType = .scriptHash
+            default:
+                throw error
+            }
+
+            return try BitcoinAddress(
+                data: payload.dropFirst(),
+                hashType: hashType,
+                network: .mainnetXVG
+            )
+        }
     }
 
 }

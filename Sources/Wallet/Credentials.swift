@@ -4,6 +4,7 @@ import BitcoinKit
 
 class Credentials {
     static let vergeCoinType: UInt32 = 77
+    static let legacyVwsCoinType: UInt32 = 0
     static let defaultAccount: UInt32 = 0
 
     enum CredentialsError: Error {
@@ -133,6 +134,19 @@ class Credentials {
                 .derived(at: Self.defaultAccount, hardened: true)
         } catch {
             print("❌ Failed to derive BIP44 private key: \(error)")
+            return privateKey1
+        }
+    }
+
+    // MARK: - Legacy VWS BIP44 account-level key (m/44'/0'/0')
+    var legacyVwsBip44PrivateKey: HDPrivateKey1 {
+        do {
+            return try privateKey1
+                .derived(at: 44, hardened: true)
+                .derived(at: Self.legacyVwsCoinType, hardened: true)
+                .derived(at: Self.defaultAccount, hardened: true)
+        } catch {
+            print("Failed to derive legacy VWS BIP44 private key: \(error)")
             return privateKey1
         }
     }

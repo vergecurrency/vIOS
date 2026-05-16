@@ -63,6 +63,11 @@ class SendViewController: ThemeableViewController {
         self.amountTextField.addTarget(
             self,
             action: #selector(amountChanged),
+            for: .editingChanged
+        )
+        self.amountTextField.addTarget(
+            self,
+            action: #selector(amountChanged),
             for: .editingDidEnd
         )
 
@@ -114,6 +119,7 @@ class SendViewController: ThemeableViewController {
 
         self.updateWalletAmountLabel()
         self.updateAmountLabel()
+        self.refreshWalletAmount()
     }
 
     @objc func didReceiveFiatRatings(_ notification: Notification) {
@@ -123,10 +129,8 @@ class SendViewController: ThemeableViewController {
     @objc func didChangeWalletAmount(notification: Notification) {
         DispatchQueue.main.async {
             self.noBalanceView.isHidden = (self.walletAmount.doubleValue > 0)
-        }
-
-        if (self.walletAmount.doubleValue > 0) {
             self.updateWalletAmountLabel()
+            self.updateAmountLabel()
         }
     }
 
@@ -229,7 +233,9 @@ class SendViewController: ThemeableViewController {
         // Change the text color of the amount label when the selected amount is
         // more then the wallet amount.
         DispatchQueue.main.async {
-            self.amountTextField.setAmount(self.txFactory.currentAmount())
+            if !self.amountTextField.isFirstResponder {
+                self.amountTextField.setAmount(self.txFactory.currentAmount())
+            }
 
             if self.walletAmount.doubleValue == 0.0 {
                 return
@@ -242,6 +248,20 @@ class SendViewController: ThemeableViewController {
             } else {
                 self.amountTextField.textColor = ThemeManager.shared.secondaryDark()
             }
+        }
+    }
+
+    private func refreshWalletAmount() {
+        let profileId = self.applicationRepository.activeWalletProfileId
+
+        self.walletClient.getBalance { _, info in
+            guard self.applicationRepository.activeWalletProfileId == profileId,
+                let info = info
+            else {
+                return
+            }
+
+            self.applicationRepository.amount = info.availableAmountValue
         }
     }
 
@@ -277,11 +297,17 @@ class SendViewController: ThemeableViewController {
     }
 
     func isSendable() {
+        syncTransactionFields()
+
         // Selected amount is higher then nothing.
         // Selected amount is lower then wallet amount.
         // Address is set.
-        let enabled = self.txFactory.amount.doubleValue > 0.0
-            && self.txFactory.amount.doubleValue <= self.walletAmount.doubleValue
+        let selectedAmount = self.txFactory.amount.doubleValue
+        let selectedSatoshis = Int64((selectedAmount * Constants.satoshiDivider).rounded())
+        let walletSatoshis = Int64((self.walletAmount.doubleValue * Constants.satoshiDivider).rounded())
+
+        let enabled = selectedSatoshis > 0
+            && selectedSatoshis <= walletSatoshis
             && self.txFactory.address != ""
             && self.waitingForConfirmationPopover == false
 
@@ -292,6 +318,30 @@ class SendViewController: ThemeableViewController {
     }
 
     @IBAction func confirm(_ sender: Any) {
+        syncTransactionFields()
+
+        self.resolveRecipientIfNeeded { resolved in
+            guard resolved else {
+                return
+            }
+
+            self.presentConfirmSend()
+        }
+    }
+
+    private func syncTransactionFields() {
+        self.txFactory.address = self.recipientTextField.text ?? self.txFactory.address
+        self.txFactory.memo = self.memoTextField.text ?? self.txFactory.memo
+
+        let amount = self.amountTextField.getNumber()
+        if self.txFactory.currency == .XVG {
+            self.txFactory.amount = amount
+        } else {
+            self.txFactory.fiatAmount = amount
+        }
+    }
+
+    private func presentConfirmSend() {
         let confirmSendView = Bundle.main.loadNibNamed(
             "ConfirmSendView",
             owner: self,
@@ -299,7 +349,7 @@ class SendViewController: ThemeableViewController {
         )?.first as! ConfirmSendView
 
         let alertController = confirmSendView.makeActionSheet()
-        if let popoverController = alertController.popoverPresentationController {
+        if UIDevice.current.userInterfaceIdiom == .pad, let popoverController = alertController.popoverPresentationController {
             popoverController.sourceView = view
             popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
             popoverController.permittedArrowDirections = []
@@ -310,16 +360,51 @@ class SendViewController: ThemeableViewController {
         }
 
         getTxProposal { proposal in
-            self.txTransponder.create(proposal: proposal) { txp, errorResponse, _ in
+            guard let txTransponder = self.txTransponder ?? Application.container.resolve(TxTransponderProtocol.self) else {
+                return alertController.dismiss(animated: true) {
+                    self.showTransactionError(
+                        Vws.TxProposalErrorResponse(
+                            code: "500",
+                            message: "The send service is not ready. Please reopen the send tab and try again."
+                        ),
+                        txp: nil
+                    )
+                }
+            }
+
+            self.txTransponder = txTransponder
+
+            txTransponder.create(proposal: proposal) { txp, errorResponse, error in
                 self.waitingForConfirmationPopover = false
 
                 guard let txp = txp else {
+                    if let error = error {
+                        return alertController.dismiss(animated: true) {
+                            self.showTransactionError(
+                                Vws.TxProposalErrorResponse(code: "500", message: error.localizedDescription),
+                                txp: nil
+                            )
+                        }
+                    }
+
                     return alertController.dismiss(animated: true) {
                         self.showTransactionError(errorResponse, txp: nil)
                     }
                 }
 
-                confirmSendView.setup(txp)
+                do {
+                    try confirmSendView.setup(txp)
+                } catch {
+                    return alertController.dismiss(animated: true) {
+                        self.showTransactionError(
+                            Vws.TxProposalErrorResponse(
+                                code: "500",
+                                message: "The wallet service returned an incomplete transaction proposal."
+                            ),
+                            txp: nil
+                        )
+                    }
+                }
 
                 let sendAction = UIAlertAction(title: "send.sendXVG".localized, style: .default) { _ in
                     self.send(txp: txp)
@@ -336,8 +421,25 @@ class SendViewController: ThemeableViewController {
         }
     }
 
+    private func resolveRecipientIfNeeded(completion: @escaping (Bool) -> Void) {
+        let recipient = self.recipientTextField.text ?? self.txFactory.address
+
+        AddressValidator().validateOrResolve(string: recipient) { valid, address, _, _, _, error in
+            DispatchQueue.main.async {
+                guard valid, let address = address else {
+                    self.showInvalidAddressAlert(error: error)
+                    return completion(false)
+                }
+
+                self.txFactory.address = address
+                self.recipientTextField.text = address
+                completion(true)
+            }
+        }
+    }
+
     func getTxProposal(completion: @escaping (_ proposal: Vws.TxProposal) -> Void) {
-        if txFactory.amount.doubleValue < walletAmount.doubleValue {
+        if txFactory.amount.doubleValue <= walletAmount.doubleValue {
             return completion(Vws.TxProposal(
                 address: txFactory.address,
                 amount: txFactory.amount,
@@ -384,10 +486,10 @@ class SendViewController: ThemeableViewController {
             self.present(actionSheet, animated: true) {
                 self.txTransponder.send(txp: txp) { txp, errorResponse, error  in
                     var thrownError: Vws.TxProposalErrorResponse?
-                    if let error = error {
-                        thrownError = Vws.TxProposalErrorResponse(code: "500", message: error.localizedDescription)
-                    } else if let errorResponse = errorResponse {
+                    if let errorResponse = errorResponse {
                         thrownError = errorResponse
+                    } else if let error = error {
+                        thrownError = Vws.TxProposalErrorResponse(code: "500", message: error.localizedDescription)
                     }
 
                     if let thrownError = thrownError {
@@ -590,18 +692,20 @@ extension SendViewController: UITextFieldDelegate {
             return
         }
 
-        AddressValidator().validate(string: address) { valid, address, _, _, _  in
-            if !valid {
-                return self.showInvalidAddressAlert()
+        AddressValidator().validateOrResolve(string: address) { valid, address, _, _, _, error in
+            DispatchQueue.main.async {
+                if !valid {
+                    return self.showInvalidAddressAlert(error: error)
+                }
+
+                guard let address = address else {
+                    return self.showInvalidAddressAlert(error: error)
+                }
+
+                self.txFactory.address = address
+
+                self.didChangeSendTransaction(self.txFactory)
             }
-
-            guard let address = address else {
-                return self.showInvalidAddressAlert()
-            }
-
-            self.txFactory.address = address
-
-            self.didChangeSendTransaction(self.txFactory)
         }
     }
 
@@ -617,10 +721,30 @@ extension SendViewController: UITextFieldDelegate {
         self.didChangeSendTransaction(txFactory)
     }
 
-    func showInvalidAddressAlert() {
+    func showInvalidAddressAlert(error: AddressValidator.ResolutionError? = nil) {
+        let message: String
+        switch error {
+        case .missingApiToken:
+            message = "Unstoppable Domains API token is not configured."
+        case .httpStatus(let status):
+            message = "Unstoppable Domains lookup failed with HTTP \(status)."
+        case .emptyResponse:
+            message = "Unstoppable Domains returned an empty response."
+        case .noRecords:
+            message = "That Web3 name has no crypto records."
+        case .recordNotFound:
+            message = "That Web3 name does not have a crypto.XVG.address record."
+        case .invalidJson:
+            message = "Unstoppable Domains returned a response this app could not read."
+        case .invalidResolvedAddress:
+            message = "That Web3 name resolved, but not to a valid Verge address."
+        case .none:
+            message = "send.enterValidAddress".localized
+        }
+
         let alert = UIAlertController(
             title: "send.wrongAddress".localized + " 🤷‍♀️",
-            message: "send.enterValidAddress".localized,
+            message: message,
             preferredStyle: .alert
         )
 

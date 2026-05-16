@@ -129,20 +129,22 @@ class ScanQRCodeViewController: UIViewController, AVCaptureMetadataOutputObjects
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
 
-            AddressValidator().validate(metadataObject: metadataObj) { valid, address, amount, label, currency in
+            AddressValidator().validateOrResolve(string: metadataObj.stringValue ?? "") { valid, address, amount, label, currency in
                 self.captureSession?.stopRunning()
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)
                 }
 
-                self.handleValidatedScan(
-                    isValid: valid,
-                    address: address,
-                    amount: amount,
-                    label: label,
-                    currency: currency
-                )
+                DispatchQueue.main.async {
+                    self.handleValidatedScan(
+                        isValid: valid,
+                        address: address,
+                        amount: amount,
+                        label: label,
+                        currency: currency
+                    )
+                }
             }
         }
     }
@@ -255,18 +257,20 @@ extension ScanQRCodeViewController: UIImagePickerControllerDelegate, UINavigatio
                 qrCode += feature.messageString!
             }
 
-            AddressValidator().validate(string: qrCode) { (valid, address, amount, label, currency) in
+            AddressValidator().validateOrResolve(string: qrCode) { (valid, address, amount, label, currency) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     self.closeController(self)
                 }
 
-                self.handleValidatedScan(
-                    isValid: valid,
-                    address: address,
-                    amount: amount,
-                    label: label,
-                    currency: currency
-                )
+                DispatchQueue.main.async {
+                    self.handleValidatedScan(
+                        isValid: valid,
+                        address: address,
+                        amount: amount,
+                        label: label,
+                        currency: currency
+                    )
+                }
             }
         }
 

@@ -17,6 +17,10 @@ class ConfirmSendView: UIView {
     @IBOutlet weak var recipientAddressLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
+    enum ConfirmSendViewError: Error {
+        case missingOutput
+    }
+
     var margin: CGFloat {
         if #available(iOS 12.0, *) {
             return 8.0
@@ -54,12 +58,14 @@ class ConfirmSendView: UIView {
         return alertController
     }
 
-    func setup(_ txp: Vws.TxProposalResponse) {
+    func setup(_ txp: Vws.TxProposalResponse) throws {
         let amount = NSNumber(value: Double(txp.amount) / Constants.satoshiDivider)
         let fee = NSNumber(value: Double(txp.fee) / Constants.satoshiDivider)
         let total = NSNumber(value: amount.doubleValue + fee.doubleValue)
 
-        let output = txp.outputs.first!
+        guard let output = txp.outputs.first else {
+            throw ConfirmSendViewError.missingOutput
+        }
 
         self.sendingAmountLabel.text = amount.toXvgCurrency()
         self.transactionFeeAmountLabel.text = fee.toXvgCurrency()
