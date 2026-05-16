@@ -75,7 +75,7 @@ public struct Constants {
     /**
      * The fiat rate data service.
      */
-    public static let priceDataEndpoint: String = "https://api.vergecurrency.network/price/api/v1/price/"
+    public static let priceDataEndpoint: String = "https://api.coingecko.com/api/v3/simple/price"
 
     /**
      * Chart data endpoint.

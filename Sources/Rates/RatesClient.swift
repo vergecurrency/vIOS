@@ -17,21 +17,42 @@ class RatesClient {
         self.httpSession = httpSession
     }
 
-    func infoBy(currency: String, completion: @escaping (_ data: FiatRate?) -> Void) {
-        let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
+    private func coinGeckoPriceUrl(currency: String) -> URL? {
+        var components = URLComponents(string: Constants.priceDataEndpoint)
+        components?.queryItems = [
+            URLQueryItem(name: "ids", value: "verge"),
+            URLQueryItem(name: "vs_currencies", value: currency.lowercased()),
+            URLQueryItem(name: "include_market_cap", value: "true"),
+            URLQueryItem(name: "include_24hr_vol", value: "true"),
+            URLQueryItem(name: "include_24hr_change", value: "true")
+        ]
 
-        self.httpSession.dataTask(with: url!).then { response in
-            completion(try response.dataToJson(type: FiatRate.self))
+        return components?.url
+    }
+
+    func infoBy(currency: String, completion: @escaping (_ data: FiatRate?) -> Void) {
+        guard let url = coinGeckoPriceUrl(currency: currency) else {
+            return completion(nil)
+        }
+
+        self.httpSession.dataTask(with: url).then { response in
+            let coinGeckoResponse = try response.dataToJson(type: CoinGeckoSimplePriceResponse.self)
+            completion(try coinGeckoResponse.fiatRate(currency: currency))
         }.catch { error in
             completion(nil)
         }
     }
 
     func infoBy(currency: String) -> Promise<FiatRate> {
-        let url = URL(string: "\(Constants.priceDataEndpoint)\(currency)")
+        guard let url = coinGeckoPriceUrl(currency: currency) else {
+            return Promise<FiatRate> { _, reject in
+                reject(NSError(domain: "RatesClient", code: -1))
+            }
+        }
 
-        return self.httpSession.dataTask(with: url!).then { response in
-            let rate = try response.dataToJson(type: FiatRate.self)
+        return self.httpSession.dataTask(with: url).then { response in
+            let coinGeckoResponse = try response.dataToJson(type: CoinGeckoSimplePriceResponse.self)
+            let rate = try coinGeckoResponse.fiatRate(currency: currency)
 
             return Promise {
                 return rate
