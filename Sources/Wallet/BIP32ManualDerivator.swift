@@ -96,7 +96,6 @@ public enum BIP32ManualDerivator {
             // ⚠️ ** ACTION REQUIRED ** ⚠️
             // You must provide your own function to get a public key from a private key.
             guard let parentPublicKey = computePublicKey(from: parentPrivateKey, compressed: true) else {
-                print("❌ Failed to compute public key for non-hardened derivation.")
                 throw DerivationError.derivationFailed
             }
             hmacInput += parentPublicKey
@@ -109,7 +108,6 @@ public enum BIP32ManualDerivator {
         
         // Calculate the new private key: (tweak + parentPrivateKey) mod n
         guard let derivedPrivateKey = add(privateKey: tweak, to: parentPrivateKey) else {
-            print("❌ Derivation resulted in an invalid key (out of curve order).")
             throw DerivationError.invalidPrivateKey
         }
         

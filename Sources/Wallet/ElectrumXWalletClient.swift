@@ -88,7 +88,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
             scanBalance(addresses: addresses, index: 0) { address, result in
                 guard let address = address else {
                     let total = Double(confirmed + unconfirmed)
-                    print("ElectrumX balance scanned=\(addresses.count) total=\(total)")
                     let balance = Vws.WalletBalanceInfo(
                         totalAmount: total,
                         lockedAmount: 0,
@@ -114,7 +113,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
                     confirmed += addressConfirmed
                     unconfirmed += addressUnconfirmed
                     if addressConfirmed + addressUnconfirmed > 0 {
-                        print("ElectrumX balance \(address.path) \(address.address) confirmed=\(addressConfirmed) unconfirmed=\(addressUnconfirmed)")
                         byAddress.append(
                             Vws.AddressBalance(
                                 address: address.address,
@@ -125,7 +123,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
                     }
                     lock.unlock()
                 case .failure(let error):
-                    print("ElectrumX balance failed \(address.path) \(address.address): \(error.localizedDescription)")
                     lock.lock()
                     returnedError = returnedError ?? error
                     lock.unlock()
@@ -162,7 +159,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
     ) {
         do {
             let current = try derivedAddress(index: receiveAddressIndex)
-            print("ElectrumX receive \(current.path) \(current.address) scripthash=\(current.scriptHash)")
             completion(nil, [addressInfo(for: current)])
         } catch {
             completion(error, [])
@@ -195,7 +191,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
                     return true
                 }
 
-                print("ElectrumX history scanned=\(addresses.count) uniqueTxs=\(unique.count)")
                 DispatchQueue.main.async {
                     completion(unique.sorted { $0.sortBy(txHistory: $1) }, returnedError)
                 }
@@ -226,9 +221,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
             switch result {
             case .success(let json):
                 let history = json["result"] as? [[String: Any]] ?? []
-                if !history.isEmpty {
-                    print("ElectrumX history \(address.path) \(address.address) count=\(history.count)")
-                }
 
                 self.txHistories(
                     from: history,
@@ -247,7 +239,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
                     )
                 }
             case .failure(let error):
-                print("ElectrumX history failed \(address.path) \(address.address): \(error.localizedDescription)")
                 self.scanHistory(
                     addresses: addresses,
                     index: index + 1,
@@ -300,8 +291,7 @@ final class ElectrumXWalletClient: WalletClientProtocol {
                 ) {
                     next.append(tx)
                 }
-            case .failure(let error):
-                print("ElectrumX transaction detail failed \(txid): \(error.localizedDescription)")
+            case .failure:
                 if let tx = self.txHistory(
                     from: history[index],
                     detail: nil,
@@ -491,8 +481,6 @@ final class ElectrumXWalletClient: WalletClientProtocol {
             outputs.append(Vws.InputOutput(amount: Int(amount), address: address, isMine: true))
         }
 
-        print("ElectrumX tx \(txid) amount=\(amount)")
-
         return Vws.TxHistory(
             txid: txid,
             action: "received",
@@ -573,11 +561,9 @@ final class RoutingWalletClient: WalletClientProtocol {
     private var activeClient: WalletClientProtocol {
         guard let mnemonic = applicationRepository.mnemonic,
               !applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) else {
-            print("RoutingWalletClient active=vws")
             return vwsClient
         }
 
-        print("RoutingWalletClient active=electrumx words=\(mnemonic.count)")
         let credentials = Credentials(mnemonic: mnemonic, passphrase: applicationRepository.passphrase ?? "")
         return ElectrumXWalletClient(
             applicationRepository: applicationRepository,

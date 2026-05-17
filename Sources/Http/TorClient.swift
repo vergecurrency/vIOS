@@ -21,10 +21,13 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
     private let applicationRepository: ApplicationRepository
     private let log: Logging.Logger
     private(set) var hasStarted = false
+    private(set) var bootstrapProgress = 0
+    private(set) var bootstrapSummary: String?
 
     private var config: TorConfiguration = TorConfiguration()
     private var thread: TorThread?
     private var controller: TorController!
+    private var bootstrapObserver: Any?
 
     // Client status?
     private(set) var isOperational: Bool = false
@@ -120,6 +123,8 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
         }
 
         hasStarted = true
+        bootstrapProgress = 0
+        bootstrapSummary = nil
 
         // Start a tor thread
         if self.thread?.isExecuting == false {
@@ -160,6 +165,10 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
             return self.log.warning("tor couldn't resign cause it's still operational")
         }
         hasStarted = false
+        bootstrapProgress = 0
+        bootstrapSummary = nil
+        self.controller?.removeObserver(bootstrapObserver)
+        bootstrapObserver = nil
         self.controller.disconnect()
         self.controller = nil
         self.thread?.cancel()
@@ -254,6 +263,8 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
                 return completion(false)
             }
 
+            self.observeBootstrapProgress(on: controller)
+
             var observer: Any?
             observer = controller.addObserver(forCircuitEstablished: { established in
                 if !established {
@@ -281,6 +292,32 @@ class TorClient: TorClientProtocol, HiddenClientProtocol {
                 self.controller?.removeObserver(observer)
             })
         }
+    }
+
+    private func observeBootstrapProgress(on controller: TorController) {
+        controller.removeObserver(bootstrapObserver)
+        bootstrapObserver = controller.addObserver(forStatusEvents: { [weak self] type, _, action, arguments in
+            guard let self = self,
+                  type == "STATUS_CLIENT",
+                  action == "BOOTSTRAP",
+                  let progressValue = arguments?["PROGRESS"],
+                  let progress = Int(progressValue) else {
+                return false
+            }
+
+            self.bootstrapProgress = min(max(progress, 0), 100)
+            self.bootstrapSummary = arguments?["SUMMARY"] ?? arguments?["TAG"]
+            NotificationCenter.default.post(
+                name: .didUpdateTorBootstrapProgress,
+                object: self,
+                userInfo: [
+                    "progress": self.bootstrapProgress,
+                    "summary": self.bootstrapSummary ?? ""
+                ]
+            )
+
+            return false
+        })
     }
 
     private func createDataDirectory() -> String {

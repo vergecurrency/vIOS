@@ -46,7 +46,11 @@ class SettingsViewServiceProvider: ServiceProvider {
         container.register(ElectrumXServersTableViewController.self) { r in
             let controller = ElectrumXServersTableViewController(style: tableViewStyle)
             controller.applicationRepository = r.resolve(ApplicationRepository.self)
-            controller.electrumXClient = ElectrumXClient(applicationRepository: controller.applicationRepository)
+            controller.electrumXClient = ElectrumXClient(
+                applicationRepository: controller.applicationRepository,
+                httpSession: r.resolve(HttpSessionProtocol.self),
+                hiddenClient: r.resolve(TorClient.self)
+            )
 
             return controller
         }

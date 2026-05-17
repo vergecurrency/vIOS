@@ -168,9 +168,7 @@ public class WalletClient: WalletClientProtocol {
     private func log(request: URLRequest, signature: String, copayerId: String) {
         self.log.info("wallet client request fired", metadata: [
             "method": Logger.MetadataValue(stringLiteral: request.httpMethod ?? ""),
-            "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? ""),
-            "signature": Logger.MetadataValue(stringLiteral: signature),
-            "copayerId": Logger.MetadataValue(stringLiteral: copayerId)
+            "url": Logger.MetadataValue(stringLiteral: request.url?.absoluteString ?? "")
         ])
     }
 
@@ -202,9 +200,7 @@ extension WalletClient {
         args["n"].intValue = n
         args["coin"].stringValue = "xvg"
         args["network"].stringValue = "livenet"
-print("create wallet--\(args)")
         self.postRequest(url: "/v2/wallets/", arguments: args) { data, _, error in
-            if let jsonString = String(data: data!, encoding: .utf8) { print("create wallet response: \(jsonString)") }
             guard let data = data else {
                 return completion(nil, nil, error)
             }
@@ -263,15 +259,11 @@ print("create wallet--\(args)")
 
         // POST request to join wallet
         self.postRequest(url: "/v2/wallets/\(walletIdentifier)/copayers/", arguments: arguments) { data, _, error in
-            print("wallet join arguments--\(arguments)")
             guard let data = data else {
-                print("error---\(error)")
                 return completion(nil, nil, error)
             }
 
             do {
-                if let jsonString = String(data: data, encoding: .utf8) { print("Raw wallet join response: \(jsonString)") }
-
                 let walletJoin = try JSONDecoder().decode(Vws.WalletJoin.self, from: data)
 
                 completion(walletJoin, nil, nil)
@@ -356,9 +348,7 @@ extension WalletClient {
                         )
                         let hdPublicKey = hdPrivateKey.publicKey()
                         let bitcoinPubKey = PublicKey(bytes: hdPublicKey.data, network: .mainnetXVG)
-                        let legacyAddress = bitcoinPubKey.toBitcoinAddress()
-
-                        print("Legacy Address: \(legacyAddress)")
+                        _ = bitcoinPubKey.toBitcoinAddress()
                     } catch {
                         self.log.notice("wallet client skipped local address verification", metadata: [
                             "error": Logger.MetadataValue(stringLiteral: error.localizedDescription),

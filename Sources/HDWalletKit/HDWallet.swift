@@ -25,13 +25,7 @@ public class HDWallet {
 
     public func privateKey(account: Int, chain: Chain) throws -> HDPrivateKey1 {
         let path = "m/\(purpose)'/\(coinType)'/\(account)'/\(chain.rawValue)"
-        
-        print("purpose: \(purpose)")
-        print("coinType: \(coinType)")
-        print("account: \(account)")
-        print("chain: \(chain) (\(chain.rawValue))")
-        print("path: \(path)")
-        
+
         return try privateKey(path: path)
     }
 

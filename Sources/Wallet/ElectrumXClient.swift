@@ -16,11 +16,20 @@ struct ElectrumXConnectionStatus {
 final class ElectrumXClient {
     private let applicationRepository: ApplicationRepository
     private let urlSession: URLSession
+    private let httpSession: HttpSessionProtocol?
+    private let hiddenClient: HiddenClientProtocol?
     private let queue = DispatchQueue(label: "org.verge.wallets.electrumx")
 
-    init(applicationRepository: ApplicationRepository, urlSession: URLSession = .shared) {
+    init(
+        applicationRepository: ApplicationRepository,
+        urlSession: URLSession = .shared,
+        httpSession: HttpSessionProtocol? = nil,
+        hiddenClient: HiddenClientProtocol? = nil
+    ) {
         self.applicationRepository = applicationRepository
         self.urlSession = urlSession
+        self.httpSession = httpSession
+        self.hiddenClient = hiddenClient
     }
 
     func serverVersion() -> Promise<String> {
@@ -80,7 +89,7 @@ final class ElectrumXClient {
             return
         }
 
-        requestSocket(server: servers[index], method: method, params: params) { result in
+        requestTransport(server: servers[index], method: method, params: params) { result in
             switch result {
             case .success:
                 completion(result)
@@ -95,7 +104,7 @@ final class ElectrumXClient {
         params: [Any],
         completion: @escaping (Result<[String: Any], Error>) -> Void
     ) {
-        requestSocket(server: applicationRepository.activeElectrumXServer, method: method, params: params, completion: completion)
+        requestTransport(server: applicationRepository.activeElectrumXServer, method: method, params: params, completion: completion)
     }
 
     private func checkConnection(
@@ -108,7 +117,7 @@ final class ElectrumXClient {
             return
         }
 
-        requestSocket(server: servers[index], method: "server.version", params: ["VergeiOS", "1.4"]) { result in
+        requestTransport(server: servers[index], method: "server.version", params: ["VergeiOS", "1.4"]) { result in
             switch result {
             case .success:
                 completion(ElectrumXConnectionStatus(connected: true, server: servers[index]))
@@ -116,6 +125,135 @@ final class ElectrumXClient {
                 self.checkConnection(servers: servers, index: index + 1, completion: completion)
             }
         }
+    }
+
+    private func requestTransport(
+        server: ElectrumXServer,
+        method: String,
+        params: [Any],
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        if applicationRepository.useTor {
+            requestWebSocket(server: server, method: method, params: params, completion: completion)
+        } else {
+            requestSocket(server: server, method: method, params: params, completion: completion)
+        }
+    }
+
+    private func requestWebSocket(
+        server: ElectrumXServer,
+        method: String,
+        params: [Any],
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        guard let hiddenClient = hiddenClient,
+              let url = server.webSocketURL else {
+            completion(.failure(ElectrumXClientError.invalidHTTPResponse))
+            return
+        }
+
+        hiddenClient.getURLSession().then { session in
+            self.requestWebSocket(
+                session: session,
+                url: url,
+                method: method,
+                params: params,
+                completion: completion
+            )
+        }.catch { error in
+            completion(.failure(error))
+        }
+    }
+
+    private func requestWebSocket(
+        session: URLSession,
+        url: URL,
+        method: String,
+        params: [Any],
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        let task = session.webSocketTask(with: url)
+        let requestId = UUID().uuidString
+        var didComplete = false
+
+        func finish(_ result: Result<[String: Any], Error>) {
+            self.queue.async {
+                guard !didComplete else {
+                    return
+                }
+
+                didComplete = true
+                task.cancel(with: .normalClosure, reason: nil)
+                completion(result)
+            }
+        }
+
+        func send(method: String, params: [Any], id: String) {
+            do {
+                let payload = try JSONSerialization.data(withJSONObject: [
+                    "id": id,
+                    "method": method,
+                    "params": params
+                ])
+                let message = URLSessionWebSocketTask.Message.data(payload)
+                task.send(message) { error in
+                    if let error = error {
+                        finish(.failure(error))
+                    }
+                }
+            } catch {
+                finish(.failure(error))
+            }
+        }
+
+        func receive() {
+            task.receive { result in
+                switch result {
+                case .success(let message):
+                    let data: Data?
+                    switch message {
+                    case .data(let messageData):
+                        data = messageData
+                    case .string(let messageString):
+                        data = messageString.data(using: .utf8)
+                    @unknown default:
+                        data = nil
+                    }
+
+                    guard let data = data,
+                          let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                        receive()
+                        return
+                    }
+
+                    guard json["id"] as? String == requestId else {
+                        receive()
+                        return
+                    }
+
+                    if json["result"] == nil {
+                        finish(.failure(ElectrumXClientError.missingResult))
+                        return
+                    }
+
+                    finish(.success(json))
+                case .failure(let error):
+                    finish(.failure(error))
+                }
+            }
+        }
+
+        queue.asyncAfter(deadline: .now() + 8) {
+            finish(.failure(ElectrumXClientError.invalidHTTPResponse))
+        }
+
+        task.resume()
+        receive()
+
+        if method != "server.version" {
+            send(method: "server.version", params: ["VergeiOS", "1.4"], id: "server.version.\(requestId)")
+        }
+        send(method: method, params: params, id: requestId)
     }
 
     private func requestSocket(
@@ -169,17 +307,12 @@ final class ElectrumXClient {
                         }
 
                         if json?["result"] == nil {
-                            if let error = json?["error"] {
-                                print("ElectrumX \(server.host) \(method) error: \(error)")
-                            }
-                            print("ElectrumX \(method) missing result: \(json ?? [:])")
                             finish(.failure(ElectrumXClientError.missingResult))
                             return
                         }
 
                         finish(.success(json ?? [:]))
                     } catch {
-                        print("ElectrumX \(method) decode error: \(error.localizedDescription)")
                         finish(.failure(error))
                     }
 
@@ -285,7 +418,7 @@ final class ElectrumXClient {
         return nil
     }
 
-    private func request(
+    private func requestHTTP(
         server: ElectrumXServer,
         method: String,
         params: [Any],
@@ -312,6 +445,27 @@ final class ElectrumXClient {
             return
         }
 
+        if let httpSession = httpSession {
+            httpSession.dataTask(with: request).then { response in
+                guard let httpResponse = response.urlResponse as? HTTPURLResponse,
+                      200..<300 ~= httpResponse.statusCode else {
+                    completion(.failure(ElectrumXClientError.invalidHTTPResponse))
+                    return
+                }
+
+                self.decodeResponseData(response.data, completion: completion)
+            }.catch { error in
+                completion(.failure(error))
+            }
+
+            return
+        }
+
+        guard !applicationRepository.useTor else {
+            completion(.failure(ElectrumXClientError.invalidHTTPResponse))
+            return
+        }
+
         urlSession.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -325,17 +479,24 @@ final class ElectrumXClient {
                 return
             }
 
-            do {
-                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                if json?["result"] == nil {
-                    completion(.failure(ElectrumXClientError.missingResult))
-                    return
-                }
-
-                completion(.success(json ?? [:]))
-            } catch {
-                completion(.failure(error))
-            }
+            self.decodeResponseData(data, completion: completion)
         }.resume()
+    }
+
+    private func decodeResponseData(
+        _ data: Data,
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        do {
+            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+            if json?["result"] == nil {
+                completion(.failure(ElectrumXClientError.missingResult))
+                return
+            }
+
+            completion(.success(json ?? [:]))
+        } catch {
+            completion(.failure(error))
+        }
     }
 }

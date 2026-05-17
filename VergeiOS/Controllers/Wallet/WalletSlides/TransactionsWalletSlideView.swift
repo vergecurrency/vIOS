@@ -17,6 +17,8 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     var addressBookManager: AddressBookRepository!
     var applicationRepository: ApplicationRepository!
     var electrumXClient: ElectrumXClient!
+    var walletClient: WalletClientProtocol!
+    var torClient: TorClient!
 
     var items: [Vws.TxHistory] = []
     private let serverStatusDot = UIView()
@@ -42,7 +44,17 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         self.transactionManager = Application.container.resolve(TransactionManager.self)!
         self.addressBookManager = Application.container.resolve(AddressBookRepository.self)!
         self.applicationRepository = Application.container.resolve(ApplicationRepository.self)!
-        self.electrumXClient = ElectrumXClient(applicationRepository: applicationRepository)
+        self.walletClient = Application.container.resolve(WalletClientProtocol.self)!
+        self.torClient = Application.container.resolve(TorClient.self)!
+        self.electrumXClient = ElectrumXClient(
+            applicationRepository: applicationRepository,
+            httpSession: Application.container.resolve(HttpSessionProtocol.self),
+            hiddenClient: Application.container.resolve(TorClient.self)
+        )
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func awakeFromNib() {
@@ -68,6 +80,19 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             name: .didSwitchWalletProfile,
             object: nil
         )
+
+        [
+            Notification.Name.didStartTorThread: #selector(didStartTorThread(notification:)),
+            Notification.Name.didConnectTorController: #selector(didConnectTorController(notification:)),
+            Notification.Name.didUpdateTorBootstrapProgress: #selector(didUpdateTorBootstrapProgress(notification:)),
+            Notification.Name.didEstablishTorConnection: #selector(didEstablishTorConnection(notification:)),
+            Notification.Name.didFinishTorStart: #selector(didFinishTorStart(notification:)),
+            Notification.Name.didResignTorConnection: #selector(didResignTorConnection(notification:)),
+            Notification.Name.didTurnOffTor: #selector(didTurnOffTor(notification:)),
+            Notification.Name.errorDuringTorConnection: #selector(errorDuringTorConnection(notification:))
+        ].forEach { name, selector in
+            NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
+        }
     }
 
     override func layoutSubviews() {
@@ -94,11 +119,14 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func getTransactions(notification: Notification? = nil) {
+        setSyncingStatus()
+
         self.transactionManager.all { transactions in
             self.items = transactions
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.refreshServerStatus()
             }
         }
     }
@@ -151,12 +179,13 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshServerStatus()
+        setSyncingStatus()
         self.transactionManager.sync(limit: 10) { _ in
             NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
 
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
+                self.refreshServerStatus()
             }
         }
     }
@@ -194,7 +223,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         serverStatusLabel.translatesAutoresizingMaskIntoConstraints = false
         serverStatusLabel.font = UIFont.avenir(size: 12)
         serverStatusLabel.textColor = ThemeManager.shared.secondaryLight()
-        serverStatusLabel.text = "Server: checking..."
+        serverStatusLabel.text = "Status: connecting..."
         serverStatusLabel.adjustsFontSizeToFitWidth = true
         serverStatusLabel.minimumScaleFactor = 0.75
 
@@ -244,8 +273,20 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     private func refreshServerStatus() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async { [weak self] in
+                self?.refreshServerStatus()
+            }
+            return
+        }
+
+        guard !isWaitingForTor() else {
+            setTorPendingStatus()
+            return
+        }
+
         guard let mnemonic = applicationRepository.mnemonic else {
-            setServerStatus(name: "Server", host: nil, connected: false)
+            setServerStatus(name: "Server", host: nil, state: "connecting")
             return
         }
 
@@ -258,16 +299,31 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
 
     private func setVwsStatus() {
         guard let host = URL(string: applicationRepository.walletServiceUrl)?.host else {
-            setServerStatus(name: "VWS", host: nil, connected: false)
+            setServerStatus(name: "VWS", host: nil, state: "connecting")
             return
         }
 
-        setServerStatus(name: "VWS", host: host, connected: true)
+        setServerStatus(name: "VWS", host: host, state: "connecting")
+        walletClient.openWallet { [weak self] _, errorResponse, error in
+            DispatchQueue.main.async {
+                guard let self = self else {
+                    return
+                }
+
+                if error != nil || errorResponse != nil {
+                    self.setServerStatus(name: "VWS", host: host, state: "error")
+                } else {
+                    self.setServerStatus(name: "VWS", host: host, state: "connected")
+                }
+            }
+        }
     }
 
     private func refreshElectrumXStatus() {
-        serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
-        serverStatusLabel.text = "ElectrumX: checking..."
+        updateServerStatusUI { [weak self] in
+            self?.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            self?.serverStatusLabel.text = "Status: ElectrumX syncing..."
+        }
 
         electrumXClient.checkConnection { [weak self] status in
             DispatchQueue.main.async {
@@ -276,21 +332,155 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
                 }
 
                 if status.connected, let server = status.server {
-                    self.setServerStatus(name: "ElectrumX", host: server.host, connected: true)
+                    self.setServerStatus(name: "ElectrumX", host: server.host, state: "connected")
                 } else {
-                    self.setServerStatus(name: "ElectrumX", host: nil, connected: false)
+                    self.setServerStatus(name: "ElectrumX", host: nil, state: "error")
                 }
             }
         }
     }
 
-    private func setServerStatus(name: String, host: String?, connected: Bool) {
-        serverStatusDot.backgroundColor = connected ? ThemeManager.shared.vergeGreen() : ThemeManager.shared.vergeRed()
+    private func setServerStatus(name: String, host: String?, state: String) {
+        updateServerStatusUI { [weak self] in
+            guard let self = self else {
+                return
+            }
 
-        if connected, let host = host {
-            serverStatusLabel.text = "\(name): connected to \(host)"
+            let connected = state == "connected"
+            let errored = state == "error"
+            self.serverStatusDot.backgroundColor = connected ? ThemeManager.shared.vergeGreen() : (errored ? ThemeManager.shared.vergeRed() : ThemeManager.shared.vergeGrey())
+
+            if connected, let host = host {
+                self.serverStatusLabel.text = "Status: \(name) connected to \(host)"
+            } else if state == "syncing" {
+                self.serverStatusLabel.text = "Status: \(name) syncing..."
+            } else if errored {
+                self.serverStatusLabel.text = "Status: \(name) connection error"
+            } else if let host = host {
+                self.serverStatusLabel.text = "Status: \(name) connecting to \(host)..."
+            } else {
+                self.serverStatusLabel.text = "Status: \(name) connecting..."
+            }
+        }
+    }
+
+    private func isWaitingForTor() -> Bool {
+        return applicationRepository.useTor && !torClient.isOperational
+    }
+
+    private func activeBackendName() -> String {
+        guard let mnemonic = applicationRepository.mnemonic,
+              !applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) else {
+            return "VWS"
+        }
+
+        return "ElectrumX"
+    }
+
+    private func setSyncingStatus() {
+        if isWaitingForTor() {
+            setTorPendingStatus()
+            return
+        }
+
+        setServerStatus(name: activeBackendName(), host: nil, state: "syncing")
+    }
+
+    private func setTorPendingStatus() {
+        updateServerStatusUI { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            if self.torClient.hasStarted {
+                self.serverStatusLabel.text = "Status: Tor bootstrapping \(self.torClient.bootstrapProgress)%..."
+            } else {
+                self.serverStatusLabel.text = "Status: Tor starting up..."
+            }
+        }
+    }
+
+    @objc private func didStartTorThread(notification: Notification) {
+        updateServerStatusUI { [weak self] in
+            self?.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            self?.serverStatusLabel.text = "Status: Tor starting up..."
+        }
+    }
+
+    @objc private func didConnectTorController(notification: Notification) {
+        updateServerStatusUI { [weak self] in
+            self?.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            self?.serverStatusLabel.text = "Status: Tor bootstrapping \(self?.torClient.bootstrapProgress ?? 0)%..."
+        }
+    }
+
+    @objc private func didUpdateTorBootstrapProgress(notification: Notification) {
+        let progress = notification.userInfo?["progress"] as? Int
+        let summary = notification.userInfo?["summary"] as? String
+        updateServerStatusUI { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            let percent = progress ?? self.torClient.bootstrapProgress
+            let phase = summary?.isEmpty == false ? " - \(summary!)" : ""
+            self.serverStatusLabel.text = "Status: Tor bootstrapping \(percent)%\(phase)"
+        }
+    }
+
+    @objc private func didEstablishTorConnection(notification: Notification) {
+        updateServerStatusUI { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            self.serverStatusLabel.text = "Status: Tor connected, syncing \(self.activeBackendName())..."
+            self.refreshServerStatus()
+        }
+    }
+
+    @objc private func didFinishTorStart(notification: Notification) {
+        guard applicationRepository.useTor else {
+            return
+        }
+
+        updateServerStatusUI { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
+            self.serverStatusLabel.text = "Status: Tor ready, connecting to \(self.activeBackendName())..."
+            self.refreshServerStatus()
+        }
+    }
+
+    @objc private func didResignTorConnection(notification: Notification) {
+        updateServerStatusUI { [weak self] in
+            self?.serverStatusDot.backgroundColor = ThemeManager.shared.vergeRed()
+            self?.serverStatusLabel.text = "Status: Tor disconnected"
+        }
+    }
+
+    @objc private func didTurnOffTor(notification: Notification) {
+        refreshServerStatus()
+    }
+
+    @objc private func errorDuringTorConnection(notification: Notification) {
+        updateServerStatusUI { [weak self] in
+            self?.serverStatusDot.backgroundColor = ThemeManager.shared.vergeRed()
+            self?.serverStatusLabel.text = "Status: Tor connection error"
+        }
+    }
+
+    private func updateServerStatusUI(_ updates: @escaping () -> Void) {
+        if Thread.isMainThread {
+            updates()
         } else {
-            serverStatusLabel.text = "\(name): not connected"
+            DispatchQueue.main.async(execute: updates)
         }
     }
 

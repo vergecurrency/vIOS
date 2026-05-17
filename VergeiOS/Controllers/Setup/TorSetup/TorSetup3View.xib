@@ -28,12 +28,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ny-Gh-19i">
                     <rect key="frame" x="0.0" y="82.5" width="375" height="370"/>
                     <subviews>
-                        <mapView clipsSubviews="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4GY-Ty-MG9">
-                            <rect key="frame" x="0.0" y="35" width="375" height="300"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="7dA-eQ-AUw"/>
-                            </constraints>
-                        </mapView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TorMapOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="qQX-vg-zUR">
                             <rect key="frame" x="0.0" y="35" width="375" height="300"/>
                             <color key="tintColor" name="BackgroundGrey"/>
@@ -41,16 +35,10 @@
                     </subviews>
                     <color key="backgroundColor" name="BackgroundGrey"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="4GY-Ty-MG9" secondAttribute="trailing" id="7t8-B9-Vz8"/>
-                        <constraint firstItem="4GY-Ty-MG9" firstAttribute="centerY" secondItem="0Ny-Gh-19i" secondAttribute="centerY" id="YvF-VU-H0g"/>
-                        <constraint firstItem="4GY-Ty-MG9" firstAttribute="leading" secondItem="0Ny-Gh-19i" secondAttribute="leading" id="aNK-nd-Dhw"/>
-                        <constraint firstItem="qQX-vg-zUR" firstAttribute="top" secondItem="4GY-Ty-MG9" secondAttribute="top" id="baa-wH-W9A"/>
-                        <constraint firstItem="qQX-vg-zUR" firstAttribute="width" secondItem="4GY-Ty-MG9" secondAttribute="width" id="dRX-ab-HS4"/>
-                        <constraint firstItem="qQX-vg-zUR" firstAttribute="bottom" secondItem="4GY-Ty-MG9" secondAttribute="bottom" id="gjc-Pw-88K"/>
-                        <constraint firstItem="qQX-vg-zUR" firstAttribute="leading" secondItem="4GY-Ty-MG9" secondAttribute="leading" id="iFY-aM-fbI"/>
-                        <constraint firstItem="4GY-Ty-MG9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0Ny-Gh-19i" secondAttribute="top" id="lHW-73-Ray"/>
-                        <constraint firstItem="qQX-vg-zUR" firstAttribute="height" secondItem="4GY-Ty-MG9" secondAttribute="height" id="pZL-JF-kVy"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4GY-Ty-MG9" secondAttribute="bottom" id="xpL-70-5db"/>
+                        <constraint firstItem="qQX-vg-zUR" firstAttribute="leading" secondItem="0Ny-Gh-19i" secondAttribute="leading" id="iFY-aM-fbI"/>
+                        <constraint firstAttribute="trailing" secondItem="qQX-vg-zUR" secondAttribute="trailing" id="7t8-B9-Vz8"/>
+                        <constraint firstItem="qQX-vg-zUR" firstAttribute="centerY" secondItem="0Ny-Gh-19i" secondAttribute="centerY" id="YvF-VU-H0g"/>
+                        <constraint firstItem="qQX-vg-zUR" firstAttribute="height" relation="lessThanOrEqual" constant="300" id="pZL-JF-kVy"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JGl-d4-D5U">
@@ -121,7 +109,6 @@
                 <constraint firstItem="JGl-d4-D5U" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="xOz-t4-35V"/>
             </constraints>
             <connections>
-                <outlet property="mapView" destination="4GY-Ty-MG9" id="yv3-RM-RtV"/>
                 <outlet property="proceedButton" destination="Cw8-ye-Hxh" id="1KG-Lt-tpF"/>
             </connections>
 

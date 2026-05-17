@@ -15,7 +15,6 @@ class WalletServiceProvider: ServiceProvider {
 
     override func register() {
         registerLogger()               // Must come first
-        registerHttpSession()          // HttpSessionProtocol
         registerRatesClient()          // Must be before FiatRateTicker
         registerWalletCredentials()    // Depends on ApplicationRepository
         registerWalletClient()         // Depends on Credentials & HttpSession
@@ -135,13 +134,6 @@ class WalletServiceProvider: ServiceProvider {
         }.inObjectScope(.container)
     }
 
-
-    // MARK: - HttpSession
-    private func registerHttpSession() {
-        container.register(HttpSessionProtocol.self) { _ in HttpSession() }
-            .inObjectScope(.container)
-    }
-
     // MARK: - RatesClient
     private func registerRatesClient() {
         container.register(RatesClient.self) { r in
@@ -179,8 +171,6 @@ class WalletServiceProvider: ServiceProvider {
                 )
                 return credentials
             } catch {
-                print("Failed to create credentials: \(error)")
-
                 // Fallback: create credentials with dummy mnemonic
                 do {
                     let fallbackCredentials = try Credentials(
@@ -216,7 +206,11 @@ class WalletServiceProvider: ServiceProvider {
             return RoutingWalletClient(
                 applicationRepository: appRepo,
                 vwsClient: vwsClient,
-                electrumXClient: ElectrumXClient(applicationRepository: appRepo)
+                electrumXClient: ElectrumXClient(
+                    applicationRepository: appRepo,
+                    httpSession: httpSession,
+                    hiddenClient: r.resolve(TorClient.self)
+                )
             )
         }.inObjectScope(.container)
     }

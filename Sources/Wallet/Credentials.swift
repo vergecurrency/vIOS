@@ -24,7 +24,6 @@ class Credentials {
 
     func reset(mnemonic: [String], passphrase: String = "") {
         guard let seedData = Mnemonic.seed(mnemonic: mnemonic, passphrase: passphrase) else {
-            print("❌ Failed to generate seed from mnemonic")
             return
         }
         self.seed = seedData
@@ -65,12 +64,9 @@ class Credentials {
             
             let base58Encoded = Base58.encode(data)
             
-            print("==> Custom Extended Public Key (ToEA format): \(base58Encoded)")
-            print("==> Prefix: \(base58Encoded.hasPrefix("ToEA") ? "✅ ToEA" : "❌ \(String(base58Encoded.prefix(4)))")")
             return base58Encoded
             
         } catch {
-            print("❌ Can't generate custom extended public key: \(error)")
             return nil
         }
     }
@@ -90,18 +86,14 @@ class Credentials {
             let combined = publicKeyData + chainCode
             
             guard combined.count == 65 else {
-                print("❌ Invalid combined data length: \(combined.count)")
                 return nil
             }
             
             let base64Encoded = combined.base64EncodedString()
             
-            print("==> xPubKey (Base64): \(base64Encoded)")
-            print("==> Length: \(combined.count) bytes")
             return base64Encoded
             
         } catch {
-            print("❌ Can't generate xPubKey: \(error)")
             return nil
         }
     }
@@ -111,7 +103,6 @@ class Credentials {
         do {
             return try privateKey1.derived(at: 0, hardened: true)
         } catch {
-            print("❌ Failed to derive walletPrivateKey1: \(error)")
             return privateKey1
         }
     }
@@ -133,7 +124,6 @@ class Credentials {
                 .derived(at: Self.vergeCoinType, hardened: true)
                 .derived(at: Self.defaultAccount, hardened: true)
         } catch {
-            print("❌ Failed to derive BIP44 private key: \(error)")
             return privateKey1
         }
     }
@@ -146,7 +136,6 @@ class Credentials {
                 .derived(at: Self.legacyVwsCoinType, hardened: true)
                 .derived(at: Self.defaultAccount, hardened: true)
         } catch {
-            print("Failed to derive legacy VWS BIP44 private key: \(error)")
             return privateKey1
         }
     }
@@ -162,7 +151,6 @@ class Credentials {
                 .derived(at: 1, hardened: true)
                 .derived(at: 0, hardened: false)
         } catch {
-            print("❌ Failed to derive requestPrivateKey: \(error)")
             return privateKey1
         }
     }
@@ -174,11 +162,9 @@ class Credentials {
         let hex = pubKey.raw.toHexString()
         
         guard hex.count == 66 else {
-            print("❌ Invalid public key length: \(hex.count)")
             return nil
         }
         
-        print("✅ Request PubKey (m/1'/0): \(hex)")
         return hex
     }
 
@@ -187,10 +173,8 @@ class Credentials {
         do {
             let accountKey = try wallet.publicKey(account: 0, chain: .external)
             let extendedPubKey = accountKey.extended().description
-            print("==> Account Extended Public Key: \(extendedPubKey)")
             return extendedPubKey
         } catch {
-            print("❌ Can't get account extended public key: \(error)")
             return nil
         }
     }
@@ -202,10 +186,8 @@ class Credentials {
             let publicKey = accountPrivateKey.publicKey(curve: .secp256k1)
             let accountXpub = publicKey.extended().description
             
-            print("==> BIP32 Extended Public Key: \(accountXpub)")
             return accountXpub
         } catch {
-            print("❌ Can't get BIP32 extended public key: \(error)")
             return nil
         }
     }
@@ -215,10 +197,8 @@ class Credentials {
         do {
             let vergePrivateKey = try wallet.privateKey(account: 0, chain: .external)
             let extendedPrivKey = vergePrivateKey.extended().description
-            print("==> BIP32 Extended Private Key: \(extendedPrivKey)")
             return extendedPrivKey
         } catch {
-            print("❌ Can't get BIP32 extended private key: \(error)")
             return nil
         }
     }
@@ -228,10 +208,8 @@ class Credentials {
         do {
             let vergePrivateKey = try wallet.privateKey(account: 0)
             let extendedPrivKey = vergePrivateKey.extended().description
-            print("==> Account Extended Private Key: \(extendedPrivKey)")
             return extendedPrivKey
         } catch {
-            print("❌ Can't get account extended private key: \(error)")
             return nil
         }
     }
@@ -251,7 +229,6 @@ class Credentials {
             let hmac = try HMAC(key: key.bytes, variant: .sha2(.sha256)).authenticate(data.bytes)
             return Data(hmac[0..<16]).base64EncodedString()
         } catch {
-            print("❌ Failed to derive personalEncryptingKey: \(error)")
             return ""
         }
     }
@@ -294,7 +271,6 @@ class Credentials {
     func decodeXPubKey(_ base64String: String) -> (publicKey: Data, chainCode: Data)? {
         guard let decoded = Data(base64Encoded: base64String),
               decoded.count == 65 else {
-            print("❌ Invalid xPubKey format")
             return nil
         }
         
@@ -304,73 +280,4 @@ class Credentials {
         return (Data(publicKey), Data(chainCode))
     }
     
-    // MARK: - Helper: Decode ToEA Key
-    func decodeToEAKey(_ toEAKey: String) {
-        guard let decoded = Base58.decode(toEAKey) else {
-            print("❌ Failed to decode Base58")
-            return
-        }
-        
-        print("========== DECODING ToEA KEY ==========")
-        print("Total decoded length: \(decoded.count) bytes")
-        
-        let versionBytes = decoded[0..<4]
-        let depth = decoded[4]
-        let fingerprint = decoded[5..<9]
-        let childIndex = decoded[9..<13]
-        let chainCode = decoded[13..<45]
-        let publicKey = decoded[45..<78]
-        let checksum = decoded[78..<82]
-        
-        print("Version bytes: \(versionBytes.map { String(format: "0x%02X", $0) }.joined(separator: ", "))")
-        print("Depth: \(depth)")
-        print("Fingerprint: \(fingerprint.toHexString())")
-        print("Child Index: \(childIndex.toHexString())")
-        print("Chain Code: \(chainCode.toHexString())")
-        print("Public Key: \(publicKey.toHexString())")
-        print("Checksum: \(checksum.toHexString())")
-        
-        let payload = decoded[0..<78]
-        let computedHash = Crypto.sha256(Crypto.sha256(payload))
-        let computedChecksum = computedHash.prefix(4)
-        
-        print("Checksum valid: \(checksum == computedChecksum)")
-        print("========================================")
-    }
-}
-
-// MARK: - Usage Example
-extension Credentials {
-    func printAllKeys() {
-        print("========== VERGE WALLET KEYS ==========")
-        
-        if let customPub = customExtendedPublicKey {
-            print("✅ Custom Extended Public Key (ToEA format):")
-            print(customPub)
-        }
-        
-        if let xPub = xPubKey {
-            print("✅ xPubKey (Base64):")
-            print(xPub)
-            
-            if let decoded = decodeXPubKey(xPub) {
-                print("Decoded Components:")
-                print("Public Key (33 bytes): \(decoded.publicKey.toHexString())")
-                print("Chain Code (32 bytes): \(decoded.chainCode.toHexString())")
-            }
-        }
-        
-        if let reqPub = requestPubKey {
-            print("✅ Request PubKey (m/1'/0):")
-            print(reqPub)
-        }
-        
-        print("✅ Shared Encrypting Key:")
-        print(sharedEncryptingKey)
-        
-        print("✅ Personal Encrypting Key:")
-        print(personalEncryptingKey)
-        
-        print("=======================================")
-    }
 }

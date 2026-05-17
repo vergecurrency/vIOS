@@ -228,33 +228,47 @@ class AddressValidator {
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        URLSession.shared.dataTask(with: request) { data, response, _ in
-            guard let httpResponse = response as? HTTPURLResponse else {
-                return completion(.failure(.emptyResponse))
-            }
+        guard let httpSession = Application.container.resolve(HttpSessionProtocol.self) else {
+            return completion(.failure(.emptyResponse))
+        }
 
-            guard httpResponse.statusCode == 200 else {
-                return completion(.failure(.httpStatus(httpResponse.statusCode)))
-            }
+        httpSession.dataTask(with: request).then { response in
+            self.handleUnstoppableResponse(response.data, response: response.urlResponse, completion: completion)
+        }.catch { _ in
+            completion(.failure(.emptyResponse))
+        }
+    }
 
-            guard let data = data, !data.isEmpty else {
-                return completion(.failure(.emptyResponse))
-            }
+    private func handleUnstoppableResponse(
+        _ data: Data,
+        response: URLResponse?,
+        completion: @escaping (Result<String, ResolutionError>) -> Void
+    ) {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            return completion(.failure(.emptyResponse))
+        }
 
-            guard let decoded = try? JSONDecoder().decode(UnstoppableDomainsResponse.self, from: data) else {
-                return completion(.failure(.invalidJson))
-            }
+        guard httpResponse.statusCode == 200 else {
+            return completion(.failure(.httpStatus(httpResponse.statusCode)))
+        }
 
-            guard let records = decoded.records else {
-                return completion(.failure(.noRecords))
-            }
+        guard !data.isEmpty else {
+            return completion(.failure(.emptyResponse))
+        }
 
-            guard let address = records[UnstoppableDomains.recordKey], !address.isEmpty else {
-                return completion(.failure(.recordNotFound))
-            }
+        guard let decoded = try? JSONDecoder().decode(UnstoppableDomainsResponse.self, from: data) else {
+            return completion(.failure(.invalidJson))
+        }
 
-            completion(.success(self.normalizedResolvedAddress(address)))
-        }.resume()
+        guard let records = decoded.records else {
+            return completion(.failure(.noRecords))
+        }
+
+        guard let address = records[UnstoppableDomains.recordKey], !address.isEmpty else {
+            return completion(.failure(.recordNotFound))
+        }
+
+        completion(.success(normalizedResolvedAddress(address)))
     }
 
     private func normalizedResolvedAddress(_ address: String) -> String {

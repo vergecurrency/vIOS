@@ -16,4 +16,9 @@ struct ElectrumXServer: Codable, Equatable {
     var url: URL? {
         return URL(string: "\(useTLS ? "https" : "http")://\(host):\(port)")
     }
+
+    var webSocketURL: URL? {
+        let webSocketPort = useTLS && port == 50002 ? 50004 : port
+        return URL(string: "\(useTLS ? "wss" : "ws")://\(host):\(webSocketPort)")
+    }
 }

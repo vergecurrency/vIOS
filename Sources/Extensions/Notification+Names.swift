@@ -24,6 +24,7 @@ extension Notification.Name {
     static let didFinishTorStart = Notification.Name("didFinishTorStart")
     static let didStartTorThread = Notification.Name("didStartTorThread")
     static let didConnectTorController = Notification.Name("didConnectTorController")
+    static let didUpdateTorBootstrapProgress = Notification.Name("didUpdateTorBootstrapProgress")
     static let didEstablishTorConnection = Notification.Name("didEstablishTorConnection")
     static let didResignTorConnection = Notification.Name("didResignTorConnection")
     static let didTurnOffTor = Notification.Name("didTurnOffTor")

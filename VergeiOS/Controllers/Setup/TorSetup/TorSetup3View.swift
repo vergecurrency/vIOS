@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import MapKit
 import Logging
 
 class TorSetup3View: UIView {
 
-    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var proceedButton: UIButton!
 
     var viewController: TorViewController!
@@ -61,25 +59,9 @@ class TorSetup3View: UIView {
         let url = URL(string: Constants.ipCheckEndpoint)
 
         self.httpSession.dataTask(with: url!).then { response in
-            self.centerMapView(withIpLocation: try response.dataToJson(type: IpAddress.self))
+            _ = try response.dataToJson(type: IpAddress.self)
         }.catch { error in
             self.log.error("tor setup error while fetching your ip: \(error)")
-        }
-    }
-
-
-    func centerMapView(withIpLocation ipAddress: IpAddress) {
-        let coordinate = CLLocationCoordinate2D(
-            latitude: CLLocationDegrees(ipAddress.latitude ?? 0.0),
-            longitude: CLLocationDegrees(ipAddress.longitude ?? 0.0)
-        )
-
-        let distance: CLLocationDistance = 12000
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
-
-        DispatchQueue.main.async {
-            self.mapView.setCenter(coordinate, animated: true)
-            self.mapView.setRegion(region, animated: true)
         }
     }
 

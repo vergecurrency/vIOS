@@ -89,6 +89,13 @@ private extension UIButton {
     }
 
     func applyRetrowaveButtonStyle(force: Bool) {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async { [weak self] in
+                self?.applyRetrowaveButtonStyle(force: force)
+            }
+            return
+        }
+
         if self is KeyboardButton {
             return
         }
@@ -128,6 +135,13 @@ private extension UIButton {
     }
 
     func applyRetrowaveGradient() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async { [weak self] in
+                self?.applyRetrowaveGradient()
+            }
+            return
+        }
+
         let gradientName = "RetrowaveButtonGradient"
         layer.sublayers?
             .filter { $0.name == gradientName }
@@ -135,7 +149,7 @@ private extension UIButton {
 
         guard bounds.width > 0 && bounds.height > 0 else {
             DispatchQueue.main.async { [weak self] in
-                self?.applyRetrowaveGradient()
+                self?.setNeedsLayout()
             }
             return
         }
@@ -156,6 +170,13 @@ private extension UIButton {
     }
 
     func animateRetrowaveGlow() {
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async { [weak self] in
+                self?.animateRetrowaveGlow()
+            }
+            return
+        }
+
         let key = "RetrowaveButtonGlow"
         guard layer.animation(forKey: key) == nil else {
             return

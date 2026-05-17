@@ -1763,25 +1763,6 @@ But you can always turn Tor off.</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="themeable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="gfk-UH-tqW">
-                                        <rect key="frame" x="16" y="471" width="343" height="300"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gfk-UH-tqW" id="jcf-oG-hvk">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnC-AU-oHK">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
-                                                </mapView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="lnC-AU-oHK" firstAttribute="leading" secondItem="jcf-oG-hvk" secondAttribute="leading" id="0hL-IE-lhZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="lnC-AU-oHK" secondAttribute="trailing" id="ECm-p4-hdI"/>
-                                                <constraint firstItem="lnC-AU-oHK" firstAttribute="top" secondItem="jcf-oG-hvk" secondAttribute="top" id="EVs-h3-RdN"/>
-                                                <constraint firstAttribute="bottom" secondItem="lnC-AU-oHK" secondAttribute="bottom" id="tfc-f6-Zcs"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1792,7 +1773,6 @@ But you can always turn Tor off.</string>
                     </tableView>
                     <connections>
                         <outlet property="ipAddressLabel" destination="Tg0-BR-yrS" id="7ZW-90-PFa"/>
-                        <outlet property="mapView" destination="lnC-AU-oHK" id="qmX-bu-O2D"/>
                         <outlet property="useTorSwitch" destination="Dxh-0n-KyV" id="gO4-c9-M9I"/>
                     </connections>
                 </tableViewController>
