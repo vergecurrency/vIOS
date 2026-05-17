@@ -10,6 +10,7 @@ class WalletViewServiceProvider: ServiceProvider {
     override func register() {
         container.storyboardInitCompleted (WalletViewController.self) { r, c in
             c.applicationRepository = r.resolve(ApplicationRepository.self)
+            c.walletClient = r.resolve(WalletClientProtocol.self)
         }
 
         container.storyboardInitCompleted (TransactionsTableViewController.self) { r, c in

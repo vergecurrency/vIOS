@@ -14,7 +14,7 @@ class SettingsTableViewController: EdgedTableViewController {
 
     @IBOutlet weak var currencyLabel: UILabel!
 
-    let localAuthIndexPath = IndexPath(row: 3, section: 2)
+    let localAuthIndexPath = IndexPath(row: 3, section: 3)
     var applicationRepository: ApplicationRepository!
     var credentials: Credentials!
     var walletClient: WalletClientProtocol!
@@ -22,22 +22,23 @@ class SettingsTableViewController: EdgedTableViewController {
     var walletTicker: WalletTicker!
     var fiatRateTicker: FiatRateTicker!
     var transactionManager: TransactionManager!
+    private weak var walletProfilesButton: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Wallets",
-            style: .plain,
-            target: self,
-            action: #selector(showWalletProfiles)
-        )
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: "ElectrumX",
-            style: .plain,
-            target: self,
-            action: #selector(showElectrumXServers)
-        )
+        let walletButton = makeWalletProfilesButton()
+        self.walletProfilesButton = walletButton
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: walletButton)
+        self.navigationItem.leftBarButtonItem = nil
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let walletProfilesButton = walletProfilesButton {
+            applyWalletProfilesButtonStyle(to: walletProfilesButton)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +57,12 @@ class SettingsTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //handle sections
         switch indexPath.section {
-        case 3:
+        case 1:
+            if indexPath.row == 0 {
+                self.showElectrumXServers()
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }
+        case 4:
             self.otherHandler(index: indexPath.row)
         default: break
         }
@@ -73,7 +79,7 @@ class SettingsTableViewController: EdgedTableViewController {
         default: return
         }
 
-        self.tableView.deselectRow(at: IndexPath(row: index, section: 3), animated: true)
+        self.tableView.deselectRow(at: IndexPath(row: index, section: 4), animated: true)
     }
 
     private func loadWebsite(url: String) {
@@ -88,6 +94,78 @@ class SettingsTableViewController: EdgedTableViewController {
         }
 
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+    private func makeWalletProfilesButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(nil, for: .normal)
+        button.setImage(nil, for: .normal)
+        button.accessibilityLabel = "Wallets"
+        button.addTarget(self, action: #selector(showWalletProfiles), for: .touchUpInside)
+
+        let label = UILabel()
+        label.text = "Wallets"
+        label.textColor = .white
+        label.font = UIFont.avenir(size: 12).demiBold()
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = false
+        button.addSubview(label)
+
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 68),
+            button.heightAnchor.constraint(equalToConstant: 34),
+            label.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 8),
+            label.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -8)
+        ])
+        applyWalletProfilesButtonStyle(to: button)
+
+        return button
+    }
+
+    private func applyWalletProfilesButtonStyle(to button: UIButton) {
+        let gradientName = "RetrowaveWalletProfilesButtonGradient"
+        button.backgroundColor = UIColor(rgb: 0x12071A)
+        button.tintColor = .white
+        button.layer.cornerRadius = 17
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.75).cgColor
+        button.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        button.layer.shadowOpacity = 0.38
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+
+        guard button.bounds.width > 0 && button.bounds.height > 0 else {
+            return
+        }
+
+        let gradient: CAGradientLayer
+        if let existingGradient = button.layer.sublayers?
+            .first(where: { $0.name == gradientName }) as? CAGradientLayer {
+            gradient = existingGradient
+        } else {
+            gradient = CAGradientLayer()
+            gradient.name = gradientName
+            button.layer.insertSublayer(gradient, at: 0)
+        }
+
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).cgColor,
+            UIColor(rgb: 0x3A125C).cgColor,
+            UIColor(rgb: 0x12071A).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        button.subviews.forEach { button.bringSubviewToFront($0) }
     }
 
     @objc private func showWalletProfiles() {

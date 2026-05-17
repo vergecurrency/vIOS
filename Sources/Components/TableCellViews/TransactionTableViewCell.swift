@@ -20,8 +20,14 @@ class TransactionTableViewCell: Cell<String>, CellType {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        amountLabel.font = UIFont.avenir(size: 14).demiBold()
+        amountLabel.font = UIFont.avenir(size: 15).demiBold()
         accessoryView = amountLabel
+        backgroundColor = ThemeManager.shared.backgroundWhite()
+        contentView.backgroundColor = .clear
+        textLabel?.font = UIFont.avenir(size: 16).demiBold()
+        detailTextLabel?.font = UIFont.avenir(size: 12).medium()
+        detailTextLabel?.numberOfLines = 2
+        imageView?.contentMode = .scaleAspectFit
     }
 
     func setTransaction(_ transaction: Vws.TxHistory, address: Contact?) {
@@ -31,16 +37,19 @@ class TransactionTableViewCell: Cell<String>, CellType {
     }
 
     func setTransaction(_ transaction: Vws.TxHistory) {
-        textLabel?.text = transaction.txid
-        textLabel?.textColor = ThemeManager.shared.secondaryLight().withAlphaComponent(0.75)
+        setAccount(transaction, address: nil)
         setDateTime(transaction)
         setAmount(transaction)
     }
 
     fileprivate func setAccount(_ transaction: Vws.TxHistory, address: Contact?) {
-        textLabel?.text = transaction.address.truncated(limit: 12, position: .tail, leader: "******")
+        let resolvedName = transaction.resolvedRecipientName
+        textLabel?.text = transaction.displayRecipient.truncated(limit: 26, position: .middle, leader: "...")
 
-        if transaction.memo != nil {
+        if let resolvedName = resolvedName {
+            textLabel?.text = resolvedName
+            textLabel?.textColor = ThemeManager.shared.primaryLight()
+        } else if transaction.memo != nil {
             textLabel?.text = transaction.memo!
             textLabel?.textColor = ThemeManager.shared.primaryDark()
         } else if address != nil {
@@ -65,7 +74,13 @@ class TransactionTableViewCell: Cell<String>, CellType {
         let df = DateFormatter()
         df.dateStyle = .medium
         df.timeStyle = .short
-        detailTextLabel?.text = df.string(from: transaction.timeReceived)
+        let date = df.string(from: transaction.timeReceived)
+        if let _ = transaction.resolvedRecipientName {
+            detailTextLabel?.text = "\(date)\n\(transaction.address.truncated(limit: 28, position: .middle, leader: "..."))"
+        } else {
+            detailTextLabel?.text = date
+        }
+        detailTextLabel?.textColor = ThemeManager.shared.secondaryLight()
     }
 
     fileprivate func setAmount(_ transaction: Vws.TxHistory) {

@@ -61,7 +61,8 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextField
     }
 
     @IBAction func submitPaperkeyConfirmation(_ sender: Any) {
-        self.firstWordTextfield.backgroundColor = .white
+        self.firstWordTextfield.updateColors()
+        self.secondWordTextfield.updateColors()
 
         // Add shake effect...
         if self.firstWordTextfield.text != self.mnemonic[self.randomNumbers.first! - 1] {

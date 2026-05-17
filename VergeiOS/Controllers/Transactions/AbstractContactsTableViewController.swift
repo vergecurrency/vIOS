@@ -129,6 +129,11 @@ class AbstractContactsTableViewController: UITableViewController {
 
         cell.textLabel?.text = address.name
         cell.detailTextLabel?.text = address.address
+        cell.backgroundColor = UIColor(rgb: 0x12071A)
+        cell.contentView.backgroundColor = UIColor(rgb: 0x12071A)
+        cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = ThemeManager.shared.secondaryLight()
+        cell.tintColor = ThemeManager.shared.primaryLight()
 
         return cell
     }

@@ -73,6 +73,22 @@ extension Vws {
             return self.message
         }
 
+        var resolvedRecipientName: String? {
+            guard self.category == .Sent else {
+                return nil
+            }
+
+            return ResolvedRecipientRepository.name(for: self.address)
+        }
+
+        var displayRecipient: String {
+            if let resolvedRecipientName = resolvedRecipientName {
+                return resolvedRecipientName
+            }
+
+            return self.address
+        }
+
         var confirmationsCount: String {
             return self.confirmations > 6 ? "6+" : String(self.confirmations < 0 ? 0 : self.confirmations)
         }

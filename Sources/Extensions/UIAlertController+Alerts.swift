@@ -4,8 +4,95 @@
 //
 
 import UIKit
+import ObjectiveC
 
 extension UIAlertController {
+    private static var hasInstalledRetrowavePresenter = false
+
+    static func installRetrowavePresenter() {
+        guard !hasInstalledRetrowavePresenter else {
+            return
+        }
+
+        hasInstalledRetrowavePresenter = true
+        UIViewController.installRetrowaveAlertPresenter()
+    }
+
+    func applyRetrowaveTheme() {
+        actions.forEach { action in
+            let color: UIColor = action.style == .destructive
+                ? ThemeManager.shared.vergeRed()
+                : .white
+            action.setValue(color, forKey: "titleTextColor")
+        }
+
+        view.tintColor = ThemeManager.shared.primaryLight()
+        view.backgroundColor = .clear
+        view.layer.cornerRadius = 14
+        view.layer.shadowColor = UIColor(rgb: 0xFF3DF2).cgColor
+        view.layer.shadowOpacity = 0.4
+        view.layer.shadowRadius = 24
+        view.layer.shadowOffset = CGSize(width: 0, height: 0)
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.styleRetrowaveAlertView(self.view)
+            self.addRetrowaveAlertGradient(to: self.view)
+        }
+    }
+
+    private func styleRetrowaveAlertView(_ root: UIView) {
+        root.subviews.forEach { styleRetrowaveAlertView($0) }
+
+        if let label = root as? UILabel {
+            label.textColor = .white
+            if label.font.pointSize < 15 {
+                label.textColor = ThemeManager.shared.secondaryLight()
+            }
+        }
+
+        if let textField = root as? UITextField {
+            textField.updateColors()
+        }
+
+        if let visualEffect = root as? UIVisualEffectView {
+            visualEffect.effect = nil
+            visualEffect.backgroundColor = .clear
+        } else if root !== view {
+            root.backgroundColor = root.backgroundColor == nil || root.backgroundColor == .clear
+                ? .clear
+                : UIColor(rgb: 0x150A24).withAlphaComponent(0.96)
+        }
+    }
+
+    private func addRetrowaveAlertGradient(to root: UIView) {
+        let gradientName = "RetrowaveAlertGradient"
+        root.layer.sublayers?
+            .filter { $0.name == gradientName }
+            .forEach { $0.removeFromSuperlayer() }
+
+        guard root.bounds.width > 0 && root.bounds.height > 0 else {
+            return
+        }
+
+        let gradient = CAGradientLayer()
+        gradient.name = gradientName
+        gradient.frame = root.bounds
+        gradient.cornerRadius = 14
+        gradient.colors = [
+            UIColor(rgb: 0x05020B).cgColor,
+            UIColor(rgb: 0x24103A).cgColor,
+            UIColor(rgb: 0x07030E).cgColor
+        ]
+        gradient.locations = [0.0, 0.55, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        root.layer.insertSublayer(gradient, at: 0)
+    }
+
     static func createWalletSetupErrorAlert(
         error: String,
         handler: @escaping (UIAlertAction) -> Void
@@ -211,5 +298,36 @@ extension UIAlertController {
 
             popoverController.permittedArrowDirections = []
         }
+    }
+}
+
+private extension UIViewController {
+    static func installRetrowaveAlertPresenter() {
+        let original = class_getInstanceMethod(
+            UIViewController.self,
+            #selector(UIViewController.present(_:animated:completion:))
+        )
+        let swizzled = class_getInstanceMethod(
+            UIViewController.self,
+            #selector(UIViewController.retrowavePresent(_:animated:completion:))
+        )
+
+        guard let originalMethod = original, let swizzledMethod = swizzled else {
+            return
+        }
+
+        method_exchangeImplementations(originalMethod, swizzledMethod)
+    }
+
+    @objc func retrowavePresent(
+        _ viewControllerToPresent: UIViewController,
+        animated flag: Bool,
+        completion: (() -> Void)? = nil
+    ) {
+        if let alert = viewControllerToPresent as? UIAlertController {
+            alert.applyRetrowaveTheme()
+        }
+
+        retrowavePresent(viewControllerToPresent, animated: flag, completion: completion)
     }
 }

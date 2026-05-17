@@ -107,6 +107,12 @@ class Keyboard: UIView {
         button.tintColor = ThemeManager.shared.secondaryDark()
         button.setTitleColor(ThemeManager.shared.secondaryDark(), for: .normal)
         button.setTitleColor(ThemeManager.shared.primaryDark(), for: .highlighted)
+        button.contentEdgeInsets = .zero
+        button.titleEdgeInsets = .zero
+        button.imageEdgeInsets = .zero
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.8
 
         if (!key.isKind(of: EmptyKey.self)) {
             button.addTarget(self, action: #selector(buttonPushed(button:)), for: .touchUpInside)

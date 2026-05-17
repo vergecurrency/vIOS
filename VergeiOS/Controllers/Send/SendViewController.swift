@@ -29,8 +29,14 @@ class SendViewController: ThemeableViewController {
     var applicationRepository: ApplicationRepository!
     var ratesClient: RatesClient!
     var walletClient: WalletClientProtocol!
+    var addressBookManager: AddressBookRepository!
     var waitingForConfirmationPopover: Bool = false
     var loadingAlert: UIAlertController = UIAlertController.loadingAlert(title: "alerts.refreshRates.title".localized)
+    private var recipientActionsStack: UIStackView?
+    private weak var nfcQuickActionButton: UIButton?
+    private var lastContactPromptRecipient: String?
+    private var lastConfirmButtonWidth: CGFloat = 0
+    private var didCenterEntryRows = false
 
     weak var confirmButtonInterval: Timer?
 
@@ -54,7 +60,7 @@ class SendViewController: ThemeableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.confirmButton.backgroundColor = ThemeManager.shared.vergeGrey()
+        self.confirmButton.alpha = 0.62
         self.confirmButtonInterval = setInterval(1) {
             self.isSendable()
         }
@@ -74,6 +80,9 @@ class SendViewController: ThemeableViewController {
         self.setupRecipientTextFieldKeyboardToolbar()
         self.setupAmountTextFieldKeyboardToolbar()
         self.setupMemoTextFieldKeyboardToolbar()
+        self.styleEntryFields()
+        self.addressBookManager = Application.container.resolve(AddressBookRepository.self)
+        self.setupRecipientQuickActions()
 
         // Setup Currency Gestures
         self.setupCurrencyGestures()
@@ -107,7 +116,8 @@ class SendViewController: ThemeableViewController {
         super.viewWillAppear(animated)
 
         self.noBalanceView.isHidden = (walletAmount.doubleValue > 0)
-        self.nfcInitiator.isHidden = !self.nfcTxFactory.isNfcAvailable()
+        self.nfcInitiator.isHidden = true
+        self.updateNfcQuickActionAvailability()
 
         self.xvgCardContainer.alpha = 0.0
         self.xvgCardContainer.center.y += 20.0
@@ -120,10 +130,286 @@ class SendViewController: ThemeableViewController {
         self.updateWalletAmountLabel()
         self.updateAmountLabel()
         self.refreshWalletAmount()
+        self.styleEntryFields()
+        self.setupRecipientQuickActions()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        recipientActionsStack?.arrangedSubviews.compactMap { $0 as? UIButton }.forEach {
+            applyRetrowaveSendButtonStyle(to: $0)
+        }
+        centerConfirmButton()
+        centerEntryRows()
+        applyRetrowaveSendButtonStyle(to: confirmButton)
     }
 
     @objc func didReceiveFiatRatings(_ notification: Notification) {
         self.updateWalletAmountLabel()
+    }
+
+    private func styleEntryFields() {
+        recipientTextField.placeholder = "Enter an XVG or Web3 wallet"
+        configureFormRow(for: recipientTextField, label: "Recipient Address", leftPadding: 12)
+        configureFormRow(for: amountTextField, label: "\(currencyLabel.text ?? "XVG") Amount", leftPadding: 0)
+        configureFormRow(for: memoTextField, label: "Internal Memo (optional)", leftPadding: 12)
+
+        [recipientTextField, amountTextField, memoTextField].forEach { textField in
+            textField?.backgroundColor = .clear
+            textField?.layer.borderWidth = 0
+            textField?.layer.cornerRadius = 0
+            textField?.clipsToBounds = false
+            textField?.contentVerticalAlignment = .bottom
+            textField?.textColor = ThemeManager.shared.secondaryDark()
+            textField?.tintColor = ThemeManager.shared.primaryLight()
+            textField?.attributedPlaceholder = NSAttributedString(
+                string: textField?.placeholder ?? "",
+                attributes: [.foregroundColor: ThemeManager.shared.secondaryLight()]
+            )
+        }
+
+        currencyLabel.textColor = ThemeManager.shared.primaryLight()
+    }
+
+    private func configureFormRow(for textField: UITextField, label: String, leftPadding: CGFloat) {
+        guard let selector = textField.superview?.subviews.compactMap({ $0 as? SelectorButton }).first else {
+            return
+        }
+
+        selector.label = label
+        selector.usesSideLabelLayout = true
+
+        let spacer = UIView(frame: CGRect(x: 0, y: 0, width: leftPadding, height: 1))
+        textField.leftView = spacer
+        textField.leftViewMode = leftPadding > 0 ? .always : .never
+    }
+
+    private func centerEntryRows() {
+        guard !didCenterEntryRows else {
+            return
+        }
+
+        didCenterEntryRows = true
+        [recipientTextField, amountTextField, memoTextField].forEach { textField in
+            guard let fieldContainer = textField?.superview,
+                let row = fieldContainer.superview
+            else {
+                return
+            }
+
+            row.subviews
+                .filter { $0 !== fieldContainer }
+                .compactMap { $0 as? UIButton }
+                .forEach { button in
+                    button.isHidden = true
+                    button.constraints
+                        .filter { $0.firstAttribute == .width }
+                        .forEach { $0.constant = 0 }
+                }
+
+            row.constraints
+                .filter { constraint in
+                    let firstIsContainer = constraint.firstItem as? UIView === fieldContainer
+                    let secondIsContainer = constraint.secondItem as? UIView === fieldContainer
+                    let firstIsHiddenButton = (constraint.firstItem as? UIButton)?.isHidden == true
+                    let secondIsHiddenButton = (constraint.secondItem as? UIButton)?.isHidden == true
+
+                    return (firstIsContainer || secondIsContainer) && (firstIsHiddenButton || secondIsHiddenButton)
+                }
+                .forEach { $0.isActive = false }
+
+            fieldContainer.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                fieldContainer.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 16),
+                fieldContainer.trailingAnchor.constraint(equalTo: row.trailingAnchor, constant: -16),
+                fieldContainer.topAnchor.constraint(equalTo: row.topAnchor),
+                fieldContainer.bottomAnchor.constraint(equalTo: row.bottomAnchor)
+            ])
+        }
+    }
+
+    private func setupRecipientQuickActions() {
+        guard recipientActionsStack == nil,
+            let container = nfcInitiator.superview
+        else {
+            updateNfcQuickActionAvailability()
+            return
+        }
+
+        nfcInitiator.isHidden = true
+
+        let contactsButton = makeRecipientQuickActionButton(
+            title: "Contacts",
+            imageName: "AddressBook",
+            action: #selector(openRecipientSelector)
+        )
+        let qrButton = makeRecipientQuickActionButton(
+            title: "Scan QR",
+            imageName: "QRcode",
+            action: #selector(openQrScanner)
+        )
+        let nfcButton = makeRecipientQuickActionButton(
+            title: "NFC",
+            imageName: "NFCIcon-2",
+            action: #selector(initiateNfc(_:))
+        )
+
+        let stack = UIStackView(arrangedSubviews: [contactsButton, qrButton, nfcButton])
+        stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 8
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        container.addSubview(stack)
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16),
+            stack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16),
+            stack.topAnchor.constraint(equalTo: container.topAnchor, constant: 4),
+            stack.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -4)
+        ])
+
+        recipientActionsStack = stack
+        nfcQuickActionButton = nfcButton
+        updateNfcQuickActionAvailability()
+    }
+
+    private func makeRecipientQuickActionButton(title: String, imageName: String, action: Selector) -> UIButton {
+        let button = UIButton(type: .system)
+        let icon = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)
+        button.configuration = nil
+        button.setTitle(nil, for: .normal)
+        button.setImage(nil, for: .normal)
+        button.tintColor = .white
+        button.accessibilityLabel = title
+
+        let imageView = UIImageView(image: icon)
+        imageView.tintColor = .white
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = false
+
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.avenir(size: 13).demiBold()
+        titleLabel.textAlignment = .center
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.72
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.isUserInteractionEnabled = false
+
+        let contentStack = UIStackView(arrangedSubviews: [imageView, titleLabel])
+        contentStack.axis = .horizontal
+        contentStack.alignment = .center
+        contentStack.distribution = .fill
+        contentStack.spacing = 6
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+        contentStack.isUserInteractionEnabled = false
+
+        button.addSubview(contentStack)
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: 18),
+            imageView.heightAnchor.constraint(equalToConstant: 18),
+            contentStack.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            contentStack.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            contentStack.leadingAnchor.constraint(greaterThanOrEqualTo: button.leadingAnchor, constant: 8),
+            contentStack.trailingAnchor.constraint(lessThanOrEqualTo: button.trailingAnchor, constant: -8)
+        ])
+
+        button.addTarget(self, action: action, for: .touchUpInside)
+        applyRetrowaveSendButtonStyle(to: button)
+
+        return button
+    }
+
+    private func applyRetrowaveSendButtonStyle(to button: UIButton) {
+        let gradientName = "RetrowaveSendButtonGradient"
+        button.backgroundColor = UIColor(rgb: 0x12071A)
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.72).cgColor
+        button.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        button.layer.shadowOpacity = 0.38
+        button.layer.shadowRadius = 12
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+        button.setTitleColor(.white, for: .normal)
+        button.tintColor = .white
+
+        guard button.bounds.width > 0 && button.bounds.height > 0 else {
+            DispatchQueue.main.async { [weak self, weak button] in
+                guard let button = button else {
+                    return
+                }
+
+                self?.applyRetrowaveSendButtonStyle(to: button)
+            }
+            return
+        }
+
+        let gradient: CAGradientLayer
+        if let existingGradient = button.layer.sublayers?
+            .first(where: { $0.name == gradientName }) as? CAGradientLayer {
+            gradient = existingGradient
+        } else {
+            gradient = CAGradientLayer()
+            gradient.name = gradientName
+            button.layer.insertSublayer(gradient, at: 0)
+        }
+
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).cgColor,
+            UIColor(rgb: 0x3A125C).cgColor,
+            UIColor(rgb: 0x12071A).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+
+        button.subviews.forEach { button.bringSubviewToFront($0) }
+
+        if button.layer.animation(forKey: "RetrowaveSendButtonGlow") == nil {
+            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+            animation.fromValue = 0.22
+            animation.toValue = 0.55
+            animation.duration = 1.45
+            animation.autoreverses = true
+            animation.repeatCount = .infinity
+            animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            button.layer.add(animation, forKey: "RetrowaveSendButtonGlow")
+        }
+    }
+
+    private func centerConfirmButton() {
+        guard let container = confirmButton.superview else {
+            return
+        }
+
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        let targetWidth = min(container.bounds.width - 80, 300)
+        guard abs(lastConfirmButtonWidth - targetWidth) > 0.5 else {
+            return
+        }
+
+        lastConfirmButtonWidth = targetWidth
+        confirmButton.constraints
+            .filter { $0.firstAttribute == .width }
+            .forEach { $0.constant = targetWidth }
+        confirmButton.contentHorizontalAlignment = .center
+        confirmButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 8)
+        confirmButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: -4)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.tintColor = .white
+    }
+
+    private func updateNfcQuickActionAvailability() {
+        let available = nfcTxFactory?.isNfcAvailable() ?? false
+        nfcQuickActionButton?.isEnabled = available
+        nfcQuickActionButton?.alpha = available ? 1.0 : 0.5
     }
 
     @objc func didChangeWalletAmount(notification: Notification) {
@@ -139,6 +425,7 @@ class SendViewController: ThemeableViewController {
 
         self.txFactory.update().then { _ in
             self.currencyLabel.text = self.txFactory.currency == .XVG ? "XVG" : self.txFactory.fiatCurrency
+            self.styleEntryFields()
         }
     }
 
@@ -207,6 +494,7 @@ class SendViewController: ThemeableViewController {
             self.currencyLabel.text = tx.fiatCurrency
         }
 
+        self.styleEntryFields()
         self.updateAmountLabel()
         self.updateWalletAmountLabel()
     }
@@ -274,7 +562,23 @@ class SendViewController: ThemeableViewController {
     }
 
     @IBAction func initiateNfc(_ sender: Any) {
+        guard self.nfcTxFactory.isNfcAvailable() else {
+            let alert = UIAlertController(
+                title: "NFC unavailable",
+                message: "NFC scanning is only available on supported physical iPhones.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
+            alert.applyRetrowaveTheme()
+            present(alert, animated: true)
+            return
+        }
+
         self.nfcTxFactory.initiateScan()
+    }
+
+    @objc private func openQrScanner() {
+        performSegue(withIdentifier: "scanQRCode", sender: self)
     }
 
     // MARK: - Navigation
@@ -312,9 +616,8 @@ class SendViewController: ThemeableViewController {
             && self.waitingForConfirmationPopover == false
 
         self.confirmButton.isEnabled = enabled
-        self.confirmButton.backgroundColor = (
-            enabled ? ThemeManager.shared.primaryLight() : ThemeManager.shared.vergeGrey()
-        )
+        self.confirmButton.alpha = enabled ? 1.0 : 0.62
+        self.confirmButton.updateColors()
     }
 
     @IBAction func confirm(_ sender: Any) {
@@ -413,6 +716,7 @@ class SendViewController: ThemeableViewController {
 
                 alertController.addAction(sendAction)
                 alertController.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .cancel))
+                alertController.applyRetrowaveTheme()
 
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     self.present(alertController, animated: true)
@@ -423,6 +727,7 @@ class SendViewController: ThemeableViewController {
 
     private func resolveRecipientIfNeeded(completion: @escaping (Bool) -> Void) {
         let recipient = self.recipientTextField.text ?? self.txFactory.address
+        let originalRecipient = recipient.trimmingCharacters(in: .whitespacesAndNewlines)
 
         AddressValidator().validateOrResolve(string: recipient) { valid, address, _, _, _, error in
             DispatchQueue.main.async {
@@ -432,10 +737,60 @@ class SendViewController: ThemeableViewController {
                 }
 
                 self.txFactory.address = address
+                if AddressValidator.looksLikeResolvableName(originalRecipient) {
+                    self.txFactory.resolvedRecipientName = originalRecipient.lowercased()
+                    ResolvedRecipientRepository.save(name: originalRecipient, for: address)
+                } else {
+                    self.txFactory.resolvedRecipientName = nil
+                }
                 self.recipientTextField.text = address
                 completion(true)
             }
         }
+    }
+
+    private func promptToSaveRecipientIfNeeded(displayValue: String, resolvedAddress: String) {
+        let cleanDisplay = displayValue.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanAddress = resolvedAddress.trimmingCharacters(in: .whitespacesAndNewlines)
+        let promptKey = "\(cleanDisplay.lowercased())|\(cleanAddress.lowercased())"
+
+        guard !cleanDisplay.isEmpty,
+            !cleanAddress.isEmpty,
+            lastContactPromptRecipient != promptKey,
+            addressBookManager.get(byAddress: cleanAddress) == nil,
+            presentedViewController == nil
+        else {
+            return
+        }
+
+        lastContactPromptRecipient = promptKey
+
+        let alert = UIAlertController(
+            title: "Save recipient?",
+            message: "Add this XVG recipient to your contacts for faster sends later.",
+            preferredStyle: .alert
+        )
+        alert.addTextField { textField in
+            textField.placeholder = "Contact name"
+            textField.text = AddressValidator.looksLikeResolvableName(cleanDisplay) ? cleanDisplay : "XVG Contact"
+            textField.autocapitalizationType = .words
+        }
+
+        alert.addAction(UIAlertAction(title: "Not Now", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+            var contact = Contact()
+            contact.name = alert.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            contact.address = cleanAddress
+
+            guard contact.isValid() else {
+                return self.present(UIAlertController.createInvalidContactAlert(), animated: true)
+            }
+
+            self.addressBookManager.put(address: contact)
+            NotificationBar.shared.showMessage("Contact saved", duration: 1)
+        })
+        alert.applyRetrowaveTheme()
+        present(alert, animated: true)
     }
 
     func getTxProposal(completion: @escaping (_ proposal: Vws.TxProposal) -> Void) {
@@ -674,6 +1029,14 @@ extension SendViewController: UITextFieldDelegate {
         return false
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard textField == recipientTextField else {
+            return
+        }
+
+        promptToSaveTypedRecipientIfNeeded()
+    }
+
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == self.amountTextField {
             self.txFactory.amount = 0.0
@@ -688,11 +1051,11 @@ extension SendViewController: UITextFieldDelegate {
     }
 
     @objc func pasteAddress() {
-        guard let address = UIPasteboard.general.string else {
+        guard let pastedRecipient = UIPasteboard.general.string else {
             return
         }
 
-        AddressValidator().validateOrResolve(string: address) { valid, address, _, _, _, error in
+        AddressValidator().validateOrResolve(string: pastedRecipient) { valid, address, _, _, _, error in
             DispatchQueue.main.async {
                 if !valid {
                     return self.showInvalidAddressAlert(error: error)
@@ -703,6 +1066,10 @@ extension SendViewController: UITextFieldDelegate {
                 }
 
                 self.txFactory.address = address
+                if AddressValidator.looksLikeResolvableName(pastedRecipient) {
+                    ResolvedRecipientRepository.save(name: pastedRecipient, for: address)
+                }
+                self.promptToSaveRecipientIfNeeded(displayValue: pastedRecipient, resolvedAddress: address)
 
                 self.didChangeSendTransaction(self.txFactory)
             }
@@ -713,6 +1080,27 @@ extension SendViewController: UITextFieldDelegate {
         self.txFactory.address = ""
 
         self.didChangeSendTransaction(txFactory)
+    }
+
+    private func promptToSaveTypedRecipientIfNeeded() {
+        let recipient = (recipientTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !recipient.isEmpty else {
+            return
+        }
+
+        AddressValidator().validateOrResolve(string: recipient) { valid, address, _, _, _, _ in
+            DispatchQueue.main.async {
+                guard valid, let address = address else {
+                    return
+                }
+
+                if AddressValidator.looksLikeResolvableName(recipient) {
+                    ResolvedRecipientRepository.save(name: recipient, for: address)
+                }
+
+                self.promptToSaveRecipientIfNeeded(displayValue: recipient, resolvedAddress: address)
+            }
+        }
     }
 
     @objc func dismissKeyboard() {
@@ -787,6 +1175,7 @@ extension SendViewController: SendTransactionDelegate {
 
         self.txFactory.update().then { tx in
             self.currencyLabel.text = tx.currency == .XVG ? "XVG" : tx.fiatCurrency
+            self.styleEntryFields()
         }
     }
 
@@ -805,6 +1194,7 @@ extension SendViewController: CurrencyDelegate {
 
         self.txFactory.setBy(fiatCurrency: currency).then { _ in
             self.currencyLabel.text = currency
+            self.styleEntryFields()
 
             guard let controller = sender as? UIViewController else {
                 return

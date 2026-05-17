@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         self.application = Application(container: SwinjectStoryboard.defaultContainer)
         self.application?.boot()
+        UIAlertController.installRetrowavePresenter()
+        installRetrowaveBarAppearance()
 
         self.log?.info("app delegate application did finish launching")
 
@@ -46,6 +48,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return shouldPerformAdditionalDelegateHandling
 
+    }
+
+    private func installRetrowaveBarAppearance() {
+        let pink = UIColor(rgb: 0xFF3DF2)
+        let teal = ThemeManager.shared.primaryLight()
+        let title = ThemeManager.shared.secondaryDark()
+        let background = ThemeManager.shared.backgroundGrey()
+        let titleFont = UIFont.avenir(size: 19).medium()
+        let buttonFont = UIFont.avenir(size: 14).demiBold()
+
+        UIBarButtonItem.appearance().tintColor = teal
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            .foregroundColor: teal,
+            .font: buttonFont
+        ], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            .foregroundColor: pink,
+            .font: buttonFont
+        ], for: .highlighted)
+
+        if #available(iOS 13.0, *) {
+            let navAppearance = UINavigationBarAppearance()
+            navAppearance.configureWithOpaqueBackground()
+            navAppearance.backgroundColor = background
+            navAppearance.shadowColor = .clear
+            navAppearance.titleTextAttributes = [
+                .foregroundColor: title,
+                .font: titleFont
+            ]
+            navAppearance.largeTitleTextAttributes = [
+                .foregroundColor: title,
+                .font: UIFont.avenir(size: 28).demiBold()
+            ]
+
+            let barButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+            barButtonAppearance.normal.titleTextAttributes = [
+                .foregroundColor: teal,
+                .font: buttonFont
+            ]
+            barButtonAppearance.highlighted.titleTextAttributes = [
+                .foregroundColor: pink,
+                .font: buttonFont
+            ]
+            barButtonAppearance.disabled.titleTextAttributes = [
+                .foregroundColor: ThemeManager.shared.secondaryLight(),
+                .font: buttonFont
+            ]
+            navAppearance.buttonAppearance = barButtonAppearance
+            navAppearance.doneButtonAppearance = barButtonAppearance
+            navAppearance.backButtonAppearance = barButtonAppearance
+
+            UINavigationBar.appearance().standardAppearance = navAppearance
+            UINavigationBar.appearance().compactAppearance = navAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = navAppearance
+            UINavigationBar.appearance().tintColor = teal
+        } else {
+            UINavigationBar.appearance().barTintColor = background
+            UINavigationBar.appearance().tintColor = teal
+            UINavigationBar.appearance().titleTextAttributes = [
+                .foregroundColor: title,
+                .font: titleFont
+            ]
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

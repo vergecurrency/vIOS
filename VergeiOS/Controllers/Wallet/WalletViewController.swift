@@ -22,6 +22,7 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
     @IBOutlet weak var walletSlidePageControl: UIPageControl!
 
     var applicationRepository: ApplicationRepository!
+    var walletClient: WalletClientProtocol!
     private var walletSlides: [WalletSlideView] = []
     private var pageBeforeLayoutSubviews: Int?
 
@@ -77,6 +78,11 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
                 self.walletSlideScrollView.scrollRectToVisible(self.walletSlides[page].frame, animated: false)
             }
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshWalletBalance()
     }
 
     func setupSlides() {
@@ -179,7 +185,23 @@ class WalletViewController: ThemeableViewController, UIScrollViewDelegate {
 
     @objc func didSwitchWalletProfile(notification: Notification? = nil) {
         setStats()
+        refreshWalletBalance()
         NotificationCenter.default.post(name: .didReceiveTransaction, object: nil)
+    }
+
+    private func refreshWalletBalance() {
+        let profileId = applicationRepository.activeWalletProfileId
+
+        walletClient.getBalance { [weak self] _, info in
+            guard let self = self,
+                  self.applicationRepository.activeWalletProfileId == profileId,
+                  let info = info
+            else {
+                return
+            }
+
+            self.applicationRepository.amount = info.availableAmountValue
+        }
     }
 
     func setStats() {

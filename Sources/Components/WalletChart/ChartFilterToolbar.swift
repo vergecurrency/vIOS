@@ -35,6 +35,9 @@ class ChartFilterToolbar: UIToolbar {
 
     func initialize() {
         items = []
+        tintColor = ThemeManager.shared.primaryLight()
+        barTintColor = ThemeManager.shared.backgroundGrey()
+        backgroundColor = ThemeManager.shared.backgroundGrey()
 
         for index in buttons {
             let button = UIBarButtonItem(
@@ -45,7 +48,7 @@ class ChartFilterToolbar: UIToolbar {
             )
 
             button.width = 30
-            button.tintColor = ThemeManager.shared.vergeGrey()
+            style(button, selected: false)
 
             items?.append(button)
 
@@ -69,7 +72,7 @@ class ChartFilterToolbar: UIToolbar {
         }
 
         for item in items where item.title == names[filter] {
-            item.tintColor = ThemeManager.shared.primaryLight()
+            style(item, selected: true)
         }
     }
 
@@ -88,7 +91,7 @@ class ChartFilterToolbar: UIToolbar {
 
             UISelectionFeedbackGenerator().selectionChanged()
 
-            sender.tintColor = ThemeManager.shared.primaryLight()
+            style(sender, selected: true)
         }
     }
 
@@ -98,7 +101,7 @@ class ChartFilterToolbar: UIToolbar {
         }
 
         for button in items {
-            button.tintColor = ThemeManager.shared.vergeGrey()
+            style(button, selected: false)
         }
     }
 
@@ -106,5 +109,18 @@ class ChartFilterToolbar: UIToolbar {
         super.updateColors()
 
         self.select(filter: .oneDay)
+    }
+
+    private func style(_ item: UIBarButtonItem, selected: Bool) {
+        let color = selected ? ThemeManager.shared.primaryLight() : ThemeManager.shared.secondaryDark()
+        item.tintColor = color
+        item.setTitleTextAttributes([
+            .foregroundColor: color,
+            .font: UIFont.avenir(size: 13).demiBold()
+        ], for: .normal)
+        item.setTitleTextAttributes([
+            .foregroundColor: ThemeManager.shared.primaryLight(),
+            .font: UIFont.avenir(size: 13).demiBold()
+        ], for: .highlighted)
     }
 }

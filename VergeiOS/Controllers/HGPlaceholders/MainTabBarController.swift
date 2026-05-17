@@ -20,6 +20,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        forceBottomTabBarOnIPad()
         applyRetrowaveTabStyling()
 
         NotificationCenter.default.addObserver(
@@ -40,6 +41,7 @@ class MainTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        forceBottomTabBarOnIPad()
         applyRetrowaveTabStyling()
 
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
@@ -60,6 +62,18 @@ class MainTabBarController: UITabBarController {
         super.viewDidLayoutSubviews()
 
         applyRetrowaveTabStyling()
+    }
+
+    private func forceBottomTabBarOnIPad() {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if #available(iOS 17.0, *) {
+                traitOverrides.horizontalSizeClass = .compact
+            }
+        }
+
+        if #available(iOS 18.0, *) {
+            mode = .tabBar
+        }
     }
 
     private func applyRetrowaveTabStyling() {
@@ -86,13 +100,25 @@ class MainTabBarController: UITabBarController {
                     .withRenderingMode(.alwaysTemplate)
                     .withTintColor(selectedColor, renderingMode: .alwaysOriginal)
             }
-            item.setTitleTextAttributes([.foregroundColor: normalColor], for: .normal)
-            item.setTitleTextAttributes([.foregroundColor: selectedColor], for: .selected)
+            item.setTitleTextAttributes([
+                .foregroundColor: normalColor,
+                .font: UIFont.avenir(size: 10).demiBold()
+            ], for: .normal)
+            item.setTitleTextAttributes([
+                .foregroundColor: selectedColor,
+                .font: UIFont.avenir(size: 10).demiBold()
+            ], for: .selected)
         }
 
         if #available(iOS 13.0, *) {
-            let selectedAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: selectedColor]
-            let normalAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: normalColor]
+            let selectedAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: selectedColor,
+                .font: UIFont.avenir(size: 10).demiBold()
+            ]
+            let normalAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: normalColor,
+                .font: UIFont.avenir(size: 10).demiBold()
+            ]
             let appearance = tabBar.standardAppearance.copy() as! UITabBarAppearance
 
             appearance.configureWithOpaqueBackground()

@@ -26,6 +26,11 @@ import UIKit
 
     override func updateColors() {
         self.borderColor = ThemeManager.shared.separatorColor()
+        self.backgroundColor = ThemeManager.shared.backgroundWhite().withAlphaComponent(0.65)
+        self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1
+        self.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.22).cgColor
+        self.clipsToBounds = true
         self.layer.sublayers?.removeAll(where: { $0.name == "BorderPanelViewBorder" })
         self.setNeedsDisplay()
     }

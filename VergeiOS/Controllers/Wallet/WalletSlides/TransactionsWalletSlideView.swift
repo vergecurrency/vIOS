@@ -21,6 +21,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     var items: [Vws.TxHistory] = []
     private let serverStatusDot = UIView()
     private let serverStatusLabel = UILabel()
+    private let serverStatusContainer = UIView()
     private var didSetupServerStatusHeader = false
 
     lazy var refreshControl: UIRefreshControl = {
@@ -76,7 +77,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         setupServerStatusHeader()
         getTransactions()
 
-        tableView.layer.cornerRadius = 5.0
+        tableView.layer.cornerRadius = 10.0
+        tableView.layer.borderWidth = 1
+        tableView.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.22).cgColor
         tableView.clipsToBounds = true
         tableView.addSubview(refreshControl)
         tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
@@ -114,7 +117,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 78.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -164,8 +167,14 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         }
 
         didSetupServerStatusHeader = true
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 48))
-        header.backgroundColor = ThemeManager.shared.backgroundWhite()
+        guard let panel = tableView.superview, let rootView = panel.superview else {
+            return
+        }
+
+        movePanelBelowServerStatus(panel)
+
+        serverStatusContainer.translatesAutoresizingMaskIntoConstraints = false
+        serverStatusContainer.backgroundColor = .clear
 
         let pill = UIView()
         pill.translatesAutoresizingMaskIntoConstraints = false
@@ -189,15 +198,21 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         serverStatusLabel.adjustsFontSizeToFitWidth = true
         serverStatusLabel.minimumScaleFactor = 0.75
 
-        header.addSubview(pill)
+        serverStatusContainer.addSubview(pill)
         pill.addSubview(serverStatusDot)
         pill.addSubview(serverStatusLabel)
+        rootView.addSubview(serverStatusContainer)
 
         NSLayoutConstraint.activate([
-            pill.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 12),
-            pill.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -12),
-            pill.topAnchor.constraint(equalTo: header.topAnchor, constant: 6),
-            pill.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -8),
+            serverStatusContainer.leadingAnchor.constraint(equalTo: panel.leadingAnchor),
+            serverStatusContainer.trailingAnchor.constraint(equalTo: panel.trailingAnchor),
+            serverStatusContainer.bottomAnchor.constraint(equalTo: panel.topAnchor, constant: -8),
+            serverStatusContainer.heightAnchor.constraint(equalToConstant: 40),
+
+            pill.leadingAnchor.constraint(equalTo: serverStatusContainer.leadingAnchor),
+            pill.trailingAnchor.constraint(equalTo: serverStatusContainer.trailingAnchor),
+            pill.topAnchor.constraint(equalTo: serverStatusContainer.topAnchor),
+            pill.bottomAnchor.constraint(equalTo: serverStatusContainer.bottomAnchor),
 
             serverStatusDot.leadingAnchor.constraint(equalTo: pill.leadingAnchor, constant: 12),
             serverStatusDot.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
@@ -209,8 +224,23 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             serverStatusLabel.centerYAnchor.constraint(equalTo: pill.centerYAnchor)
         ])
 
-        tableView.tableHeaderView = header
+        tableView.tableHeaderView = nil
         refreshServerStatus()
+    }
+
+    private func movePanelBelowServerStatus(_ panel: UIView) {
+        guard let rootView = panel.superview else {
+            return
+        }
+
+        for constraint in rootView.constraints {
+            let firstMatches = constraint.firstItem as? UIView === panel && constraint.firstAttribute == .top
+            let secondMatches = constraint.secondItem as? UIView === panel && constraint.secondAttribute == .top
+
+            if firstMatches || secondMatches {
+                constraint.constant = 56
+            }
+        }
     }
 
     private func refreshServerStatus() {

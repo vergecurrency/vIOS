@@ -59,7 +59,10 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         dateTimeLabel.text = dateFormatter.string(from: transaction.timeReceived)
 
         if transaction.category == .Sent {
-            if let name = addressBookManager.name(byAddress: transaction.address) {
+            if let resolvedRecipientName = transaction.resolvedRecipientName {
+                nameLabel.text = resolvedRecipientName
+                addAddressButton.isHidden = true
+            } else if let name = addressBookManager.name(byAddress: transaction.address) {
                 nameLabel.text = name
                 addAddressButton.isHidden = true
             } else {
@@ -113,7 +116,8 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         if section == 0 && transaction != nil {
             switch transaction!.category {
             case .Sent:
-                return transaction!.memo != nil ? 4 : 3
+                let baseRows = transaction!.resolvedRecipientName == nil ? 3 : 4
+                return transaction!.memo != nil ? baseRows + 1 : baseRows
             case .Received:
                 return 3
             case .Moved:
@@ -122,6 +126,10 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         }
 
         return items.count
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 58.0 : 78.0
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -145,11 +153,19 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
         if indexPath.section == 0 {
             var cell = tableView.dequeueReusableCell(withIdentifier: "transactionDetailCell")!
             let indexRow: Int = indexPath.row + (transaction?.category == .Moved ? 1 : 0)
+            let hasResolvedName = transaction?.resolvedRecipientName != nil
+            let effectiveRow = hasResolvedName && indexRow > 0 ? indexRow - 1 : indexRow
 
-            switch indexRow {
+            if hasResolvedName && indexRow == 0 {
+                cell.imageView?.image = UIImage(named: "Website")
+                cell.textLabel?.text = "Web3 Name"
+                cell.detailTextLabel?.text = transaction?.resolvedRecipientName
+                cell.accessoryType = .none
+            } else {
+            switch effectiveRow {
             case 0:
                 cell.imageView?.image = UIImage(named: "Address")
-                cell.textLabel?.text = "defaults.address".localized
+                cell.textLabel?.text = hasResolvedName ? "Resolved XVG Address" : "defaults.address".localized
                 cell.detailTextLabel?.text = transaction?.address
                 cell.accessoryType = .detailButton
                 self.addTapRecognizer(cell: cell, action: #selector(self.addressDoubleTapped(recognizer:)))
@@ -172,8 +188,11 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
             default:
                 break
             }
+            }
 
             cell.imageView?.tintColor = ThemeManager.shared.secondaryLight()
+            cell.textLabel?.textColor = ThemeManager.shared.secondaryDark()
+            cell.detailTextLabel?.textColor = ThemeManager.shared.secondaryLight()
 
             return cell
         }
@@ -228,7 +247,12 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
                 return self.loadWebsite(url: "\(Constants.blockchainExlorer)tx/\(self.transaction!.txid)")
             }
 
-            switch indexPath.row {
+            let row = self.transaction!.resolvedRecipientName == nil ? indexPath.row : indexPath.row - 1
+            guard row >= 0 else {
+                return
+            }
+
+            switch row {
             case 0:
                 self.loadWebsite(url: "\(Constants.blockchainExlorer)address/\(self.transaction!.address)")
             case 2:

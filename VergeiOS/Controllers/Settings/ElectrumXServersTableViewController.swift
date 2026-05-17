@@ -15,6 +15,10 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
         super.viewDidLoad()
 
         title = "ElectrumX Servers"
+        view.backgroundColor = ThemeManager.shared.backgroundGrey()
+        tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
+        tableView.separatorColor = ThemeManager.shared.separatorColor()
+        tableView.indicatorStyle = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -34,11 +38,11 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? servers.count : 1
+        return section == 0 ? servers.count : 2
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Servers" : nil
+        return section == 0 ? "Servers" : "Actions"
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
@@ -50,11 +54,14 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ElectrumXServerCell")
-            ?? UITableViewCell(style: indexPath.section == 0 ? .subtitle : .default, reuseIdentifier: "ElectrumXServerCell")
+        let reuseIdentifier = indexPath.section == 0 ? "ElectrumXServerCell" : "ElectrumXActionCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+            ?? UITableViewCell(style: indexPath.section == 0 ? .subtitle : .default, reuseIdentifier: reuseIdentifier)
 
+        styleCellShell(cell)
         cell.accessoryType = .none
         cell.selectionStyle = indexPath.section == 0 ? .none : .default
+        cell.detailTextLabel?.text = nil
 
         if indexPath.section == 0 {
             let server = servers[indexPath.row]
@@ -63,14 +70,45 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
             cell.accessoryType = server == applicationRepository.activeElectrumXServer ? .checkmark : .none
             cell.textLabel?.font = UIFont.avenir(size: 17)
             cell.detailTextLabel?.font = UIFont.avenir(size: 12)
+            cell.textLabel?.textColor = .white
             cell.detailTextLabel?.textColor = ThemeManager.shared.secondaryLight()
         } else {
-            cell.textLabel?.text = "Restore default servers"
-            cell.textLabel?.font = UIFont.avenir(size: 17)
-            cell.textLabel?.textColor = ThemeManager.shared.primaryLight()
+            cell.textLabel?.text = indexPath.row == 0 ? "Add ElectrumX server" : "Restore default servers"
+            styleActionCell(cell)
         }
 
         return cell
+    }
+
+    override func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        styleCellShell(cell)
+        if indexPath.section == 1 {
+            styleActionCell(cell)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else {
+            return
+        }
+
+        header.contentView.backgroundColor = ThemeManager.shared.backgroundGrey()
+        header.textLabel?.textColor = ThemeManager.shared.primaryLight()
+        header.textLabel?.font = UIFont.avenir(size: 13).demiBold()
+    }
+
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let footer = view as? UITableViewHeaderFooterView else {
+            return
+        }
+
+        footer.contentView.backgroundColor = ThemeManager.shared.backgroundGrey()
+        footer.textLabel?.textColor = ThemeManager.shared.secondaryLight()
+        footer.textLabel?.font = UIFont.avenir(size: 12)
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -101,9 +139,13 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
             return
         }
 
-        applicationRepository.resetElectrumXServers()
-        tableView.reloadData()
-        refreshStatus()
+        if indexPath.row == 0 {
+            addServer()
+        } else {
+            applicationRepository.resetElectrumXServers()
+            tableView.reloadData()
+            refreshStatus()
+        }
     }
 
     @objc private func addServer() {
@@ -157,6 +199,36 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
         }
 
         return host
+    }
+
+    private func styleCellShell(_ cell: UITableViewCell) {
+        cell.backgroundColor = ThemeManager.shared.backgroundWhite()
+        cell.contentView.backgroundColor = .clear
+        cell.tintColor = ThemeManager.shared.primaryLight()
+        cell.layer.cornerRadius = 8
+        cell.layer.masksToBounds = false
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.25).cgColor
+        cell.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        cell.layer.shadowOpacity = 0.12
+        cell.layer.shadowRadius = 8
+        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+
+        let selectedView = UIView()
+        selectedView.backgroundColor = ThemeManager.shared.backgroundBlue()
+        cell.selectedBackgroundView = selectedView
+    }
+
+    private func styleActionCell(_ cell: UITableViewCell) {
+        cell.textLabel?.font = UIFont.avenir(size: 17).demiBold()
+        cell.textLabel?.textColor = .white
+        cell.textLabel?.textAlignment = .center
+        cell.accessoryType = .none
+        cell.selectionStyle = .default
+        cell.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.7).cgColor
+        cell.layer.shadowColor = UIColor(rgb: 0xFF3DF2).cgColor
+        cell.layer.shadowOpacity = 0.28
+        cell.layer.shadowRadius = 12
     }
 
     private func setupStatusPill() {

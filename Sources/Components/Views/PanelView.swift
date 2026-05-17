@@ -10,9 +10,9 @@ import UIKit
 
 @IBDesignable class PanelView: UIView {
 
-    @IBInspectable var cornerRadius: CGFloat = 5.0
-    @IBInspectable var shadowOpacity: Float = 0.15
-    @IBInspectable var shadowRadius: CGFloat = 15
+    @IBInspectable var cornerRadius: CGFloat = 10.0
+    @IBInspectable var shadowOpacity: Float = 0.20
+    @IBInspectable var shadowRadius: CGFloat = 16
 
     var shadowLayer: CAShapeLayer?
 

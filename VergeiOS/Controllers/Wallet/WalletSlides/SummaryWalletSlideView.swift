@@ -63,7 +63,9 @@ class SummaryWalletSlideView: WalletSlideView, UITableViewDelegate, UITableViewD
 
         // Remove the last line.
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
-        tableView.layer.cornerRadius = 5.0
+        tableView.layer.cornerRadius = 10.0
+        tableView.layer.borderWidth = 1
+        tableView.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.22).cgColor
         tableView.layer.masksToBounds = true
         tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
     }

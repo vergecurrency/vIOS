@@ -17,6 +17,7 @@ class WalletTransactionFactory {
     var amount: NSNumber = 0.0
     var fiatAmount: NSNumber = 0.0
     var address: String = ""
+    var resolvedRecipientName: String?
     var memo: String = ""
     var fiatCurrency: String
     var fiatRate: FiatRate? = nil
@@ -92,6 +93,7 @@ class WalletTransactionFactory {
         self.amount = 0.0
         self.fiatAmount = 0.0
         self.address = ""
+        self.resolvedRecipientName = nil
         self.memo = ""
 
         return self.update()

@@ -71,6 +71,10 @@ class AddressValidator {
         return false
     }
 
+    static func looksLikeResolvableName(_ value: String) -> Bool {
+        return UnstoppableDomains.looksLikeDomain(value)
+    }
+
     private static func validateVergeLegacy(address: String) -> Bool {
         guard let payload = Base58Check.decode(address), payload.count == 21 else {
             return false
@@ -258,5 +262,29 @@ class AddressValidator {
             .trimmingCharacters(in: .whitespacesAndNewlines)
             .replacingOccurrences(of: "verge://", with: "")
             .replacingOccurrences(of: "verge:", with: "")
+    }
+}
+
+final class ResolvedRecipientRepository {
+    private static let key = "wallet.resolvedRecipients"
+
+    static func save(name: String, for address: String) {
+        let cleanName = name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let cleanAddress = address.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !cleanName.isEmpty, !cleanAddress.isEmpty else {
+            return
+        }
+
+        var values = UserDefaults.standard.dictionary(forKey: key) as? [String: String] ?? [:]
+        values[cleanAddress.lowercased()] = cleanName
+        UserDefaults.standard.set(values, forKey: key)
+    }
+
+    static func name(for address: String) -> String? {
+        let values = UserDefaults.standard.dictionary(forKey: key) as? [String: String] ?? [:]
+        let name = values[address.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()]
+
+        return name?.isEmpty == false ? name : nil
     }
 }
