@@ -6,6 +6,7 @@ enum ElectrumXClientError: Error {
     case noServersConfigured
     case invalidHTTPResponse
     case missingResult
+    case serverError(String)
 }
 
 struct ElectrumXConnectionStatus {
@@ -74,7 +75,14 @@ final class ElectrumXClient {
         params: [Any],
         completion: @escaping (Result<[String: Any], Error>) -> Void
     ) {
-        request(servers: applicationRepository.orderedElectrumXServers, index: 0, method: method, params: params, completion: completion)
+        request(
+            servers: applicationRepository.orderedElectrumXServers,
+            index: 0,
+            method: method,
+            params: params,
+            lastError: nil,
+            completion: completion
+        )
     }
 
     private func request(
@@ -82,10 +90,11 @@ final class ElectrumXClient {
         index: Int,
         method: String,
         params: [Any],
+        lastError: Error?,
         completion: @escaping (Result<[String: Any], Error>) -> Void
     ) {
         guard servers.indices.contains(index) else {
-            completion(.failure(ElectrumXClientError.noServersConfigured))
+            completion(.failure(lastError ?? ElectrumXClientError.noServersConfigured))
             return
         }
 
@@ -93,8 +102,15 @@ final class ElectrumXClient {
             switch result {
             case .success:
                 completion(result)
-            case .failure:
-                self.request(servers: servers, index: index + 1, method: method, params: params, completion: completion)
+            case .failure(let error):
+                self.request(
+                    servers: servers,
+                    index: index + 1,
+                    method: method,
+                    params: params,
+                    lastError: error,
+                    completion: completion
+                )
             }
         }
     }
@@ -231,6 +247,11 @@ final class ElectrumXClient {
                         return
                     }
 
+                    if let error = self.responseError(from: json) {
+                        finish(.failure(error))
+                        return
+                    }
+
                     if json["result"] == nil {
                         finish(.failure(ElectrumXClientError.missingResult))
                         return
@@ -304,6 +325,11 @@ final class ElectrumXClient {
                         let json = try JSONSerialization.jsonObject(with: frame) as? [String: Any]
                         if json?["id"] as? String != requestId {
                             continue
+                        }
+
+                        if let error = self.responseError(from: json ?? [:]) {
+                            finish(.failure(error))
+                            return
                         }
 
                         if json?["result"] == nil {
@@ -483,12 +509,33 @@ final class ElectrumXClient {
         }.resume()
     }
 
+    private func responseError(from json: [String: Any]) -> Error? {
+        guard let error = json["error"] as? [String: Any] else {
+            return nil
+        }
+
+        if let message = error["message"] as? String, !message.isEmpty {
+            return ElectrumXClientError.serverError(message)
+        }
+
+        if let code = error["code"] {
+            return ElectrumXClientError.serverError("ElectrumX error \(code)")
+        }
+
+        return ElectrumXClientError.serverError("Unknown ElectrumX server error")
+    }
+
     private func decodeResponseData(
         _ data: Data,
         completion: @escaping (Result<[String: Any], Error>) -> Void
     ) {
         do {
             let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+            if let error = responseError(from: json ?? [:]) {
+                completion(.failure(error))
+                return
+            }
+
             if json?["result"] == nil {
                 completion(.failure(ElectrumXClientError.missingResult))
                 return
@@ -497,6 +544,21 @@ final class ElectrumXClient {
             completion(.success(json ?? [:]))
         } catch {
             completion(.failure(error))
+        }
+    }
+}
+
+extension ElectrumXClientError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .noServersConfigured:
+            return "No ElectrumX servers are configured."
+        case .invalidHTTPResponse:
+            return "The ElectrumX server returned an invalid response."
+        case .missingResult:
+            return "The ElectrumX server response was missing a result."
+        case .serverError(let message):
+            return message
         }
     }
 }

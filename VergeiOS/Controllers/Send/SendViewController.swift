@@ -869,22 +869,22 @@ class SendViewController: ThemeableViewController {
     func showTransactionError(_ errorResponse: Vws.TxProposalErrorResponse?, txp: Vws.TxProposalResponse?) {
         let error: String = errorResponse != nil ? errorResponse!.message : "send.noConnection".localized
 
-        let actionSheet = UIAlertController(
+        let alert = UIAlertController(
             title: "send.transactionFailed".localized,
             message: "send.transactionFailedMessage".localized + ": \(error)",
-            preferredStyle: .actionSheet
+            preferredStyle: .alert
         )
 
-        actionSheet.centerPopoverController(to: self.view)
-        actionSheet.addAction(UIAlertAction(title: "defaults.cancel".localized, style: .destructive) { _ in
+        alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .default) { _ in
             guard let txp = txp else {
                 return
             }
 
             self.walletClient.deleteTxProposal(txp: txp)
         })
+        alert.applyRetrowaveTheme()
 
-        self.present(actionSheet, animated: true)
+        self.present(alert, animated: true)
     }
 
     func notifySelectedToMuchAmount() {

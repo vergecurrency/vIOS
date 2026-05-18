@@ -23,6 +23,7 @@ class SettingsTableViewController: EdgedTableViewController {
     var fiatRateTicker: FiatRateTicker!
     var transactionManager: TransactionManager!
     private weak var walletProfilesButton: UIButton?
+    private let walletSwitchPopupTag = 83014
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -406,14 +407,170 @@ class SettingsTableViewController: EdgedTableViewController {
                 return
             }
 
-            let alert = UIAlertController(
-                title: "Wallet switched",
-                message: self.displayName(for: profile, at: index),
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
+            self.presentWalletSwitchPopup(message: self.displayName(for: profile, at: index))
         }
+    }
+
+    private func presentWalletSwitchPopup(message: String) {
+        guard let hostView = navigationController?.view ?? view else {
+            return
+        }
+
+        hostView.viewWithTag(walletSwitchPopupTag)?.removeFromSuperview()
+
+        let overlay = UIControl()
+        overlay.tag = walletSwitchPopupTag
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.36)
+        overlay.alpha = 0
+        overlay.addTarget(self, action: #selector(dismissWalletSwitchPopup), for: .touchUpInside)
+
+        let card = UIView()
+        card.translatesAutoresizingMaskIntoConstraints = false
+        card.backgroundColor = UIColor(rgb: 0x12061F)
+        card.layer.cornerRadius = 18
+        card.layer.borderWidth = 1
+        card.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.62).cgColor
+        card.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        card.layer.shadowOpacity = 0.42
+        card.layer.shadowRadius = 24
+        card.layer.shadowOffset = CGSize(width: 0, height: 0)
+
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "Wallet switched"
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.avenir(size: 19)
+        titleLabel.numberOfLines = 1
+
+        let messageLabel = UILabel()
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.text = message
+        messageLabel.textAlignment = .center
+        messageLabel.textColor = ThemeManager.shared.secondaryLight()
+        messageLabel.font = UIFont.avenir(size: 14)
+        messageLabel.numberOfLines = 3
+        messageLabel.adjustsFontSizeToFitWidth = true
+        messageLabel.minimumScaleFactor = 0.78
+
+        let okButton = UIControl()
+        okButton.translatesAutoresizingMaskIntoConstraints = false
+        okButton.backgroundColor = UIColor(rgb: 0x1A0829)
+        okButton.layer.cornerRadius = 14
+        okButton.layer.borderWidth = 1
+        okButton.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.72).cgColor
+        okButton.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        okButton.layer.shadowOpacity = 0.35
+        okButton.layer.shadowRadius = 12
+        okButton.layer.shadowOffset = CGSize(width: 0, height: 0)
+        okButton.addTarget(self, action: #selector(dismissWalletSwitchPopup), for: .touchUpInside)
+
+        let okLabel = UILabel()
+        okLabel.translatesAutoresizingMaskIntoConstraints = false
+        okLabel.text = "OK"
+        okLabel.textAlignment = .center
+        okLabel.textColor = .white
+        okLabel.font = UIFont.avenir(size: 15)
+        okLabel.isUserInteractionEnabled = false
+
+        overlay.addSubview(card)
+        card.addSubview(titleLabel)
+        card.addSubview(messageLabel)
+        card.addSubview(okButton)
+        okButton.addSubview(okLabel)
+        hostView.addSubview(overlay)
+
+        NSLayoutConstraint.activate([
+            overlay.leadingAnchor.constraint(equalTo: hostView.leadingAnchor),
+            overlay.trailingAnchor.constraint(equalTo: hostView.trailingAnchor),
+            overlay.topAnchor.constraint(equalTo: hostView.topAnchor),
+            overlay.bottomAnchor.constraint(equalTo: hostView.bottomAnchor),
+
+            card.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
+            card.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
+            card.widthAnchor.constraint(lessThanOrEqualToConstant: 320),
+            card.leadingAnchor.constraint(greaterThanOrEqualTo: overlay.leadingAnchor, constant: 28),
+            card.trailingAnchor.constraint(lessThanOrEqualTo: overlay.trailingAnchor, constant: -28),
+
+            titleLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 22),
+            titleLabel.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -22),
+            titleLabel.topAnchor.constraint(equalTo: card.topAnchor, constant: 22),
+
+            messageLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 24),
+            messageLabel.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -24),
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+
+            okButton.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 52),
+            okButton.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -52),
+            okButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 18),
+            okButton.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -20),
+            okButton.heightAnchor.constraint(equalToConstant: 44),
+
+            okLabel.leadingAnchor.constraint(equalTo: okButton.leadingAnchor),
+            okLabel.trailingAnchor.constraint(equalTo: okButton.trailingAnchor),
+            okLabel.topAnchor.constraint(equalTo: okButton.topAnchor),
+            okLabel.bottomAnchor.constraint(equalTo: okButton.bottomAnchor)
+        ])
+
+        hostView.layoutIfNeeded()
+        addWalletSwitchPopupGradient(to: card)
+        addWalletSwitchButtonGradient(to: okButton)
+        okButton.bringSubviewToFront(okLabel)
+
+        card.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)
+        UIView.animate(withDuration: 0.18, delay: 0, options: [.curveEaseOut], animations: {
+            overlay.alpha = 1
+            card.transform = .identity
+        })
+    }
+
+    private func addWalletSwitchPopupGradient(to card: UIView) {
+        let gradient = CAGradientLayer()
+        gradient.name = "WalletSwitchPopupGradient"
+        gradient.frame = card.bounds
+        gradient.cornerRadius = card.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x06020D).cgColor,
+            UIColor(rgb: 0x24103A).cgColor,
+            UIColor(rgb: 0x14051F).cgColor
+        ]
+        gradient.locations = [0.0, 0.58, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        card.layer.insertSublayer(gradient, at: 0)
+    }
+
+    private func addWalletSwitchButtonGradient(to button: UIView) {
+        let gradient = CAGradientLayer()
+        gradient.name = "WalletSwitchButtonGradient"
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0xFF3DF2).cgColor,
+            UIColor(rgb: 0x6E2BFF).cgColor,
+            UIColor(rgb: 0x00F5D4).withAlphaComponent(0.82).cgColor
+        ]
+        gradient.locations = [0.0, 0.56, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        button.layer.insertSublayer(gradient, at: 0)
+    }
+
+    @objc private func dismissWalletSwitchPopup() {
+        guard let hostView = navigationController?.view ?? view else {
+            return
+        }
+
+        guard let overlay = hostView.viewWithTag(walletSwitchPopupTag) else {
+            return
+        }
+
+        UIView.animate(withDuration: 0.16, animations: {
+            overlay.alpha = 0
+        }, completion: { _ in
+            overlay.removeFromSuperview()
+        })
     }
 
     private func presentAddWalletFlow(named name: String) {

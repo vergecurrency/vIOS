@@ -19,6 +19,32 @@ extension UIAlertController {
     }
 
     func applyRetrowaveTheme() {
+        if let title = title {
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = .center
+            setValue(NSAttributedString(
+                string: title,
+                attributes: [
+                    .foregroundColor: UIColor.white,
+                    .font: UIFont.systemFont(ofSize: 17, weight: .semibold),
+                    .paragraphStyle: paragraph
+                ]
+            ), forKey: "attributedTitle")
+        }
+
+        if let message = message {
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = .center
+            setValue(NSAttributedString(
+                string: message,
+                attributes: [
+                    .foregroundColor: ThemeManager.shared.secondaryLight(),
+                    .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                    .paragraphStyle: paragraph
+                ]
+            ), forKey: "attributedMessage")
+        }
+
         actions.forEach { action in
             let color: UIColor = action.style == .destructive
                 ? ThemeManager.shared.vergeRed()

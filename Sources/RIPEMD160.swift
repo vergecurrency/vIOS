@@ -1,158 +1,283 @@
-//
-//  Untitled.swift
-//  VergeiOS
-//
-//  Created by shami kapoor on 27/09/25.
-//  Copyright © 2025 Verge Currency. All rights reserved.
-//
-
 import Foundation
 
-/// Pure Swift implementation of RIPEMD-160 hash function.
-/// Used in Bitcoin for hash160 = RIPEMD160(SHA256(x))
 struct RIPEMD160 {
-    public init() {}
+    private var state: (UInt32, UInt32, UInt32, UInt32, UInt32)
+    private var buffer: Data
+    private var byteCount: Int64
 
-    public func calculate(for bytes: [UInt8]) -> [UInt8] {
-        let padded = padMessage(bytes)
-        let blocks = padded.split(into: 64)
+    private init() {
+        state = (0x6745_2301, 0xEFCD_AB89, 0x98BA_DCFE, 0x1032_5476, 0xC3D2_E1F0)
+        buffer = Data()
+        byteCount = 0
+    }
 
-        var h0: UInt32 = 0x67452301
-        var h1: UInt32 = 0xEFCDAB89
-        var h2: UInt32 = 0x98BADCFE
-        var h3: UInt32 = 0x10325476
-        var h4: UInt32 = 0xC3D2E1F0
+    func calculate(for bytes: [UInt8]) -> [UInt8] {
+        return Array(Self.hash(Data(bytes)))
+    }
 
-        for block in blocks {
-            let words = block.to32BitWords(littleEndian: true)
+    static func hash(_ message: Data) -> Data {
+        var digest = RIPEMD160()
+        digest.update(data: message)
+        return digest.finalize()
+    }
 
-            var a = h0, b = h1, c = h2, d = h3, e = h4
+    private mutating func update(data: Data) {
+        data.withUnsafeBytes { pointer in
+            guard var ptr = pointer.baseAddress?.assumingMemoryBound(to: UInt8.self) else { return }
+            var length = data.count
+            var block = [UInt32](repeating: 0, count: 16)
 
-            // Round 1
-            for j in 0..<16 {
-                let i = j % 16
-                let temp = (a &+ f(0, b, c, d) &+ words[rr1(i)] &+ k1(j)) &<< rotate1(i)
-                (a, b, c, d, e) = (e, temp, b &<< 10 | b >> 22, c, d)
-            }
-            // Round 2
-            for j in 0..<16 {
-                let i = j % 16
-                let temp = (a &+ f(16 + j, b, c, d) &+ words[rr2(i)] &+ k2(j)) &<< rotate2(i)
-                (a, b, c, d, e) = (e, temp, b &<< 10 | b >> 22, c, d)
-            }
-            // Round 3
-            for j in 0..<16 {
-                let i = j % 16
-                let temp = (a &+ f(32 + j, b, c, d) &+ words[rr3(i)] &+ k3(j)) &<< rotate3(i)
-                (a, b, c, d, e) = (e, temp, b &<< 10 | b >> 22, c, d)
-            }
-            // Round 4
-            for j in 0..<16 {
-                let i = j % 16
-                let temp = (a &+ f(48 + j, b, c, d) &+ words[rr4(i)] &+ k4(j)) &<< rotate4(i)
-                (a, b, c, d, e) = (e, temp, b &<< 10 | b >> 22, c, d)
-            }
-            // Round 5
-            for j in 0..<16 {
-                let i = j % 16
-                let temp = (a &+ f(64 + j, b, c, d) &+ words[rr5(i)] &+ k5(j)) &<< rotate5(i)
-                (a, b, c, d, e) = (e, temp, b &<< 10 | b >> 22, c, d)
+            if !buffer.isEmpty, buffer.count + length >= 64 {
+                let amount = 64 - buffer.count
+                buffer.append(ptr, count: amount)
+                buffer.withUnsafeBytes { rawBuffer in
+                    _ = memcpy(&block, rawBuffer.baseAddress, 64)
+                }
+                compress(block)
+                buffer.removeAll(keepingCapacity: true)
+                ptr += amount
+                length -= amount
             }
 
-            h0 &+= a
-            h1 &+= b
-            h2 &+= c
-            h3 &+= d
-            h4 &+= e
+            while length >= 64 {
+                memcpy(&block, ptr, 64)
+                compress(block)
+                ptr += 64
+                length -= 64
+            }
+
+            buffer = Data(bytes: ptr, count: length)
         }
 
-        return h0.bytes() + h1.bytes() + h2.bytes() + h3.bytes() + h4.bytes()
-    }
-}
-
-// MARK: - Helpers
-
-private extension RIPEMD160 {
-    func f(_ j: Int, _ x: UInt32, _ y: UInt32, _ z: UInt32) -> UInt32 {
-        if j < 16      { x ^ y ^ z }
-        else if j < 32 { (x & y) | (~x & z) }
-        else if j < 48 { (x | ~y) ^ z }
-        else if j < 64 { (x & z) | (y & ~z) }
-        else           { x ^ (y | ~z) }
+        byteCount += Int64(data.count)
     }
 
-    func k1(_ j: Int) -> UInt32 { 0 }
-    func k2(_ j: Int) -> UInt32 { j < 8 ? 0x5A827999 : 0x6ED9EBA1 }
-    func k3(_ j: Int) -> UInt32 { j < 8 ? 0x8F1BBCDC : 0xA953FD4E }
-    func k4(_ j: Int) -> UInt32 { j < 8 ? 0x75A2E4D8 : 0x00000000 }
-    func k5(_ j: Int) -> UInt32 { j < 8 ? 0x50A28BE6 : 0x5C4DD124 }
-
-    func rr1(_ i: Int) -> Int { [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15][i] }
-    func rr2(_ i: Int) -> Int { [5,14,7,0,9,2,11,4,13,6,15,8,1,10,3,12][i] }
-    func rr3(_ i: Int) -> Int { [8,13,4,9,0,5,12,1,10,3,14,7,6,15,2,11][i] }
-    func rr4(_ i: Int) -> Int { [12,1,14,5,8,3,10,15,6,13,0,7,4,9,2,11][i] }
-    func rr5(_ i: Int) -> Int { [1,8,11,14,15,4,9,2,7,0,3,10,13,6,12,5][i] }
-
-    func rotate1(_ i: Int) -> Int { [11,14,15,12,5,8,7,9,11,13,14,15,6,7,9,8][i] }
-    func rotate2(_ i: Int) -> Int { [8,9,9,11,13,15,15,5,7,7,8,11,14,14,12,6][i] }
-    func rotate3(_ i: Int) -> Int { [10,15,5,11,6,8,13,12,5,12,13,14,11,8,5,6][i] }
-    func rotate4(_ i: Int) -> Int { [7,6,8,13,11,9,7,15,7,12,15,9,11,7,13,12][i] }
-    func rotate5(_ i: Int) -> Int { [6,14,11,9,13,15,15,5,8,11,14,14,6,14,6,9][i] }
-}
-
-private extension Array where Element == UInt8 {
-    func split(into size: Int) -> [[UInt8]] {
-        var result: [[UInt8]] = []
-        for i in stride(from: 0, to: count, by: size) {
-            result.append(Array(self[i..<Swift.min(i + size, count)]))
-        }
-        return result
-    }
-
-    func to32BitWords(littleEndian: Bool) -> [UInt32] {
-        var words: [UInt32] = []
-        for i in 0..<(count / 4) {
-            let base = i * 4
-            let w: UInt32 = (
-                UInt32(self[base + (littleEndian ? 0 : 3)]) << (littleEndian ? 0 : 24) |
-                UInt32(self[base + (littleEndian ? 1 : 2)]) << (littleEndian ? 8 : 16) |
-                UInt32(self[base + (littleEndian ? 2 : 1)]) << (littleEndian ? 16 : 8) |
-                UInt32(self[base + (littleEndian ? 3 : 0)]) << (littleEndian ? 24 : 0)
-            )
-            words.append(w)
-        }
-        return words
-    }
-}
-
-private extension UInt32 {
-    func bytes() -> [UInt8] {
-        return [
-            UInt8(self & 0xff),
-            UInt8((self >> 8) & 0xff),
-            UInt8((self >> 16) & 0xff),
-            UInt8((self >> 24) & 0xff)
-        ]
-    }
-}
-
-private extension RIPEMD160 {
-    func padMessage(_ message: [UInt8]) -> [UInt8] {
-        var padded = message
-        let bitLen = message.count * 8
-
-        padded.append(0x80) // Append 1 bit + zeros
-
-        while (padded.count % 64) != 56 {
-            padded.append(0x00)
+    private mutating func finalize() -> Data {
+        var block = [UInt32](repeating: 0, count: 16)
+        buffer.append(0x80)
+        buffer.withUnsafeBytes { rawBuffer in
+            _ = memcpy(&block, rawBuffer.baseAddress, buffer.count)
         }
 
-        let lowBits = UInt32(bitLen & 0xFFFFFFFF)
-        let highBits = UInt32((bitLen >> 32) & 0xFFFFFFFF)
+        if (byteCount & 63) > 55 {
+            compress(block)
+            block = [UInt32](repeating: 0, count: 16)
+        }
 
-        padded += lowBits.bytes()
-        padded += highBits.bytes()
+        let low = UInt32(truncatingIfNeeded: byteCount)
+        let high = UInt32(UInt64(byteCount) >> 32)
+        block[14] = low << 3
+        block[15] = (low >> 29) | (high << 3)
+        compress(block)
 
-        return padded
+        var data = Data(count: 20)
+        data.withUnsafeMutableBytes { pointer in
+            let words = pointer.bindMemory(to: UInt32.self)
+            words[0] = state.0
+            words[1] = state.1
+            words[2] = state.2
+            words[3] = state.3
+            words[4] = state.4
+        }
+
+        return data
+    }
+
+    private mutating func compress(_ block: [UInt32]) {
+        func rotateLeft(_ value: UInt32, _ bits: UInt32) -> UInt32 {
+            return (value << bits) | (value >> (32 - bits))
+        }
+
+        func f(_ x: UInt32, _ y: UInt32, _ z: UInt32) -> UInt32 { x ^ y ^ z }
+        func g(_ x: UInt32, _ y: UInt32, _ z: UInt32) -> UInt32 { (x & y) | (~x & z) }
+        func h(_ x: UInt32, _ y: UInt32, _ z: UInt32) -> UInt32 { (x | ~y) ^ z }
+        func i(_ x: UInt32, _ y: UInt32, _ z: UInt32) -> UInt32 { (x & z) | (y & ~z) }
+        func j(_ x: UInt32, _ y: UInt32, _ z: UInt32) -> UInt32 { x ^ (y | ~z) }
+
+        func step(_ a: inout UInt32, _ b: UInt32, _ c: inout UInt32, _ d: UInt32, _ e: UInt32, _ x: UInt32, _ s: UInt32, _ fn: (UInt32, UInt32, UInt32) -> UInt32, _ k: UInt32) {
+            a = rotateLeft(a &+ fn(b, c, d) &+ x &+ k, s) &+ e
+            c = rotateLeft(c, 10)
+        }
+
+        var (aa, bb, cc, dd, ee) = state
+        var (aaa, bbb, ccc, ddd, eee) = state
+
+        step(&aa, bb, &cc, dd, ee, block[0], 11, f, 0)
+        step(&ee, aa, &bb, cc, dd, block[1], 14, f, 0)
+        step(&dd, ee, &aa, bb, cc, block[2], 15, f, 0)
+        step(&cc, dd, &ee, aa, bb, block[3], 12, f, 0)
+        step(&bb, cc, &dd, ee, aa, block[4], 5, f, 0)
+        step(&aa, bb, &cc, dd, ee, block[5], 8, f, 0)
+        step(&ee, aa, &bb, cc, dd, block[6], 7, f, 0)
+        step(&dd, ee, &aa, bb, cc, block[7], 9, f, 0)
+        step(&cc, dd, &ee, aa, bb, block[8], 11, f, 0)
+        step(&bb, cc, &dd, ee, aa, block[9], 13, f, 0)
+        step(&aa, bb, &cc, dd, ee, block[10], 14, f, 0)
+        step(&ee, aa, &bb, cc, dd, block[11], 15, f, 0)
+        step(&dd, ee, &aa, bb, cc, block[12], 6, f, 0)
+        step(&cc, dd, &ee, aa, bb, block[13], 7, f, 0)
+        step(&bb, cc, &dd, ee, aa, block[14], 9, f, 0)
+        step(&aa, bb, &cc, dd, ee, block[15], 8, f, 0)
+
+        step(&ee, aa, &bb, cc, dd, block[7], 7, g, 0x5A82_7999)
+        step(&dd, ee, &aa, bb, cc, block[4], 6, g, 0x5A82_7999)
+        step(&cc, dd, &ee, aa, bb, block[13], 8, g, 0x5A82_7999)
+        step(&bb, cc, &dd, ee, aa, block[1], 13, g, 0x5A82_7999)
+        step(&aa, bb, &cc, dd, ee, block[10], 11, g, 0x5A82_7999)
+        step(&ee, aa, &bb, cc, dd, block[6], 9, g, 0x5A82_7999)
+        step(&dd, ee, &aa, bb, cc, block[15], 7, g, 0x5A82_7999)
+        step(&cc, dd, &ee, aa, bb, block[3], 15, g, 0x5A82_7999)
+        step(&bb, cc, &dd, ee, aa, block[12], 7, g, 0x5A82_7999)
+        step(&aa, bb, &cc, dd, ee, block[0], 12, g, 0x5A82_7999)
+        step(&ee, aa, &bb, cc, dd, block[9], 15, g, 0x5A82_7999)
+        step(&dd, ee, &aa, bb, cc, block[5], 9, g, 0x5A82_7999)
+        step(&cc, dd, &ee, aa, bb, block[2], 11, g, 0x5A82_7999)
+        step(&bb, cc, &dd, ee, aa, block[14], 7, g, 0x5A82_7999)
+        step(&aa, bb, &cc, dd, ee, block[11], 13, g, 0x5A82_7999)
+        step(&ee, aa, &bb, cc, dd, block[8], 12, g, 0x5A82_7999)
+
+        step(&dd, ee, &aa, bb, cc, block[3], 11, h, 0x6ED9_EBA1)
+        step(&cc, dd, &ee, aa, bb, block[10], 13, h, 0x6ED9_EBA1)
+        step(&bb, cc, &dd, ee, aa, block[14], 6, h, 0x6ED9_EBA1)
+        step(&aa, bb, &cc, dd, ee, block[4], 7, h, 0x6ED9_EBA1)
+        step(&ee, aa, &bb, cc, dd, block[9], 14, h, 0x6ED9_EBA1)
+        step(&dd, ee, &aa, bb, cc, block[15], 9, h, 0x6ED9_EBA1)
+        step(&cc, dd, &ee, aa, bb, block[8], 13, h, 0x6ED9_EBA1)
+        step(&bb, cc, &dd, ee, aa, block[1], 15, h, 0x6ED9_EBA1)
+        step(&aa, bb, &cc, dd, ee, block[2], 14, h, 0x6ED9_EBA1)
+        step(&ee, aa, &bb, cc, dd, block[7], 8, h, 0x6ED9_EBA1)
+        step(&dd, ee, &aa, bb, cc, block[0], 13, h, 0x6ED9_EBA1)
+        step(&cc, dd, &ee, aa, bb, block[6], 6, h, 0x6ED9_EBA1)
+        step(&bb, cc, &dd, ee, aa, block[13], 5, h, 0x6ED9_EBA1)
+        step(&aa, bb, &cc, dd, ee, block[11], 12, h, 0x6ED9_EBA1)
+        step(&ee, aa, &bb, cc, dd, block[5], 7, h, 0x6ED9_EBA1)
+        step(&dd, ee, &aa, bb, cc, block[12], 5, h, 0x6ED9_EBA1)
+
+        step(&cc, dd, &ee, aa, bb, block[1], 11, i, 0x8F1B_BCDC)
+        step(&bb, cc, &dd, ee, aa, block[9], 12, i, 0x8F1B_BCDC)
+        step(&aa, bb, &cc, dd, ee, block[11], 14, i, 0x8F1B_BCDC)
+        step(&ee, aa, &bb, cc, dd, block[10], 15, i, 0x8F1B_BCDC)
+        step(&dd, ee, &aa, bb, cc, block[0], 14, i, 0x8F1B_BCDC)
+        step(&cc, dd, &ee, aa, bb, block[8], 15, i, 0x8F1B_BCDC)
+        step(&bb, cc, &dd, ee, aa, block[12], 9, i, 0x8F1B_BCDC)
+        step(&aa, bb, &cc, dd, ee, block[4], 8, i, 0x8F1B_BCDC)
+        step(&ee, aa, &bb, cc, dd, block[13], 9, i, 0x8F1B_BCDC)
+        step(&dd, ee, &aa, bb, cc, block[3], 14, i, 0x8F1B_BCDC)
+        step(&cc, dd, &ee, aa, bb, block[7], 5, i, 0x8F1B_BCDC)
+        step(&bb, cc, &dd, ee, aa, block[15], 6, i, 0x8F1B_BCDC)
+        step(&aa, bb, &cc, dd, ee, block[14], 8, i, 0x8F1B_BCDC)
+        step(&ee, aa, &bb, cc, dd, block[5], 6, i, 0x8F1B_BCDC)
+        step(&dd, ee, &aa, bb, cc, block[6], 5, i, 0x8F1B_BCDC)
+        step(&cc, dd, &ee, aa, bb, block[2], 12, i, 0x8F1B_BCDC)
+
+        step(&bb, cc, &dd, ee, aa, block[4], 9, j, 0xA953_FD4E)
+        step(&aa, bb, &cc, dd, ee, block[0], 15, j, 0xA953_FD4E)
+        step(&ee, aa, &bb, cc, dd, block[5], 5, j, 0xA953_FD4E)
+        step(&dd, ee, &aa, bb, cc, block[9], 11, j, 0xA953_FD4E)
+        step(&cc, dd, &ee, aa, bb, block[7], 6, j, 0xA953_FD4E)
+        step(&bb, cc, &dd, ee, aa, block[12], 8, j, 0xA953_FD4E)
+        step(&aa, bb, &cc, dd, ee, block[2], 13, j, 0xA953_FD4E)
+        step(&ee, aa, &bb, cc, dd, block[10], 12, j, 0xA953_FD4E)
+        step(&dd, ee, &aa, bb, cc, block[14], 5, j, 0xA953_FD4E)
+        step(&cc, dd, &ee, aa, bb, block[1], 12, j, 0xA953_FD4E)
+        step(&bb, cc, &dd, ee, aa, block[3], 13, j, 0xA953_FD4E)
+        step(&aa, bb, &cc, dd, ee, block[8], 14, j, 0xA953_FD4E)
+        step(&ee, aa, &bb, cc, dd, block[11], 11, j, 0xA953_FD4E)
+        step(&dd, ee, &aa, bb, cc, block[6], 8, j, 0xA953_FD4E)
+        step(&cc, dd, &ee, aa, bb, block[15], 5, j, 0xA953_FD4E)
+        step(&bb, cc, &dd, ee, aa, block[13], 6, j, 0xA953_FD4E)
+
+        step(&aaa, bbb, &ccc, ddd, eee, block[5], 8, j, 0x50A2_8BE6)
+        step(&eee, aaa, &bbb, ccc, ddd, block[14], 9, j, 0x50A2_8BE6)
+        step(&ddd, eee, &aaa, bbb, ccc, block[7], 9, j, 0x50A2_8BE6)
+        step(&ccc, ddd, &eee, aaa, bbb, block[0], 11, j, 0x50A2_8BE6)
+        step(&bbb, ccc, &ddd, eee, aaa, block[9], 13, j, 0x50A2_8BE6)
+        step(&aaa, bbb, &ccc, ddd, eee, block[2], 15, j, 0x50A2_8BE6)
+        step(&eee, aaa, &bbb, ccc, ddd, block[11], 15, j, 0x50A2_8BE6)
+        step(&ddd, eee, &aaa, bbb, ccc, block[4], 5, j, 0x50A2_8BE6)
+        step(&ccc, ddd, &eee, aaa, bbb, block[13], 7, j, 0x50A2_8BE6)
+        step(&bbb, ccc, &ddd, eee, aaa, block[6], 7, j, 0x50A2_8BE6)
+        step(&aaa, bbb, &ccc, ddd, eee, block[15], 8, j, 0x50A2_8BE6)
+        step(&eee, aaa, &bbb, ccc, ddd, block[8], 11, j, 0x50A2_8BE6)
+        step(&ddd, eee, &aaa, bbb, ccc, block[1], 14, j, 0x50A2_8BE6)
+        step(&ccc, ddd, &eee, aaa, bbb, block[10], 14, j, 0x50A2_8BE6)
+        step(&bbb, ccc, &ddd, eee, aaa, block[3], 12, j, 0x50A2_8BE6)
+        step(&aaa, bbb, &ccc, ddd, eee, block[12], 6, j, 0x50A2_8BE6)
+
+        step(&eee, aaa, &bbb, ccc, ddd, block[6], 9, i, 0x5C4D_D124)
+        step(&ddd, eee, &aaa, bbb, ccc, block[11], 13, i, 0x5C4D_D124)
+        step(&ccc, ddd, &eee, aaa, bbb, block[3], 15, i, 0x5C4D_D124)
+        step(&bbb, ccc, &ddd, eee, aaa, block[7], 7, i, 0x5C4D_D124)
+        step(&aaa, bbb, &ccc, ddd, eee, block[0], 12, i, 0x5C4D_D124)
+        step(&eee, aaa, &bbb, ccc, ddd, block[13], 8, i, 0x5C4D_D124)
+        step(&ddd, eee, &aaa, bbb, ccc, block[5], 9, i, 0x5C4D_D124)
+        step(&ccc, ddd, &eee, aaa, bbb, block[10], 11, i, 0x5C4D_D124)
+        step(&bbb, ccc, &ddd, eee, aaa, block[14], 7, i, 0x5C4D_D124)
+        step(&aaa, bbb, &ccc, ddd, eee, block[15], 7, i, 0x5C4D_D124)
+        step(&eee, aaa, &bbb, ccc, ddd, block[8], 12, i, 0x5C4D_D124)
+        step(&ddd, eee, &aaa, bbb, ccc, block[12], 7, i, 0x5C4D_D124)
+        step(&ccc, ddd, &eee, aaa, bbb, block[4], 6, i, 0x5C4D_D124)
+        step(&bbb, ccc, &ddd, eee, aaa, block[9], 15, i, 0x5C4D_D124)
+        step(&aaa, bbb, &ccc, ddd, eee, block[1], 13, i, 0x5C4D_D124)
+        step(&eee, aaa, &bbb, ccc, ddd, block[2], 11, i, 0x5C4D_D124)
+
+        step(&ddd, eee, &aaa, bbb, ccc, block[15], 9, h, 0x6D70_3EF3)
+        step(&ccc, ddd, &eee, aaa, bbb, block[5], 7, h, 0x6D70_3EF3)
+        step(&bbb, ccc, &ddd, eee, aaa, block[1], 15, h, 0x6D70_3EF3)
+        step(&aaa, bbb, &ccc, ddd, eee, block[3], 11, h, 0x6D70_3EF3)
+        step(&eee, aaa, &bbb, ccc, ddd, block[7], 8, h, 0x6D70_3EF3)
+        step(&ddd, eee, &aaa, bbb, ccc, block[14], 6, h, 0x6D70_3EF3)
+        step(&ccc, ddd, &eee, aaa, bbb, block[6], 6, h, 0x6D70_3EF3)
+        step(&bbb, ccc, &ddd, eee, aaa, block[9], 14, h, 0x6D70_3EF3)
+        step(&aaa, bbb, &ccc, ddd, eee, block[11], 12, h, 0x6D70_3EF3)
+        step(&eee, aaa, &bbb, ccc, ddd, block[8], 13, h, 0x6D70_3EF3)
+        step(&ddd, eee, &aaa, bbb, ccc, block[12], 5, h, 0x6D70_3EF3)
+        step(&ccc, ddd, &eee, aaa, bbb, block[2], 14, h, 0x6D70_3EF3)
+        step(&bbb, ccc, &ddd, eee, aaa, block[10], 13, h, 0x6D70_3EF3)
+        step(&aaa, bbb, &ccc, ddd, eee, block[0], 13, h, 0x6D70_3EF3)
+        step(&eee, aaa, &bbb, ccc, ddd, block[4], 7, h, 0x6D70_3EF3)
+        step(&ddd, eee, &aaa, bbb, ccc, block[13], 5, h, 0x6D70_3EF3)
+
+        step(&ccc, ddd, &eee, aaa, bbb, block[8], 15, g, 0x7A6D_76E9)
+        step(&bbb, ccc, &ddd, eee, aaa, block[6], 5, g, 0x7A6D_76E9)
+        step(&aaa, bbb, &ccc, ddd, eee, block[4], 8, g, 0x7A6D_76E9)
+        step(&eee, aaa, &bbb, ccc, ddd, block[1], 11, g, 0x7A6D_76E9)
+        step(&ddd, eee, &aaa, bbb, ccc, block[3], 14, g, 0x7A6D_76E9)
+        step(&ccc, ddd, &eee, aaa, bbb, block[11], 14, g, 0x7A6D_76E9)
+        step(&bbb, ccc, &ddd, eee, aaa, block[15], 6, g, 0x7A6D_76E9)
+        step(&aaa, bbb, &ccc, ddd, eee, block[0], 14, g, 0x7A6D_76E9)
+        step(&eee, aaa, &bbb, ccc, ddd, block[5], 6, g, 0x7A6D_76E9)
+        step(&ddd, eee, &aaa, bbb, ccc, block[12], 9, g, 0x7A6D_76E9)
+        step(&ccc, ddd, &eee, aaa, bbb, block[2], 12, g, 0x7A6D_76E9)
+        step(&bbb, ccc, &ddd, eee, aaa, block[13], 9, g, 0x7A6D_76E9)
+        step(&aaa, bbb, &ccc, ddd, eee, block[9], 12, g, 0x7A6D_76E9)
+        step(&eee, aaa, &bbb, ccc, ddd, block[7], 5, g, 0x7A6D_76E9)
+        step(&ddd, eee, &aaa, bbb, ccc, block[10], 15, g, 0x7A6D_76E9)
+        step(&ccc, ddd, &eee, aaa, bbb, block[14], 8, g, 0x7A6D_76E9)
+
+        step(&bbb, ccc, &ddd, eee, aaa, block[12], 8, f, 0)
+        step(&aaa, bbb, &ccc, ddd, eee, block[15], 5, f, 0)
+        step(&eee, aaa, &bbb, ccc, ddd, block[10], 12, f, 0)
+        step(&ddd, eee, &aaa, bbb, ccc, block[4], 9, f, 0)
+        step(&ccc, ddd, &eee, aaa, bbb, block[1], 12, f, 0)
+        step(&bbb, ccc, &ddd, eee, aaa, block[5], 5, f, 0)
+        step(&aaa, bbb, &ccc, ddd, eee, block[8], 14, f, 0)
+        step(&eee, aaa, &bbb, ccc, ddd, block[7], 6, f, 0)
+        step(&ddd, eee, &aaa, bbb, ccc, block[6], 8, f, 0)
+        step(&ccc, ddd, &eee, aaa, bbb, block[2], 13, f, 0)
+        step(&bbb, ccc, &ddd, eee, aaa, block[13], 6, f, 0)
+        step(&aaa, bbb, &ccc, ddd, eee, block[14], 5, f, 0)
+        step(&eee, aaa, &bbb, ccc, ddd, block[0], 15, f, 0)
+        step(&ddd, eee, &aaa, bbb, ccc, block[3], 13, f, 0)
+        step(&ccc, ddd, &eee, aaa, bbb, block[9], 11, f, 0)
+        step(&bbb, ccc, &ddd, eee, aaa, block[11], 11, f, 0)
+
+        state = (
+            state.1 &+ cc &+ ddd,
+            state.2 &+ dd &+ eee,
+            state.3 &+ ee &+ aaa,
+            state.4 &+ aa &+ bbb,
+            state.0 &+ bb &+ ccc
+        )
     }
 }
