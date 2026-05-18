@@ -78,6 +78,7 @@ class WelcomeViewController: UIViewController {
             textField.placeholder = "Wallet name"
             textField.text = "Wallet \(walletNumber)"
             textField.clearButtonMode = .whileEditing
+            self.styleWalletNameTextField(textField)
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Continue", style: .default) { _ in
@@ -88,6 +89,19 @@ class WelcomeViewController: UIViewController {
         })
 
         self.present(alert, animated: true)
+    }
+
+    private func styleWalletNameTextField(_ textField: UITextField) {
+        textField.textColor = .white
+        textField.tintColor = ThemeManager.shared.primaryLight()
+        textField.backgroundColor = UIColor(rgb: 0x12061F).withAlphaComponent(0.94)
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = ThemeManager.shared.primaryLight().withAlphaComponent(0.48).cgColor
+        textField.attributedPlaceholder = NSAttributedString(
+            string: textField.placeholder ?? "",
+            attributes: [.foregroundColor: ThemeManager.shared.secondaryLight().withAlphaComponent(0.72)]
+        )
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

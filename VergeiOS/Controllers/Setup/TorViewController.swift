@@ -35,6 +35,7 @@ class TorViewController: UIViewController, UIScrollViewDelegate {
             slide2.frame = CGRect(x: width, y: 0, width: width, height: self.scrollView.frame.height)
             slide3.frame = CGRect(x: width * 2, y: 0, width: width, height: self.scrollView.frame.height)
 
+            [slide1, slide2].forEach { self.applyReadableTheme(to: $0) }
             self.scrollView.addSubview(slide1)
             self.scrollView.addSubview(slide2)
             self.scrollView.addSubview(slide3)
@@ -57,6 +58,28 @@ class TorViewController: UIViewController, UIScrollViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+    }
+
+    private func applyReadableTheme(to root: UIView) {
+        root.backgroundColor = UIColor(rgb: 0x080212)
+
+        for subview in root.subviews {
+            if let label = subview as? UILabel {
+                label.textColor = label.font.pointSize >= 20
+                    ? ThemeManager.shared.primaryLight()
+                    : ThemeManager.shared.secondaryLight()
+                label.backgroundColor = .clear
+            } else if let textView = subview as? UITextView {
+                textView.textColor = ThemeManager.shared.secondaryLight()
+                textView.backgroundColor = .clear
+            } else if !(subview is UIImageView) && !(subview is UISwitch) {
+                subview.backgroundColor = .clear
+            }
+
+            if !(subview is UIControl) {
+                applyReadableTheme(to: subview)
+            }
+        }
     }
 
 }

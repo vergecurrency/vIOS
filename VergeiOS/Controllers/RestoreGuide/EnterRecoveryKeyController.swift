@@ -44,17 +44,16 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     }
     private var index: Int = 0
     private var keys: [String] = []
+    private weak var doneControl: UIButton?
     private lazy var doneButton = UIBarButtonItem(
-        title: "defaults.done".localized,
-        style: .done,
-        target: self,
-        action: #selector(EnterRecoveryKeyController.doneClick)
+        customView: makeNavigationTextButton(title: "defaults.done".localized, action: #selector(doneClick))
     )
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupTextFieldBar()
+        self.setupNavigationButtons()
         self.updateView(index: self.index)
     }
 
@@ -70,6 +69,8 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        setupNavigationButtons()
 
         if self.restoreType == nil || ApplicationRepository.supportedMnemonicWordCounts.contains(self.keys.count) {
             self.keys = []
@@ -106,6 +107,118 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
         self.keyTextField.delegate = self
         self.navigationItem.rightBarButtonItem = doneButton
         self.updateDoneButton()
+    }
+
+    private func setupNavigationButtons() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            customView: makeNavigationIconButton(symbol: "‹", accessibilityLabel: "Back", action: #selector(backClick))
+        )
+        navigationItem.rightBarButtonItem = doneButton
+    }
+
+    private func makeNavigationTextButton(title: String, action: Selector) -> UIButton {
+        let button = makeNavigationButton(action: action)
+        doneControl = button
+
+        let label = UILabel()
+        label.text = title
+        label.textColor = .white
+        label.font = UIFont.avenir(size: 14).demiBold()
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.72
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        button.addSubview(label)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 58),
+            button.heightAnchor.constraint(equalToConstant: 34),
+            label.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 8),
+            label.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -8)
+        ])
+        applyRoundRetrowaveStyle(to: button, cornerRadius: 17)
+
+        return button
+    }
+
+    private func makeNavigationIconButton(symbol: String, accessibilityLabel: String, action: Selector) -> UIButton {
+        let button = makeNavigationButton(action: action)
+        button.accessibilityLabel = accessibilityLabel
+
+        let label = UILabel()
+        label.text = symbol
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        button.addSubview(label)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 34),
+            button.heightAnchor.constraint(equalToConstant: 34),
+            label.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: button.centerYAnchor, constant: -1)
+        ])
+        applyRoundRetrowaveStyle(to: button, cornerRadius: 17)
+
+        return button
+    }
+
+    private func makeNavigationButton(action: Selector) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: action, for: .touchUpInside)
+        button.tintColor = .white
+
+        DispatchQueue.main.async { [weak self, weak button] in
+            guard let button = button else {
+                return
+            }
+
+            self?.applyRoundRetrowaveStyle(to: button, cornerRadius: button.bounds.height / 2)
+        }
+
+        return button
+    }
+
+    private func applyRoundRetrowaveStyle(to button: UIButton, cornerRadius: CGFloat) {
+        let gradientName = "RetrowaveRestoreNavigationButtonGradient"
+        button.backgroundColor = UIColor(rgb: 0x12071A)
+        button.layer.cornerRadius = cornerRadius
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(button.isEnabled ? 0.75 : 0.32).cgColor
+        button.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        button.layer.shadowOpacity = button.isEnabled ? 0.38 : 0.12
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+
+        button.layer.sublayers?
+            .filter { $0.name == gradientName }
+            .forEach { $0.removeFromSuperlayer() }
+
+        guard button.bounds.width > 0 && button.bounds.height > 0 else {
+            return
+        }
+
+        let gradient = CAGradientLayer()
+        gradient.name = gradientName
+        gradient.frame = button.bounds
+        gradient.cornerRadius = cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).withAlphaComponent(button.isEnabled ? 1.0 : 0.7).cgColor,
+            UIColor(rgb: 0x3A125C).withAlphaComponent(button.isEnabled ? 1.0 : 0.62).cgColor,
+            UIColor(rgb: 0x12071A).withAlphaComponent(button.isEnabled ? 1.0 : 0.7).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        button.layer.insertSublayer(gradient, at: 0)
+        button.subviews.forEach { button.bringSubviewToFront($0) }
     }
 
     private func presentRestoreTypeChooser() {
@@ -187,10 +300,30 @@ class EnterRecoveryKeyController: AbstractRestoreViewController {
     private func updateDoneButton() {
         guard let restoreType = restoreType else {
             doneButton.isEnabled = false
+            doneControl?.isEnabled = false
+            doneControl?.alpha = 0.58
+            if let doneControl = doneControl {
+                applyRoundRetrowaveStyle(to: doneControl, cornerRadius: doneControl.bounds.height / 2)
+            }
             return
         }
 
         doneButton.isEnabled = keys.count == restoreType.wordCount
+        doneControl?.isEnabled = keys.count == restoreType.wordCount
+        doneControl?.alpha = keys.count == restoreType.wordCount ? 1.0 : 0.58
+        if let doneControl = doneControl {
+            applyRoundRetrowaveStyle(to: doneControl, cornerRadius: doneControl.bounds.height / 2)
+        }
+    }
+
+    @objc func backClick() {
+        if let navigationController = navigationController,
+           navigationController.viewControllers.first !== self {
+            navigationController.popViewController(animated: true)
+            return
+        }
+
+        dismiss(animated: true)
     }
 
     @objc func previousClick() {

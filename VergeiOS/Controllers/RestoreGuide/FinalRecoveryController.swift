@@ -26,10 +26,7 @@ class FinalRecoveryController: AbstractRestoreViewController {
             return self.present(UIAlertController.createInvalidMnemonicAlert(), animated: true)
         }
 
-        // Save the mnemonic.
         applicationRepository.pendingRestoreMnemonic = keys
-        applicationRepository.mnemonic = keys
-        applicationRepository.passphrase = nil
 
         DispatchQueue.main.async {
             if self.applicationRepository.requiresSetupPassphrase(mnemonic: keys) {

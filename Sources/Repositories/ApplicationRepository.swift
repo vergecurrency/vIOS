@@ -354,7 +354,9 @@ class ApplicationRepository {
             if saveSecureValue(passphrase, forKey: keychainKey("wallet.passphrase", profileId: profileId)) {
                 userDefaults.removeObject(forKey: defaultsKey("wallet.passphrase", profileId: profileId))
             }
-            upsertWalletProfile(id: profileId, name: pendingSetupWalletProfileName)
+            // Do not add a pending wallet to the profile list until final setup completes.
+            // Otherwise a cancelled 12-word restore can appear as a saved wallet with no usable VWS profile.
+            return
         }
 
         if saveSecureValue(passphrase, forKey: keychainKey("wallet.passphrase", profileId: activeWalletProfileId)) {
@@ -658,7 +660,9 @@ class ApplicationRepository {
                 }
             }
 
-            upsertSetupWalletProfile()
+            if pendingSetupWalletProfileId == nil {
+                upsertSetupWalletProfile()
+            }
         }
     }
 

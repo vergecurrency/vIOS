@@ -28,12 +28,15 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
 
     var transaction: Vws.TxHistory?
     var items: [Vws.TxHistory] = []
+    private var themedRepeatButtonItem: UIBarButtonItem?
+    private var themedDeleteButtonItem: UIBarButtonItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollViewEdger = ScrollViewEdger(scrollView: tableView)
         scrollViewEdger.hideBottomShadow = true
+        setupNavigationButtons()
 
         DispatchQueue.main.async {
             self.scrollViewEdger.createShadowViews()
@@ -76,7 +79,6 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
 
         var prefix = ""
         if transaction.category == .Sent {
-            navigationItem.setRightBarButton(repeatTransactionBarButtonItem, animated: true)
             amountLabel.textColor = ThemeManager.shared.vergeRed()
             iconImageView.image = UIImage(named: "Payment")
 
@@ -91,15 +93,119 @@ class TransactionTableViewController: ThemeableViewController, UITableViewDelega
             prefix = "+"
         }
 
-        // Always remove the trash bin and then add it if needed.
-        navigationItem.rightBarButtonItems?.removeAll { item in
-            return item == deleteTransactionBarButtonItem
-        }
-        if !transaction.confirmed {
-            navigationItem.rightBarButtonItems?.append(deleteTransactionBarButtonItem)
+        var rightItems = [UIBarButtonItem]()
+        if transaction.category == .Sent, let repeatButton = themedRepeatButtonItem {
+            rightItems.append(repeatButton)
         }
 
+        if !transaction.confirmed {
+            if let deleteButton = themedDeleteButtonItem {
+                rightItems.append(deleteButton)
+            }
+        }
+        navigationItem.rightBarButtonItems = rightItems
+
         amountLabel.text = "\(prefix) \(transaction.amountValue.toXvgCurrency())"
+    }
+
+    private func setupNavigationButtons() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            customView: makeNavigationButton(
+                systemName: "xmark",
+                accessibilityLabel: "Close",
+                action: #selector(closeViewController(_:))
+            )
+        )
+        themedRepeatButtonItem = UIBarButtonItem(
+            customView: makeNavigationButton(
+                systemName: "arrow.clockwise",
+                accessibilityLabel: "Repeat transaction",
+                action: #selector(repeatTransactionPushed(_:))
+            )
+        )
+        themedDeleteButtonItem = UIBarButtonItem(
+            customView: makeNavigationButton(
+                systemName: "trash",
+                accessibilityLabel: "Delete transaction",
+                action: #selector(deleteTransactionPushed(_:))
+            )
+        )
+    }
+
+    private func makeNavigationButton(systemName: String, accessibilityLabel: String, action: Selector) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = accessibilityLabel
+        button.tintColor = .white
+        button.addTarget(self, action: action, for: .touchUpInside)
+
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 34),
+            button.heightAnchor.constraint(equalToConstant: 34)
+        ])
+
+        let iconView = UIImageView(image: UIImage(systemName: systemName)?.withRenderingMode(.alwaysTemplate))
+        iconView.tintColor = .white
+        iconView.contentMode = .scaleAspectFit
+        iconView.isUserInteractionEnabled = false
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+        button.addSubview(iconView)
+
+        NSLayoutConstraint.activate([
+            iconView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            iconView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            iconView.widthAnchor.constraint(equalToConstant: 17),
+            iconView.heightAnchor.constraint(equalToConstant: 17)
+        ])
+
+        applyRoundRetrowaveStyle(to: button)
+        DispatchQueue.main.async { [weak self, weak button] in
+            guard let button = button else {
+                return
+            }
+
+            self?.applyRoundRetrowaveStyle(to: button)
+            button.bringSubviewToFront(iconView)
+        }
+
+        return button
+    }
+
+    private func applyRoundRetrowaveStyle(to button: UIButton) {
+        let gradientName = "RetrowaveTransactionDetailButtonGradient"
+        button.backgroundColor = UIColor(rgb: 0x12071A)
+        button.tintColor = .white
+        button.layer.cornerRadius = 17
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.75).cgColor
+        button.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        button.layer.shadowOpacity = 0.38
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+
+        button.layer.sublayers?
+            .filter { $0.name == gradientName }
+            .forEach { $0.removeFromSuperlayer() }
+
+        guard button.bounds.width > 0 && button.bounds.height > 0 else {
+            return
+        }
+
+        let gradient = CAGradientLayer()
+        gradient.name = gradientName
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).cgColor,
+            UIColor(rgb: 0x3A125C).cgColor,
+            UIColor(rgb: 0x12071A).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        button.layer.insertSublayer(gradient, at: 0)
+        button.subviews.forEach { button.bringSubviewToFront($0) }
     }
 
     func loadTransactions(_ transaction: Vws.TxHistory) {

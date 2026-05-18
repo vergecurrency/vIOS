@@ -44,6 +44,14 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
         self.createWalletButton.isEnabled = false
         self.openWalletButton.alpha = 0
+
+        styleTermsScreen()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        updateTermsButtonGradients()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +85,7 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
 
         let passphrase: String
         if self.applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
-            guard let storedPassphrase = self.applicationRepository.passphrase ?? self.applicationRepository.pendingSetupPassphrase else {
+            guard let storedPassphrase = self.applicationRepository.pendingSetupPassphrase ?? self.applicationRepository.passphrase else {
                 self.log.error("wallet setup no passphrase found")
 
                 return self.showSetupErrorAlert("No passphrase found")
@@ -143,6 +151,97 @@ class FinishSetupViewController: AbstractPaperkeyViewController {
             button.alpha = 0
             button.isEnabled = false
         }
+    }
+
+    private func styleTermsScreen() {
+        termsView.backgroundColor = .clear
+
+        allLabels(in: termsView).forEach { label in
+            label.textColor = ThemeManager.shared.secondaryLight()
+        }
+
+        allButtons(in: termsView).forEach { button in
+            styleTermsButton(button)
+        }
+    }
+
+    private func updateTermsButtonGradients() {
+        allButtons(in: termsView).forEach { button in
+            addRetrowaveGradient(to: button, name: "RetrowaveTermsButtonGradient")
+        }
+    }
+
+    private func styleTermsButton(_ button: UIButton) {
+        if button.constraints.first(where: { $0.identifier == "RetrowaveTermsMinimumHeight" }) == nil {
+            let minimumHeight = button.heightAnchor.constraint(greaterThanOrEqualToConstant: 42)
+            minimumHeight.identifier = "RetrowaveTermsMinimumHeight"
+            minimumHeight.isActive = true
+        }
+
+        button.backgroundColor = .clear
+        button.setTitleColor(.white, for: .normal)
+        button.tintColor = .white
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.minimumScaleFactor = 0.82
+        button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 18, bottom: 6, right: 18)
+        button.titleEdgeInsets = .zero
+        button.layer.cornerRadius = 10
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.72).cgColor
+        button.layer.shadowColor = UIColor(rgb: 0xFF3DF2).cgColor
+        button.layer.shadowOpacity = 0.35
+        button.layer.shadowRadius = 12
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+
+        addRetrowaveGradient(to: button, name: "RetrowaveTermsButtonGradient")
+    }
+
+    private func addRetrowaveGradient(to button: UIButton, name: String) {
+        button.layer.sublayers?
+            .filter { $0.name == name }
+            .forEach { $0.removeFromSuperlayer() }
+
+        guard button.bounds.width > 0, button.bounds.height > 0 else {
+            return
+        }
+
+        let gradient = CAGradientLayer()
+        gradient.name = name
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).cgColor,
+            UIColor(rgb: 0x3A125C).cgColor,
+            UIColor(rgb: 0x12071A).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        button.layer.insertSublayer(gradient, at: 0)
+    }
+
+    private func allButtons(in root: UIView) -> [UIButton] {
+        var buttons = root.subviews.compactMap { $0 as? UIButton }
+
+        for subview in root.subviews {
+            buttons.append(contentsOf: allButtons(in: subview))
+        }
+
+        return buttons
+    }
+
+    private func allLabels(in root: UIView) -> [UILabel] {
+        var labels = root.subviews.compactMap { $0 as? UILabel }
+
+        for subview in root.subviews {
+            labels.append(contentsOf: allLabels(in: subview))
+        }
+
+        return labels
     }
 
     private func showSetupErrorAlert(_ message: String) {

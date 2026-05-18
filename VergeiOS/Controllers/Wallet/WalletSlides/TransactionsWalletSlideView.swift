@@ -25,6 +25,9 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     private let serverStatusLabel = UILabel()
     private let serverStatusContainer = UIView()
     private var didSetupServerStatusHeader = false
+    private var pendingAmountRefreshWorkItem: DispatchWorkItem?
+    private var periodicRefreshTimer: Timer?
+    private var didLoadInitialTransactions = false
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -54,6 +57,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     deinit {
+        periodicRefreshTimer?.invalidate()
         NotificationCenter.default.removeObserver(self)
     }
 
@@ -81,6 +85,13 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             object: nil
         )
 
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didChangeWalletAmount(notification:)),
+            name: .didChangeWalletAmount,
+            object: nil
+        )
+
         [
             Notification.Name.didStartTorThread: #selector(didStartTorThread(notification:)),
             Notification.Name.didConnectTorController: #selector(didConnectTorController(notification:)),
@@ -100,7 +111,10 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
 
         installTableViewPlaceholder()
         setupServerStatusHeader()
-        getTransactions()
+        if !didLoadInitialTransactions {
+            didLoadInitialTransactions = true
+            getTransactions()
+        }
 
         tableView.layer.cornerRadius = 10.0
         tableView.layer.borderWidth = 1
@@ -108,6 +122,16 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         tableView.clipsToBounds = true
         tableView.addSubview(refreshControl)
         tableView.backgroundColor = ThemeManager.shared.backgroundWhite()
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+
+        if window == nil {
+            stopPeriodicRefresh()
+        } else {
+            startPeriodicRefresh()
+        }
     }
 
     func installTableViewPlaceholder() {
@@ -132,12 +156,22 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func didSwitchWalletProfile(notification: Notification? = nil) {
+        pendingAmountRefreshWorkItem?.cancel()
+        pendingAmountRefreshWorkItem = nil
         self.items = []
         refreshServerStatus()
 
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+
+    @objc func didChangeWalletAmount(notification: Notification? = nil) {
+        guard isElectrumXWallet else {
+            return
+        }
+
+        scheduleElectrumXTransactionRefresh()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -186,6 +220,95 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             DispatchQueue.main.async {
                 self.refreshControl.endRefreshing()
                 self.refreshServerStatus()
+            }
+        }
+    }
+
+    private func startPeriodicRefresh() {
+        guard periodicRefreshTimer == nil else {
+            return
+        }
+
+        periodicRefreshTimer = Timer.scheduledTimer(
+            withTimeInterval: 20,
+            repeats: true
+        ) { [weak self] _ in
+            self?.refreshRecentTransactionsFromTimer()
+        }
+    }
+
+    private func stopPeriodicRefresh() {
+        periodicRefreshTimer?.invalidate()
+        periodicRefreshTimer = nil
+    }
+
+    private func refreshRecentTransactionsFromTimer() {
+        guard window != nil,
+              applicationRepository.setup,
+              !isWaitingForTor() else {
+            return
+        }
+
+        let profileId = applicationRepository.activeWalletProfileId
+        transactionManager.sync(limit: 10) { [weak self] transactions in
+            guard let self = self,
+                  self.applicationRepository.activeWalletProfileId == profileId else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.items = transactions
+                self.tableView.reloadData()
+                self.refreshServerStatus()
+            }
+        }
+    }
+
+    private var isElectrumXWallet: Bool {
+        guard let mnemonic = applicationRepository.mnemonic else {
+            return false
+        }
+
+        return !applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic)
+    }
+
+    private func scheduleElectrumXTransactionRefresh() {
+        pendingAmountRefreshWorkItem?.cancel()
+
+        let profileId = applicationRepository.activeWalletProfileId
+        let workItem = DispatchWorkItem { [weak self] in
+            self?.refreshElectrumXTransactions(profileId: profileId, retryAfter: 2.0)
+        }
+
+        pendingAmountRefreshWorkItem = workItem
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: workItem)
+    }
+
+    private func refreshElectrumXTransactions(profileId: String, retryAfter: TimeInterval?) {
+        guard applicationRepository.activeWalletProfileId == profileId,
+              isElectrumXWallet else {
+            return
+        }
+
+        setSyncingStatus()
+        transactionManager.sync(limit: 10) { [weak self] transactions in
+            guard let self = self,
+                  self.applicationRepository.activeWalletProfileId == profileId else {
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.items = transactions
+                self.tableView.reloadData()
+                self.refreshServerStatus()
+            }
+
+            guard let retryAfter = retryAfter else {
+                return
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + retryAfter) { [weak self] in
+                self?.refreshElectrumXTransactions(profileId: profileId, retryAfter: nil)
             }
         }
     }

@@ -45,7 +45,7 @@
                     <navigationItem key="navigationItem" title="Transactions" id="Rwy-vi-rId">
                         <barButtonItem key="leftBarButtonItem" image="Contacts" id="osU-A5-NEZ">
                             <connections>
-                                <segue destination="Xsh-Qv-qas" kind="presentation" modalPresentationStyle="formSheet" id="CUs-uY-I6J"/>
+                                <segue destination="Xsh-Qv-qas" kind="presentation" identifier="showTransactionContacts" modalPresentationStyle="formSheet" id="CUs-uY-I6J"/>
                             </connections>
                         </barButtonItem>
                         <userDefinedRuntimeAttributes>
@@ -116,7 +116,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="kjz-eM-oxV">
                             <connections>
-                                <segue destination="Bnx-KG-5UX" kind="show" id="eCP-jO-xqX"/>
+                                <segue destination="Bnx-KG-5UX" kind="show" identifier="showAddContact" id="eCP-jO-xqX"/>
                             </connections>
                         </barButtonItem>
                         <userDefinedRuntimeAttributes>

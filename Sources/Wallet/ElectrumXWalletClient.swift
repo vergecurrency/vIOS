@@ -1173,41 +1173,80 @@ final class ElectrumXWalletClient: WalletClientProtocol {
         let height = int64Value(item["height"]) ?? 0
         let confirmations = int64Value(detail?["confirmations"]) ?? (height > 0 ? 1 : 0)
         let time = int64Value(detail?["time"]) ?? int64Value(detail?["blocktime"]) ?? 0
-        var amount: Int64 = 0
-        var outputs = [Vws.InputOutput]()
+        var ownAmount: Int64 = 0
+        var ownOutputs = [Vws.InputOutput]()
+        var externalAmount: Int64 = 0
+        var externalOutputs = [Vws.InputOutput]()
+        var hasOutputToScannedAddress = false
 
         for vout in detail?["vout"] as? [[String: Any]] ?? [] {
             guard let scriptPubKey = vout["scriptPubKey"] as? [String: Any],
-                  let scriptHex = scriptPubKey["hex"] as? String,
-                  let outputAddress = ownScriptAddresses[scriptHex] else {
+                  let scriptHex = scriptPubKey["hex"] as? String else {
                 continue
             }
 
             let outputAmount = satoshis(fromXvgValue: vout["value"])
-            amount += outputAmount
-            outputs.append(Vws.InputOutput(amount: Int(outputAmount), address: outputAddress, isMine: true))
+            if let outputAddress = ownScriptAddresses[scriptHex] {
+                ownAmount += outputAmount
+                ownOutputs.append(Vws.InputOutput(amount: Int(outputAmount), address: outputAddress, isMine: true))
+                hasOutputToScannedAddress = hasOutputToScannedAddress || outputAddress == address
+            } else if let outputAddress = outputAddress(from: scriptPubKey) {
+                externalAmount += outputAmount
+                externalOutputs.append(Vws.InputOutput(amount: Int(outputAmount), address: outputAddress, isMine: false))
+            }
         }
 
-        if outputs.isEmpty {
-            outputs.append(Vws.InputOutput(amount: Int(amount), address: address, isMine: true))
+        if !hasOutputToScannedAddress && !externalOutputs.isEmpty {
+            return Vws.TxHistory(
+                txid: txid,
+                action: "sent",
+                amount: externalAmount,
+                fees: nil,
+                time: time,
+                confirmations: confirmations,
+                blockheight: height,
+                feePerKb: nil,
+                inputs: [Vws.InputOutput(amount: 0, address: address, isMine: true)],
+                outputs: externalOutputs,
+                savedAddress: externalOutputs.first?.address,
+                createdOn: nil,
+                message: nil,
+                addressTo: externalOutputs.first?.address
+            )
+        }
+
+        if ownOutputs.isEmpty {
+            ownOutputs.append(Vws.InputOutput(amount: Int(ownAmount), address: address, isMine: true))
         }
 
         return Vws.TxHistory(
             txid: txid,
             action: "received",
-            amount: amount,
+            amount: ownAmount,
             fees: nil,
             time: time,
             confirmations: confirmations,
             blockheight: height,
             feePerKb: nil,
             inputs: nil,
-            outputs: outputs,
+            outputs: ownOutputs,
             savedAddress: address,
             createdOn: nil,
             message: nil,
             addressTo: nil
         )
+    }
+
+    private func outputAddress(from scriptPubKey: [String: Any]) -> String? {
+        if let address = scriptPubKey["address"] as? String {
+            return address
+        }
+
+        if let addresses = scriptPubKey["addresses"] as? [String] {
+            return addresses.first
+        }
+
+        return nil
     }
 
     private func satoshis(fromXvgValue value: Any?) -> Int64 {

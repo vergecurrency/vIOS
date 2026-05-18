@@ -43,12 +43,14 @@ class TransactionsTableViewController: EdgedTableViewController {
         )
 
         setupView()
+        setupContactsButton()
         getTransactions()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        setupContactsButton()
         getTransactions()
 
         if searchController.isActive {
@@ -100,6 +102,95 @@ class TransactionsTableViewController: EdgedTableViewController {
             searchController.searchBar.delegate = self
             searchController.delegate = self
         }
+    }
+
+    private func setupContactsButton() {
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = "transactions.contacts.title".localized
+        button.setImage(nil, for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(showContacts), for: .touchUpInside)
+        addContactsIcon(to: button)
+
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 34),
+            button.heightAnchor.constraint(equalToConstant: 34)
+        ])
+
+        applyRoundRetrowaveStyle(to: button)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+
+        DispatchQueue.main.async { [weak self, weak button] in
+            guard let button = button else {
+                return
+            }
+
+            self?.applyRoundRetrowaveStyle(to: button)
+        }
+    }
+
+    private func addContactsIcon(to button: UIButton) {
+        let iconTag = 700_423
+        button.subviews.filter { $0.tag == iconTag }.forEach { $0.removeFromSuperview() }
+
+        let iconView = UIImageView(image: UIImage(named: "Contacts")?.withRenderingMode(.alwaysTemplate))
+        iconView.tag = iconTag
+        iconView.tintColor = .white
+        iconView.contentMode = .scaleAspectFit
+        iconView.isUserInteractionEnabled = false
+        iconView.translatesAutoresizingMaskIntoConstraints = false
+
+        button.addSubview(iconView)
+        NSLayoutConstraint.activate([
+            iconView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            iconView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            iconView.widthAnchor.constraint(equalToConstant: 18),
+            iconView.heightAnchor.constraint(equalToConstant: 18)
+        ])
+        button.bringSubviewToFront(iconView)
+    }
+
+    @objc private func showContacts() {
+        performSegue(withIdentifier: "showTransactionContacts", sender: self)
+    }
+
+    private func applyRoundRetrowaveStyle(to button: UIButton) {
+        let gradientName = "RetrowaveTransactionsContactsButtonGradient"
+        button.backgroundColor = UIColor(rgb: 0x12071A)
+        button.tintColor = .white
+        button.layer.cornerRadius = 17
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.75).cgColor
+        button.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        button.layer.shadowOpacity = 0.38
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+
+        button.layer.sublayers?
+            .filter { $0.name == gradientName }
+            .forEach { $0.removeFromSuperlayer() }
+
+        guard button.bounds.width > 0 && button.bounds.height > 0 else {
+            return
+        }
+
+        let gradient = CAGradientLayer()
+        gradient.name = gradientName
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).cgColor,
+            UIColor(rgb: 0x3A125C).cgColor,
+            UIColor(rgb: 0x12071A).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        button.layer.insertSublayer(gradient, at: 0)
+
+        button.subviews.forEach { button.bringSubviewToFront($0) }
     }
 
     func getTransactions(_ searchText: String = "", scope: String = "transactions.search.all".localized) {
