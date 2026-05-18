@@ -513,8 +513,8 @@ extension UINavigationBar {
         self.setValue(true, forKey: "hidesShadow")
 
         let font = UIFont.avenir(size: 19).medium()
-        let titleColor = ThemeManager.shared.secondaryDark()
-        let buttonColor = ThemeManager.shared.primaryLight()
+        let titleColor = UIColor.white
+        let buttonColor = UIColor.white
 
         self.shadowImage = UIImage()
         self.tintColor = buttonColor

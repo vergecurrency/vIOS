@@ -52,15 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func installRetrowaveBarAppearance() {
         let pink = UIColor(rgb: 0xFF3DF2)
-        let teal = ThemeManager.shared.primaryLight()
-        let title = ThemeManager.shared.secondaryDark()
+        let buttonColor = UIColor.white
+        let title = UIColor.white
         let background = ThemeManager.shared.backgroundGrey()
         let titleFont = UIFont.avenir(size: 19).medium()
         let buttonFont = UIFont.avenir(size: 14).demiBold()
 
-        UIBarButtonItem.appearance().tintColor = teal
+        UIBarButtonItem.appearance().tintColor = buttonColor
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            .foregroundColor: teal,
+            .foregroundColor: buttonColor,
             .font: buttonFont
         ], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let barButtonAppearance = UIBarButtonItemAppearance(style: .plain)
             barButtonAppearance.normal.titleTextAttributes = [
-                .foregroundColor: teal,
+                .foregroundColor: buttonColor,
                 .font: buttonFont
             ]
             barButtonAppearance.highlighted.titleTextAttributes = [
@@ -102,10 +102,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().standardAppearance = navAppearance
             UINavigationBar.appearance().compactAppearance = navAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navAppearance
-            UINavigationBar.appearance().tintColor = teal
+            UINavigationBar.appearance().tintColor = buttonColor
         } else {
             UINavigationBar.appearance().barTintColor = background
-            UINavigationBar.appearance().tintColor = teal
+            UINavigationBar.appearance().tintColor = buttonColor
             UINavigationBar.appearance().titleTextAttributes = [
                 .foregroundColor: title,
                 .font: titleFont

@@ -71,6 +71,7 @@ class WelcomeViewController: UIViewController {
     }
 
     private func askForWalletName(segueIdentifier: String) {
+        applicationRepository.deleteIncompleteWalletProfiles()
         let walletNumber = applicationRepository.walletProfiles.count + 1
         let alert = UIAlertController(title: "Name wallet", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in

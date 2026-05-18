@@ -30,6 +30,7 @@ class ApplicationRepository {
     private let legacyWalletProfileId = "default"
     private let activeWalletProfileIdKey = "wallet.activeProfileId"
     private let pendingSetupWalletProfileIdKey = "wallet.pendingSetupProfileId"
+    private let pendingSetupWalletProfileNameKey = "wallet.pendingSetupProfileName"
     private let walletProfilesKey = "wallet.profiles"
     private let electrumXServersKey = "wallet.electrumx.servers"
     private let activeElectrumXServerKey = "wallet.electrumx.activeServer"
@@ -142,6 +143,19 @@ class ApplicationRepository {
 
     private var setupWriteWalletProfileId: String {
         pendingSetupWalletProfileId ?? activeWalletProfileId
+    }
+
+    private var pendingSetupWalletProfileName: String? {
+        get {
+            userDefaults.string(forKey: pendingSetupWalletProfileNameKey)
+        }
+        set {
+            if let newValue = newValue {
+                userDefaults.set(newValue, forKey: pendingSetupWalletProfileNameKey)
+            } else {
+                userDefaults.removeObject(forKey: pendingSetupWalletProfileNameKey)
+            }
+        }
     }
 
     private func keychainKey(_ key: String) -> String {
@@ -286,7 +300,12 @@ class ApplicationRepository {
     }
 
     private func upsertSetupWalletProfile(name: String? = nil, walletId: String? = nil, copayerId: String? = nil) {
-        upsertWalletProfile(id: setupWriteWalletProfileId, name: name, walletId: walletId, copayerId: copayerId)
+        upsertWalletProfile(
+            id: setupWriteWalletProfileId,
+            name: name ?? pendingSetupWalletProfileName,
+            walletId: walletId,
+            copayerId: copayerId
+        )
     }
 
     private func upsertWalletProfile(id: String, name: String? = nil, walletId: String? = nil, copayerId: String? = nil) {
@@ -319,12 +338,13 @@ class ApplicationRepository {
     func finishWalletProfileSetup() {
         if let profileId = pendingSetupWalletProfileId {
             activeWalletProfileId = profileId
-            upsertActiveWalletProfile(walletId: walletId, copayerId: copayerId)
+            upsertActiveWalletProfile(name: pendingSetupWalletProfileName, walletId: walletId, copayerId: copayerId)
         } else {
             refreshActiveWalletProfile()
         }
 
         pendingSetupWalletProfileId = nil
+        pendingSetupWalletProfileName = nil
     }
 
     func saveSetupPassphrase(_ passphrase: String) {
@@ -334,7 +354,7 @@ class ApplicationRepository {
             if saveSecureValue(passphrase, forKey: keychainKey("wallet.passphrase", profileId: profileId)) {
                 userDefaults.removeObject(forKey: defaultsKey("wallet.passphrase", profileId: profileId))
             }
-            upsertWalletProfile(id: profileId)
+            upsertWalletProfile(id: profileId, name: pendingSetupWalletProfileName)
         }
 
         if saveSecureValue(passphrase, forKey: keychainKey("wallet.passphrase", profileId: activeWalletProfileId)) {
@@ -355,11 +375,9 @@ class ApplicationRepository {
             walletId: nil,
             copayerId: nil
         )
-        var profiles = walletProfiles
-        profiles.append(profile)
-        walletProfiles = profiles
         activeWalletProfileId = profile.id
         pendingSetupWalletProfileId = profile.id
+        pendingSetupWalletProfileName = profileName
         clearActiveWalletData()
 
         return profile
@@ -379,6 +397,12 @@ class ApplicationRepository {
         if !remainingProfiles.contains(where: { $0.id == activeWalletProfileId }) {
             activeWalletProfileId = remainingProfiles.first?.id ?? legacyWalletProfileId
         }
+
+        if let pendingId = pendingSetupWalletProfileId,
+           !remainingProfiles.contains(where: { $0.id == pendingId }) {
+            pendingSetupWalletProfileId = nil
+            pendingSetupWalletProfileName = nil
+        }
     }
 
     func switchWalletProfile(id: String) {
@@ -388,6 +412,7 @@ class ApplicationRepository {
 
         activeWalletProfileId = id
         pendingSetupWalletProfileId = nil
+        pendingSetupWalletProfileName = nil
         pendingRestoreMnemonic = nil
         pendingSetupPassphrase = nil
         pendingWalletSecret = nil
@@ -441,6 +466,7 @@ class ApplicationRepository {
         userDefaults.synchronize()
         keychain.clear()
         pendingSetupWalletProfileId = nil
+        pendingSetupWalletProfileName = nil
         pendingRestoreMnemonic = nil
         pendingSetupPassphrase = nil
         pendingWalletSecret = nil
