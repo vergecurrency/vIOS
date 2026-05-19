@@ -15,13 +15,13 @@ class TorConnectionTableViewController: EdgedTableViewController {
 
     var applicationRepository: ApplicationRepository!
     var torClient: TorClient!
-    var httpSession: HttpSessionProtocol!
 
     private let torStatusContainer = UIView()
     private let torStatusDot = UIView()
     private let torStatusTitleLabel = UILabel()
     private let torStatusDetailLabel = UILabel()
     private var didSetupTorStatus = false
+    private var didAttachTorStatus = false
 
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -39,8 +39,14 @@ class TorConnectionTableViewController: EdgedTableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        attachTorStatusBoxToCell()
         refreshTorStatusFromClient()
-        updateIPAddress()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        attachTorStatusBoxToCell()
     }
 
     @IBAction func changeTorUsage(_ sender: UISwitch) {
@@ -48,47 +54,21 @@ class TorConnectionTableViewController: EdgedTableViewController {
 
         if sender.isOn {
 
-            setIpAddressLabel("settings.torConnection.loadingLabel".localized)
             setTorStatus("Tor starting up", detail: "Starting privacy connection", color: ThemeManager.shared.vergeGrey())
 
             // prevent double-start crash
             if !torClient.hasStarted {
-                torClient.start { [weak self] _ in
-                    self?.updateIPAddress()
-                }
+                torClient.start { _ in }
             } else if torClient.isOperational {
                 setTorStatus("Tor connected", detail: "Wallet traffic is routing through Tor", color: ThemeManager.shared.vergeGreen())
-                updateIPAddress()
             } else {
                 setTorStatus("Tor bootstrapping", detail: "Waiting for a Tor circuit", color: ThemeManager.shared.vergeGrey())
-                updateIPAddress()
             }
 
         } else {
             torClient.resign()
             setTorStatus("Tor is off", detail: "Privacy routing is disabled", color: ThemeManager.shared.vergeRed())
-            updateIPAddress()
             NotificationCenter.default.post(name: .didTurnOffTor, object: self)
-        }
-    }
-
-
-    func updateIPAddress() {
-        setIpAddressLabel("settings.torConnection.loadingLabel".localized)
-
-        let url = URL(string: Constants.ipCheckEndpoint)
-        self.httpSession.dataTask(with: url!).then { response in
-            let ipAddress = try response.dataToJson(type: IpAddress.self)
-
-            self.setIpAddressLabel(ipAddress.ip)
-        }.catch { error in
-            self.setIpAddressLabel("settings.torConnection.notAvailable".localized)
-        }
-    }
-
-    func setIpAddressLabel(_ label: String) {
-        DispatchQueue.main.async {
-            self.ipAddressLabel.text = label
         }
     }
 
@@ -124,12 +104,8 @@ class TorConnectionTableViewController: EdgedTableViewController {
         torStatusContainer.addSubview(torStatusDot)
         torStatusContainer.addSubview(torStatusTitleLabel)
         torStatusContainer.addSubview(torStatusDetailLabel)
-        tableView.tableFooterView = torStatusContainer
 
         NSLayoutConstraint.activate([
-            torStatusContainer.widthAnchor.constraint(equalTo: tableView.widthAnchor, constant: -32),
-            torStatusContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 76),
-
             torStatusDot.leadingAnchor.constraint(equalTo: torStatusContainer.leadingAnchor, constant: 16),
             torStatusDot.topAnchor.constraint(equalTo: torStatusContainer.topAnchor, constant: 18),
             torStatusDot.widthAnchor.constraint(equalToConstant: 12),
@@ -144,8 +120,33 @@ class TorConnectionTableViewController: EdgedTableViewController {
             torStatusDetailLabel.topAnchor.constraint(equalTo: torStatusTitleLabel.bottomAnchor, constant: 4),
             torStatusDetailLabel.bottomAnchor.constraint(lessThanOrEqualTo: torStatusContainer.bottomAnchor, constant: -14)
         ])
+    }
 
-        torStatusContainer.frame = CGRect(x: 16, y: 0, width: tableView.bounds.width - 32, height: 88)
+    private func attachTorStatusBoxToCell() {
+        guard !didAttachTorStatus,
+              let statusCell = ipAddressLabel.firstSuperview(ofType: UITableViewCell.self) else {
+            return
+        }
+
+        didAttachTorStatus = true
+        statusCell.selectionStyle = .none
+        statusCell.backgroundColor = .clear
+        statusCell.contentView.backgroundColor = .clear
+        statusCell.textLabel?.isHidden = true
+        statusCell.detailTextLabel?.isHidden = true
+        ipAddressLabel.isHidden = true
+
+        torStatusContainer.removeFromSuperview()
+        statusCell.contentView.addSubview(torStatusContainer)
+
+        let guide = statusCell.contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            torStatusContainer.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            torStatusContainer.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            torStatusContainer.topAnchor.constraint(equalTo: statusCell.contentView.topAnchor, constant: 8),
+            torStatusContainer.bottomAnchor.constraint(equalTo: statusCell.contentView.bottomAnchor, constant: -8),
+            torStatusContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 76)
+        ])
     }
 
     private func subscribeToTorStatus() {
@@ -230,6 +231,26 @@ class TorConnectionTableViewController: EdgedTableViewController {
         let statusSummary = summary?.isEmpty == false ? summary! : (torClient.bootstrapSummary ?? fallbackDetail)
         let title = "Tor bootstrapping \(percent)%"
         setTorStatus(title, detail: statusSummary, color: ThemeManager.shared.vergeGrey())
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            return 104
+        }
+
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+
+}
+
+private extension UIView {
+
+    func firstSuperview<T: UIView>(ofType type: T.Type) -> T? {
+        if let superview = self.superview as? T {
+            return superview
+        }
+
+        return superview?.firstSuperview(ofType: type)
     }
 
 }

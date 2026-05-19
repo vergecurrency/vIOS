@@ -20,6 +20,7 @@ final class ElectrumXClient {
     private let httpSession: HttpSessionProtocol?
     private let hiddenClient: HiddenClientProtocol?
     private let queue = DispatchQueue(label: "org.verge.wallets.electrumx")
+    private var persistentSocket: PersistentSocket?
 
     init(
         applicationRepository: ApplicationRepository,
@@ -152,7 +153,47 @@ final class ElectrumXClient {
         if applicationRepository.useTor {
             requestWebSocket(server: server, method: method, params: params, completion: completion)
         } else {
-            requestSocket(server: server, method: method, params: params, completion: completion)
+            requestPersistentSocket(server: server, method: method, params: params) { result in
+                switch result {
+                case .success:
+                    completion(result)
+                case .failure:
+                    self.requestSocket(server: server, method: method, params: params, completion: completion)
+                }
+            }
+        }
+    }
+
+    private func requestPersistentSocket(
+        server: ElectrumXServer,
+        method: String,
+        params: [Any],
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        queue.async {
+            if self.persistentSocket?.server != server {
+                self.persistentSocket?.disconnect()
+                self.persistentSocket = PersistentSocket(
+                    server: server,
+                    queue: self.queue,
+                    responseError: { [weak self] json in
+                        self?.responseError(from: json)
+                    }
+                )
+            }
+
+            self.persistentSocket?.request(method: method, params: params) { result in
+                if case .failure = result {
+                    self.queue.async {
+                        if self.persistentSocket?.server == server {
+                            self.persistentSocket?.disconnect()
+                            self.persistentSocket = nil
+                        }
+                    }
+                }
+
+                completion(result)
+            }
         }
     }
 
@@ -317,7 +358,7 @@ final class ElectrumXClient {
                     responseBuffer.append(data)
                 }
 
-                while let frameRange = self.firstJSONFrameRange(in: responseBuffer) {
+                while let frameRange = Self.firstJSONFrameRange(in: responseBuffer) {
                     let frame = responseBuffer.subdata(in: frameRange)
                     responseBuffer.removeSubrange(responseBuffer.startIndex..<frameRange.upperBound)
 
@@ -404,7 +445,7 @@ final class ElectrumXClient {
         connection.start(queue: queue)
     }
 
-    private func firstJSONFrameRange(in data: Data) -> Range<Data.Index>? {
+    private static func firstJSONFrameRange(in data: Data) -> Range<Data.Index>? {
         var startIndex: Data.Index?
         var depth = 0
         var inString = false
@@ -545,6 +586,287 @@ final class ElectrumXClient {
         } catch {
             completion(.failure(error))
         }
+    }
+}
+
+private final class PersistentSocket {
+    let server: ElectrumXServer
+
+    private let queue: DispatchQueue
+    private let responseError: ([String: Any]) -> Error?
+    private var connection: NWConnection?
+    private var responseBuffer = Data()
+    private var isReady = false
+    private var isConnecting = false
+    private var connectCompletions = [(Result<Void, Error>) -> Void]()
+    private var pending = [String: (Result<[String: Any], Error>) -> Void]()
+
+    init(
+        server: ElectrumXServer,
+        queue: DispatchQueue,
+        responseError: @escaping ([String: Any]) -> Error?
+    ) {
+        self.server = server
+        self.queue = queue
+        self.responseError = responseError
+    }
+
+    func request(
+        method: String,
+        params: [Any],
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        queue.async {
+            self.connect { result in
+                switch result {
+                case .success:
+                    self.send(method: method, params: params, completion: completion)
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+    func disconnect() {
+        queue.async {
+            self.disconnectOnQueue(error: ElectrumXClientError.invalidHTTPResponse)
+        }
+    }
+
+    private func connect(completion: @escaping (Result<Void, Error>) -> Void) {
+        if isReady {
+            completion(.success(()))
+            return
+        }
+
+        connectCompletions.append(completion)
+        guard !isConnecting else {
+            return
+        }
+
+        guard let port = NWEndpoint.Port(rawValue: UInt16(server.port)) else {
+            finishConnect(.failure(ElectrumXClientError.noServersConfigured))
+            return
+        }
+
+        isConnecting = true
+        let parameters = server.useTLS ? NWParameters.tls : NWParameters.tcp
+        let connection = NWConnection(host: NWEndpoint.Host(server.host), port: port, using: parameters)
+        self.connection = connection
+
+        connection.stateUpdateHandler = { [weak self] state in
+            guard let self = self else {
+                return
+            }
+
+            self.queue.async {
+                switch state {
+                case .ready:
+                    self.isReady = true
+                    self.isConnecting = false
+                    self.readLoop()
+                    self.finishConnect(.success(()))
+                case .failed(let error):
+                    self.disconnectOnQueue(error: error)
+                case .cancelled:
+                    if self.isReady || self.isConnecting {
+                        self.disconnectOnQueue(error: ElectrumXClientError.invalidHTTPResponse)
+                    }
+                default:
+                    break
+                }
+            }
+        }
+
+        connection.start(queue: queue)
+
+        queue.asyncAfter(deadline: .now() + 5) { [weak self] in
+            guard let self = self, !self.isReady else {
+                return
+            }
+
+            self.disconnectOnQueue(error: ElectrumXClientError.invalidHTTPResponse)
+        }
+    }
+
+    private func send(
+        method: String,
+        params: [Any],
+        completion: @escaping (Result<[String: Any], Error>) -> Void
+    ) {
+        guard let connection = connection, isReady else {
+            completion(.failure(ElectrumXClientError.invalidHTTPResponse))
+            return
+        }
+
+        let requestId = UUID().uuidString
+        pending[requestId] = completion
+
+        do {
+            var payload = Data()
+            if method != "server.version" {
+                let versionPayload = try JSONSerialization.data(withJSONObject: [
+                    "id": "server.version.\(requestId)",
+                    "method": "server.version",
+                    "params": ["VergeiOS", "1.4"]
+                ])
+                payload.append(versionPayload)
+                payload.append(0x0a)
+            }
+
+            let requestPayload = try JSONSerialization.data(withJSONObject: [
+                "id": requestId,
+                "method": method,
+                "params": params
+            ])
+            payload.append(requestPayload)
+            payload.append(0x0a)
+
+            connection.send(content: payload, completion: .contentProcessed { [weak self] error in
+                guard let self = self, let error = error else {
+                    return
+                }
+
+                self.queue.async {
+                    if let completion = self.pending.removeValue(forKey: requestId) {
+                        completion(.failure(error))
+                    }
+                    self.disconnectOnQueue(error: error)
+                }
+            })
+
+            queue.asyncAfter(deadline: .now() + 8) { [weak self] in
+                guard let self = self,
+                      let completion = self.pending.removeValue(forKey: requestId) else {
+                    return
+                }
+
+                completion(.failure(ElectrumXClientError.invalidHTTPResponse))
+            }
+        } catch {
+            pending.removeValue(forKey: requestId)
+            completion(.failure(error))
+        }
+    }
+
+    private func readLoop() {
+        guard let connection = connection, isReady else {
+            return
+        }
+
+        connection.receive(minimumIncompleteLength: 1, maximumLength: 65536) { [weak self] data, _, isComplete, error in
+            guard let self = self else {
+                return
+            }
+
+            self.queue.async {
+                if let error = error {
+                    self.disconnectOnQueue(error: error)
+                    return
+                }
+
+                if let data = data, !data.isEmpty {
+                    self.responseBuffer.append(data)
+                    self.consumeResponseBuffer()
+                }
+
+                if isComplete {
+                    self.disconnectOnQueue(error: ElectrumXClientError.invalidHTTPResponse)
+                    return
+                }
+
+                self.readLoop()
+            }
+        }
+    }
+
+    private func consumeResponseBuffer() {
+        while let frameRange = firstJSONFrameRange(in: responseBuffer) {
+            let frame = responseBuffer.subdata(in: frameRange)
+            responseBuffer.removeSubrange(responseBuffer.startIndex..<frameRange.upperBound)
+
+            guard let json = try? JSONSerialization.jsonObject(with: frame) as? [String: Any],
+                  let id = json["id"] as? String,
+                  let completion = pending.removeValue(forKey: id) else {
+                continue
+            }
+
+            if let error = responseError(json) {
+                completion(.failure(error))
+                continue
+            }
+
+            if json["result"] == nil {
+                completion(.failure(ElectrumXClientError.missingResult))
+                continue
+            }
+
+            completion(.success(json))
+        }
+    }
+
+    private func finishConnect(_ result: Result<Void, Error>) {
+        let completions = connectCompletions
+        connectCompletions.removeAll()
+        completions.forEach { $0(result) }
+    }
+
+    private func disconnectOnQueue(error: Error) {
+        let wasActive = isReady || isConnecting || connection != nil
+        isReady = false
+        isConnecting = false
+        responseBuffer.removeAll()
+        connection?.cancel()
+        connection = nil
+
+        if wasActive {
+            finishConnect(.failure(error))
+        }
+
+        let completions = pending.values
+        pending.removeAll()
+        completions.forEach { $0(.failure(error)) }
+    }
+
+    private func firstJSONFrameRange(in data: Data) -> Range<Data.Index>? {
+        var startIndex: Data.Index?
+        var depth = 0
+        var inString = false
+        var escaped = false
+        var index = data.startIndex
+
+        while index < data.endIndex {
+            let byte = data[index]
+
+            if startIndex == nil {
+                if byte == 0x7b {
+                    startIndex = index
+                    depth = 1
+                }
+                index = data.index(after: index)
+                continue
+            }
+
+            if escaped {
+                escaped = false
+            } else if byte == 0x5c {
+                escaped = inString
+            } else if byte == 0x22 {
+                inString.toggle()
+            } else if !inString && byte == 0x7b {
+                depth += 1
+            } else if !inString && byte == 0x7d {
+                depth -= 1
+                if depth == 0, let startIndex = startIndex {
+                    return startIndex..<data.index(after: index)
+                }
+            }
+
+            index = data.index(after: index)
+        }
+
+        return nil
     }
 }
 

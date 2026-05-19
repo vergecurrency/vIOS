@@ -10,6 +10,7 @@ class TransactionManager {
     private var transactionRepository: TransactionRepository!
     private var isSyncing = false
     private var pendingSyncCompletions = [([Vws.TxHistory]) -> Void]()
+    private var lastRootSyncCompletedAt: Date?
 
     public init (walletClient: WalletClientProtocol, transactionRepository: TransactionRepository) {
         self.walletClient = walletClient
@@ -91,8 +92,26 @@ class TransactionManager {
         }
     }
 
+    public func syncIfStale(maxAge: TimeInterval, limit: Int = 50, completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
+        if !needsSync(maxAge: maxAge) {
+            completion(sortedTransactions())
+            return
+        }
+
+        sync(limit: limit, completion: completion)
+    }
+
+    public func needsSync(maxAge: TimeInterval) -> Bool {
+        guard let lastRootSyncCompletedAt = lastRootSyncCompletedAt else {
+            return true
+        }
+
+        return Date().timeIntervalSince(lastRootSyncCompletedAt) >= maxAge
+    }
+
     private func finishSync(sortedTransactions: [Vws.TxHistory], completion: @escaping (_ transactions: [Vws.TxHistory]) -> Void) {
         isSyncing = false
+        lastRootSyncCompletedAt = Date()
         let completions = [completion] + pendingSyncCompletions
         pendingSyncCompletions.removeAll()
         completions.forEach { $0(sortedTransactions) }

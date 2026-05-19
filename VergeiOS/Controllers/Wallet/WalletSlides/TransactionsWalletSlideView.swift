@@ -28,6 +28,8 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     private var pendingAmountRefreshWorkItem: DispatchWorkItem?
     private var periodicRefreshTimer: Timer?
     private var didLoadInitialTransactions = false
+    private var lastServerStatusRefreshAt: Date?
+    private let serverStatusRefreshInterval: TimeInterval = 30
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -143,15 +145,24 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
     }
 
     @objc func getTransactions(notification: Notification? = nil) {
-        setSyncingStatus()
+        let shouldForceSync = notification?.name == .didBroadcastTx
+        if shouldForceSync || transactionManager.needsSync(maxAge: 25) {
+            setSyncingStatus()
+        }
 
-        self.transactionManager.all { transactions in
+        let completion: ([Vws.TxHistory]) -> Void = { transactions in
             self.items = transactions
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.refreshServerStatus()
             }
+        }
+
+        if shouldForceSync {
+            self.transactionManager.sync(limit: 10, completion: completion)
+        } else {
+            self.transactionManager.syncIfStale(maxAge: 25, limit: 10, completion: completion)
         }
     }
 
@@ -250,7 +261,11 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         }
 
         let profileId = applicationRepository.activeWalletProfileId
-        transactionManager.sync(limit: 10) { [weak self] transactions in
+        if transactionManager.needsSync(maxAge: 25) {
+            setSyncingStatus()
+        }
+
+        transactionManager.syncIfStale(maxAge: 25, limit: 10) { [weak self] transactions in
             guard let self = self,
                   self.applicationRepository.activeWalletProfileId == profileId else {
                 return
@@ -290,7 +305,10 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
             return
         }
 
-        setSyncingStatus()
+        if retryAfter != nil && transactionManager.needsSync(maxAge: 2) {
+            setSyncingStatus()
+        }
+
         transactionManager.sync(limit: 10) { [weak self] transactions in
             guard let self = self,
                   self.applicationRepository.activeWalletProfileId == profileId else {
@@ -377,7 +395,7 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         ])
 
         tableView.tableHeaderView = nil
-        refreshServerStatus()
+        refreshServerStatus(force: true)
     }
 
     private func movePanelBelowServerStatus(_ panel: UIView) {
@@ -395,10 +413,10 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         }
     }
 
-    private func refreshServerStatus() {
+    private func refreshServerStatus(force: Bool = false) {
         guard Thread.isMainThread else {
             DispatchQueue.main.async { [weak self] in
-                self?.refreshServerStatus()
+                self?.refreshServerStatus(force: force)
             }
             return
         }
@@ -414,15 +432,34 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         }
 
         if applicationRepository.requiresSetupPassphrase(mnemonic: mnemonic) {
-            setVwsStatus()
+            setVwsStatus(force: force)
         } else {
-            refreshElectrumXStatus()
+            refreshElectrumXStatus(force: force)
         }
     }
 
-    private func setVwsStatus() {
+    private func shouldProbeServerStatus(force: Bool) -> Bool {
+        guard !force else {
+            lastServerStatusRefreshAt = Date()
+            return true
+        }
+
+        if let lastServerStatusRefreshAt = lastServerStatusRefreshAt,
+           Date().timeIntervalSince(lastServerStatusRefreshAt) < serverStatusRefreshInterval {
+            return false
+        }
+
+        lastServerStatusRefreshAt = Date()
+        return true
+    }
+
+    private func setVwsStatus(force: Bool = false) {
         guard let host = URL(string: applicationRepository.walletServiceUrl)?.host else {
             setServerStatus(name: "VWS", host: nil, state: "connecting")
+            return
+        }
+
+        guard shouldProbeServerStatus(force: force) else {
             return
         }
 
@@ -442,7 +479,11 @@ class TransactionsWalletSlideView: WalletSlideView, UITableViewDataSource, UITab
         }
     }
 
-    private func refreshElectrumXStatus() {
+    private func refreshElectrumXStatus(force: Bool = false) {
+        guard shouldProbeServerStatus(force: force) else {
+            return
+        }
+
         updateServerStatusUI { [weak self] in
             self?.serverStatusDot.backgroundColor = ThemeManager.shared.vergeGrey()
             self?.serverStatusLabel.text = "Status: ElectrumX syncing..."
