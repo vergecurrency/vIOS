@@ -37,7 +37,7 @@ class PlaceholderDataSourceDelegate: NSObject {
     ///   - tintColor: the tint color to apply
     func fill(cell: CellPlaceholding, to placeholder: Placeholder, tintColor: UIColor?) {
         
-        /* if the the placeholder created by xib and data/style are nil, we should keep the xib data/style */
+        /* if the placeholder created by xib and data/style are nil, we should keep the xib data/style */
         
         // apply style
         if let style = placeholder.style {
