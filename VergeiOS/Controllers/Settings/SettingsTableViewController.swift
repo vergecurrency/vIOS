@@ -198,6 +198,7 @@ class SettingsTableViewController: EdgedTableViewController {
             }
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.applyRetrowaveTheme()
 
         if let popover = alert.popoverPresentationController {
             popover.barButtonItem = self.navigationItem.rightBarButtonItem
@@ -219,6 +220,7 @@ class SettingsTableViewController: EdgedTableViewController {
         let message = details.isEmpty ? "No wallet profiles are registered." : details
         let alert = UIAlertController(title: "Wallet Details", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.applyRetrowaveTheme()
         self.present(alert, animated: true)
     }
 
@@ -235,6 +237,7 @@ class SettingsTableViewController: EdgedTableViewController {
             let name = alert.textFields?.first?.text ?? ""
             self.presentAddWalletFlow(named: name)
         })
+        alert.applyRetrowaveTheme()
 
         self.present(alert, animated: true)
     }
@@ -248,6 +251,7 @@ class SettingsTableViewController: EdgedTableViewController {
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .default))
+            alert.applyRetrowaveTheme()
             self.present(alert, animated: true)
             return
         }
@@ -263,6 +267,7 @@ class SettingsTableViewController: EdgedTableViewController {
         }
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.applyRetrowaveTheme()
 
         if let popover = alert.popoverPresentationController {
             popover.barButtonItem = self.navigationItem.rightBarButtonItem
@@ -284,6 +289,7 @@ class SettingsTableViewController: EdgedTableViewController {
             let name = alert.textFields?.first?.text ?? ""
             self.applicationRepository.renameWalletProfile(id: profile.id, name: name)
         })
+        alert.applyRetrowaveTheme()
 
         self.present(alert, animated: true)
     }

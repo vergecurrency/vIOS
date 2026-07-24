@@ -20,6 +20,12 @@ class WelcomeViewController: UIViewController {
         return .lightContent
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        applyRetrowaveWelcomeText()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -87,8 +93,24 @@ class WelcomeViewController: UIViewController {
             self.continuingAfterWalletNamePrompt = true
             self.performSegue(withIdentifier: segueIdentifier, sender: self)
         })
+        alert.applyRetrowaveTheme()
 
         self.present(alert, animated: true)
+    }
+
+    private func applyRetrowaveWelcomeText() {
+        findViews(in: view).forEach { child in
+            guard let label = child as? UILabel,
+                  label.text == "setup.welcome.restoreDescription".localized else {
+                return
+            }
+
+            label.textColor = .white
+        }
+    }
+
+    private func findViews(in root: UIView) -> [UIView] {
+        return root.subviews + root.subviews.flatMap { findViews(in: $0) }
     }
 
     private func styleWalletNameTextField(_ textField: UITextField) {

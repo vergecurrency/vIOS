@@ -19,12 +19,16 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
         tableView.backgroundColor = ThemeManager.shared.backgroundGrey()
         tableView.separatorColor = ThemeManager.shared.separatorColor()
         tableView.indicatorStyle = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addServer)
-        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: makeRoundNavigationButton())
         setupStatusPill()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let button = navigationItem.rightBarButtonItem?.customView as? UIButton {
+            applyRoundRetrowaveStyle(to: button)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -179,8 +183,37 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
             self.tableView.reloadData()
             self.refreshStatus()
         })
+        alert.applyRetrowaveTheme()
 
         present(alert, animated: true)
+    }
+
+    private func makeRoundNavigationButton() -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = "Add ElectrumX server"
+        button.addTarget(self, action: #selector(addServer), for: .touchUpInside)
+
+        let label = UILabel()
+        label.text = "+"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        button.addSubview(label)
+
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 34),
+            button.heightAnchor.constraint(equalToConstant: 34),
+            label.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: button.centerYAnchor, constant: -1),
+            label.leadingAnchor.constraint(greaterThanOrEqualTo: button.leadingAnchor, constant: 4),
+            label.trailingAnchor.constraint(lessThanOrEqualTo: button.trailingAnchor, constant: -4)
+        ])
+        applyRoundRetrowaveStyle(to: button)
+
+        return button
     }
 
     private func normalizedHost(_ rawHost: String) -> String {
@@ -229,6 +262,46 @@ final class ElectrumXServersTableViewController: EdgedTableViewController {
         cell.layer.shadowColor = UIColor(rgb: 0xFF3DF2).cgColor
         cell.layer.shadowOpacity = 0.28
         cell.layer.shadowRadius = 12
+    }
+
+    private func applyRoundRetrowaveStyle(to button: UIButton) {
+        let gradientName = "RetrowaveElectrumNavigationButtonGradient"
+        button.backgroundColor = UIColor(rgb: 0x12071A)
+        button.tintColor = .white
+        button.layer.cornerRadius = 17
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.75).cgColor
+        button.layer.shadowColor = ThemeManager.shared.primaryLight().cgColor
+        button.layer.shadowOpacity = 0.38
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = .zero
+        button.clipsToBounds = false
+
+        guard button.bounds.width > 0 && button.bounds.height > 0 else {
+            return
+        }
+
+        let gradient: CAGradientLayer
+        if let existingGradient = button.layer.sublayers?
+            .first(where: { $0.name == gradientName }) as? CAGradientLayer {
+            gradient = existingGradient
+        } else {
+            gradient = CAGradientLayer()
+            gradient.name = gradientName
+            button.layer.insertSublayer(gradient, at: 0)
+        }
+
+        gradient.frame = button.bounds
+        gradient.cornerRadius = button.layer.cornerRadius
+        gradient.colors = [
+            UIColor(rgb: 0x14071F).cgColor,
+            UIColor(rgb: 0x3A125C).cgColor,
+            UIColor(rgb: 0x12071A).cgColor
+        ]
+        gradient.locations = [0.0, 0.52, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 1, y: 1)
+        button.subviews.forEach { button.bringSubviewToFront($0) }
     }
 
     private func setupStatusPill() {
