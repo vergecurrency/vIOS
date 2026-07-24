@@ -1,87 +1,125 @@
-<p align="center"><img src="https://raw.githubusercontent.com/vergecurrency/vIOS/master/readme-header.png" alt="Verge iOS Wallet"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/vergecurrency/vIOS/master/readme-header.png" alt="Verge XVR iOS Wallet"></p>
 <p align="center">
-  <a href="https://github.com/vergecurrency/vIOS/actions"><img src="https://github.com/vergecurrency/vIOS/actions/workflows/default.yml/badge.svg"></a>
-  <a href="https://developer.apple.com/ios/" target="_blank"><img src="https://img.shields.io/badge/iOS-^12.0-green.svg">
-  <a href="https://developer.apple.com/watchos/" target="_blank"><img src="https://img.shields.io/badge/watchOS-^4.0-brightgreen.svg">
-  <a href="https://github.com/vergecurrency/vIOS/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg">
+  <a href="https://github.com/vergecurrency/vIOS/actions"><img src="https://github.com/vergecurrency/vIOS/actions/workflows/default.yml/badge.svg" alt="iOS Build"></a>
+  <a href="https://developer.apple.com/ios/" target="_blank"><img src="https://img.shields.io/badge/iOS-15.0%2B-green.svg" alt="iOS 15.0+"></a>
+  <a href="https://developer.apple.com/watchos/" target="_blank"><img src="https://img.shields.io/badge/watchOS-6.0%2B-brightgreen.svg" alt="watchOS 6.0+"></a>
+  <a href="https://github.com/vergecurrency/vIOS/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
 </p>
 
-<p align="center">
-  <a href="https://itunes.apple.com/app/id1459928869" target="_blank">
-    <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">
-  </a>
-</p>
+# Verge XVR iOS Wallet
 
-#  VERGE iOS Wallet
+Verge XVR is the Verge Currency iOS wallet for sending, receiving, restoring, and managing XVG wallets on Apple devices.
 
-This iOS wallet provides an easy and secure wallet on your iOS device. With **Tor** integrated you can be sure your http communication is private. Sending and receiving XVG in a secure and easy to use wallet will actually change the way you use Verge Currency. 💪
+Current app version: `26.8`
 
-## Features:
+## Wallet Backends
 
-* Sending and receiving XVG
-* Store addresses in an address book
-* Tor integrated
-* Price statistics in different fiat currencies
-* Share your receive card
-* Private keys are yours
-* Possibility to choose your own wallet service
-* Private key & Electrum Mnemonic sweeping
-* Touch ID & Face ID support
-* Apple Watch support (balance, fiat rate and receive address)
-* Siri integrated
+Verge XVR supports two wallet backends:
 
-## Local Development
+- **VWS legacy wallets**: 12-word mnemonic restores with the legacy Verge Wallet Service backend. VWS is a Verge fork of Bitcore Wallet Service.
+- **ElectrumX wallets**: new 18-word mnemonics and 18-word restores using Verge ElectrumX servers and the XVG derivation path registered as coin type `77`.
 
-If you want to help us out on development you can use this guide:
+Default ElectrumX servers:
 
-1. Fork the project, and clone it to your local machine.
+- `electrumx-verge.cloud`
+- `electrum-verge.cloud`
 
-2. Install the following tools via [brew](https://brew.sh) 
+VWS server settings and ElectrumX server settings are managed from the app settings menu.
+
+## Features
+
+- Create new 18-word ElectrumX XVG wallets.
+- Restore legacy 12-word VWS wallets with passphrase support.
+- Restore 18-word ElectrumX wallets without the legacy VWS passphrase.
+- Multiple wallet profiles with wallet switching and wallet naming.
+- Send and receive XVG.
+- ElectrumX transaction history, balance sync, and transaction broadcasting.
+- VWS transaction proposal signing and publishing for legacy wallets.
+- Address book/contact support.
+- Unstoppable Domains/Web3 name resolution for send recipients.
+- QR, clipboard, and share flows for wallet addresses.
+- Tor privacy routing for wallet network traffic when enabled.
+- Live Tor bootstrap/status display.
+- CoinGecko XVG price/chart data.
+- Retrowave app theme.
+- Touch ID and Face ID support.
+- Apple Watch and Siri targets are still present in the project.
+
+## Requirements
+
+- macOS with Xcode installed.
+- CocoaPods.
+- iOS 15.0+ for the main app target.
+- watchOS 6.0+ for the Watch target.
+
+Install CocoaPods if needed:
+
 ```sh
-brew install carthage
+sudo gem install cocoapods
 ```
 
-3. In your cloned project folder run carthage update (this could take a while):
+Install project dependencies:
+
 ```sh
-carthage update --platform iOS
+pod install
 ```
 
-4. Open the project:
+Open the workspace, not the project file:
+
 ```sh
-open VergeiOS.xcodeproj
+open VergeiOS.xcworkspace
 ```
 
-Please setup your own local VWS instance to test your changes against. You can checkout [the bitcore repository](https://github.com/vergecurrency/bitcore) and setup an instance [using docker](https://github.com/vergecurrency/bitcore/blob/master/Docker.md).
+## Local Build
 
-## Join TestFlight Program
+Build the app for the simulator:
 
-If you want to keep up with development and see the latest changes in action, you can [join the TestFlight program](https://testflight.apple.com/join/Uw1OQgdx).
+```sh
+xcodebuild \
+  -workspace VergeiOS.xcworkspace \
+  -scheme VergeiOS \
+  -destination 'platform=iOS Simulator,name=iPhone 17' \
+  build
+```
 
-## Build With
+The GitHub Actions workflow builds the simulator target without signing to verify that the app compiles on push and pull request.
 
-* [Swift](https://github.com/apple/swift) - Language used writing the application
-* [Tor](https://www.torproject.org) - The intergration of Tor makes sure your transactions are private
-* [iCepa/Tor.framework](https://github.com/iCepa/Tor.framework) - Provides a solid framework for using Tor
-* [hackiftekhar/IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) - Makes working with keyboards and inputs painless
-* [aschuch/QRCode](https://github.com/aschuch/QRCode) - Generates beautiful QR codes for receiving XVG
-* [SwiftyJSON/SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) - Helps working with JSON responses
-* [evgenyneu/keychain-swift](https://github.com/evgenyneu/keychain-swift) - Takes away the worries of saving sensitive user data on your device
-* [HamzaGhazouani/HGPlaceholders](https://github.com/HamzaGhazouani/HGPlaceholders) - Library to show placeholders and Empty States for any UITableView
-* [danielgindi/Charts](https://github.com/danielgindi/Charts) - This library is used for making beautiful charts
-* [JohnEstropia/CoreStore](https://github.com/JohnEstropia/CoreStore) - Handy core data library
-* [xmartlabs/Eureka](https://github.com/xmartlabs/Eureka) - Library for easily creating forms
-* [yenom/BitcoinKit](https://github.com/yenom/BitcoinKit) - The BitcoinKit library is a Swift implementation of the Bitcoin protocol
-* [krzyzanowskim/CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) - Crypto related functions and helpers for Swift implemented in Swift.
-* [Swinject/Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework for Swift with iOS/macOS/Linux
+## Signing And TestFlight
 
-### Community
+The repository build workflow does not sign the app. Device installs, archives, and TestFlight uploads require an Apple Developer account and a valid signing team in Xcode.
 
-* [Telegram](https://t.me/VERGExvg)
-* [Discord](https://discord.gg/vergecurrency)
-* [Twitter](https://www.twitter.com/vergecurrency)
-* [Facebook](https://www.facebook.com/VERGEcurrency/)
-* [Reddit](https://www.reddit.com/r/vergecurrency/)
+For TestFlight/App Store Connect:
+
+- Bundle ID: `org.verge.wallets`
+- App display name: `Verge XVR`
+- Version/build: `26.8`
+
+External TestFlight testers require Apple Beta App Review before invites become usable.
+
+## Dependencies
+
+This app uses CocoaPods and Swift Package Manager dependencies, including:
+
+- [Tor](https://www.torproject.org) / Tor.framework for privacy routing.
+- [vergecurrency/BitcoinKit](https://github.com/vergecurrency/BitcoinKit) for transaction and key handling.
+- [GigaBitcoin/secp256k1.swift](https://github.com/GigaBitcoin/secp256k1.swift) for secp256k1 support.
+- [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift) for cryptographic helpers.
+- [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON) for JSON handling.
+- [KeychainSwift](https://github.com/evgenyneu/keychain-swift) for keychain storage.
+- [Swinject](https://github.com/Swinject/Swinject) and SwinjectStoryboard for dependency injection.
+- [CoreStore](https://github.com/JohnEstropia/CoreStore) for local data persistence.
+- [Eureka](https://github.com/xmartlabs/Eureka) for form screens.
+- [DGCharts](https://github.com/danielgindi/Charts) for chart rendering.
+- [IQKeyboardManagerSwift](https://github.com/hackiftekhar/IQKeyboardManager) for keyboard handling.
+
+## Community
+
+- [Telegram](https://t.me/VERGExvg)
+- [Discord](https://discord.gg/vergecurrency)
+- [X/Twitter](https://www.twitter.com/vergecurrency)
+- [Facebook](https://www.facebook.com/VERGEcurrency/)
+- [Reddit](https://www.reddit.com/r/vergecurrency/)
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for the project code of conduct and pull request process.
