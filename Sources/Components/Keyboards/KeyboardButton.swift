@@ -18,7 +18,9 @@ class KeyboardButton: UIButton {
         applyRetrowaveKeyStyle()
         contentEdgeInsets = .zero
         titleEdgeInsets = .zero
-        imageEdgeInsets = .zero
+        imageEdgeInsets = imageView?.image == nil
+            ? .zero
+            : UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18)
         titleLabel?.frame = bounds.insetBy(dx: 2, dy: 0)
         titleLabel?.textAlignment = .center
     }
@@ -46,8 +48,8 @@ class KeyboardButton: UIButton {
         tintColor = ThemeManager.shared.primaryLight()
         setTitleColor(.white, for: .normal)
         setTitleColor(ThemeManager.shared.primaryLight(), for: .highlighted)
-        imageView?.tintColor = ThemeManager.shared.primaryLight()
-        imageView?.contentMode = .center
+        imageView?.tintColor = .white
+        imageView?.contentMode = .scaleAspectFit
 
         layer.cornerRadius = 10
         layer.borderWidth = 1
