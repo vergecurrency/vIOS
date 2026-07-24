@@ -117,12 +117,20 @@ private extension UIButton {
         layer.shadowRadius = 12
         layer.shadowOffset = CGSize(width: 0, height: 0)
         clipsToBounds = false
-        contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        imageEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 6)
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -2)
+        let hasImage = image(for: .normal) != nil || imageView?.image != nil
+        contentEdgeInsets = hasImage
+            ? UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+            : UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+        imageEdgeInsets = hasImage
+            ? UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 6)
+            : .zero
+        titleEdgeInsets = hasImage
+            ? UIEdgeInsets(top: 0, left: 6, bottom: 0, right: -2)
+            : .zero
         titleLabel?.adjustsFontSizeToFitWidth = true
-        titleLabel?.minimumScaleFactor = 0.82
+        titleLabel?.minimumScaleFactor = 0.58
         titleLabel?.textAlignment = .center
+        titleLabel?.lineBreakMode = .byClipping
 
         applyRetrowaveGradient()
         animateRetrowaveGlow()
