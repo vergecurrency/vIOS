@@ -349,6 +349,9 @@
 		CA2B4A26226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
 		CA2B4A27226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
 		CA2B4A29226B398A00115B2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA2B4A2B226B398A00115B2D /* Localizable.strings */; };
+		93B000000000000000000101 /* Intents.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B000000000000000000001 /* Intents.strings */; };
+		93B000000000000000000102 /* Intents.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B000000000000000000001 /* Intents.strings */; };
+		93B000000000000000000103 /* Intents.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93B000000000000000000001 /* Intents.strings */; };
 		CA2B4A3B226B3D9700115B2D /* UIView+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B4A3A226B3D9700115B2D /* UIView+Localization.swift */; };
 		CA51072722294B5200A7BB62 /* WatchWalletClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA51072622294B5200A7BB62 /* WatchWalletClient.swift */; };
 		CA522EA7220318B000331B0F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA522EA6220318B000331B0F /* IntentsUI.framework */; };
@@ -361,6 +364,18 @@
 		CA8AEA2622CE88B200A0F087 /* AppIconFeather.png in Resources */ = {isa = PBXBuildFile; fileRef = CA8AEA2422CE88B200A0F087 /* AppIconFeather.png */; };
 		CA8AEA2722CE88B200A0F087 /* AppIconMoon.png in Resources */ = {isa = PBXBuildFile; fileRef = CA8AEA2522CE88B200A0F087 /* AppIconMoon.png */; };
 		CA8AEA2922CE88E200A0F087 /* AppIconMars.png in Resources */ = {isa = PBXBuildFile; fileRef = CA8AEA2822CE88E200A0F087 /* AppIconMars.png */; };
+		93A000000000000000000001 /* AppIconFeather-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000101 /* AppIconFeather-60@2x.png */; };
+		93A000000000000000000002 /* AppIconFeather-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000102 /* AppIconFeather-60@3x.png */; };
+		93A000000000000000000003 /* AppIconFeather-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000103 /* AppIconFeather-76@2x.png */; };
+		93A000000000000000000004 /* AppIconFeather-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000104 /* AppIconFeather-83.5@2x.png */; };
+		93A000000000000000000005 /* AppIconMars-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000105 /* AppIconMars-60@2x.png */; };
+		93A000000000000000000006 /* AppIconMars-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000106 /* AppIconMars-60@3x.png */; };
+		93A000000000000000000007 /* AppIconMars-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000107 /* AppIconMars-76@2x.png */; };
+		93A000000000000000000008 /* AppIconMars-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000108 /* AppIconMars-83.5@2x.png */; };
+		93A000000000000000000009 /* AppIconMoon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A000000000000000000109 /* AppIconMoon-60@2x.png */; };
+		93A00000000000000000000A /* AppIconMoon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A00000000000000000010A /* AppIconMoon-60@3x.png */; };
+		93A00000000000000000000B /* AppIconMoon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A00000000000000000010B /* AppIconMoon-76@2x.png */; };
+		93A00000000000000000000C /* AppIconMoon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A00000000000000000010C /* AppIconMoon-83.5@2x.png */; };
 		CA8FCF5921F7C3A30069D150 /* MainInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5821F7C3A30069D150 /* MainInterfaceController.swift */; };
 		CA8FCF5B21F7C3A30069D150 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5A21F7C3A30069D150 /* ExtensionDelegate.swift */; };
 		CA8FCF5D21F7C3A30069D150 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8FCF5C21F7C3A30069D150 /* NotificationController.swift */; };
@@ -463,6 +478,22 @@
 		4EACE108110EB9642824D419 /* Pods-VergeWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeWatch Extension.release.xcconfig"; path = "Target Support Files/Pods-VergeWatch Extension/Pods-VergeWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
 		520C9F8038DC087E1693369D /* Pods_VergeSiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeSiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		565DF16322E5BB8F004AD2E8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		93B000000000000000000201 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000202 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000203 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000204 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000205 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000206 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000207 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000208 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000209 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Intents.strings"; sourceTree = "<group>"; };
+		93B00000000000000000020A /* sv-SE */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "sv-SE"; path = "sv-SE.lproj/Intents.strings"; sourceTree = "<group>"; };
+		93B00000000000000000020B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B00000000000000000020C /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Intents.strings"; sourceTree = "<group>"; };
+		93B00000000000000000020D /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B00000000000000000020E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B00000000000000000020F /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Intents.strings; sourceTree = "<group>"; };
+		93B000000000000000000210 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Intents.strings"; sourceTree = "<group>"; };
 		5995B38557C190BE59802531 /* Pods_VergeWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6371115D10C5FDFB4C827602 /* Pods_VergeiOS_VergeiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VergeiOS_VergeiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F8DD501AEBB841F51891AB /* Pods-VergeSiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VergeSiri.debug.xcconfig"; path = "Target Support Files/Pods-VergeSiri/Pods-VergeSiri.debug.xcconfig"; sourceTree = "<group>"; };
@@ -826,6 +857,18 @@
 		CA8AEA2422CE88B200A0F087 /* AppIconFeather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconFeather.png; sourceTree = "<group>"; };
 		CA8AEA2522CE88B200A0F087 /* AppIconMoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconMoon.png; sourceTree = "<group>"; };
 		CA8AEA2822CE88E200A0F087 /* AppIconMars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIconMars.png; sourceTree = "<group>"; };
+		93A000000000000000000101 /* AppIconFeather-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconFeather-60@2x.png"; sourceTree = "<group>"; };
+		93A000000000000000000102 /* AppIconFeather-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconFeather-60@3x.png"; sourceTree = "<group>"; };
+		93A000000000000000000103 /* AppIconFeather-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconFeather-76@2x.png"; sourceTree = "<group>"; };
+		93A000000000000000000104 /* AppIconFeather-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconFeather-83.5@2x.png"; sourceTree = "<group>"; };
+		93A000000000000000000105 /* AppIconMars-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMars-60@2x.png"; sourceTree = "<group>"; };
+		93A000000000000000000106 /* AppIconMars-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMars-60@3x.png"; sourceTree = "<group>"; };
+		93A000000000000000000107 /* AppIconMars-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMars-76@2x.png"; sourceTree = "<group>"; };
+		93A000000000000000000108 /* AppIconMars-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMars-83.5@2x.png"; sourceTree = "<group>"; };
+		93A000000000000000000109 /* AppIconMoon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMoon-60@2x.png"; sourceTree = "<group>"; };
+		93A00000000000000000010A /* AppIconMoon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMoon-60@3x.png"; sourceTree = "<group>"; };
+		93A00000000000000000010B /* AppIconMoon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMoon-76@2x.png"; sourceTree = "<group>"; };
+		93A00000000000000000010C /* AppIconMoon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIconMoon-83.5@2x.png"; sourceTree = "<group>"; };
 		CA8FCF4C21F7C3A30069D150 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA8FCF4E21F7C3A30069D150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8FCF5321F7C3A30069D150 /* VergeWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "VergeWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1810,6 +1853,7 @@
 			isa = PBXGroup;
 			children = (
 				CA2B4A2B226B398A00115B2D /* Localizable.strings */,
+				93B000000000000000000001 /* Intents.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1982,6 +2026,18 @@
 				CA8AEA2422CE88B200A0F087 /* AppIconFeather.png */,
 				CA8AEA2522CE88B200A0F087 /* AppIconMoon.png */,
 				CA8AEA2822CE88E200A0F087 /* AppIconMars.png */,
+				93A000000000000000000101 /* AppIconFeather-60@2x.png */,
+				93A000000000000000000102 /* AppIconFeather-60@3x.png */,
+				93A000000000000000000103 /* AppIconFeather-76@2x.png */,
+				93A000000000000000000104 /* AppIconFeather-83.5@2x.png */,
+				93A000000000000000000105 /* AppIconMars-60@2x.png */,
+				93A000000000000000000106 /* AppIconMars-60@3x.png */,
+				93A000000000000000000107 /* AppIconMars-76@2x.png */,
+				93A000000000000000000108 /* AppIconMars-83.5@2x.png */,
+				93A000000000000000000109 /* AppIconMoon-60@2x.png */,
+				93A00000000000000000010A /* AppIconMoon-60@3x.png */,
+				93A00000000000000000010B /* AppIconMoon-76@2x.png */,
+				93A00000000000000000010C /* AppIconMoon-83.5@2x.png */,
 			);
 			path = "Theme Icons";
 			sourceTree = "<group>";
@@ -2305,11 +2361,24 @@
 				A3408E4C217333B5009F0C9D /* NotificationViewController.xib in Resources */,
 				A3B2E26B214857E600C31719 /* TransactionsPlaceholderTableViewCell.xib in Resources */,
 				CA2B4A25226B398A00115B2D /* Localizable.strings in Resources */,
+				93B000000000000000000101 /* Intents.strings in Resources */,
 				A338E6BD2110D642000D44EE /* SummaryWalletSlideView.xib in Resources */,
 				CA2B4A17226B336100115B2D /* LaunchScreen.storyboard in Resources */,
 				A32566452113729C006FB08A /* Receive.storyboard in Resources */,
 				A386CA9B219E28FA00FBF465 /* SendingView.xib in Resources */,
 				CA8AEA2922CE88E200A0F087 /* AppIconMars.png in Resources */,
+				93A000000000000000000001 /* AppIconFeather-60@2x.png in Resources */,
+				93A000000000000000000002 /* AppIconFeather-60@3x.png in Resources */,
+				93A000000000000000000003 /* AppIconFeather-76@2x.png in Resources */,
+				93A000000000000000000004 /* AppIconFeather-83.5@2x.png in Resources */,
+				93A000000000000000000005 /* AppIconMars-60@2x.png in Resources */,
+				93A000000000000000000006 /* AppIconMars-60@3x.png in Resources */,
+				93A000000000000000000007 /* AppIconMars-76@2x.png in Resources */,
+				93A000000000000000000008 /* AppIconMars-83.5@2x.png in Resources */,
+				93A000000000000000000009 /* AppIconMoon-60@2x.png in Resources */,
+				93A00000000000000000000A /* AppIconMoon-60@3x.png in Resources */,
+				93A00000000000000000000B /* AppIconMoon-76@2x.png in Resources */,
+				93A00000000000000000000C /* AppIconMoon-83.5@2x.png in Resources */,
 				A338151E245E149200B896EA /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2320,6 +2389,7 @@
 			files = (
 				CA2B4A1B226B34C300115B2D /* MainInterface.storyboard in Resources */,
 				CA2B4A27226B398A00115B2D /* Localizable.strings in Resources */,
+				93B000000000000000000102 /* Intents.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2338,6 +2408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA2B4A26226B398A00115B2D /* Localizable.strings in Resources */,
+				93B000000000000000000103 /* Intents.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2925,6 +2996,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		93B000000000000000000001 /* Intents.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93B000000000000000000201 /* en */,
+				93B000000000000000000202 /* ru */,
+				93B000000000000000000203 /* nl */,
+				93B000000000000000000204 /* fr */,
+				93B000000000000000000205 /* tr */,
+				93B000000000000000000206 /* hr */,
+				93B000000000000000000207 /* es */,
+				93B000000000000000000208 /* de */,
+				93B000000000000000000209 /* pt-BR */,
+				93B00000000000000000020A /* sv-SE */,
+				93B00000000000000000020B /* it */,
+				93B00000000000000000020C /* pt-PT */,
+				93B00000000000000000020D /* vi */,
+				93B00000000000000000020E /* ja */,
+				93B00000000000000000020F /* sl */,
+				93B000000000000000000210 /* zh-Hans */,
+			);
+			name = Intents.strings;
+			sourceTree = "<group>";
+		};
 		CA2B4A2B226B398A00115B2D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3049,8 +3143,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 26.8.1;
-				CF_BUNDLE_SHORT_VERSION_STRING = 26.8.1;
+				CF_BUNDLE_BUILD_VERSION_STRING = 26.8.2;
+				CF_BUNDLE_SHORT_VERSION_STRING = 26.8.2;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3115,8 +3209,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 26.8.1;
-				CF_BUNDLE_SHORT_VERSION_STRING = 26.8.1;
+				CF_BUNDLE_BUILD_VERSION_STRING = 26.8.2;
+				CF_BUNDLE_SHORT_VERSION_STRING = 26.8.2;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3179,7 +3273,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26.8.1;
+				CURRENT_PROJECT_VERSION = 26.8.2;
 				DEVELOPMENT_TEAM = B88XFKB847;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
@@ -3206,7 +3300,7 @@
 					"$(SRCROOT)/libcrypto.xcframework/ios-arm64",
 					"$(SRCROOT)/libssl.xcframework/ios-arm64",
 				);
-				MARKETING_VERSION = 26.8.1;
+				MARKETING_VERSION = 26.8.2;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3226,7 +3320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26.8.1;
+				CURRENT_PROJECT_VERSION = 26.8.2;
 				DEVELOPMENT_TEAM = B88XFKB847;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
@@ -3255,7 +3349,7 @@
 					"$(SRCROOT)/libcrypto.xcframework/ios-arm64",
 					"$(SRCROOT)/libssl.xcframework/ios-arm64",
 				);
-				MARKETING_VERSION = 26.8.1;
+				MARKETING_VERSION = 26.8.2;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
 				PRODUCT_NAME = "$(TARGET_NAME)";

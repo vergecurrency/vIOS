@@ -17,6 +17,9 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconFeather</string>
+					<string>AppIconFeather-60</string>
+					<string>AppIconFeather-76</string>
+					<string>AppIconFeather-83.5</string>
 				</array>
 			</dict>
 			<key>AppIconMars</key>
@@ -24,6 +27,9 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconMars</string>
+					<string>AppIconMars-60</string>
+					<string>AppIconMars-76</string>
+					<string>AppIconMars-83.5</string>
 				</array>
 			</dict>
 			<key>AppIconMoon</key>
@@ -31,6 +37,9 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconMoon</string>
+					<string>AppIconMoon-60</string>
+					<string>AppIconMoon-76</string>
+					<string>AppIconMoon-83.5</string>
 				</array>
 			</dict>
 		</dict>
@@ -53,6 +62,9 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconFeather</string>
+					<string>AppIconFeather-60</string>
+					<string>AppIconFeather-76</string>
+					<string>AppIconFeather-83.5</string>
 				</array>
 			</dict>
 			<key>AppIconMars</key>
@@ -60,6 +72,9 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconMars</string>
+					<string>AppIconMars-60</string>
+					<string>AppIconMars-76</string>
+					<string>AppIconMars-83.5</string>
 				</array>
 			</dict>
 			<key>AppIconMoon</key>
@@ -67,6 +82,9 @@
 				<key>CFBundleIconFiles</key>
 				<array>
 					<string>AppIconMoon</string>
+					<string>AppIconMoon-60</string>
+					<string>AppIconMoon-76</string>
+					<string>AppIconMoon-83.5</string>
 				</array>
 			</dict>
 		</dict>
