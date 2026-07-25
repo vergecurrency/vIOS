@@ -14,15 +14,15 @@ public struct PlaceholderStyle {
     
     // MARK: properties
     
-    /// The color of the placeholder title, the default value is darkText
-    public var titleColor: UIColor = .darkText
+    /// The color of the placeholder title.
+    public var titleColor: UIColor = .white
     /// The font of the placeholder title, the default value is boldSystemFont 19
     public var titleFont = UIFont.boldSystemFont(ofSize: 19)
     /// The text alignment of the placeholder title, the default value is  NSTextAlignment.center
     public var titleTextAlignment = NSTextAlignment.center
 
-    /// The color of the placeholder subtitle, the default value is gray
-    public var subtitleColor: UIColor = .gray
+    /// The color of the placeholder subtitle.
+    public var subtitleColor: UIColor = UIColor(red: 0.82, green: 0.95, blue: 1.0, alpha: 0.8)
     /// The font of the placeholder subtitle, the default value is  systemFont 14
     public var subtitleFont = UIFont.systemFont(ofSize: 14)
     /// The text alignment of the placeholder subtitle, the default value is  NSTextAlignment.center

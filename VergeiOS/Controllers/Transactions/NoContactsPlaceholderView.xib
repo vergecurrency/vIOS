@@ -31,7 +31,7 @@
                                 <constraint firstAttribute="height" constant="27.5" id="YHb-k2-ybS"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                            <color key="textColor" red="0.3919999897" green="0.47099998589999997" blue="0.52499997620000005" alpha="0.65427011989999995" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="transactions.noContacts.titleLabel"/>
@@ -40,7 +40,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a contact to easily send XVG to" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7K-v3-wYT">
                             <rect key="frame" x="0.0" y="362.5" width="335" height="19.5"/>
                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
-                            <color key="textColor" red="0.60799998040000003" green="0.60799998040000003" blue="0.60799998040000003" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" red="0.81960784310000001" green="0.95294117650000002" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="localizationId" value="transactions.noContacts.descLabel"/>

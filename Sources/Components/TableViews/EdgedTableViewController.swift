@@ -61,6 +61,48 @@ class EdgedTableViewController: LocalizableTableViewController {
         return 34
     }
 
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let title = self.tableView(tableView, titleForFooterInSection: section), !title.isEmpty else {
+            return nil
+        }
+
+        let container = UIView()
+        container.backgroundColor = ThemeManager.shared.backgroundGrey()
+
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = title
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.font = UIFont.avenir(size: 13).medium()
+
+        container.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16),
+            label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16),
+            label.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            label.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -10)
+        ])
+
+        return container
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard let title = self.tableView(tableView, titleForFooterInSection: section), !title.isEmpty else {
+            return 0.01
+        }
+
+        let width = max(tableView.bounds.width - 32, 1)
+        let height = (title as NSString).boundingRect(
+            with: CGSize(width: width, height: .greatestFiniteMagnitude),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: [.font: UIFont.avenir(size: 13).medium()],
+            context: nil
+        ).height
+
+        return ceil(height) + 18
+    }
+
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else {
             return
