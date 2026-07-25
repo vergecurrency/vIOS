@@ -145,8 +145,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state;
         // here you can undo many of the changes made on entering the background.
 
-        // Restart Tor.
-        Application.container.resolve(TorClientProtocol.self)?.restart()
+        // Keep Tor alive when returning from external links. Restarting the Tor
+        // threadpool during foreground transitions can abort inside Tor itself.
+        Application.container.resolve(TorClientProtocol.self)?.start()
 
         self.log?.info("app delegate application will enter foreground")
     }
