@@ -151,9 +151,12 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextField
             button.tintColor = .white
             button.titleLabel?.textAlignment = .center
             button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.titleLabel?.minimumScaleFactor = 0.82
+            button.titleLabel?.minimumScaleFactor = 0.72
+            button.titleLabel?.numberOfLines = 1
+            button.titleLabel?.lineBreakMode = .byClipping
             button.contentHorizontalAlignment = .center
             button.contentVerticalAlignment = .center
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
             button.layer.cornerRadius = 10
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor(rgb: 0xFF3DF2).withAlphaComponent(0.72).cgColor
@@ -162,38 +165,10 @@ class ConfirmPaperkeyViewController: AbstractPaperkeyViewController, UITextField
             button.layer.shadowRadius = 12
             button.layer.shadowOffset = .zero
             button.clipsToBounds = false
-            ensureVisibleTitle(for: button)
+            if let titleLabel = button.titleLabel {
+                button.bringSubviewToFront(titleLabel)
+            }
         }
-    }
-
-    private func ensureVisibleTitle(for button: UIButton) {
-        let overlayTag = 700_421
-        button.subviews.filter { $0.tag == overlayTag }.forEach { $0.removeFromSuperview() }
-
-        let title = (button.title(for: .normal) ?? button.accessibilityLabel ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !title.isEmpty else {
-            return
-        }
-
-        let label = UILabel()
-        label.tag = overlayTag
-        label.text = title
-        label.textColor = .white
-        label.font = button.titleLabel?.font ?? UIFont.avenir(size: 17).demiBold()
-        label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.82
-        label.isUserInteractionEnabled = false
-        label.translatesAutoresizingMaskIntoConstraints = false
-
-        button.addSubview(label)
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: button.leadingAnchor, constant: 12),
-            label.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -12),
-            label.topAnchor.constraint(equalTo: button.topAnchor, constant: 2),
-            label.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -2)
-        ])
-        button.bringSubviewToFront(label)
     }
 
     private func allButtons(in root: UIView) -> [UIButton] {
