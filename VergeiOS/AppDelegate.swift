@@ -248,20 +248,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
 
-        let ndefMessage = userActivity.ndefMessagePayload
-        guard
-            #available(iOS 13.0, *),
-            ndefMessage.records.count > 0,
-            ndefMessage.records[0].typeNameFormat != .empty
-        else {
-            return false
-        }
-
-        guard let payload = ndefMessage.records.first, payload.typeNameFormat == .nfcWellKnown else {
-            return false
-        }
-
-        guard let url = payload.wellKnownTypeURIPayload()?.absoluteString else {
+        guard let url = userActivity.webpageURL?.absoluteString else {
             return false
         }
 

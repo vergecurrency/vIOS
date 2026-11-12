@@ -39,6 +39,7 @@ class ReceiveViewController: ThemeableViewController {
     var cardShown = false
     private var didCenterEntryRows = false
     private weak var copyAddressButton: UIButton?
+    private var isLoadingAddress = false
 
     override func updateColors() {
         super.updateColors()
@@ -93,6 +94,7 @@ class ReceiveViewController: ThemeableViewController {
             }
         }
         self.styleEntryFields()
+        updateNewAddressButton()
     }
 
     override func viewDidLayoutSubviews() {
@@ -221,6 +223,7 @@ class ReceiveViewController: ThemeableViewController {
 
     func setAddress() {
         DispatchQueue.main.async {
+            let profileId = self.applicationRepository.activeWalletProfileId
             self.hideCard()
             self.address = ""
             self.cardAddress.text = ""
@@ -228,24 +231,41 @@ class ReceiveViewController: ThemeableViewController {
             self.addressTextField.valueLabel?.text = ""
             self.qrCodeImageView.image = nil
 
+            if self.applicationRepository.useStaticReceiveAddress,
+                let savedAddress = self.applicationRepository.receiveAddress, !savedAddress.isEmpty {
+                self.isLoadingAddress = false
+                self.updateNewAddressButton()
+                self.handleChangeAddress(savedAddress)
+                return
+            }
+
+            self.isLoadingAddress = true
+            self.updateNewAddressButton()
+
             var options = Vws.WalletAddressesOptions()
             options.limit = 1
             options.reverse = true
 
             self.walletClient.getMainAddresses(options: options) { error, addresses in
-                if let error = error {
-                    return self.showAddressError(error: error)
-                }
+                DispatchQueue.main.async {
+                    guard self.applicationRepository.activeWalletProfileId == profileId else { return }
+                    self.isLoadingAddress = false
+                    self.updateNewAddressButton()
+                    if let error = error {
+                        return self.showAddressError(error: error)
+                    }
 
-                guard let lastAddress = addresses.first else {
-                    return self.getNewAddress()
-                }
+                    guard let lastAddress = addresses.first else {
+                        return self.getNewAddress()
+                    }
 
-                if self.transactionManager.all(byAddress: lastAddress.address).count == 0 {
-                    return self.handleChangeAddress(lastAddress.address)
-                }
+                    if self.applicationRepository.useStaticReceiveAddress ||
+                        self.transactionManager.all(byAddress: lastAddress.address).count == 0 {
+                        return self.handleChangeAddress(lastAddress.address)
+                    }
 
-                self.getNewAddress()
+                    self.getNewAddress()
+                }
             }
         }
     }
@@ -255,26 +275,36 @@ class ReceiveViewController: ThemeableViewController {
     }
 
     func getNewAddress() {
+        guard !isLoadingAddress else { return }
+        let profileId = applicationRepository.activeWalletProfileId
+        isLoadingAddress = true
+        updateNewAddressButton()
         self.walletClient.createAddress { error, addressInfo, errorResponse in
-            if errorResponse?.error == .MainAddressGapReached {
-                let alert = UIAlertController.createAddressGapReachedAlert()
+            DispatchQueue.main.async {
+                guard self.applicationRepository.activeWalletProfileId == profileId else { return }
+                self.isLoadingAddress = false
+                self.updateNewAddressButton()
+                if errorResponse?.error == .MainAddressGapReached {
+                    let alert = UIAlertController.createAddressGapReachedAlert()
 
-                self.present(alert, animated: true)
+                    self.present(alert, animated: true)
 
-                return
+                    return
+                }
+
+                guard let addressInfo = addressInfo else {
+                    return self.showAddressError(error:
+                        error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil)
+                    )
+                }
+
+                self.handleChangeAddress(addressInfo.address)
             }
-
-            guard let addressInfo = addressInfo else {
-                return self.showAddressError(error:
-                    error ?? NSError(domain: "No address could be created", code: 500, userInfo: nil)
-                )
-            }
-
-            self.handleChangeAddress(addressInfo.address)
         }
     }
 
     func handleChangeAddress(_ address: String) {
+        applicationRepository.receiveAddress = address
         self.changeAddress(address)
 
         DispatchQueue.main.async {
@@ -354,7 +384,48 @@ class ReceiveViewController: ThemeableViewController {
     }
 
     @IBAction func newAddress(_ sender: UIButton) {
+        guard !applicationRepository.useStaticReceiveAddress else { return }
         getNewAddress()
+    }
+
+    private func updateNewAddressButton() {
+        guard !applicationRepository.useStaticReceiveAddress else {
+            navigationItem.rightBarButtonItem = nil
+            return
+        }
+
+        if let button = navigationItem.rightBarButtonItem?.customView as? UIButton {
+            button.isEnabled = !isLoadingAddress
+            button.alpha = isLoadingAddress ? 0.5 : 1
+            return
+        }
+
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityLabel = "New Receiving Address"
+        button.backgroundColor = UIColor(rgb: 0x3A125C)
+        button.layer.cornerRadius = 8
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(rgb: 0xFF3DF2).cgColor
+        button.addTarget(self, action: #selector(newAddress(_:)), for: .touchUpInside)
+        button.isEnabled = !isLoadingAddress
+        button.alpha = isLoadingAddress ? 0.5 : 1
+
+        let icon = UIImageView(image: UIImage(systemName: "arrow.clockwise"))
+        icon.tintColor = .white
+        icon.contentMode = .scaleAspectFit
+        icon.isUserInteractionEnabled = false
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        button.addSubview(icon)
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 44),
+            button.heightAnchor.constraint(equalToConstant: 44),
+            icon.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            icon.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            icon.widthAnchor.constraint(equalToConstant: 20),
+            icon.heightAnchor.constraint(equalToConstant: 20)
+        ])
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
 
     @IBAction func switchCurrency(_ sender: Any) {

@@ -27,7 +27,6 @@ class WalletServiceProvider: ServiceProvider {
         registerAddressBookRepository()
         registerSweeperHelper()
         registerWalletManager()
-        registerNFCWalletTransactionFactory()
         registerWalletSubscriber()     // New: register WalletSubscriber last
     }
     // MARK: - Transaction Repository
@@ -112,17 +111,6 @@ class WalletServiceProvider: ServiceProvider {
                 applicationRepository: r.resolve(ApplicationRepository.self)!,
                 credentials: r.resolve(Credentials.self)!,
                 log: r.resolve(Logger.self)!
-            )
-        }
-    }
-
-    // MARK: - NFC Wallet Transaction Factory
-    func registerNFCWalletTransactionFactory() {
-        container.register(NFCWalletTransactionFactory.self) { r, sendTransactionDelegate in
-            NFCWalletTransactionFactory(
-                sendTransactionDelegate: sendTransactionDelegate,
-                addressValidator: AddressValidator(),
-                logger: r.resolve(Logger.self)!
             )
         }
     }

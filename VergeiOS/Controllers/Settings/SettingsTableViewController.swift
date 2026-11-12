@@ -24,6 +24,7 @@ class SettingsTableViewController: EdgedTableViewController {
     var transactionManager: TransactionManager!
     private weak var walletProfilesButton: UIButton?
     private let walletSwitchPopupTag = 83014
+    private let staticAddressIndexPath = IndexPath(row: 5, section: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class SettingsTableViewController: EdgedTableViewController {
         self.walletProfilesButton = walletButton
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: walletButton)
         self.navigationItem.leftBarButtonItem = nil
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshStaticAddressSetting),
+                                               name: .didSwitchWalletProfile, object: nil)
     }
 
     override func viewDidLayoutSubviews() {
@@ -46,6 +49,7 @@ class SettingsTableViewController: EdgedTableViewController {
         super.viewWillAppear(animated)
 
         self.currencyLabel.text = self.applicationRepository.currency
+        refreshStaticAddressSetting()
 
         if let indexPath = self.tableView.indexPathForSelectedRow,
             let row = self.tableView.cellForRow(at: indexPath) {
@@ -660,12 +664,36 @@ class SettingsTableViewController: EdgedTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
 
+        if indexPath == staticAddressIndexPath {
+            cell.textLabel?.text = "Static Address"
+            cell.textLabel?.textColor = .white
+            cell.textLabel?.font = UIFont.avenir(size: 17)
+            cell.selectionStyle = .none
+            cell.backgroundColor = ThemeManager.shared.backgroundGrey()
+            let toggle = UISwitch()
+            toggle.onTintColor = ThemeManager.shared.primaryLight()
+            toggle.isOn = applicationRepository.useStaticReceiveAddress
+            toggle.accessibilityLabel = "Static Address"
+            toggle.addTarget(self, action: #selector(changeStaticAddress(_:)), for: .valueChanged)
+            cell.accessoryView = toggle
+        }
+
         if indexPath == self.localAuthIndexPath && LAContext.available(type: .touchID) {
             cell.textLabel?.text = "settings.localAuth.useTouchId".localized
             cell.imageView?.image = UIImage(named: "TouchID")
         }
 
         return cell
+    }
+
+    @objc private func changeStaticAddress(_ sender: UISwitch) {
+        applicationRepository.useStaticReceiveAddress = sender.isOn
+    }
+
+    @objc private func refreshStaticAddressSetting() {
+        if let toggle = tableView.cellForRow(at: staticAddressIndexPath)?.accessoryView as? UISwitch {
+            toggle.isOn = applicationRepository.useStaticReceiveAddress
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

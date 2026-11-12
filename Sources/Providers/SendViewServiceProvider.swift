@@ -15,7 +15,6 @@ class SendViewServiceProvider: ServiceProvider {
             c.applicationRepository = r.resolve(ApplicationRepository.self)
             c.ratesClient = r.resolve(RatesClient.self)
             c.txFactory = r.resolve(WalletTransactionFactory.self)
-            c.nfcTxFactory = r.resolve(NFCWalletTransactionFactory.self, argument: c as SendTransactionDelegate)
             c.txTransponder = r.resolve(TxTransponderProtocol.self)
             c.walletClient = r.resolve(WalletClientProtocol.self)
         }

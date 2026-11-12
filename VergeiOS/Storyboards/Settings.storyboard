@@ -189,6 +189,14 @@
                                             <segue destination="STq-cx-sHw" kind="show" id="bDN-ev-6PI"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="static-address-cell">
+                                        <rect key="frame" x="16" y="319.5" width="343" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" contentMode="center" tableViewCell="static-address-cell" id="static-address-content">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Connections" id="cnx-ios-xvg">

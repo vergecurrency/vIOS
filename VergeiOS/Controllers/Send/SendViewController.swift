@@ -21,10 +21,9 @@ class SendViewController: ThemeableViewController {
     @IBOutlet weak var amountTextField: CurrencyInput!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var nfcInitiator: UIButton!
+    @IBOutlet weak var recipientActionsContainer: UIView!
 
     var txFactory: WalletTransactionFactory!
-    var nfcTxFactory: NFCWalletTransactionFactory!
     var txTransponder: TxTransponderProtocol!
     var applicationRepository: ApplicationRepository!
     var ratesClient: RatesClient!
@@ -33,7 +32,6 @@ class SendViewController: ThemeableViewController {
     var waitingForConfirmationPopover: Bool = false
     var loadingAlert: UIAlertController = UIAlertController.loadingAlert(title: "alerts.refreshRates.title".localized)
     private var recipientActionsStack: UIStackView?
-    private weak var nfcQuickActionButton: UIButton?
     private var lastContactPromptRecipient: String?
     private var lastConfirmButtonWidth: CGFloat = 0
     private var didCenterEntryRows = false
@@ -116,8 +114,6 @@ class SendViewController: ThemeableViewController {
         super.viewWillAppear(animated)
 
         self.noBalanceView.isHidden = (walletAmount.doubleValue > 0)
-        self.nfcInitiator.isHidden = true
-        self.updateNfcQuickActionAvailability()
 
         self.xvgCardContainer.alpha = 0.0
         self.xvgCardContainer.center.y += 20.0
@@ -231,13 +227,11 @@ class SendViewController: ThemeableViewController {
 
     private func setupRecipientQuickActions() {
         guard recipientActionsStack == nil,
-            let container = nfcInitiator.superview
+            let container = recipientActionsContainer
         else {
-            updateNfcQuickActionAvailability()
             return
         }
 
-        nfcInitiator.isHidden = true
 
         let contactsButton = makeRecipientQuickActionButton(
             title: "Contacts",
@@ -249,13 +243,7 @@ class SendViewController: ThemeableViewController {
             imageName: "QRcode",
             action: #selector(openQrScanner)
         )
-        let nfcButton = makeRecipientQuickActionButton(
-            title: "NFC",
-            imageName: "NFCIcon-2",
-            action: #selector(initiateNfc(_:))
-        )
-
-        let stack = UIStackView(arrangedSubviews: [contactsButton, qrButton, nfcButton])
+        let stack = UIStackView(arrangedSubviews: [contactsButton, qrButton])
         stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fillEqually
@@ -271,8 +259,6 @@ class SendViewController: ThemeableViewController {
         ])
 
         recipientActionsStack = stack
-        nfcQuickActionButton = nfcButton
-        updateNfcQuickActionAvailability()
     }
 
     private func makeRecipientQuickActionButton(title: String, imageName: String, action: Selector) -> UIButton {
@@ -406,11 +392,6 @@ class SendViewController: ThemeableViewController {
         confirmButton.tintColor = .white
     }
 
-    private func updateNfcQuickActionAvailability() {
-        let available = nfcTxFactory?.isNfcAvailable() ?? false
-        nfcQuickActionButton?.isEnabled = available
-        nfcQuickActionButton?.alpha = available ? 1.0 : 0.5
-    }
 
     @objc func didChangeWalletAmount(notification: Notification) {
         DispatchQueue.main.async {
@@ -561,21 +542,6 @@ class SendViewController: ThemeableViewController {
         return nil
     }
 
-    @IBAction func initiateNfc(_ sender: Any) {
-        guard self.nfcTxFactory.isNfcAvailable() else {
-            let alert = UIAlertController(
-                title: "NFC unavailable",
-                message: "NFC scanning is only available on supported physical iPhones.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "defaults.ok".localized, style: .cancel))
-            alert.applyRetrowaveTheme()
-            present(alert, animated: true)
-            return
-        }
-
-        self.nfcTxFactory.initiateScan()
-    }
 
     @objc private func openQrScanner() {
         performSegue(withIdentifier: "scanQRCode", sender: self)

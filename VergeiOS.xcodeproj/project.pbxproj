@@ -154,8 +154,6 @@
 		A35F3D82211CE738006068A2 /* ApplicationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F3D81211CE738006068A2 /* ApplicationRepositoryTest.swift */; };
 		A364727E217C7787001B1B18 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364727D217C7787001B1B18 /* ContactTableViewController.swift */; };
 		A3647282217C8BB6001B1B18 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */; };
-		A3654D8B2517677C007E13B2 /* CoreNFC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3654D8A2517677C007E13B2 /* CoreNFC.framework */; };
-		A3654D9425180B3B007E13B2 /* NFCWalletTransactionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */; };
 		A3670CBA2454F5C100B2D9FC /* UITestingServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3670CB92454F5C100B2D9FC /* UITestingServiceProvider.swift */; };
 		A36B17BE2432A15800D327D8 /* WalletNotificationsSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */; };
 		A36B17C02432A17C00D327D8 /* SubscriberProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */; };
@@ -659,8 +657,6 @@
 		A364727D217C7787001B1B18 /* ContactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		A3647281217C8BB6001B1B18 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A3647FA32454D0A1006FE068 /* UITests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UITests.xctestplan; sourceTree = "<group>"; };
-		A3654D8A2517677C007E13B2 /* CoreNFC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreNFC.framework; path = System/Library/Frameworks/CoreNFC.framework; sourceTree = SDKROOT; };
-		A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCWalletTransactionFactory.swift; sourceTree = "<group>"; };
 		A3670CB92454F5C100B2D9FC /* UITestingServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingServiceProvider.swift; sourceTree = "<group>"; };
 		A36B17BD2432A15800D327D8 /* WalletNotificationsSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletNotificationsSubscriber.swift; sourceTree = "<group>"; };
 		A36B17BF2432A17C00D327D8 /* SubscriberProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriberProtocol.swift; sourceTree = "<group>"; };
@@ -955,7 +951,6 @@
 				A39D5F5E2448F8480014B882 /* KeychainSwift in Frameworks */,
 				A39D5F632448F8480014B882 /* Promises in Frameworks */,
 				93FDEEA52E90561A00B583A0 /* BigInt in Frameworks */,
-				A3654D8B2517677C007E13B2 /* CoreNFC.framework in Frameworks */,
 				A39D5F5C2448F8480014B882 /* IQKeyboardManagerSwift in Frameworks */,
 				A39D5F5D2448F8480014B882 /* SwiftyJSON in Frameworks */,
 				933743532EBDFD1600E8201F /* HdWalletKit in Frameworks */,
@@ -1588,7 +1583,6 @@
 				93871D202EBF21AF006B8CCA /* Tor.framework */,
 				93871CEC2EBF202B006B8CCA /* tor.xcframework */,
 				93871CEA2EBF2004006B8CCA /* Tor.framework */,
-				A3654D8A2517677C007E13B2 /* CoreNFC.framework */,
 				A398B205212AFF71004ACB73 /* LocalAuthentication.framework */,
 				CA522EA6220318B000331B0F /* IntentsUI.framework */,
 				520C9F8038DC087E1693369D /* Pods_VergeSiri.framework */,
@@ -1769,7 +1763,6 @@
 				A3478B4823647FF20018149C /* WalletManager.swift */,
 				B2BD7C51C174D8B86AFF7D60 /* WalletTicker.swift */,
 				A3239D6322E60C2B00430F8B /* SweeperHelper.swift */,
-				A3654D9325180B3B007E13B2 /* NFCWalletTransactionFactory.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -2218,9 +2211,6 @@
 							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
-							};
-							com.apple.NearFieldCommunicationTagReading = {
-								enabled = 0;
 							};
 							com.apple.NetworkExtensions.iOS = {
 								enabled = 0;
@@ -2919,7 +2909,6 @@
 				B2BD731FE91F17D3EFD3EBE4 /* Transaction.swift in Sources */,
 				B2BD76E01CF036F0D2435FED /* Block.swift in Sources */,
 				B2BD7265D9D0B63FFE8A6FE2 /* Balance.swift in Sources */,
-				A3654D9425180B3B007E13B2 /* NFCWalletTransactionFactory.swift in Sources */,
 				B2BD743E6EB65712BC9237E5 /* HttpSessionProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3143,8 +3132,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 26.8.4;
-				CF_BUNDLE_SHORT_VERSION_STRING = 26.8;
+				CF_BUNDLE_BUILD_VERSION_STRING = 26.11;
+				CF_BUNDLE_SHORT_VERSION_STRING = 26.11;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3209,8 +3198,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CF_BUNDLE_BUILD_VERSION_STRING = 26.8.4;
-				CF_BUNDLE_SHORT_VERSION_STRING = 26.8;
+				CF_BUNDLE_BUILD_VERSION_STRING = 26.11;
+				CF_BUNDLE_SHORT_VERSION_STRING = 26.11;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3273,7 +3262,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26.8.4;
+				CURRENT_PROJECT_VERSION = 26.11;
 				DEVELOPMENT_TEAM = B88XFKB847;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
@@ -3300,7 +3289,7 @@
 					"$(SRCROOT)/libcrypto.xcframework/ios-arm64",
 					"$(SRCROOT)/libssl.xcframework/ios-arm64",
 				);
-				MARKETING_VERSION = 26.8;
+				MARKETING_VERSION = 26.11;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3320,7 +3309,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VergeiOS/VergeiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26.8.4;
+				CURRENT_PROJECT_VERSION = 26.11;
 				DEVELOPMENT_TEAM = B88XFKB847;
 				DYLIB_CURRENT_VERSION = 0.1;
 				EXCLUDED_ARCHS = "";
@@ -3349,7 +3338,7 @@
 					"$(SRCROOT)/libcrypto.xcframework/ios-arm64",
 					"$(SRCROOT)/libssl.xcframework/ios-arm64",
 				);
-				MARKETING_VERSION = 26.8;
+				MARKETING_VERSION = 26.11;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.verge.wallets;
 				PRODUCT_NAME = "$(TARGET_NAME)";

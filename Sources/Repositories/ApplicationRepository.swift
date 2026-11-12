@@ -494,6 +494,8 @@ class ApplicationRepository {
         keychain.delete(keychainKey("wallet.name", profileId: profileId))
         keychain.delete(keychainKey("wallet.secret", profileId: profileId))
         userDefaults.removeObject(forKey: defaultsKey("wallet.amount", profileId: profileId))
+        userDefaults.removeObject(forKey: defaultsKey("wallet.staticReceiveAddress", profileId: profileId))
+        userDefaults.removeObject(forKey: defaultsKey("wallet.receiveAddress", profileId: profileId))
         userDefaults.removeObject(forKey: defaultsKey("wallet.passphrase", profileId: profileId))
     }
 
@@ -566,14 +568,14 @@ class ApplicationRepository {
         }
     }
     
-    // User wants to use NFC or not.
-    var useNfc: Bool {
-        get {
-            return userDefaults.bool(forKey: "wallet.useNfc")
-        }
-        set {
-            userDefaults.set(newValue, forKey: "wallet.useNfc")
-        }
+    var useStaticReceiveAddress: Bool {
+        get { userDefaults.object(forKey: defaultsKey("wallet.staticReceiveAddress")) as? Bool ?? true }
+        set { userDefaults.set(newValue, forKey: defaultsKey("wallet.staticReceiveAddress")) }
+    }
+
+    var receiveAddress: String? {
+        get { userDefaults.string(forKey: defaultsKey("wallet.receiveAddress")) }
+        set { userDefaults.set(newValue, forKey: defaultsKey("wallet.receiveAddress")) }
     }
 
     // Store the selected wallet currency. Defaults to USD.

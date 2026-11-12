@@ -251,6 +251,7 @@ class TxTransponderTest3WalletClient: TxTransponderTest1WalletClient {
 }
 
 class WalletClientMock: WalletClientProtocol {
+    func currentCopayerId() -> String { "copayerid" }
     func createWallet(
         walletName: String,
         copayerName: String,
